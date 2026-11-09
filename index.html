@@ -40,7 +40,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,247,232,.85);backdrop-f
 .links a{text-decoration:none;position:relative}
 .links a.plain::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 .links a.plain:hover::after{transform:scaleX(1)}
-.net{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
+.net{font:inherit;color:inherit;display:inline-flex;align-items:center;gap:8px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
 .net b{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:8px;background:var(--yellow);transition:transform .3s}
 .net.pop b{transform:scale(1.5) rotate(-10deg)}
 
@@ -53,7 +53,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,247,232,.85);backdrop-f
 .burger{display:none;background:none;border:3px solid var(--ink);border-radius:10px;padding:8px 10px;font-weight:800}
 
 /* hero */
-.hero{padding:64px 0 40px}
+.hero{padding:64px 0 40px;overflow-x:clip}
+html{overflow-x:clip}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .hero-grid>*{min-width:0}
 .sticker{display:inline-flex;align-items:center;gap:8px;background:var(--cyan);border:3px solid var(--ink);border-radius:999px;padding:6px 16px;font-weight:700;transform:rotate(-3deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:22px}
@@ -142,6 +143,35 @@ section{padding:100px 0}
 .reel:hover{transform:scale(1.03)}
 .reel.caught{background:var(--cyan)}
 .empty{grid-column:1/-1;text-align:center;padding:40px;border:3px dashed #8da2e8;border-radius:var(--radius);font-weight:700}
+.cats{display:flex;gap:10px;overflow-x:auto;padding:4px 4px 14px;margin:0 -4px 8px;scrollbar-width:thin}
+.cats button{flex:none;border:2.5px solid var(--ink);background:var(--navy-deep);color:#dfe6ff;border-radius:999px;padding:7px 14px;font-weight:700;font-size:.92rem;transition:transform .15s,background .15s}
+.cats button:hover{transform:rotate(-2deg)}
+.cats button small{opacity:.7;margin-left:4px}
+.cats button.on{background:var(--yellow);color:var(--ink)}
+.pond-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap;font-weight:700}
+.sort{display:flex;align-items:center;gap:10px}
+.sort select{font:inherit;font-weight:700;border:3px solid var(--ink);border-radius:12px;padding:8px 12px;background:var(--white);color:var(--ink)}
+.card .by{font-size:.82rem;font-weight:700;color:#5a6a9a;margin:-6px 0 12px}
+.card-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card-actions .how-btn{border:3px solid var(--ink);border-radius:12px;padding:10px;font-weight:800;background:var(--white);transition:transform .15s}
+.card-actions .how-btn:hover{transform:scale(1.03)}
+.more-wrap{text-align:center;margin-top:36px}
+.credit{margin-top:28px;font-size:.9rem;color:#c7d3ff;text-align:center}
+.credit a{color:var(--yellow)}
+.net{cursor:pointer}
+dialog{border:3px solid var(--ink);border-radius:24px;padding:0;max-width:640px;width:calc(100% - 32px);box-shadow:12px 12px 0 var(--ink);background:var(--cream);color:var(--ink);max-height:calc(100vh - 40px)}
+dialog::backdrop{background:rgba(11,29,79,.55);backdrop-filter:blur(3px)}
+dialog[open]{animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
+.d-head{padding:28px 28px 22px;border-bottom:3px solid var(--ink);position:relative}
+.d-head h3{font-size:1.8rem;margin:10px 40px 6px 0}
+.d-by{font-weight:700;opacity:.8}
+.d-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border:3px solid var(--ink);border-radius:12px;background:var(--white);font-size:1.5rem;line-height:1;font-weight:800}
+.d-body{padding:24px 28px 28px}
+.d-body h4{font-family:"Bricolage Grotesque";font-size:1.2rem;margin:22px 0 10px}
+.d-body ol{padding-left:22px;display:grid;gap:8px}
+.d-body li::marker{font-weight:800;color:var(--orange)}
+.d-body .install li span{display:block;font-size:.9rem;color:#4a5a8a}
+.d-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -213,7 +243,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <a class="plain" href="#how">How it works</a>
       <a class="plain" href="#pond">The Pond</a>
       <a class="plain" href="#app">Get the app</a>
-      <span class="net" id="net" title="Workflows you've reeled in">Your net <b id="netCount">0</b></span>
+      <button class="net" id="net" type="button" title="See the workflows you've saved">Your net <b id="netCount">0</b></button>
     </div>
   </div>
 </nav>
@@ -249,11 +279,12 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
           <button type="submit">Cast line</button>
         </form>
         <div class="chips" id="heroChips">
-          <button class="chip" data-q="email">Email</button>
-          <button class="chip" data-q="meeting">Meetings</button>
-          <button class="chip" data-q="meal">Meal planning</button>
-          <button class="chip" data-q="money">Money</button>
-          <button class="chip" data-q="travel">Travel</button>
+          <button class="chip" data-cat="Email & Inbox">Email</button>
+          <button class="chip" data-cat="Meetings & Calendar">Meetings</button>
+          <button class="chip" data-cat="Food & Home">Food &amp; home</button>
+          <button class="chip" data-cat="Money">Money</button>
+          <button class="chip" data-cat="Travel">Travel</button>
+          <button class="chip" data-cat="Careers">Job hunting</button>
         </div>
       </div>
 
@@ -318,21 +349,55 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       </div>
       <form class="search pond-search" id="pondSearch" role="search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-        <input id="pondInput" type="search" autocomplete="off" aria-label="Filter workflows" placeholder="Filter the pond...">
+        <input id="pondInput" type="search" autocomplete="off" aria-label="Search workflows" placeholder="Try invoices, Notion, recipes…">
         <button type="submit">Search</button>
       </form>
-      <div class="cards" id="cards" aria-live="polite"></div>
+      <div class="cats" id="cats" role="group" aria-label="Topics"></div>
+      <div class="pond-bar">
+        <p id="count" aria-live="polite"></p>
+        <label class="sort">Sort
+          <select id="sort">
+            <option value="views">Most popular</option>
+            <option value="new">Newest</option>
+            <option value="easy">Easiest first</option>
+          </select>
+        </label>
+      </div>
+      <div class="cards" id="cards"></div>
+      <div class="more-wrap"><button class="btn y" id="more" type="button">Show more workflows</button></div>
+      <p class="credit">Workflows come from the free <a href="https://n8n.io/workflows/" target="_blank" rel="noopener">n8n community template library</a>, credited to their authors. Popularity is n8n template views.</p>
     </div>
   </section>
+
+  <dialog id="detail" aria-labelledby="dTitle">
+    <div class="d-head" id="dHead">
+      <button class="d-close" id="dClose" type="button" aria-label="Close">&times;</button>
+      <div class="meta" id="dTags"></div>
+      <h3 id="dTitle"></h3>
+      <p class="d-by" id="dBy"></p>
+    </div>
+    <div class="d-body">
+      <p id="dDesc"></p>
+      <div id="dHowWrap"><h4>What it does</h4><ol id="dHow"></ol></div>
+      <h4>Apps it connects</h4>
+      <div class="meta" id="dTools"></div>
+      <h4>Install it in 4 steps</h4>
+      <ol class="install" id="dSetup"></ol>
+      <div class="d-actions">
+        <a class="btn o" id="dLink" target="_blank" rel="noopener">Open the template ↗</a>
+        <button class="btn y" id="dSave" type="button"></button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- STATS -->
   <section>
     <div class="wrap">
       <div class="stats">
-        <div class="stat reveal"><b data-count="500">0</b><span>workflows in the pond</span></div>
-        <div class="stat reveal"><b data-count="15">0</b><span>minutes to first catch</span></div>
-        <div class="stat reveal"><b data-count="40">0</b><span>apps it plugs into</span></div>
-        <div class="stat reveal"><b data-count="0" data-text="0">0</b><span>coding required</span></div>
+        <div class="stat reveal"><b data-count="0" id="sWorkflows">0</b><span>real AI workflows</span></div>
+        <div class="stat reveal"><b data-count="0" id="sTools">0</b><span>apps they plug into</span></div>
+        <div class="stat reveal"><b data-count="0" id="sTopics">0</b><span>topics, work &amp; life</span></div>
+        <div class="stat reveal"><b data-count="100" data-suffix="%">0</b><span>free to install</span></div>
       </div>
     </div>
   </section>
@@ -374,26 +439,20 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   </div>
 </footer>
 
+<script src="data/workflows.js"></script>
 <script>
 (() => {
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
-const WORKFLOWS = [
-  {t:'Inbox Zero Triage', d:'AI sorts, summarises and drafts replies so you only touch what matters.', side:'work', cat:'Productivity', tools:['Gmail','Claude'], mins:15, lvl:'Beginner', c:'#13c4f2', k:'email inbox reply'},
-  {t:'Meeting Notes to Actions', d:'Turn any call recording into a summary, decisions and an owner for every task.', side:'work', cat:'Meetings', tools:['Zoom','Notion'], mins:20, lvl:'Beginner', c:'#ffb800', k:'meeting notes transcript tasks'},
-  {t:'Sales Call Prep Brief', d:'Get a one-page brief on a prospect, their company and smart questions to ask.', side:'work', cat:'Sales', tools:['Web search','Docs'], mins:10, lvl:'Beginner', c:'#f05a3c', k:'sales research prospect'},
-  {t:'Weekly Report Autopilot', d:'Pull numbers from your sheets and write the weekly update for you.', side:'work', cat:'Ops', tools:['Sheets','Slack'], mins:30, lvl:'Intermediate', c:'#13c4f2', k:'report spreadsheet data slack'},
-  {t:'One Post, Ten Channels', d:'Repurpose a blog or video into LinkedIn, Instagram, newsletter and more.', side:'work', cat:'Content', tools:['Canva','Claude'], mins:20, lvl:'Beginner', c:'#ffb800', k:'content social marketing email'},
-  {t:'Customer FAQ Helper', d:'Answer repeat customer questions from your own docs, in your own voice.', side:'work', cat:'Support', tools:['Docs','Chat'], mins:45, lvl:'Intermediate', c:'#f05a3c', k:'support customer faq'},
-  {t:'Fridge-to-Dinner Planner', d:'Snap your fridge, get a week of meals and a shopping list that uses it all.', side:'life', cat:'Home', tools:['Camera','Notes'], mins:10, lvl:'Beginner', c:'#13c4f2', k:'meal food recipes shopping'},
-  {t:'Trip Itinerary Builder', d:'Dates, budget, vibe in. Day-by-day plan with bookings and backups out.', side:'life', cat:'Travel', tools:['Maps','Calendar'], mins:15, lvl:'Beginner', c:'#ffb800', k:'travel holiday trip plan'},
-  {t:'Subscription Sniffer', d:'Find forgotten subscriptions in your statements and draft the cancel emails.', side:'life', cat:'Money', tools:['Bank CSV','Email'], mins:20, lvl:'Beginner', c:'#f05a3c', k:'money bills budget finance email'},
-  {t:'Homework Buddy', d:'A patient tutor that explains, quizzes and never just gives the answer away.', side:'life', cat:'Family', tools:['Chat'], mins:5, lvl:'Beginner', c:'#13c4f2', k:'kids school learning family'},
-  {t:'Monthly Money Digest', d:'A friendly summary of where your money went and three ideas to save.', side:'life', cat:'Money', tools:['Sheets','Claude'], mins:25, lvl:'Intermediate', c:'#ffb800', k:'money finance budget spending'},
-  {t:'Pocket Workout Coach', d:'Plans that adapt to your week, your kit and how sore you are today.', side:'life', cat:'Health', tools:['Calendar','Chat'], mins:10, lvl:'Beginner', c:'#f05a3c', k:'fitness health exercise gym'}
-];
+const LIB = (window.FISHPOND && window.FISHPOND.items) || [];
+const PALETTE = ['#13c4f2', '#ffb800', '#f05a3c', '#7ad3a8', '#b49cff', '#ff8fb1'];
+const CATS = [...new Set(LIB.map(w => w.cat))].sort((a, b) => LIB.filter(w => w.cat === b).length - LIB.filter(w => w.cat === a).length);
+const catColor = c => PALETTE[CATS.indexOf(c) % PALETTE.length];
+const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? (n / 1e3).toFixed(n >= 1e4 ? 0 : 1).replace(/\.0$/, '') + 'k' : String(n);
+const LEVEL = {Beginner: 0, Intermediate: 1, Advanced: 2};
+const popLabel = w => w.views >= 100 ? fmt(w.views) + ' views' : 'New';
 
 /* background bubbles */
 const bg = $('#bg');
@@ -407,9 +466,17 @@ if (!reduce) for (let i = 0; i < 22; i++) {
   bg.appendChild(b);
 }
 
-/* ticker */
-const names = WORKFLOWS.map(w => w.t);
-$('#ticker').innerHTML = [...names, ...names].map(n => `<span>${n}</span>`).join('');
+/* ticker + live numbers */
+const names = LIB.slice(0, 16).map(w => w.t);
+const tick = $('#ticker');
+[...names, ...names].forEach(n => { const s = document.createElement('span'); s.textContent = n; tick.appendChild(s); });
+const toolCount = new Set(LIB.flatMap(w => w.tools)).size;
+const phonePicks = ['Email & Inbox', 'Food & Home', 'Meetings & Calendar', 'Travel', 'Money'].map(c => LIB.find(w => w.cat === c)).filter(Boolean);
+$$('.phone .mini').forEach((m, i) => { if (phonePicks[i]) m.lastChild.textContent = phonePicks[i].t.split(/ with | using | via /i)[0]; });
+$('#sWorkflows').dataset.count = LIB.length;
+$('#sTools').dataset.count = toolCount;
+$('#sTopics').dataset.count = CATS.length;
+$('.lede').textContent = `Search ${LIB.length} real AI workflows, learn how each one works, and install it straight into your work and your life.`;
 
 /* animated water */
 function wave(y, amp, len, w, closed) {
@@ -445,8 +512,7 @@ addEventListener('pointermove', e => {
   eye.setAttribute('cy', 96 + Math.sin(a) * dist);
   glint.setAttribute('cx', 152 + Math.cos(a) * dist);
   glint.setAttribute('cy', 93 + Math.sin(a) * dist);
-  const cx = r.left + r.width / 2;
-  targetTilt = Math.max(-8, Math.min(8, (e.clientX - cx) / 60));
+  targetTilt = Math.max(-8, Math.min(8, (e.clientX - (r.left + r.width / 2)) / 60));
 });
 fish.addEventListener('pointerenter', () => { targetLevel = 100; fish.classList.add('fast'); });
 fish.addEventListener('pointerleave', () => { targetLevel = 112; fish.classList.remove('fast'); });
@@ -469,7 +535,7 @@ fish.addEventListener('click', () => {
   $('#blubs').textContent = `${blubs} bubble${blubs === 1 ? '' : 's'} blown`;
 });
 
-/* click confetti on buttons */
+/* click confetti */
 function burst(x, y) {
   if (reduce) return;
   const colors = ['#ffb800','#13c4f2','#f05a3c','#14307a'];
@@ -490,14 +556,13 @@ document.addEventListener('click', e => {
 });
 
 /* typing placeholders */
-const ideas = ['clear my inbox', 'plan dinners from my fridge', 'prep for a sales call', 'summarise meetings', 'find sneaky subscriptions', 'plan a weekend in Lisbon'];
+const ideas = ['clear my inbox', 'plan dinners from my fridge', 'prep for a sales call', 'summarise meetings', 'track my expenses', 'plan a trip to Lisbon', 'find a new job'];
 const heroInput = $('#heroInput'), phoneSearch = $('#phoneSearch');
 let ii = 0, ci = 0, del = false;
 function type() {
   const s = ideas[ii];
   ci += del ? -1 : 1;
-  const txt = 'I want AI to ' + s.slice(0, ci);
-  heroInput.placeholder = txt;
+  heroInput.placeholder = 'I want AI to ' + s.slice(0, ci);
   phoneSearch.textContent = s.slice(0, ci);
   let wait = del ? 30 : 70;
   if (!del && ci === s.length) { del = true; wait = 1600; }
@@ -506,77 +571,197 @@ function type() {
 }
 if (reduce) { heroInput.placeholder = 'I want AI to clear my inbox'; phoneSearch.textContent = 'clear my inbox'; } else type();
 
+/* saved net */
+const store = {
+  get() { try { return new Set(JSON.parse(localStorage.getItem('fishpond-net') || '[]')); } catch { return new Set(); } },
+  set(s) { try { localStorage.setItem('fishpond-net', JSON.stringify([...s])); } catch {} }
+};
+const saved = store.get();
+const netCount = $('#netCount');
+function toggleSave(id) {
+  saved.has(id) ? saved.delete(id) : saved.add(id);
+  store.set(saved);
+  netCount.textContent = saved.size;
+  const net = $('#net'); net.classList.add('pop'); setTimeout(() => net.classList.remove('pop'), 300);
+}
+netCount.textContent = saved.size;
+
 /* pond */
-const cards = $('#cards'), pondInput = $('#pondInput');
-let filter = 'all', query = '';
-const saved = new Set();
-function render() {
-  const q = query.trim().toLowerCase();
-  const list = WORKFLOWS.filter(w => (filter === 'all' || w.side === filter) &&
-    (!q || (w.t + ' ' + w.d + ' ' + w.cat + ' ' + w.k + ' ' + w.tools.join(' ')).toLowerCase().includes(q)));
-  cards.innerHTML = '';
-  if (!list.length) {
+const STOP = new Set(['i','want','ai','to','a','an','the','my','me','for','with','and','of','in','on','at','from','by','into','get','make','use','using','can','how','do','what','that','this','it','is','be','some','all','help','automate','automatically','workflow','workflows','plan','manage','create']);
+const SYN = {fridge:['recipe','meal','food','grocer'], dinner:['recipe','meal','food'], cook:['recipe','meal'], food:['recipe','meal','food','restaurant'],
+  inbox:['email','inbox','gmail'], clear:['triage','sort','categor','label','organi','priorit','clean','zero'], tidy:['sort','categor','label','organi','clean'], mail:['email','gmail'], money:['finance','budget','expense','invoice'], spend:['expense','budget'], bill:['invoice','expense'],
+  trip:['travel','trip','itinerary','flight'], holiday:['travel','trip','hotel'], job:['job','resume','career'], cv:['resume','cv'],
+  meeting:['meeting','transcri','zoom','call'], call:['call','meeting','transcri','voice'], social:['social','linkedin','instagram','twitter','tiktok'],
+  gym:['fitness','workout','gym','health'], study:['learn','study','quiz','flashcard','tutor'], customer:['customer','support','ticket'],
+  write:['writ','blog','content','article'], video:['video','youtube'], summarise:['summar'], summarize:['summar']};
+LIB.forEach(w => { w._hay = (w.t + ' ' + w.d + ' ' + w.cat + ' ' + w.tools.join(' ') + ' ' + w.how.join(' ')).toLowerCase(); w._title = w.t.toLowerCase(); });
+const PAGE = 24;
+const state = {side: 'all', cat: 'all', q: '', sort: 'views', shown: PAGE, net: false};
+const cards = $('#cards'), pondInput = $('#pondInput'), count = $('#count'), more = $('#more'), catsEl = $('#cats');
+
+function terms(q) {
+  return q.toLowerCase().split(/[^a-z0-9+#.]+/).filter(t => t.length > 1 && !STOP.has(t))
+    .map(t => t.replace(/ies$/, 'y').replace(/(?<=[^s])s$/, ''))
+    .map(t => [...new Set([t, ...(SYN[t] || [])])]);
+}
+function results() {
+  const ts = terms(state.q);
+  let list = LIB.filter(w =>
+    (!state.net || saved.has(w.id)) &&
+    (state.side === 'all' || w.side === state.side) &&
+    (state.cat === 'all' || w.cat === state.cat));
+  if (ts.length) {
+    const need = Math.max(1, Math.ceil(ts.length / 2));
+    list = list.map(w => {
+      let score = 0, hits = 0;
+      const cat = w.cat.toLowerCase();
+      for (const alts of ts) {
+        if (w._title.includes(alts[0])) { score += 4; hits++; }
+        else if (alts.some(t => w._title.includes(t))) { score += 2; hits++; }
+        else if (alts.some(t => w._hay.includes(t))) { score += 1; hits++; }
+        if (alts.some(t => cat.includes(t))) score += 3;
+      }
+      return hits >= need ? {w, score} : null;
+    }).filter(Boolean).sort((a, b) => b.score - a.score || b.w.views - a.w.views).map(x => x.w);
+    if (state.sort === 'views') return list;
+  }
+  const by = {
+    views: (a, b) => b.views - a.views,
+    new: (a, b) => b.date.localeCompare(a.date),
+    easy: (a, b) => LEVEL[a.lvl] - LEVEL[b.lvl] || b.views - a.views,
+  }[state.sort];
+  return [...list].sort(by);
+}
+
+function renderCats() {
+  const base = LIB.filter(w => state.side === 'all' || w.side === state.side);
+  const counts = {};
+  base.forEach(w => counts[w.cat] = (counts[w.cat] || 0) + 1);
+  catsEl.innerHTML = '';
+  const mk = (val, label, n) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = state.cat === val ? 'on' : '';
+    b.setAttribute('aria-pressed', state.cat === val);
+    b.textContent = label;
+    const sm = document.createElement('small'); sm.textContent = n; b.appendChild(sm);
+    b.addEventListener('click', () => { state.cat = val; state.net = false; state.shown = PAGE; renderCats(); render(); });
+    catsEl.appendChild(b);
+  };
+  mk('all', 'All topics', base.length);
+  CATS.filter(c => counts[c]).forEach(c => mk(c, c, counts[c]));
+}
+
+function card(w, i) {
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.style.animationDelay = (i % PAGE) * 30 + 'ms';
+  el.innerHTML = `
+    <div class="card-top" style="background:${catColor(w.cat)}">
+      <svg class="w" viewBox="0 0 300 40" preserveAspectRatio="none"><path d="${wave(14,6,30,330,true)}" fill="#fff"/></svg>
+      <div class="glyph"></div>
+    </div>
+    <div class="card-body">
+      <div class="meta"><span class="tag"></span><span class="tag"></span><span class="tag"></span></div>
+      <h3></h3><p class="by"></p><p class="desc"></p>
+      <div class="meta tools"></div>
+      <div class="card-actions"><button class="how-btn" type="button">How to install</button><button class="reel" type="button"></button></div>
+    </div>`;
+  $('.glyph', el).textContent = w.cat[0];
+  const tags = $$('.meta .tag', el);
+  tags[0].textContent = w.cat;
+  tags[1].textContent = w.lvl;
+  tags[2].textContent = popLabel(w);
+  $('h3', el).textContent = w.t;
+  $('.by', el).textContent = 'by ' + w.by + (w.v ? ' ✓' : '');
+  $('.desc', el).textContent = w.d;
+  w.tools.slice(0, 4).forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; $('.tools', el).appendChild(s); });
+  const btn = $('.reel', el);
+  const sync = () => { btn.textContent = saved.has(w.id) ? 'In your net' : 'Reel it in'; btn.classList.toggle('caught', saved.has(w.id)); };
+  sync();
+  btn.addEventListener('click', () => { toggleSave(w.id); sync(); if (state.net) render(); });
+  $('.how-btn', el).addEventListener('click', () => openDetail(w));
+  return el;
+}
+
+let current = [];
+function render(append = false) {
+  if (!append) { current = results(); cards.innerHTML = ''; }
+  const from = append ? cards.children.length : 0;
+  const slice = current.slice(from, state.shown);
+  if (!current.length) {
     const e = document.createElement('div');
     e.className = 'empty';
-    e.textContent = `Nothing biting for "${query}" yet. Try "email", "money" or "meeting".`;
+    e.textContent = state.net ? 'Your net is empty. Tap "Reel it in" on any workflow to save it here.' : `Nothing biting for "${state.q}" here. Try another word, or pick "All topics".`;
     cards.appendChild(e);
-    return;
   }
-  list.forEach((w, i) => {
-    const el = document.createElement('article');
-    el.className = 'card';
-    el.style.animationDelay = (i * 50) + 'ms';
-    el.innerHTML = `
-      <div class="card-top" style="background:${w.c}">
-        <svg class="w" viewBox="0 0 300 40" preserveAspectRatio="none"><path d="${wave(14,6,30,330,true)}" fill="#fff"/></svg>
-        <div class="glyph"></div>
-      </div>
-      <div class="card-body">
-        <div class="meta"><span class="tag"></span><span class="tag"></span><span class="tag"></span></div>
-        <h3></h3><p></p>
-        <div class="meta tools"></div>
-        <button class="reel"></button>
-      </div>`;
-    $('.glyph', el).textContent = w.t[0];
-    const tags = $$('.meta .tag', el);
-    tags[0].textContent = w.side === 'work' ? 'At work' : 'In life';
-    tags[1].textContent = w.lvl;
-    tags[2].textContent = `${w.mins} min setup`;
-    $('h3', el).textContent = w.t;
-    $('p', el).textContent = w.d;
-    w.tools.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; $('.tools', el).appendChild(s); });
-    const btn = $('.reel', el);
-    const sync = () => { btn.textContent = saved.has(w.t) ? 'In your net' : 'Reel it in'; btn.classList.toggle('caught', saved.has(w.t)); };
-    sync();
-    btn.addEventListener('click', () => {
-      saved.has(w.t) ? saved.delete(w.t) : saved.add(w.t);
-      sync();
-      $('#netCount').textContent = saved.size;
-      const net = $('#net'); net.classList.add('pop'); setTimeout(() => net.classList.remove('pop'), 300);
-    });
-    cards.appendChild(el);
-  });
+  slice.forEach((w, i) => cards.appendChild(card(w, i)));
+  const what = state.net ? 'in your net' : state.cat === 'all' ? '' : `in ${state.cat}`;
+  count.textContent = current.length ? `Showing ${Math.min(state.shown, current.length)} of ${current.length} workflows ${what}`.trim() : '';
+  more.hidden = state.shown >= current.length;
 }
-render();
+more.addEventListener('click', () => { state.shown += PAGE; render(true); });
 
 $$('.toggle button').forEach(b => b.addEventListener('click', () => {
   $$('.toggle button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
-  filter = b.dataset.f; render();
+  state.side = b.dataset.f; state.net = false; state.shown = PAGE;
+  if (state.cat !== 'all' && !LIB.some(w => w.cat === state.cat && (state.side === 'all' || w.side === state.side))) state.cat = 'all';
+  renderCats(); render();
 }));
+$('#sort').addEventListener('change', e => { state.sort = e.target.value; state.shown = PAGE; render(); });
 let deb;
-pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { query = pondInput.value; render(); }, 120); });
-$('#pondSearch').addEventListener('submit', e => { e.preventDefault(); query = pondInput.value; render(); });
+pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { state.q = pondInput.value; state.shown = PAGE; render(); }, 150); });
+$('#pondSearch').addEventListener('submit', e => { e.preventDefault(); state.q = pondInput.value; state.shown = PAGE; render(); });
 
-function castTo(q) {
-  query = q; pondInput.value = q; render();
+function castTo(q, cat) {
+  state.q = q; pondInput.value = q; state.cat = cat || 'all'; state.side = 'all'; state.net = false; state.shown = PAGE;
+  $$('.toggle button').forEach(x => { const on = x.dataset.f === 'all'; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
+  renderCats(); render();
   $('#pond').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
 }
-$('#heroSearch').addEventListener('submit', e => {
-  e.preventDefault();
-  const v = heroInput.value.trim();
-  castTo(v);
+$('#heroSearch').addEventListener('submit', e => { e.preventDefault(); castTo(heroInput.value.trim()); });
+$$('#heroChips .chip').forEach(c => c.addEventListener('click', () => castTo('', c.dataset.cat)));
+$('#net').addEventListener('click', () => {
+  state.net = true; state.q = ''; pondInput.value = ''; state.cat = 'all'; state.shown = PAGE;
+  renderCats(); render();
+  $('#pond').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
 });
-$$('#heroChips .chip').forEach(c => c.addEventListener('click', () => castTo(c.dataset.q)));
+
+/* detail dialog */
+const dlg = $('#detail');
+let open = null;
+function li(parent, html) { const l = document.createElement('li'); l.innerHTML = html; parent.appendChild(l); return l; }
+function openDetail(w) {
+  open = w;
+  $('#dHead').style.background = catColor(w.cat);
+  const tags = $('#dTags'); tags.innerHTML = '';
+  [w.cat, w.lvl, popLabel(w), w.side === 'life' ? 'In life' : 'At work'].forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
+  $('#dTitle').textContent = w.t;
+  $('#dBy').textContent = `Shared by ${w.by}${w.v ? ' (verified creator)' : ''}${w.date ? ' · ' + new Date(w.date).toLocaleDateString(undefined, {month: 'short', year: 'numeric'}) : ''}`;
+  $('#dDesc').textContent = w.d;
+  const how = $('#dHow'); how.innerHTML = '';
+  w.how.forEach(h => { const l = document.createElement('li'); l.textContent = h; how.appendChild(l); });
+  $('#dHowWrap').hidden = !w.how.length;
+  const tools = $('#dTools'); tools.innerHTML = '';
+  (w.tools.length ? w.tools : ['n8n']).forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; tools.appendChild(s); });
+  const setup = $('#dSetup'); setup.innerHTML = '';
+  const add = (title, sub) => { const l = document.createElement('li'); const b = document.createElement('b'); b.textContent = title; l.appendChild(b); if (sub) { const s = document.createElement('span'); s.textContent = sub; l.appendChild(s); } setup.appendChild(l); };
+  add('Get a free n8n account', 'n8n is the app that runs the workflow. Sign up for n8n Cloud, or install it on your own computer.');
+  add('Open the template and click "Use workflow"', 'It copies straight into your n8n workspace. No coding needed.');
+  const tl = w.tools.filter(t => !/^(AI Agent|HTTP Request|Schedule|Webhook)$/.test(t));
+  add('Connect your accounts', w.setup.length ? w.setup.join(' · ') : (tl.length ? `Sign in to ${tl.slice(0, 4).join(', ')} when n8n asks.` : 'Add any logins or API keys the template asks for.'));
+  add('Test it once, then switch it on', 'Run it with a real example, check the result, then set it to Active.');
+  $('#dLink').href = w.url;
+  syncDetailSave();
+  dlg.showModal();
+}
+function syncDetailSave() { $('#dSave').textContent = open && saved.has(open.id) ? 'In your net' : 'Reel it in'; }
+$('#dSave').addEventListener('click', () => { toggleSave(open.id); syncDetailSave(); render(); });
+$('#dClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+if (LIB.length) { renderCats(); render(); }
+else { cards.innerHTML = '<div class="empty">The workflow library did not load. Check that data/workflows.js is next to this page.</div>'; more.hidden = true; }
 
 /* reveal + counters */
 const io = new IntersectionObserver(es => es.forEach(en => {
@@ -584,8 +769,8 @@ const io = new IntersectionObserver(es => es.forEach(en => {
   en.target.classList.add('in');
   const n = en.target.querySelector('[data-count]');
   if (n) {
-    const end = +n.dataset.count, t0 = performance.now();
-    const step = t => { const p = Math.min(1, (t - t0) / 1200); n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + (end >= 500 && p === 1 ? '+' : ''); if (p < 1) requestAnimationFrame(step); };
+    const end = +n.dataset.count, suf = n.dataset.suffix || '', t0 = performance.now();
+    const step = t => { const p = reduce ? 1 : Math.min(1, (t - t0) / 1200); n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   }
   io.unobserve(en.target);

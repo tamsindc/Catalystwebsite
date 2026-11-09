@@ -1,109 +1,27 @@
-# fshpind.ai - Interactive Homepage
+# fishpond.ai homepage
 
-An interactive, fun homepage for fshpind - an app that helps users discover and install AI workflows and use cases.
-
-## Features
-
-### 🎨 Interactive Design
-- Animated floating particles background
-- 3D tilt effects on feature cards
-- Smooth scroll animations
-- Interactive button effects with ripple animations
-- Parallax scrolling effects
-
-### 🎯 Sections
-1. **Hero Section** - Eye-catching introduction with animated logo and floating squares
-2. **Features** - Showcase of key product features with interactive cards
-3. **Workflows** - Display of popular AI workflows with install buttons
-4. **CTA Section** - Download buttons for different platforms
-5. **Footer** - Navigation and social links
-
-### 🎮 Easter Eggs
-- Konami Code support (↑↑↓↓←→←→BA)
-- Animated button interactions
-- Hidden console messages
-
-## Setup
-
-1. **Add Your Logo**
-   - Place your `fishpond-logo.png` in the `assets/images/` directory
-   - The logo is referenced in multiple places (navbar, hero, footer)
-
-2. **Open the Website**
-   - Simply open `index.html` in a modern web browser
-   - Or serve with a local server for best experience
-
-3. **Customize**
-   - Edit colors in `styles.css` (CSS variables in `:root`)
-   - Modify content in `index.html`
-   - Adjust animations in `script.js`
-
-## Color Scheme
-
-Based on the fshpind.ai branding:
-- Navy Blue: `#1a3a6b`
-- Yellow: `#FFB300`
-- Orange: `#E85D3F`
-- Cyan: `#00BCD4`
-
-## Browser Support
-
-Works best in modern browsers:
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
+A single-page, interactive homepage for fishpond.ai: search real AI workflows, learn how each works, and install them.
 
 ## Files
 
-- `index.html` - Main HTML structure
-- `styles.css` - All styling and animations
-- `script.js` - Interactive JavaScript features
-- `assets/images/` - Image assets directory
+- `index.html`: the whole page (styles and script inline). Open it in a browser or serve the folder.
+- `data/workflows.js`: the workflow library (700 real AI workflows). Generated, do not edit by hand.
+- `scripts/build_workflows.py`: rebuilds the library.
 
-## Customization Tips
+## The workflow library
 
-### Change Colors
-Edit the CSS variables in `styles.css`:
-```css
-:root {
-    --navy: #1a3a6b;
-    --yellow: #FFB300;
-    --orange: #E85D3F;
-    --cyan: #00BCD4;
-}
+Workflows come from the free [n8n community template library](https://n8n.io/workflows/). The build script:
+
+1. Pulls the most-viewed free templates from each n8n AI category, plus targeted searches for everyday-life topics (meals, travel, money, health, learning, careers) and common work tasks.
+2. De-duplicates them, sorts each into a fishpond topic (work or life), and rates difficulty by how many apps it uses.
+3. Keeps a short summary, the "how it works" and setup steps where the author wrote them, the apps involved, and a credit and link to the original template.
+
+Refresh it (needs network access to `api.n8n.io`):
+
+```bash
+python3 scripts/build_workflows.py                 # defaults: 700 workflows, at least 30 per topic
+python3 scripts/build_workflows.py --max 1000      # bigger library
+python3 scripts/build_workflows.py --cache raw.json  # save raw data once, then re-run offline
 ```
 
-### Add More Workflows
-Add workflow cards in the workflows section of `index.html`:
-```html
-<div class="workflow-card">
-    <div class="workflow-header">
-        <span class="workflow-category">Category</span>
-        <span class="workflow-rating">⭐ 5.0</span>
-    </div>
-    <h3>Workflow Name</h3>
-    <p>Description</p>
-    <button class="workflow-btn">Install Workflow</button>
-</div>
-```
-
-### Modify Animations
-Adjust animation speeds in `styles.css` by changing animation duration values.
-
-## Performance
-
-- Debounced scroll events for better performance
-- Optimized animations using CSS transforms
-- Lazy-loaded animations using Intersection Observer
-
-## Future Enhancements
-
-- [ ] Add actual download functionality
-- [ ] Integrate with backend API for real workflows
-- [ ] Add search functionality
-- [ ] User authentication
-- [ ] Workflow rating system
-
----
-
-Built with ❤️ for fshpind.ai
+Only short summaries are stored; every card links to the full template and credits its author.
