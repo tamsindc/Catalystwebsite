@@ -1,0 +1,7 @@
+*.zip
+*.pdf
+*.docx
+*.jpg
+scripts
+data/recipes
+README.md
