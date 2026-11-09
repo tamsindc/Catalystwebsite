@@ -16,7 +16,16 @@ TOPICS = {
     "Research & News": "work", "Documents & Data": "work", "Small Business Admin": "work",
     "Food & Home": "life", "Travel": "life", "Health & Fitness": "life",
     "Money": "life", "Learning": "life", "Careers": "life", "Personal Assistant": "life",
+    "Managing a Team": "work", "Online Shops": "work", "Teaching & Training": "work",
+    "Property & Lettings": "work", "Charities & Community": "work",
+    "Family & Parenting": "life", "Events & Celebrations": "life", "Hobbies & Creativity": "life",
+    "Shopping & Deals": "life", "Cars & Getting Around": "life",
 }
+STOP = {"a", "an", "the", "and", "or", "of", "for", "to", "in", "on", "with", "your", "you", "every", "each", "into", "from", "it", "get", "make", "turn", "one", "all"}
+
+
+def words(t):
+    return {w for w in re.findall(r"[a-z]+", t.lower()) if w not in STOP}
 LEVELS = {"Beginner", "Intermediate", "Advanced"}
 TRIGGERS = {"schedule", "new_email", "new_file", "new_row", "form_submitted", "calendar_event", "message_received", "manual"}
 ACTIONS = {"ai.generate", "ai.summarize", "ai.classify", "ai.extract", "email.draft", "email.send", "email.label",
@@ -93,6 +102,11 @@ def main():
             c = clean(r)
             if c["id"] in seen:
                 warnings.append(f"{f}: duplicate {c['t']!r}")
+                continue
+            cw = words(c["t"])
+            twin = next((o for o in items if len(cw | words(o["t"])) and len(cw & words(o["t"])) / len(cw | words(o["t"])) >= 0.75), None)
+            if twin:
+                warnings.append(f"{f}: dropped near-duplicate {c['t']!r} (like {twin['t']!r})")
                 continue
             blob = json.dumps(c, ensure_ascii=False)
             if BANNED.search(blob):
