@@ -1,0 +1,3451 @@
+[
+  {
+    "t": "See where your money went last month",
+    "d": "Paste a month of bank transactions and get a clear spending breakdown by category, with your three biggest leaks pointed out.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "At the start of each month",
+    "steps": [
+      {
+        "h": "Download last month's transactions",
+        "b": "In your banking app or website, look for an option to export or download transactions as a CSV or PDF. A screenshot of the list works too."
+      },
+      {
+        "h": "Strip out private details",
+        "b": "Delete or cover account numbers, sort codes, card numbers and your address before you share anything. Merchant names and amounts are all the AI needs."
+      },
+      {
+        "h": "Ask for a breakdown",
+        "b": "Open ChatGPT, Claude or Gemini, attach the file or paste the list, and use this prompt.",
+        "p": "Here are my bank transactions for [month]. Group every outgoing payment into categories such as Housing, Bills, Groceries, Eating out, Transport, Shopping, Subscriptions, Kids, Health and Other. Give me a table with each category, its total and its share of total spending. Then list my 10 largest single payments, flag any payments that look like repeat subscriptions, and point out the three areas where I could most easily spend less. Don't give investment or financial advice, just describe my spending."
+      },
+      {
+        "h": "Check the categories",
+        "b": "Skim the table and tell the AI about anything it put in the wrong place, for example a supermarket shop that was really a birthday present."
+      },
+      {
+        "h": "Keep a running record",
+        "b": "Copy the category totals into a simple sheet with one column per month so you can see trends over time."
+      }
+    ],
+    "example": "October total: £2,184. Housing £950 (43%), Groceries £412 (19%), Eating out £186 (9%), Transport £143 (7%), Subscriptions £67 (3%)... Easy wins: 11 coffee shop visits (£42), two food delivery apps, a gym membership with no visits since August.",
+    "tips": [
+      "Never paste full statements with account numbers, and remember the AI can misread amounts, so check the totals against your bank app.",
+      "Ask it to compare with last month's table if you paste both."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First day of each month"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to export last month's transactions"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Sort transactions into spending categories"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add category totals as a new month column"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find and cancel subscriptions you forgot about",
+    "d": "A complete list of every recurring payment you have, what each costs per year, and ready-written cancellation messages for the ones you don't use.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Twice a year, or when money feels tight",
+    "steps": [
+      {
+        "h": "Gather the evidence",
+        "b": "Export three months of card and bank transactions, and search your email for words like subscription, renewal, membership and receipt."
+      },
+      {
+        "h": "Remove sensitive details",
+        "b": "Delete account and card numbers from anything you paste. Keep merchant names, dates and amounts."
+      },
+      {
+        "h": "Ask the AI to spot the repeats",
+        "b": "Paste the transactions and any renewal emails into your AI assistant with this prompt.",
+        "p": "Below are three months of my transactions and some renewal emails. Find every payment that looks recurring (monthly, yearly or weekly). Make a table with: service name, how often it charges, amount each time, cost per year, and the date it next renews if you can tell. Sort by yearly cost, highest first. Then ask me which ones I actually use, one question at a time.\n\n[paste transactions and emails]"
+      },
+      {
+        "h": "Decide what stays",
+        "b": "Answer the AI's questions honestly. For anything you're dropping, ask it to write a short, polite cancellation message or tell you the usual place to cancel, such as the app store subscription settings."
+      },
+      {
+        "h": "Put renewals in your calendar",
+        "b": "For subscriptions you keep, add a reminder a week before each yearly renewal so you get a chance to decide again."
+      }
+    ],
+    "example": "Found 9 recurring payments, £742 a year. Top: Streaming bundle £215, Cloud storage x2 (£24 + £60, you have two), Fitness app £96 (last opened in June), Magazine £48. Cancel the duplicate storage and fitness app: saves £156 a year.",
+    "tips": [
+      "Subscriptions bought through your phone are usually cancelled in your Apple or Google account settings, not in the app itself.",
+      "Check for free trials that quietly became paid ones."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every six months"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Find recurring payments in recent transactions and receipts"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update the subscriptions list with yearly costs"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder a week before each yearly renewal"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Understand every line on your payslip",
+    "d": "A plain-English explanation of your payslip, what each deduction is for, and a short list of questions to ask payroll if something looks off.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When you start a new job or your pay changes",
+    "steps": [
+      {
+        "h": "Photograph or download your payslip",
+        "b": "Take a clear photo or download the PDF from your employer's payroll portal."
+      },
+      {
+        "h": "Cover personal identifiers",
+        "b": "Blur or crop out your name, employee number, National Insurance or tax ID number and bank details before sharing."
+      },
+      {
+        "h": "Ask for an explanation",
+        "b": "Attach the payslip to your AI assistant and use this prompt.",
+        "p": "This is my payslip from [country]. Explain every line in plain English: what it is, why it's taken, and whether it's a standard deduction. Show how gross pay becomes net pay step by step. Point out anything unusual, such as a tax code that looks like an emergency code, a pay rate that doesn't match [my agreed salary or hourly rate], or a deduction I may not recognise. Finish with up to 5 questions I could ask payroll. Don't give me tax advice, just explain."
+      },
+      {
+        "h": "Check anything flagged",
+        "b": "If the AI spots something odd, confirm it with your payroll team or your country's official tax website rather than relying on the AI's answer."
+      }
+    ],
+    "example": "Gross pay £2,500. Income tax £291 (based on your tax code). National Insurance £158. Pension 5% £105 (your workplace pension). Student loan £62. Net £1,884. Worth asking: your tax code ends in W1/M1, which is often temporary. Is this correct?",
+    "tips": [
+      "Tax rules vary by country and change often. Use the AI to understand, and your payroll team or official tax service to confirm.",
+      "Keep a folder of payslips. They're useful for mortgages, rentals and tax queries."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new payslip is saved to the Payslips folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull gross pay, deductions and net pay from the payslip"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log this month's figures in a pay history sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the user if net pay changed by more than 5%"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a simple monthly budget that fits your life",
+    "d": "A realistic budget built from your actual income and spending, with a set amount for bills, everyday spending and savings.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Once, then review monthly",
+    "steps": [
+      {
+        "h": "Write down your monthly income",
+        "b": "Note your take-home pay and any other regular money coming in, such as benefits or side income. Use the amount that actually lands in your account."
+      },
+      {
+        "h": "List your fixed costs",
+        "b": "Write down rent or mortgage, bills, loan repayments, insurance and childcare. Rough figures are fine to start."
+      },
+      {
+        "h": "Ask the AI to draft the budget",
+        "b": "Paste your numbers into your AI assistant with this prompt.",
+        "p": "Help me build a monthly budget. My take-home income is [amount]. My fixed costs are: [list with amounts]. My typical spending on groceries, transport, eating out and fun is roughly: [list or 'not sure']. My goals are [for example: build a small emergency fund, stop using my overdraft]. Create a budget table with categories, monthly amount, and weekly amount for flexible categories. Keep it realistic, not strict. Show what's left over and suggest where it could go. Then give me the table in a format I can paste into Google Sheets."
+      },
+      {
+        "h": "Paste it into a sheet",
+        "b": "Paste the table into a new Google Sheet and add a column for what you actually spent each month."
+      },
+      {
+        "h": "Review after one month",
+        "b": "At month end, paste your actual spending back in and ask the AI which categories need adjusting so the budget stays realistic."
+      }
+    ],
+    "example": "Income £2,400. Fixed: Rent £900, Bills £210, Phone £25, Travelcard £140. Flexible: Groceries £280 (£65/week), Eating out £100, Personal £80. Savings: Emergency fund £200. Buffer £465 for irregular costs like gifts and car repairs.",
+    "tips": [
+      "Include a line for irregular costs like birthdays and car repairs. Budgets fail when these surprise you.",
+      "This is a planning tool, not financial advice. For debt or major decisions, speak to a qualified adviser or a free debt charity."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Last day of each month"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to fill in actual spending"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Compare budget vs actual and suggest adjustments"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update next month's budget amounts"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Log receipts by snapping a photo",
+    "d": "Every receipt you photograph ends up as a tidy row in a spending sheet with the date, shop, amount and category.",
+    "cat": "Money",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Google Sheets",
+      "Google Drive"
+    ],
+    "when": "Whenever you get a paper receipt",
+    "steps": [
+      {
+        "h": "Set up your sheet and folder",
+        "b": "Create a Google Sheet with columns Date, Shop, Amount, Category, Notes. Make a Google Drive folder called Receipts for the photos."
+      },
+      {
+        "h": "Snap receipts as you go",
+        "b": "Photograph receipts flat and in good light, and save them to the Receipts folder from your phone. Do a batch once a week if that's easier."
+      },
+      {
+        "h": "Turn photos into rows",
+        "b": "Once a week, attach that week's receipt photos to your AI assistant with this prompt.",
+        "p": "Read each of these receipt photos. For each one, give me a row with: Date (DD/MM/YYYY), Shop, Total amount, Category (choose from: Groceries, Household, Eating out, Transport, Kids, Health, Gifts, Work expense, Other), and a one-line note of the main items. Return a table only, one row per receipt, with columns in that order. If you can't read a value, write CHECK instead of guessing."
+      },
+      {
+        "h": "Paste into your sheet",
+        "b": "Copy the table and paste it into your sheet. Fix any cell marked CHECK by looking at the photo."
+      },
+      {
+        "h": "Get a weekly total",
+        "b": "Add a simple total at the bottom, or ask the AI to summarise spending by category from your sheet each month."
+      }
+    ],
+    "example": "12/11/2026 | FreshMart | £34.20 | Groceries | Milk, bread, chicken, veg\n13/11/2026 | City Parking | £6.50 | Transport | 2 hours parking\n14/11/2026 | Corner Cafe | £8.90 | Eating out | Two coffees, croissant",
+    "tips": [
+      "Faded thermal receipts can be misread, so photograph them soon after you get them.",
+      "Keep work-expense receipts in a separate folder so claims are easy later."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A photo is added to the Receipts folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read date, shop, total and items from the receipt"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Assign a spending category"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add a row to the spending sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Never miss a bill due date again",
+    "d": "Bills arriving by email are automatically labelled, and each one becomes a calendar reminder a few days before it's due.",
+    "cat": "Money",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Gmail",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Whenever a new bill email arrives",
+    "steps": [
+      {
+        "h": "Make a Bills label and filter",
+        "b": "In Gmail's settings, under Filters, create a filter for emails from your energy, water, phone, council and other billers, and have it apply a label called Bills. Outlook users can do the same with a rule that moves them to a Bills folder."
+      },
+      {
+        "h": "Check the Bills label weekly",
+        "b": "Once a week, open the Bills label and copy the text of any new bills."
+      },
+      {
+        "h": "Pull out the key dates",
+        "b": "Paste the bill emails into your AI assistant with this prompt.",
+        "p": "Here are my latest bill emails. For each bill, extract: company, amount due, due date, whether it's paid by direct debit or needs me to pay manually, and any reference I need. Present as a table sorted by due date. Then write one calendar reminder title for each manual bill, in the format: Pay [company] [amount] - due [date].\n\n[paste emails, with account numbers removed]"
+      },
+      {
+        "h": "Add reminders to your calendar",
+        "b": "Create a calendar event two or three days before each manual payment date using the titles the AI gave you, with a notification switched on."
+      }
+    ],
+    "example": "Bills this month:\nWaterCo | £38.40 | due 18 Nov | Direct debit\nCouncil tax | £142 | due 1 Dec | Direct debit\nBroadband Plus | £29.99 | due 22 Nov | Manual, ref BP-xxxx\nReminder: Pay Broadband Plus £29.99 - due 22 Nov",
+    "tips": [
+      "Remove account numbers before pasting bill emails into an AI assistant.",
+      "If your plan includes Gemini in Gmail, you can ask it to summarise your Bills label directly instead of copying and pasting."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A new email lands in the Bills label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull company, amount and due date from the bill"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder three days before the due date"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the bill in a household bills sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Compare broadband, phone or energy deals properly",
+    "d": "A side-by-side comparison of the deals you're considering, with the true total cost over the contract and the catches in the small print.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When a contract is ending or a price goes up",
+    "steps": [
+      {
+        "h": "Collect the offers",
+        "b": "Copy the details of two to five deals from provider websites or comparison sites, including the monthly price, contract length, setup fees and any price rise terms."
+      },
+      {
+        "h": "Note what you need",
+        "b": "Write down what matters to you, such as minimum speed, data allowance, no long contract, or green energy."
+      },
+      {
+        "h": "Ask for a fair comparison",
+        "b": "Paste everything into your AI assistant with this prompt.",
+        "p": "I'm comparing these [broadband / mobile / energy] deals. My needs are: [list]. My current deal costs [amount] a month and ends on [date].\n\n[paste each deal's details]\n\nFor each deal, calculate the total cost over the full contract including setup fees, any known mid-contract price rises and exit fees. Make a comparison table with: provider, monthly price, contract length, total contract cost, key restrictions, and anything in the terms I should watch out for. Then say which deal best matches my needs and why, and what questions I should ask before signing."
+      },
+      {
+        "h": "Check the figures yourself",
+        "b": "Confirm prices and terms on the provider's own website before you switch, since deals change quickly."
+      },
+      {
+        "h": "Use it to haggle",
+        "b": "Ask the AI to write a short script you can use when calling your current provider to ask them to match the best offer."
+      }
+    ],
+    "example": "Deal A: £27/mo x 24 = £648 + £0 setup, price rises each April. Deal B: £32/mo x 12 = £384 + £20 setup, no rise. Deal C: £24/mo x 18 = £432 + £35 router. Best fit for 'no long contract': B. Ask A whether the April rise is a fixed amount.",
+    "tips": [
+      "The AI only knows what you paste, so include the full terms, not just the headline price.",
+      "Ask your current provider for a retention offer before switching. It's often cheaper."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User starts a deal comparison"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Calculate total contract costs and compare deals"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the comparison and haggling script"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder a month before the new contract ends"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Save towards a goal with a clear weekly plan",
+    "d": "A saving plan for a holiday, deposit or big purchase that tells you how much to put aside each week and tracks your progress.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "When you start saving for something specific",
+    "steps": [
+      {
+        "h": "Define the goal",
+        "b": "Decide what you're saving for, how much it will cost, and the date you need it by."
+      },
+      {
+        "h": "Ask for a plan",
+        "b": "Share the goal and your rough budget with your AI assistant using this prompt.",
+        "p": "I want to save [amount] for [goal] by [date]. I've already saved [amount]. After bills, I usually have about [amount] spare each month. Work out how much I need to save per week and per month. If that's not realistic with my spare money, show two alternatives: a later date, or a smaller target. Give me 5 practical, low-effort ways to find the extra money based on everyday spending. Then create a simple weekly tracker table with columns: Week, Date, Planned, Actually saved, Running total, which I can paste into Google Sheets."
+      },
+      {
+        "h": "Set up the tracker",
+        "b": "Paste the tracker into a Google Sheet. Many banking apps let you create a separate savings pot, so you can move the weekly amount there."
+      },
+      {
+        "h": "Set a weekly nudge",
+        "b": "Add a recurring calendar reminder or phone reminder on payday to move the money and update the sheet."
+      }
+    ],
+    "example": "Goal: £1,200 summer holiday by 1 July (33 weeks). Saved: £150. Need: £32 a week (£139 a month). Ideas: swap two takeaways a month (£40), sell unused gadgets (one-off £80), pause one streaming service (£11). Week 1 | 16 Nov | £32 | | £150",
+    "tips": [
+      "Automating the transfer on payday works far better than relying on willpower.",
+      "This is a planning aid, not advice on where to keep your savings. Check options with a qualified adviser for larger sums."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every payday"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to move this week's savings"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update the running total in the tracker"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Send a short progress note and whether the goal is on track"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make sense of a confusing bill or letter",
+    "d": "A plain-English summary of any bill, bank letter or official money letter, what it's asking of you, the deadline and a suggested reply.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When a letter or bill doesn't make sense",
+    "steps": [
+      {
+        "h": "Photograph the letter",
+        "b": "Take a clear photo of each page, or copy the text if it came by email."
+      },
+      {
+        "h": "Hide personal details",
+        "b": "Cover account numbers, reference numbers, your address and date of birth before sharing."
+      },
+      {
+        "h": "Ask what it means",
+        "b": "Attach the photos to your AI assistant and use this prompt.",
+        "p": "Explain this letter in plain English. Tell me: 1) who it's from and what it's about, 2) what they are asking me to do, 3) any deadline, 4) how much money is involved and why, 5) what happens if I do nothing, and 6) anything that looks unusual or worth questioning. If it might be a scam, say what signs to check. Then draft a short, polite reply or list of questions I could send. Don't give legal or financial advice."
+      },
+      {
+        "h": "Decide and act",
+        "b": "Use the summary to decide your next step. For anything with serious consequences, such as debt collection or tax demands, speak to the organisation directly or a free advice service."
+      }
+    ],
+    "example": "From: your energy supplier. About: your annual statement. Ask: nothing, your direct debit rises from £85 to £97 from January because you used more than estimated. Deadline: none, but you can query it within 28 days. Worth asking: was this based on a real meter reading?",
+    "tips": [
+      "If a letter asks you to pay urgently by an unusual method, contact the company using the number on their official website, not the one in the letter.",
+      "For debt or legal letters, a free advice charity can help you respond."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares a photo of a letter"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Explain the letter, the ask and the deadline"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for any deadline"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a reply or list of questions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep side-hustle income and costs organised",
+    "d": "A simple running record of what your side work earns and costs, with a monthly summary ready for when you sort out your tax.",
+    "cat": "Money",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Sheets",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Weekly, plus a monthly summary",
+    "steps": [
+      {
+        "h": "Create a side-hustle sheet",
+        "b": "Make a Google Sheet with two tabs: Income (Date, Client or platform, Description, Amount) and Costs (Date, Supplier, What for, Amount, Receipt link)."
+      },
+      {
+        "h": "Label related emails",
+        "b": "In Gmail's settings, under Filters, set up a filter that labels emails from your selling platforms, payment services and suppliers as Side hustle."
+      },
+      {
+        "h": "Turn emails into rows weekly",
+        "b": "Once a week, copy the new emails from that label into your AI assistant with this prompt.",
+        "p": "Here are this week's emails about my side business selling [what you do]. Extract every sale, payment received, fee and purchase. Return two tables: INCOME (Date, Client or platform, Description, Amount) and COSTS (Date, Supplier, What for, Amount). Include platform fees as costs. Use DD/MM/YYYY dates. Don't guess amounts: write CHECK if unclear.\n\n[paste emails]"
+      },
+      {
+        "h": "Paste and check",
+        "b": "Paste each table into the matching tab, and save receipts to a Google Drive folder with a link in the Costs tab."
+      },
+      {
+        "h": "Run a monthly summary",
+        "b": "At month end, ask the AI to total income, costs and profit by month from your sheet. Check what records your country's tax service expects, and speak to an accountant if you're unsure."
+      }
+    ],
+    "example": "November: Income £640 (14 sales via craft marketplace, 2 commissions). Costs £187 (materials £122, platform fees £41, postage £24). Profit £453. Year to date profit: £3,210.",
+    "tips": [
+      "Many countries have a threshold before side income must be declared. Check your official tax website or an accountant rather than relying on the AI.",
+      "Keep business and personal spending in separate accounts if you can. It makes this far easier."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A new email arrives in the Side hustle label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out sales, fees and purchases"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add rows to the Income or Costs tab"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Send a monthly profit summary"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Split shared household costs fairly",
+    "d": "A clear, fair split of rent, bills and shared shopping between housemates or partners, with a message ready to send everyone.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "Monthly, or when someone moves in or out",
+    "steps": [
+      {
+        "h": "List the shared costs",
+        "b": "Write down each shared cost, how much it was and who paid it this month."
+      },
+      {
+        "h": "Agree the rule",
+        "b": "Decide how you split: equally, by room size, or by income. Write the rule down so everyone agrees."
+      },
+      {
+        "h": "Work out who owes what",
+        "b": "Paste the list into your AI assistant with this prompt.",
+        "p": "We are [number] people sharing a home: [names or initials]. Our splitting rule is: [equal / by room size with these percentages / by income ratio]. This month's shared costs and who paid them: [list each cost, amount and payer]. Work out each person's fair share, what each has already paid, and the smallest number of payments needed to settle up (who pays whom and how much). Show the working in a simple table, then write a friendly, neutral message I can send to the group chat."
+      },
+      {
+        "h": "Share and settle",
+        "b": "Double-check the maths, then post the message to your household WhatsApp group so everyone can see the same numbers."
+      }
+    ],
+    "example": "Total shared: £1,620. Each share: £540. Sam paid £1,100 (rent part + energy), Alex £320, Jo £200. Settle up: Jo pays Sam £340, Alex pays Sam £220. Message: 'Hi all, here's November's split...'",
+    "tips": [
+      "Use initials rather than full names if you prefer.",
+      "Ask the AI to keep a running tally if you paste each month's results back in."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Last day of each month"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Calculate each person's share and settle-up payments"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the summary to the household group chat"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the month's split"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan for the year's irregular expenses",
+    "d": "A month-by-month list of the yearly costs that usually catch you out, like car tax, insurance and birthdays, with a monthly amount to set aside.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Once a year, ideally in January",
+    "steps": [
+      {
+        "h": "Brainstorm your yearly costs",
+        "b": "Jot down anything that doesn't happen monthly: insurance renewals, car service, school trips, birthdays, holidays, subscriptions, festive spending."
+      },
+      {
+        "h": "Let the AI fill the gaps",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "Help me plan for irregular costs over the next 12 months. My household is [describe: adults, children and ages, car or no car, pets, renting or owning]. Here are the yearly costs I know about, with rough amounts and months: [list]. First, suggest other common irregular costs for a household like mine that I may have forgotten, and ask me to confirm amounts. Then make a 12-month table showing what's due each month, the yearly total, and the amount I'd need to set aside every month to cover them evenly."
+      },
+      {
+        "h": "Set aside the monthly amount",
+        "b": "Set up a regular transfer of that monthly figure into a separate savings pot if your bank offers one."
+      },
+      {
+        "h": "Add reminders",
+        "b": "Put each big cost in your calendar a month ahead, so you have time to shop around before renewals."
+      }
+    ],
+    "example": "Yearly irregular total: £3,480 = £290 a month. Jan: Home insurance £240. Mar: Car service £220, Mum's birthday £50. Aug: School uniform £150. Sep: Car tax £190. Dec: Festive spending £600...",
+    "tips": [
+      "Shopping around a month before insurance renewals is often cheaper than auto-renewing.",
+      "Update the list each year with what you actually spent."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every January"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Build the year's irregular expense plan"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder a month before each big cost"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update the sinking-fund tracker"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a weekly money check-in without opening a spreadsheet",
+    "d": "Every Sunday a short note arrives showing how your spending compares with your budget and what's coming up next week.",
+    "cat": "Money",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Calendar"
+    ],
+    "when": "Every Sunday evening",
+    "steps": [
+      {
+        "h": "Keep a spending sheet",
+        "b": "Use a Google Sheet with tabs for Budget (category and monthly limit) and Spending (date, description, amount, category). The receipt or bank-export recipes can fill it."
+      },
+      {
+        "h": "Put bills in your calendar",
+        "b": "Make sure upcoming bills and paydays are in Google Calendar as events, so they can be included in the check-in."
+      },
+      {
+        "h": "Write your check-in prompt",
+        "b": "Save this prompt in your notes so you can reuse it each week.",
+        "p": "Here is my budget and this month's spending so far, plus next week's calendar of bills and paydays. Write a short weekly money check-in (under 150 words) with: 1) spending so far vs budget for each category, marked on track, close or over; 2) how much flexible money is left for the rest of the month and per week; 3) bills and paydays coming next week; 4) one practical, friendly suggestion. No financial advice, no lecturing.\n\nBudget: [paste]\nSpending: [paste]\nNext week: [paste]"
+      },
+      {
+        "h": "Schedule it",
+        "b": "If your AI assistant offers scheduled tasks and can read your connected Google apps, set this to run every Sunday. Otherwise set a Sunday reminder and paste the latest figures in yourself."
+      },
+      {
+        "h": "Adjust as you go",
+        "b": "If the check-in keeps flagging the same category, change your budget for it so it reflects real life."
+      }
+    ],
+    "example": "Week 2 check-in: Groceries £180 of £280 (close). Eating out £95 of £100 (nearly there). Transport £60 of £140 (on track). Flexible left: £210, about £70 a week. Next week: phone bill £25 Tue, payday Fri. Tip: plan two batch-cook nights to stay under on groceries.",
+    "tips": [
+      "Only connect your AI assistant to your Google account if you're comfortable with it reading those files, and never store account numbers in the sheet.",
+      "Keep the tone kind. You're more likely to keep reading a note that doesn't scold you."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 6pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the budget and spending sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Compare spending with budget and list next week's bills"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the weekly check-in"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare for a conversation with a financial adviser",
+    "d": "A one-page summary of your situation and a clear list of questions, so a paid appointment with an adviser or free money service goes further.",
+    "cat": "Money",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before any money appointment",
+    "steps": [
+      {
+        "h": "Jot down your situation",
+        "b": "In rough notes, list your income, regular costs, savings, debts and what you want help with. Totals are enough, you don't need account details."
+      },
+      {
+        "h": "Turn notes into a brief",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "I have an appointment with [a financial adviser / a free debt advice service / my bank / a pension guidance service] about [topic]. Here are my rough notes: [paste]. Turn this into a one-page summary with headings: About me, Income, Regular outgoings, Savings, Debts, What I want to achieve, What's worrying me. Then list 8 to 10 clear questions I should ask, including questions about fees, risks and alternatives. Also list documents I should bring. Don't give me advice yourself, help me prepare."
+      },
+      {
+        "h": "Save it as a document",
+        "b": "Paste the result into Google Docs or Word, correct anything that isn't right, and print or share it before the appointment."
+      },
+      {
+        "h": "Take notes during the meeting",
+        "b": "Use the questions as a checklist and write the answers next to each one."
+      }
+    ],
+    "example": "Goal: understand whether to overpay my mortgage or build savings first. Questions: 1) What are your fees and how are you paid? 2) What would you need to know to recommend either option? 3) Are there penalties for overpaying? Bring: latest mortgage statement, payslips, savings totals.",
+    "tips": [
+      "Check an adviser is properly registered with your country's financial regulator before you share anything.",
+      "Use totals, not account numbers, when preparing with AI."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "An event tagged money appointment is three days away"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to update their notes"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create the one-page summary and question list"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the brief as a document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Spot price rises and unusual charges each month",
+    "d": "A monthly check that compares this month's bills and regular payments with last month and flags anything that went up or looks new.",
+    "cat": "Money",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Monthly, after your statement arrives",
+    "steps": [
+      {
+        "h": "Export two months of transactions",
+        "b": "Download this month's and last month's transactions from your banking app as a CSV or spreadsheet."
+      },
+      {
+        "h": "Remove account details",
+        "b": "Delete any columns with account numbers, card numbers or balances you don't want to share."
+      },
+      {
+        "h": "Ask for a comparison",
+        "b": "Paste both months into your AI assistant with this prompt.",
+        "p": "Here are my transactions for [last month] and [this month]. Compare them and list: 1) regular payments that increased, with old and new amounts and the difference, 2) payments that appear for the first time and look recurring, 3) any charge that looks unusual, duplicated or like a fee (overdraft, late payment, foreign transaction). Present each list as a table. Then suggest which ones I should query and draft a short message for the first one.\n\nLast month: [paste]\nThis month: [paste]"
+      },
+      {
+        "h": "Follow up",
+        "b": "Contact the company or your bank about anything you don't recognise. If you suspect fraud, call your bank straight away using the number on your card."
+      }
+    ],
+    "example": "Increased: Mobile £18 to £21.50 (+£3.50), Streaming £10.99 to £12.99 (+£2). New recurring: 'PhotoCloud' £2.99. Unusual: Two charges of £14.20 from TakeAway Co on 3 Nov, possible duplicate. Query first: duplicate takeaway charge.",
+    "tips": [
+      "If you see a charge you truly don't recognise, contact your bank before anyone else.",
+      "Keeping a sheet of last month's regular payments makes the comparison quicker."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new statement export is saved to the Statements folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Compare regular payments with last month"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Flag increases, new recurring payments and unusual fees"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the list of items to query"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn your notes into a practice quiz",
+    "d": "Paste or photograph your notes and get a ten-question quiz with answers, so you can test yourself instead of just re-reading.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "After each study session",
+    "steps": [
+      {
+        "h": "Gather your notes",
+        "b": "Copy your typed notes, or take clear photos of handwritten pages or textbook sections."
+      },
+      {
+        "h": "Ask for a quiz",
+        "b": "Open your AI assistant, add the notes and paste this prompt.",
+        "p": "Using only the notes below, write a 10-question quiz to help me revise [topic] for [exam or level]. Mix the types: 4 multiple choice, 3 short answer, 2 'explain in your own words' and 1 question that applies the idea to a new example. Don't show the answers yet. Ask me the questions one at a time, wait for my answer, then tell me if I'm right, explain briefly, and move on. At the end, list the topics I got wrong.\n\n[paste notes]"
+      },
+      {
+        "h": "Answer honestly",
+        "b": "Type your answers without looking at your notes. Getting things wrong now is how your memory improves."
+      },
+      {
+        "h": "Save the weak spots",
+        "b": "Copy the list of topics you got wrong into your notes app and start your next session with them."
+      }
+    ],
+    "example": "Q3 (short answer): What is the role of chlorophyll in photosynthesis? You said: 'it makes the plant green'. Partly right: it absorbs light energy, mostly red and blue, which powers the reaction. Weak spots today: limiting factors, the word equation.",
+    "tips": [
+      "Ask it to stick to your notes so it doesn't test you on things your course doesn't cover.",
+      "Check any surprising answer against your textbook, as AI can occasionally get facts wrong."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New notes are saved to the Revision folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a 10-question quiz from the notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the quiz and answer key"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to take the quiz the next day"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a revision timetable you can actually stick to",
+    "d": "A realistic week-by-week revision plan that fits around school, work and family, added straight into your calendar.",
+    "cat": "Learning",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Six to eight weeks before exams",
+    "steps": [
+      {
+        "h": "List your exams and topics",
+        "b": "Write down each subject, exam date, the topics in it, and how confident you feel on each from 1 to 5."
+      },
+      {
+        "h": "Note your available time",
+        "b": "Write down roughly when you're free each day, and any days that are off-limits, such as sports nights or shifts."
+      },
+      {
+        "h": "Ask for a plan",
+        "b": "Paste everything into your AI assistant with this prompt.",
+        "p": "Make me a revision timetable from [start date] to my last exam. Exams and dates: [list]. Topics and my confidence (1 to 5): [list]. My free time: [describe]. Rules: sessions of [30-45] minutes with short breaks, no more than [3] hours a day, a day off each week, more time on low-confidence topics, and revisit each topic at least twice with growing gaps. Finish each week with a practice paper. Give me a table with: Date, Time, Subject, Topic, Activity (for example flashcards, past paper, summary sheet)."
+      },
+      {
+        "h": "Put it in your calendar",
+        "b": "Add the sessions to Google Calendar as events. You can ask the AI to format them as a list of titles and times to make this quicker."
+      },
+      {
+        "h": "Review on Sundays",
+        "b": "Each Sunday, tell the AI what you managed and what slipped, and ask it to adjust the next week."
+      }
+    ],
+    "example": "Mon 18 Nov 4:30-5:15pm | Maths | Quadratics (confidence 2) | Worked examples + 5 practice questions\nMon 5:30-6:15pm | History | Causes of WW1 | Make a mind map\nSat 23 Nov 10-11:30am | Maths | Practice paper 1 | Timed",
+    "tips": [
+      "Plan for less than you think you can do. A plan you keep beats a perfect one you abandon.",
+      "Mixing subjects in a day helps memory more than doing one subject for hours."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters exams and free time"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a spaced revision timetable"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add each session to the calendar"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a Sunday prompt to review the week"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Help your child with homework without giving the answers",
+    "d": "A patient AI tutor that asks your child guiding questions and gives hints, so they work it out themselves and actually learn.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When homework gets stuck",
+    "steps": [
+      {
+        "h": "Sit down together",
+        "b": "Use the AI alongside your child rather than leaving them alone with it, especially for younger children. Check the app's age rules too."
+      },
+      {
+        "h": "Set it up as a tutor",
+        "b": "Start a new chat and paste this prompt before sharing the homework question.",
+        "p": "You are a patient, encouraging tutor for a [age]-year-old in [year or grade] working on [subject]. Never give the final answer. Instead: ask what they already know, break the problem into small steps, give one hint at a time, and ask them to try each step. If they're right, say why. If they're wrong, ask a question that helps them spot the mistake. Use simple language and examples from everyday life. When they've solved it, ask them to explain the method back in their own words. Here is the question: [paste or describe the homework]"
+      },
+      {
+        "h": "Let your child type or talk",
+        "b": "Have your child answer the AI's questions themselves. Voice mode in the AI app can help younger children who type slowly."
+      },
+      {
+        "h": "Check with the teacher's method",
+        "b": "Schools teach some methods in specific ways, such as long division. If the AI's approach differs, ask it to use the method from the worksheet."
+      }
+    ],
+    "example": "AI: What do you need to find out in this question? Child: How many sweets each person gets. AI: Great. How many sweets are there and how many people? Child: 24 and 4. AI: Which operation shares things out equally? ...",
+    "tips": [
+      "Don't share your child's full name, school or photos of their face.",
+      "If your child is getting frustrated, take a break. The goal is understanding, not finishing fast."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Parent starts a homework session"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Guide the child with questions and hints, no answers"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Note which steps the child found hard"
+        },
+        {
+          "type": "notify",
+          "detail": "Share a short summary with the parent"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Practise a new language in ten minutes a day",
+    "d": "A daily conversation partner that chats with you at your level, gently corrects mistakes and keeps a list of words to review.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Every day, at the same time",
+    "steps": [
+      {
+        "h": "Pick a time and topic",
+        "b": "Choose a regular slot, such as your commute or after dinner, and a topic you'd actually talk about, like your day, food or travel plans."
+      },
+      {
+        "h": "Start the conversation",
+        "b": "Open your AI assistant, ideally in voice mode for speaking practice, and paste this prompt.",
+        "p": "Be my [language] conversation partner. My level is [beginner / A2 / intermediate]. Today's topic: [topic]. Speak only in [language] using vocabulary at my level, with short sentences. Ask me one question at a time. After each of my replies, first answer naturally, then add a short 'Correction' line showing any mistake and the correct version, with a one-line explanation in English. After 10 exchanges, give me a list of 8 new or tricky words and phrases with English meanings."
+      },
+      {
+        "h": "Save the word list",
+        "b": "Copy the word list at the end into a note called Language words so you can review it later."
+      },
+      {
+        "h": "Repeat tomorrow with a twist",
+        "b": "Next day, start by pasting yesterday's word list and ask the AI to use those words again in a new conversation."
+      }
+    ],
+    "example": "AI: ¿Qué hiciste el fin de semana? You: Yo fui al mercado y compré frutas. AI: ¡Qué bien! ¿Qué frutas compraste? Correction: none, nice use of the past tense. Words today: el mercado (market), madrugar (to get up early)...",
+    "tips": [
+      "Speaking out loud in voice mode builds confidence faster than typing.",
+      "AI is a great practice partner but can sound formal. Mix in podcasts or shows for how people really speak."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Daily at the user's chosen time"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send today's conversation topic"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Hold a level-matched conversation with corrections"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add new words to the review list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make flashcards from anything you're learning",
+    "d": "A ready-to-import set of flashcards from your notes, a chapter or a vocab list, for apps like Anki or Quizlet.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Whenever you finish a chapter or topic",
+    "steps": [
+      {
+        "h": "Collect the material",
+        "b": "Copy the notes, chapter summary or word list you want to learn."
+      },
+      {
+        "h": "Generate the cards",
+        "b": "Paste it into your AI assistant with this prompt.",
+        "p": "Turn the material below into 25 flashcards for [subject and level]. Each card should test one idea only. Front: a clear question or prompt (not just a single word unless it's vocabulary). Back: a short answer, under 25 words. Include a few cards that ask 'why' or 'what's the difference between' rather than just facts. Return the cards as two columns separated by a comma: Front,Back, with no header and no numbering, so I can import them into a flashcard app.\n\n[paste material]"
+      },
+      {
+        "h": "Check and tidy",
+        "b": "Read through the cards, delete any that are wrong or not useful, and fix anything that doesn't match your course."
+      },
+      {
+        "h": "Import into your flashcard app",
+        "b": "Paste the list into a Google Sheet, export as CSV, and import it into a flashcard app such as Anki or Quizlet, which both support importing lists."
+      }
+    ],
+    "example": "What does a 'stakeholder' mean in a business case?,Anyone affected by or able to affect a decision\nWhat's the difference between weather and climate?,Weather is day to day; climate is the pattern over decades\nmadrugar,to get up very early",
+    "tips": [
+      "Fewer, better cards beat hundreds of rushed ones.",
+      "Ask it to avoid commas inside answers if your import keeps splitting cards in the wrong place."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new chapter of notes is saved"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create flashcards in front and back format"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the cards to the flashcard sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the deck is ready to import"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a tricky topic explained at your level",
+    "d": "A clear explanation of any idea you're stuck on, pitched at your level, with an everyday example and a quick check that you've got it.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When you're stuck on an idea",
+    "steps": [
+      {
+        "h": "Say what's confusing you",
+        "b": "Write down the topic and, if you can, the exact part that stops making sense."
+      },
+      {
+        "h": "Ask for a layered explanation",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Explain [topic] to me. I'm [describe: for example a 15-year-old studying GCSE chemistry, or an adult with no science background]. The part I don't get is: [describe]. Do it in three layers: 1) a one-sentence version a 10-year-old would understand, 2) a fuller explanation with an everyday analogy, 3) the proper version with correct terms for my level. Then ask me 3 quick questions to check I understand, one at a time, and explain anything I get wrong."
+      },
+      {
+        "h": "Ask follow-ups",
+        "b": "If something still doesn't click, say which sentence lost you and ask for another analogy."
+      },
+      {
+        "h": "Write it in your own words",
+        "b": "Finish by writing a three-line summary in your own words. Ask the AI to check it."
+      }
+    ],
+    "example": "1) Interest is a fee for borrowing money, or a reward for lending it. 2) It's like renting a bike: the longer you keep it, the more you pay. 3) Compound interest means interest is charged on the original amount plus interest already added...",
+    "tips": [
+      "Tell it what you already know so it doesn't start too basic or too advanced.",
+      "For exam answers, check the wording against your textbook or mark scheme."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User asks about a topic"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Explain the topic in three layers"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Ask three check questions"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the explanation to study notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get feedback on an essay before you hand it in",
+    "d": "Honest, specific feedback on your essay's argument, structure and clarity, without the AI rewriting it for you.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "A few days before a deadline",
+    "steps": [
+      {
+        "h": "Check the rules first",
+        "b": "Make sure your school, college or course allows AI feedback. Many allow feedback but not AI-written work."
+      },
+      {
+        "h": "Share the essay and brief",
+        "b": "Copy your draft and the assignment question or marking criteria."
+      },
+      {
+        "h": "Ask for feedback, not a rewrite",
+        "b": "Paste both into your AI assistant with this prompt.",
+        "p": "Act as a fair, encouraging teacher. Here is the assignment question and marking criteria: [paste]. Here is my draft essay: [paste]. Don't rewrite my essay or add new paragraphs. Instead give me: 1) what's working well (3 points), 2) the 3 most important improvements, each pointing to a specific paragraph, 3) whether my argument actually answers the question, 4) any paragraphs that are unclear or off-topic, and 5) a rough sense of which marking band it fits and what would move it up. Ask me questions where my point isn't clear."
+      },
+      {
+        "h": "Revise it yourself",
+        "b": "Make the changes in your own words in your document, then ask for a second, shorter round of feedback on the parts you changed."
+      }
+    ],
+    "example": "Working well: clear opening, good use of the 1832 Reform Act as evidence. Improve: 1) Paragraph 3 describes events but doesn't link back to the question 'how far'. 2) Your conclusion introduces a new point. 3) Add a counter-argument. Band: likely upper middle.",
+    "tips": [
+      "Submitting AI-written work as your own can break academic rules. Use it as a critic, not a ghostwriter.",
+      "Remove your name and student number before pasting."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Student shares a draft and brief"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Give structured feedback against the criteria"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save feedback beside the draft"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the student to revise before the deadline"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Learn a practical skill with a 30-day plan",
+    "d": "A day-by-day plan for learning something new, like cooking, drawing, a spreadsheet skill or an instrument, with free resources and small daily tasks.",
+    "cat": "Learning",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "YouTube",
+      "Google Calendar"
+    ],
+    "when": "When you start learning something new",
+    "steps": [
+      {
+        "h": "Pick one skill and a goal",
+        "b": "Be specific: not 'learn guitar' but 'play three songs with basic chords'."
+      },
+      {
+        "h": "Ask for a plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Create a 30-day plan for me to learn [skill]. My goal by day 30: [goal]. My starting level: [describe]. I can spend [minutes] a day, [days] a week. Equipment I have: [list]. Break it into 4 weekly themes. For each day, give: one small task, how long it takes, and what kind of free resource to search for (for example 'search YouTube for beginner G chord tutorial'). Include a short practice log question each day, and a mini test at the end of each week."
+      },
+      {
+        "h": "Find your resources",
+        "b": "Search YouTube or your library app using the suggestions. Don't rely on the AI for specific video links, as they can be out of date."
+      },
+      {
+        "h": "Schedule practice",
+        "b": "Add a recurring Google Calendar event at your practice time, with the day's task in the description."
+      },
+      {
+        "h": "Check in weekly",
+        "b": "At the end of each week, tell the AI how it went and ask it to adjust the next week."
+      }
+    ],
+    "example": "Week 1: Basics. Day 1 (15 min): Learn to hold the guitar and tune it. Search: 'beginner guitar tuning app tutorial'. Log: what felt awkward? Day 2: Learn E minor chord... Week 1 test: switch between Em and G 10 times in a minute.",
+    "tips": [
+      "Short daily practice beats one long weekend session.",
+      "If you miss a day, just carry on. Ask the AI to compress the plan if needed."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Daily at practice time"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send today's task and practice time"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log what the user practised"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Adjust next week's plan from the log"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Remember more of the books you read",
+    "d": "A short summary of each book in your own words, the ideas worth keeping and a few questions to discuss, saved in one reading log.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notion"
+    ],
+    "when": "When you finish a book or chapter",
+    "steps": [
+      {
+        "h": "Jot down what you remember",
+        "b": "Right after finishing, write five rough bullet points: what it was about, what stuck with you, and any quotes you marked."
+      },
+      {
+        "h": "Turn it into a reading note",
+        "b": "Paste your bullets into your AI assistant with this prompt.",
+        "p": "I just finished [book title] by [author]. Here's what I remember: [paste notes]. Using mainly my notes, help me write a reading note with: a 3-sentence summary in plain words, the 3 ideas or moments I seem to value most, one thing I might do differently because of this book, and 3 discussion questions. Then ask me 2 questions to help me remember more. Don't invent details about the book that I haven't mentioned; if you're unsure about something, say so."
+      },
+      {
+        "h": "Save it in your reading log",
+        "b": "Paste the result into a Notion page, Google Doc or notes app called Reading log, one entry per book."
+      },
+      {
+        "h": "Review at the end of the year",
+        "b": "Ask the AI to read your whole log and tell you the themes that come up most."
+      }
+    ],
+    "example": "Summary: A family running a seaside guesthouse faces one last summer before selling. What stuck: the grandmother's letters, the idea that small routines hold a family together. Try: Sunday dinners without phones. Discuss: Was selling the right choice?",
+    "tips": [
+      "Working from your own notes helps you remember far better than reading an AI summary of the book.",
+      "AI can mix up plot details of less famous books, so trust your notes over its memory."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User finishes a book and adds notes"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Turn rough notes into a reading log entry"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Add the entry to the reading log"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a yearly themes summary in December"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a spaced review reminder for what you learned",
+    "d": "Topics you study come back to you as short review prompts after one day, one week and one month, so they stick.",
+    "cat": "Learning",
+    "lvl": "Advanced",
+    "mins": 40,
+    "tools": [
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "After every study session",
+    "steps": [
+      {
+        "h": "Set up a learning log",
+        "b": "Create a Google Sheet with columns: Date learned, Topic, Key points, Review 1 (date + 1 day), Review 2 (date + 7 days), Review 3 (date + 30 days). Use simple date formulas like adding 1, 7 and 30 to the first date."
+      },
+      {
+        "h": "Log each session",
+        "b": "After studying, add one row with the topic and three to five key points."
+      },
+      {
+        "h": "Prepare a review prompt",
+        "b": "Save this prompt in your notes so you can reuse it whenever a review is due.",
+        "p": "I'm reviewing topics I learned earlier. For each topic below, ask me 3 quick recall questions based on the key points, one at a time, without showing the answers first. After I answer, tell me what I missed. At the end, rate each topic as Solid, Shaky or Forgotten and tell me which to review again soon.\n\n[paste the rows due today: topic and key points]"
+      },
+      {
+        "h": "Get reminded automatically",
+        "b": "Each Sunday, add calendar reminders for that week's review dates from the sheet. If your AI assistant offers scheduled tasks and can read your sheet, schedule a daily check for rows due today instead."
+      },
+      {
+        "h": "Mark your results",
+        "b": "Add a Result column and note Solid, Shaky or Forgotten. Move Forgotten topics back to the start with a new date."
+      }
+    ],
+    "example": "Due today: Photosynthesis (Review 2), French past tense (Review 1). Q1: What two things does a plant need besides light? Result: Photosynthesis - Solid. French past tense - Shaky, review again in 3 days.",
+    "tips": [
+      "Recalling without looking is the bit that does the work. Resist peeking.",
+      "Keep key points short. If a row needs a paragraph, split it into two topics."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every morning"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Find rows in the learning log due for review today"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write recall questions for each due topic"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the review questions"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Record the result for each topic"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare a confident talk or presentation",
+    "d": "A clear outline for a school or work presentation, speaker notes and a practice session where AI asks you the tough questions.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "A week before you present",
+    "steps": [
+      {
+        "h": "Gather your material",
+        "b": "Collect the brief, time limit, audience and your rough ideas or research."
+      },
+      {
+        "h": "Build the outline",
+        "b": "Paste your material into your AI assistant with this prompt.",
+        "p": "Help me plan a [length]-minute presentation on [topic] for [audience]. My main points and research: [paste]. Create an outline with: an opening hook, 3 main sections with the key point and one example each, a short conclusion, and timing for each part. Then write brief speaker notes for each section in bullet points, not a full script, using my own points. Suggest what to put on each slide in 10 words or fewer."
+      },
+      {
+        "h": "Write it in your voice",
+        "b": "Copy the outline into Google Docs or Word and rewrite the notes so they sound like you."
+      },
+      {
+        "h": "Rehearse with questions",
+        "b": "Ask the AI: 'Now be my audience. Ask me 5 challenging questions one at a time about this talk, then give feedback on my answers.' Answer out loud if you can, using voice mode."
+      }
+    ],
+    "example": "Hook (30s): 'Every year our town throws away the weight of 40 buses in food.' Section 1 (1.5 min): Where food waste happens. Example: supermarket best-before dates. Slide: 'Most waste happens at home'. Likely question: 'Isn't this the supermarkets' fault?'",
+    "tips": [
+      "Practising answers out loud is the best cure for nerves.",
+      "Check any statistics the AI suggests against a reliable source before you use them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A presentation event is seven days away"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to start planning"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create an outline and speaker notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the outline as a document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find out what your child is learning this term",
+    "d": "A friendly summary of your child's school topics, with simple ways to support them at home and questions to ask at parents' evening.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "At the start of each school term",
+    "steps": [
+      {
+        "h": "Collect the school info",
+        "b": "Gather the term's topic letter, curriculum overview or newsletter. Take photos of paper copies."
+      },
+      {
+        "h": "Remove names",
+        "b": "Crop out your child's name, teacher names and the school's details if you'd rather not share them."
+      },
+      {
+        "h": "Ask for a parent-friendly summary",
+        "b": "Attach the documents to your AI assistant and use this prompt.",
+        "p": "This is my [age]-year-old's topic overview for this term in [year or grade]. Summarise it for a busy parent: what they're learning in each subject in plain words, any key words or methods they'll use, and 2 or 3 simple, fun ways I can support each subject at home in under 15 minutes (for example everyday conversations, games, trips, books). Also suggest 4 questions I could ask the teacher at parents' evening."
+      },
+      {
+        "h": "Pin it somewhere visible",
+        "b": "Save the summary in your notes app or print it for the fridge so the whole family can use it."
+      }
+    ],
+    "example": "Maths: fractions and telling the time. Try: cutting pizza into halves and quarters; asking 'how long until dinner?' Science: plants. Try: growing cress on the windowsill. Ask teacher: How can I help with times tables in the way you teach them?",
+    "tips": [
+      "Ask it for book suggestions on the term's topics, then check your local library.",
+      "Avoid sharing photos with your child's face or full name."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email from school with a topic letter arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the term's topics for parents"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest home activities and teacher questions"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the summary to the family notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Learn from YouTube videos without losing the key points",
+    "d": "Structured study notes from any educational video, with key ideas, timestamps to revisit and a few questions to test yourself.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "YouTube",
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "After watching a tutorial or lecture",
+    "steps": [
+      {
+        "h": "Open the transcript",
+        "b": "On many YouTube videos you can show the transcript from the description area. Copy it. Some AI assistants, such as Gemini, can also read a YouTube link directly."
+      },
+      {
+        "h": "Turn it into notes",
+        "b": "Paste the transcript or link into your AI assistant with this prompt.",
+        "p": "Turn this video transcript into study notes for someone learning [topic] at [level]. Include: a 2-sentence summary, the key ideas as headed bullet points, any steps or methods as a numbered list, important terms with simple definitions, the timestamps of the 3 most important moments, and 5 questions to test my understanding (answers at the end). Only use what's in the transcript.\n\n[paste transcript]"
+      },
+      {
+        "h": "Save and test yourself",
+        "b": "Paste the notes into your notes app. Try the questions the next day without looking."
+      }
+    ],
+    "example": "Summary: How to make a basic budget formula in a spreadsheet. Steps: 1) Put categories in column A, 2) amounts in B, 3) type =SUM(B2:B10). Key moment: 04:12 absolute references. Q1: What does the $ sign do in $B$2?",
+    "tips": [
+      "Auto-generated transcripts can mishear technical terms, so check unfamiliar words.",
+      "Notes are no substitute for trying it yourself. Pause and practise as you go."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares a video link or transcript"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Create structured study notes"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write five self-test questions"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save notes to the study folder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Track your progress towards a qualification",
+    "d": "A simple tracker of modules, deadlines and grades for a course, with a weekly summary of what's due and how you're doing.",
+    "cat": "Learning",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Weekly, through your course",
+    "steps": [
+      {
+        "h": "Get your course details",
+        "b": "Collect the course handbook or module list with assignment deadlines and how each is weighted."
+      },
+      {
+        "h": "Build the tracker with AI",
+        "b": "Paste the details into your AI assistant with this prompt.",
+        "p": "Turn this course information into a tracker table I can paste into Google Sheets. Columns: Module, Assessment, Type (essay, exam, project), Weighting %, Due date, Status (Not started / In progress / Submitted / Marked), Grade, Notes. Sort by due date. Then list all deadlines as calendar entries in the format: [Due date] - [Module]: [Assessment]. Here's the course info: [paste]"
+      },
+      {
+        "h": "Add deadlines to your calendar",
+        "b": "Paste the tracker into Google Sheets and add each deadline to Google Calendar, with a reminder two weeks before."
+      },
+      {
+        "h": "Do a weekly check-in",
+        "b": "Each week, update the Status column and paste the sheet into your AI assistant, asking: 'What's due in the next 3 weeks, what should I start now, and what's my average grade so far?'"
+      }
+    ],
+    "example": "Next 3 weeks: Module 2 Essay (30%) due 29 Nov, status In progress. Module 3 Quiz (10%) due 6 Dec, Not started: start this week. Average so far: 64% across 3 marked pieces.",
+    "tips": [
+      "Calendar reminders two weeks ahead give you time to ask tutors questions.",
+      "Always confirm deadlines in your official course portal, since dates can change."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Monday mornings"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the course tracker sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "List upcoming deadlines and progress"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the weekly course summary"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Practise maths with questions made for you",
+    "d": "Fresh practice questions on exactly the maths topic you're working on, getting harder as you improve, with worked solutions.",
+    "cat": "Learning",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When you need extra practice",
+    "steps": [
+      {
+        "h": "Pick the topic",
+        "b": "Choose one topic, like percentages, fractions or solving equations, and note the level you're working at."
+      },
+      {
+        "h": "Start a practice session",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Give me practice questions on [maths topic] at [level, for example Year 8, GCSE Foundation, adult brush-up]. Start easy. Give one question at a time and wait for my answer. If I'm right, make the next one slightly harder. If I'm wrong, show a clear worked solution step by step, then give me a similar question to try again. Include some word problems from everyday life like shopping or cooking. After 10 questions, tell me what I'm good at and what to practise next."
+      },
+      {
+        "h": "Work it out on paper",
+        "b": "Do the working on paper rather than in your head, then type your final answer."
+      },
+      {
+        "h": "Double-check calculations",
+        "b": "If an answer seems wrong, check it with a calculator. AI can occasionally make arithmetic slips."
+      }
+    ],
+    "example": "Q4: A jacket costs £60 and is reduced by 15%. What's the sale price? You: £51. Correct! 15% of 60 = 9, and 60 - 9 = 51. Next (harder): A price rises by 20% to £84. What was the original price?",
+    "tips": [
+      "Ask the AI to double-check its own working if something looks off.",
+      "For school work, ask it to use the same method your teacher uses."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User picks a maths topic"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Generate adaptive practice questions"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Report strengths and topics to practise"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the session score"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Tailor your CV to a job ad in minutes",
+    "d": "A version of your CV that highlights your real experience most relevant to a specific job, plus a list of gaps to address honestly.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before every application",
+    "steps": [
+      {
+        "h": "Copy the job ad and your CV",
+        "b": "Copy the full job description and your current CV text. Remove your phone number, address and email first."
+      },
+      {
+        "h": "Ask for tailoring suggestions",
+        "b": "Paste both into your AI assistant with this prompt.",
+        "p": "Here is a job ad and my CV. Help me tailor my CV for this role using only experience, skills and results that are already in my CV. Do not invent or exaggerate anything. Give me: 1) the 6 to 8 most important requirements in the ad, 2) for each one, which part of my CV best shows it, or 'not shown' if it isn't there, 3) a rewritten 3-line profile at the top, 4) reworded bullet points for my two most relevant roles that use the ad's language where it genuinely fits, and 5) questions about any real experience I might have left out.\n\nJOB AD: [paste]\n\nMY CV: [paste]"
+      },
+      {
+        "h": "Answer the gap questions",
+        "b": "If the AI asks about experience you do have but didn't include, add it in your own words. If you don't have it, leave it out and consider mentioning how you'd learn it in your cover letter."
+      },
+      {
+        "h": "Save a copy per job",
+        "b": "Make a copy of your CV document named after the job and company, and paste in the changes you agree with."
+      }
+    ],
+    "example": "Requirement: 'managing stakeholder expectations' - shown in your Retail Supervisor role (weekly updates to area manager). Rewritten bullet: 'Kept area manager and 12-person team updated weekly on targets, cutting missed deliveries by a third.' Not shown: Excel pivot tables.",
+    "tips": [
+      "Never add skills, jobs or qualifications you don't have. Employers check, and it can cost you the job later.",
+      "Recruiters often skim for the exact words in the ad, so use them where they truly describe what you did."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes a job ad"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out the key requirements from the ad"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Match requirements to existing CV content and suggest wording"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save a tailored CV copy for this role"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a cover letter that sounds like you",
+    "d": "A short, specific cover letter built from your real experience and the job ad, written in your own voice rather than generic phrases.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When an application asks for a cover letter",
+    "steps": [
+      {
+        "h": "Jot down why you want this job",
+        "b": "Write three honest sentences about why this role and organisation appeal to you. This is what makes a letter feel real."
+      },
+      {
+        "h": "Draft the letter",
+        "b": "Paste the job ad, your CV and your notes into your AI assistant with this prompt.",
+        "p": "Write a cover letter for this job using only facts from my CV and notes. Do not invent experience or results. Keep it under 300 words, in a warm, plain, confident tone, avoiding cliches like 'I am writing to apply' or 'passionate team player'. Structure: an opening that says which role and one specific reason I'm interested, two short paragraphs each linking one requirement from the ad to a real example from my CV, and a short close. Here is a sample of how I write, so match my style: [paste a few sentences you've written].\n\nJOB AD: [paste]\nMY CV: [paste]\nWHY I WANT IT: [paste notes]"
+      },
+      {
+        "h": "Make it yours",
+        "b": "Read it aloud and change any sentence that doesn't sound like you. Check every claim is true."
+      },
+      {
+        "h": "Save and reuse the good parts",
+        "b": "Keep your best paragraphs in a document so you can adapt them for similar roles."
+      }
+    ],
+    "example": "Dear Hiring Team, I'd love to join Greenleaf Housing as a Tenant Liaison Officer. I grew up in housing association homes and know how much a responsive officer matters. In my four years at a busy call centre, I resolved around 40 queries a day...",
+    "tips": [
+      "Hiring managers can often spot an obviously AI-written letter. Your own phrasing and a specific reason for applying make the difference.",
+      "Remove contact details when pasting your CV, then add them back to the final letter."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User starts an application"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a cover letter from the CV, ad and notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the letter with the job name"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Mark the application as letter drafted"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Practise a job interview with realistic questions",
+    "d": "A mock interview for the exact role you've applied for, with feedback on each answer and tips to make your examples stronger.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "A few days before an interview",
+    "steps": [
+      {
+        "h": "Gather the details",
+        "b": "Have the job ad, your CV and anything you know about the interview format ready."
+      },
+      {
+        "h": "Start the mock interview",
+        "b": "Paste this prompt into your AI assistant. Voice mode works well if you want to practise speaking.",
+        "p": "Act as an interviewer for this role: [paste job ad]. My CV: [paste, without contact details]. The interview is [format, for example 45 minutes, panel, competency-based]. Ask me 8 questions one at a time, mixing: 2 about my background, 4 competency questions ('tell me about a time...'), 1 about the organisation and 1 tricky one. Wait for my answer each time. After each answer, give brief feedback: what was good, what was missing, and whether I used a clear structure (situation, task, action, result). At the end, list my 3 strongest examples and 2 areas to improve."
+      },
+      {
+        "h": "Answer as if it's real",
+        "b": "Answer each question fully, out loud or typed. Use your real experiences, not ones you wish you had."
+      },
+      {
+        "h": "Polish your best stories",
+        "b": "Write your strongest examples as short bullet notes you can glance at before the interview."
+      }
+    ],
+    "example": "Q3: Tell me about a time you handled an upset customer. Feedback: Good situation and action. Missing the result: what happened afterwards? Try adding 'the customer emailed to thank us and renewed their contract'. Structure: 3 out of 4 parts covered.",
+    "tips": [
+      "Practise the questions you dread most. They're usually the ones that come up.",
+      "Ask it to play a tougher interviewer once you feel comfortable."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "An interview event is three days away"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Suggest a mock interview session"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Run a role-specific mock interview with feedback"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save strongest examples as interview notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every job application organised in one place",
+    "d": "A job search tracker that's updated from your emails, showing where you've applied, what stage you're at and who to follow up with.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Gmail",
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Weekly during a job search",
+    "steps": [
+      {
+        "h": "Create your tracker",
+        "b": "Make a Google Sheet with columns: Date applied, Company, Role, Where found, Stage (Applied, Interview, Offer, Rejected), Contact, Next step, Follow-up date."
+      },
+      {
+        "h": "Label job emails",
+        "b": "In Gmail's settings, under Filters, create a filter for words like 'application', 'interview' and 'your candidacy' and apply a Job search label. In Outlook, a rule can move them to a folder."
+      },
+      {
+        "h": "Update the tracker weekly",
+        "b": "Once a week, copy new emails from the label into your AI assistant with this prompt.",
+        "p": "Here are this week's job search emails. For each one, extract: company, role, what the email is (confirmation, interview invite, rejection, request for info), any date or deadline, contact name, and the next step for me. Return a table with columns: Company, Role, Stage, Contact, Next step, Follow-up date. If an email needs a reply, say so in Next step.\n\n[paste emails]"
+      },
+      {
+        "h": "Paste and follow up",
+        "b": "Update your sheet with the new rows. Set a follow-up date about a week after applying if you've heard nothing."
+      }
+    ],
+    "example": "Brightside Charity | Volunteer Coordinator | Interview | Priya (HR) | Reply to confirm 21 Nov 10am | 18 Nov\nNorthgate Council | Admin Officer | Rejected | - | Ask for feedback | -\nPeak Outdoors | Store Supervisor | Applied | - | Follow up if no reply | 25 Nov",
+    "tips": [
+      "A tracker stops good leads slipping through the cracks when you're applying to lots of roles.",
+      "If your plan includes Gemini in Gmail, you can ask it to summarise the Job search label instead of pasting emails."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A new email arrives in the Job search label"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Work out the stage: confirmation, interview, rejection or request"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update or add the matching row in the tracker"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add interview dates and follow-up reminders"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Shortlist the best jobs from your alerts each week",
+    "d": "A weekly ranked shortlist of the job alerts that genuinely match what you want, so you spend time applying rather than scrolling.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "LinkedIn",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Once a week",
+    "steps": [
+      {
+        "h": "Set up job alerts",
+        "b": "Turn on email job alerts on LinkedIn and one or two other job sites you use, with your target role and location."
+      },
+      {
+        "h": "Collect alerts in one label",
+        "b": "In Gmail's settings, under Filters, send emails from those job sites to a label called Job alerts, skipping the inbox if you like."
+      },
+      {
+        "h": "Write down what you want",
+        "b": "List your must-haves (salary range, location, hours, sector) and nice-to-haves once, in a note you can reuse."
+      },
+      {
+        "h": "Rank the week's jobs",
+        "b": "Copy the week's alert emails into your AI assistant with this prompt.",
+        "p": "Here are this week's job alert emails and my criteria. Must-haves: [list]. Nice-to-haves: [list]. Deal-breakers: [list]. My background in one line: [summary]. List every job mentioned, remove duplicates, and score each from 1 to 10 for fit. Return a table sorted by score with: Job title, Employer, Location, Salary if shown, Score, One-line reason. Then pick the top 3 and say what I should emphasise in each application.\n\n[paste alerts]"
+      },
+      {
+        "h": "Apply to the top few",
+        "b": "Open the original listings for your top picks and check the details before applying, as alert emails can be incomplete."
+      }
+    ],
+    "example": "1) Community Engagement Officer, Riverside Trust, hybrid, £29k: 9/10, matches events and volunteering background. 2) Events Assistant, City Arts, £26k: 7/10, lower pay but strong sector fit. Removed 14 duplicates and 6 that need driving licence.",
+    "tips": [
+      "Fewer, well-matched applications usually do better than many rushed ones.",
+      "Always check the original listing, as salaries and closing dates in alerts may be missing or out of date."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Sunday evening"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull jobs from the week's alert emails"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Score each job against the user's criteria"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the ranked shortlist"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Research a fair salary before you negotiate",
+    "d": "A sensible salary range for your role and area based on public sources, and a calm script for asking for it.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Before an offer conversation or pay review",
+    "steps": [
+      {
+        "h": "Gather real salary data",
+        "b": "Look up advertised salaries for similar roles on job sites, plus any public salary surveys for your field and area. Note five to ten examples."
+      },
+      {
+        "h": "Ask the AI to make sense of it",
+        "b": "Paste what you found into your AI assistant with this prompt. If it can search the web, ask it to add sources too.",
+        "p": "I'm a [job title] with [years] years' experience in [location], working in [sector]. Here are salary figures I've found for similar roles: [paste with sources]. Work out a realistic range (low, typical, high) and explain what pushes someone towards the top, such as specific skills, responsibilities or certifications. List the sources you used and how reliable each is. Then write a short, polite script for asking for [amount] in an offer conversation, plus answers to 'what are your salary expectations?' and 'that's above our budget'."
+      },
+      {
+        "h": "Check the sources",
+        "b": "Open any sources the AI mentions to confirm the figures are current and relevant to your area."
+      },
+      {
+        "h": "Practise the conversation",
+        "b": "Ask the AI to play the hiring manager and push back, so you can practise staying calm and clear."
+      }
+    ],
+    "example": "Range for Payroll Administrator, 3 years, Leeds: £25k to £31k, typical £27.5k. Higher end: payroll qualification, multi-site experience. Script: 'Thank you for the offer. Based on my research and my experience running payroll for 200 staff, I was hoping for £29,500. Is there flexibility?'",
+    "tips": [
+      "AI salary estimates can be out of date, so rely on the real listings you collected.",
+      "Consider the whole package: holiday, pension, flexible hours and training can be worth a lot."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User starts salary research for a role"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Gather advertised salaries for similar roles"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Calculate a realistic salary range with sources"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a negotiation script"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Refresh your LinkedIn profile so recruiters find you",
+    "d": "A clearer LinkedIn headline, About section and experience bullets based on your real background and the roles you want next.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "LinkedIn",
+      "AI assistant"
+    ],
+    "when": "Before a job search, then twice a year",
+    "steps": [
+      {
+        "h": "Copy your current profile",
+        "b": "Copy your headline, About section and the text of your last two or three roles from LinkedIn."
+      },
+      {
+        "h": "Ask for improvements",
+        "b": "Paste them into your AI assistant with this prompt.",
+        "p": "Help me improve my LinkedIn profile. I want to be found for roles like [target roles] in [sector or location]. Here's my current profile: [paste]. Using only my real experience, give me: 3 headline options under 220 characters that include words recruiters search for, an About section under 200 words in first person and a friendly tone, 3 to 4 bullet points for each of my last two roles focusing on results, and 10 skills to add that I've clearly shown. Don't invent achievements; ask me questions if a result could be made more specific."
+      },
+      {
+        "h": "Add real numbers",
+        "b": "Answer the AI's questions with genuine figures, such as team size, customers served or time saved, to make your bullets stronger."
+      },
+      {
+        "h": "Update and switch on Open to Work",
+        "b": "Paste the changes into LinkedIn. If you're job hunting, consider the Open to Work setting, which can be shown to recruiters only."
+      }
+    ],
+    "example": "Headline: Customer service team leader | Training and coaching | Moving into Learning & Development. About: 'For six years I've helped new starters find their feet...' Bullet: 'Trained 30+ new advisors, with 90% passing probation first time.'",
+    "tips": [
+      "Keep your LinkedIn and CV consistent. Recruiters compare them.",
+      "Choose the recruiters-only Open to Work option if you don't want your current employer to see it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every six months"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to refresh their profile"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest headline, About and experience updates"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the suggested profile text"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Explore a career change using skills you already have",
+    "d": "A list of realistic new career paths based on your skills and interests, with what each involves and small first steps to test it.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When you're thinking about a change",
+    "steps": [
+      {
+        "h": "Take stock",
+        "b": "Write down your jobs so far, what you enjoyed and disliked in each, skills people ask you for help with, and any practical limits such as income or location."
+      },
+      {
+        "h": "Ask for options",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "I'm considering a career change. Here's my background: [paste notes]. My practical limits: [for example must earn at least X, can't relocate, can study part-time]. 1) List my transferable skills with evidence from my background. 2) Suggest 6 realistic career paths that use those skills, from a small step to a bigger leap. For each: what the work involves day to day, typical entry routes, any qualifications usually needed, and how my skills fit. 3) For my top 3, suggest a small, low-risk way to test it in the next month, such as a short course, volunteering or talking to someone in the role. Be honest about challenges."
+      },
+      {
+        "h": "Check the facts",
+        "b": "Look up entry requirements and pay on official career service websites or real job ads, since these vary by country and change."
+      },
+      {
+        "h": "Try one small step",
+        "b": "Pick one test from the list and put a date in your calendar to do it."
+      }
+    ],
+    "example": "Transferable skills: scheduling (managed rotas for 15 staff), calm with upset people, training new starters. Paths: 1) Practice manager in healthcare, 2) HR assistant, 3) Learning and development coordinator... Test HR: shadow your current HR team for a day.",
+    "tips": [
+      "Talking to one person already doing the job tells you more than hours of reading.",
+      "A careers adviser, often free through public services, can help check the plan."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares their background and limits"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Map transferable skills to career paths"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the career options and test steps"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Schedule the first test step"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Walk into every interview with a research brief",
+    "d": "A one-page brief on the organisation, the role and your best examples, ready in your calendar before each interview.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Google Calendar",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Two days before each interview",
+    "steps": [
+      {
+        "h": "Add interviews to your calendar",
+        "b": "Put each interview in Google Calendar or Outlook Calendar with the company, role and a link to the job ad in the description."
+      },
+      {
+        "h": "Gather public information",
+        "b": "Read the organisation's website About page, recent news and the job ad. Copy anything useful. AI assistants that can search the web can help, but check what they find."
+      },
+      {
+        "h": "Build the brief",
+        "b": "Paste the material and your CV into your AI assistant with this prompt.",
+        "p": "Create a one-page interview brief. Role: [paste job ad]. What I've found about the organisation: [paste website text and news]. My CV: [paste, without contact details]. Include: what the organisation does and its current priorities in 3 bullets, what the role really needs in 5 bullets, my 4 best matching examples from my CV with the requirement each one shows, 3 likely tough questions with notes on how I could answer, and 5 thoughtful questions I could ask them. Use only facts from what I've pasted."
+      },
+      {
+        "h": "Attach it to the event",
+        "b": "Save the brief as a Google Doc or Word file and attach or link it in the calendar event so it's there on the day."
+      }
+    ],
+    "example": "Riverside Trust: runs 3 community centres, just won funding for a youth programme. Role needs: event planning, volunteer management, reporting. Your example: organised 6 summer fun days with 40 volunteers. Ask them: 'How will success in the youth programme be measured?'",
+    "tips": [
+      "Check the organisation's own website for the latest facts. AI can mix up organisations with similar names.",
+      "Read the brief once the night before, not five minutes before."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "An event with 'interview' in the title is two days away"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Gather the organisation's public information"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build a one-page interview brief"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the brief and link it to the event"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send a thoughtful thank-you after every interview",
+    "d": "A short, personal follow-up email drafted the same day as your interview, mentioning something specific you discussed.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "Gmail",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Within a day of each interview",
+    "steps": [
+      {
+        "h": "Make quick notes straight after",
+        "b": "Right after the interview, record a voice note or jot down who you met, what you talked about, and anything you wish you'd said."
+      },
+      {
+        "h": "Set a same-day reminder",
+        "b": "When you add an interview to your calendar, add a second short event an hour after it ends called 'Send thank-you email'."
+      },
+      {
+        "h": "Draft the email",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Write a short thank-you email after my interview for [role] at [organisation] with [interviewer names]. Notes from the interview: [paste notes]. Keep it under 120 words, warm and professional. Mention one specific thing we discussed, briefly add [one point I forgot to make, if any], and restate my interest. No grovelling or over-the-top language. Give a subject line too."
+      },
+      {
+        "h": "Send from your email",
+        "b": "Paste the draft into a new email in Gmail or Outlook, check names are spelled correctly, and send it."
+      }
+    ],
+    "example": "Subject: Thank you - Volunteer Coordinator interview\nHi Priya and Tom, thank you for your time today. I enjoyed hearing about the plans for the new food bank hub, and it made me even more keen to help build the volunteer team. One thing I didn't mention: I'm trained in safeguarding...",
+    "tips": [
+      "Use a voice note straight after the interview while details are fresh.",
+      "If you didn't get the interviewer's email, send it to the recruiter or HR contact and ask them to pass it on."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "An interview event ends"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to record interview notes"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a personal thank-you email"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the draft in the user's email"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep a wins log for your next review",
+    "d": "A running record of your achievements captured in seconds each week, turned into a clear summary when your appraisal comes round.",
+    "cat": "Careers",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Every Friday, plus before reviews",
+    "steps": [
+      {
+        "h": "Create a quick wins form",
+        "b": "Make a Google Form with three questions: What went well this week? Any result or feedback? Anything I learned? Link it to a Google Sheet so answers are saved automatically."
+      },
+      {
+        "h": "Add a Friday reminder",
+        "b": "Create a recurring Google Calendar event every Friday afternoon with the form link in it, or save the form to your phone's home screen."
+      },
+      {
+        "h": "Fill it in weekly",
+        "b": "Spend two minutes each Friday. Small things count: a thank-you email, a fixed problem, a new skill."
+      },
+      {
+        "h": "Summarise before your review",
+        "b": "Before your appraisal, copy the sheet rows into your AI assistant with this prompt.",
+        "p": "Here's my weekly wins log for the last [period]. My job is [title] and my objectives this year were: [list]. Group my wins under each objective, plus an 'Other contributions' section. For each, write one clear, factual bullet with any numbers or feedback included. Highlight my 3 strongest achievements and suggest 2 development goals based on what I learned. Use only what's in the log, nothing invented.\n\n[paste log]"
+      },
+      {
+        "h": "Bring it to your review",
+        "b": "Edit the summary in your own words and share it with your manager before the meeting."
+      }
+    ],
+    "example": "Objective 1: Improve customer response times. - Rewrote three email templates, cutting average reply time from 2 days to same day (Feb). - Praised by area manager in team meeting (Apr). Strongest wins: templates, training two new starters, covering the supervisor role for three weeks.",
+    "tips": [
+      "Check your workplace's rules before putting work details into an AI assistant, and leave out customer names.",
+      "A wins log also helps on tough weeks, when you need reminding what you've done."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A weekly wins form is submitted"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Save the entry to the wins log"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Tag the win against the user's objectives"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Create a review summary before each appraisal"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare to ask for a pay rise or promotion",
+    "d": "A clear, evidence-based case for a pay rise or promotion, plus a plan for the conversation and how to respond to common answers.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "Google Calendar"
+    ],
+    "when": "A few weeks before your pay review",
+    "steps": [
+      {
+        "h": "Collect your evidence",
+        "b": "Gather your wins, extra responsibilities taken on, positive feedback and any salary research for your role."
+      },
+      {
+        "h": "Build your case",
+        "b": "Paste it all into your AI assistant with this prompt.",
+        "p": "Help me prepare to ask my manager for [a pay rise to X / promotion to Y role]. My current role and pay: [details]. Evidence: [paste wins, feedback, extra responsibilities]. Salary research: [paste]. Create: 1) a one-page summary of my case with 3 strongest points, 2) a short opening I could say in the meeting, 3) likely responses (for example 'there's no budget', 'not this year', 'what else would you do?') with calm replies to each, and 4) a fallback ask if the answer is no, such as a review date, training or a clear path. Use only the evidence I've given."
+      },
+      {
+        "h": "Book the meeting",
+        "b": "Ask your manager for a dedicated meeting rather than raising it in passing. Put the date in your calendar with your summary attached."
+      },
+      {
+        "h": "Rehearse",
+        "b": "Ask the AI to play your manager and practise the conversation a couple of times."
+      }
+    ],
+    "example": "Case: 1) Took on rota planning for 2 sites since March. 2) Trained 4 new staff. 3) Similar roles locally advertised at £2,000 to £3,000 more. Opening: 'I'd like to talk about my pay, given how my role has grown this year.' If no budget: 'Could we agree a review in six months with clear targets?'",
+    "tips": [
+      "Lead with what you've done for the team, not personal costs.",
+      "Get any agreed next steps confirmed in a short email afterwards."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Pay review season starts in three weeks"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the user's wins log"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build a case summary and conversation plan"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the case document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a strong first 90 days in a new job",
+    "d": "A week-by-week plan for your first three months covering who to meet, what to learn and early wins, with check-ins in your calendar.",
+    "cat": "Careers",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Notion"
+    ],
+    "when": "The week before you start",
+    "steps": [
+      {
+        "h": "Gather what you know",
+        "b": "Collect the job description, notes from your interviews and anything your new manager has shared."
+      },
+      {
+        "h": "Draft the plan",
+        "b": "Paste it into your AI assistant with this prompt.",
+        "p": "I'm starting as [job title] at [type of organisation] on [date]. Job description and interview notes: [paste]. Create a 30-60-90 day plan. For each phase: main goals, people I should meet and what to ask them, things to learn, and one realistic early win. Then make a list of 10 questions to ask my manager in our first one-to-one. Finally, suggest 3 check-in points with my manager and what to bring to each. Keep it practical, not corporate."
+      },
+      {
+        "h": "Put it somewhere you'll use it",
+        "b": "Save the plan in Notion, Google Docs or OneNote, and tick things off as you go."
+      },
+      {
+        "h": "Book your check-ins",
+        "b": "Add reminders in your calendar at day 30, 60 and 90 to review the plan and prepare for check-ins with your manager."
+      }
+    ],
+    "example": "Days 1-30: Learn. Meet: your manager, the two team leads, the finance contact. Ask each: 'What would make my role a success for you?' Early win: tidy up the shared rota folder. Day 30 check-in: bring what you've learned and two ideas.",
+    "tips": [
+      "Listen more than you suggest in your first month. Ideas land better once you understand why things are done as they are.",
+      "Don't paste confidential information from your new employer into an AI tool without checking their policy."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User adds their start date and job details"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a 30-60-90 day plan"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the plan as a checklist"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add day 30, 60 and 90 check-ins"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Reach out to people for career advice",
+    "d": "Short, friendly messages to old colleagues or people in a field you're curious about, asking for a quick chat without feeling awkward.",
+    "cat": "Careers",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "LinkedIn"
+    ],
+    "when": "When you want advice or a foot in the door",
+    "steps": [
+      {
+        "h": "Pick three people",
+        "b": "Choose a mix: someone you know well, a former colleague you've lost touch with, and someone doing a job you're curious about."
+      },
+      {
+        "h": "Draft the messages",
+        "b": "Paste a few details about each person into your AI assistant with this prompt.",
+        "p": "Write short LinkedIn messages (under 80 words each) for these people. My situation: [for example exploring a move into project management]. Person 1: [how I know them, what they do]. Person 2: [...]. Person 3: [...]. Each message should be warm and specific, mention why I'm contacting them in particular, ask for a 15-minute chat or one piece of advice, and make it easy to say no. No flattery, no asking for a job directly. Then write a short follow-up for anyone who doesn't reply within 2 weeks."
+      },
+      {
+        "h": "Personalise and send",
+        "b": "Edit each message so it sounds like you, then send through LinkedIn or email."
+      },
+      {
+        "h": "Prepare for the chat",
+        "b": "If someone says yes, ask the AI for 5 good questions to ask about their role and how they got into it."
+      }
+    ],
+    "example": "Hi Jen, it's been ages since our days on the Riverside reception desk! I saw you're now a project coordinator at a housing charity. I'm thinking about a similar move and would love 15 minutes to hear how you made the jump. Completely understand if you're too busy.",
+    "tips": [
+      "Most people are glad to help when the ask is small and specific.",
+      "Always thank people afterwards and let them know what you did with their advice."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User lists people to contact"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft personalised outreach messages"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log who was contacted and when"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a two-week follow-up reminder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get fresh job leads delivered every week",
+    "d": "A scheduled weekly AI search for new roles matching your criteria, delivered as a short list you can check over coffee.",
+    "cat": "Careers",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Gmail"
+    ],
+    "when": "Every Monday morning",
+    "steps": [
+      {
+        "h": "Write down your search",
+        "b": "Note your target job titles, location or remote preference, salary floor, sectors to include and any to avoid."
+      },
+      {
+        "h": "Set up a scheduled search",
+        "b": "If your plan includes scheduled tasks in ChatGPT or scheduled actions in Gemini, create a weekly task using this prompt. If not, save the prompt and run it yourself each Monday in an assistant that can search the web.",
+        "p": "Search the web for job vacancies posted in the last 7 days matching: titles [list], location [place or remote], salary at least [amount], sectors [list]. Exclude [deal-breakers]. Only include listings from employer websites or well-known job boards. Return up to 10 results as a table: Job title, Employer, Location, Salary if shown, Closing date, Link. Then highlight the 3 best fits for someone with this background: [one-line summary]. If you're not sure a listing is still open, say so."
+      },
+      {
+        "h": "Log the good ones",
+        "b": "Copy any jobs you want to pursue into your job tracker sheet with the link and closing date."
+      },
+      {
+        "h": "Check before applying",
+        "b": "Open each link to confirm the role is still open and the details are right, since AI searches can return old or incorrect listings."
+      }
+    ],
+    "example": "Week of 18 Nov: 7 matches. Top 3: Volunteer Programme Lead, City Food Network, hybrid, £30k, closes 2 Dec. Community Officer, Northgate Council, £28k, closes 29 Nov. Events Coordinator, Hillside Arts, £27k, closing date not shown.",
+    "tips": [
+      "Be wary of listings that ask for payment or bank details early. Genuine employers don't.",
+      "Tweak the search terms every few weeks based on what's coming back."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 8am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Search for new matching job listings"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Rank listings against the user's criteria"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send the weekly job leads to the user"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add shortlisted roles to the job tracker"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Start each day with a personal morning briefing",
+    "d": "A short morning note with your appointments, the weather, top three tasks and anything you need to remember, waiting when you wake up.",
+    "cat": "Personal Assistant",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Gmail"
+    ],
+    "when": "Every weekday morning",
+    "steps": [
+      {
+        "h": "Decide what you want in it",
+        "b": "Pick what's useful: today's calendar, weather for your town, top tasks, birthdays, and anything urgent in your inbox."
+      },
+      {
+        "h": "Connect your calendar and email",
+        "b": "In your AI assistant's settings, look for options to connect Google or Microsoft apps. Only connect what you're comfortable with it reading."
+      },
+      {
+        "h": "Create a scheduled briefing",
+        "b": "If your plan includes scheduled tasks in ChatGPT or scheduled actions in Gemini, set one up for 7am on weekdays with this prompt.",
+        "p": "Give me my morning briefing for today in under 150 words. Include: 1) weather for [town] and whether I need a coat or umbrella, 2) my calendar for today with times, and anything I need to bring or prepare, 3) any emails from the last 24 hours that look urgent or need a reply today, by sender and one-line summary, 4) reminders: [list standing things, for example bins on Tuesday, swimming kit on Thursday]. End with my top 3 priorities based on the above. Keep it calm and practical."
+      },
+      {
+        "h": "Use the free fallback",
+        "b": "If scheduling isn't available, save the prompt in your notes, set a daily phone reminder, and paste in your calendar for the day when it goes off."
+      },
+      {
+        "h": "Fine-tune after a week",
+        "b": "Tell the assistant what was useful and what to drop so the briefing gets shorter and better."
+      }
+    ],
+    "example": "Tuesday: 9°C, showers after 3pm, take an umbrella. 9:30 Dentist (bring appointment card). 2pm Team call. 6pm Parents' evening. Emails: school asked to confirm trip consent by Thursday. Reminders: bins out tonight. Top 3: trip consent, prep for team call, buy birthday card for Gran.",
+    "tips": [
+      "Review which apps you've connected now and then, and disconnect any you no longer need.",
+      "Keep standing reminders in the prompt itself so they appear every week without extra effort."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 7am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Get today's weather and calendar"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Pick out urgent emails from the last 24 hours"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a short briefing with top 3 priorities"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the briefing to the user's phone"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a messy brain dump into a clear to-do list",
+    "d": "Everything swirling in your head, typed or spoken in one go, sorted into a prioritised list with quick wins and things you can drop.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "When you feel overwhelmed",
+    "steps": [
+      {
+        "h": "Get it all out",
+        "b": "Type or speak everything on your mind into your AI assistant, in any order. Half-sentences are fine."
+      },
+      {
+        "h": "Ask it to sort",
+        "b": "Follow your brain dump with this prompt.",
+        "p": "That was everything on my mind. Turn it into an organised to-do list. Group tasks into: Today, This week, Later, and Could drop or delegate. Mark anything that takes under 5 minutes as a quick win. For bigger tasks, break them into the first small step only. Point out anything that has a deadline. Keep wording short so I can paste it into my reminders app. Then ask me if any priorities are wrong."
+      },
+      {
+        "h": "Correct the priorities",
+        "b": "Tell the AI if anything is in the wrong group. You know your life best."
+      },
+      {
+        "h": "Move tasks into your reminders",
+        "b": "Copy the Today and This week items into your phone's Reminders app or to-do list, with dates for anything time-sensitive."
+      }
+    ],
+    "example": "Today: Reply to Sam about Saturday (quick win). Book MOT (quick win, due 30 Nov). This week: Sort school trip money. Start tax return: first step, find last year's login. Later: Clear out garage. Could drop: Re-organising the spice rack.",
+    "tips": [
+      "Do two quick wins straight away. It makes the rest feel lighter.",
+      "Voice mode is great for brain dumps when you're walking or driving (hands-free only)."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User records or types a brain dump"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Sort tasks into Today, This week, Later and Drop"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add today's and this week's tasks to reminders"
+        },
+        {
+          "type": "notify",
+          "detail": "Show quick wins to do now"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan the family's week in one shared view",
+    "d": "A Sunday summary of who needs to be where each day, who's doing pick-ups and what to prepare, shared with the whole household.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Calendar",
+      "WhatsApp",
+      "AI assistant"
+    ],
+    "when": "Every Sunday evening",
+    "steps": [
+      {
+        "h": "Create a shared family calendar",
+        "b": "In Google Calendar, create a new calendar called Family and share it with the other adults in the household. Add clubs, appointments and work trips as recurring events."
+      },
+      {
+        "h": "Copy next week's events",
+        "b": "On Sunday, open the Family calendar in week view and copy the events, or take a screenshot."
+      },
+      {
+        "h": "Ask for a family plan",
+        "b": "Paste or attach next week's events in your AI assistant with this prompt.",
+        "p": "Here's our family calendar for next week. Household: [for example 2 adults (A and B), children aged 7 and 11]. For each day, list: who needs to be where and when, who is doing drop-off and pick-up (flag any day where nobody is assigned or two things clash), and anything to prepare the night before (kit, forms, money, packed lunch). End with a short list of clashes to sort and a shopping or prep list for the week. Format it to fit nicely in a WhatsApp message."
+      },
+      {
+        "h": "Share it",
+        "b": "Post the plan in your family WhatsApp group and sort out any clashes together."
+      }
+    ],
+    "example": "MON: Swimming 5pm (Ellie) - A picks up. Pack: goggles, towel. TUE: Dentist 3:30 (Max) - CLASH: B has a work call until 4. WED: Non-uniform day, £1. THU: B away overnight. Prep list: Wed £1 coin, Fri cake for bake sale.",
+    "tips": [
+      "Use initials rather than full names and avoid sharing school names with the AI.",
+      "Colour-code each person's events in the calendar so clashes are easier to spot."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 7pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read next week's family calendar"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create a daily plan and flag clashes"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the plan to the family group chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn school and club emails into calendar events",
+    "d": "Dates buried in school newsletters and club emails become calendar events with reminders, so nothing like non-uniform day sneaks up on you.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Gmail",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Whenever a school or club email arrives",
+    "steps": [
+      {
+        "h": "Label the emails",
+        "b": "In Gmail's settings, under Filters, create a filter for emails from the school and clubs and give them a label such as Kids. In Outlook, a rule can move them to a folder."
+      },
+      {
+        "h": "Pull out the dates",
+        "b": "When a newsletter arrives, copy its text into your AI assistant with this prompt.",
+        "p": "Read this school or club email and list every date, deadline or event. For each one, give: date, time if mentioned, title (short, for a calendar), who it's for, what we need to do or bring, and whether it needs a reply, form or payment by a deadline. Return a table sorted by date. Then list any action I need to take this week.\n\n[paste email]"
+      },
+      {
+        "h": "Add them to the calendar",
+        "b": "Add each event to your family calendar. Gmail sometimes offers to add events it spots in emails too, so check for that first."
+      },
+      {
+        "h": "Set reminders for deadlines",
+        "b": "For forms, payments and things to bring, set the reminder for the evening before so there's time to prepare."
+      }
+    ],
+    "example": "Fri 22 Nov | All day | Non-uniform day | Both children | Bring £1 each\nWed 27 Nov | 3:30pm | Year 3 class assembly | Ellie | Parents welcome\nBy Mon 25 Nov | Trip consent and £8 via school app | Max | Action needed",
+    "tips": [
+      "Avoid pasting children's full names. The AI doesn't need them.",
+      "If your plan includes Gemini in Gmail, you can ask it to find dates in your Kids label directly."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A new email arrives in the Kids label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Find dates, deadlines and things to bring"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add each event with an evening-before reminder"
+        },
+        {
+          "type": "notify",
+          "detail": "Flag any action needed this week"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find thoughtful gift ideas for anyone",
+    "d": "A shortlist of personal, in-budget gift ideas for someone tricky to buy for, based on what they actually enjoy.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "A couple of weeks before a birthday or celebration",
+    "steps": [
+      {
+        "h": "Describe the person",
+        "b": "Write a few lines about them: age range, hobbies, what they talk about, things they already have, and anything they've mentioned wanting."
+      },
+      {
+        "h": "Ask for ideas",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Help me find a gift for my [relationship, for example dad] for [occasion]. Budget: [amount]. About them: [notes]. They already have: [list]. Give me 10 ideas across different types: 3 physical gifts, 3 experiences, 2 handmade or personal ideas, and 2 that help with something they do often. For each, one line on why it suits them and a rough price. Avoid generic gifts like mugs and socks unless there's a personal twist. Then ask me 2 questions that could help narrow it down."
+      },
+      {
+        "h": "Keep a gift ideas note",
+        "b": "Start a note called Gift ideas with a section per person. Add things they mention through the year, and paste them into the prompt next time."
+      }
+    ],
+    "example": "For Dad, 65, keen gardener, loves crosswords, £40: 1) Personalised plant markers with his allotment name (£15). 2) Half-day pruning workshop at a local garden (£35). 3) Book of cryptic crosswords plus a nice pen (£22). 4) Framed photo of his best marrow...",
+    "tips": [
+      "The best ideas come from things people say in passing, so jot them down when you hear them.",
+      "Check prices and availability yourself, as AI guesses at prices."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A birthday is two weeks away"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user about the upcoming birthday"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest gift ideas from the person's notes"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add the chosen gift to the shopping list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make a tough decision with a clear head",
+    "d": "A structured look at a decision you're stuck on, with options, trade-offs, what matters most to you and a sensible next step.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When you keep going round in circles",
+    "steps": [
+      {
+        "h": "Describe the decision",
+        "b": "Write down the choice you're facing, the options you can see, your deadline, and what's worrying you about each."
+      },
+      {
+        "h": "Work through it together",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "I need help thinking through a decision, not being told what to do. The decision: [describe]. Options I see: [list]. Deadline: [date]. What matters to me: [for example money, time with family, stress, long-term growth]. First, ask me up to 5 questions, one at a time, to understand what I value. Then create a table scoring each option against my priorities, list the main risks and how I could reduce them, and point out any option I haven't considered. Finish with the smallest next step that would give me more information."
+      },
+      {
+        "h": "Sleep on it",
+        "b": "Read the summary again the next day. Notice which option you feel relieved or disappointed about. That's useful information too."
+      },
+      {
+        "h": "Get the right advice",
+        "b": "For decisions involving health, money or the law, use this to prepare, then check with a qualified professional."
+      }
+    ],
+    "example": "Decision: move to a smaller flat closer to work or stay put. Priorities: commute time (high), space for kids (high), cost (medium). Scores: Move 7/10, Stay 6/10. Risk of moving: kids changing school, so check catchment first. Next step: visit two flats this weekend and time the school run.",
+    "tips": [
+      "The AI is a sounding board. You make the call.",
+      "Telling it what matters most to you makes the analysis far more useful than a generic pros and cons list."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a decision"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Ask clarifying questions and build a scored comparison"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the decision summary"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder to revisit it the next day"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep a simple journal and see your patterns",
+    "d": "A nightly two-minute journal prompt, plus a monthly reflection that shows what lifted your mood and what drained you.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Reminders app",
+      "Notes app",
+      "AI assistant"
+    ],
+    "when": "Every evening, plus monthly",
+    "steps": [
+      {
+        "h": "Set a nightly reminder",
+        "b": "Create a recurring reminder at a time that suits you, such as 9:30pm, called 'Two-minute journal'."
+      },
+      {
+        "h": "Answer three short questions",
+        "b": "In one running note, add today's date and answer: What went well? What was hard? How did I feel, from 1 to 10? Voice notes transcribed into text work too."
+      },
+      {
+        "h": "Reflect monthly",
+        "b": "At the end of each month, copy the month's entries into your AI assistant with this prompt.",
+        "p": "Here are my journal entries for [month]. Read them gently and give me: 1) my average mood score and how it changed over the month, 2) the things that seem to lift my mood, 3) the things that seem to drain me, 4) any patterns by day of the week, and 5) two small, kind experiments I could try next month. Be warm and non-judgemental. This is for reflection, not diagnosis.\n\n[paste entries]"
+      },
+      {
+        "h": "Try one experiment",
+        "b": "Pick one suggestion and add it to your reminders for the coming month."
+      }
+    ],
+    "example": "October average mood: 6.4, rising from 5.8 to 7.1. Lifted by: walks at lunch (mentioned 9 times), calls with your sister. Drained by: late Sunday emails, skipped breakfasts. Experiment: no work email after 7pm on Sundays.",
+    "tips": [
+      "Journals are very personal. Remove names and only share what you're comfortable with an AI service seeing.",
+      "If low mood lasts or feels overwhelming, please speak to your GP or a mental health service. AI is not a substitute for support."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every evening, plus the last day of each month"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send the nightly journal prompt"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save the entry to the journal note"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write a monthly mood and patterns reflection"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get your email inbox under control",
+    "d": "A tidy inbox with filters that sort newsletters, receipts and updates automatically, plus a plan for clearing the backlog.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Gmail",
+      "Outlook",
+      "AI assistant"
+    ],
+    "when": "Once, then a quick monthly tidy",
+    "steps": [
+      {
+        "h": "List your most frequent senders",
+        "b": "Scroll through your last few weeks of email and jot down the senders that show up most, such as shops, newsletters, banks, school and social media."
+      },
+      {
+        "h": "Ask for a filing plan",
+        "b": "Paste the list into your AI assistant with this prompt.",
+        "p": "Help me organise my personal email. Here are my most frequent senders and roughly how often they email: [list]. Suggest 5 to 7 simple labels or folders (for example Receipts, Newsletters, Bills, Family and school, Travel). Assign each sender to one, and say whether it should skip the inbox or stay in it. Suggest which newsletters I might unsubscribe from based on how often they arrive. Then give me a 15-minute-a-day plan to clear my backlog over a week. Keep the instructions general enough for Gmail or Outlook."
+      },
+      {
+        "h": "Create the filters or rules",
+        "b": "In Gmail's settings, under Filters, or in Outlook's rules, create one rule per label using the senders the AI grouped. Start with the biggest groups."
+      },
+      {
+        "h": "Unsubscribe as you go",
+        "b": "Use the unsubscribe link at the top or bottom of newsletters you no longer read."
+      },
+      {
+        "h": "Clear the backlog",
+        "b": "Follow the daily plan. Archiving old emails in bulk by date is usually safe and much faster than deleting one by one."
+      }
+    ],
+    "example": "Labels: Receipts (online shops, takeaway apps: skip inbox), Newsletters (6 senders: skip inbox, unsubscribe from 3), Bills (energy, phone: stay in inbox), Family and school (school, clubs: stay in inbox, star). Day 1: archive everything older than 1 year.",
+    "tips": [
+      "Be cautious with unsubscribe links in emails you don't recognise. For suspicious ones, mark as spam instead.",
+      "Don't share email content with an AI tool, just sender names, for this recipe."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "Any new email arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Match the email to a label"
+        },
+        {
+          "type": "email.label",
+          "detail": "Apply the label and archive if it skips the inbox"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a monthly list of unread newsletters to consider unsubscribing"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Sort out your phone photos and files",
+    "d": "A simple folder system for your photos, documents and downloads, and a step-by-step plan for tidying the mess you have now.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Drive",
+      "OneDrive"
+    ],
+    "when": "Once, then a quick monthly tidy",
+    "steps": [
+      {
+        "h": "Take stock",
+        "b": "Note where your stuff lives: phone photos, cloud storage, downloads folder, old laptop, email attachments. Rough sizes help if you can see them."
+      },
+      {
+        "h": "Get a plan",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Help me organise my digital life. Here's where my files and photos are: [describe]. I mostly need to find: [for example family photos, house documents, kids' school stuff, work-related files]. Suggest a simple folder structure no more than 2 levels deep, with clear names. Then give me a step-by-step plan over 4 short sessions to tidy up: what to delete first (screenshots, duplicates, blurry photos), what to move, and how to back up. Include a 10-minute monthly routine to keep it tidy. Keep it non-technical."
+      },
+      {
+        "h": "Use built-in helpers",
+        "b": "Most phone photo apps can show duplicates and screenshots in one place. Look in your photo app's albums or utilities to clear these quickly."
+      },
+      {
+        "h": "Back up what matters",
+        "b": "Make sure important photos and documents are backed up in at least one cloud service such as Google Drive, OneDrive or iCloud."
+      }
+    ],
+    "example": "Folders: Home (insurance, tenancy, appliance manuals), Money (payslips, statements), Family (school, health, IDs), Photos/2026, Photos/2025... Session 1: delete screenshots and duplicates (around 2,000 photos). Monthly: empty downloads, file new documents.",
+    "tips": [
+      "Store scans of passports and ID in a secure, password-protected place with two-step login switched on.",
+      "Do one session at a time. Trying to sort everything in one go usually stalls."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Saturday of each month"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to do the monthly tidy"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Give a short checklist for this month's tidy"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add tidy tasks to the to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Never miss a renewal or expiry date",
+    "d": "One list of every important renewal, such as passports, car tax, insurance and warranties, with calendar reminders well before each one.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, update when things change",
+    "steps": [
+      {
+        "h": "List everything that expires",
+        "b": "Go through your documents and emails: passports, driving licence, car tax and service, insurance policies, TV licence, phone contracts, warranties, prescriptions, pet vaccinations."
+      },
+      {
+        "h": "Let the AI find what you've missed",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "Here's my list of household renewals and expiry dates: [list with dates]. My household: [for example 2 adults, 1 child, a car, a dog, renting]. Suggest any common renewals I've missed for a household like mine. Then create a table with: Item, Who it's for, Expiry or renewal date, How far ahead to start (for example passports 3 months, insurance 4 weeks), Reminder date, and Notes. Sort by reminder date and format it so I can paste it into Google Sheets."
+      },
+      {
+        "h": "Create your tracker",
+        "b": "Paste the table into a Google Sheet called Life admin. Don't store full document numbers in it."
+      },
+      {
+        "h": "Add calendar reminders",
+        "b": "Add each reminder date to your calendar as an event, with yearly repeats for annual renewals."
+      }
+    ],
+    "example": "Car insurance | Car | 14 Jan | Start 4 weeks ahead | Reminder 17 Dec | Compare quotes before auto-renewal\nPassport | Child | 3 May | Start 3 months ahead | Reminder 3 Feb | Needs new photo\nBoiler service | Home | 20 Mar | 3 weeks | 27 Feb |",
+    "tips": [
+      "Leave out passport and policy numbers. The dates are all you need for reminders.",
+      "Some countries require several months left on a passport to travel, so check your destination's rules early."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A new item is added to the Life admin sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Work out a sensible reminder date"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a repeating calendar reminder"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the reminder with what to prepare"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a trip itinerary that suits everyone",
+    "d": "A day-by-day trip plan with realistic timings, food stops and rainy-day options, built around the people you're travelling with.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Maps",
+      "Google Docs"
+    ],
+    "when": "A few weeks before a trip",
+    "steps": [
+      {
+        "h": "Note the basics",
+        "b": "Write down where, when, who's going (with ages), budget, how you'll get around, and must-dos for each person."
+      },
+      {
+        "h": "Ask for a draft plan",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Plan a [number]-day trip to [place] from [dates]. Travellers: [for example 2 adults, kids aged 6 and 9, a grandparent who can't walk far]. Budget: [level]. Getting around: [car / public transport / walking]. Must-dos: [list]. For each day, give a morning, afternoon and evening plan with realistic travel times, a break or downtime, a food idea at a sensible price, and one rainy-day alternative. Don't pack the days too full. End with a packing list and things to book in advance."
+      },
+      {
+        "h": "Check it on a map",
+        "b": "Look up each place in Google Maps to check opening times, travel times and that it still exists. Save the places to a list in Maps."
+      },
+      {
+        "h": "Save and share",
+        "b": "Paste the final plan into Google Docs and share it with your travel group."
+      }
+    ],
+    "example": "Day 1 (Fri): Arrive 2pm, check in. 4pm: beach walk and rock pools (5 min walk). 6pm: fish and chips on the harbour (£). Rainy option: aquarium. Day 2: 10am steam railway (book ahead), picnic at the top station, afternoon rest at the cottage...",
+    "tips": [
+      "AI can suggest places that have closed or changed hours, so always check before you go.",
+      "Add one free afternoon. Trips feel better with breathing room."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A holiday is four weeks away"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a day-by-day itinerary"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save and share the itinerary"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add things to book to the to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a tricky email or message the right way",
+    "d": "A calm, clear draft for awkward messages like complaints, refund requests, saying no or chasing a tradesperson, in the tone you want.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "When you're putting off a difficult message",
+    "steps": [
+      {
+        "h": "Write the facts",
+        "b": "Jot down what happened, dates, what you've already tried, and what outcome you want."
+      },
+      {
+        "h": "Ask for a draft",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Help me write a [complaint / refund request / polite no / chaser / apology] to [who, for example an online shop, my landlord, a friend]. What happened: [facts and dates]. What I want: [outcome]. Tone: [firm but polite / warm / formal]. Keep it under 200 words, stick to facts, avoid emotional language, and make the request and any deadline clear. Give me two versions: one shorter and one more detailed. Add a subject line if it's an email."
+      },
+      {
+        "h": "Adjust and send",
+        "b": "Pick the version you like, adjust any wording that doesn't sound like you, and send it from your usual email or messaging app."
+      },
+      {
+        "h": "Keep a record",
+        "b": "For complaints and refunds, keep a copy of what you sent and note the date in case you need to escalate."
+      }
+    ],
+    "example": "Subject: Refund request - order 4471 (faulty kettle)\nHello, I bought a kettle from you on 2 November. It stopped working on 9 November. I'd like a full refund of £34.99. Please let me know how to return it. I'd appreciate a reply within 14 days. Thank you, Alex",
+    "tips": [
+      "Remove order numbers and personal details you don't want to share, then add them back to the final message.",
+      "For consumer rights questions, check your country's official consumer advice website."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes the situation"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft two versions of the message"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the chosen version as a draft"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a follow-up reminder for the reply deadline"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Capture tasks and reminders with a quick voice note",
+    "d": "Speak a rambling voice note on the go and get back a neat list of tasks, reminders and shopping items ready to add to your phone.",
+    "cat": "Personal Assistant",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "Voice notes",
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "Whenever you remember something on the go",
+    "steps": [
+      {
+        "h": "Record as things come to you",
+        "b": "Use your phone's voice recorder, or talk straight into your AI assistant's app. Say everything, like 'need to call the vet, buy milk, Sam's party is on the 14th'."
+      },
+      {
+        "h": "Turn it into lists",
+        "b": "Paste the transcript or speak directly to your AI assistant, followed by this prompt.",
+        "p": "Turn what I just said into three lists. TASKS: each with a short title, a due date if I mentioned one, and who it's for. CALENDAR: any events with date and time. SHOPPING: items grouped by type. Keep each line short enough for a reminders app. If something is unclear, list it under CHECK rather than guessing. Today is [day and date]."
+      },
+      {
+        "h": "Add them to your apps",
+        "b": "Copy tasks into your phone's Reminders or to-do app, events into your calendar, and shopping items into your list app. Some assistants can add reminders directly if you've connected them."
+      },
+      {
+        "h": "Make it a habit",
+        "b": "Do it at the same moment each day, such as when you get in the car or after the school run."
+      }
+    ],
+    "example": "TASKS: Call vet about Max's jab (by Fri). Return library books (Sat). CALENDAR: Sam's party, Sat 14 Dec, 2pm. SHOPPING: Dairy - milk, butter. Other - birthday card, wrapping paper. CHECK: 'that thing for Mum', what was it?",
+    "tips": [
+      "Use your phone's built-in voice assistant to set single reminders instantly, and save this recipe for longer brain dumps.",
+      "Never record while driving unless it's fully hands-free."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new voice note is saved"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Split the note into tasks, events and shopping"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add tasks and shopping items to lists"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add any events to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Do a 15-minute weekly review and plan",
+    "d": "Every Friday you get a summary of what you got done, what's still open and a suggested plan for next week, built from your calendar and tasks.",
+    "cat": "Personal Assistant",
+    "lvl": "Advanced",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Notion"
+    ],
+    "when": "Every Friday afternoon",
+    "steps": [
+      {
+        "h": "Keep tasks in one place",
+        "b": "Use one task list, such as a Notion page, Google Tasks or your Reminders app, and mark things done as you go."
+      },
+      {
+        "h": "Write your weekly review prompt",
+        "b": "Save this prompt in your notes.",
+        "p": "Run my weekly review. Here's this week's calendar, my task list with done and not done items, and my goals for this month: [paste all three, or read them from my connected apps]. Give me: 1) what I got done this week in 5 bullets, 2) open tasks, sorted into carry over, delegate or drop, 3) next week's calendar with any busy days or clashes flagged, 4) a suggested plan of no more than 3 priorities for next week, with the best time slots to do them, and 5) one thing to celebrate. Keep it under 250 words and kind."
+      },
+      {
+        "h": "Schedule it",
+        "b": "If your plan includes scheduled tasks in your AI assistant and it can read your calendar, schedule this for Fridays at 3pm. Otherwise add a recurring Friday calendar event and paste in your calendar and tasks yourself."
+      },
+      {
+        "h": "Block time for priorities",
+        "b": "Add the three priorities to next week's calendar as time blocks so they actually happen."
+      },
+      {
+        "h": "Adjust your goals monthly",
+        "b": "At the end of each month, update the goals in the prompt."
+      }
+    ],
+    "example": "Done: booked boiler service, finished tax return, two gym sessions. Carry over: sort Gran's birthday present. Drop: re-paint shed (not this month). Next week: Wednesday is packed, avoid adding anything. Priorities: buy present (Mon lunch), plan half-term (Tue evening), call bank (Thu 9am). Celebrate: tax return done!",
+    "tips": [
+      "Keep priorities to three. More than that and none get done.",
+      "Only connect the apps you're comfortable with your AI assistant reading."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read this week's calendar and task list"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise what got done and what's open"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest three priorities for next week"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Block time for each priority"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a party or gathering without the stress",
+    "d": "A complete checklist and timeline for a birthday, celebration or get-together, from invites to clean-up, with a shopping list and budget.",
+    "cat": "Personal Assistant",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "WhatsApp"
+    ],
+    "when": "Three to six weeks before the event",
+    "steps": [
+      {
+        "h": "Decide the basics",
+        "b": "Note the occasion, date, rough number of guests, location, budget and any dietary needs you know about."
+      },
+      {
+        "h": "Get a plan",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Help me plan a [occasion] on [date] for about [number] guests at [location]. Budget: [amount]. Guests include: [for example lots of children under 8, two vegetarians, one nut allergy]. Give me: 1) a countdown timeline from now to the day after, with tasks for each week, 2) a simple menu that fits the budget and dietary needs, 3) a shopping list grouped by shop or aisle with rough costs, 4) a run sheet for the day itself with times, and 5) a short, friendly invite message I can send on WhatsApp. Keep it doable for one or two people."
+      },
+      {
+        "h": "Save the checklist",
+        "b": "Paste the timeline into Google Docs or your notes app and tick things off as you go. Share it with anyone helping."
+      },
+      {
+        "h": "Send the invites",
+        "b": "Adjust the invite message and send it to your guests, asking for replies and allergies by a set date."
+      }
+    ],
+    "example": "4 weeks: send invites, book hall. 2 weeks: order cake, buy decorations. Day before: make sandwiches, charge speaker. Day: 1pm set up, 2pm guests arrive, 2:30 games, 3:15 food, 4pm cake. Budget: food £60, cake £25, decorations £15, party bags £30.",
+    "tips": [
+      "Always ask about allergies in the invite and label food on the day.",
+      "Ask a friend to own one job, like games or food, so you can enjoy it too."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters the event details"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a timeline, menu, shopping list and run sheet"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the plan as a shared checklist"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add weekly task reminders before the event"
+        }
+      ]
+    }
+  }
+]
