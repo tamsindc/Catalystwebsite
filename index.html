@@ -1,223 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fshpind.ai - AI Workflows & Use Cases</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fishpond.ai — go fishing for AI that actually works</title>
+<meta name="description" content="Search real AI workflows and use cases, learn them step by step, and install them into your work and life.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#14307a;--navy-deep:#0b1d4f;--orange:#f05a3c;--cyan:#13c4f2;--cyan-deep:#1ea3db;
+  --yellow:#ffb800;--cream:#fff7e8;--ink:#0b1d4f;--white:#fff;
+  --shadow:6px 6px 0 var(--ink);--shadow-sm:4px 4px 0 var(--ink);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.55}
+h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.02}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* rising bubble background */
+#bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bub{position:absolute;bottom:-40px;background:var(--yellow);border-radius:5px;opacity:.18;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(260deg)}}
+main,nav,footer{position:relative;z-index:1}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,247,232,.85);backdrop-filter:blur(10px);border-bottom:3px solid var(--ink)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.6rem;color:var(--navy)}
+.brand svg{width:44px;height:44px;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.brand:hover svg{transform:rotate(-12deg) scale(1.1)}
+.dot-ai{color:var(--yellow)}
+.links{display:flex;gap:28px;align-items:center;font-weight:700}
+.links a{text-decoration:none;position:relative}
+.links a.plain::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.links a.plain:hover::after{transform:scaleX(1)}
+.net{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
+.net b{display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:8px;background:var(--yellow);transition:transform .3s}
+.net.pop b{transform:scale(1.5) rotate(-10deg)}
+
+.btn{display:inline-flex;align-items:center;gap:10px;border:3px solid var(--ink);border-radius:14px;padding:14px 24px;font-weight:700;font-size:1.05rem;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s;background:var(--white);color:var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.y{background:var(--yellow)}
+.btn.o{background:var(--orange);color:var(--white)}
+.btn.n{background:var(--navy);color:var(--white)}
+.burger{display:none;background:none;border:3px solid var(--ink);border-radius:10px;padding:8px 10px;font-weight:800}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-grid>*{min-width:0}
+.sticker{display:inline-flex;align-items:center;gap:8px;background:var(--cyan);border:3px solid var(--ink);border-radius:999px;padding:6px 16px;font-weight:700;transform:rotate(-3deg);box-shadow:3px 3px 0 var(--ink);margin-bottom:22px}
+.sticker i{width:10px;height:10px;background:var(--yellow);border:2px solid var(--ink);border-radius:3px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5.6rem);font-weight:800;color:var(--navy)}
+.hero h1 .wave{position:relative;color:var(--orange);white-space:nowrap}
+.hero h1 .wave svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.3em;overflow:visible}
+.hero h1 .wave path{stroke:var(--cyan);stroke-width:7;fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.4s .4s forwards ease-out}
+@keyframes draw{to{stroke-dashoffset:0}}
+.lede{font-size:1.25rem;max-width:34ch;margin:26px 0 30px;color:#2a3b6b}
+
+.search{display:flex;align-items:center;background:var(--white);border:3px solid var(--ink);border-radius:20px;box-shadow:var(--shadow);padding:8px 8px 8px 20px;max-width:560px;transition:transform .2s}
+.search:focus-within{transform:translate(-2px,-2px) rotate(-.5deg);box-shadow:9px 9px 0 var(--ink)}
+.search svg{flex:none;width:26px;height:26px;color:var(--navy)}
+.search input{flex:1;border:0;outline:0;font:inherit;font-size:1.1rem;padding:12px;background:transparent;color:var(--ink);min-width:0}
+.search button{border:3px solid var(--ink);background:var(--orange);color:#fff;border-radius:12px;padding:12px 20px;font-weight:800;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{border:2.5px solid var(--ink);background:var(--white);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.92rem;transition:transform .15s,background .15s}
+.chip:hover{background:var(--yellow);transform:rotate(-3deg) scale(1.05)}
+
+/* interactive logo */
+.stage{position:relative;aspect-ratio:1;max-width:520px;margin:0 auto;width:100%}
+.stage .disc{position:absolute;inset:6%;border-radius:50%;background:var(--white);border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink)}
+.stage .ring{position:absolute;inset:0;border-radius:50%;border:3px dashed var(--navy);opacity:.35;animation:spin 40s linear infinite}
+#fish{position:absolute;inset:8%;width:84%;height:84%;cursor:pointer;overflow:visible;touch-action:manipulation}
+#fish .body{transform-origin:115px 118px;transition:transform .3s cubic-bezier(.3,1.7,.5,1)}
+#fish:hover .body{transform:scale(1.04) rotate(-2deg)}
+#fish.boop .body{animation:boop .5s}
+@keyframes boop{30%{transform:scale(.9,1.08) rotate(4deg)}60%{transform:scale(1.08,.94) rotate(-3deg)}}
+#tail{transform-origin:62px 118px;animation:wag 1.6s ease-in-out infinite}
+@keyframes wag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+#fish.fast #tail{animation-duration:.3s}
+.pix{animation:hover 2.6s ease-in-out infinite}
+.pix:nth-child(2){animation-delay:.4s}.pix:nth-child(3){animation-delay:.8s}
+@keyframes hover{50%{transform:translateY(-6px)}}
+.float-sq{position:absolute;background:var(--yellow);border:2px solid var(--ink);border-radius:6px;pointer-events:none;animation:floatup 1.6s cubic-bezier(.2,.7,.4,1) forwards}
+@keyframes floatup{to{transform:translate(var(--dx),-260px) rotate(var(--r));opacity:0}}
+.hint{position:absolute;right:2%;bottom:6%;background:var(--yellow);border:3px solid var(--ink);border-radius:14px;padding:8px 14px;font-weight:800;transform:rotate(6deg);box-shadow:3px 3px 0 var(--ink);font-family:"Bricolage Grotesque"}
+.hint span{display:block;font-size:.8rem;font-weight:600;font-family:"DM Sans"}
+
+/* ticker */
+.ticker{background:var(--navy);color:var(--white);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;transform:rotate(-1.5deg);margin:50px -20px 0;padding:16px 0}
+.ticker-track{display:flex;gap:40px;width:max-content;animation:slide 30s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.5rem}
+.ticker-track span{display:flex;align-items:center;gap:40px;white-space:nowrap}
+.ticker-track span::after{content:"";width:16px;height:16px;background:var(--yellow);border-radius:4px;transform:rotate(20deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:100px 0}
+.kicker{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem;color:var(--orange);margin-bottom:12px}
+.h2{font-size:clamp(2.2rem,4.6vw,3.8rem);font-weight:800;color:var(--navy);max-width:16ch}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+.step{background:var(--white);border:3px solid var(--ink);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);transition:transform .25s}
+.step:nth-child(1){transform:rotate(-1.5deg)}.step:nth-child(3){transform:rotate(1.5deg)}
+.step:hover{transform:rotate(0) translateY(-8px)}
+.step .num{width:64px;height:64px;border:3px solid var(--ink);border-radius:18px;display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.8rem;margin-bottom:20px}
+.step:nth-child(1) .num{background:var(--cyan)}.step:nth-child(2) .num{background:var(--yellow)}.step:nth-child(3) .num{background:var(--orange);color:#fff}
+.step h3{font-size:1.8rem;margin-bottom:8px}
+.step p{color:#33457a}
+
+/* pond */
+.pond{background:var(--navy);color:var(--white);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
+.pond .h2{color:var(--white)}
+.pond .kicker{color:var(--yellow)}
+.toggle{display:inline-flex;background:var(--navy-deep);border:3px solid var(--ink);border-radius:16px;padding:5px;gap:4px;box-shadow:4px 4px 0 #000}
+.toggle button{border:0;background:transparent;color:#c7d3ff;padding:10px 18px;border-radius:11px;font-weight:800}
+.toggle button.on{background:var(--yellow);color:var(--ink)}
+.pond-search{margin-bottom:30px;max-width:none;background:var(--white)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px}
+.card{background:var(--cream);color:var(--ink);border:3px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 #000;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s cubic-bezier(.3,1.5,.5,1);animation:pop .45s backwards cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.9)}}
+.card:hover{transform:translateY(-8px) rotate(-1deg)}
+.card-top{height:92px;position:relative;border-bottom:3px solid var(--ink);overflow:hidden}
+.card-top .glyph{position:absolute;left:18px;bottom:-14px;width:64px;height:64px;border:3px solid var(--ink);border-radius:16px;background:var(--white);display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.5rem;transform:rotate(-8deg)}
+.card-top .w{position:absolute;inset:auto 0 0 0;height:40px;opacity:.5}
+.card-body{padding:30px 20px 20px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.4rem;margin-bottom:6px}
+.card p{font-size:.97rem;color:#33457a;margin-bottom:14px;flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{font-size:.78rem;font-weight:800;border:2px solid var(--ink);border-radius:8px;padding:2px 8px;background:var(--white)}
+.reel{border:3px solid var(--ink);border-radius:12px;padding:10px;font-weight:800;background:var(--yellow);transition:transform .15s,background .2s}
+.reel:hover{transform:scale(1.03)}
+.reel.caught{background:var(--cyan)}
+.empty{grid-column:1/-1;text-align:center;padding:40px;border:3px dashed #8da2e8;border-radius:var(--radius);font-weight:700}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{border:3px solid var(--ink);border-radius:var(--radius);padding:26px;background:var(--white);box-shadow:var(--shadow-sm);text-align:center}
+.stat:nth-child(odd){background:var(--yellow)}
+.stat b{display:block;font-family:"Bricolage Grotesque";font-size:3rem;font-weight:800;color:var(--navy)}
+.stat span{font-weight:700}
+
+/* app cta */
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:var(--orange);border:3px solid var(--ink);border-radius:32px;padding:56px;box-shadow:12px 12px 0 var(--ink);color:#fff;overflow:hidden;position:relative}
+.cta .h2{color:#fff}
+.cta p{font-size:1.2rem;margin:18px 0 28px;max-width:36ch}
+.stores{display:flex;gap:14px;flex-wrap:wrap}
+.phone{justify-self:center;width:250px;height:500px;border:4px solid var(--ink);border-radius:40px;background:var(--cream);box-shadow:10px 10px 0 var(--ink);padding:18px 14px;color:var(--ink);transform:rotate(6deg);transition:transform .4s;position:relative}
+.phone:hover{transform:rotate(0) scale(1.03)}
+.phone .notch{width:80px;height:18px;background:var(--ink);border-radius:0 0 12px 12px;margin:-18px auto 14px}
+.phone .ps{border:2.5px solid var(--ink);border-radius:12px;padding:8px 10px;font-size:.8rem;font-weight:700;background:#fff;margin-bottom:12px;min-height:34px}
+.phone .ps::after{content:"|";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.phone .mini{border:2.5px solid var(--ink);border-radius:12px;padding:10px;margin-bottom:10px;background:#fff;font-size:.78rem;font-weight:700;display:flex;gap:10px;align-items:center}
+.phone .mini i{flex:none;width:28px;height:28px;border:2px solid var(--ink);border-radius:8px}
+
+footer{background:var(--navy-deep);color:#c7d3ff;padding:60px 0 30px;border-top:3px solid var(--ink)}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .brand{color:#fff}
+footer ul{list-style:none;display:flex;gap:24px;flex-wrap:wrap;font-weight:700}
+footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
+.small{margin-top:40px;font-size:.9rem;opacity:.7}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+.burst{position:fixed;width:12px;height:12px;border-radius:3px;pointer-events:none;z-index:999;animation:burst .7s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg) scale(.3);opacity:0}}
+
+@media (max-width:900px){
+  .hero-grid,.cta{grid-template-columns:1fr}
+  .steps,.stats{grid-template-columns:1fr 1fr}
+  .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--cream);padding:24px;border-bottom:3px solid var(--ink)}
+  .links.open{display:flex}
+  .burger{display:block}
+  .cta{padding:36px}
+  .hero{padding-top:36px}
+}
+@media (max-width:560px){
+  .steps,.stats{grid-template-columns:1fr}
+  .search button{padding:12px}
+  .search{padding-left:14px}
+  .stage .disc{box-shadow:6px 6px 0 var(--ink)}
+  .hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
-    <!-- Floating particles background -->
-    <div class="particles-container" id="particles"></div>
+<div id="bg" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="assets/images/fishpond-logo.png" alt="fshpind.ai" class="logo">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#workflows">Workflows</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#download" class="btn-nav">Download</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="fishpond.ai home">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span>fishpond<span class="dot-ai">.ai</span></span>
+    </a>
+    <button class="burger" aria-label="Menu" aria-expanded="false">Menu</button>
+    <div class="links">
+      <a class="plain" href="#how">How it works</a>
+      <a class="plain" href="#pond">The Pond</a>
+      <a class="plain" href="#app">Get the app</a>
+      <span class="net" id="net" title="Workflows you've reeled in">Your net <b id="netCount">0</b></span>
+    </div>
+  </div>
+</nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="glitch" data-text="Discover AI Workflows">
-                    Discover AI Workflows
-                </h1>
-                <p class="hero-subtitle">
-                    Search, learn, and install practical AI workflows for your work and life
-                </p>
-                <div class="cta-buttons">
-                    <button class="btn-primary" id="downloadBtn">
-                        <span>Download Now</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                    <button class="btn-secondary" id="exploreBtn">
-                        <span>Explore Workflows</span>
-                    </button>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-logo">
-                    <img src="assets/images/fishpond-logo.png" alt="fshpind.ai" class="animated-logo">
-                    <div class="logo-squares">
-                        <div class="square square-1"></div>
-                        <div class="square square-2"></div>
-                        <div class="square square-3"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <p>Scroll to explore</p>
-        </div>
-    </section>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="tank"><rect x="66" y="76" width="98" height="83" rx="4"/></clipPath>
+    <g id="logo-mark">
+      <g transform="translate(-5,0)">
+        <rect x="100" y="22" width="16" height="16" rx="3" fill="#ffb800"/>
+        <rect x="80" y="40" width="16" height="16" rx="3" fill="#ffb800"/>
+        <rect x="100" y="44" width="16" height="16" rx="3" fill="#ffb800"/>
+      </g>
+      <path d="M30 90 L62 118 L30 146" stroke="#f05a3c" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="60" y="70" width="110" height="95" rx="16" fill="#fff" stroke="#f05a3c" stroke-width="12"/>
+      <path clip-path="url(#tank)" d="M60 112 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V170 H60Z" fill="#13c4f2"/>
+      <circle cx="150" cy="96" r="8" fill="#f05a3c"/>
+    </g>
+  </defs>
+</svg>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Why fshpind?</h2>
-            <div class="features-grid">
-                <div class="feature-card" data-tilt>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Smart Search</h3>
-                    <p>Find the perfect AI workflow for your specific needs with intelligent search</p>
-                </div>
-                <div class="feature-card" data-tilt>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>One-Click Install</h3>
-                    <p>Install workflows instantly and start using AI in your daily tasks</p>
-                </div>
-                <div class="feature-card" data-tilt>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Practical Use Cases</h3>
-                    <p>Real-world AI applications you can use in work and life today</p>
-                </div>
-                <div class="feature-card" data-tilt>
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.55231C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Community Driven</h3>
-                    <p>Learn from a growing community of AI practitioners</p>
-                </div>
-            </div>
+<main id="top">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="sticker"><i></i> Real AI workflows, ready to install</div>
+        <h1>Go fishing for AI that <span class="wave">actually works<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M2 12 Q 20 2 40 12 T 80 12 T 120 12 T 160 12 T 200 12 T 240 12 T 298 12"/></svg></span></h1>
+        <p class="lede">Search hundreds of practical AI workflows, learn them step by step, and drop them straight into your work and your life.</p>
+        <form class="search" id="heroSearch" role="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="heroInput" type="search" autocomplete="off" aria-label="Search AI workflows" placeholder="Search workflows...">
+          <button type="submit">Cast line</button>
+        </form>
+        <div class="chips" id="heroChips">
+          <button class="chip" data-q="email">Email</button>
+          <button class="chip" data-q="meeting">Meetings</button>
+          <button class="chip" data-q="meal">Meal planning</button>
+          <button class="chip" data-q="money">Money</button>
+          <button class="chip" data-q="travel">Travel</button>
         </div>
-    </section>
+      </div>
 
-    <!-- Workflows Section -->
-    <section id="workflows" class="workflows">
-        <div class="container">
-            <h2 class="section-title">Popular Workflows</h2>
-            <div class="workflows-grid">
-                <div class="workflow-card">
-                    <div class="workflow-header">
-                        <span class="workflow-category">Productivity</span>
-                        <span class="workflow-rating">⭐ 4.9</span>
-                    </div>
-                    <h3>Email Assistant</h3>
-                    <p>Automate email responses and summarization</p>
-                    <button class="workflow-btn">Install Workflow</button>
-                </div>
-                <div class="workflow-card">
-                    <div class="workflow-header">
-                        <span class="workflow-category">Creative</span>
-                        <span class="workflow-rating">⭐ 4.8</span>
-                    </div>
-                    <h3>Content Generator</h3>
-                    <p>Create blog posts, social media content, and more</p>
-                    <button class="workflow-btn">Install Workflow</button>
-                </div>
-                <div class="workflow-card">
-                    <div class="workflow-header">
-                        <span class="workflow-category">Analysis</span>
-                        <span class="workflow-rating">⭐ 5.0</span>
-                    </div>
-                    <h3>Data Insights</h3>
-                    <p>Extract insights from spreadsheets and databases</p>
-                    <button class="workflow-btn">Install Workflow</button>
-                </div>
-            </div>
-            <div class="view-all">
-                <button class="btn-secondary">View All Workflows</button>
-            </div>
+      <div class="stage" id="stage">
+        <div class="ring"></div>
+        <div class="disc"></div>
+        <svg id="fish" viewBox="0 0 200 200" role="img" aria-label="fishpond.ai logo. Click it to blow bubbles.">
+          <g class="body">
+            <g class="pixels">
+              <rect class="pix" x="95" y="22" width="16" height="16" rx="3" fill="#ffb800" stroke="#0b1d4f" stroke-width="2"/>
+              <rect class="pix" x="75" y="40" width="16" height="16" rx="3" fill="#ffb800" stroke="#0b1d4f" stroke-width="2"/>
+              <rect class="pix" x="95" y="44" width="16" height="16" rx="3" fill="#ffb800" stroke="#0b1d4f" stroke-width="2"/>
+            </g>
+            <path id="tail" d="M30 90 L62 118 L30 146" stroke="#f05a3c" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="60" y="70" width="110" height="95" rx="16" fill="#fff" stroke="#f05a3c" stroke-width="12"/>
+            <g clip-path="url(#tank)">
+              <g id="water">
+                <path id="w1" fill="#13c4f2"/>
+                <path id="w2" fill="none" stroke="#1ea3db" stroke-width="4" stroke-linecap="round"/>
+                <path id="w3" fill="none" stroke="#1ea3db" stroke-width="4" stroke-linecap="round"/>
+              </g>
+            </g>
+            <circle id="eye" cx="150" cy="96" r="8" fill="#f05a3c"/>
+            <circle id="glint" cx="152" cy="93" r="2.2" fill="#fff"/>
+          </g>
+        </svg>
+        <div class="hint">Boop the fish!<span id="blubs">0 bubbles blown</span></div>
+      </div>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="ticker"></div>
+    </div>
+  </header>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="wrap">
+      <span class="kicker">How it works</span>
+      <h2 class="h2 reveal">Three casts and you're catching.</h2>
+      <div class="steps">
+        <div class="step reveal"><div class="num">1</div><h3>Cast</h3><p>Tell fishpond what you want AI to do, in plain words. "Clear my inbox", "plan dinners", "prep for sales calls".</p></div>
+        <div class="step reveal"><div class="num">2</div><h3>Hook</h3><p>Every workflow comes with bite-size steps, the tools it uses, and a real example so you see exactly how it works.</p></div>
+        <div class="step reveal"><div class="num">3</div><h3>Reel in</h3><p>Install it into the apps you already use and keep it in your net. Tweak it, share it, make it yours.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POND -->
+  <section id="pond" class="pond">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="kicker">The Pond</span>
+          <h2 class="h2">What's biting today</h2>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="download" class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Dive In?</h2>
-                <p>Join thousands of users discovering practical AI workflows</p>
-                <div class="download-buttons">
-                    <button class="download-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.05 20.28C17.19 20.28 17.33 20.23 17.44 20.12L18.44 19.12C18.66 18.9 18.66 18.55 18.44 18.33L14.55 14.44L15.96 13.03L19.85 16.92C20.07 17.14 20.42 17.14 20.64 16.92L21.64 15.92C21.75 15.81 21.8 15.67 21.8 15.53C21.8 15.39 21.75 15.25 21.64 15.14L17.75 11.25L19.16 9.84L23.05 13.73C23.27 13.95 23.62 13.95 23.84 13.73L24.84 12.73C24.95 12.62 25 12.48 25 12.34C25 12.2 24.95 12.06 24.84 11.95L12.34 -0.55C12.12 -0.77 11.77 -0.77 11.55 -0.55L10.55 0.45C10.44 0.56 10.39 0.7 10.39 0.84C10.39 0.98 10.44 1.12 10.55 1.23L14.44 5.12L13.03 6.53L9.14 2.64C8.92 2.42 8.57 2.42 8.35 2.64L7.35 3.64C7.24 3.75 7.19 3.89 7.19 4.03C7.19 4.17 7.24 4.31 7.35 4.42L11.24 8.31L9.83 9.72L5.94 5.83C5.72 5.61 5.37 5.61 5.15 5.83L4.15 6.83C4.04 6.94 3.99 7.08 3.99 7.22C3.99 7.36 4.04 7.5 4.15 7.61L8.04 11.5L3.7 15.84C2.71 16.83 2.71 18.41 3.7 19.4C4.2 19.9 4.86 20.15 5.52 20.15C6.18 20.15 6.84 19.9 7.34 19.4L11.68 15.06L15.64 19.02C15.75 19.13 15.89 19.18 16.03 19.18C16.17 19.18 16.31 19.13 16.42 19.02L17.42 18.02C17.64 17.8 17.64 17.45 17.42 17.23L13.46 13.27L14.87 11.86L17.05 14.04V20.28Z"/>
-                        </svg>
-                        <span>Download for Mac</span>
-                    </button>
-                    <button class="download-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M0 12V14H18V12H0ZM0 6V8H18V6H0ZM0 0V2H18V0H0ZM0 18V20H12V18H0Z"/>
-                        </svg>
-                        <span>Download for Windows</span>
-                    </button>
-                </div>
-            </div>
+        <div class="toggle" role="tablist" aria-label="Filter workflows">
+          <button class="on" data-f="all" role="tab" aria-selected="true">Everything</button>
+          <button data-f="work" role="tab" aria-selected="false">At work</button>
+          <button data-f="life" role="tab" aria-selected="false">In life</button>
         </div>
-    </section>
+      </div>
+      <form class="search pond-search" id="pondSearch" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="pondInput" type="search" autocomplete="off" aria-label="Filter workflows" placeholder="Filter the pond...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="cards" id="cards" aria-live="polite"></div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/images/fishpond-logo.png" alt="fshpind.ai">
-                    <p>Practical AI for everyone</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <ul>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#workflows">Workflows</a></li>
-                            <li><a href="#download">Download</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Community</h4>
-                        <ul>
-                            <li><a href="#">Discord</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">GitHub</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Support</h4>
-                        <ul>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 fshpind.ai. All rights reserved.</p>
-            </div>
+  <!-- STATS -->
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><b data-count="500">0</b><span>workflows in the pond</span></div>
+        <div class="stat reveal"><b data-count="15">0</b><span>minutes to first catch</span></div>
+        <div class="stat reveal"><b data-count="40">0</b><span>apps it plugs into</span></div>
+        <div class="stat reveal"><b data-count="0" data-text="0">0</b><span>coding required</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section id="app" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div>
+          <span class="kicker" style="color:var(--yellow)">The app</span>
+          <h2 class="h2">Your pocket guide to useful AI.</h2>
+          <p>Search on the bus, learn on your lunch break, install before your coffee's cold. Coming soon to iPhone and Android.</p>
+          <div class="stores">
+            <a class="btn n" href="#app" data-toast="You're on the list! We'll ping you at launch.">Join the waitlist</a>
+            <a class="btn y" href="#pond">Browse the pond</a>
+          </div>
         </div>
-    </footer>
+        <div class="phone" aria-hidden="true">
+          <div class="notch"></div>
+          <div class="ps" id="phoneSearch"></div>
+          <div class="mini"><i style="background:var(--cyan)"></i>Inbox Zero Triage</div>
+          <div class="mini"><i style="background:var(--yellow)"></i>Fridge-to-Dinner Planner</div>
+          <div class="mini"><i style="background:var(--orange)"></i>Meeting Notes to Actions</div>
+          <div class="mini"><i style="background:var(--navy)"></i>Trip Itinerary Builder</div>
+          <div class="mini"><i style="background:var(--cyan)"></i>Subscription Sniffer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <script src="script.js"></script>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond<span class="dot-ai">.ai</span></span></a>
+      <ul><li><a href="#how">How it works</a></li><li><a href="#pond">The Pond</a></li><li><a href="#app">Get the app</a></li></ul>
+    </div>
+    <p class="small">&copy; 2026 fishpond.ai. Practical AI for everyone.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+
+const WORKFLOWS = [
+  {t:'Inbox Zero Triage', d:'AI sorts, summarises and drafts replies so you only touch what matters.', side:'work', cat:'Productivity', tools:['Gmail','Claude'], mins:15, lvl:'Beginner', c:'#13c4f2', k:'email inbox reply'},
+  {t:'Meeting Notes to Actions', d:'Turn any call recording into a summary, decisions and an owner for every task.', side:'work', cat:'Meetings', tools:['Zoom','Notion'], mins:20, lvl:'Beginner', c:'#ffb800', k:'meeting notes transcript tasks'},
+  {t:'Sales Call Prep Brief', d:'Get a one-page brief on a prospect, their company and smart questions to ask.', side:'work', cat:'Sales', tools:['Web search','Docs'], mins:10, lvl:'Beginner', c:'#f05a3c', k:'sales research prospect'},
+  {t:'Weekly Report Autopilot', d:'Pull numbers from your sheets and write the weekly update for you.', side:'work', cat:'Ops', tools:['Sheets','Slack'], mins:30, lvl:'Intermediate', c:'#13c4f2', k:'report spreadsheet data slack'},
+  {t:'One Post, Ten Channels', d:'Repurpose a blog or video into LinkedIn, Instagram, newsletter and more.', side:'work', cat:'Content', tools:['Canva','Claude'], mins:20, lvl:'Beginner', c:'#ffb800', k:'content social marketing email'},
+  {t:'Customer FAQ Helper', d:'Answer repeat customer questions from your own docs, in your own voice.', side:'work', cat:'Support', tools:['Docs','Chat'], mins:45, lvl:'Intermediate', c:'#f05a3c', k:'support customer faq'},
+  {t:'Fridge-to-Dinner Planner', d:'Snap your fridge, get a week of meals and a shopping list that uses it all.', side:'life', cat:'Home', tools:['Camera','Notes'], mins:10, lvl:'Beginner', c:'#13c4f2', k:'meal food recipes shopping'},
+  {t:'Trip Itinerary Builder', d:'Dates, budget, vibe in. Day-by-day plan with bookings and backups out.', side:'life', cat:'Travel', tools:['Maps','Calendar'], mins:15, lvl:'Beginner', c:'#ffb800', k:'travel holiday trip plan'},
+  {t:'Subscription Sniffer', d:'Find forgotten subscriptions in your statements and draft the cancel emails.', side:'life', cat:'Money', tools:['Bank CSV','Email'], mins:20, lvl:'Beginner', c:'#f05a3c', k:'money bills budget finance email'},
+  {t:'Homework Buddy', d:'A patient tutor that explains, quizzes and never just gives the answer away.', side:'life', cat:'Family', tools:['Chat'], mins:5, lvl:'Beginner', c:'#13c4f2', k:'kids school learning family'},
+  {t:'Monthly Money Digest', d:'A friendly summary of where your money went and three ideas to save.', side:'life', cat:'Money', tools:['Sheets','Claude'], mins:25, lvl:'Intermediate', c:'#ffb800', k:'money finance budget spending'},
+  {t:'Pocket Workout Coach', d:'Plans that adapt to your week, your kit and how sore you are today.', side:'life', cat:'Health', tools:['Calendar','Chat'], mins:10, lvl:'Beginner', c:'#f05a3c', k:'fitness health exercise gym'}
+];
+
+/* background bubbles */
+const bg = $('#bg');
+if (!reduce) for (let i = 0; i < 22; i++) {
+  const b = document.createElement('div');
+  const s = 8 + Math.random() * 22;
+  b.className = 'bub';
+  Object.assign(b.style, {width:s+'px', height:s+'px', left:Math.random()*100+'%', animationDuration:(14+Math.random()*18)+'s', animationDelay:(-Math.random()*30)+'s'});
+  if (i % 3 === 0) b.style.background = '#13c4f2';
+  if (i % 5 === 0) b.style.background = '#f05a3c';
+  bg.appendChild(b);
+}
+
+/* ticker */
+const names = WORKFLOWS.map(w => w.t);
+$('#ticker').innerHTML = [...names, ...names].map(n => `<span>${n}</span>`).join('');
+
+/* animated water */
+function wave(y, amp, len, w, closed) {
+  let d = `M0 ${y}`;
+  for (let x = 0; x < w; x += len) d += ` q${len/4} ${-amp} ${len/2} 0 t${len/2} 0`;
+  return closed ? d + ` V200 H0Z` : d;
+}
+const W = 600, LEN = 30;
+let level = 112, targetLevel = 112, tilt = 0, targetTilt = 0, phase = 0;
+const w1 = $('#w1'), w2 = $('#w2'), w3 = $('#w3'), water = $('#water');
+function drawWater() {
+  level += (targetLevel - level) * 0.06;
+  tilt += (targetTilt - tilt) * 0.08;
+  phase = (phase + (reduce ? 0 : 0.6)) % LEN;
+  w1.setAttribute('d', wave(level, 7, LEN, W, true));
+  w2.setAttribute('d', wave(level + 18, 6, LEN, W, false));
+  w3.setAttribute('d', wave(level + 34, 6, LEN, W, false));
+  water.setAttribute('transform', `rotate(${tilt} 115 120) translate(${-LEN - phase} 0)`);
+  w2.setAttribute('transform', `translate(${phase * 0.6} 0)`);
+  requestAnimationFrame(drawWater);
+}
+drawWater();
+
+/* fish interactions */
+const fish = $('#fish'), stage = $('#stage'), eye = $('#eye'), glint = $('#glint');
+addEventListener('pointermove', e => {
+  const r = fish.getBoundingClientRect();
+  const sx = r.width / 200;
+  const ex = r.left + 150 * sx, ey = r.top + 96 * sx;
+  const a = Math.atan2(e.clientY - ey, e.clientX - ex);
+  const dist = Math.min(4, Math.hypot(e.clientX - ex, e.clientY - ey) / 40);
+  eye.setAttribute('cx', 150 + Math.cos(a) * dist);
+  eye.setAttribute('cy', 96 + Math.sin(a) * dist);
+  glint.setAttribute('cx', 152 + Math.cos(a) * dist);
+  glint.setAttribute('cy', 93 + Math.sin(a) * dist);
+  const cx = r.left + r.width / 2;
+  targetTilt = Math.max(-8, Math.min(8, (e.clientX - cx) / 60));
+});
+fish.addEventListener('pointerenter', () => { targetLevel = 100; fish.classList.add('fast'); });
+fish.addEventListener('pointerleave', () => { targetLevel = 112; fish.classList.remove('fast'); });
+
+let blubs = 0;
+fish.addEventListener('click', () => {
+  fish.classList.remove('boop'); void fish.getBoundingClientRect(); fish.classList.add('boop');
+  targetLevel = 92; setTimeout(() => targetLevel = fish.matches(':hover') ? 100 : 112, 450);
+  const r = stage.getBoundingClientRect(), fr = fish.getBoundingClientRect(), sx = fr.width / 200;
+  for (let i = 0; i < 6; i++) {
+    const q = document.createElement('div');
+    const s = 12 + Math.random() * 18;
+    q.className = 'float-sq';
+    q.style.cssText = `width:${s}px;height:${s}px;left:${fr.left - r.left + (95 + Math.random()*30) * sx}px;top:${fr.top - r.top + 40 * sx}px;--dx:${(Math.random()-.5)*160}px;--r:${(Math.random()-.5)*360}deg;animation-delay:${i*60}ms`;
+    if (i % 3 === 1) q.style.background = '#13c4f2';
+    stage.appendChild(q);
+    setTimeout(() => q.remove(), 2000);
+  }
+  blubs++;
+  $('#blubs').textContent = `${blubs} bubble${blubs === 1 ? '' : 's'} blown`;
+});
+
+/* click confetti on buttons */
+function burst(x, y) {
+  if (reduce) return;
+  const colors = ['#ffb800','#13c4f2','#f05a3c','#14307a'];
+  for (let i = 0; i < 12; i++) {
+    const p = document.createElement('div');
+    const a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 60;
+    p.className = 'burst';
+    p.style.cssText = `left:${x-6}px;top:${y-6}px;background:${colors[i%4]};--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px`;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 800);
+  }
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('.btn,.reel,.chip,.search button');
+  if (b) burst(e.clientX, e.clientY);
+  const t = e.target.closest('[data-toast]');
+  if (t) { e.preventDefault(); t.textContent = t.dataset.toast; t.removeAttribute('data-toast'); }
+});
+
+/* typing placeholders */
+const ideas = ['clear my inbox', 'plan dinners from my fridge', 'prep for a sales call', 'summarise meetings', 'find sneaky subscriptions', 'plan a weekend in Lisbon'];
+const heroInput = $('#heroInput'), phoneSearch = $('#phoneSearch');
+let ii = 0, ci = 0, del = false;
+function type() {
+  const s = ideas[ii];
+  ci += del ? -1 : 1;
+  const txt = 'I want AI to ' + s.slice(0, ci);
+  heroInput.placeholder = txt;
+  phoneSearch.textContent = s.slice(0, ci);
+  let wait = del ? 30 : 70;
+  if (!del && ci === s.length) { del = true; wait = 1600; }
+  else if (del && ci === 0) { del = false; ii = (ii + 1) % ideas.length; wait = 300; }
+  setTimeout(type, wait);
+}
+if (reduce) { heroInput.placeholder = 'I want AI to clear my inbox'; phoneSearch.textContent = 'clear my inbox'; } else type();
+
+/* pond */
+const cards = $('#cards'), pondInput = $('#pondInput');
+let filter = 'all', query = '';
+const saved = new Set();
+function render() {
+  const q = query.trim().toLowerCase();
+  const list = WORKFLOWS.filter(w => (filter === 'all' || w.side === filter) &&
+    (!q || (w.t + ' ' + w.d + ' ' + w.cat + ' ' + w.k + ' ' + w.tools.join(' ')).toLowerCase().includes(q)));
+  cards.innerHTML = '';
+  if (!list.length) {
+    const e = document.createElement('div');
+    e.className = 'empty';
+    e.textContent = `Nothing biting for "${query}" yet. Try "email", "money" or "meeting".`;
+    cards.appendChild(e);
+    return;
+  }
+  list.forEach((w, i) => {
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.style.animationDelay = (i * 50) + 'ms';
+    el.innerHTML = `
+      <div class="card-top" style="background:${w.c}">
+        <svg class="w" viewBox="0 0 300 40" preserveAspectRatio="none"><path d="${wave(14,6,30,330,true)}" fill="#fff"/></svg>
+        <div class="glyph"></div>
+      </div>
+      <div class="card-body">
+        <div class="meta"><span class="tag"></span><span class="tag"></span><span class="tag"></span></div>
+        <h3></h3><p></p>
+        <div class="meta tools"></div>
+        <button class="reel"></button>
+      </div>`;
+    $('.glyph', el).textContent = w.t[0];
+    const tags = $$('.meta .tag', el);
+    tags[0].textContent = w.side === 'work' ? 'At work' : 'In life';
+    tags[1].textContent = w.lvl;
+    tags[2].textContent = `${w.mins} min setup`;
+    $('h3', el).textContent = w.t;
+    $('p', el).textContent = w.d;
+    w.tools.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; $('.tools', el).appendChild(s); });
+    const btn = $('.reel', el);
+    const sync = () => { btn.textContent = saved.has(w.t) ? 'In your net' : 'Reel it in'; btn.classList.toggle('caught', saved.has(w.t)); };
+    sync();
+    btn.addEventListener('click', () => {
+      saved.has(w.t) ? saved.delete(w.t) : saved.add(w.t);
+      sync();
+      $('#netCount').textContent = saved.size;
+      const net = $('#net'); net.classList.add('pop'); setTimeout(() => net.classList.remove('pop'), 300);
+    });
+    cards.appendChild(el);
+  });
+}
+render();
+
+$$('.toggle button').forEach(b => b.addEventListener('click', () => {
+  $$('.toggle button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+  filter = b.dataset.f; render();
+}));
+let deb;
+pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { query = pondInput.value; render(); }, 120); });
+$('#pondSearch').addEventListener('submit', e => { e.preventDefault(); query = pondInput.value; render(); });
+
+function castTo(q) {
+  query = q; pondInput.value = q; render();
+  $('#pond').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+}
+$('#heroSearch').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = heroInput.value.trim();
+  castTo(v);
+});
+$$('#heroChips .chip').forEach(c => c.addEventListener('click', () => castTo(c.dataset.q)));
+
+/* reveal + counters */
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  en.target.classList.add('in');
+  const n = en.target.querySelector('[data-count]');
+  if (n) {
+    const end = +n.dataset.count, t0 = performance.now();
+    const step = t => { const p = Math.min(1, (t - t0) / 1200); n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + (end >= 500 && p === 1 ? '+' : ''); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  io.unobserve(en.target);
+}), {threshold: .2});
+$$('.reveal').forEach(el => io.observe(el));
+
+/* mobile menu */
+const burger = $('.burger'), links = $('.links');
+burger.addEventListener('click', () => { const o = links.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+$$('.links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
+})();
+</script>
 </body>
 </html>
