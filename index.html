@@ -172,6 +172,34 @@ dialog[open]{animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
 .d-body li::marker{font-weight:800;color:var(--orange)}
 .d-body .install li span{display:block;font-size:.9rem;color:#4a5a8a}
 .d-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.d-grid p{font-weight:700}
+.d-progress{display:flex;justify-content:space-between;align-items:baseline}
+.d-progress span{font-weight:800;color:var(--orange)}
+.bar{height:12px;border:2.5px solid var(--ink);border-radius:999px;background:#fff;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;width:0;background:var(--cyan);transition:width .4s cubic-bezier(.3,1.4,.5,1)}
+.guide{list-style:none;padding:0!important;display:grid;gap:12px}
+.guide li{border:2.5px solid var(--ink);border-radius:16px;background:#fff;padding:14px 14px 14px 52px;position:relative;transition:background .2s}
+.guide li.done{background:#e6f9ef}
+.guide li.done .gh{text-decoration:line-through;text-decoration-thickness:2px}
+.guide .tick{position:absolute;left:12px;top:12px;width:28px;height:28px;border:2.5px solid var(--ink);border-radius:9px;background:var(--cream);display:grid;place-items:center;font-weight:900;cursor:pointer;padding:0}
+.guide li.done .tick{background:var(--yellow)}
+.guide .gh{font-weight:800;display:block}
+.guide .gb{color:#33457a;font-size:.96rem;display:block;margin-top:2px}
+.prompt{margin-top:10px;background:var(--navy-deep);color:#e8edff;border:2.5px solid var(--ink);border-radius:12px;padding:12px 12px 12px 14px;font-size:.9rem;line-height:1.5;white-space:pre-wrap;position:relative}
+.prompt .copy{display:block;margin-top:10px;border:2.5px solid var(--ink);background:var(--yellow);color:var(--ink);border-radius:9px;padding:6px 12px;font-weight:800;font-size:.85rem}
+.prompt mark{background:rgba(255,184,0,.25);color:var(--yellow);border-radius:4px;padding:0 2px}
+.example{border:2.5px dashed var(--navy);border-radius:14px;padding:14px;background:#fff;font-size:.95rem;white-space:pre-wrap}
+.tips{padding-left:20px;display:grid;gap:6px}
+.auto{margin-top:24px;border:3px solid var(--ink);border-radius:18px;padding:20px;background:linear-gradient(135deg,#fff7e8 0%,#e6f7fd 100%);position:relative}
+.auto h4{margin-top:0!important}
+.auto p{font-size:.95rem;margin-bottom:12px}
+.auto-badge{position:absolute;top:-14px;right:16px;background:var(--orange);color:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:3px 12px;font-weight:800;font-size:.8rem;transform:rotate(3deg)}
+.flow{list-style:none;padding:0!important;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.flow li{border:2.5px solid var(--ink);border-radius:12px;background:#fff;padding:6px 10px;font-size:.85rem;font-weight:700}
+.flow li.trig{background:var(--yellow)}
+.flow li+li::before{content:"\2192";margin:0 6px 0 -2px;color:var(--orange);font-weight:900}
+@media (max-width:560px){.d-grid{grid-template-columns:1fr}.d-head,.d-body{padding-left:20px;padding-right:20px}}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -328,7 +356,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <div class="steps">
         <div class="step reveal"><div class="num">1</div><h3>Cast</h3><p>Tell fishpond what you want AI to do, in plain words. "Clear my inbox", "plan dinners", "prep for sales calls".</p></div>
         <div class="step reveal"><div class="num">2</div><h3>Hook</h3><p>Every workflow comes with bite-size steps, the tools it uses, and a real example so you see exactly how it works.</p></div>
-        <div class="step reveal"><div class="num">3</div><h3>Reel in</h3><p>Install it into the apps you already use and keep it in your net. Tweak it, share it, make it yours.</p></div>
+        <div class="step reveal"><div class="num">3</div><h3>Reel in</h3><p>Follow the steps with the apps you already use, tick them off, and keep it in your net. Soon fishpond will run them for you.</p></div>
       </div>
     </div>
   </section>
@@ -357,15 +385,16 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <p id="count" aria-live="polite"></p>
         <label class="sort">Sort
           <select id="sort">
-            <option value="views">Most popular</option>
-            <option value="new">Newest</option>
+            <option value="featured">Featured</option>
+            <option value="quick">Quickest to set up</option>
             <option value="easy">Easiest first</option>
+            <option value="az">A to Z</option>
           </select>
         </label>
       </div>
       <div class="cards" id="cards"></div>
       <div class="more-wrap"><button class="btn y" id="more" type="button">Show more workflows</button></div>
-      <p class="credit">Workflows come from the free <a href="https://n8n.io/workflows/" target="_blank" rel="noopener">n8n community template library</a>, credited to their authors. Popularity is n8n template views.</p>
+      <p class="credit">Every guide is written by fishpond for tools you already use. No coding, no extra software.</p>
     </div>
   </section>
 
@@ -374,17 +403,26 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <button class="d-close" id="dClose" type="button" aria-label="Close">&times;</button>
       <div class="meta" id="dTags"></div>
       <h3 id="dTitle"></h3>
-      <p class="d-by" id="dBy"></p>
+      <p class="d-by" id="dDesc"></p>
     </div>
     <div class="d-body">
-      <p id="dDesc"></p>
-      <div id="dHowWrap"><h4>What it does</h4><ol id="dHow"></ol></div>
-      <h4>Apps it connects</h4>
-      <div class="meta" id="dTools"></div>
-      <h4>Install it in 4 steps</h4>
-      <ol class="install" id="dSetup"></ol>
+      <div class="d-grid">
+        <div><h4>What you need</h4><div class="meta" id="dTools"></div></div>
+        <div><h4>When it runs</h4><p id="dWhen"></p></div>
+      </div>
+      <div class="d-progress"><h4>Set it up</h4><span id="dProg"></span></div>
+      <div class="bar"><i id="dBar"></i></div>
+      <ol class="guide" id="dSteps"></ol>
+      <div id="dExWrap"><h4>What you'll get</h4><div class="example" id="dEx"></div></div>
+      <div id="dTipWrap"><h4>Tips</h4><ul class="tips" id="dTips"></ul></div>
+      <div class="auto">
+        <div class="auto-badge">Coming soon</div>
+        <h4>Let fishpond run it for you</h4>
+        <p>Soon you'll switch this on once and fishpond will do it automatically:</p>
+        <ol class="flow" id="dFlow"></ol>
+        <button class="btn n" id="dNotify" type="button">Tell me when it's ready</button>
+      </div>
       <div class="d-actions">
-        <a class="btn o" id="dLink" target="_blank" rel="noopener">Open the template ↗</a>
         <button class="btn y" id="dSave" type="button"></button>
       </div>
     </div>
@@ -394,10 +432,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   <section>
     <div class="wrap">
       <div class="stats">
-        <div class="stat reveal"><b data-count="0" id="sWorkflows">0</b><span>real AI workflows</span></div>
-        <div class="stat reveal"><b data-count="0" id="sTools">0</b><span>apps they plug into</span></div>
+        <div class="stat reveal"><b data-count="0" id="sWorkflows">0</b><span>step-by-step AI workflows</span></div>
+        <div class="stat reveal"><b data-count="0" id="sTools">0</b><span>everyday apps used</span></div>
         <div class="stat reveal"><b data-count="0" id="sTopics">0</b><span>topics, work &amp; life</span></div>
-        <div class="stat reveal"><b data-count="100" data-suffix="%">0</b><span>free to install</span></div>
+        <div class="stat reveal"><b data-count="0" id="sMins">0</b><span>minutes, typical setup</span></div>
       </div>
     </div>
   </section>
@@ -452,7 +490,6 @@ const CATS = [...new Set(LIB.map(w => w.cat))].sort((a, b) => LIB.filter(w => w.
 const catColor = c => PALETTE[CATS.indexOf(c) % PALETTE.length];
 const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : n >= 1e3 ? (n / 1e3).toFixed(n >= 1e4 ? 0 : 1).replace(/\.0$/, '') + 'k' : String(n);
 const LEVEL = {Beginner: 0, Intermediate: 1, Advanced: 2};
-const popLabel = w => w.views >= 100 ? fmt(w.views) + ' views' : 'New';
 
 /* background bubbles */
 const bg = $('#bg');
@@ -476,7 +513,9 @@ $$('.phone .mini').forEach((m, i) => { if (phonePicks[i]) m.lastChild.textConten
 $('#sWorkflows').dataset.count = LIB.length;
 $('#sTools').dataset.count = toolCount;
 $('#sTopics').dataset.count = CATS.length;
-$('.lede').textContent = `Search ${LIB.length} real AI workflows, learn how each one works, and install it straight into your work and your life.`;
+const minsSorted = LIB.map(w => w.mins).sort((a, b) => a - b);
+$('#sMins').dataset.count = minsSorted[Math.floor(minsSorted.length / 2)] || 10;
+$('.lede').textContent = `Search ${LIB.length} step-by-step AI workflows, follow them with the apps you already use, and make your work and life easier.`;
 
 /* animated water */
 function wave(y, amp, len, w, closed) {
@@ -594,9 +633,9 @@ const SYN = {fridge:['recipe','meal','food','grocer'], dinner:['recipe','meal','
   meeting:['meeting','transcri','zoom','call'], call:['call','meeting','transcri','voice'], social:['social','linkedin','instagram','twitter','tiktok'],
   gym:['fitness','workout','gym','health'], study:['learn','study','quiz','flashcard','tutor'], customer:['customer','support','ticket'],
   write:['writ','blog','content','article'], video:['video','youtube'], summarise:['summar'], summarize:['summar']};
-LIB.forEach(w => { w._hay = (w.t + ' ' + w.d + ' ' + w.cat + ' ' + w.tools.join(' ') + ' ' + w.how.join(' ')).toLowerCase(); w._title = w.t.toLowerCase(); });
+LIB.forEach((w, i) => { w._i = i; w._hay = [w.t, w.d, w.cat, w.when, w.tools.join(' '), ...w.steps.map(x => x.h + ' ' + x.b)].join(' ').toLowerCase(); w._title = w.t.toLowerCase(); });
 const PAGE = 24;
-const state = {side: 'all', cat: 'all', q: '', sort: 'views', shown: PAGE, net: false};
+const state = {side: 'all', cat: 'all', q: '', sort: 'featured', shown: PAGE, net: false};
 const cards = $('#cards'), pondInput = $('#pondInput'), count = $('#count'), more = $('#more'), catsEl = $('#cats');
 
 function terms(q) {
@@ -622,13 +661,14 @@ function results() {
         if (alts.some(t => cat.includes(t))) score += 3;
       }
       return hits >= need ? {w, score} : null;
-    }).filter(Boolean).sort((a, b) => b.score - a.score || b.w.views - a.w.views).map(x => x.w);
-    if (state.sort === 'views') return list;
+    }).filter(Boolean).sort((a, b) => b.score - a.score || a.w._i - b.w._i).map(x => x.w);
+    if (state.sort === 'featured') return list;
   }
   const by = {
-    views: (a, b) => b.views - a.views,
-    new: (a, b) => b.date.localeCompare(a.date),
-    easy: (a, b) => LEVEL[a.lvl] - LEVEL[b.lvl] || b.views - a.views,
+    featured: (a, b) => a._i - b._i,
+    quick: (a, b) => a.mins - b.mins || a._i - b._i,
+    easy: (a, b) => LEVEL[a.lvl] - LEVEL[b.lvl] || a.mins - b.mins,
+    az: (a, b) => a.t.localeCompare(b.t),
   }[state.sort];
   return [...list].sort(by);
 }
@@ -665,15 +705,15 @@ function card(w, i) {
       <div class="meta"><span class="tag"></span><span class="tag"></span><span class="tag"></span></div>
       <h3></h3><p class="by"></p><p class="desc"></p>
       <div class="meta tools"></div>
-      <div class="card-actions"><button class="how-btn" type="button">How to install</button><button class="reel" type="button"></button></div>
+      <div class="card-actions"><button class="how-btn" type="button">Start</button><button class="reel" type="button"></button></div>
     </div>`;
   $('.glyph', el).textContent = w.cat[0];
   const tags = $$('.meta .tag', el);
   tags[0].textContent = w.cat;
   tags[1].textContent = w.lvl;
-  tags[2].textContent = popLabel(w);
+  tags[2].textContent = w.mins + ' min setup';
   $('h3', el).textContent = w.t;
-  $('.by', el).textContent = 'by ' + w.by + (w.v ? ' ✓' : '');
+  $('.by', el).textContent = w.when;
   $('.desc', el).textContent = w.d;
   w.tools.slice(0, 4).forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; $('.tools', el).appendChild(s); });
   const btn = $('.reel', el);
@@ -731,30 +771,82 @@ $('#net').addEventListener('click', () => {
 const dlg = $('#detail');
 let open = null;
 function li(parent, html) { const l = document.createElement('li'); l.innerHTML = html; parent.appendChild(l); return l; }
+const progKey = id => 'fishpond-steps-' + id;
+function getDone(id) { try { return new Set(JSON.parse(localStorage.getItem(progKey(id)) || '[]')); } catch { return new Set(); } }
+function setDone(id, set) { try { localStorage.setItem(progKey(id), JSON.stringify([...set])); } catch {} }
+const TRIG = {schedule: 'On a schedule', new_email: 'New email arrives', new_file: 'New file added', new_row: 'New row in a sheet', form_submitted: 'Form submitted', calendar_event: 'Calendar event', message_received: 'Message received', manual: 'You tap Run'};
+const ACT = {'ai.generate': 'AI writes', 'ai.summarize': 'AI summarises', 'ai.classify': 'AI sorts', 'ai.extract': 'AI pulls out details', 'email.draft': 'Drafts an email', 'email.send': 'Sends an email', 'email.label': 'Labels the email', 'sheet.append': 'Adds to a sheet', 'sheet.update': 'Updates a sheet', 'doc.create': 'Creates a doc', 'calendar.create': 'Adds to calendar', 'list.add': 'Adds to a list', notify: 'Notifies you', 'web.fetch': 'Checks the web', 'file.save': 'Saves a file', 'message.send': 'Sends a message'};
+function promptBlock(text) {
+  const box = document.createElement('div'); box.className = 'prompt';
+  const body = document.createElement('div');
+  text.split(/(\[[^\]]+\])/).forEach(part => {
+    if (/^\[[^\]]+\]$/.test(part)) { const m = document.createElement('mark'); m.textContent = part; body.appendChild(m); }
+    else body.appendChild(document.createTextNode(part));
+  });
+  const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'copy'; btn.textContent = 'Copy prompt';
+  btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(text); btn.textContent = 'Copied! Fill in the [brackets]'; }
+    catch { const r = document.createRange(); r.selectNodeContents(body); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); btn.textContent = 'Selected: press Ctrl/Cmd+C'; }
+    setTimeout(() => btn.textContent = 'Copy prompt', 2400);
+  });
+  box.append(body, btn);
+  return box;
+}
 function openDetail(w) {
   open = w;
   $('#dHead').style.background = catColor(w.cat);
   const tags = $('#dTags'); tags.innerHTML = '';
-  [w.cat, w.lvl, popLabel(w), w.side === 'life' ? 'In life' : 'At work'].forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
+  [w.cat, w.lvl, w.mins + ' min setup', w.side === 'life' ? 'In life' : 'At work'].forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = t; tags.appendChild(s); });
   $('#dTitle').textContent = w.t;
-  $('#dBy').textContent = `Shared by ${w.by}${w.v ? ' (verified creator)' : ''}${w.date ? ' · ' + new Date(w.date).toLocaleDateString(undefined, {month: 'short', year: 'numeric'}) : ''}`;
   $('#dDesc').textContent = w.d;
-  const how = $('#dHow'); how.innerHTML = '';
-  w.how.forEach(h => { const l = document.createElement('li'); l.textContent = h; how.appendChild(l); });
-  $('#dHowWrap').hidden = !w.how.length;
   const tools = $('#dTools'); tools.innerHTML = '';
-  (w.tools.length ? w.tools : ['n8n']).forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t; tools.appendChild(s); });
-  const setup = $('#dSetup'); setup.innerHTML = '';
-  const add = (title, sub) => { const l = document.createElement('li'); const b = document.createElement('b'); b.textContent = title; l.appendChild(b); if (sub) { const s = document.createElement('span'); s.textContent = sub; l.appendChild(s); } setup.appendChild(l); };
-  add('Get a free n8n account', 'n8n is the app that runs the workflow. Sign up for n8n Cloud, or install it on your own computer.');
-  add('Open the template and click "Use workflow"', 'It copies straight into your n8n workspace. No coding needed.');
-  const tl = w.tools.filter(t => !/^(AI Agent|HTTP Request|Schedule|Webhook)$/.test(t));
-  add('Connect your accounts', w.setup.length ? w.setup.join(' · ') : (tl.length ? `Sign in to ${tl.slice(0, 4).join(', ')} when n8n asks.` : 'Add any logins or API keys the template asks for.'));
-  add('Test it once, then switch it on', 'Run it with a real example, check the result, then set it to Active.');
-  $('#dLink').href = w.url;
+  w.tools.forEach(t => { const s = document.createElement('span'); s.className = 'tag'; s.style.background = '#e8f8fe'; s.textContent = t === 'AI assistant' ? 'AI assistant (ChatGPT, Claude or Gemini)' : t; tools.appendChild(s); });
+  $('#dWhen').textContent = w.when;
+  const done = getDone(w.id);
+  const list = $('#dSteps'); list.innerHTML = '';
+  const prog = () => {
+    const n = [...done].filter(i => i < w.steps.length).length;
+    $('#dProg').textContent = n === w.steps.length ? 'All done! Nice catch.' : `${n} of ${w.steps.length} done`;
+    $('#dBar').style.width = (n / w.steps.length * 100) + '%';
+  };
+  w.steps.forEach((st, i) => {
+    const li = document.createElement('li');
+    li.classList.toggle('done', done.has(i));
+    const tick = document.createElement('button'); tick.type = 'button'; tick.className = 'tick';
+    tick.setAttribute('aria-label', `Mark step ${i + 1} done`);
+    tick.setAttribute('aria-pressed', done.has(i));
+    tick.textContent = done.has(i) ? '✓' : i + 1;
+    tick.addEventListener('click', () => {
+      done.has(i) ? done.delete(i) : done.add(i);
+      setDone(w.id, done);
+      li.classList.toggle('done', done.has(i));
+      tick.textContent = done.has(i) ? '✓' : i + 1;
+      tick.setAttribute('aria-pressed', done.has(i));
+      prog();
+      if (done.size === w.steps.length) { const r = tick.getBoundingClientRect(); burst(r.left + 14, r.top + 14); }
+    });
+    const h = document.createElement('span'); h.className = 'gh'; h.textContent = st.h;
+    const b = document.createElement('span'); b.className = 'gb'; b.textContent = st.b || '';
+    li.append(tick, h, b);
+    if (st.p) li.appendChild(promptBlock(st.p));
+    list.appendChild(li);
+  });
+  prog();
+  $('#dEx').textContent = w.example;
+  $('#dExWrap').hidden = !w.example;
+  const tips = $('#dTips'); tips.innerHTML = '';
+  w.tips.forEach(t => { const l = document.createElement('li'); l.textContent = t; tips.appendChild(l); });
+  $('#dTipWrap').hidden = !w.tips.length;
+  const flow = $('#dFlow'); flow.innerHTML = '';
+  const fl = (cls, txt, title) => { const l = document.createElement('li'); l.className = cls; l.textContent = txt; if (title) l.title = title; flow.appendChild(l); };
+  fl('trig', TRIG[w.auto.trigger.type] || 'You tap Run', w.auto.trigger.detail);
+  w.auto.actions.forEach(a => fl('', ACT[a.type] || a.type, a.detail));
+  $('#dNotify').textContent = "Tell me when it's ready";
   syncDetailSave();
   dlg.showModal();
+  dlg.scrollTop = 0;
 }
+$('#dNotify').addEventListener('click', e => { e.currentTarget.textContent = "You're on the list for automations!"; });
 function syncDetailSave() { $('#dSave').textContent = open && saved.has(open.id) ? 'In your net' : 'Reel it in'; }
 $('#dSave').addEventListener('click', () => { toggleSave(open.id); syncDetailSave(); render(); });
 $('#dClose').addEventListener('click', () => dlg.close());
