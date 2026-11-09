@@ -16,6 +16,7 @@
   --radius:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{font-family:"DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.55}
 h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em;line-height:1.02}
@@ -159,7 +160,7 @@ section{padding:100px 0}
 .credit{margin-top:28px;font-size:.9rem;color:#c7d3ff;text-align:center}
 .credit a{color:var(--yellow)}
 .net{cursor:pointer}
-dialog{border:3px solid var(--ink);border-radius:24px;padding:0;max-width:640px;width:calc(100% - 32px);box-shadow:12px 12px 0 var(--ink);background:var(--cream);color:var(--ink);max-height:calc(100vh - 40px)}
+dialog{border:3px solid var(--ink);border-radius:24px;padding:0;max-width:760px;width:calc(100% - 32px);box-shadow:12px 12px 0 var(--ink);background:var(--cream);color:var(--ink);max-height:calc(100vh - 40px)}
 dialog::backdrop{background:rgba(11,29,79,.55);backdrop-filter:blur(3px)}
 dialog[open]{animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
 .d-head{padding:28px 28px 22px;border-bottom:3px solid var(--ink);position:relative}
@@ -199,6 +200,67 @@ dialog[open]{animation:pop .35s cubic-bezier(.3,1.5,.5,1)}
 .flow li{border:2.5px solid var(--ink);border-radius:12px;background:#fff;padding:6px 10px;font-size:.85rem;font-weight:700}
 .flow li.trig{background:var(--yellow)}
 .flow li+li::before{content:"\2192";margin:0 6px 0 -2px;color:var(--orange);font-weight:900}
+.run{margin:22px 0 6px;border:3px solid var(--ink);border-radius:20px;padding:22px 20px 18px;background:#fff;box-shadow:6px 6px 0 var(--ink);position:relative}
+.run h4{margin-top:0!important;font-size:1.5rem!important}
+.run-badge{position:absolute;top:-14px;left:18px;background:var(--yellow);border:2.5px solid var(--ink);border-radius:999px;padding:2px 12px;font-weight:800;font-size:.8rem;transform:rotate(-3deg)}
+.run-intro{margin-bottom:14px;color:#33457a}
+.run-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fld{display:flex;flex-direction:column;gap:5px;font-weight:700;font-size:.9rem;min-width:0}
+.fld.wide{grid-column:1/-1}
+.fld input,.fld textarea,.fld select,.refine input{font:inherit;font-weight:500;font-size:.98rem;border:2.5px solid var(--ink);border-radius:12px;padding:9px 11px;background:var(--cream);color:var(--ink);width:100%;min-width:0}
+.fld textarea{resize:vertical}
+.fld input:focus,.fld textarea:focus,.fld select:focus,.refine input:focus{outline:3px solid var(--cyan);outline-offset:1px}
+.run-form>.fld{margin-bottom:12px}
+.run-attach{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.att{position:relative;border:2.5px dashed var(--navy);border-radius:12px;padding:8px 12px;font-weight:700;font-size:.9rem;cursor:pointer;background:var(--cream)}
+.att:hover{background:#fff1cc}
+.att input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.picked{font-size:.85rem;font-weight:700;color:#5a6a9a}
+.run-bar{display:flex;gap:10px;flex-wrap:wrap}
+.run-bar .btn{padding:12px 22px}
+.run-status{margin-top:14px;font-weight:700;color:var(--orange);min-height:1.2em}
+.out{margin-top:10px;border:2.5px solid var(--ink);border-radius:16px;background:var(--cream);padding:16px 18px;max-height:520px;overflow:auto;font-size:.97rem}
+.out.busy{background:repeating-linear-gradient(-45deg,var(--cream) 0 14px,#fff3d6 14px 28px);background-size:200% 200%;animation:stripe 2s linear infinite}
+@keyframes stripe{to{background-position:100% 100%}}
+.out h4,.out h5{font-family:"Bricolage Grotesque";margin:14px 0 6px!important;font-size:1.12rem!important}
+.out h4:first-child,.out h5:first-child{margin-top:0!important}
+.out p{margin:6px 0}
+.out ul,.out ol{padding-left:22px;margin:6px 0;display:block!important}
+.out li{margin:3px 0}
+.out code{background:#e8edff;border-radius:4px;padding:0 4px}
+.tbl{overflow-x:auto;margin:10px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:.88rem;background:#fff}
+.tbl th,.tbl td{border:2px solid var(--ink);padding:6px 8px;text-align:left;vertical-align:top}
+.tbl th{background:var(--yellow)}
+.out-acts,.kit-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.mini-btn{display:inline-flex;align-items:center;border:2.5px solid var(--ink);border-radius:10px;padding:7px 12px;font-weight:800;font-size:.88rem;background:#fff;color:var(--ink);text-decoration:none;box-shadow:2px 2px 0 var(--ink);transition:transform .12s}
+.mini-btn:hover{transform:translate(-1px,-1px)}
+.mini-btn:disabled{opacity:.5}
+.mini-btn.hot{background:var(--yellow)}
+.refine{display:flex;gap:8px;margin-top:12px}
+.refine input{flex:1}
+.kit{margin-top:26px}
+.kit-intro{color:#33457a;margin-bottom:12px}
+.kit-list{display:grid;gap:10px}
+.kit-item{border:2.5px solid var(--ink);border-radius:16px;background:#fff;overflow:hidden}
+.kit-item summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;column-gap:12px;align-items:center;padding:12px 14px}
+.kit-item summary::-webkit-details-marker{display:none}
+.kit-item summary::after{content:"+";grid-row:1/3;grid-column:3;font-weight:900;font-size:1.4rem;transition:transform .2s}
+.kit-item[open] summary::after{transform:rotate(45deg)}
+.kit-item[open] summary{background:#e6f7fd;border-bottom:2.5px solid var(--ink)}
+.kit-ico{grid-row:1/3;font-size:1.5rem;width:44px;height:44px;border:2.5px solid var(--ink);border-radius:12px;display:grid;place-items:center;background:var(--cream)}
+.kit-t{font-weight:800}
+.kit-s{font-size:.85rem;color:#5a6a9a;grid-column:2}
+.kit-body{padding:14px}
+.kit-note{font-size:.92rem;color:#33457a;margin:6px 0}
+.kit-pre{white-space:pre-wrap;font-size:.82rem;background:var(--navy-deep);color:#e8edff;border-radius:12px;padding:12px;max-height:240px;overflow:auto;margin:8px 0}
+.kit-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:6px}
+.checks{display:flex;flex-wrap:wrap;gap:14px;font-weight:700;font-size:.9rem;margin:8px 0}
+.filter-out h5{font-family:"Bricolage Grotesque";font-size:1.05rem;margin:14px 0 6px}
+.qbox{font-family:ui-monospace,monospace;font-size:.9rem;background:var(--navy-deep);color:var(--yellow);border-radius:10px;padding:10px 12px;word-break:break-word}
+.mini-steps{padding-left:20px!important;font-size:.92rem;margin:8px 0;display:block!important}
+.mini-steps li{margin:3px 0}
+@media (max-width:560px){.run-fields{grid-template-columns:1fr}.run{padding:20px 14px 14px}.refine{flex-direction:column}}
 @media (max-width:560px){.d-grid{grid-template-columns:1fr}.d-head,.d-body{padding-left:20px;padding-right:20px}}
 
 /* stats */
@@ -355,8 +417,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <h2 class="h2 reveal">Three casts and you're catching.</h2>
       <div class="steps">
         <div class="step reveal"><div class="num">1</div><h3>Cast</h3><p>Tell fishpond what you want AI to do, in plain words. "Clear my inbox", "plan dinners", "prep for sales calls".</p></div>
-        <div class="step reveal"><div class="num">2</div><h3>Hook</h3><p>Every workflow comes with bite-size steps, the tools it uses, and a real example so you see exactly how it works.</p></div>
-        <div class="step reveal"><div class="num">3</div><h3>Reel in</h3><p>Follow the steps with the apps you already use, tick them off, and keep it in your net. Soon fishpond will run them for you.</p></div>
+        <div class="step reveal"><div class="num">2</div><h3>Hook</h3><p>Fill in a few details and run it right here. fishpond does the work while you watch, from a photo, a file or a few words.</p></div>
+        <div class="step reveal"><div class="num">3</div><h3>Reel in</h3><p>Grab the set-up kit: calendar reminders, ready-made spreadsheets, email filters and your own AI assistant. Keep it in your net.</p></div>
       </div>
     </div>
   </section>
@@ -410,11 +472,13 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <div><h4>What you need</h4><div class="meta" id="dTools"></div></div>
         <div><h4>When it runs</h4><p id="dWhen"></p></div>
       </div>
-      <div class="d-progress"><h4>Set it up</h4><span id="dProg"></span></div>
+      <section class="run" id="dRun" aria-label="Run it here"></section>
+      <div class="d-progress"><h4>Or set it up yourself</h4><span id="dProg"></span></div>
       <div class="bar"><i id="dBar"></i></div>
       <ol class="guide" id="dSteps"></ol>
       <div id="dExWrap"><h4>What you'll get</h4><div class="example" id="dEx"></div></div>
       <div id="dTipWrap"><h4>Tips</h4><ul class="tips" id="dTips"></ul></div>
+      <section class="kit" id="dKit" aria-label="Set-up kit"></section>
       <div class="auto">
         <div class="auto-badge">Coming soon</div>
         <h4>Let fishpond run it for you</h4>
@@ -707,7 +771,7 @@ function card(w, i) {
       <div class="meta"><span class="tag"></span><span class="tag"></span><span class="tag"></span></div>
       <h3></h3><p class="by"></p><p class="desc"></p>
       <div class="meta tools"></div>
-      <div class="card-actions"><button class="how-btn" type="button">Start</button><button class="reel" type="button"></button></div>
+      <div class="card-actions"><button class="how-btn" type="button">Try it</button><button class="reel" type="button"></button></div>
     </div>`;
   $('.glyph', el).textContent = w.cat[0];
   const tags = $$('.meta .tag', el);
@@ -794,6 +858,488 @@ function promptBlock(text) {
   box.append(body, btn);
   return box;
 }
+/* ---------- Run it here + set-up kit ---------- */
+const capUse = name => (window.claude && typeof window.claude.use === 'function') ? Promise.resolve(window.claude.use(name)).catch(() => null) : Promise.resolve(null);
+const samplePromise = capUse('sample');
+const limitsPromise = samplePromise.then(s => s ? s.limits().catch(() => null) : null);
+const dlPromise = capUse('downloads');
+const IN_APP = !!(window.claude && window.claude.use);
+let runCtl = null;
+
+const BRACKET = /\[([^\]\n]{1,140})\]/g;
+const isShortVal = s => /^[\d£$€.,:%\s-]+$/.test(s) || (/^\d/.test(s) && s.split(/\s+/).length <= 2);
+const isGeneric = s => /^(number|amount|x|n|count|time|date|day|minutes|hours|weeks|days|price|percentage|age)$/i.test(s.trim());
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50) || 'fishpond';
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+const SAFETY = {
+  'Health & Fitness': 'This is general information, not medical advice: say so briefly, suggest checking with a GP or qualified professional where relevant, and never diagnose.',
+  'Money': 'This is general information, not financial advice: say so briefly where relevant and suggest checking big decisions with a qualified adviser.',
+  'Small Business Admin': 'Where tax or legal points come up, suggest checking them with an accountant or solicitor.',
+  'HR & Hiring': 'Never make or recommend a final decision about a person. Flag where a human must judge, and watch for bias.',
+  'Careers': 'Never invent experience, results or qualifications.',
+};
+const ERR = {
+  not_granted: 'Running guides here needs your OK to use Claude. You can still follow the steps below.',
+  sampling_disabled: "Claude isn't available on this account, so follow the steps below instead.",
+  rate_limited: 'Lots of requests just now. Wait a minute, then try again.',
+  session_expired: 'Please sign in to Claude again, then try again.',
+  image_rejected: "That photo couldn't be used. Try a JPG or PNG under 20 MB.",
+  images_unavailable: "Photos can't be sent from here. Remove the photo and try again.",
+  refused: "Claude couldn't help with that. Try rewording it.",
+  empty_completion: 'No answer came back. Try adding a little more detail.',
+  prompt_too_large: "That's too much text at once. Try a shorter file or paste less.",
+};
+const HIDE_RUN = new Set(['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed']);
+
+function fieldsFor(prompt) {
+  const seen = new Map();
+  for (const m of prompt.matchAll(BRACKET)) if (!seen.has(m[1])) seen.set(m[1], m.index);
+  return [...seen].map(([inner, idx]) => {
+    if (isShortVal(inner) || isGeneric(inner)) {
+      const before = prompt.slice(Math.max(0, idx - 50), idx).split(/\s+/).filter(Boolean).slice(-3).join(' ');
+      const after = prompt.slice(idx + inner.length + 2, idx + inner.length + 50).split(/\s+/).filter(Boolean).slice(0, 3).join(' ');
+      const label = `${before} ___ ${after}`.replace(/\[[^\]]*\]/g, '…').replace(/[\[\]"]/g, '').replace(/\s+/g, ' ').trim();
+      return {key: inner, label: label.charAt(0).toUpperCase() + label.slice(1), value: isShortVal(inner) ? inner : '', long: false};
+    }
+    const long = inner.length > 38 || /paste|text|notes|thread|email|message|transcript|draft|\bcv\b|job ad|description|details|list|feedback|review|content|answers|article|document|questions|policy|bio\b|summary|minutes/i.test(inner);
+    return {key: inner, label: inner.charAt(0).toUpperCase() + inner.slice(1), value: '', long};
+  });
+}
+
+function inline(node, text) {
+  text.split(/(\*\*[^*]+\*\*|`[^`]+`)/).forEach(part => {
+    if (/^\*\*[^*]+\*\*$/.test(part)) node.appendChild(el('strong', null, part.slice(2, -2)));
+    else if (/^`[^`]+`$/.test(part)) node.appendChild(el('code', null, part.slice(1, -1)));
+    else if (part) node.appendChild(document.createTextNode(part.replace(/(^|\s)\*([^*\s][^*]*)\*/g, '$1$2')));
+  });
+}
+function renderMd(text, root) {
+  root.textContent = '';
+  let list = null, table = null, para = [];
+  const flush = () => { if (para.length) { const p = el('p'); inline(p, para.join(' ')); root.appendChild(p); para = []; } };
+  for (const raw of text.replace(/\r/g, '').split('\n')) {
+    const l = raw.trimEnd();
+    if (/^\s*\|.*\|\s*$/.test(l)) {
+      flush(); list = null;
+      const cells = l.trim().slice(1, -1).split('|').map(c => c.trim());
+      if (cells.every(c => /^:?-{2,}:?$/.test(c))) continue;
+      if (!table) { const wrap = el('div', 'tbl'); table = el('table'); wrap.appendChild(table); root.appendChild(wrap); const tr = table.insertRow(); cells.forEach(c => { const th = el('th'); inline(th, c); tr.appendChild(th); }); }
+      else { const tr = table.insertRow(); cells.forEach(c => inline(tr.insertCell(), c)); }
+      continue;
+    }
+    table = null;
+    let m;
+    if (!l.trim() || /^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(l)) { flush(); list = null; continue; }
+    if ((m = l.match(/^(#{1,6})\s+(.*)/))) { flush(); list = null; const h = el(m[1].length <= 2 ? 'h4' : 'h5'); inline(h, m[2]); root.appendChild(h); continue; }
+    const bul = l.match(/^\s*[-*•]\s+(.*)/), num = l.match(/^\s*\d+[.)]\s+(.*)/);
+    if (bul || num) {
+      flush();
+      const kind = bul ? 'ul' : 'ol';
+      if (!list || list.tagName.toLowerCase() !== kind) { list = el(kind); root.appendChild(list); }
+      const li = el('li'); inline(li, (bul || num)[1]); list.appendChild(li);
+      continue;
+    }
+    list = null; para.push(l.trim());
+  }
+  flush();
+}
+
+async function copyText(text, btn, done = 'Copied!') {
+  const was = btn.textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = done; }
+  catch { btn.textContent = 'Press Ctrl/Cmd+C to copy'; }
+  setTimeout(() => btn.textContent = was, 2200);
+}
+async function saveFile(filename, data, btn) {
+  const was = btn.textContent;
+  const say = t => { btn.textContent = t; setTimeout(() => btn.textContent = was, 2600); };
+  const dl = await dlPromise;
+  if (dl) {
+    try { await dl.save({filename, data}); return say('Saved'); }
+    catch (e) {
+      if (e.code === 'declined') return say('Not saved');
+      if (e.code === 'rate_limited') return say('One moment, then try again');
+      if (!['unavailable', 'not_granted', 'capability_disabled', 'capability_removed'].includes(e.code)) return say("Couldn't save");
+    }
+  }
+  try {
+    const url = URL.createObjectURL(new Blob([data], {type: 'application/octet-stream'}));
+    const a = el('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    say('Saved');
+  } catch { say("Couldn't save here"); }
+}
+function htmlDoc(title, bodyNode) {
+  const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.55;color:#0b1d4f}h1{font-size:1.6rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid #c9d2ea;padding:6px 8px;text-align:left;vertical-align:top}th{background:#fff7e8}pre{white-space:pre-wrap;background:#f3f5fb;padding:12px;border-radius:8px}.foot{margin-top:40px;font-size:.85rem;color:#5a6a9a}</style></head><body><h1>${esc(title)}</h1>${bodyNode.innerHTML}<p class="foot">Made with fishpond.ai</p></body></html>`;
+}
+
+/* --- Run it here --- */
+function renderRun(w) {
+  const box = $('#dRun'); box.textContent = '';
+  const prompts = w.steps.filter(s => s.p);
+  if (!prompts.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.append(el('div', 'run-badge', 'Do it now'), el('h4', null, 'Run it right here'));
+  const intro = el('p', 'run-intro', 'Fill in what you can (blanks are fine) and fishpond will do it for you.');
+  box.appendChild(intro);
+
+  let chosen = prompts[0];
+  const form = el('form', 'run-form');
+  const fieldsWrap = el('div', 'run-fields');
+  if (prompts.length > 1) {
+    const lab = el('label', 'fld'); lab.appendChild(el('span', null, 'What do you want to do?'));
+    const sel = el('select');
+    prompts.forEach((s, i) => { const o = el('option', null, s.h); o.value = i; sel.appendChild(o); });
+    sel.addEventListener('change', () => { chosen = prompts[+sel.value]; drawFields(); });
+    lab.appendChild(sel); form.appendChild(lab);
+  }
+  form.appendChild(fieldsWrap);
+  let inputs = [];
+  function drawFields() {
+    fieldsWrap.textContent = ''; inputs = [];
+    fieldsFor(chosen.p).forEach((f, i) => {
+      const lab = el('label', 'fld' + (f.long ? ' wide' : ''));
+      lab.appendChild(el('span', null, f.label));
+      const inp = el(f.long ? 'textarea' : 'input');
+      if (f.long) inp.rows = 4;
+      inp.value = f.value;
+      inp.placeholder = f.long ? 'Paste or type here' : 'Optional';
+      inp.dataset.key = f.key;
+      lab.appendChild(inp); fieldsWrap.appendChild(lab); inputs.push(inp);
+    });
+  }
+  drawFields();
+
+  const attach = el('div', 'run-attach');
+  const photoLab = el('label', 'att'); photoLab.hidden = true;
+  const photo = el('input'); photo.type = 'file'; photo.multiple = true;
+  photoLab.append(el('span', null, '📷 Add a photo or screenshot'), photo);
+  const fileLab = el('label', 'att');
+  const file = el('input'); file.type = 'file'; file.accept = '.txt,.csv,.md,.json,text/plain,text/csv';
+  fileLab.append(el('span', null, '📄 Add a text or CSV file'), file);
+  const picked = el('span', 'picked');
+  const showPicked = () => {
+    const names = [...photo.files, ...file.files].map(f => f.name);
+    picked.textContent = names.length ? 'Added: ' + names.join(', ') : '';
+  };
+  photo.addEventListener('change', showPicked); file.addEventListener('change', showPicked);
+  attach.append(photoLab, fileLab, picked);
+  form.appendChild(attach);
+  limitsPromise.then(lim => {
+    if (lim && lim.images) { photo.accept = lim.images.mediaTypes.join(','); photoLab.hidden = false; photoLab.title = `Up to ${lim.images.maxCount} images`; }
+  });
+
+  const bar = el('div', 'run-bar');
+  const go = el('button', 'btn o', '▶ Run it'); go.type = 'submit';
+  const stop = el('button', 'btn', 'Stop'); stop.type = 'button'; stop.hidden = true;
+  bar.append(go, stop);
+  form.appendChild(bar);
+  box.appendChild(form);
+
+  const status = el('p', 'run-status'); status.setAttribute('aria-live', 'polite');
+  const out = el('div', 'out'); out.hidden = true;
+  const outActs = el('div', 'out-acts'); outActs.hidden = true;
+  const copyB = el('button', 'mini-btn', 'Copy'), saveB = el('button', 'mini-btn', 'Save as document'), againB = el('button', 'mini-btn', 'Try another version');
+  [copyB, saveB, againB].forEach(b => { b.type = 'button'; outActs.appendChild(b); });
+  const refine = el('form', 'refine'); refine.hidden = true;
+  const refIn = el('input'); refIn.placeholder = 'Change something, e.g. "make it shorter" or "no fish"'; refIn.setAttribute('aria-label', 'Ask for a change');
+  const refB = el('button', 'mini-btn', 'Change it'); refB.type = 'submit';
+  refine.append(refIn, refB);
+  box.append(status, out, outActs, refine);
+
+  let lastPrompt = '', lastText = '';
+  async function call(input, opts, label) {
+    const sample = await samplePromise;
+    if (!sample) {
+      status.textContent = IN_APP ? "Running guides isn't available here. Follow the steps below instead." : 'Run it here works inside the fishpond app preview. For now, copy the prompt in the steps below into your AI assistant.';
+      return;
+    }
+    runCtl?.abort();
+    const ctl = runCtl = new AbortController();
+    go.disabled = true; refB.disabled = true; againB.disabled = true; stop.hidden = false;
+    status.textContent = label; out.hidden = false; out.classList.add('busy');
+    if (!opts.keep) out.textContent = '';
+    try {
+      const res = await sample(input, {...opts.sample, signal: ctl.signal, onText: ({text}) => { status.textContent = 'Writing…'; renderMd(text, out); }});
+      lastText = res.text; renderMd(res.text, out);
+      status.textContent = res.truncated ? 'That was cut short. Ask for less at a time, or use "Change it".' : 'Done. Copy it, save it, or ask for a change.';
+      outActs.hidden = false; refine.hidden = false;
+      const r = go.getBoundingClientRect(); burst(r.left + r.width / 2, r.top);
+    } catch (e) {
+      if (e.code === 'cancelled') { status.textContent = 'Stopped.'; if (e.text) { lastText = e.text; renderMd(e.text, out); outActs.hidden = false; } }
+      else {
+        if (e.text && e.code !== 'refused') renderMd(e.text, out); else if (!lastText) out.hidden = true;
+        status.textContent = ERR[e.code] || 'Something went wrong. Try again in a moment.';
+        if (HIDE_RUN.has(e.code)) form.hidden = true;
+      }
+    } finally {
+      out.classList.remove('busy'); go.disabled = false; refB.disabled = false; againB.disabled = false; stop.hidden = true;
+      if (runCtl === ctl) runCtl = null;
+    }
+  }
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const vals = {}; inputs.forEach(i => vals[i.dataset.key] = i.value.trim());
+    const filled = chosen.p.replace(BRACKET, (m, k) => vals[k] ? vals[k] : `[${k}: not given]`);
+    let fileText = '';
+    if (file.files[0]) { try { fileText = (await file.files[0].text()).slice(0, 40000); } catch {} }
+    const imgs = [...photo.files];
+    lastPrompt = [
+      'You are fishpond, an assistant that does practical everyday tasks for people who are not technical.',
+      `Task: ${w.t}. Goal: ${w.d}`,
+      'Their request (anything marked "not given" is missing):', '"""', filled, '"""',
+      fileText ? `They attached a file called "${file.files[0].name}":\n"""\n${fileText}\n"""` : '',
+      imgs.length ? `They attached ${imgs.length} photo${imgs.length > 1 ? 's' : ''}. Use ${imgs.length > 1 ? 'them' : 'it'}.` : 'No photos were attached, so work from the details given.',
+      'Do the task now and give the finished result, ready to use or copy. Do not tell them to use another app or AI tool for this. Where details are missing, make sensible assumptions and list them at the very end under a heading "Assumptions" (at most 4 short bullets). Format with Markdown: short headings, bullet points, numbered steps, and tables where useful. Keep it practical and no longer than it needs to be. British English.',
+      SAFETY[w.cat] || '',
+    ].filter(Boolean).join('\n\n');
+    lastText = '';
+    call(lastPrompt, {sample: imgs.length ? {images: imgs} : {}}, 'Thinking… (the first run asks you to allow Claude)');
+  });
+  stop.addEventListener('click', () => runCtl?.abort());
+  againB.addEventListener('click', () => { if (lastPrompt) call(lastPrompt, {sample: {cache: false}}, 'Writing another version…'); });
+  refine.addEventListener('submit', e => {
+    e.preventDefault();
+    const ask = refIn.value.trim();
+    if (!ask || !lastText) return;
+    call([{role: 'user', content: lastPrompt}, {role: 'assistant', content: lastText}, {role: 'user', content: `Please change it: ${ask}. Give the full updated result.`}], {sample: {cache: false}}, 'Making your change…');
+    refIn.value = '';
+  });
+  copyB.addEventListener('click', () => copyText(lastText, copyB));
+  saveB.addEventListener('click', () => saveFile(slugify(w.t) + '.html', htmlDoc(w.t, out), saveB));
+}
+
+/* --- Set-up kit --- */
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const BYDAY = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+const pad = n => String(n).padStart(2, '0');
+function parseWhen(w) {
+  const s = (w.auto.trigger.detail + ' ' + w.when).toLowerCase();
+  let rep = 'WEEKLY', day = DAYS.findIndex(d => s.includes(d.toLowerCase())), hh = 9, mm = 0;
+  if (/fortnight|every (two|2) weeks/.test(s)) rep = 'FORTNIGHTLY';
+  else if (/weekday|working day/.test(s)) rep = 'WEEKDAYS';
+  else if (/daily|every (day|morning|evening|night)|each (day|morning|evening)/.test(s)) rep = 'DAILY';
+  else if (/month/.test(s)) rep = 'MONTHLY';
+  if (day < 0) day = /end of (the )?week|friday/.test(s) ? 5 : /weekend/.test(s) ? 0 : 1;
+  const t = s.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/);
+  if (t) { hh = (+t[1] % 12) + (t[3] === 'pm' ? 12 : 0); mm = +(t[2] || 0); }
+  else if (/morning|breakfast/.test(s)) { hh = 8; mm = 30; }
+  else if (/lunch/.test(s)) hh = 12;
+  else if (/afternoon|end of (the )?day/.test(s)) hh = 16;
+  else if (/evening|night/.test(s)) hh = 18;
+  return {rep, day, time: `${pad(hh)}:${pad(mm)}`};
+}
+const wantsCalendar = w => ['schedule', 'calendar_event'].includes(w.auto.trigger.type) || /\b(every|each|weekly|daily|monthly|fortnight|morning|evening|sunday|monday|tuesday|wednesday|thursday|friday|saturday|weekend)\b/i.test(w.when);
+const wantsSheet = w => w.tools.some(t => /sheets|excel/i.test(t)) || w.auto.actions.some(a => a.type.startsWith('sheet.'));
+const wantsFilter = w => w.auto.actions.some(a => a.type === 'email.label') || (w.auto.trigger.type === 'new_email' && w.tools.some(t => /gmail|outlook/i.test(t))) || (w.tools.some(t => /gmail|outlook/i.test(t)) && /\b(filter|label|rule|folder|newsletter|unsubscribe|sort (incoming|your)|declutter|tidy)/i.test(w.t + ' ' + w.d + ' ' + w.steps.map(x => x.h + ' ' + x.b).join(' ')));
+
+function kitItem(icon, title, sub) {
+  const d = el('details', 'kit-item');
+  const s = el('summary');
+  s.append(el('span', 'kit-ico', icon), el('span', 'kit-t', title), el('span', 'kit-s', sub));
+  d.appendChild(s);
+  const body = el('div', 'kit-body'); d.appendChild(body);
+  return [d, body];
+}
+function btnRow(...btns) { const r = el('div', 'kit-acts'); btns.forEach(b => r.appendChild(b)); return r; }
+function mkBtn(text, cls = 'mini-btn') { const b = el('button', cls, text); b.type = 'button'; return b; }
+function mkLink(text, href) { const a = el('a', 'mini-btn', text); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; }
+
+function assistantText(w) {
+  const prompts = w.steps.filter(s => s.p);
+  const asks = [...new Set(prompts.flatMap(s => [...s.p.matchAll(BRACKET)].map(m => m[1])).filter(x => !isShortVal(x)))];
+  const lower = w.t.charAt(0).toLowerCase() + w.t.slice(1);
+  return [
+    'NAME', w.t.replace(/^(get|turn|make|keep|plan|write|build|create)\s+/i, '').replace(/^./, c => c.toUpperCase()).slice(0, 40) + ' helper', '',
+    'DESCRIPTION', w.d, '',
+    'INSTRUCTIONS',
+    `You help me ${lower}. ${w.d}`, '',
+    asks.length ? 'When we start, ask me for anything below that I haven\'t given you yet, one or two questions at a time:\n' + asks.map(a => '- ' + a).join('\n') + '\n' : '',
+    'Then follow this process:', ...w.steps.map((s, i) => `${i + 1}. ${s.h}. ${s.b}`), '',
+    ...prompts.map((s, i) => `${prompts.length > 1 ? `Core request ${i + 1} (${s.h}):` : 'Core request:'}\n"${s.p}"\n`),
+    'Always:',
+    '- Give finished, ready-to-use results with short headings and bullet points.',
+    '- Say briefly what you assumed when details are missing.',
+    ...w.tips.map(t => '- ' + t),
+    SAFETY[w.cat] ? '- ' + SAFETY[w.cat] : '', '',
+    'CONVERSATION STARTERS', "- Let's do this now", '- What do you need from me?', '- Use what I gave you last time', '',
+    'HOW TO SET IT UP (on plans that include custom assistants)',
+    '- ChatGPT: open GPTs, choose Create, and paste the instructions into Configure.',
+    '- Claude: create a Project and paste them into the project instructions.',
+    '- Gemini: open Gems, create a new Gem and paste them in.',
+  ].filter(x => x !== '').join('\n').replace(/\n{3,}/g, '\n\n');
+}
+
+function calendarKit(w, body) {
+  const p = parseWhen(w);
+  const f = el('div', 'kit-form');
+  const mkSel = (label, opts, val) => { const l = el('label', 'fld'); l.appendChild(el('span', null, label)); const s = el('select'); opts.forEach(([v, t]) => { const o = el('option', null, t); o.value = v; s.appendChild(o); }); s.value = val; l.appendChild(s); f.appendChild(l); return s; };
+  const rep = mkSel('Repeat', [['NONE', 'Just once'], ['DAILY', 'Every day'], ['WEEKDAYS', 'Every weekday'], ['WEEKLY', 'Every week'], ['FORTNIGHTLY', 'Every 2 weeks'], ['MONTHLY', 'Every month']], p.rep);
+  const day = mkSel('Day', DAYS.map((d, i) => [i, d]), p.day);
+  const tl = el('label', 'fld'); tl.appendChild(el('span', null, 'Time')); const time = el('input'); time.type = 'time'; time.value = p.time; tl.appendChild(time); f.appendChild(tl);
+  body.appendChild(f);
+  const acts = el('div', 'kit-acts'); body.appendChild(acts);
+  const note = el('p', 'kit-note'); body.appendChild(note);
+  const prompt = (w.steps.find(s => s.p) || {}).p || '';
+  const details = `${w.d}\n\nWhat to do:\n${w.steps.map((s, i) => `${i + 1}. ${s.h}`).join('\n')}${prompt ? `\n\nPrompt to use:\n${prompt}` : ''}\n\nFrom fishpond.ai`;
+  const title = 'fishpond: ' + w.t;
+  const dur = Math.min(60, Math.max(15, Math.round(w.mins / 15) * 15 || 15));
+  function draw() {
+    day.closest('label').hidden = !['WEEKLY', 'FORTNIGHTLY'].includes(rep.value);
+    const [hh, mm] = (time.value || '09:00').split(':').map(Number);
+    const start = new Date(); start.setSeconds(0, 0); start.setHours(hh, mm);
+    const target = ['WEEKLY', 'FORTNIGHTLY'].includes(rep.value) ? +day.value : null;
+    while (start <= new Date() || (target !== null && start.getDay() !== target) || (rep.value === 'WEEKDAYS' && [0, 6].includes(start.getDay()))) start.setDate(start.getDate() + 1);
+    const end = new Date(start.getTime() + dur * 60000);
+    const g = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+    const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:00`;
+    const rrule = {NONE: '', DAILY: 'FREQ=DAILY', WEEKDAYS: 'FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR', WEEKLY: `FREQ=WEEKLY;BYDAY=${BYDAY[start.getDay()]}`, FORTNIGHTLY: `FREQ=WEEKLY;INTERVAL=2;BYDAY=${BYDAY[start.getDay()]}`, MONTHLY: 'FREQ=MONTHLY'}[rep.value];
+    const gq = new URLSearchParams({action: 'TEMPLATE', text: title, details, dates: `${g(start)}/${g(end)}`});
+    if (rrule) gq.set('recur', 'RRULE:' + rrule);
+    const oq = q => new URLSearchParams({path: '/calendar/action/compose', rru: 'addevent', subject: title, body: details, startdt: iso(start), enddt: iso(end)});
+    acts.textContent = '';
+    acts.append(mkLink('Add to Google Calendar', 'https://calendar.google.com/calendar/render?' + gq),
+      mkLink('Add to Outlook.com', 'https://outlook.live.com/calendar/0/deeplink/compose?' + oq()),
+      mkLink('Add to Outlook (work)', 'https://outlook.office.com/calendar/0/deeplink/compose?' + oq()));
+    if (!IN_APP) {
+      const ics = mkBtn('Download calendar file (.ics)');
+      ics.addEventListener('click', () => {
+        const esc = s => s.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/[,;]/g, m => '\\' + m);
+        saveFile(slugify(w.t) + '.ics', ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//fishpond.ai//EN', 'BEGIN:VEVENT', `UID:${Date.now()}-${slugify(w.t)}@fishpond.ai`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`, `DTSTART:${g(start)}`, `DTEND:${g(end)}`, rrule ? `RRULE:${rrule}` : '', `SUMMARY:${esc(title)}`, `DESCRIPTION:${esc(details)}`, 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n'), ics);
+      });
+      acts.appendChild(ics);
+    }
+    note.textContent = `First one: ${start.toLocaleDateString(undefined, {weekday: 'long', day: 'numeric', month: 'long'})} at ${time.value}. The reminder includes the steps and the prompt.` + (rrule ? ' In Outlook, set "Repeat" once the event opens.' : '');
+  }
+  [rep, day, time].forEach(x => x.addEventListener('change', draw));
+  draw();
+}
+
+function sheetKit(w, body) {
+  body.appendChild(el('p', 'kit-note', 'fishpond designs the columns and fills in a few example rows, ready to open in Google Sheets or Excel.'));
+  const make = mkBtn('Build my spreadsheet', 'mini-btn hot');
+  const acts = btnRow(make); body.appendChild(acts);
+  const status = el('p', 'kit-note'); const prev = el('div', 'tbl'); prev.hidden = true;
+  body.append(status, prev);
+  let csv = '';
+  make.addEventListener('click', async () => {
+    const sample = await samplePromise;
+    if (!sample) { status.textContent = IN_APP ? "Building spreadsheets isn't available here." : 'Spreadsheet building works inside the fishpond app preview.'; return; }
+    make.disabled = true; status.textContent = 'Designing your spreadsheet…';
+    try {
+      const data = await sample.json(`Design a simple, practical spreadsheet for someone doing this: "${w.t}". ${w.d}\nThe steps they follow: ${w.steps.map(s => s.h).join('; ')}.\nReply with only JSON in this shape: {"columns": ["Column", ...], "rows": [["value", ...], ...], "tips": ["...", "..."]}.\nRules: 4 to 10 columns with clear headings; 4 realistic example rows of invented sample data, each with exactly one value per column; 2 short tips on using it (for example how to sort, filter or total). British English.`, {modelTier: 'quick'});
+      const cols = Array.isArray(data.columns) ? data.columns.map(String).slice(0, 12) : [];
+      if (!cols.length) throw {code: 'invalid_json'};
+      const rows = (Array.isArray(data.rows) ? data.rows : []).slice(0, 8).map(r => cols.map((_, i) => String((Array.isArray(r) ? r[i] : '') ?? '')));
+      const q = v => /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
+      csv = [cols, ...rows].map(r => r.map(q).join(',')).join('\r\n') + '\r\n';
+      prev.textContent = ''; const t = el('table'); const hr = t.insertRow(); cols.forEach(c => hr.appendChild(el('th', null, c))); rows.forEach(r => { const tr = t.insertRow(); r.forEach(v => tr.insertCell().textContent = v); }); prev.appendChild(t); prev.hidden = false;
+      status.textContent = (Array.isArray(data.tips) ? data.tips.slice(0, 3).map(String).join(' ') + ' ' : '') + 'Open it in Excel, or in Google Sheets use File, then Import, then Upload. Delete the example rows when you start.';
+      acts.textContent = '';
+      const save = mkBtn('Save spreadsheet (.csv)', 'mini-btn hot'); save.addEventListener('click', () => saveFile(slugify(w.t) + '.csv', csv, save));
+      const redo = mkBtn('Design it again'); redo.addEventListener('click', () => { acts.textContent = ''; acts.appendChild(make); make.click(); });
+      acts.append(save, redo);
+    } catch (e) {
+      status.textContent = e.code === 'invalid_json' ? "That didn't come out right. Try again." : (ERR[e.code] || 'Something went wrong. Try again in a moment.');
+    } finally { make.disabled = false; }
+  });
+}
+
+const FILTERS = [
+  {k: 'news', name: 'Newsletters and promotions', words: 'unsubscribe', label: 'Newsletters', test: /newsletter|unsubscribe|promo|subscription/i},
+  {k: 'money', name: 'Receipts, orders and invoices', words: 'subject:(receipt OR invoice OR order OR payment)', label: 'Receipts', test: /receipt|invoice|order|expense|bill|payment|bookkeep/i},
+  {k: 'support', name: 'Customer questions', words: 'question OR enquiry OR help OR problem', label: 'Customers', test: /support|customer|enquir|ticket|complain/i},
+  {k: 'jobs', name: 'Job applications', words: 'application OR interview OR CV OR vacancy', label: 'Job hunt', test: /job|cv|applica|recruit|interview|candidate/i},
+  {k: 'trips', name: 'Travel bookings', words: 'booking OR itinerary OR confirmation OR reservation', label: 'Trips', test: /travel|trip|booking|flight|hotel/i},
+  {k: 'family', name: 'School and clubs', words: 'school OR club OR term OR class', label: 'Family', test: /school|club|family|kids|parent/i},
+  {k: 'from', name: 'Emails from one person or company', words: '', label: '', test: /^$/},
+];
+function filterKit(w, body) {
+  const hay = w.t + ' ' + w.d + ' ' + w.cat;
+  const def = FILTERS.find(f => f.test.test(hay)) || FILTERS[FILTERS.length - 1];
+  const f = el('div', 'kit-form');
+  const fld = (label, node) => { const l = el('label', 'fld'); l.append(el('span', null, label), node); f.appendChild(l); return node; };
+  const preset = el('select'); FILTERS.forEach(x => { const o = el('option', null, x.name); o.value = x.k; preset.appendChild(o); }); preset.value = def.k; fld('Which emails?', preset);
+  const from = el('input'); from.placeholder = 'e.g. boss@work.com or @shop.com'; fld('From (optional)', from);
+  const words = el('input'); fld('Containing words', words);
+  const label = el('input'); fld('Label or folder name', label);
+  const opts = el('div', 'checks');
+  const chk = (t, on) => { const l = el('label'); const c = el('input'); c.type = 'checkbox'; c.checked = on; l.append(c, document.createTextNode(' ' + t)); opts.appendChild(l); return c; };
+  const skip = chk('Skip the inbox', def.k === 'news'), read = chk('Mark as read', false), star = chk('Star it', def.k === 'support');
+  body.append(f, opts);
+  const out = el('div', 'filter-out'); body.appendChild(out);
+  const setPreset = () => { const p = FILTERS.find(x => x.k === preset.value); words.value = p.words; label.value = p.label || ''; };
+  setPreset();
+  function draw() {
+    const q = [from.value.trim() ? `from:(${from.value.trim()})` : '', words.value.trim()].filter(Boolean).join(' ');
+    const lab = label.value.trim() || 'fishpond';
+    out.textContent = '';
+    out.appendChild(el('h5', null, 'In Gmail'));
+    const code = el('div', 'qbox', q || 'Add a sender or some words above');
+    out.appendChild(code);
+    const ol = el('ol', 'mini-steps');
+    [['Open this search in Gmail and check the emails it finds look right.'], ['Click the sliders icon at the right of the search bar, then "Create filter".'], [`Tick "Apply the label", choose New label and call it "${lab}"${skip.checked ? ', tick "Skip the Inbox"' : ''}${read.checked ? ', tick "Mark as read"' : ''}${star.checked ? ', tick "Star it"' : ''}.`], ['Tick "Also apply filter to matching conversations" to sort old emails too, then click "Create filter".']].forEach(([t]) => ol.appendChild(el('li', null, t)));
+    out.appendChild(ol);
+    const acts = el('div', 'kit-acts');
+    if (q) acts.append(mkLink('Open this search in Gmail', 'https://mail.google.com/mail/u/0/#search/' + encodeURIComponent(q)));
+    const cp = mkBtn('Copy search'); cp.addEventListener('click', () => copyText(q, cp)); acts.appendChild(cp);
+    if (!IN_APP && q) {
+      const xml = mkBtn('Download Gmail filter file');
+      xml.addEventListener('click', () => {
+        const x = s => s.replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;'}[c]));
+        const props = [['from', from.value.trim()], ['hasTheWord', words.value.trim()], ['label', lab], ['shouldArchive', skip.checked && 'true'], ['shouldMarkAsRead', read.checked && 'true'], ['shouldStar', star.checked && 'true']].filter(p => p[1]);
+        saveFile('mailFilters.xml', `<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:apps='http://schemas.google.com/apps/2006'><title>Mail Filters</title><entry><category term='filter'></category><title>Mail Filter</title><content></content>${props.map(([n, v]) => `<apps:property name='${n}' value='${x(v)}'/>`).join('')}</entry></feed>`, xml);
+      });
+      acts.appendChild(xml);
+    }
+    out.appendChild(acts);
+    out.appendChild(el('h5', null, 'In Outlook'));
+    out.appendChild(el('p', 'kit-note', `Open Settings, then Mail, then Rules, and add a new rule. Choose ${from.value.trim() ? `"From" ${from.value.trim()}` : `"Subject or body includes" ${words.value.replace(/subject:|[()]/g, '').split(/\s+OR\s+/i).map(s => `"${s.trim()}"`).join(', ')}`}, then "Move to" a folder called "${lab}".`));
+  }
+  preset.addEventListener('change', () => { setPreset(); draw(); });
+  [from, words, label].forEach(i => i.addEventListener('input', draw));
+  [skip, read, star].forEach(i => i.addEventListener('change', draw));
+  draw();
+}
+
+function renderKit(w) {
+  const kit = $('#dKit'); kit.textContent = '';
+  kit.append(el('h4', null, 'Your set-up kit'), el('p', 'kit-intro', 'Ready-made pieces so you don\'t start from scratch.'));
+  const list = el('div', 'kit-list'); kit.appendChild(list);
+
+  const [aD, aB] = kitItem('🤖', 'Make it your own AI assistant', 'Set up once in ChatGPT, Claude or Gemini, then just open it');
+  const txt = assistantText(w);
+  aB.appendChild(el('p', 'kit-note', 'Paste these instructions into a custom GPT, a Claude Project or a Gemini Gem (on plans that include them). Next time, open it and say "let\'s do this".'));
+  aB.appendChild(el('pre', 'kit-pre', txt));
+  const c1 = mkBtn('Copy instructions', 'mini-btn hot'); c1.addEventListener('click', () => copyText(txt, c1));
+  const s1 = mkBtn('Save as text file'); s1.addEventListener('click', () => saveFile(slugify(w.t) + '-assistant.txt', txt, s1));
+  aB.appendChild(btnRow(c1, s1));
+  list.appendChild(aD);
+
+  if (wantsCalendar(w)) { const [d, b] = kitItem('📅', 'Put it on your calendar', 'A repeating reminder with the steps inside'); calendarKit(w, b); list.appendChild(d); }
+  if (wantsSheet(w)) { const [d, b] = kitItem('📊', 'Get a ready-made spreadsheet', 'Columns and example rows, built for this'); sheetKit(w, b); list.appendChild(d); }
+  if (wantsFilter(w)) { const [d, b] = kitItem('📨', 'Sort these emails automatically', 'A Gmail filter or Outlook rule, filled in for you'); filterKit(w, b); list.appendChild(d); }
+
+  const [gD, gB] = kitItem('📝', 'Save this guide', 'Keep a copy of the steps and prompts');
+  gB.appendChild(el('p', 'kit-note', 'A tidy page you can print, open in Word or keep in your files.'));
+  const sg = mkBtn('Save guide', 'mini-btn hot');
+  sg.addEventListener('click', () => {
+    const tmp = el('div');
+    tmp.appendChild(el('p', null, w.d));
+    tmp.appendChild(el('p', null, `What you need: ${w.tools.join(', ')}. When: ${w.when}. Setup: about ${w.mins} minutes.`));
+    const ol = el('ol');
+    w.steps.forEach(s => { const li = el('li'); li.appendChild(el('strong', null, s.h)); li.appendChild(el('p', null, s.b || '')); if (s.p) li.appendChild(el('pre', null, s.p)); ol.appendChild(li); });
+    tmp.appendChild(ol);
+    if (w.example) { tmp.appendChild(el('h3', null, "What you'll get")); tmp.appendChild(el('p', null, w.example)); }
+    if (w.tips.length) { tmp.appendChild(el('h3', null, 'Tips')); const ul = el('ul'); w.tips.forEach(t => ul.appendChild(el('li', null, t))); tmp.appendChild(ul); }
+    saveFile(slugify(w.t) + '-guide.html', htmlDoc(w.t, tmp), sg);
+  });
+  gB.appendChild(btnRow(sg));
+  list.appendChild(gD);
+}
+
 function openDetail(w) {
   open = w;
   $('#dHead').style.background = catColor(w.cat);
@@ -844,6 +1390,8 @@ function openDetail(w) {
   fl('trig', TRIG[w.auto.trigger.type] || 'You tap Run', w.auto.trigger.detail);
   w.auto.actions.forEach(a => fl('', ACT[a.type] || a.type, a.detail));
   $('#dNotify').textContent = "Tell me when it's ready";
+  renderRun(w);
+  renderKit(w);
   syncDetailSave();
   dlg.showModal();
   dlg.scrollTop = 0;
@@ -852,6 +1400,7 @@ $('#dNotify').addEventListener('click', e => { e.currentTarget.textContent = "Yo
 function syncDetailSave() { $('#dSave').textContent = open && saved.has(open.id) ? 'In your net' : 'Reel it in'; }
 $('#dSave').addEventListener('click', () => { toggleSave(open.id); syncDetailSave(); render(); });
 $('#dClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('close', () => runCtl?.abort());
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 
 if (LIB.length) { renderCats(); render(); }
