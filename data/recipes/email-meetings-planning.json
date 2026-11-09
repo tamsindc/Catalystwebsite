@@ -1,0 +1,2811 @@
+[
+  {
+    "t": "Reply to tricky emails calmly and clearly",
+    "d": "Paste in an awkward email and get two ready-to-send replies, one warm and one firm, that say exactly what you mean.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Whenever an email makes you hesitate",
+    "steps": [
+      {
+        "h": "Copy the email you need to answer",
+        "b": "Copy the message (and the one before it if it gives context). Remove phone numbers, account numbers or anything private first."
+      },
+      {
+        "h": "Jot down what you actually want to say",
+        "b": "One or two rough lines is enough, for example 'Can't do Friday, can do next Tuesday, and I need the files first'."
+      },
+      {
+        "h": "Ask your AI assistant for two versions",
+        "b": "Open ChatGPT, Claude or Gemini and paste this prompt with the email and your notes.",
+        "p": "I need to reply to the email below. My goal: [what you want to happen]. My key points: [your rough notes]. My relationship with the sender: [e.g. client, manager, neighbour]. Write two replies under 120 words each: Version A warm and friendly, Version B polite but firm. Keep my points in the same order, use plain British English, no clichés, and end with one clear next step. Then list anything in their email I haven't answered.\n\nTheir email:\n[paste email]"
+      },
+      {
+        "h": "Pick one, tweak and send",
+        "b": "Choose the version that sounds most like you, change any words you wouldn't use, and paste it into your reply."
+      }
+    ],
+    "example": "Version B: Hi Sam, thanks for the update. I can't take on the extra pages by Friday, but I can deliver them by Tuesday 14th if I have the final copy by Thursday. Shall we go with that? Not yet answered: their question about invoicing.",
+    "tips": [
+      "Ask it to 'make this sound more like me' and paste two emails you've sent before as a style guide.",
+      "Always read the reply aloud once before sending; tone is easier to hear than see."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User selects an email and asks for help replying"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a warm and a firm reply from the user's key points"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the chosen version as a draft reply"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a morning briefing of what matters in your inbox",
+    "d": "Start each day with a short list of emails that need a reply, emails you can skim and anything with a deadline.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook",
+      "Reminders app"
+    ],
+    "when": "Every weekday morning",
+    "steps": [
+      {
+        "h": "Connect your AI assistant to your email",
+        "b": "Use Gemini in Gmail, Copilot in Outlook, or the Gmail connector in ChatGPT or Claude if your plan includes it. Check your workplace AI policy before connecting a work account."
+      },
+      {
+        "h": "Save your briefing prompt",
+        "b": "Keep this prompt in your notes app so you can paste it each morning.",
+        "p": "Look at the emails I received since [yesterday at 5pm]. Give me a briefing in three sections: 1) Needs my reply today: sender, subject, what they want, in one line each. 2) Deadlines or dates mentioned: what, when, and who it's from. 3) Safe to skim or archive: grouped by type (newsletters, receipts, notifications). Ignore anything from [senders to ignore]. Keep the whole briefing under 200 words."
+      },
+      {
+        "h": "Set a daily reminder",
+        "b": "Add a recurring weekday reminder at the time you start work, linking to your saved prompt."
+      },
+      {
+        "h": "Use the free fallback if you can't connect",
+        "b": "Select the subject lines and senders from your inbox list, copy them, and paste them into your AI assistant with the same prompt."
+      }
+    ],
+    "example": "Needs reply: Priya (school office) - confirm trip consent by Wed. Tom (supplier) - approve revised quote. Deadlines: Council tax direct debit changes 1 Dec. Skim: 6 newsletters, 3 delivery updates, 2 receipts.",
+    "tips": [
+      "AI can miss things, so glance at your unread count once after the briefing.",
+      "Tell it which people always matter (your boss, your child's school) so they're never lumped into 'skim'."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 8am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise emails received since the last briefing"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Sort into reply today, deadlines and skim"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the briefing to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Sort incoming email into labels automatically",
+    "d": "Get a set of email filters that file receipts, newsletters and notifications into their own labels or folders, so your inbox shows people.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Once, then tweak monthly",
+    "steps": [
+      {
+        "h": "List your noisiest senders",
+        "b": "Scroll back through a week of email and write down the senders and subject words that crowd your inbox, such as 'order', 'receipt' or a shop's name."
+      },
+      {
+        "h": "Ask AI to design your filing system",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "I want to tidy my [Gmail / Outlook] inbox with filters. Here are senders and subject words that clutter it: [paste list]. Suggest no more than 6 labels/folders (e.g. Receipts, Newsletters, Notifications, Travel). For each, give: the label name, the exact sender addresses or words to match, and whether it should skip the inbox or stay in it. Present it as a table I can follow one row at a time. Flag anything that might catch important personal emails by mistake."
+      },
+      {
+        "h": "Create the filters or rules",
+        "b": "In Gmail, search for the senders, then choose 'Create filter' from the search options and apply a label. In Outlook, right-click a message and create a rule to move it to a folder."
+      },
+      {
+        "h": "Check after a week",
+        "b": "Look in each label once and move anything misfiled back. Ask your AI assistant to adjust the rule if something keeps landing in the wrong place."
+      }
+    ],
+    "example": "Receipts | from: orders@, receipts@, subject 'your order' | skip inbox. Newsletters | from: hello@freshbakes.co, news@runclub.org | skip inbox. Notifications | from: no-reply@ | skip inbox. Travel | subject 'booking confirmation' | keep in inbox.",
+    "tips": [
+      "Start with skipping the inbox only for senders you're sure about; you can always widen it later.",
+      "Gmail's built-in Promotions and Updates tabs already do some of this, so build on them rather than fighting them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "Any new email arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Decide if it is a receipt, newsletter, notification, travel or personal"
+        },
+        {
+          "type": "email.label",
+          "detail": "Apply the matching label and archive if it is low priority"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every invoice and receipt in one tidy place",
+    "d": "Have invoice emails labelled as they arrive, then turn them into a monthly spreadsheet of supplier, date and amount in minutes.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Gmail",
+      "Google Drive",
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Set up once, then at the end of each month",
+    "steps": [
+      {
+        "h": "Create an invoices filter",
+        "b": "In Gmail, search for words like invoice OR receipt OR 'payment confirmation', then create a filter from that search that applies an 'Invoices' label. Outlook users can make a rule that moves them to an Invoices folder."
+      },
+      {
+        "h": "Save attachments monthly",
+        "b": "At month end, open the label and save each PDF to a Google Drive or OneDrive folder named by month, such as 'Invoices 2026-11'."
+      },
+      {
+        "h": "Extract the details with AI",
+        "b": "Upload the PDFs (or paste the email text) into your AI assistant with this prompt. Remove bank details first if they're not needed.",
+        "p": "Extract the following from each invoice or receipt I've attached: supplier name, invoice number, invoice date (DD/MM/YYYY), due date if shown, amount before tax, tax, total, currency, and a one-word category from this list: [e.g. Software, Travel, Supplies, Utilities, Other]. Return a table with one row per document, in date order. If a value isn't on the document, write 'not shown' rather than guessing."
+      },
+      {
+        "h": "Paste into your spreadsheet",
+        "b": "Copy the table into a Google Sheet or Excel file with one tab per month, and spot-check the totals against two or three originals."
+      }
+    ],
+    "example": "02/11/2026 | Brightline Hosting | INV-2231 | £18.00 | VAT £3.60 | £21.60 | Software. 05/11/2026 | Kettle & Co Stationers | 8841 | £42.50 | VAT £8.50 | £51.00 | Supplies.",
+    "tips": [
+      "Always check AI-extracted amounts against the original before using them for tax or accounts, and ask your accountant if you're unsure how to categorise something.",
+      "If you use Xero or QuickBooks, they have their own email-in addresses for bills that may save you this step."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email with an invoice or receipt arrives"
+      },
+      "actions": [
+        {
+          "type": "email.label",
+          "detail": "Label it Invoices"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save the attachment to this month's invoices folder"
+        },
+        {
+          "type": "ai.extract",
+          "detail": "Pull supplier, date, invoice number and totals"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add a row to the invoices spreadsheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Catch up on a long email thread in a minute",
+    "d": "Turn a 30-message thread into a short summary of what was decided, what's still open and what's expected of you.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "When you're copied into a thread late or come back from leave",
+    "steps": [
+      {
+        "h": "Try the built-in summary first",
+        "b": "Gemini in Gmail and Copilot in Outlook can summarise a thread from a button at the top of the email, if your plan includes it."
+      },
+      {
+        "h": "Or copy the whole thread",
+        "b": "Open the thread, expand all messages, select all and copy. Check your workplace AI policy before pasting work emails into a personal AI account."
+      },
+      {
+        "h": "Ask for a structured catch-up",
+        "b": "Paste the thread into your AI assistant with this prompt.",
+        "p": "Summarise this email thread for me. I am [your name and role]. Give me: 1) The background in two sentences. 2) Decisions already made, with who made them. 3) Open questions still being discussed. 4) Anything anyone has asked me or my team to do, with deadlines. 5) A suggested one-paragraph reply if one is needed from me. Use bullet points and keep it under 200 words.\n\nThread:\n[paste thread]"
+      }
+    ],
+    "example": "Background: Venue for the 12 Dec staff lunch. Decided: The Old Mill, 40 people (Jo). Open: vegetarian numbers, who pays deposit. Asked of you: confirm final headcount by Fri 21 Nov. Suggested reply: 'Thanks all, I'll send the final headcount by Friday.'",
+    "tips": [
+      "Ask 'what did I miss that sounds urgent?' as a follow-up question; it often surfaces a buried request."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User opens a long thread and asks for a catch-up"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise background, decisions, open questions and asks"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a short reply if one is needed"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Follow up on emails nobody has answered",
+    "d": "Never lose track of unanswered emails: get reminded after a few days and send a friendly nudge that actually gets a reply.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "Gmail",
+      "Outlook",
+      "AI assistant"
+    ],
+    "when": "Three working days after an important email goes unanswered",
+    "steps": [
+      {
+        "h": "Set a reminder when you send",
+        "b": "In Gmail, snooze your sent email or turn on Nudges in settings so it reappears if there's no reply. In Outlook, flag the sent message with a follow-up date."
+      },
+      {
+        "h": "When it comes back, draft a nudge",
+        "b": "Paste your original email into your AI assistant with this prompt.",
+        "p": "I sent the email below [number] days ago to [who they are] and haven't had a reply. Write a short, friendly follow-up under 60 words that: doesn't sound annoyed, restates the one thing I need from them, makes it easy to answer (offer a yes/no or two options), and gives a gentle date. Give me two versions: one casual, one more formal.\n\nOriginal email:\n[paste email]"
+      },
+      {
+        "h": "Reply in the same thread",
+        "b": "Send the nudge as a reply to your original email so they have the context, and set another reminder for a week later."
+      }
+    ],
+    "example": "Hi Lena, just floating this back to the top of your inbox. Could you let me know by Thursday whether the 3pm slot works? A quick yes or no is perfect. Thanks, Ali",
+    "tips": [
+      "A specific question gets more replies than 'just checking in'.",
+      "If two nudges get nothing, try a different channel, like a quick call."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Daily check for sent emails with no reply after 3 working days"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a short, friendly follow-up"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save it as a draft reply in the original thread"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user a nudge is ready to review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a set of ready-made replies you can reuse",
+    "d": "Get polished templates for the emails you write over and over, saved in Gmail or Outlook and ready in two clicks.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Once, then add to it whenever you write the same email twice",
+    "steps": [
+      {
+        "h": "List your repeat emails",
+        "b": "Think of the five emails you write most, such as sending prices, booking confirmations, saying you're running late, or declining a request."
+      },
+      {
+        "h": "Have AI write the templates",
+        "b": "Paste your list and an example of each (if you have one) into your AI assistant.",
+        "p": "Write reusable email templates for these situations: [list your 5 situations]. I am [your role or business]. My tone is [e.g. friendly and professional]. For each template give: a short name, a subject line, and a body under 120 words with [SQUARE BRACKETS] for anything I need to fill in, such as [NAME] or [DATE]. Keep the language plain British English and end each with a clear next step."
+      },
+      {
+        "h": "Turn on templates in your email app",
+        "b": "In Gmail, switch on Templates in settings (under Advanced), then save each draft as a template. In Outlook, use My Templates or Quick Parts to save them."
+      },
+      {
+        "h": "Use and improve them",
+        "b": "Insert a template, replace the brackets and send. If you keep changing the same sentence, update the saved template."
+      }
+    ],
+    "example": "Name: Price list request. Subject: Our prices for [SERVICE]. Body: Hi [NAME], thanks for getting in touch. Our current prices are attached. Most clients choose [PACKAGE], which includes [WHAT'S INCLUDED]. Would you like to book a quick call this week to talk it through?",
+    "tips": [
+      "Always do a final search for '[' before sending so no placeholders slip through."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User asks for a set of templates"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write templates for each repeat situation"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save all templates in one reference document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send personal-feeling emails to a whole list",
+    "d": "Write one email, then send it to dozens of people from a spreadsheet, each with their name and a personal opening line.",
+    "cat": "Email & Inbox",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Gmail",
+      "Word"
+    ],
+    "when": "For invitations, updates to clients or members, or event follow-ups",
+    "steps": [
+      {
+        "h": "Set up your contact sheet",
+        "b": "In Google Sheets or Excel, make columns for first name, email address and a short note about each person (for example 'came to the June workshop')."
+      },
+      {
+        "h": "Ask AI for personal opening lines",
+        "b": "Copy the name and note columns only (not email addresses) into your AI assistant with this prompt, then paste the result back as a new column.",
+        "p": "For each row below, write one friendly opening sentence (under 25 words) for an email about [your topic], referring naturally to the note. Don't overdo the flattery. Return a single column in the same order as the input, one line per row, with no numbering.\n\n[paste names and notes]"
+      },
+      {
+        "h": "Write the main email once",
+        "b": "Draft the body in your email app or ask AI to help. Use placeholders that match your column names, such as {{First name}} and {{Opening}}."
+      },
+      {
+        "h": "Send with mail merge",
+        "b": "Use Gmail's mail merge (available on some Google Workspace plans) or Word's Mailings tab with Outlook to send one email per row. Send a test to yourself first."
+      },
+      {
+        "h": "Track replies",
+        "b": "Add a 'Replied' column to your sheet and tick people off as they respond, so you know who to follow up."
+      }
+    ],
+    "example": "Row: Hannah | came to the June workshop. Opening: 'It was lovely to meet you at the June workshop, and I hope the planning templates have been useful.' Email: Hi Hannah, It was lovely to meet you... We're running a follow-up session on 4 Dec.",
+    "tips": [
+      "Only email people who've agreed to hear from you, and for marketing include an easy way to opt out.",
+      "Check your provider's daily sending limits before sending to a big list; Mailchimp may suit larger lists better."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A contact is added to the mailing sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a personal opening line from the note"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Save the opening line in the row"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Create a personalised email for review before sending"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a rambling draft into a short, clear email",
+    "d": "Paste a messy draft and get back a tidy email with the main point first, short paragraphs and one clear ask.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Before sending anything long or important",
+    "steps": [
+      {
+        "h": "Write it badly first",
+        "b": "Type everything you want to say without worrying about order or wording. Bullet points are fine."
+      },
+      {
+        "h": "Ask AI to tighten it",
+        "b": "Paste your draft with this prompt.",
+        "p": "Rewrite my draft email so it's clear and quick to read. Rules: put the main point or request in the first two sentences; keep it under [150] words; use short paragraphs; keep every fact, date and number exactly as I wrote them; don't add anything new; match a [friendly / formal] tone. Suggest a subject line under 8 words. Then list any part of my draft that was unclear so I can fix it.\n\nDraft:\n[paste draft]"
+      },
+      {
+        "h": "Check facts and send",
+        "b": "Read the new version against your notes to make sure nothing important was dropped, then send."
+      }
+    ],
+    "example": "Subject: Need your sign-off on the new rota by Friday. Hi team, I need everyone's sign-off on the December rota by Friday 28 Nov. The main change is late shifts now finish at 9pm, not 10pm. Please reply 'OK' or let me know which dates clash.",
+    "tips": [
+      "Ask for a version with bullet points if your reader is skimming on a phone."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes a draft and asks for a rewrite"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Rewrite the draft with the main point first"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Replace the draft with the clearer version"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check if a suspicious email is a scam",
+    "d": "Get a plain-English verdict on a worrying email, with the warning signs spelled out and what to do next.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Whenever an email asks you to click, pay or log in",
+    "steps": [
+      {
+        "h": "Don't click anything",
+        "b": "Leave links and attachments alone. Copy the sender's full address (not just the display name), the subject and the text."
+      },
+      {
+        "h": "Ask AI for a second opinion",
+        "b": "Paste the details with this prompt. Never paste passwords or codes.",
+        "p": "Help me check whether this email is likely to be a phishing scam. Sender address: [full address]. Subject: [subject]. Text: [paste text]. Link text shown (don't visit it): [paste if any]. Give me: 1) A verdict: likely scam, unclear, or likely genuine. 2) Each warning sign you can see, explained in plain English. 3) What I should do now. 4) How to check with the real organisation safely, without using any contact details in the email."
+      },
+      {
+        "h": "Act on it safely",
+        "b": "If it looks like a scam, report it using the 'Report phishing' or 'Report' option in Gmail or Outlook, then delete it. If unsure, contact the organisation using a number or website you already know."
+      }
+    ],
+    "example": "Verdict: likely scam. Signs: sender is 'support@royalmaii-parcels.com' (misspelt), urgent 'pay £1.99 within 24 hours', generic greeting, link text doesn't match the company. Next: report as phishing, delete, and check any real parcel on the courier's own app.",
+    "tips": [
+      "AI can't see where a link really goes, so treat 'likely genuine' as a hint, not a guarantee.",
+      "At work, forward suspicious emails to your IT team as well."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User flags an email as suspicious"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Rate the email as likely scam, unclear or likely genuine"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Explain the warning signs and safe next steps"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the verdict to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Clear out newsletters you never read",
+    "d": "End up with a short list of newsletters worth keeping and a quick plan to unsubscribe from the rest.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "Gmail",
+      "Outlook",
+      "AI assistant"
+    ],
+    "when": "Once a quarter",
+    "steps": [
+      {
+        "h": "Find who's emailing you",
+        "b": "In Gmail, look for 'Manage subscriptions' in the left menu if your account has it, or search for the word unsubscribe. In Outlook, search for unsubscribe and sort by sender."
+      },
+      {
+        "h": "Copy the list of senders",
+        "b": "Write down or copy the sender names and roughly how often they arrive."
+      },
+      {
+        "h": "Let AI help you decide",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "Here's a list of newsletters and marketing emails I get, with how often: [paste list]. What I care about right now: [e.g. local events, my running club, deals on kids' clothes]. Sort them into three groups: Keep (useful and I'd miss it), Keep but filter out of my inbox (occasionally useful), and Unsubscribe. Give one short reason for each. Put the Unsubscribe list first."
+      },
+      {
+        "h": "Unsubscribe in one sitting",
+        "b": "Use the unsubscribe link at the top of each email in Gmail or Outlook. For the 'filter' group, set up a filter or rule to send them to a Reading label or folder."
+      }
+    ],
+    "example": "Unsubscribe (14): Shoe outlet daily deals, three old webinar lists, travel site you used once. Keep but filter (6): supermarket offers, two shops. Keep (4): Running club news, local library events, school newsletter, Sunday book review.",
+    "tips": [
+      "Only use unsubscribe links from brands you recognise; for spammy senders, mark as spam instead."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Saturday of every quarter"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Sort newsletter senders into keep, filter and unsubscribe"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the unsubscribe list to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get one weekly digest of all your newsletters",
+    "d": "Newsletters skip your inbox all week, then on Sunday you get one short digest of the best bits with links to read more.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Gmail",
+      "Outlook",
+      "AI assistant"
+    ],
+    "when": "Every Sunday",
+    "steps": [
+      {
+        "h": "Route newsletters to a Reading label",
+        "b": "Create a Gmail filter (or Outlook rule) for your newsletter senders that applies a 'Reading' label or moves them to a Reading folder, skipping the inbox."
+      },
+      {
+        "h": "Collect the week's issues",
+        "b": "On Sunday, open the Reading label, select the week's emails and copy their text, or forward them to yourself as one email."
+      },
+      {
+        "h": "Ask for a digest",
+        "b": "Paste them into your AI assistant with this prompt. If your assistant is connected to your email, ask it to read the Reading label directly.",
+        "p": "Make me a weekly digest from these newsletters. My interests: [your interests]. For each newsletter give: its name, the 1 to 3 items most relevant to me in one line each, and mark anything time-sensitive (events, sales ending, deadlines) with 'DATE:'. Finish with 'Worth reading in full' listing at most 2 issues and why. Skip adverts and sponsored sections.\n\n[paste newsletters]"
+      },
+      {
+        "h": "Save the digest and archive",
+        "b": "Paste the digest into your notes app, add any dates to your calendar, then archive the week's newsletters in one go."
+      }
+    ],
+    "example": "Garden Notes: plant garlic before mid-Dec; frost-proof pot guide. Town Events: DATE: Christmas market Sat 6 Dec. Money Weekly: energy price cap changes in Jan. Worth reading in full: Garden Notes, for the bulb planting calendar.",
+    "tips": [
+      "Ask it to say 'nothing new this week' for a newsletter rather than padding the digest."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the week's newsletters by the user's interests"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add any dated events found"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send the digest to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write an out-of-office reply that helps people",
+    "d": "Get a clear, friendly out-of-office message with your return date, who to contact and what will wait, ready to switch on.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Before any holiday, leave or busy period",
+    "steps": [
+      {
+        "h": "Gather the details",
+        "b": "Note your away dates, the date you'll reply by, who covers urgent matters and how to reach them."
+      },
+      {
+        "h": "Ask AI to write it",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write an out-of-office email reply. I'm away from [date] to [date] and will reply from [date]. For urgent [topics], contact [name, role, email]. Things that can wait: [e.g. invoices, general questions]. Audience: [clients / colleagues / both]. Keep it under 70 words, warm but businesslike, no jokes. Also give me a shorter 25-word version for internal colleagues."
+      },
+      {
+        "h": "Switch it on with dates",
+        "b": "In Gmail, find Vacation responder in settings and set the first and last day. In Outlook, use Automatic replies and tick the option to send only during a time range."
+      }
+    ],
+    "example": "Thanks for your email. I'm away until Monday 5 January and will reply by Wednesday 7th. For anything urgent about orders, please contact Maya Patel (Customer Team) at orders@example.com. Everything else will be waiting safely for me.",
+    "tips": [
+      "Set the reply to start the evening before you leave so late messages get it too.",
+      "Avoid saying exactly where you are or that your home is empty."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A holiday or leave event is added to the calendar"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write an out-of-office reply with dates and cover contact"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to switch it on the day before"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Answer customer enquiries faster with your own FAQ",
+    "d": "Build an AI helper that knows your prices, policies and tone, so drafting a reply to any enquiry takes seconds.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "Gmail"
+    ],
+    "when": "Whenever a customer emails a question",
+    "steps": [
+      {
+        "h": "Write a one-page answer sheet",
+        "b": "In a Google Doc or Word file, list your prices, opening hours, delivery or booking rules, refund policy and the ten questions you're asked most, with your usual answers."
+      },
+      {
+        "h": "Create a dedicated helper",
+        "b": "Make a ChatGPT custom GPT, a Claude Project or a Gemini Gem (whichever you use), upload your answer sheet and paste these instructions.",
+        "p": "You help me reply to customer emails for [business name], a [type of business]. Only use facts from the attached answer sheet. When I paste a customer email: 1) Write a friendly reply under 120 words in British English, signed [your name]. 2) If the answer isn't in the sheet, say 'NOT IN SHEET' and suggest what I should find out, rather than guessing. 3) Below the reply, list any upsell or next step that would genuinely help the customer."
+      },
+      {
+        "h": "Paste enquiries in as they arrive",
+        "b": "Copy the customer's question (leave out their address or card details) into your helper, check the draft and send it from your email."
+      },
+      {
+        "h": "Keep the sheet up to date",
+        "b": "Whenever you answer something new, add it to the answer sheet and re-upload it so the helper learns it."
+      }
+    ],
+    "example": "Customer: Do you deliver to Hove on Saturdays? Draft: Hi Chris, yes, we deliver to Hove on Saturdays between 9am and 1pm. Orders need to be in by 6pm Thursday, and delivery is free over £40. Would you like me to reserve a slot for you? Best, Jen",
+    "tips": [
+      "Never paste payment details or full addresses; the helper doesn't need them to draft a reply.",
+      "Check every reply before sending, especially anything about refunds or prices."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A customer enquiry arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Check the question is covered by the answer sheet"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a reply using only facts from the answer sheet"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the reply as a draft for review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn emails into a clear to-do list",
+    "d": "Get every request buried in your inbox pulled into one list with deadlines, then sent straight to your task app.",
+    "cat": "Email & Inbox",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Gmail",
+      "Outlook",
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "At the end of each working day",
+    "steps": [
+      {
+        "h": "Flag emails that need action",
+        "b": "As you read, star emails in Gmail or flag them in Outlook. Flagged Outlook emails show up in Microsoft To Do, and in Gmail you can use 'Add to Tasks' from the email menu."
+      },
+      {
+        "h": "Pull out the actual tasks",
+        "b": "At day's end, copy the starred or flagged emails into your AI assistant with this prompt.",
+        "p": "Read these emails and list every task I need to do. For each give: the task starting with a verb, who it's for, the deadline (or 'no deadline'), and a time estimate (5 min, 30 min, 1 hr+). Merge duplicates. Sort by deadline, then by quickest first. Put anything that just needs a one-line reply in a separate 'Quick replies' list at the top.\n\n[paste emails]"
+      },
+      {
+        "h": "Add them to your task app",
+        "b": "Copy the list into Google Tasks, Microsoft To Do, Reminders or your notes app, adding the deadlines as due dates."
+      },
+      {
+        "h": "Clear the stars",
+        "b": "Unstar or unflag the emails once they're on your list so your inbox shows only new things."
+      }
+    ],
+    "example": "Quick replies: Confirm Tues lunch with Ola. Tasks: Send updated quote to Greenway Builders - Fri 14 Nov - 30 min. Book van MOT - by 20 Nov - 5 min. Review draft brochure from Leo - no deadline - 1 hr+.",
+    "tips": [
+      "Anything taking under two minutes, just do it now instead of listing it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 5pm"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull tasks, deadlines and time estimates from flagged emails"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add each task to the user's to-do list with its due date"
+        },
+        {
+          "type": "email.label",
+          "detail": "Remove the flag once a task is added"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Say no politely without damaging the relationship",
+    "d": "Get a kind, clear email that turns down a request, invite or extra work while keeping the door open where you want it.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 4,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When you need to decline something",
+    "steps": [
+      {
+        "h": "Decide what you're offering instead",
+        "b": "Work out if there's anything you can offer, such as a later date, a smaller version or a recommendation. It's fine if the answer is nothing."
+      },
+      {
+        "h": "Ask for a gracious no",
+        "b": "Paste the request and this prompt into your AI assistant.",
+        "p": "Help me say no to this request: [paste or describe the request]. Who it's from: [relationship]. My real reason (you decide how much to share): [reason]. What I can offer instead, if anything: [alternative or 'nothing']. Write a reply under 90 words that thanks them, says no clearly in the first two sentences, doesn't over-apologise or make up excuses, and ends warmly. Give me one version that keeps the door open and one that closes it kindly."
+      },
+      {
+        "h": "Send it promptly",
+        "b": "A quick, clear no is kinder than a slow maybe. Send it today if you can."
+      }
+    ],
+    "example": "Hi Gemma, thank you for thinking of me for the committee. I'm not able to take it on this year, as my evenings are full until the summer. I'd be happy to help with the spring fair on the day if that's useful. Wishing you a great first meeting!",
+    "tips": [
+      "Remove 'just', 'sorry' and 'I'm afraid' from the final version; one thank-you is enough."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User asks for help declining a request"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a door-open and a door-closed decline"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the chosen version as a reply draft"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send instant replies to common enquiries automatically",
+    "d": "Enquiries with set keywords get an instant helpful reply, are labelled for you and land in a weekly list of who to follow up.",
+    "cat": "Email & Inbox",
+    "lvl": "Advanced",
+    "mins": 50,
+    "tools": [
+      "Gmail",
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Whenever a new enquiry email arrives",
+    "steps": [
+      {
+        "h": "Write your auto-reply templates",
+        "b": "Ask your AI assistant to draft short replies for your two or three most common enquiries.",
+        "p": "I run [business]. Write auto-reply emails for these common enquiries: [e.g. price requests, availability, opening hours]. Each must: thank them, answer the basics in under 100 words using these facts: [paste facts], say a real person will follow up within [time frame] if needed, and include a link placeholder [BOOKING LINK]. Add a subject line for each. Make it clear the email is an automatic reply."
+      },
+      {
+        "h": "Save them as Gmail templates",
+        "b": "Turn on Templates in Gmail's settings (under Advanced), then paste each reply into a new email and save it as a template."
+      },
+      {
+        "h": "Create a filter that replies for you",
+        "b": "Search Gmail for the words that identify each enquiry (for example sent to your contact address with 'price' in the subject), create a filter from the search, and choose to send the template and apply a label such as 'Enquiry - Prices'."
+      },
+      {
+        "h": "Review the week's enquiries",
+        "b": "Every Friday, open the Enquiry labels, copy the senders and subjects into your AI assistant and ask it to turn them into a follow-up table you paste into Google Sheets."
+      },
+      {
+        "h": "Test before you rely on it",
+        "b": "Send yourself an email from another account using the trigger words, and check the reply arrives and reads well."
+      }
+    ],
+    "example": "Auto-reply: Thanks for asking about our prices! This is an automatic reply. Our dog-walking starts at £14 for 30 minutes, with weekly discounts. You can book a free meet-and-greet here: [link]. Sam will personally reply within one working day.",
+    "tips": [
+      "Keep filter words specific, or friends and suppliers could get a sales reply by mistake.",
+      "Outlook users can do something similar with a rule that replies using a saved template."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email matching enquiry keywords arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Identify the enquiry type"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send the matching automatic reply"
+        },
+        {
+          "type": "email.label",
+          "detail": "Label the enquiry by type"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the sender and topic to the follow-up sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Read and reply to emails in another language",
+    "d": "Understand an email in any language and send back a natural-sounding reply, with a back-translation so you know what you said.",
+    "cat": "Email & Inbox",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "When you get an email you can't fully read",
+    "steps": [
+      {
+        "h": "Get a quick translation",
+        "b": "Gmail can translate an email from the menu at the top of the message, and Outlook offers a Translate option too. Use these for a fast read."
+      },
+      {
+        "h": "Write your reply in your own words",
+        "b": "Type what you want to say in English, as naturally as you would to anyone."
+      },
+      {
+        "h": "Ask AI for a natural reply",
+        "b": "Paste the original email and your reply with this prompt.",
+        "p": "Here's an email in [language] and my reply in English. 1) Give me a short English summary of their email, noting anything polite or cultural I should respond to. 2) Translate my reply into natural [language] at a [formal / friendly] level suitable for [relationship], adjusting greetings and sign-offs to local custom. 3) Give a word-for-word back-translation into English so I can check the meaning.\n\nTheir email: [paste]\nMy reply: [paste]"
+      },
+      {
+        "h": "Check names, dates and numbers",
+        "b": "Make sure dates, prices and names are exactly right in the translated version before sending."
+      }
+    ],
+    "example": "Summary: Lucía confirms the 12 March booking and asks if you need parking. Reply (Spanish): Hola Lucía, muchas gracias por confirmar la reserva del 12 de marzo. Sí, necesitaríamos una plaza de aparcamiento... Back-translation: Hello Lucía, thank you very much for confirming...",
+    "tips": [
+      "For contracts or anything legal, use a professional translator rather than relying on AI alone."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email arrives in a language other than the user's"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the email in English"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Translate the user's reply and back-translate it"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the translated reply as a draft"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a 2-minute summary of every meeting",
+    "d": "Finish each video call with a short summary of what was discussed, what was decided and who's doing what, without taking notes.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Zoom",
+      "Google Meet",
+      "Microsoft Teams",
+      "AI assistant"
+    ],
+    "when": "After every video meeting",
+    "steps": [
+      {
+        "h": "Switch on your app's note-taker",
+        "b": "Use Zoom AI Companion's meeting summary, Google Meet's 'Take notes for me' or Teams Copilot's recap, if your plan includes it. Tell attendees at the start that notes are being taken."
+      },
+      {
+        "h": "Or save the transcript",
+        "b": "If you don't have an AI note-taker, turn on transcription or captions where available and download or copy the transcript after the call."
+      },
+      {
+        "h": "Ask for a structured summary",
+        "b": "Paste the transcript or the app's own notes into your AI assistant with this prompt. Remove anything confidential first and follow your workplace AI policy.",
+        "p": "Summarise this meeting transcript. Meeting: [title], attendees: [names]. Give me: 1) Three-sentence summary. 2) Decisions made. 3) Action items as a table: task, owner, deadline (write 'not set' if none was agreed). 4) Open questions to carry to next time. Use only what was actually said; don't invent owners or dates.\n\nTranscript:\n[paste]"
+      },
+      {
+        "h": "Share it while it's fresh",
+        "b": "Paste the summary into the meeting chat, a shared doc or an email to attendees within the hour."
+      }
+    ],
+    "example": "Summary: Agreed the spring newsletter goes out 3 March with 4 articles. Decisions: drop the printed version. Actions: Write intro - Kemi - 20 Feb. Gather photos - Dan - 24 Feb. Book printer quote - not set. Open: who approves final copy?",
+    "tips": [
+      "AI note-takers sometimes mishear names and numbers, so skim the action table before sharing.",
+      "Check everyone is comfortable being recorded, especially with external guests."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A video meeting ends"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the transcript into decisions and actions"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the summary in the meeting notes folder"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a recap email to attendees"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn meeting notes into actions and a follow-up email",
+    "d": "Paste in your scribbled notes and get a tidy action list plus a ready-to-send follow-up email for everyone who attended.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Straight after any meeting",
+    "steps": [
+      {
+        "h": "Grab your notes",
+        "b": "Type up or photograph your handwritten notes. Messy is fine, as long as you can read them."
+      },
+      {
+        "h": "Ask for actions and an email",
+        "b": "Paste or attach the notes with this prompt.",
+        "p": "Here are my notes from a meeting about [topic] with [attendees]. 1) List every action as: owner - task - deadline. If an owner or deadline is unclear, mark it '?' so I can check. 2) Write a follow-up email to the attendees under 150 words: thank them, recap the 2 or 3 main decisions, list the actions, and confirm the next meeting date [date if known]. Friendly, professional, British English.\n\nNotes:\n[paste notes]"
+      },
+      {
+        "h": "Fill the gaps and send",
+        "b": "Replace any '?' with the right name or date, then send the email from your usual account."
+      }
+    ],
+    "example": "Actions: Rachel - send venue options - Fri 21 Nov. Imran - get catering quotes - ?. Me - draft invite - Mon 24 Nov. Email: Hi all, thanks for a productive chat today. We agreed on a Thursday evening event for around 60 people...",
+    "tips": [
+      "Send the follow-up within the hour; people are far more likely to act on it while the meeting is fresh."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes or photographs meeting notes"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out owners, tasks and deadlines"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a follow-up email to attendees"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add the user's own actions to their to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Walk into any meeting prepared in ten minutes",
+    "d": "Get a one-page brief before a meeting: the goal, key background, smart questions to ask and the outcome you want.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "Before any important meeting",
+    "steps": [
+      {
+        "h": "Gather what you have",
+        "b": "Open the calendar invite and copy the title, description and attendee roles. Add any related email or document text, removing anything confidential."
+      },
+      {
+        "h": "Ask for a prep brief",
+        "b": "Paste it all into your AI assistant with this prompt.",
+        "p": "Help me prepare for a meeting. Details: [paste invite and background]. My role: [your role]. What I want from it: [your goal]. Give me a one-page brief: 1) The likely purpose of the meeting in one sentence. 2) Three key facts I should have to hand. 3) Five good questions to ask, most important first. 4) Two possible objections or tricky questions and short answers. 5) The single outcome I should push for, phrased as a sentence I can say at the end."
+      },
+      {
+        "h": "Keep it on screen or paper",
+        "b": "Paste the brief into the calendar event's notes so it's there when the meeting starts."
+      }
+    ],
+    "example": "Purpose: Agree next year's cleaning contract terms. Key facts: current cost £640/month; two missed visits in Oct. Ask first: 'What can you guarantee on missed visits?' Push for: 'Can we confirm a 12-month contract with a service credit for any missed visit?'",
+    "tips": [
+      "Practise saying your outcome sentence out loud once; it makes it much easier to say in the room."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "One hour before an important meeting"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a one-page prep brief from the invite and background"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the brief to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a meeting agenda people will actually follow",
+    "d": "Get a timed agenda with a clear purpose, the decisions needed and what to read beforehand, ready to paste into the invite.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "When you're sending a meeting invite",
+    "steps": [
+      {
+        "h": "List what needs covering",
+        "b": "Note the topics, how long the meeting is, and anything that must be decided by the end."
+      },
+      {
+        "h": "Ask AI to shape it",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Create an agenda for a [length]-minute meeting about [topic] with [who's attending]. Topics: [list]. Decisions we need by the end: [list]. Format: a one-line purpose at the top; then each item with minutes allowed, who leads it, and whether it's 'Inform', 'Discuss' or 'Decide'; finish with 5 minutes to confirm actions. Keep items in a sensible order, put decisions early, and tell me if there's too much for the time."
+      },
+      {
+        "h": "Add it to the invite",
+        "b": "Paste the agenda into the invite description and attach or link any pre-reading."
+      }
+    ],
+    "example": "Purpose: Choose a date and format for the summer fete. 1. Budget update - 5 min - Ana - Inform. 2. Pick date (21 Jun or 28 Jun) - 10 min - Chair - Decide. 3. Stall ideas - 10 min - All - Discuss. 4. Volunteers needed - 5 min - Tom - Discuss. 5. Confirm actions - 5 min.",
+    "tips": [
+      "If the AI says it won't fit, cut an item or make it a written update rather than going over time."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "User creates a meeting with no description"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a timed agenda from the topics"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the agenda to the invite description"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find a meeting time that works across time zones",
+    "d": "Get three sensible meeting slots for people in different countries, with each person's local time shown side by side.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "When you're arranging a call with people abroad",
+    "steps": [
+      {
+        "h": "Note who's where and when they're free",
+        "b": "List each person's city and the rough hours they're available, plus your own free times this week."
+      },
+      {
+        "h": "Ask for the best slots",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Find meeting times for a [length]-minute call between: [name - city - available hours, for each person]. Dates: [date range]. Avoid times before 8am or after 7pm local for anyone where possible. Suggest the 3 best slots and show a table with each person's local date and time. Flag if any slot falls on a public holiday or weekend in any of the countries, and note any clock changes in that period."
+      },
+      {
+        "h": "Double-check and send",
+        "b": "Use Google Calendar's 'Find a time' or Outlook's Scheduling Assistant to confirm the slot is clear, then send the invite. The calendar shows it in each person's own time zone."
+      }
+    ],
+    "example": "Option 1: Tue 18 Nov - London 9:00, Toronto 4:00 (too early), Dubai 13:00. Option 2: Tue 18 Nov - London 14:00, Toronto 9:00, Dubai 18:00 (best). Option 3: Wed 19 Nov - London 15:00, Toronto 10:00, Dubai 19:00.",
+    "tips": [
+      "AI can get clock changes wrong, so check times against your calendar before sending.",
+      "Rotate awkward early or late slots fairly if you meet regularly."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User lists attendees, cities and availability"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest 3 slots with local times for each person"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Create the invite for the chosen slot"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Let people book time with you without the back-and-forth",
+    "d": "Share one booking link so clients or colleagues pick a free slot themselves, with a clear page explaining what each meeting is for.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Calendar",
+      "Calendly",
+      "AI assistant"
+    ],
+    "when": "Set up once, share whenever someone asks to meet",
+    "steps": [
+      {
+        "h": "Pick your booking tool",
+        "b": "Use Google Calendar's appointment schedules, Outlook's Bookings if your plan includes it, or Calendly's free plan. Each connects to your calendar so booked slots are blocked out."
+      },
+      {
+        "h": "Write your booking page with AI",
+        "b": "Paste this prompt into your AI assistant to get the wording.",
+        "p": "I'm setting up an online booking page for [your service or role]. Meeting types: [e.g. 15-min intro call, 45-min consultation]. For each, write: a clear name, a 2-sentence description of who it's for and what happens, what to prepare, and up to 3 short questions to ask when booking (e.g. 'What would you like to cover?'). Also write a one-line confirmation message. Friendly, plain British English."
+      },
+      {
+        "h": "Set your rules",
+        "b": "Choose the hours you're bookable, add buffer time between meetings, set a minimum notice period and limit how many bookings you'll take per day."
+      },
+      {
+        "h": "Share the link",
+        "b": "Add the link to your email signature, website or replies, then book a test slot yourself to check it works."
+      }
+    ],
+    "example": "15-minute intro call: A quick chat to see if we're a good fit for your garden project. Bring a few photos of the space. Booking question: 'What would you like help with?' Confirmation: 'Thanks, you're booked in! I'll call you on the number you gave.'",
+    "tips": [
+      "A 15-minute buffer after each meeting stops your day becoming back-to-back."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "Someone books a slot on the booking page"
+      },
+      "actions": [
+        {
+          "type": "calendar.create",
+          "detail": "Add the booking to the calendar"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send a confirmation with what to prepare"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the booker's answers into prep notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get your day's meetings and prep notes every morning",
+    "d": "Wake up to an email listing today's meetings, then turn it into a short plan with prep tasks and gaps for focused work.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "Google Calendar",
+      "Gmail",
+      "AI assistant",
+      "Outlook Calendar"
+    ],
+    "when": "Every weekday morning",
+    "steps": [
+      {
+        "h": "Turn on your daily agenda email",
+        "b": "In Google Calendar's settings, find the notification options for your calendar and switch on the daily agenda email. Outlook users can connect their AI assistant to the calendar or copy the day view instead."
+      },
+      {
+        "h": "Connect your assistant if you can",
+        "b": "Gemini with Google Workspace, Copilot in Outlook, or ChatGPT and Claude with a Google Calendar connector can read your calendar directly, if your plan includes it."
+      },
+      {
+        "h": "Run your morning prompt",
+        "b": "Paste the agenda email (or ask your connected assistant) with this prompt.",
+        "p": "Here's my calendar for today: [paste agenda or 'read my calendar for today']. My top priority today is [priority]. Give me: 1) A timeline of the day with meetings and free gaps. 2) For each meeting, one line on what to prepare and how long it will take. 3) The best gap for focused work on my priority. 4) Any clashes, back-to-backs with no break, or meetings missing a video link or location. Keep it under 200 words."
+      },
+      {
+        "h": "Make it a habit",
+        "b": "Create a recurring 10-minute calendar event at the start of each day called 'Plan today', with the prompt pasted in its description."
+      }
+    ],
+    "example": "9:30 Team stand-up (prep: nothing). 11:00 Supplier call (prep: check last invoice, 5 min). Gap 12:00-14:00: best time for the funding report. 14:00 and 15:00 back-to-back: leave 5 min early. 16:00 Interview: no video link yet, check with HR.",
+    "tips": [
+      "If your plan doesn't include connectors, the daily agenda email plus copy and paste works just as well."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 7:30am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read today's calendar events"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build a day plan with prep tasks, focus gaps and clashes"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the plan to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find out where your week's time really goes",
+    "d": "Get a breakdown of your calendar by type of meeting, plus three practical changes to win back a few hours a week.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "Once a month",
+    "steps": [
+      {
+        "h": "Copy two weeks of your calendar",
+        "b": "Switch to the week or schedule view and copy or screenshot the last two weeks, including meeting titles and times."
+      },
+      {
+        "h": "Ask for an audit",
+        "b": "Paste or attach it with this prompt. Shorten any sensitive meeting titles first.",
+        "p": "Analyse my calendar for the last two weeks: [paste or attach]. My working hours are [hours]. My most important goals right now are [goals]. Give me: 1) Hours spent per category (1:1s, team meetings, external, admin, focus time, other) in a table. 2) Recurring meetings that could be shorter, less frequent or replaced by a written update. 3) The longest stretch of free time each day. 4) Three specific changes I could make next week, with the hours each would save."
+      },
+      {
+        "h": "Make one change this week",
+        "b": "Pick the easiest suggestion, such as shortening a recurring meeting from 60 to 30 minutes, and change it in your calendar today."
+      }
+    ],
+    "example": "Team meetings: 9.5 hrs. 1:1s: 4 hrs. External: 3 hrs. Focus time: 2 hrs. Suggestions: make Friday wrap-up a written update (saves 1 hr); shorten weekly ops to 30 min (saves 2 hrs over 2 weeks); block Tue and Thu 9-11 as focus time.",
+    "tips": [
+      "Google Calendar's Time Insights panel and Outlook's Viva Insights (if available) give you similar numbers automatically."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of every month"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the last two weeks of calendar events"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Group events into meeting categories"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest three changes to free up time"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the audit to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Protect time for focused work every week",
+    "d": "Set up recurring focus blocks in your calendar that decline clashing meetings, sized and placed to suit how you work.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "Google Calendar",
+      "Outlook Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, review monthly",
+    "steps": [
+      {
+        "h": "Work out your best hours",
+        "b": "Ask your AI assistant to help you decide where focus time should go.",
+        "p": "Help me plan weekly focus time. My usual meetings: [e.g. Mon 10am team, Wed 2pm 1:1s]. My best concentration time: [e.g. mornings]. Work I need deep focus for: [tasks]. Suggest 3 to 4 recurring focus blocks per week, each 90 minutes to 2 hours, avoiding my meetings. Give each a clear name that tells colleagues what I'm doing, and a one-line note for the event description explaining how to reach me if it's urgent."
+      },
+      {
+        "h": "Create the blocks",
+        "b": "In Google Calendar, choose 'Focus time' as the event type if your account has it, which can auto-decline meetings. In Outlook, create a recurring event marked as Busy, or use Viva Insights focus time if your plan includes it."
+      },
+      {
+        "h": "Silence notifications",
+        "b": "Turn on Do Not Disturb on your phone and computer during the blocks, and pause chat notifications in Slack or Teams."
+      }
+    ],
+    "example": "Tue 9:00-11:00 Focus: quarterly report. Thu 9:00-11:00 Focus: client proposals. Fri 13:30-15:00 Focus: planning next week. Description: 'Heads-down time. For anything urgent, call me on my mobile.'",
+    "tips": [
+      "Treat focus blocks like a meeting with your most important client: move them, don't delete them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Friday afternoon"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest focus blocks for next week around existing meetings"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the focus blocks to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a voice recording into tidy notes",
+    "d": "Record a conversation, lecture or your own thoughts on your phone and get organised notes with key points and next steps.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "Voice notes",
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "After an in-person meeting, call or idea walk",
+    "steps": [
+      {
+        "h": "Record with your phone",
+        "b": "Use your phone's voice recorder app. Ask permission before recording anyone else, and keep the phone close to whoever is speaking."
+      },
+      {
+        "h": "Get a transcript",
+        "b": "Many phone recorder apps now transcribe automatically. If yours doesn't, upload the audio file to ChatGPT or Gemini, which can work with audio on many plans."
+      },
+      {
+        "h": "Turn it into notes",
+        "b": "Paste the transcript or attach the recording with this prompt.",
+        "p": "Turn this recording transcript into clear notes. Context: [e.g. meeting with landlord about repairs]. Give me: 1) A title and date line. 2) Key points as bullets, grouped by topic. 3) Anything agreed, with who agreed it. 4) Next steps with owners and dates. 5) Any numbers, prices or dates mentioned, listed separately so I can check them. Don't add anything that wasn't said.\n\n[paste transcript]"
+      },
+      {
+        "h": "Save it",
+        "b": "Paste the notes into your notes app or a shared doc, and add any dates to your calendar."
+      }
+    ],
+    "example": "Meeting with landlord - 9 Nov. Key points: boiler service booked; damp in back bedroom. Agreed: landlord to send a contractor (landlord). Next steps: contractor visit by 23 Nov; I'll send photos by Tue. Numbers: rent review in March; quote £350 for guttering.",
+    "tips": [
+      "Always get consent before recording others, and delete recordings once you have your notes if they contain personal details."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new voice recording is saved"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Transcribe and turn the recording into structured notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the notes as a document"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add any agreed dates to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run better one-to-ones with a shared running doc",
+    "d": "Keep one shared document for every one-to-one, with an agenda that builds itself and a quick AI summary of progress each month.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Google Docs",
+      "Google Calendar",
+      "AI assistant",
+      "Word"
+    ],
+    "when": "Every one-to-one meeting",
+    "steps": [
+      {
+        "h": "Create the running doc",
+        "b": "Make a Google Doc or Word file shared with the other person, titled with both names. Add the newest meeting at the top each time."
+      },
+      {
+        "h": "Get a good template",
+        "b": "Ask your AI assistant for a structure you can copy for each meeting.",
+        "p": "Create a simple template for a recurring [weekly / fortnightly] one-to-one between [role] and [role]. Include sections for: wins since last time, topics from each person, blockers, feedback both ways, actions with owners and dates, and one 'bigger picture' question that rotates each week. Give me 8 rotating bigger-picture questions too. Keep headings short."
+      },
+      {
+        "h": "Link it to the meeting",
+        "b": "Attach the doc to the recurring calendar event so both of you can add topics during the week."
+      },
+      {
+        "h": "Review progress monthly",
+        "b": "Once a month, paste the last four meetings into your AI assistant and ask for themes, repeated blockers and actions that haven't been done."
+      }
+    ],
+    "example": "18 Nov. Wins: launched the new booking form. Topics (Ella): training budget. Topics (Raj): holiday cover in Dec. Blockers: waiting on IT access. Actions: Raj - chase IT - Wed. Ella - send course options - Fri. Big question: What's one thing you'd change about how we work?",
+    "tips": [
+      "Agree together what goes in the shared doc; keep sensitive or HR matters out of it and in proper channels."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "The day before each one-to-one"
+      },
+      "actions": [
+        {
+          "type": "doc.create",
+          "detail": "Add a new dated section from the template to the running doc"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind both people to add topics"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Monthly: summarise themes and open actions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Decline meetings kindly or suggest an email instead",
+    "d": "Get polite, ready-to-send replies that decline a meeting, ask for an agenda first or offer a written update in its place.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "When an invite lands that you don't need to attend",
+    "steps": [
+      {
+        "h": "Decide what you need",
+        "b": "Work out whether you should decline, send someone else, join for part of it, or just get the notes."
+      },
+      {
+        "h": "Get a set of replies",
+        "b": "Paste the invite details with this prompt.",
+        "p": "I've been invited to this meeting: [title, organiser, purpose]. I'd prefer to [decline / ask for an agenda / join for 15 minutes / send a written update instead] because [reason]. Write 3 short options (under 50 words each) I can put in the calendar decline note or an email. Polite, positive, not apologetic, and offer to help in another way where it makes sense."
+      },
+      {
+        "h": "Respond in your calendar",
+        "b": "Choose 'No' or 'Maybe' on the invite and paste your note into the message box, or propose a new time if that's what you need."
+      }
+    ],
+    "example": "Option 2: Thanks for including me, Paul. I don't think I'm needed for the whole session, so I'll skip this one. Could you share the notes? If a decision needs my input, I'm happy to reply by email the same day.",
+    "tips": [
+      "Save your favourite reply as a template so declining takes ten seconds next time."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A new meeting invite arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Check if the invite has an agenda and needs the user"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a polite decline or alternative"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the suggested response to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn dates in emails and letters into calendar events",
+    "d": "Paste an email, school letter or booking confirmation and get every date pulled out as calendar events with times and reminders.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "Whenever a message or letter is full of dates",
+    "steps": [
+      {
+        "h": "Capture the dates",
+        "b": "Copy the email text, or take a clear photo of the letter or timetable."
+      },
+      {
+        "h": "Ask AI to list the events",
+        "b": "Paste or attach it with this prompt.",
+        "p": "Find every date, event and deadline in this text or image. For each give: event title (short and clear), date, start and end time (or 'all day'), location, what to bring or do, and a sensible reminder (e.g. 1 day before). Present it as a table in date order. Flag anything where the date or time is unclear. If you can create files, also give me a calendar file (.ics) I can import.\n\n[paste text or attach photo]"
+      },
+      {
+        "h": "Add them to your calendar",
+        "b": "Import the calendar file if you got one, or add each row as an event in Google Calendar or Outlook. Gemini can add events to Google Calendar directly if connected."
+      },
+      {
+        "h": "Share with your household",
+        "b": "Invite your partner or add the events to a shared family calendar so everyone sees them."
+      }
+    ],
+    "example": "Fri 28 Nov | Non-uniform day | all day | bring £1 | reminder Thu 7pm. Tue 9 Dec | Nativity play | 14:00-15:00 | school hall | reminder 1 day before. Wed 17 Dec | Term ends | 13:30 pickup | reminder morning of.",
+    "tips": [
+      "Gmail already adds flights and restaurant bookings to Google Calendar automatically for many confirmations, so check before adding twice."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email with dates or bookings arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out events, dates, times and locations"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add each event with a reminder"
+        },
+        {
+          "type": "notify",
+          "detail": "List the events added so the user can check them"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a team or group event without the chaos",
+    "d": "Collect everyone's availability and preferences in one form, then get a plan, a timeline and invites drafted for you.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "When you're organising a team day, party or get-together",
+    "steps": [
+      {
+        "h": "Make a quick sign-up form",
+        "b": "Ask your AI assistant to write the questions, then build them in Google Forms or Microsoft Forms.",
+        "p": "I'm organising [event] for about [number] people around [date range]. Budget: [budget]. Write a short sign-up form with no more than 7 questions covering: which dates work (multiple choice), dietary needs, accessibility needs, activity preferences from these options [options], and anything else they'd like us to know. Make each question one line and friendly."
+      },
+      {
+        "h": "Collect answers in a sheet",
+        "b": "Send the form link to everyone and link the responses to a Google Sheet. Give a clear closing date."
+      },
+      {
+        "h": "Get a plan from the answers",
+        "b": "Copy the response sheet into your AI assistant (remove names if you don't need them) and ask it to pick the best date, summarise dietary and access needs, and build a timeline of tasks counting back from the event."
+      },
+      {
+        "h": "Send invites and reminders",
+        "b": "Create a calendar invite for the chosen date, with the agenda and location, and add your own task deadlines as reminders."
+      }
+    ],
+    "example": "Best date: Thu 11 Dec (18 of 22 available). Needs: 4 vegetarian, 1 gluten-free, 1 step-free access. Top activity: escape room then dinner. Timeline: book venue by 21 Nov, send invite 24 Nov, confirm numbers 4 Dec, final reminder 10 Dec.",
+    "tips": [
+      "Keep health and dietary answers private to the organisers and delete the sheet after the event."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "Each time someone fills in the sign-up form"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add their answers to the event sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Update the best date and needs summary"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Create the event invite once the form closes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep track of every action from every meeting",
+    "d": "Meeting notes are saved automatically, and each Friday you get one tracker of open actions across all your meetings.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Google Meet",
+      "Google Drive",
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Every Friday afternoon",
+    "steps": [
+      {
+        "h": "Save every meeting's notes in one place",
+        "b": "Google Meet's 'Take notes for me' saves notes to Google Drive, Zoom AI Companion can save summaries, and Teams recaps sit with the meeting, if your plan includes them. Otherwise, save your own notes into one Drive or OneDrive folder."
+      },
+      {
+        "h": "Create your action tracker",
+        "b": "Make a Google Sheet or Excel file with columns: date added, meeting, action, owner, due date, status, notes."
+      },
+      {
+        "h": "Run a Friday round-up",
+        "b": "Open the week's notes (or ask a connected assistant like Gemini to read the Drive folder) and use this prompt.",
+        "p": "Here are this week's meeting notes: [paste or point to the folder]. Here is my current action tracker: [paste open rows]. 1) List every new action as rows: date added, meeting, action, owner, due date (or 'not set'). 2) For existing rows, tell me which seem done or changed based on this week's notes. 3) List overdue actions owned by me first. Output the new rows as a table I can paste straight into my spreadsheet."
+      },
+      {
+        "h": "Update the sheet and chase",
+        "b": "Paste the new rows in, mark finished items done, and send a short reminder to anyone with overdue actions."
+      },
+      {
+        "h": "Make it a recurring slot",
+        "b": "Add a 20-minute recurring Friday calendar event called 'Action round-up' with the prompt in the description."
+      }
+    ],
+    "example": "New: 12 Nov | Marketing sync | Brief designer on poster | Zoe | 19 Nov. Changed: 'Book photographer' looks done (mentioned in Thursday's notes). Overdue (you): Send budget to finance - due 7 Nov.",
+    "tips": [
+      "Ask owners to confirm their actions rather than assuming the AI read the notes correctly."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3pm"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull actions from the week's meeting notes"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add new actions to the tracker"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Mark actions that appear finished"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the user their overdue actions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Research the people and company before a call",
+    "d": "Get a quick, sourced background brief on a company or organisation before a sales call, interview or partnership chat.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "LinkedIn",
+      "Google Calendar"
+    ],
+    "when": "Before every sales call or interview",
+    "steps": [
+      {
+        "h": "Note what you know",
+        "b": "Write down the organisation's name and website, and the job titles of the people you're meeting."
+      },
+      {
+        "h": "Ask for a researched brief",
+        "b": "Use an AI assistant with web search switched on and paste this prompt.",
+        "p": "Search the web and give me a short brief on [organisation name, website] before my [sales call / interview / meeting] on [date]. Include: what they do in two sentences, size and location, recent news from the last 6 months, likely priorities or challenges, and 3 smart questions I could ask that show I've done my homework. Link to your sources and say clearly when you couldn't find something."
+      },
+      {
+        "h": "Check the key facts",
+        "b": "Click through to two or three of the sources to make sure the details are current, and look at the people's public LinkedIn profiles yourself."
+      },
+      {
+        "h": "Keep it with the meeting",
+        "b": "Paste the brief into the calendar event description so it's in front of you during the call."
+      }
+    ],
+    "example": "Riverside Bakeries: family-run bakery chain, 14 shops across the South West. News: opened two cafés in Oct; hiring for a head of operations. Likely priorities: staffing new sites, reducing waste. Ask: 'How are you handling stock across the new cafés?'",
+    "tips": [
+      "Stick to business information that's public; don't dig into people's private lives.",
+      "AI search can mix up companies with similar names, so check the website matches."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "One day before a call with an external guest"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Look up the organisation's website and recent news"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write a short brief with questions to ask"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the brief to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Set up a family calendar that keeps everyone in sync",
+    "d": "Create one family calendar with colour-coded people, every term date and regular activity added, and reminders that go to the right person.",
+    "cat": "Meetings & Calendar",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Google Calendar",
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "Set up once, then each new school term",
+    "steps": [
+      {
+        "h": "Create a shared calendar",
+        "b": "In Google Calendar, create a new calendar called 'Family' and share it with each adult, or use Google's family group calendar. Outlook and iPhone users can share a calendar in a similar way."
+      },
+      {
+        "h": "Turn your schedule into events",
+        "b": "Gather term dates, clubs and regular appointments, then ask your AI assistant to organise them.",
+        "p": "Help me set up our family calendar. People: [names and ages]. Here are term dates, clubs and regular commitments: [paste or attach school letters and notes]. Give me a table of events with: title starting with the person's name (e.g. 'Mia - Swimming'), day/date, time, repeat pattern (weekly, termly, one-off), location, who's doing the drop-off or pick-up, and a reminder time. Flag any clashes where one adult is needed in two places."
+      },
+      {
+        "h": "Add events and assign colours",
+        "b": "Create each event, using repeating events for weekly clubs, and give each person's events their own colour so the week is easy to read."
+      },
+      {
+        "h": "Sort the clashes",
+        "b": "Look at the flagged clashes together and agree who covers what, then message the plan in your family WhatsApp group."
+      }
+    ],
+    "example": "Mia - Swimming | Tues 17:00-18:00 weekly in term | Leisure Centre | Drop: Dad, Pick: Mum | remind 16:15. Leo - Football | Sat 9:30 | Park | Dad. Clash: Thu 3 Dec - parents' evening 17:30 and Leo's cubs 18:00, both need Mum.",
+    "tips": [
+      "Add an end date to term-time repeating events so they don't carry on through the holidays."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new school letter or timetable is added"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out events, times and who's responsible"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the events to the family calendar"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post any clashes to the family group chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a messy brain dump into a prioritised to-do list",
+    "d": "Empty everything on your mind into one note and get back a short, ordered list of what to do today, this week and later.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Whenever you feel overwhelmed",
+    "steps": [
+      {
+        "h": "Dump it all out",
+        "b": "Spend five minutes typing every task, worry and reminder into your notes app, in any order. Voice typing works well for this."
+      },
+      {
+        "h": "Ask AI to sort it",
+        "b": "Paste the whole list into your AI assistant with this prompt.",
+        "p": "Here's everything on my mind: [paste brain dump]. Today is [day and date] and I have about [hours] free today. Turn this into: 1) Today: no more than 3 must-dos and 3 quick wins under 10 minutes. 2) This week: tasks with a rough day for each. 3) Later or someday. 4) Things to delegate or drop, with a suggestion of who or why. Rewrite each item so it starts with a verb and is specific. Ask me about anything that's too vague to act on."
+      },
+      {
+        "h": "Answer any questions",
+        "b": "If it asks what you meant by something vague, reply and ask it to update the list."
+      },
+      {
+        "h": "Move today's list somewhere visible",
+        "b": "Copy the Today section into your reminders app or onto a sticky note, and start with the first quick win."
+      }
+    ],
+    "example": "Today must-dos: Pay nursery invoice. Finish slides for Thursday. Call Mum about Christmas plans. Quick wins: Book dentist. Reply to Sara. This week: Return parcel (Wed). Later: Sort loft. Drop: Re-organising photo albums, not urgent this month.",
+    "tips": [
+      "Three must-dos is the limit for a reason; if you finish early, pull one more in."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes a brain dump"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Sort items into today, this week, later and drop"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add today's tasks to the to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan your whole week in 15 minutes",
+    "d": "Every Sunday, get a realistic week plan with your top three goals, tasks placed around your commitments and time set aside for rest.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar",
+      "Reminders app"
+    ],
+    "when": "Every Sunday evening",
+    "steps": [
+      {
+        "h": "Gather your week",
+        "b": "Copy or screenshot next week's calendar and your current to-do list."
+      },
+      {
+        "h": "Ask for a week plan",
+        "b": "Paste both into your AI assistant with this prompt.",
+        "p": "Help me plan next week. My calendar: [paste or attach]. My to-do list: [paste]. Other things I want to fit in: [e.g. 3 gym sessions, call a friend]. My energy is best in the [morning/afternoon/evening]. Give me: 1) My top 3 goals for the week. 2) A day-by-day plan putting tasks into free gaps, hardest tasks in my best hours, and no day with more than [5] hours of tasks. 3) What I should move to the following week if things slip. 4) One thing to say no to."
+      },
+      {
+        "h": "Block the big tasks",
+        "b": "Add the top three goals as time blocks in your calendar so they don't get squeezed out."
+      },
+      {
+        "h": "Set a recurring reminder",
+        "b": "Create a weekly reminder or calendar event every Sunday at the same time called 'Plan my week'."
+      }
+    ],
+    "example": "Goals: Submit grant application; get boiler serviced; two evenings off. Mon: 9-11 grant draft; book boiler. Tue: gym 7am; grant budget. Wed: evening off. Thu: send grant to Jess for review. Fri: submit grant. Move if needed: clear garage. Say no to: Thursday drinks.",
+    "tips": [
+      "Plan only about 70% of your free time; the rest catches the things that always come up."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 6pm"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to plan their week"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build a day-by-day plan from the calendar and to-do list"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add time blocks for the top three goals"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan today around your meetings and energy",
+    "d": "Get an hour-by-hour plan for today that fits your tasks into the gaps between meetings and puts hard work when you're sharpest.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Outlook Calendar"
+    ],
+    "when": "Every morning, or the evening before",
+    "steps": [
+      {
+        "h": "Copy today's commitments",
+        "b": "Note your meetings and fixed times (school run, appointments) and your task list for today."
+      },
+      {
+        "h": "Ask for a time-blocked day",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan my day. Fixed commitments: [list with times]. Tasks: [list with rough time estimates if you know them]. I start at [time] and finish at [time]. My sharpest time is [time of day]. Rules: put the hardest task in my sharpest slot; group small admin tasks together; add a 5-minute break after any 90 minutes of work and a proper lunch break; leave a 30-minute buffer in the afternoon. Show the plan as a simple timeline and tell me which tasks won't fit."
+      },
+      {
+        "h": "Follow it loosely",
+        "b": "Keep the timeline open on your screen. If the day goes off-track, paste in what's changed and ask for a revised plan for the rest of the day."
+      }
+    ],
+    "example": "8:30 Admin batch: emails, invoices (30 min). 9:00 Deep work: write tender response. 10:30 Break. 10:45 Team call. 11:30 Tender response cont. 12:30 Lunch. 13:15 Calls: plumber, bank. 14:00 Client meeting. 15:30 Buffer. 16:00 Plan tomorrow. Won't fit: website update.",
+    "tips": [
+      "People usually underestimate tasks, so ask the AI to add 25% to any time estimates you give."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 8am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read today's calendar and task list"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create a time-blocked plan for the day"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the plan to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Break a big project into small steps with dates",
+    "d": "Describe a project and get a step-by-step plan with milestones, deadlines worked back from your end date and the first action for today.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Notes app"
+    ],
+    "when": "At the start of any project that feels too big",
+    "steps": [
+      {
+        "h": "Describe the project",
+        "b": "Write a few lines on what you're trying to achieve, the deadline, who's helping and how much time you have each week."
+      },
+      {
+        "h": "Ask for a plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Help me plan this project: [describe goal]. Deadline: [date]. Time I can give it: [hours per week]. Who's involved: [people]. Break it into 4 to 6 phases. For each phase list the tasks (each under 2 hours, starting with a verb), who does it, and a target date working back from the deadline. Add a buffer week before the deadline. Highlight any task others are waiting on. Finish with the very first step I can do today in under 15 minutes."
+      },
+      {
+        "h": "Put it somewhere you'll track it",
+        "b": "Copy the plan into a Google Sheet, Excel file or notes app, with a column to tick tasks off."
+      },
+      {
+        "h": "Check in weekly",
+        "b": "Each week, paste what you've done and ask the AI to adjust the remaining dates."
+      }
+    ],
+    "example": "Phase 1 Plan (by 21 Nov): Set budget; list must-haves. Phase 2 Quotes (by 5 Dec): Contact 3 kitchen fitters; compare quotes. Phase 3 Order (by 19 Dec)... Buffer week: 2-9 Mar. First step today: Measure the kitchen walls and write them down.",
+    "tips": [
+      "If a task takes longer than two hours, ask the AI to split it again; smaller steps are easier to start."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a new project"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Break the project into phases, tasks and dates"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add each task as a row in the project tracker"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add milestone dates to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a planning nudge from your AI assistant every Monday",
+    "d": "Your AI assistant checks in each Monday with a short planning routine, so you start the week with priorities instead of a pile.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Every Monday morning",
+    "steps": [
+      {
+        "h": "Find scheduled tasks in your assistant",
+        "b": "ChatGPT has scheduled tasks and Gemini has scheduled actions on some plans. If yours doesn't, set a recurring phone reminder that links to a saved prompt instead."
+      },
+      {
+        "h": "Create the weekly check-in",
+        "b": "Ask your assistant to schedule this message for every Monday at your chosen time.",
+        "p": "Every Monday at [8:30am], send me a weekly kick-off. Ask me three questions: 1) What are the 3 outcomes that would make this week a success? 2) What's the one thing I've been putting off? 3) What's already in the diary that needs prep? Remind me of my longer-term goals: [your goals]. Also include one short, practical productivity tip that fits someone who [describe your work or life]. Keep it under 120 words."
+      },
+      {
+        "h": "Reply with your answers",
+        "b": "When the message arrives, answer the questions in the same chat and ask it to turn your answers into a week's to-do list."
+      },
+      {
+        "h": "Review on Friday",
+        "b": "On Friday, return to the same chat and ask how you did against Monday's outcomes."
+      }
+    ],
+    "example": "Good morning! Week of 10 Nov. 1) What 3 outcomes would make this week a success? 2) What have you been putting off? 3) What needs prep? Your goals: launch the Etsy shop, run 10k by March. Tip: batch all your product photos into one session.",
+    "tips": [
+      "Update your longer-term goals in the scheduled task each quarter so the reminders stay relevant."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 8:30am"
+      },
+      "actions": [
+        {
+          "type": "message.send",
+          "detail": "Send the weekly kick-off questions"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Turn the user's answers into a week's to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Set up a project board in minutes",
+    "d": "Describe your project and get a ready-made board of cards in Trello or Notion, sorted into To do, Doing and Done.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Trello",
+      "Notion"
+    ],
+    "when": "When starting a project with several people or moving parts",
+    "steps": [
+      {
+        "h": "Ask AI for the card list",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm setting up a project board for [project]. Team: [names and roles]. Deadline: [date]. Give me a list of 15 to 25 cards. Each card is one line in this format: [task starting with a verb] - [owner] - [due date]. Group them under these list headings: Backlog, This week, Waiting on others. Keep tasks small enough to finish in a day or less. Then suggest 3 to 5 labels (e.g. Design, Admin, Urgent) and which cards get which."
+      },
+      {
+        "h": "Create the board",
+        "b": "Make a new Trello board or a Notion board database with the lists Backlog, This week, Doing, Waiting on others and Done."
+      },
+      {
+        "h": "Paste the cards in",
+        "b": "In Trello, paste several lines into a new card and it offers to create one card per line. In Notion, paste the list into a board and each line becomes a card. Then set owners and due dates."
+      },
+      {
+        "h": "Agree how you'll use it",
+        "b": "Ask everyone to move their own cards as they work, and spend five minutes each week reviewing the board together."
+      }
+    ],
+    "example": "This week: Confirm venue booking - Ana - 14 Nov. Draft invite wording - Ben - 15 Nov. Backlog: Order name badges - Ana - 28 Nov. Waiting on others: Catering quote from supplier - Ben - 18 Nov. Labels: Venue, Comms, Admin, Urgent.",
+    "tips": [
+      "Limit 'Doing' to two or three cards per person; it keeps work flowing instead of half-done."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a new project"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a list of task cards with owners and due dates"
+        },
+        {
+          "type": "list.add",
+          "detail": "Create the cards on the project board"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the team the board is ready"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write your weekly update in five minutes",
+    "d": "Turn a few rough notes into a clear status update for your manager, team or client: progress, next steps and anything blocking you.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Slack",
+      "Microsoft Teams",
+      "Gmail"
+    ],
+    "when": "Every Friday",
+    "steps": [
+      {
+        "h": "Jot down your week",
+        "b": "Write quick notes on what you did, what's next and anything stuck. Look through your sent emails and calendar for reminders."
+      },
+      {
+        "h": "Turn it into an update",
+        "b": "Paste your notes with this prompt.",
+        "p": "Write a weekly update from my notes for [audience, e.g. my manager]. Format: 'Done this week' (3 to 5 bullets, each with the result, not just the activity), 'Next week' (3 bullets), 'Blockers or help needed' (each with what I need and from whom), and a one-line overall status: On track, At risk or Off track. Under 150 words. Keep the numbers and names exactly as I wrote them.\n\nNotes:\n[paste notes]"
+      },
+      {
+        "h": "Send it the same way every week",
+        "b": "Post it in Slack, Teams or email at the same time each week so people know when to expect it."
+      }
+    ],
+    "example": "Status: On track. Done: Signed 2 new clients (Harbour Dental, Oak Lane Vets). Cut invoice backlog from 18 to 5. Next week: Launch winter newsletter. Hire temp for December. Blockers: Need sign-off on newsletter budget from Paula by Tue.",
+    "tips": [
+      "Keep a running note during the week and add one line each day; Friday's update then writes itself."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3pm"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Turn the week's notes into a structured update"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the update to the chosen channel after review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn scattered notes into an organised document",
+    "d": "Paste in jumbled notes, screenshots or photos of a notebook and get one neat document with headings, key points and actions.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Google Docs",
+      "Notes app"
+    ],
+    "when": "When notes pile up after a course, project or busy week",
+    "steps": [
+      {
+        "h": "Collect the notes",
+        "b": "Copy text from your notes app, and photograph handwritten pages in good light, one page per photo."
+      },
+      {
+        "h": "Ask AI to organise them",
+        "b": "Paste or attach everything with this prompt.",
+        "p": "Organise these notes into one clear document about [topic]. Group related points under short headings, remove repeats, keep my original facts and numbers, and fix spelling. At the end add: 'Actions' (anything I said I'd do) and 'Questions' (anything I wrote with a ? or seemed unsure about). If you can't read part of a handwritten page, mark it [unclear] rather than guessing."
+      },
+      {
+        "h": "Save the clean version",
+        "b": "Paste the result into a Google Doc, Word file or notes app with a clear title and date so you can find it later."
+      }
+    ],
+    "example": "Garden redesign notes. Layout: Move veg beds to south fence; keep apple tree. Budget: Max £1,200; sleepers approx £35 each. Plants: Lavender along path, [unclear] near shed. Actions: Get skip quote. Questions: Do we need permission for the new shed?",
+    "tips": [
+      "Ask for a one-paragraph summary at the top if you'll be sharing it with someone else."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Photos or notes are added to a 'To tidy' folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read text from notes and photos"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Organise into headings, actions and questions"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the tidy document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get started on a task you keep putting off",
+    "d": "Name the task you're avoiding and get a tiny first step, a 25-minute plan and a kinder way to think about it.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "When you've been avoiding something for days",
+    "steps": [
+      {
+        "h": "Be honest about what's stopping you",
+        "b": "Note the task and why it feels hard: boring, confusing, scary, or too big."
+      },
+      {
+        "h": "Ask for a way in",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I keep putting off this task: [task]. It feels hard because [reason]. Help me start. Give me: 1) A first step so small it takes under 2 minutes. 2) A 25-minute plan broken into 3 or 4 mini steps. 3) What 'good enough' looks like for a first attempt. 4) One reframe for why this feels hard, in a kind, practical tone, not a pep talk."
+      },
+      {
+        "h": "Set a 25-minute timer",
+        "b": "Do the 2-minute step straight away, then start a timer on your phone and work through the mini steps. Stop when it rings if you want to."
+      }
+    ],
+    "example": "2-minute step: Open the tax return website and log in. 25 minutes: 1) Find last year's P60 (5 min). 2) Fill in personal details (5 min). 3) Enter income figures (10 min). 4) Save and note questions (5 min). Good enough: Half done and saved.",
+    "tips": [
+      "Starting is the hardest part; most people keep going once the first step is done.",
+      "For money, tax or legal tasks, use this to get organised, and check anything you're unsure about with a qualified adviser."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User names a task they are avoiding"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest a tiny first step and a 25-minute plan"
+        },
+        {
+          "type": "notify",
+          "detail": "Start a 25-minute reminder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Track your habits in a simple spreadsheet",
+    "d": "Get a habit tracker with tick boxes, streak counts and a weekly score, built in Google Sheets or Excel with AI's help.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Google Sheets",
+      "Excel",
+      "AI assistant"
+    ],
+    "when": "Set up once, tick off daily",
+    "steps": [
+      {
+        "h": "Choose a few habits",
+        "b": "Pick three to five habits, such as drinking water, a 20-minute walk or reading before bed. Fewer is better."
+      },
+      {
+        "h": "Ask AI to design the sheet",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Help me build a habit tracker in [Google Sheets / Excel]. Habits: [list]. Layout: dates down column A for [month], one column per habit with checkboxes. Give me step-by-step instructions, including: how to insert checkboxes, a formula for a weekly completion percentage per habit, a formula for the current streak for each habit, and conditional formatting to colour completed days green. Explain each formula in one plain sentence and tell me exactly which cell to put it in."
+      },
+      {
+        "h": "Build it step by step",
+        "b": "Follow the instructions, copying each formula into the cell it names. If something shows an error, paste the error back to your AI assistant and ask what to fix."
+      },
+      {
+        "h": "Keep it handy",
+        "b": "Add the sheet to your phone's home screen through the Sheets or Excel app and set a daily reminder to tick it off."
+      }
+    ],
+    "example": "Columns: Date | Water | Walk | Read | Bed by 11. Row 10 Nov: ticked, ticked, unticked, ticked. Weekly score: Water 86%, Walk 71%, Read 43%, Bed by 11 57%. Current streak: Water 6 days.",
+    "tips": [
+      "Missing a day is normal; aim for 'never twice in a row' rather than a perfect streak."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every evening at 9pm"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to tick off today's habits"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "On Sundays, summarise the week's progress"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Never miss a renewal or deadline again",
+    "d": "Keep one tracker of insurance, MOT, passports, subscriptions and contracts, with calendar reminders set well before each date.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Google Calendar",
+      "Gmail"
+    ],
+    "when": "Set up once, update whenever something renews",
+    "steps": [
+      {
+        "h": "Find your renewal dates",
+        "b": "Search your email for words like 'renewal', 'policy', 'subscription' and 'expires', and check documents such as your passport and driving licence."
+      },
+      {
+        "h": "Turn them into a tidy list",
+        "b": "Paste the details (leaving out policy and account numbers) into your AI assistant.",
+        "p": "Organise these renewals and deadlines into a table: [paste details]. Columns: item, provider, renewal or expiry date, cost and how often it's paid, auto-renews (yes/no/unknown), how far ahead I should be reminded (e.g. 4 weeks for insurance to shop around, 10 weeks for a passport), and the action to take. Sort by date. Flag anything that looks like a duplicate or forgotten subscription."
+      },
+      {
+        "h": "Save it in a spreadsheet",
+        "b": "Paste the table into Google Sheets or Excel and keep it somewhere safe and private."
+      },
+      {
+        "h": "Add calendar reminders",
+        "b": "For each row, create a calendar event on the reminder date (yearly repeating where it makes sense) with the action in the description."
+      }
+    ],
+    "example": "Car insurance | Brightway | 14 Jan | £412/yr | auto-renews | remind 16 Dec | compare quotes. MOT | - | 3 Mar | £54.85 | no | remind 10 Feb | book garage. Streaming | ViewBox | 22nd monthly | £10.99 | yes | flag: unused?",
+    "tips": [
+      "Never paste full policy numbers, account numbers or passport numbers into an AI assistant; you only need the names and dates.",
+      "This is for staying organised; for advice on which insurance or contract to choose, speak to a qualified adviser."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email mentioning renewal, expiry or subscription arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull the item, provider, date and cost"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add or update the row in the renewals tracker"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Set a reminder ahead of the date"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make a tough decision with a clear comparison",
+    "d": "Lay out your options and get a simple scoring table, the trade-offs in plain words and questions to settle what matters most.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When you're stuck between two or more choices",
+    "steps": [
+      {
+        "h": "Write down the options",
+        "b": "List each option and what you know about it, plus what you care about most (cost, time, stress, family, growth)."
+      },
+      {
+        "h": "Ask for a comparison",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Help me decide between these options: [list options with key facts]. What matters to me, in order: [your priorities]. 1) Ask me up to 3 questions first if anything important is missing. 2) Then make a table scoring each option 1 to 5 on each priority, weighted by my order, with a total. 3) Describe the biggest trade-off of each option in one sentence. 4) Tell me what would have to be true for each option to be the right one. Don't make the decision for me."
+      },
+      {
+        "h": "Sleep on it",
+        "b": "Read the results the next morning. If the top score feels wrong, that tells you something about what you really want."
+      }
+    ],
+    "example": "Options: Job A (more pay, 1hr commute) vs Job B (less pay, hybrid). Weighted totals: A 31, B 36. Trade-off A: £6k more but 10 hrs a week travelling. B is right if flexibility for school pick-ups matters more than savings this year.",
+    "tips": [
+      "For big money, health or legal decisions, use this to clarify your thinking, then check with a qualified professional."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User lists options and priorities"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Score each option and explain the trade-offs"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the comparison for later"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Look back on your month and plan the next",
+    "d": "Answer five quick questions and get a short monthly review: what went well, what didn't and three focus points for next month.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Notes app",
+      "Google Calendar"
+    ],
+    "when": "Last Sunday of every month",
+    "steps": [
+      {
+        "h": "Scroll back through your month",
+        "b": "Look at your calendar, photos and to-do lists from the last four weeks to jog your memory."
+      },
+      {
+        "h": "Talk it through with AI",
+        "b": "Paste this prompt and answer the questions it asks, one at a time.",
+        "p": "Run a monthly review with me. Ask me these questions one at a time and wait for each answer: 1) What went well this month? 2) What didn't go to plan, and why? 3) What drained my energy? 4) What gave me energy? 5) What do I want more of next month? Then write a summary with: 3 wins, 2 lessons, and 3 specific focus points for [next month], each with one small action I can put in my calendar. Keep it encouraging and honest."
+      },
+      {
+        "h": "Schedule the focus points",
+        "b": "Add each small action to your calendar for next month, and save the summary in a 'Monthly reviews' note."
+      },
+      {
+        "h": "Make it recurring",
+        "b": "Create a monthly repeating calendar event so the review happens without you having to remember."
+      }
+    ],
+    "example": "Wins: Finished the website refresh; ran 3 times a week; booked summer holiday. Lessons: Saying yes to Saturday work wore me out. Focus for December: Protect weekends (block Saturdays); finish online course (2 x 30 min a week); call Gran fortnightly.",
+    "tips": [
+      "Read last month's summary before you start, so you can see whether last month's focus points happened."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Last Sunday of every month at 7pm"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to do their monthly review"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Ask the review questions and write the summary"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add next month's focus actions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a checklist for jobs you do again and again",
+    "d": "Describe a task you repeat and get a step-by-step checklist anyone can follow, so nothing gets forgotten and others can help.",
+    "cat": "Planning & Productivity",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "Notion"
+    ],
+    "when": "Whenever you notice you're doing the same job for the third time",
+    "steps": [
+      {
+        "h": "Talk through how you do it",
+        "b": "Type or voice-record yourself explaining the task from start to finish, including the bits you usually forget."
+      },
+      {
+        "h": "Turn it into a checklist",
+        "b": "Paste your description into your AI assistant with this prompt.",
+        "p": "Turn my description into a clear checklist for [task] that someone new could follow. Include: what it's for in one line; what you need before starting; numbered steps, each one action starting with a verb; warnings for common mistakes; how to know it's done properly; and how long it usually takes. Use plain words, no jargon. Then list any steps that seem missing or unclear.\n\nMy description:\n[paste]"
+      },
+      {
+        "h": "Save and test it",
+        "b": "Put the checklist in a shared Google Doc or Notion page. Next time, follow it exactly and fix anything that's wrong."
+      }
+    ],
+    "example": "Closing the café on Sundays (20 min). Need: keys, cash bag. 1. Turn off the coffee machine and run the clean cycle. 2. Count the till and record totals in the cash book. 3. Wipe and stack chairs... Warning: Don't switch off the fridge circuit. Done when: alarm is set and green light shows.",
+    "tips": [
+      "Add photos of tricky bits, like which switch to press; they save a lot of explaining."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a repeated task"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Turn the description into a step-by-step checklist"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the checklist in the shared procedures folder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a big goal into a 12-week plan",
+    "d": "Set one meaningful goal for the next three months and get weekly milestones, scheduled check-ins and a way to track progress.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Google Sheets",
+      "Notion"
+    ],
+    "when": "At the start of each quarter",
+    "steps": [
+      {
+        "h": "Pick one goal",
+        "b": "Choose a single goal you can make real progress on in 12 weeks, such as launching a side business, getting fitter or finishing a qualification."
+      },
+      {
+        "h": "Ask for a 12-week plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Help me turn this goal into a 12-week plan: [goal]. Start date: [date]. Time available: [hours per week]. Where I'm starting from: [current situation]. Give me: 1) A clear, measurable version of the goal. 2) Milestones for weeks 4, 8 and 12. 3) A table of 12 weeks, each with a focus and 2 or 3 specific actions. 4) The 3 most likely obstacles and how to handle each. 5) A 5-minute weekly check-in question list."
+      },
+      {
+        "h": "Put it in a tracker",
+        "b": "Copy the 12-week table into Google Sheets, Excel or Notion with a 'done' column for each action."
+      },
+      {
+        "h": "Schedule the check-ins",
+        "b": "Create a recurring weekly 15-minute calendar event for 12 weeks called 'Goal check-in', with the check-in questions in the description."
+      }
+    ],
+    "example": "Goal: Run 5k without stopping by 2 Feb. Week 4: Run 2 x 5 min. Week 8: Run 15 min. Week 12: 5k parkrun. Week 1: 3 x walk/run sessions (1 min run, 2 min walk). Obstacle: dark evenings, so plan lunchtime runs on Tue and Thu.",
+    "tips": [
+      "For fitness or health goals, check with your GP first if you have any medical conditions."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekly check-in for 12 weeks"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send the weekly check-in questions"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Record this week's progress"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Adjust the next week's actions based on progress"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Create a personal assistant that knows your priorities",
+    "d": "Set up a saved AI helper that already knows your roles, goals and preferences, so every planning chat starts from where you are.",
+    "cat": "Planning & Productivity",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Set up once, then use daily",
+    "steps": [
+      {
+        "h": "Write a short 'about me' page",
+        "b": "In a Google Doc, note your roles (work and home), current goals, regular commitments, working hours and how you like information presented. Leave out anything sensitive."
+      },
+      {
+        "h": "Create the helper",
+        "b": "Make a custom GPT in ChatGPT, a Project in Claude or a Gem in Gemini. Upload your page and paste these instructions.",
+        "p": "You are my personal planning assistant. Use the attached 'about me' page for context. When I ask for help: keep answers short and practical; always connect suggestions to my current goals; suggest no more than 3 priorities a day; warn me if I'm overloading a day or week; ask a question if a request is vague. When I say 'plan my day', 'plan my week' or 'brain dump', use the matching format: timeline, day-by-day table, or sorted list. British English."
+      },
+      {
+        "h": "Test it with real requests",
+        "b": "Try 'plan my week' and 'brain dump' with your real tasks and adjust the instructions if the answers aren't quite right."
+      },
+      {
+        "h": "Refresh it monthly",
+        "b": "Update your 'about me' page when your goals or routines change, and re-upload it."
+      }
+    ],
+    "example": "You: plan my day. Assistant: Today (Tue): 3 priorities linked to your goals: 1) Draft course module 2 (goal: launch course in Jan). 2) Call accountant. 3) Gym at 6pm. Warning: You have 5 hours of meetings, so module 2 may need to move to Wed morning.",
+    "tips": [
+      "Turn on the assistant's memory feature if you're comfortable with it, but check what it has saved now and then."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User asks their planning assistant for help"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Answer using the user's saved goals and preferences"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add agreed priorities to the to-do list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Wrap up your week with one Friday review",
+    "d": "Every Friday, get one page that pulls together your calendar, unanswered emails and open tasks, with a starter plan for Monday.",
+    "cat": "Planning & Productivity",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Gmail",
+      "Google Docs"
+    ],
+    "when": "Every Friday afternoon",
+    "steps": [
+      {
+        "h": "Connect your tools",
+        "b": "Use Gemini with Google Workspace, Copilot with Microsoft 365, or the Gmail and Google Calendar connectors in ChatGPT or Claude, if your plan includes them. Check your workplace AI policy first."
+      },
+      {
+        "h": "Keep a running task list",
+        "b": "Keep your open tasks in one Google Doc or notes page so your assistant (or you) can paste them in each week."
+      },
+      {
+        "h": "Save your Friday prompt",
+        "b": "Use this prompt each week, pasting anything your assistant can't read directly.",
+        "p": "Run my Friday wrap-up. Look at: this week's calendar, emails from this week that I haven't replied to, and my open task list [paste or point to doc]. Give me: 1) What I got done this week (from meetings held and tasks ticked). 2) Loose ends: unanswered emails that need a reply, and promises I made in meetings. 3) Next week's calendar at a glance, with any day that's overloaded. 4) A starter list of 3 priorities for Monday morning. Keep it to one page."
+      },
+      {
+        "h": "Schedule it and act on it",
+        "b": "Create a recurring 30-minute Friday calendar event with the prompt in the description. Spend the time clearing quick loose ends, and save the page in a 'Weekly reviews' doc."
+      }
+    ],
+    "example": "Done: 9 meetings, client proposal sent, Q4 budget agreed. Loose ends: Reply to Femi about workshop dates; send slides promised in Tuesday's call. Next week: Wednesday has 6 hours of meetings. Monday priorities: Finish hiring brief; confirm venue; prep Wed board meeting.",
+    "tips": [
+      "Ending the week with loose ends written down makes it much easier to switch off over the weekend."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3:30pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read this week's calendar, unanswered emails and task list"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise what was done and what's still open"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the weekly review page"
+        },
+        {
+          "type": "notify",
+          "detail": "Send Monday's top 3 priorities to the user"
+        }
+      ]
+    }
+  }
+]
