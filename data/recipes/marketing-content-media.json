@@ -1,0 +1,2770 @@
+[
+  {
+    "t": "Turn one idea into posts for every platform",
+    "d": "Write one rough idea and get a LinkedIn post, an Instagram caption, a Facebook post and a short video hook, each in the right style.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Whenever you have something worth sharing",
+    "steps": [
+      {
+        "h": "Jot down the idea in plain words",
+        "b": "In your notes app, write two or three sentences about the news, tip or story. Don't polish it, just get the point down."
+      },
+      {
+        "h": "Ask your AI assistant to adapt it",
+        "b": "Open ChatGPT, Claude or Gemini and paste this prompt with your idea.",
+        "p": "I run [type of business] for [audience]. Here is a rough idea I want to share: [your idea]. Turn it into: 1) a LinkedIn post (120-180 words, a strong first line, short paragraphs, end with a question); 2) an Instagram caption (under 100 words, friendly, 5 relevant hashtags at the end); 3) a Facebook post (conversational, under 80 words, with a clear call to action: [what you want people to do]); 4) three opening lines for a 30-second video. Use British English, no hype words, and keep the facts exactly as I gave them."
+      },
+      {
+        "h": "Make it sound like you",
+        "b": "Read each version aloud and change anything you wouldn't say. Ask the assistant to 'make it more casual' or 'shorter' if a version feels off."
+      },
+      {
+        "h": "Post or schedule each one",
+        "b": "Copy each version into its app. Most platforms let you schedule a post for later if you'd rather spread them across the week."
+      }
+    ],
+    "example": "LinkedIn: 'Most of our customers ask the same question in their first week...' Instagram: 'The one thing we wish every new customer knew...' +#smallbusiness #tips. Facebook: 'Quick tip from the team: ... Pop in on Saturday and we'll show you.' Video hooks: 'Stop doing this in week one.'",
+    "tips": [
+      "Save the prompt in your notes app with your business details filled in, so next time you only paste the idea.",
+      "Check any facts, prices or dates before posting; the assistant can quietly change them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User submits a rough idea"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write platform-specific versions of the idea"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save all versions in one note for review"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the drafts are ready to check"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Fill a month of social posts in one sitting",
+    "d": "A ready-to-use content calendar in a spreadsheet with dates, themes, captions and image ideas for a whole month of posts.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Last week of each month",
+    "steps": [
+      {
+        "h": "List what's coming up",
+        "b": "Write down next month's events, offers, launches, holidays and anything seasonal for your customers. Five or six items is plenty."
+      },
+      {
+        "h": "Ask for a calendar as a table",
+        "b": "Paste this into your AI assistant with your details.",
+        "p": "Create a social media content calendar for [month and year] for [business name], a [type of business] serving [audience]. We post [number] times a week on [platforms]. Key dates and offers: [list]. Mix the posts roughly 40% helpful tips, 30% behind the scenes, 20% customer stories, 10% offers. Output a table with columns: Date, Day, Platform, Theme, Post caption (under 60 words), Image or video idea, Call to action. Use British English and no hype words."
+      },
+      {
+        "h": "Paste it into Google Sheets",
+        "b": "Copy the table and paste it into a new Google Sheet. It usually lands in neat columns; if not, ask the assistant to give it as comma-separated text and use Paste special."
+      },
+      {
+        "h": "Add a status column",
+        "b": "Add a column called Status with options like Idea, Drafted, Scheduled, Posted, so you can see your progress at a glance."
+      }
+    ],
+    "example": "Tue 3 Mar | Instagram | Tip | 'Three ways to make your lunch break count...' | Flat lay of a packed lunch | Save this for later. Fri 6 Mar | Facebook | Offer | 'Mother's Day gift sets now in...' | Gift set on shop counter | Order by 25 March.",
+    "tips": [
+      "Keep last month's sheet and tell the assistant which posts did best, so next month leans into what works."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "On the 25th of each month"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Ask the user for next month's key dates and offers"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build the month's content calendar"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add each post as a row with status Idea"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Schedule a week of Instagram and Facebook posts at once",
+    "d": "Design your images in Canva, write captions with AI and queue a full week of Instagram and Facebook posts in about half an hour.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 35,
+    "tools": [
+      "AI assistant",
+      "Canva",
+      "Instagram"
+    ],
+    "when": "Once a week, same time each week",
+    "steps": [
+      {
+        "h": "Pick this week's topics",
+        "b": "Choose three to five topics from your content calendar or from questions customers asked this week."
+      },
+      {
+        "h": "Write the captions in one go",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write [number] Instagram and Facebook captions for [business name], a [type of business]. Topics: [list topics]. For each: a first line that makes people stop scrolling, 40-80 words, one clear call to action, and 3-5 hashtags that real customers in [your area or niche] would search. Also suggest a short headline (max 6 words) to put on the image. Number them and use British English."
+      },
+      {
+        "h": "Make matching images in Canva",
+        "b": "Open a Canva Instagram post template, add your headline, then duplicate the page for each post so they all match. Download them as PNGs."
+      },
+      {
+        "h": "Schedule them in Meta Business Suite",
+        "b": "Open Meta Business Suite (free for linked Facebook Pages and Instagram business accounts), create a post, add the image and caption, choose both Facebook and Instagram, and pick a date and time to schedule."
+      }
+    ],
+    "example": "Mon 8am: 'Your boiler is trying to tell you something.' + image 'Winter boiler check'. Wed 12pm: 'Meet Sam, who's been with us 6 years...' Fri 5pm: 'This weekend only: free gas safety check with every service.' All queued in Business Suite.",
+    "tips": [
+      "If your Canva plan includes the Content Planner, you can schedule straight from Canva instead.",
+      "Only use photos you took or have rights to, and ask customers before featuring them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Monday at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write captions and image headlines for the week's topics"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save captions alongside the Canva designs"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Block 30 minutes to schedule the posts"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a weekly LinkedIn post from your notes",
+    "d": "Keep a running list of thoughts in Notion and turn the best one into a polished LinkedIn post every week, scheduled ahead.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Notion",
+      "AI assistant",
+      "LinkedIn"
+    ],
+    "when": "Every Monday morning",
+    "steps": [
+      {
+        "h": "Set up an ideas page in Notion",
+        "b": "Create a Notion database called LinkedIn ideas with columns for Idea, Story or example, and Status. Add anything that comes up during your week."
+      },
+      {
+        "h": "Pick one idea and draft it",
+        "b": "Copy your chosen idea and example into your AI assistant with this prompt. If your Notion plan includes Notion AI you can run it right inside the page.",
+        "p": "Write a LinkedIn post from this idea: [idea]. Real example from my work: [example]. I am a [job title] who helps [audience]. Structure: a one-line hook that states a surprising point; the story in 3-4 short paragraphs; one practical lesson readers can use today; a closing question. 150-220 words. No emoji, no hashtags in the body, up to 3 hashtags at the end. British English, plain and warm, no buzzwords."
+      },
+      {
+        "h": "Edit it into your own words",
+        "b": "Change at least one sentence so it sounds like you speaking. Remove anything that names a client without their permission."
+      },
+      {
+        "h": "Schedule it on LinkedIn",
+        "b": "When writing a post on LinkedIn, use the clock icon to schedule it for a time your audience is online, such as Tuesday mid-morning. Mark the idea as Posted in Notion."
+      }
+    ],
+    "example": "Hook: 'The best proposal I ever wrote was one page long.' Story: a client who skimmed a 20-page deck... Lesson: lead with the decision you need from them. Question: 'What's the shortest document that ever won you work?' #consulting #writing",
+    "tips": [
+      "Keep client stories anonymous unless you have written permission to name them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 8am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the newest idea marked Ready in the Notion database"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft the LinkedIn post"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the draft to the user to edit and schedule"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find the words your customers actually search for",
+    "d": "A sorted list of 30 to 50 real search phrases for your business, grouped by what people want, ready to use in your website and posts.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Before writing web pages or blog posts",
+    "steps": [
+      {
+        "h": "Collect search suggestions",
+        "b": "Type your main service into Google slowly and note the suggestions that drop down, plus the 'People also ask' questions and related searches at the bottom of the results. Try four or five starting phrases."
+      },
+      {
+        "h": "Ask the AI to sort and expand them",
+        "b": "Paste what you collected into your AI assistant with this prompt.",
+        "p": "I run [business] in [town or region] for [audience]. Here are phrases from Google suggestions and 'People also ask': [paste list]. 1) Remove duplicates. 2) Group them by intent: wants to buy now, comparing options, wants to learn, local search. 3) Add 10 more realistic phrases a customer might type. 4) For each group, suggest one web page or blog post title that would answer them. Output as a table: Phrase, Intent, Suggested page. Don't invent search volumes."
+      },
+      {
+        "h": "Save it in a sheet",
+        "b": "Paste the table into Google Sheets and add a column for where you've used each phrase, so you can tick them off."
+      }
+    ],
+    "example": "'emergency plumber near me' (buy now) -> Page: Emergency plumbing in Leeds. 'how much does a boiler service cost' (comparing) -> Post: What a boiler service costs and what's included. 'why is my radiator cold at the top' (learn) -> Post: Cold radiator? Five fixes.",
+    "tips": [
+      "AI can't see real search volumes; if you want numbers, check Google Trends to compare which phrases are more popular."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes collected search phrases"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Group phrases by search intent"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest extra phrases and page titles"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Save phrases to the keyword sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a plain-English health check of any web page",
+    "d": "A friendly report on one page of your website: what's clear, what's confusing, and a short fix list to help it show up in search.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When a page isn't getting visits or enquiries",
+    "steps": [
+      {
+        "h": "Copy the page's words",
+        "b": "Open the page, select all the text and copy it. Also note the page title shown in the browser tab and the main phrase you want it to be found for."
+      },
+      {
+        "h": "Ask for a review",
+        "b": "Paste the text into your AI assistant with this prompt. Some assistants can read a link directly, but pasting the text is more reliable.",
+        "p": "Review this web page for a small business. Page title: [title]. Phrase I want it found for: [phrase]. Audience: [who it's for]. Page text: [paste]. Give me: 1) a score out of 10 for clarity and one for search-friendliness, with reasons; 2) whether the main phrase appears in the title, first paragraph and a heading; 3) the three biggest problems a visitor would notice; 4) a rewritten page title (under 60 characters) and meta description (under 155 characters); 5) a numbered fix list, easiest first. Plain English, no jargon."
+      },
+      {
+        "h": "Make the easy fixes first",
+        "b": "Work through the fix list in your website editor. Most site builders let you change the page title and description in the page's settings or SEO section."
+      }
+    ],
+    "example": "Clarity 6/10: the first paragraph talks about your history, not what you do. Search 4/10: 'dog grooming Bristol' isn't in the title or headings. New title: Dog Grooming in Bristol | Gentle, Fear-Free Care. Fix 1: Move prices higher up the page.",
+    "tips": [
+      "Re-run it a month after making changes and compare scores.",
+      "Treat it as a second opinion, not a guarantee of rankings."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User gives a page address"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the page text and title"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write the plain-English review and fix list"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the report"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Reply to Instagram comments and messages faster",
+    "d": "A bank of warm, ready-made replies for the questions you get most, saved in Instagram so you can answer in two taps.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Instagram"
+    ],
+    "when": "Set up once, refresh every few months",
+    "steps": [
+      {
+        "h": "List your most common questions",
+        "b": "Scroll back through your comments and DMs and write down the ten questions you answer most, like prices, opening hours or delivery."
+      },
+      {
+        "h": "Draft replies with AI",
+        "b": "Paste the list into your AI assistant with this prompt.",
+        "p": "I run [business] on Instagram. Here are the questions people ask most: [list]. For each, write a short reply (under 40 words) that sounds friendly and human, answers the question using these facts: [prices, hours, links, policies], and ends with a light next step. Also give each reply a 1-2 word shortcut name. Format: Shortcut | Reply. British English, no emoji overload (one at most)."
+      },
+      {
+        "h": "Save them as quick replies",
+        "b": "In Instagram, professional accounts can save replies for messages: look in your settings under Business or Creator tools for saved or quick replies, then add each shortcut and reply."
+      },
+      {
+        "h": "Personalise before sending",
+        "b": "When you use one, add the person's name or a detail from their message so it never feels copied and pasted."
+      }
+    ],
+    "example": "price | Hi! Our cut and finish starts at £38, and colour from £65. Want me to check this week's free slots for you? delivery | We post UK-wide in 2-3 working days, free over £40. Anything I can help you choose?",
+    "tips": [
+      "Never paste customers' private messages into an AI tool with their names or phone numbers; the questions alone are enough."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "New Instagram comment or direct message"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Match the message to a common question"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest a personalised reply from the saved bank"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the suggested reply for the user to approve"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a weekly list of trending topics in your niche",
+    "d": "Every Monday you get five timely post ideas based on what people are talking about in your field, logged in a sheet for planning.",
+    "cat": "Marketing & Social",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Calendar"
+    ],
+    "when": "Every Monday morning",
+    "steps": [
+      {
+        "h": "Set up a scheduled task",
+        "b": "In ChatGPT, if your plan includes scheduled tasks, ask it to run a task every Monday at 8am with the prompt below. It will send you the results as a notification or email.",
+        "p": "Search the web for what's being discussed this week in [your niche] that matters to [audience] in [country]. Look at news, Google Trends topics and popular questions. Give me 5 post ideas as a table: Topic, Why it's timely (one line, with the source link), Post angle for [business type], Best platform, Suggested first line. Skip anything older than 10 days, and skip sensitive tragedies."
+      },
+      {
+        "h": "Have a free fallback ready",
+        "b": "No scheduled tasks? Create a recurring Monday event in Google Calendar called 'Trend check' with the prompt pasted in the description, and run it yourself in any AI assistant with web search."
+      },
+      {
+        "h": "Log ideas in a sheet",
+        "b": "Make a Google Sheet called Trend ideas with the same columns plus Date and Used. Paste each week's table in so you build a bank of ideas over time."
+      },
+      {
+        "h": "Check before you post",
+        "b": "Click the source link for any idea you use. Trends move fast and AI can misread dates."
+      }
+    ],
+    "example": "Topic: New rules on garden water butts | Timely: council grants announced Tuesday (link) | Angle: 'How to claim yours in 3 steps' | Instagram carousel | First line: 'Free water butt, anyone?'",
+    "tips": [
+      "Use Google Trends' Explore page to compare two topics quickly before you commit to one."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 8am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Search news and trend sources for the niche"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write five timely post ideas with sources"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the ideas in the Trend ideas sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the week's ideas to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Brief yourself on a company before a sales call",
+    "d": "A one-page snapshot of a prospect's recent posts, news, tone and likely priorities, with three smart questions to open the call.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "LinkedIn"
+    ],
+    "when": "Before every sales or partnership call",
+    "steps": [
+      {
+        "h": "Gather a few recent posts",
+        "b": "Skim the company's LinkedIn page and website news for the last month. Copy the text of three to five recent posts or announcements."
+      },
+      {
+        "h": "Ask for a call brief",
+        "b": "Paste the posts into an AI assistant with web search turned on and use this prompt.",
+        "p": "I have a call with [company name] ([website]) about [what you offer]. Here are their recent posts and news: [paste]. Also search for any recent public news about them. Give me: 1) a 3-sentence summary of what they're focused on right now; 2) their tone and what they seem proud of; 3) likely challenges they might have that relate to [your offer]; 4) three open questions I could ask early in the call; 5) anything to avoid mentioning. Mark anything you're unsure of as 'unconfirmed'. One page max."
+      },
+      {
+        "h": "Keep it with the meeting",
+        "b": "Paste the brief into the calendar invite's notes or your notes app so it's in front of you when the call starts."
+      }
+    ],
+    "example": "Focus: opening a second site in Manchester and hiring 20 staff. Tone: proud of their apprentices. Likely challenge: training new staff quickly. Ask: 'How are you getting new starters up to speed for the Manchester opening?' Avoid: last year's product recall (unconfirmed).",
+    "tips": [
+      "Stick to public, business information. Don't dig into individuals' personal social accounts."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "One hour before a meeting tagged sales"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the company's recent public posts and news"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write the one-page call brief"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the brief to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a blog post into a swipeable carousel",
+    "d": "Your existing article becomes a 7 to 10 slide Instagram or LinkedIn carousel with a hook, clear points and a final call to action.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Canva"
+    ],
+    "when": "After publishing a new article",
+    "steps": [
+      {
+        "h": "Get the slide text",
+        "b": "Paste your article into your AI assistant with this prompt.",
+        "p": "Turn this article into a carousel of [7-10] slides for [Instagram or LinkedIn]. Article: [paste]. Slide 1: a hook of max 8 words that promises a clear benefit. Slides 2 to second-last: one idea each, a headline of max 6 words and a supporting line of max 20 words. Last slide: a call to action to [read the full post, follow, book]. Also write a caption of under 80 words. Output as a numbered list. Keep facts exactly as in the article."
+      },
+      {
+        "h": "Pick a carousel template in Canva",
+        "b": "Search Canva for 'carousel' and choose a template in the right size (square or portrait 4:5). Swap in your brand colours and fonts."
+      },
+      {
+        "h": "Fill in the slides",
+        "b": "Paste each slide's text in, keeping it big and readable on a phone. Download as PNGs for Instagram, or as a PDF for a LinkedIn document post."
+      },
+      {
+        "h": "Post with the caption",
+        "b": "Upload the slides in order and add the caption. Link to the full article in your bio or the first comment."
+      }
+    ],
+    "example": "Slide 1: 'Five mistakes that slow down your laptop'. Slide 2: 'Too many startup apps' / 'Every app that opens at login eats memory before you've started.' ... Slide 8: 'Want the full checklist? Link in bio.'",
+    "tips": [
+      "Make one carousel template once and duplicate it each time to keep a consistent look."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New article added to the blog folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write carousel slide text and caption"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the slide text for designing in Canva"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the carousel copy is ready"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a full launch pack for a new product",
+    "d": "One brief becomes a launch email, a week of social posts and a short announcement for your website, all saying the same thing.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Mailchimp",
+      "Google Docs"
+    ],
+    "when": "Two weeks before a launch or sale",
+    "steps": [
+      {
+        "h": "Write a one-paragraph brief",
+        "b": "Cover what it is, who it's for, the price, the launch date and the one reason someone should care. This keeps every piece consistent."
+      },
+      {
+        "h": "Generate the pack",
+        "b": "Paste your brief into your AI assistant with this prompt.",
+        "p": "Using this launch brief: [brief], write a launch pack for [business]. 1) Email: 3 subject line options (under 45 characters), a preview line, and a 150-word email with one button label. 2) Five social posts for the launch week: teaser (3 days before), launch day, customer benefit, behind the scenes, last chance. Each under 70 words with an image idea. 3) A 60-word website banner announcement. Keep the price, date and claims exactly as in the brief. British English, warm, no hype words."
+      },
+      {
+        "h": "Put it in one document",
+        "b": "Paste everything into a Google Doc so you can check it, share it with anyone helping, and fix any detail in one place."
+      },
+      {
+        "h": "Load the email into Mailchimp",
+        "b": "Create a new email campaign in Mailchimp, paste in the text, pick a subject line and schedule it for launch morning."
+      },
+      {
+        "h": "Schedule the social posts",
+        "b": "Add the five posts to your scheduler or a calendar reminder for each day of launch week."
+      }
+    ],
+    "example": "Subject: 'Our winter blend is back'. Email: 'It sold out in nine days last year...' Teaser post: 'Something warm is coming Thursday.' Banner: 'Winter Blend returns 14 Nov - pre-order now, £9.50 a bag.'",
+    "tips": [
+      "Only send emails to people who signed up to hear from you, and keep the unsubscribe link Mailchimp adds."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "User fills in the launch brief form"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write email, social posts and banner text"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the launch pack document"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for each launch-week post"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn customer reviews into social proof posts",
+    "d": "Your best reviews become eye-catching quote graphics and captions that show new customers why people love you.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Canva"
+    ],
+    "when": "Once a month",
+    "steps": [
+      {
+        "h": "Collect your best reviews",
+        "b": "Copy five to ten recent reviews from Google, your shop or emails. Use only the reviewer's first name or initials."
+      },
+      {
+        "h": "Pick the strongest lines",
+        "b": "Paste the reviews into your AI assistant with this prompt.",
+        "p": "Here are customer reviews for [business]: [paste reviews, first names only]. 1) Pick the 5 most persuasive and pull out a short quote from each (max 20 words, using their exact words, no changes to meaning). 2) For each, note which worry it answers for a new customer (price, quality, trust, speed...). 3) Write a caption for each (under 50 words) that adds context and ends with a gentle call to action. Output as a numbered list: Quote | Name | Worry answered | Caption."
+      },
+      {
+        "h": "Design quote graphics",
+        "b": "In Canva, search for a 'testimonial' or 'quote' template, add the quote and first name, and duplicate it for the others so they match."
+      },
+      {
+        "h": "Share them through the month",
+        "b": "Post one a week. Check the reviewer is happy to be featured if the review came from a private email."
+      }
+    ],
+    "example": "Quote: 'They fixed in an hour what another firm couldn't in a week.' - Priya | Worry: speed | Caption: 'When your laptop dies the day before a deadline, every hour counts. Book a same-day repair through the link in bio.'",
+    "tips": [
+      "Never edit a quote to say something the customer didn't; shortening is fine, rewording isn't."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of each month"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull the best short quotes from new reviews"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a caption for each quote"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add four quote posts to the month's content list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan seasonal posts for a local trade business",
+    "d": "A season's worth of useful tips, reminders and offers for a local trade like a garage, plumber or gardener, with matching images ready to schedule.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Canva",
+      "Instagram"
+    ],
+    "when": "At the start of each season",
+    "steps": [
+      {
+        "h": "Note what customers need this season",
+        "b": "Write down the jobs that spike this time of year (for a garage: winter tyres, batteries, MOTs) and any offers you want to push."
+      },
+      {
+        "h": "Ask for a season of posts",
+        "b": "Paste this into your AI assistant.",
+        "p": "I run a [trade] business in [town]. The next 12 weeks are [season]. Common jobs now: [list]. Offers: [list]. Write 12 weekly social posts: mostly practical tips customers can do themselves, plus 3 offers and 2 'meet the team' posts. For each: week number, headline for the image (max 6 words), caption (50-80 words, local and friendly), call to action (call, book online, pop in), and a photo idea I can take on my phone. British English."
+      },
+      {
+        "h": "Snap the photos on your phone",
+        "b": "Take a batch of photos in one go at work: your van, tools, team and finished jobs. Ask team members before photographing them."
+      },
+      {
+        "h": "Make images in Canva",
+        "b": "Drop each photo into one Canva template with the headline on top, then duplicate for each week."
+      },
+      {
+        "h": "Schedule them",
+        "b": "Use Meta Business Suite to schedule all 12 to Facebook and Instagram, or add a weekly reminder to post them yourself."
+      }
+    ],
+    "example": "Week 3: 'Is your battery winter ready?' Caption: 'Cold mornings are hard on car batteries. If your engine sounds sluggish, pop in to our Station Road garage for a free 5-minute test.' Photo: tester clipped to a battery.",
+    "tips": [
+      "Blur or crop out customer number plates and house numbers in job photos."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First day of each season"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write 12 weeks of seasonal posts and photo ideas"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the posts to the content calendar"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to take the photo batch"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a monthly social media results summary",
+    "d": "A one-page summary of what worked on your social accounts last month, what didn't, and three changes to try next month.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Instagram"
+    ],
+    "when": "First working day of each month",
+    "steps": [
+      {
+        "h": "Gather last month's numbers",
+        "b": "Open the insights or analytics area of each platform (Instagram, Facebook via Meta Business Suite, LinkedIn page analytics). Note reach, engagement and follows for each post, or export them if the platform offers a download."
+      },
+      {
+        "h": "Put them in one sheet",
+        "b": "Paste them into a Google Sheet with columns: Date, Platform, Post topic, Format, Reach, Likes, Comments, Shares, Saves, Link clicks."
+      },
+      {
+        "h": "Ask for the summary",
+        "b": "Copy the table into your AI assistant with this prompt.",
+        "p": "Here are last month's social media results for [business]: [paste table]. Our goal is [goal, e.g. bookings, website visits]. Give me: 1) a 3-sentence overview; 2) the top 3 posts and what they have in common (topic, format, timing); 3) the weakest 3 and a likely reason; 4) month-on-month change if I've included last month; 5) three specific experiments for next month. Use only the numbers given; don't invent any. Plain English, one page."
+      },
+      {
+        "h": "Act on one change",
+        "b": "Pick one of the experiments and add it to next month's content calendar."
+      }
+    ],
+    "example": "Overview: reach up 18%, but link clicks flat. Top posts were all short videos posted before 9am. Weakest: three offer posts with stock images. Try: film two behind-the-scenes clips a week; post offers with real photos; test a Tuesday 8am slot.",
+    "tips": [
+      "Keep every month in the same sheet on separate tabs so you can ask the assistant to spot trends over a quarter."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "1st of each month at 9am"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to export last month's numbers"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise results and suggest experiments"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the monthly results summary"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run a weekly social posting routine on autopilot",
+    "d": "A repeatable system where ideas in a sheet become drafted captions, branded images and scheduled posts each week with very little effort.",
+    "cat": "Marketing & Social",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Canva",
+      "Google Calendar"
+    ],
+    "when": "Set up once, then 30 minutes every Friday",
+    "steps": [
+      {
+        "h": "Build your idea sheet",
+        "b": "In Google Sheets, create columns: Week, Topic, Headline, Caption, Hashtags, Status. Add 10 or more topics you could post about. Share it with anyone who has ideas."
+      },
+      {
+        "h": "Draft captions on a schedule",
+        "b": "If your ChatGPT plan includes scheduled tasks, set a weekly Friday task with this prompt and paste in the week's topics; otherwise run it yourself from a recurring Friday calendar event.",
+        "p": "For [business], a [type] serving [audience], write posts for these topics: [paste topics]. For each give: Headline (max 6 words), Caption (50-80 words, one call to action: [CTA]), 3-5 Hashtags. Output as a table with columns Topic | Headline | Caption | Hashtags so I can paste it straight into Google Sheets. British English, warm, no hype."
+      },
+      {
+        "h": "Paste results into the sheet",
+        "b": "Paste the table into the matching columns and set Status to Drafted. Edit anything that doesn't sound like you."
+      },
+      {
+        "h": "Make all the images at once",
+        "b": "If your Canva plan includes Bulk Create, connect the sheet's Headline column to a template to make every image in one go. Otherwise duplicate one template and paste each headline."
+      },
+      {
+        "h": "Schedule and mark done",
+        "b": "Schedule the posts in Meta Business Suite, LinkedIn or Canva's Content Planner, then set Status to Scheduled. Your Friday calendar event keeps the routine going."
+      }
+    ],
+    "example": "Friday 3pm: 5 topics pulled from the sheet -> captions drafted -> 5 matching images from Bulk Create -> posts queued Mon to Fri at 8am. Sheet now shows Week 46: 5 Scheduled, 3 ideas left in the bank.",
+    "tips": [
+      "Top up the idea bank whenever a customer asks a good question; that's your best source of topics.",
+      "Check every drafted post before it goes out; never fully skip the human read-through."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read next week's topics from the idea sheet"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write headline, caption and hashtags for each"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Fill in drafts and set status to Drafted"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the user to review, make images and schedule"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Post a fresh Google Business Profile update every week",
+    "d": "Short, local updates for your Google Business Profile that keep your listing active and tell nearby customers what's new.",
+    "cat": "Marketing & Social",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Every week",
+    "steps": [
+      {
+        "h": "Take one photo",
+        "b": "Snap a recent job, product, dish or your team at work. Real photos tend to do better than stock images."
+      },
+      {
+        "h": "Write four updates at once",
+        "b": "Paste this into your AI assistant to get a month's worth.",
+        "p": "Write 4 Google Business Profile updates for [business] in [town]. What's happening this month: [news, offers, events, seasonal services]. Each update: 60-100 words, mentions the local area naturally, describes one specific thing (a job, offer or event), and ends with a clear action that matches a button: Call, Book, Learn more or Order online. Avoid phone numbers and links in the text. British English, friendly and plain."
+      },
+      {
+        "h": "Post it on your profile",
+        "b": "Search your business name on Google or open the Google Business Profile app while signed in, choose to add an update, add the photo and text, and pick the matching button."
+      }
+    ],
+    "example": "'This week we fitted a new walk-in shower for a family in Headingley, swapping a tired bath for something far easier to use. If you're thinking about a bathroom refresh before spring, we're booking free home visits for February. Tap Book to choose a time.'",
+    "tips": [
+      "Ask the homeowner before posting photos of their house, and leave out house numbers."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Wednesday at 10am"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to take a photo"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write the week's profile update"
+        },
+        {
+          "type": "message.send",
+          "detail": "Send the update text to the user's phone to post"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Announce new shop products on social media",
+    "d": "Each time you add a product to your Shopify store, you get a ready caption, hashtags and a photo idea to announce it.",
+    "cat": "Marketing & Social",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Shopify",
+      "AI assistant",
+      "Instagram",
+      "Canva"
+    ],
+    "when": "Whenever you add a new product",
+    "steps": [
+      {
+        "h": "Copy the product details",
+        "b": "From the product page in your Shopify admin, copy the title, description, price and any key details like sizes or materials."
+      },
+      {
+        "h": "Write the announcement",
+        "b": "Paste the details into your AI assistant with this prompt. If you use Shopify Magic in your admin, it can help with the product description itself.",
+        "p": "Write social posts announcing this new product for [shop name], which sells [what you sell] to [audience]. Product details: [paste]. Give me: 1) an Instagram caption (under 90 words, opens with what problem it solves or how it feels to use, mentions the price, ends with 'link in bio'); 2) a Facebook version (under 60 words); 3) 6 hashtags customers would really search; 4) two photo ideas I can shoot at home. Don't add features that aren't in the details."
+      },
+      {
+        "h": "Make the image",
+        "b": "Use your own product photo in a Canva template, adding a small 'New' label for a consistent look."
+      },
+      {
+        "h": "Post and tag the product",
+        "b": "If you've connected Shopify's Facebook and Instagram sales channel, you can tag the product in your Instagram post so people can tap through to buy."
+      }
+    ],
+    "example": "Instagram: 'Cold hands on the school run? Our new merino fingerless gloves keep you warm and still let you use your phone. Six colours, £24. Link in bio.' Hashtags: #merinowool #handmadegloves #winteraccessories ...",
+    "tips": [
+      "Keep a note of which product posts led to sales in Shopify's analytics, and ask the assistant to write more like those."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "New product added to the shop"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write Instagram and Facebook announcement posts"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save captions and photo ideas"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the announcement is ready to post"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Draft a blog post from a few keywords",
+    "d": "Start with three or four keywords and end with an outlined, fully drafted blog post in Google Docs, ready for your own edit.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Whenever you need a new article",
+    "steps": [
+      {
+        "h": "Choose your keywords and reader",
+        "b": "Write down the main phrase you want to be found for, two or three related phrases, and who the article is for."
+      },
+      {
+        "h": "Get an outline first",
+        "b": "Ask for the outline before the full draft so you can steer it. Paste this into your AI assistant.",
+        "p": "I'm writing a blog post for [business or blog name]. Reader: [who they are and what they're struggling with]. Main keyword: [phrase]. Related phrases: [list]. Suggest 3 title options (under 60 characters, main keyword near the start) and an outline with an intro, 4-6 H2 headings, a short bullet list under each of what to cover, and a conclusion with a call to action to [action]. Note any facts or figures I'll need to check or supply."
+      },
+      {
+        "h": "Adjust, then ask for the draft",
+        "b": "Change the outline as you like, then reply: 'Write the full post from this outline, 900-1,200 words, in a friendly, expert tone, short paragraphs, British English. Use my own examples where I've marked them.'"
+      },
+      {
+        "h": "Edit it in Google Docs",
+        "b": "Paste the draft into a Google Doc. Add your own stories, opinions and photos; that is what makes it worth reading and stops it sounding generic."
+      }
+    ],
+    "example": "Title: Garden Office Planning Permission: What You Need to Know. H2s: Do you need permission at all? The 2.5 metre rule. Listed buildings and conservation areas. How to check with your council. What we do for you. CTA: Book a free site survey.",
+    "tips": [
+      "Check every fact, rule or statistic the draft includes against an official source before publishing."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters keywords and audience"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest titles and an outline"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write the full draft from the approved outline"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a Google Doc with the draft"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Teach your AI assistant to write like you",
+    "d": "A personal style guide built from your own writing that you can reuse so every draft sounds like you, not like a robot.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Set up once, update every few months",
+    "steps": [
+      {
+        "h": "Gather three samples",
+        "b": "Pick three pieces you've written and like: an email, a post and something longer. Remove other people's names and private details."
+      },
+      {
+        "h": "Ask it to describe your style",
+        "b": "Paste the samples into your AI assistant with this prompt.",
+        "p": "Here are three samples of my writing: [paste samples]. Analyse my style and write a voice guide I can reuse. Include: 1) tone in 5 words; 2) typical sentence length and rhythm; 3) words and phrases I use often; 4) words I never seem to use; 5) how I open and close pieces; 6) how I use humour, questions or lists; 7) 5 do's and 5 don'ts. Then rewrite this paragraph in my voice to test it: [a generic paragraph]."
+      },
+      {
+        "h": "Save the guide where you'll reuse it",
+        "b": "Copy the guide into your notes app. In ChatGPT you can paste it into custom instructions, in Claude into a project's instructions, or in Gemini into a Gem, so it's applied automatically."
+      },
+      {
+        "h": "Correct it as you go",
+        "b": "When a draft sounds wrong, tell the assistant what you'd change and ask it to update the guide."
+      }
+    ],
+    "example": "Tone: warm, direct, a bit dry, practical, unhurried. Short sentences, often one-line paragraphs. Often uses 'honestly', 'here's the thing'. Never uses 'leverage' or exclamation marks. Opens with a small story; closes with one clear next step.",
+    "tips": [
+      "If you use AI at work, check your company's policy before pasting work documents as samples."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User uploads writing samples"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Identify tone, vocabulary and structure"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a reusable voice guide"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the guide for future drafts"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a researched brief with sources on any topic",
+    "d": "A clear two-page brief on a subject you need to write about, with key facts, different viewpoints and links to check every claim.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before writing about something new to you",
+    "steps": [
+      {
+        "h": "Turn on web search",
+        "b": "Use an AI assistant that can search the web (ChatGPT, Claude and Gemini all can). Some also offer a deeper research mode for longer reports."
+      },
+      {
+        "h": "Ask for a structured brief",
+        "b": "Paste this prompt and fill in your topic.",
+        "p": "Research [topic] for an article aimed at [audience] in [country]. Give me a brief with: 1) a 5-sentence plain-English summary; 2) 8-10 key facts or figures, each with the source name, date and link; 3) the main debates or different viewpoints; 4) common myths and what's actually true; 5) 5 questions readers are likely to ask; 6) gaps where reliable information is thin. Prefer official, academic and reputable news sources from the last [2] years. Say clearly if you're unsure."
+      },
+      {
+        "h": "Check the sources",
+        "b": "Open each link and make sure it says what the brief claims. Delete anything you can't verify."
+      },
+      {
+        "h": "Save it for writing",
+        "b": "Paste the checked brief into a Google Doc at the top of your draft so the facts are to hand."
+      }
+    ],
+    "example": "Summary: Heat pumps work in cold weather, but efficiency drops below -5C... Fact: average UK household install cost £X (source, date, link). Debate: whether older homes need full insulation first. Myth: 'They don't work in winter.' Gap: little data on terraced houses.",
+    "tips": [
+      "AI can invent sources that look real. Never quote a figure you haven't seen on the source page yourself."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters a topic and audience"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Search reputable sources on the topic"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write a structured brief with linked sources"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the brief as a document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a morning digest of news in your field",
+    "d": "A short daily briefing with the five stories that matter for your job or industry, each summarised in two lines with a link.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Every weekday morning",
+    "steps": [
+      {
+        "h": "Decide what you want to follow",
+        "b": "List your industry, two or three topics, any sources you trust, and what you want to skip."
+      },
+      {
+        "h": "Create a scheduled task",
+        "b": "In ChatGPT, if your plan includes scheduled tasks, ask it to run this every weekday at 7.30am. It will notify you when the digest is ready. Gemini also offers scheduled actions on some plans.",
+        "p": "Every weekday, search for the most important news from the last 24 hours about [industry/topics] relevant to [your role] in [country]. Prefer [trusted sources]. Skip [topics to ignore]. Give me 5 items: headline, two-line summary, why it matters to someone in my role, and the link. Then one line: 'Worth writing about:' with a content idea if any story suits my audience of [audience]."
+      },
+      {
+        "h": "Test it and tighten it",
+        "b": "Read the first few digests and reply with changes like 'fewer big-company stories, more UK small business'. Update the task's prompt to match."
+      },
+      {
+        "h": "No scheduled tasks? Use a fallback",
+        "b": "Save the prompt in your notes app and run it each morning in any AI assistant with web search, or set up Google Alerts for your topics."
+      }
+    ],
+    "example": "1. New rules on cookie banners from 1 Jan - affects every small business website; check your site's consent pop-up. (link) 2. Card fees cut for small retailers... Worth writing about: 'What the new cookie rules mean for your shop website.'",
+    "tips": [
+      "Click through before sharing any story; summaries can miss nuance or mix up dates."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Weekdays at 7.30am"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Search news from the last 24 hours on chosen topics"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Pick and summarise the top five stories"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the digest to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep track of websites and mentions without checking them",
+    "d": "New articles and mentions on your topics land in one Gmail label, and each Friday you get a short summary of what's worth reading.",
+    "cat": "Content & Writing",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "Gmail",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, review every Friday",
+    "steps": [
+      {
+        "h": "Create Google Alerts",
+        "b": "Go to Google Alerts and add alerts for your business name, competitors, key topics and sites you follow (for example 'site:example.com' plus a topic). Set delivery to once a day to your Gmail."
+      },
+      {
+        "h": "Filter them into a label",
+        "b": "In Gmail's settings, under Filters, create a filter for emails from Google Alerts that skips the inbox and applies a label called Reading."
+      },
+      {
+        "h": "Book a weekly review",
+        "b": "Add a recurring Friday 30-minute event in Google Calendar called 'Reading round-up'. Paste the prompt below into the event description."
+      },
+      {
+        "h": "Summarise the week",
+        "b": "On Friday, open the Reading label. If your plan includes Gemini in Gmail, ask it to summarise those emails; otherwise copy the alert emails into your AI assistant with this prompt.",
+        "p": "Here are this week's Google Alerts about [topics]: [paste]. Remove duplicates and anything irrelevant to [your work]. Group the rest by topic. For each group give a 2-sentence summary and the 1-2 links most worth reading. End with 3 ideas for posts or articles I could write in response. Keep it under 300 words."
+      },
+      {
+        "h": "Clear the label",
+        "b": "Archive or delete the week's alerts once you've read the summary so the label stays manageable."
+      }
+    ],
+    "example": "Competitors: Two local cafes announced loyalty apps (links). Your name: Mentioned in a 'best brunch in Bath' list. Topic - plastic-free packaging: new council scheme. Ideas: 'Why we're not launching an app', 'Our plastic-free year so far'.",
+    "tips": [
+      "Use quote marks in alerts for exact phrases, otherwise you'll get lots of unrelated results."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "New Google Alert email arrives"
+      },
+      "actions": [
+        {
+          "type": "email.label",
+          "detail": "Label it Reading and skip the inbox"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "On Fridays, summarise the week's alerts by topic"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the round-up and writing ideas to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find real customer problems to write about online",
+    "d": "A list of the questions and frustrations people share in public forums about your field, turned into article and product ideas.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Once a quarter, or when you're short of ideas",
+    "steps": [
+      {
+        "h": "Find where people talk",
+        "b": "Search Google for your topic plus 'forum' or 'reddit', and look at community groups and question sites where your customers ask for help."
+      },
+      {
+        "h": "Copy the discussions",
+        "b": "Copy the text of 10 to 20 relevant threads or questions. Leave out usernames and anything personal."
+      },
+      {
+        "h": "Ask the AI to find patterns",
+        "b": "Paste the text into your AI assistant with this prompt.",
+        "p": "Here are public forum posts where people discuss [topic]: [paste, usernames removed]. Identify: 1) the 10 most common problems or questions, ranked by how often they appear; 2) the exact words people use to describe each (short quotes); 3) what they've already tried that didn't work; 4) for each problem, one article title I could write and one product or service idea for [business]. Output as a table."
+      },
+      {
+        "h": "Save the best ideas",
+        "b": "Paste the table into Google Sheets and add the ideas to your content plan."
+      }
+    ],
+    "example": "Problem: 'My sourdough is always flat' (seen 14 times) | People say 'pancake', 'no oven spring' | Tried: more yeast, hotter oven | Article: 'Flat sourdough? It's probably your proving time' | Product idea: proving basket starter kit.",
+    "tips": [
+      "Use the customers' own phrases in your headings; they're the words people type into search."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of each quarter"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Collect public forum threads on the topic"
+        },
+        {
+          "type": "ai.extract",
+          "detail": "Pull out recurring problems and phrases"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add problems and article ideas to the ideas sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Save and summarise articles into a Notion library",
+    "d": "Every article you save lands in a Notion reading library with a short summary, key points and tags, so you can find it when writing.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Notion",
+      "AI assistant"
+    ],
+    "when": "Whenever you read something useful",
+    "steps": [
+      {
+        "h": "Create a reading database",
+        "b": "In Notion, make a database called Reading library with properties: Title, Link, Summary, Key points, Tags, Date saved."
+      },
+      {
+        "h": "Install the Notion Web Clipper",
+        "b": "Add Notion's Web Clipper to your browser or use the Share button on your phone to send pages straight into the Reading library."
+      },
+      {
+        "h": "Summarise each article",
+        "b": "If your plan includes Notion AI, ask it to fill in the summary on the page. Otherwise copy the article text into your AI assistant with this prompt.",
+        "p": "Summarise this article for my writing library. Article: [paste]. Give: 1) a 2-sentence summary; 2) 3-5 key points as bullets; 3) any useful statistics with where they came from; 4) one quote worth keeping, word for word; 5) 3 tags from this list: [your tags]. Keep it under 150 words."
+      },
+      {
+        "h": "Use it when you write",
+        "b": "Before writing, filter the library by tag to pull together your research quickly."
+      }
+    ],
+    "example": "Title: Why four-day weeks work for some teams | Summary: A UK trial found most firms kept the shorter week... | Key points: productivity held steady; burnout fell... | Quote: '...' | Tags: work culture, research, HR",
+    "tips": [
+      "Keep the original link so you can always go back to the source before quoting it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "New page added to the Reading library"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the article at the saved link"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write summary, key points and quote"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Fill in the summary and tags on the page"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn customer questions into a bank of article ideas",
+    "d": "Questions customers email you are gathered in one Gmail label, and once a month they become a ranked list of articles to write.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Gmail",
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Ongoing, reviewed monthly",
+    "steps": [
+      {
+        "h": "Create a Questions label",
+        "b": "In Gmail, make a label called Content questions. Whenever a customer asks something interesting, add the label to that email."
+      },
+      {
+        "h": "Use a filter for common subjects",
+        "b": "If questions often come through your website contact form, set up a Gmail filter (in settings, under Filters) for that form's emails to apply the label automatically."
+      },
+      {
+        "h": "Turn them into ideas monthly",
+        "b": "Once a month, copy just the questions (no names or email addresses) into your AI assistant with this prompt.",
+        "p": "Here are questions customers asked [business] this month: [paste questions only]. Group similar questions together. For each group give: how many times it came up, a clear article title, a one-line summary of the answer, and whether it suits a blog post, FAQ entry, short video or email. Rank them by how many customers it would help. Output as a table."
+      },
+      {
+        "h": "Add them to your plan",
+        "b": "Paste the table into a Google Sheet called Article ideas and pick the top two to write next."
+      }
+    ],
+    "example": "Asked 6 times: 'Can I pause my subscription?' -> FAQ: How to pause or skip a box. Asked 4 times: 'Is the packaging recyclable?' -> Blog: Where every bit of our packaging goes. Asked 3 times: 'Which coffee for a cafetiere?' -> Short video.",
+    "tips": [
+      "Strip out names, addresses and order numbers before pasting customer emails into any AI tool."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "Email labelled Content questions"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out the question without personal details"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the question to the ideas sheet"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Monthly, group questions and rank article ideas"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Sort and tag all your old blog posts",
+    "d": "A spreadsheet of every past post with consistent categories, tags and a note on which ones need updating or merging.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Once a year, or before a website refresh",
+    "steps": [
+      {
+        "h": "List your posts",
+        "b": "Most blog platforms can export a list of posts, or you can copy titles and links from your blog's archive page. Paste them into Google Sheets with columns: Title, Link, Date, Short description."
+      },
+      {
+        "h": "Decide your categories",
+        "b": "Pick 5 to 8 broad categories that match what your readers care about. Fewer is better."
+      },
+      {
+        "h": "Ask the AI to tag them",
+        "b": "Copy the sheet rows into your AI assistant with this prompt (do it in batches of about 50).",
+        "p": "Here is a list of blog posts: [paste Title, Date, Short description]. My categories are: [list]. For each post, give: Title | Best category | 3 tags (lowercase, reuse the same tags across posts where possible) | Status: Keep, Update (if it looks dated or thin), or Merge (if it overlaps another post, say which). Output as a table in the same order."
+      },
+      {
+        "h": "Paste back and apply",
+        "b": "Paste the results into new columns next to your list, then update the categories and tags in your blog editor, starting with the most-visited posts."
+      }
+    ],
+    "example": "'10 spring garden jobs' (2019) | Seasonal guides | spring, planting, lawn | Update: mentions a product no longer sold. 'Spring lawn care tips' (2021) | Seasonal guides | spring, lawn | Merge with '10 spring garden jobs'.",
+    "tips": [
+      "Keep tag lists short; 20 to 30 tags across a whole blog is usually plenty."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "New post added to the blog list sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Pick a category and tags"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Flag whether to keep, update or merge"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Write category, tags and status into the row"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write product descriptions that sell for your shop",
+    "d": "Clear, benefit-led product descriptions, a short SEO title and bullet points for each item, written in your shop's voice.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Shopify"
+    ],
+    "when": "When adding or refreshing products",
+    "steps": [
+      {
+        "h": "Note the facts",
+        "b": "For each product, jot down materials, size, care, who it's for, and what makes it different. A photo helps too."
+      },
+      {
+        "h": "Ask for a description",
+        "b": "Paste the details (and attach a photo if you like) into your AI assistant with this prompt.",
+        "p": "Write a product description for [shop name], which sells [what you sell] to [audience]. Product: [name]. Facts: [materials, size, care, price, origin]. What makes it different: [details]. Give: 1) a 2-3 sentence opening that describes how it feels to use; 2) 4-5 bullet points of features turned into benefits; 3) a size or care note; 4) an SEO title under 60 characters and meta description under 155. Only use the facts I've given; don't invent claims. British English, warm tone."
+      },
+      {
+        "h": "Add it to your shop",
+        "b": "Paste it into the product page in your Shopify admin (or any shop platform). Shopify Magic, built into the admin, can also suggest descriptions if you prefer to work there."
+      }
+    ],
+    "example": "'A mug that fits your whole hand, made for slow Sunday mornings.' Bullets: Holds 400ml, enough for a proper brew. Hand-thrown in Cornwall, so no two are the same. Dishwasher safe. SEO title: Handmade Stoneware Mug 400ml | Cornish Pottery.",
+    "tips": [
+      "Never claim things like 'eco-friendly' or 'hypoallergenic' unless you can back them up."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "New product added to the product sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write description, bullets and SEO fields"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Add the copy next to the product"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user it's ready to review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a professional editor's notes on your draft",
+    "d": "Line-by-line feedback on clarity, structure and tone for anything you've written, plus a tidied version you can accept or ignore.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before publishing or sending anything important",
+    "steps": [
+      {
+        "h": "Paste your draft",
+        "b": "Copy your finished draft into your AI assistant. Tell it who will read it and what you want them to do afterwards."
+      },
+      {
+        "h": "Ask for edits, not a rewrite",
+        "b": "Use this prompt so your voice stays intact.",
+        "p": "Act as a careful editor. Reader: [who]. Goal: [what they should think or do]. Draft: [paste]. Don't rewrite it in your voice. Give me: 1) the 3 biggest problems (structure, clarity, missing information); 2) a list of specific line edits as 'Original -> Suggested -> Why'; 3) any sentences over 30 words to split; 4) jargon to replace; 5) a one-line verdict on whether the opening makes people want to keep reading. Use British English spelling."
+      },
+      {
+        "h": "Accept what helps",
+        "b": "Make the changes you agree with in Google Docs. Ignore anything that flattens your style; you're the author."
+      }
+    ],
+    "example": "Big problem 1: Your main point appears in paragraph 4; move it to the top. Line edit: 'In order to facilitate' -> 'To help' (simpler). Long sentence: para 2, 42 words. Verdict: The opening is a definition; start with the customer story instead.",
+    "tips": [
+      "Run a second pass asking only for spelling, grammar and consistency once you're happy with the structure."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Draft added to the To edit folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write editor's notes and line edits"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the notes next to the draft"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the notes are ready"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn your newsletter notes into a finished email",
+    "d": "Bullet notes from your week become a friendly, well-structured newsletter ready to send from Mailchimp, with subject line options.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Notes app",
+      "AI assistant",
+      "Mailchimp"
+    ],
+    "when": "Every week or month, before your send day",
+    "steps": [
+      {
+        "h": "Keep a running notes list",
+        "b": "Through the week, add quick bullets to one note: news, a tip, a customer story, links you found and anything coming up."
+      },
+      {
+        "h": "Draft the newsletter",
+        "b": "Paste your notes into your AI assistant with this prompt (add your voice guide if you have one).",
+        "p": "Turn these notes into a newsletter for [business], read by [audience]. Notes: [paste]. Structure: a warm 2-3 sentence opening; 3-4 short sections each with a heading and 60-100 words; one featured offer or call to action: [CTA]; a friendly sign-off from [name]. Also give 5 subject lines (under 45 characters) and a preview line. British English, plain, no hype words. Keep links where I've put them."
+      },
+      {
+        "h": "Build it in Mailchimp",
+        "b": "Create a new email campaign from a saved template in Mailchimp, paste each section into the content blocks, and add images."
+      },
+      {
+        "h": "Test and schedule",
+        "b": "Send yourself a test email, check it on your phone, then schedule it for your usual send time."
+      }
+    ],
+    "example": "Subject: 'The week the oven broke (and what we baked instead)'. Opening: 'It's been an eventful week at the bakery...' Sections: New winter menu, Meet our Saturday team, Tip: keeping bread fresh. CTA: Pre-order Christmas stollen.",
+    "tips": [
+      "Only email people who opted in, and keep the unsubscribe link in every send."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Thursdays at 2pm before a Friday send"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the week's newsletter notes"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write the newsletter and subject lines"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Create a draft campaign for review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a messy brain dump into a clear article",
+    "d": "Type or dictate everything you know about a topic in any order, and get back a well-structured article that keeps your ideas and examples.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Voice notes"
+    ],
+    "when": "When you know a topic but hate starting from a blank page",
+    "steps": [
+      {
+        "h": "Dump it all out",
+        "b": "Spend ten minutes typing, or record a voice note and use your phone's transcription, saying everything you'd tell a friend about the topic. Don't worry about order."
+      },
+      {
+        "h": "Ask for structure",
+        "b": "Paste the text into your AI assistant with this prompt.",
+        "p": "Below is a messy brain dump about [topic] for [audience]. Turn it into a structured article of [800-1,000] words. Rules: keep my examples, opinions and phrases wherever possible; organise it into a logical order with clear H2 headings; cut repetition; flag with [CHECK] anything that sounds like a fact I should verify; flag with [GAP] anywhere a reader would need more explanation. Then list 3 title options. Brain dump: [paste]."
+      },
+      {
+        "h": "Fill the gaps",
+        "b": "Work through the [CHECK] and [GAP] flags, adding detail or fixing facts yourself."
+      },
+      {
+        "h": "Read it aloud",
+        "b": "Reading it aloud is the quickest way to spot sentences that don't sound like you."
+      }
+    ],
+    "example": "Title: What I've Learnt From 10 Years of Wedding Flowers. H2s: Start with the venue, not the flowers. Seasonal blooms save money. The bouquet that wilted. [CHECK] 'Peonies are only in season in May and June.' [GAP] Explain how far ahead to book.",
+    "tips": [
+      "Speaking often gives a more natural voice than typing; try a walk with a voice note."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New voice note or brain dump saved"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Structure the notes into an article with flags"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the article draft"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user the draft is ready to finish"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Bring an old blog post up to date",
+    "d": "A refresh plan for a dated article: what's out of date, what to add, a new title and intro, so it can work harder for you again.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When a popular post is more than a year old",
+    "steps": [
+      {
+        "h": "Pick a post worth refreshing",
+        "b": "Choose one that used to get visits or matters to customers. Copy its full text and note when it was written."
+      },
+      {
+        "h": "Ask for a refresh plan",
+        "b": "Paste the article into an AI assistant with web search on, using this prompt.",
+        "p": "This article was published in [year] for [audience]: [paste]. Today is [date]. 1) List anything that's likely out of date (prices, rules, products, links, statistics) and what to check. 2) Suggest 2-3 new sections readers would expect now. 3) Point out anything to cut. 4) Write a new title, a new 80-word introduction and a short 'Updated [month year]' note. Search the web to check current facts and give links for anything you suggest changing."
+      },
+      {
+        "h": "Update and republish",
+        "b": "Make the changes in a Google Doc copy first, verify each fact through the links, then update the post on your site. Keep the same web address so you don't lose existing visitors."
+      }
+    ],
+    "example": "Out of date: 'MOT costs up to £54.85' - check the current maximum on GOV.UK. Add: section on electric car MOTs. Cut: paragraph about a closed garage. New title: MOT Checklist for 2026: What Gets Checked and How to Pass.",
+    "tips": [
+      "Keeping the same page address matters; changing it can lose the visitors it already attracts."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Monthly, pick the oldest popular post"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the post and check current facts"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a refresh plan, new title and intro"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the refresh plan for editing"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run a weekly blog writing routine with your team",
+    "d": "A Trello board that moves each article from idea to published, with automatic reminders and AI help at every stage.",
+    "cat": "Content & Writing",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Trello",
+      "AI assistant",
+      "Google Docs",
+      "Google Calendar"
+    ],
+    "when": "Set up once, run every week",
+    "steps": [
+      {
+        "h": "Build the board",
+        "b": "In Trello, create lists: Ideas, Outline, Drafting, Editing, Ready, Published. Add each article idea as a card with the target keyword in the description."
+      },
+      {
+        "h": "Add automatic rules",
+        "b": "Use Trello's built-in automation (look for Automation on the board menu) to set rules such as 'when a card moves to Drafting, set a due date 3 days out and add the writer' and 'when a card moves to Ready, add a Publish checklist'."
+      },
+      {
+        "h": "Use one prompt per stage",
+        "b": "Save stage prompts in a pinned card so anyone can use them. This is the outline prompt; keep similar ones for drafting and editing.",
+        "p": "Create an outline for a blog post. Title idea: [card title]. Keyword: [keyword]. Reader: [audience]. Give: 3 title options, an intro hook, 5 H2 headings with 3 bullets each, one place for a real example from us, and a closing call to action to [CTA]. Note any facts we'll need to source."
+      },
+      {
+        "h": "Draft in linked Google Docs",
+        "b": "Write each draft in Google Docs and attach the link to the card so everything lives in one place."
+      },
+      {
+        "h": "Hold a weekly 15-minute check",
+        "b": "Set a recurring Google Calendar event to review the board, move cards along and choose next week's ideas."
+      }
+    ],
+    "example": "Mon: 'How to choose a wood burner' moves to Drafting -> due Thu, assigned to Ellie automatically. Thu: moves to Editing with editor's notes attached. Fri: moves to Ready -> Publish checklist added (images, links, meta description).",
+    "tips": [
+      "Free Trello plans have limits on automation runs; keep rules simple or check your plan if you hit the cap."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "Card moved to a new list on the board"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Produce the outline, draft or edit notes for that stage"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Set the stage due date"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the assigned person their next step"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a clear help guide or FAQ page",
+    "d": "A step-by-step help article or FAQ page that answers what customers keep asking, written so anyone can follow it.",
+    "cat": "Content & Writing",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When the same question keeps coming in",
+    "steps": [
+      {
+        "h": "Explain it in your own words",
+        "b": "Write or say roughly how you'd talk a customer through it, including any common mistakes."
+      },
+      {
+        "h": "Ask for a structured guide",
+        "b": "Paste your explanation into your AI assistant with this prompt.",
+        "p": "Turn this into a help guide for customers of [business] who are [describe them, e.g. not confident with technology]. Topic: [topic]. My explanation: [paste]. Format: a one-line summary of what they'll achieve; what they need before starting; numbered steps, one action each, under 25 words per step; a 'If something goes wrong' section with the 3 most likely problems and fixes; and 5 FAQs with short answers. Use plain words, no jargon, British English. Mark anything you're unsure about with [CHECK]."
+      },
+      {
+        "h": "Test it on someone",
+        "b": "Ask a friend or colleague who doesn't know the process to follow the guide. Wherever they get stuck, add a clearer step."
+      },
+      {
+        "h": "Publish and link to it",
+        "b": "Add it to your website and save the link as a quick reply for email or chat so you can send it in seconds."
+      }
+    ],
+    "example": "Summary: Set up your new smart thermostat in about 10 minutes. You'll need: your Wi-Fi password, the app. Step 1: Turn off the heating at the boiler... If something goes wrong: 'The app can't find the thermostat' - move your phone closer and try again.",
+    "tips": [
+      "Add a 'Last checked' date at the bottom and review the guide whenever your product or process changes."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a process"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write the step-by-step guide and FAQs"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the help guide document"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to test it with someone"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a customer success story from an interview",
+    "d": "A recorded chat with a happy customer becomes a polished case study with a headline, the challenge, the result and approved quotes.",
+    "cat": "Content & Writing",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "Zoom",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "After a project goes well",
+    "steps": [
+      {
+        "h": "Get permission and record",
+        "b": "Ask the customer if they're happy to be featured and recorded. Hold a 20-minute Zoom or Google Meet call about their situation before, what you did and what changed."
+      },
+      {
+        "h": "Get the transcript",
+        "b": "If your plan includes Zoom AI Companion, Meet's 'Take notes for me' or transcripts, download the transcript after the call. Otherwise record on your phone with permission and use its transcription feature."
+      },
+      {
+        "h": "Draft the case study",
+        "b": "Paste the transcript into your AI assistant with this prompt.",
+        "p": "Write a customer case study from this interview transcript: [paste]. Customer: [name and company, as approved]. Our service: [what you did]. Structure: headline with the main result (under 12 words); 2-sentence summary; The challenge (80 words); What we did (100 words); The results (80 words, use only numbers mentioned in the transcript); 2-3 direct quotes using their exact words. Mark anything that needs confirming with [CONFIRM]. British English, factual, no exaggeration."
+      },
+      {
+        "h": "Send it for approval",
+        "b": "Put the draft in a Google Doc and share it with the customer to check quotes and numbers before you publish anything."
+      }
+    ],
+    "example": "Headline: How Green Lane Vets Cut Missed Appointments by a Third. Challenge: 1 in 8 bookings were no-shows... Results: no-shows fell from 12% to 8% in three months. Quote: 'The reminders just work, and clients actually like them.' [CONFIRM] staff hours saved.",
+    "tips": [
+      "Always get written approval from the customer before publishing, and delete the recording if they ask."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Interview transcript saved to the case studies folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out challenge, actions, results and quotes"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write the case study draft"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a shareable document for customer approval"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a short video with a script and shot list",
+    "d": "A 30 to 60 second script with a strong hook, plus a simple shot list you can film on your phone in one go.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Before filming any Reel, Short or TikTok",
+    "steps": [
+      {
+        "h": "Decide the one point",
+        "b": "Write down the single thing you want viewers to learn or feel. Short videos work best with just one idea."
+      },
+      {
+        "h": "Get a script and shot list",
+        "b": "Paste this into your AI assistant.",
+        "p": "Write a [30/45/60]-second vertical video script for [business or channel] aimed at [audience]. Main point: [point]. Format: 1) a hook for the first 2 seconds, spoken and as on-screen text; 2) the script split into numbered shots, each with what's said, what's on screen, and how long it lasts; 3) on-screen captions in short phrases; 4) a closing line with a call to action: [CTA]; 5) a caption for posting under 60 words. Everything must be filmable on a phone by one person at [location]."
+      },
+      {
+        "h": "Film shot by shot",
+        "b": "Film each shot separately in good natural light, holding the phone upright. Do two takes of each so you have a spare."
+      },
+      {
+        "h": "Edit and add captions",
+        "b": "Put the clips together in your phone's editor, Instagram, YouTube Shorts or Canva, and turn on automatic captions where offered; most viewers watch with the sound off."
+      }
+    ],
+    "example": "Hook: 'You're watering your houseplants wrong.' Shot 1 (2s): close-up of wilting plant. Shot 2 (5s): finger in soil, 'Check two knuckles deep first.' ... Shot 5 (4s): healthy plant, 'Follow for one plant tip a week.'",
+    "tips": [
+      "Ask anyone who appears in your video for permission first, and never film customers without asking."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters a video idea"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a timed script and shot list"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the script to the phone notes"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the shot list to the user's phone"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write YouTube titles, descriptions and chapters in minutes",
+    "d": "From your video's transcript, get title options, a full description, timestamped chapters and tags ready to paste into YouTube Studio.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "YouTube",
+      "AI assistant"
+    ],
+    "when": "Every time you upload a video",
+    "steps": [
+      {
+        "h": "Get the transcript",
+        "b": "Upload your video to YouTube Studio as private or unlisted and wait for automatic captions. In the Subtitles section you can open and copy or download the captions with timings."
+      },
+      {
+        "h": "Ask for the details",
+        "b": "Paste the transcript into your AI assistant with this prompt.",
+        "p": "Here is the timed transcript of my YouTube video: [paste]. Channel: [channel topic] for [audience]. Give me: 1) 5 title options under 60 characters, main search phrase near the start, honest (no clickbait); 2) a description: two opening lines that make sense in search results, then a 100-word summary, then [links/CTA]; 3) chapters starting at 0:00, at least 3, each with a short clear name, using the real times from the transcript; 4) 10 tags; 5) 3 ideas for thumbnail text (max 4 words)."
+      },
+      {
+        "h": "Paste into YouTube Studio",
+        "b": "Add the title, description (chapters go at the bottom, each on its own line starting with the timestamp) and tags, then publish or schedule the video."
+      }
+    ],
+    "example": "Title: How to Re-Grout a Shower in One Afternoon. Chapters: 0:00 What you'll need, 1:12 Removing old grout, 4:30 Mixing new grout, 7:05 Applying and cleaning, 10:40 Sealing. Thumbnail text: 'Like new in 4 hours'.",
+    "tips": [
+      "Double-check chapter times by clicking each one after publishing; auto captions can drift slightly."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New video uploaded to the channel"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Get the video's automatic transcript"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write titles, description, chapters and tags"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the details to the user to paste in"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get the key points from a long YouTube video",
+    "d": "A short summary, the main points with timestamps and any steps or links mentioned, so you can decide whether to watch the whole thing.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "YouTube",
+      "AI assistant"
+    ],
+    "when": "Whenever a video is too long to watch right now",
+    "steps": [
+      {
+        "h": "Share the video with your assistant",
+        "b": "In Gemini you can paste a YouTube link directly. For other assistants, open the video on YouTube, click 'Show transcript' under the description, and copy the text."
+      },
+      {
+        "h": "Ask for a structured summary",
+        "b": "Paste the link or transcript with this prompt.",
+        "p": "Summarise this YouTube video: [link or transcript]. Give me: 1) what it's about in 2 sentences; 2) the 5-8 main points, each with its timestamp; 3) any step-by-step instructions as a numbered list; 4) any products, tools, books or links mentioned; 5) who would find it most useful; 6) a verdict: worth watching in full, or is this summary enough? Don't add information that isn't in the video."
+      },
+      {
+        "h": "Save the useful bits",
+        "b": "Copy the summary into your notes app with the video link so you can jump to the right moment later."
+      }
+    ],
+    "example": "About: a physio explains five desk stretches for back pain. Points: 1:20 why sitting tightens hips; 3:05 cat-cow in a chair... Steps: 1. Sit tall... Verdict: summary covers it; watch 3:05-6:00 to see the movements.",
+    "tips": [
+      "For health, money or legal videos, treat the summary as a starting point and check advice with a qualified professional."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares a YouTube link"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Get the video transcript"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise key points with timestamps"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save the summary to the user's notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find video ideas people in your niche want",
+    "d": "A list of 20 video ideas based on what people actually search for on YouTube, with suggested titles and the angle to take.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "YouTube",
+      "AI assistant"
+    ],
+    "when": "When planning your next batch of videos",
+    "steps": [
+      {
+        "h": "Collect YouTube search suggestions",
+        "b": "Type your topic into the YouTube search bar slowly and note the suggestions. Try adding 'how to', 'best', 'for beginners' and 'vs'. Also note titles of popular recent videos in your niche."
+      },
+      {
+        "h": "Ask the AI to turn them into ideas",
+        "b": "Paste what you found into your AI assistant with this prompt.",
+        "p": "My YouTube channel covers [topic] for [audience]. Here are YouTube search suggestions and popular video titles I found: [paste]. Give me 20 video ideas as a table: Working title (under 60 characters), The question it answers, My angle (how I can make it different given [your experience or style]), Format (tutorial, review, story, list), Difficulty to film (easy/medium/hard). Group them into 3-4 themes. Don't copy existing titles."
+      },
+      {
+        "h": "Pick three to film",
+        "b": "Choose the easiest-to-film ideas from your strongest theme and add them to your calendar."
+      }
+    ],
+    "example": "Theme: Beginner baking. 'Why your cakes sink in the middle (and the fix)' | answers 'cake sinking' | angle: test 3 common causes side by side | Tutorial | Easy. 'Bread maker vs by hand: a real taste test' | Review | Medium.",
+    "tips": [
+      "Check YouTube Studio's Research tab, if your channel has it, to see what your own viewers are searching for."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First of each month"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Gather search suggestions for the channel topic"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Turn them into 20 grouped video ideas"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add ideas to the video plan sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Create a set of matching images for your brand",
+    "d": "A reusable style recipe and a batch of AI-made images that all look like they belong together, for posts, blogs and slides.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Canva"
+    ],
+    "when": "When you need images and have no photos",
+    "steps": [
+      {
+        "h": "Describe your look",
+        "b": "Note your brand colours, the mood you want and two or three images you like the style of (described in words, not copied)."
+      },
+      {
+        "h": "Write a style recipe",
+        "b": "Ask your AI assistant for a reusable style description, then use it for every image. ChatGPT and Gemini can create images directly; Canva's AI image tools work too.",
+        "p": "Create a reusable image style description for [business], whose brand feels [3 words] with colours [colours]. The style should suit [use: social posts, blog headers]. Give me: a one-paragraph style recipe (medium, lighting, colour palette, composition, level of detail, what to avoid). Then use it to create an image of: [first subject]. After that, I'll ask for more images using the same style."
+      },
+      {
+        "h": "Make the rest in the same chat",
+        "b": "In the same conversation, ask for each new subject 'in the same style'. Keeping one chat helps the images stay consistent."
+      },
+      {
+        "h": "Add text in Canva",
+        "b": "Bring the images into Canva to add headlines and your logo, so text is crisp and spelled correctly."
+      }
+    ],
+    "example": "Style recipe: soft watercolour illustration, warm morning light, palette of sage green, cream and terracotta, simple compositions with lots of space, no text, no realistic faces. Images: a teapot on a windowsill; a bike by a garden gate; hands holding a seed packet.",
+    "tips": [
+      "Don't ask for images in the style of a named living artist or with real people's faces, and check your AI tool's terms for commercial use."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes the brand look and subjects"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a reusable style recipe"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create images for each subject in that style"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save the images to the brand folder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get clean product photos with the background removed",
+    "d": "Phone photos of your products turned into clean cut-outs on white or brand-coloured backgrounds, ready for your shop and posts.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "Phone camera",
+      "Canva"
+    ],
+    "when": "When adding new products",
+    "steps": [
+      {
+        "h": "Shoot in good light",
+        "b": "Place the product near a window on a plain surface and take a few photos from the same height. Wipe the lens first."
+      },
+      {
+        "h": "Remove the background",
+        "b": "On an iPhone you can press and hold the product in the Photos app to lift it out of the picture. In Canva, the background remover is under Edit on a photo if your plan includes it. Many Android phones have a similar tool in their photo editor."
+      },
+      {
+        "h": "Place it on a clean background",
+        "b": "In Canva, make a square design in white or your brand colour, drop in the cut-out, add a soft shadow, and duplicate the design for each product so they match."
+      },
+      {
+        "h": "Write alt text while you're there",
+        "b": "Ask your AI assistant for a one-line description of each photo for your shop's image description field.",
+        "p": "Write alt text (under 125 characters) for this product photo for [shop name]. Product: [name, colour, material]. Describe what's visible, plainly, for someone using a screen reader. Don't start with 'image of'."
+      }
+    ],
+    "example": "Before: candle on a cluttered kitchen counter. After: candle centred on a cream square with a soft shadow, matching the other 11 products. Alt text: 'Amber glass jar candle with a wooden lid and a kraft paper label.'",
+    "tips": [
+      "Check the cut-out edges at full size; fine details like fur or lace sometimes need a second go."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New product photo added to the shop photos folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write alt text for the photo"
+        },
+        {
+          "type": "file.save",
+          "detail": "Save the cut-out alongside the original"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to place it on the shop template"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write captions and alt text for your photos",
+    "d": "Upload photos and get a ready caption plus accessible alt text for each, so your posts and website work for everyone.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Instagram"
+    ],
+    "when": "Before posting photos",
+    "steps": [
+      {
+        "h": "Attach your photos",
+        "b": "Open your AI assistant and attach up to a handful of photos at once."
+      },
+      {
+        "h": "Ask for both captions and alt text",
+        "b": "Paste this prompt alongside the photos.",
+        "p": "For each attached photo, write: 1) alt text under 125 characters that plainly describes what's in it for someone who can't see it (no 'image of', include any visible text); 2) a social caption for [platform] in the voice of [business/you], 30-60 words, with context the photo doesn't show: [details like event, date, place]. Number them to match the photo order. Don't guess people's names or identities."
+      },
+      {
+        "h": "Add them when posting",
+        "b": "Paste the caption as usual. On Instagram, alt text is found under the advanced settings when posting, or by editing a post; on websites, it's the image description field."
+      }
+    ],
+    "example": "Photo 1 alt text: 'Three volunteers in green aprons sorting tins at a long table in a church hall.' Caption: 'Saturday's food bank sort was our busiest yet: 240 parcels packed in three hours. Thank you to everyone who came along.'",
+    "tips": [
+      "Get permission from people in your photos before posting, and take extra care with children."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Photos added to the To post folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write alt text and a caption for each photo"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save captions in posting order"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user they're ready"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a podcast episode into show notes and clips",
+    "d": "From one episode transcript, get show notes, chapter times, quotable moments and a list of short clips worth cutting for social.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "YouTube"
+    ],
+    "when": "After recording each episode",
+    "steps": [
+      {
+        "h": "Get a transcript",
+        "b": "Use the transcript from your recording or hosting tool, or upload the episode to YouTube as unlisted and copy the automatic captions from YouTube Studio."
+      },
+      {
+        "h": "Ask for show notes and clip picks",
+        "b": "Paste the transcript into your AI assistant with this prompt.",
+        "p": "Here's the transcript of my podcast episode: [paste]. Show: [name] for [audience]. Guest: [name, if any]. Give me: 1) 3 episode title options; 2) show notes: a 100-word summary and 5 bullet key takeaways; 3) chapter markers with timestamps; 4) 5 clips of 30-60 seconds for social media, each with start and end time, why it works on its own, and a hook line for on-screen text; 5) 3 short quotes, word for word. Only use what's in the transcript."
+      },
+      {
+        "h": "Cut the clips",
+        "b": "Use the timestamps to trim clips in your phone editor, Canva or YouTube Shorts' tools, and add the hook as on-screen text."
+      }
+    ],
+    "example": "Title: Why Small Charities Burn Out (and How to Stop It). Clip 2: 14:32-15:20, guest explains 'the volunteer cliff' - works alone because it's a complete story. Hook: 'Every charity hits this at year three.'",
+    "tips": [
+      "Let your guest know you'll be sharing clips, and send them the links so they can share too."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New episode transcript saved"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Write show notes and chapters"
+        },
+        {
+          "type": "ai.extract",
+          "detail": "Pick five clips and three quotes with timestamps"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the episode pack"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a rambling voice note into tasks and events",
+    "d": "Talk through your week on a walk, and get back a tidy to-do list plus calendar events for anything with a date or time.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Voice notes",
+      "AI assistant",
+      "Google Calendar",
+      "Reminders app"
+    ],
+    "when": "Whenever your head is full",
+    "steps": [
+      {
+        "h": "Record your thoughts",
+        "b": "Use your phone's voice recorder and just talk: what you need to do, who to call, deadlines, ideas. Many phones now transcribe recordings automatically (for example Voice Memos on recent iPhones or Recorder on Pixel)."
+      },
+      {
+        "h": "Get the text into your assistant",
+        "b": "Copy the transcript, or upload the audio file to an AI assistant that accepts audio. You can also speak directly using the assistant's voice mode."
+      },
+      {
+        "h": "Ask it to sort everything",
+        "b": "Use this prompt.",
+        "p": "Here's a transcript of me thinking out loud: [paste]. Today is [day and date]. Sort it into: 1) Tasks, each starting with a verb, with a suggested due date if I mentioned one, grouped by Work, Home, Errands; 2) Calendar events with title, date, start time and length (only if I said a time or day); 3) Ideas to keep; 4) anything unclear I should decide. Don't add tasks I didn't mention."
+      },
+      {
+        "h": "Add them to your apps",
+        "b": "Add the events to Google Calendar and the tasks to your reminders app. If your assistant is connected to Google Calendar (Gemini can be), you can ask it to create the events for you, then check them."
+      }
+    ],
+    "example": "Work: Send Lucy the revised quote (Tue). Home: Book boiler service. Errands: Return parcel to the post office. Events: Dentist, Thu 14 Nov 9:30, 45 mins. Ideas: Winter newsletter about energy saving. Unclear: 'sort the van' - service or clean?",
+    "tips": [
+      "Don't record other people's conversations without their knowledge; this is for your own voice."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New voice note saved"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull tasks, events and ideas from the transcript"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Create events for anything with a date and time"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add tasks to the reminders list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Understand voice messages in another language",
+    "d": "A voice message in a language you don't speak becomes a clear English translation, plus a reply you can send back in their language.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "WhatsApp",
+      "AI assistant"
+    ],
+    "when": "When you get a voice note you can't understand",
+    "steps": [
+      {
+        "h": "Get the words as text",
+        "b": "WhatsApp can transcribe voice messages if you turn on transcripts in its settings (supported languages vary). Otherwise, play it near an AI assistant in voice mode, or forward the audio file to an assistant that accepts audio."
+      },
+      {
+        "h": "Translate and draft a reply",
+        "b": "Paste the transcript into your AI assistant with this prompt.",
+        "p": "This is a transcript of a voice message I received, probably in [language, or 'unknown']: [paste]. 1) Tell me which language it is. 2) Translate it into English, keeping the tone. 3) Note anything ambiguous or culturally important. 4) Write a short, polite reply in that language saying: [what you want to say], and give me the English version so I know what I'm sending."
+      },
+      {
+        "h": "Reply your way",
+        "b": "Send the reply as text, or read it aloud and record a voice note if you're confident."
+      }
+    ],
+    "example": "Language: Portuguese. Translation: 'Hi, it's Ana from the flat downstairs. The water's been dripping through my ceiling since this morning. Can you check your bathroom?' Reply: 'Olá Ana, desculpe! Vou verificar agora e falo consigo em 10 minutos.'",
+    "tips": [
+      "Voice messages are personal; avoid sharing ones with sensitive details, and for anything legal or medical, use a professional translator."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "Voice message in another language"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Transcribe and detect the language"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Translate and draft a reply in the same language"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the translation and suggested reply"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make a narrated explainer video in Canva",
+    "d": "A short slideshow-style video with your own voiceover, captions and music, made in Canva from an AI-written script.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Canva",
+      "Phone camera"
+    ],
+    "when": "When you need to explain something simply",
+    "steps": [
+      {
+        "h": "Write a scene-by-scene script",
+        "b": "Paste this into your AI assistant.",
+        "p": "Write a script for a [60-90]-second explainer video about [topic] for [audience]. Split it into 6-8 scenes. For each scene: the voiceover (max 25 words, plain spoken English), a short on-screen headline (max 6 words), and a visual idea that I can make in Canva with icons, photos or simple shapes. End with a call to action: [CTA]."
+      },
+      {
+        "h": "Build the scenes in Canva",
+        "b": "Start a Canva video design, add one page per scene, and use templates, icons and your own photos. Add the headlines as big, readable text."
+      },
+      {
+        "h": "Record the voiceover",
+        "b": "Use Canva's record option to narrate each page, or record on your phone's voice recorder in a quiet room and upload the audio. Your own voice builds more trust than a synthetic one."
+      },
+      {
+        "h": "Add captions and music",
+        "b": "Turn on Canva's auto captions if offered on your plan, or type the voiceover as text. Pick a quiet track from Canva's audio library."
+      },
+      {
+        "h": "Export and share",
+        "b": "Download as MP4 and upload to YouTube, your website or social channels."
+      }
+    ],
+    "example": "Scene 1: 'Recycling bins confusing? You're not alone.' Visual: three coloured bins. Scene 3: 'Rinse it, squash it, lid on.' Visual: icon sequence. Scene 7: 'Download the bin calendar at our website.' Final: 75 seconds, captions on.",
+    "tips": [
+      "Only use music, photos and footage you have the rights to; Canva's library is licensed for use in your designs, subject to its terms.",
+      "If you include anyone else's face or voice, get their permission first."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters an explainer topic"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a scene-by-scene script with visuals"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the script for building in Canva"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Book 45 minutes to build and record"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Film a month of short videos in one session",
+    "d": "Plan, film and schedule eight or more short videos from one afternoon of filming, spread across the month on YouTube Shorts and Reels.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Intermediate",
+    "mins": 60,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "YouTube",
+      "Google Calendar"
+    ],
+    "when": "Once a month",
+    "steps": [
+      {
+        "h": "Plan the batch",
+        "b": "Ask your AI assistant for a set of scripts that can all be filmed in one place.",
+        "p": "Plan [8] short vertical videos (20-45 seconds) for [business/channel] about [topics], aimed at [audience]. All must be filmable in [location] in one afternoon with one phone. For each: title, 2-second hook, 3-5 shot script with spoken lines, props needed, and outfit changes if any. Then give a filming order that groups videos by setup to save time, and a posting schedule of 2 a week."
+      },
+      {
+        "h": "Prepare and film",
+        "b": "Gather the props list, set up near good light, and film in the suggested order. Name each clip with the video number as you go."
+      },
+      {
+        "h": "Edit in a batch",
+        "b": "Edit all the videos in one sitting in your phone's editor or Canva, using the same caption style and ending."
+      },
+      {
+        "h": "Schedule them",
+        "b": "Upload to YouTube Studio and set each to Schedule with a date and time. For Instagram, schedule Reels in Meta Business Suite or the Instagram app if your account offers scheduling."
+      },
+      {
+        "h": "Book next month's session",
+        "b": "Add a recurring monthly event to Google Calendar for your filming afternoon."
+      }
+    ],
+    "example": "Filming order: kitchen counter (videos 1, 4, 6), garden (2, 7), front door (3, 5, 8). Schedule: Tue and Fri at 6pm through November. Total: 8 Shorts, 3 hours filming, 2 hours editing.",
+    "tips": [
+      "Film a few extra hooks for each video; you can swap them later if one doesn't perform."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Last Monday of each month"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Plan scripts, filming order and posting schedule"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Book filming and editing sessions"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for each scheduled post"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep your YouTube channel organised with playlists and schedules",
+    "d": "Raw videos in a Google Drive folder go through a simple checklist to be uploaded, scheduled and added to the right playlist every time.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Drive",
+      "YouTube",
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Every time a video is finished",
+    "steps": [
+      {
+        "h": "Set up folders and a tracker",
+        "b": "Create Google Drive folders: To upload, Uploaded. Make a Google Sheet with columns: Video file, Title, Playlist, Publish date, Status."
+      },
+      {
+        "h": "Plan your playlists",
+        "b": "Ask your AI assistant to suggest playlists from your video list.",
+        "p": "Here's a list of my YouTube videos and their topics: [paste titles]. My channel is about [topic] for [audience]. Suggest 4-6 playlists that would help a new viewer binge-watch, each with a name (under 40 characters), a 2-sentence description, and which videos go in it, in the best viewing order. Put each video in at least one playlist."
+      },
+      {
+        "h": "Create the playlists",
+        "b": "In YouTube Studio, create each playlist with its description. When uploading new videos, you can choose the playlist on the details screen."
+      },
+      {
+        "h": "Upload and schedule from the tracker",
+        "b": "For each finished video in To upload, upload it in YouTube Studio, set visibility to Schedule, add it to its playlist, then move the file to Uploaded and update the sheet."
+      }
+    ],
+    "example": "Playlists: 'Start here: allotment basics' (6 videos), 'Growing veg in pots' (5), 'Allotment year: month by month' (12). Tracker: 'Planting garlic.mp4' | Planting Garlic in Autumn | Allotment year | Sat 16 Nov 9am | Scheduled.",
+    "tips": [
+      "Put your best video first in each playlist; it's the one most new viewers will see."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Video added to the To upload folder"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Suggest the right playlist for the video"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the video to the tracker with a publish date"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to upload and schedule it"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check product photos meet listing rules before uploading",
+    "d": "A quick pass or fail on every product photo against marketplace rules and your own standards, with what to fix on any that fail.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Before uploading product photos",
+    "steps": [
+      {
+        "h": "Write your checklist",
+        "b": "List the rules for where you sell (for example plain background, product fills most of the frame, no added text) plus your own standards like lighting and angles. Check the marketplace's help pages for its current image rules."
+      },
+      {
+        "h": "Attach photos and check them",
+        "b": "Attach a batch of photos to your AI assistant with this prompt.",
+        "p": "Check each attached product photo against this checklist: [paste checklist]. For each photo, in order, give: Photo number | Pass or Fail | Which rules it fails | What exactly to fix (e.g. 'reshoot with more light from the left', 'crop tighter'). Then a one-line summary of the most common problem across the batch. Be strict but only judge what you can see."
+      },
+      {
+        "h": "Fix and reshoot",
+        "b": "Reshoot or edit the failures, then run the check again on the new versions before uploading."
+      }
+    ],
+    "example": "Photo 1 | Pass. Photo 2 | Fail | background not plain, shadow on left | Move to the window and use a white card as a reflector. Photo 3 | Fail | product fills only half the frame | Crop tighter. Most common problem: harsh shadows.",
+    "tips": [
+      "AI can miss small details like a faint watermark or a scratch, so give each photo a final look yourself at full size."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Photos added to the product photos folder"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Pass or fail each photo against the checklist"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log results and fixes"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the user which photos need reshooting"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn photos of paper notes into a spreadsheet",
+    "d": "Snap handwritten lists, sign-up sheets or printed tables on your phone and get a clean, editable Google Sheet back in minutes.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "Phone camera",
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Whenever you have information stuck on paper",
+    "steps": [
+      {
+        "h": "Take clear photos",
+        "b": "Lay the page flat in good light and photograph it straight on. Your phone's document scanner (in the Notes app or Google Drive app) gives the flattest result."
+      },
+      {
+        "h": "Ask the AI to read it into a table",
+        "b": "Attach the photos to your AI assistant with this prompt.",
+        "p": "Read the attached photo(s) of [what it is, e.g. a handwritten stock count] and turn it into a table with these columns: [column names]. Keep the original order. If a word or number is hard to read, give your best guess followed by [?]. Don't fill in anything that isn't on the page. After the table, list every [?] item so I can check it."
+      },
+      {
+        "h": "Paste into Google Sheets",
+        "b": "Copy the table into a Google Sheet. Check every [?] item against the paper, and spot-check a few numbers."
+      },
+      {
+        "h": "Keep the original",
+        "b": "Save the photo in a Google Drive folder next to the sheet in case you need to check it again later."
+      }
+    ],
+    "example": "Stock count: Item | Size | Qty. 'Kraft bags' | Large | 140. 'Tissue paper' | A3 | 12 packs [?]. 'Ribbon - gold' | 10m | 6. Check: 'Tissue paper' qty could be 12 or 17.",
+    "tips": [
+      "For sign-up sheets or forms with names, phone numbers or health details, check your privacy rules and your workplace AI policy before uploading."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Photo added to the Scans folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read the page into a table and flag unclear items"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the rows to the matching sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "List items that need checking"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run a weekly video production line for your channel",
+    "d": "A repeatable weekly system that takes each video from idea to scheduled upload, with AI help, shared folders and automatic reminders.",
+    "cat": "Video, Image & Voice",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Trello",
+      "Google Drive",
+      "YouTube",
+      "AI assistant"
+    ],
+    "when": "Set up once, run every week",
+    "steps": [
+      {
+        "h": "Build a production board",
+        "b": "In Trello, create lists: Ideas, Scripted, Filmed, Edited, Scheduled, Published. Each video is a card with its Google Drive folder link attached."
+      },
+      {
+        "h": "Set rules to keep it moving",
+        "b": "Use Trello's built-in automation to add due dates and checklists when cards move, for example 'when moved to Filmed, add checklist: back up footage, rough cut, captions, thumbnail'."
+      },
+      {
+        "h": "Organise footage in Drive",
+        "b": "Create one Google Drive folder per video with Raw, Edit and Thumbnail subfolders. Upload footage from your phone with the Drive app straight after filming."
+      },
+      {
+        "h": "Use AI at each stage",
+        "b": "Script from the idea, then once the edit is done, use the transcript from YouTube Studio to create the upload details.",
+        "p": "Here's the transcript of my finished video: [paste]. Channel: [topic] for [audience]. Give me: 3 titles under 60 characters, a description with chapters from 0:00 using the real times, 10 tags, 3 thumbnail text options (max 4 words), a pinned comment that asks viewers a question, and a 2-line Community post to promote it."
+      },
+      {
+        "h": "Schedule and close the loop",
+        "b": "Schedule the video in YouTube Studio, move the card to Scheduled, and add a short weekly review in your calendar to pick next week's ideas."
+      }
+    ],
+    "example": "Week 46: 'Fixing a dripping tap' moved Edited -> Scheduled (Sat 10am). Checklist done: captions, thumbnail, end screen, playlist. Next up: 2 cards in Scripted, 4 in Ideas. Drive: /Videos/046-dripping-tap/Raw (14 clips).",
+    "tips": [
+      "Back up raw footage before deleting it from your phone; Drive's free storage fills quickly with video, so check your plan.",
+      "Get permission from anyone who appears or speaks in your videos, and only use music you have the rights to."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "New footage uploaded to a video folder"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Move the card to Filmed and remind the editor"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write titles, description, chapters and tags from the transcript"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save upload details in the video folder"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the scheduled publish time to the calendar"
+        }
+      ]
+    }
+  }
+]
