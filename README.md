@@ -1,27 +1,29 @@
 # fishpond.ai homepage
 
-A single-page, interactive homepage for fishpond.ai: search real AI workflows, learn how each works, and install them.
+A single-page, interactive homepage for fishpond.ai: search step-by-step AI workflows, follow them with apps you already use, and save the ones you like.
 
 ## Files
 
 - `index.html`: the whole page (styles and script inline). Open it in a browser or serve the folder.
-- `data/workflows.js`: the workflow library (700 real AI workflows). Generated, do not edit by hand.
-- `scripts/build_workflows.py`: rebuilds the library.
+- `data/recipes/*.json`: the workflow guides ("recipes"), written by fishpond. Edit these.
+- `data/workflows.js`: generated from the recipes for the page. Don't edit by hand.
+- `scripts/build_recipes.py`: checks the recipes and regenerates `data/workflows.js`.
 
-## The workflow library
-
-Workflows come from the free [n8n community template library](https://n8n.io/workflows/). The build script:
-
-1. Pulls the most-viewed free templates from each n8n AI category, plus targeted searches for everyday-life topics (meals, travel, money, health, learning, careers) and common work tasks.
-2. De-duplicates them, sorts each into a fishpond topic (work or life), and rates difficulty by how many apps it uses.
-3. Keeps a short summary, the "how it works" and setup steps where the author wrote them, the apps involved, and a credit and link to the original template.
-
-Refresh it (needs network access to `api.n8n.io`):
+After adding or editing recipes, run:
 
 ```bash
-python3 scripts/build_workflows.py                 # defaults: 700 workflows, at least 30 per topic
-python3 scripts/build_workflows.py --max 1000      # bigger library
-python3 scripts/build_workflows.py --cache raw.json  # save raw data once, then re-run offline
+python3 scripts/build_recipes.py
 ```
 
-Only short summaries are stored; every card links to the full template and credits its author.
+It reports how many recipes each topic has, and warns about missing fields, duplicates, or wording that doesn't belong (for example developer jargon).
+
+## Recipe format
+
+Each recipe is a fishpond-native guide that works with everyday tools (an AI assistant such as ChatGPT, Claude or Gemini, plus apps like Gmail, Sheets or Calendar):
+
+- `t`, `d`: title and one-line outcome
+- `cat`: one of 19 topics (12 work, 7 life)
+- `lvl`, `mins`, `tools`, `when`: difficulty, setup time, what you need, when it runs
+- `steps`: 3 to 6 steps, each with a heading, instructions and an optional copy-paste prompt (`[brackets]` are filled in by the user)
+- `example`, `tips`: a sample result and practical tips
+- `auto`: a machine-readable blueprint (a trigger plus actions) so fishpond can later run the recipe automatically. The page shows it as "Coming soon".

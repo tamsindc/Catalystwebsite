@@ -626,9 +626,10 @@ function toggleSave(id) {
 netCount.textContent = saved.size;
 
 /* pond */
-const STOP = new Set(['i','want','ai','to','a','an','the','my','me','for','with','and','of','in','on','at','from','by','into','get','make','use','using','can','how','do','what','that','this','it','is','be','some','all','help','automate','automatically','workflow','workflows','plan','manage','create']);
+const STOP = new Set(['i','want','ai','to','a','an','the','my','me','for','with','and','of','in','on','at','from','by','into','get','make','use','using','can','how','do','what','that','this','it','is','be','some','all','help','automate','automatically','workflow','workflows','plan','manage','create','new','find','better','quick','quickly','easy','easily','stuff','thing','things','every','out','up','more','way','ways']);
+const REPL = {clear:['triage','sort','declutter','tidy','unsubscribe','newsletter','priorit','zero'], tidy:['sort','declutter','organis','tidy']};
 const SYN = {fridge:['recipe','meal','food','grocer'], dinner:['recipe','meal','food'], cook:['recipe','meal'], food:['recipe','meal','food','restaurant'],
-  inbox:['email','inbox','gmail'], clear:['triage','sort','categor','label','organi','priorit','clean','zero'], tidy:['sort','categor','label','organi','clean'], mail:['email','gmail'], money:['finance','budget','expense','invoice'], spend:['expense','budget'], bill:['invoice','expense'],
+  inbox:['email','inbox','gmail'], spanish:['language','phrase','vocab','flashcard'], french:['language','phrase','vocab','flashcard'], german:['language','phrase','vocab','flashcard'], italian:['language','phrase','vocab','flashcard'], portuguese:['language','phrase','vocab','flashcard'], japanese:['language','phrase','vocab','flashcard'], mandarin:['language','phrase','vocab','flashcard'], language:['language','phrase','vocab'], mail:['email','gmail'], money:['finance','budget','expense','invoice'], spend:['expense','budget'], bill:['invoice','expense'],
   trip:['travel','trip','itinerary','flight'], holiday:['travel','trip','hotel'], job:['job','resume','career'], cv:['resume','cv'],
   meeting:['meeting','transcri','zoom','call'], call:['call','meeting','transcri','voice'], social:['social','linkedin','instagram','twitter','tiktok'],
   gym:['fitness','workout','gym','health'], study:['learn','study','quiz','flashcard','tutor'], customer:['customer','support','ticket'],
@@ -641,7 +642,7 @@ const cards = $('#cards'), pondInput = $('#pondInput'), count = $('#count'), mor
 function terms(q) {
   return q.toLowerCase().split(/[^a-z0-9+#.]+/).filter(t => t.length > 1 && !STOP.has(t))
     .map(t => t.replace(/ies$/, 'y').replace(/(?<=[^s])s$/, ''))
-    .map(t => [...new Set([t, ...(SYN[t] || [])])]);
+    .map(t => REPL[t] || [...new Set([t, ...(SYN[t] || [])])]);
 }
 function results() {
   const ts = terms(state.q);
@@ -651,15 +652,16 @@ function results() {
     (state.cat === 'all' || w.cat === state.cat));
   if (ts.length) {
     const need = Math.max(1, Math.ceil(ts.length / 2));
+    const wt = ts.map(alts => { const df = LIB.filter(x => alts.some(t => x._hay.includes(t))).length; return Math.log((LIB.length + 1) / (df + 1)) + 0.2; });
     list = list.map(w => {
       let score = 0, hits = 0;
       const cat = w.cat.toLowerCase();
-      for (const alts of ts) {
-        if (w._title.includes(alts[0])) { score += 4; hits++; }
-        else if (alts.some(t => w._title.includes(t))) { score += 2; hits++; }
-        else if (alts.some(t => w._hay.includes(t))) { score += 1; hits++; }
-        if (alts.some(t => cat.includes(t))) score += 3;
-      }
+      ts.forEach((alts, i) => {
+        if (w._title.includes(alts[0])) { score += 3 * wt[i]; hits++; }
+        else if (alts.some(t => w._title.includes(t))) { score += 2 * wt[i]; hits++; }
+        else if (alts.some(t => w._hay.includes(t))) { score += wt[i]; hits++; }
+        if (alts.some(t => cat.includes(t))) score += 1.5 * wt[i];
+      });
       return hits >= need ? {w, score} : null;
     }).filter(Boolean).sort((a, b) => b.score - a.score || a.w._i - b.w._i).map(x => x.w);
     if (state.sort === 'featured') return list;

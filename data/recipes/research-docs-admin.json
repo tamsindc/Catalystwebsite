@@ -1,0 +1,2836 @@
+[
+ {
+  "t": "Get the gist of any long web page fast",
+  "d": "Paste a long article or web page into your AI assistant and get a short summary, the key facts and anything you should double-check.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 3,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "Whenever a page is too long to read now",
+  "steps": [
+   {
+    "h": "Copy the page or its link",
+    "b": "Select all the text on the page and copy it, or copy the address from your browser bar. Some assistants can open links, but pasting the text is the most reliable."
+   },
+   {
+    "h": "Ask for a structured summary",
+    "b": "Open ChatGPT, Claude or Gemini, paste the text and this prompt.",
+    "p": "Summarise the article below for someone who has [2] minutes. Give me: 1) a one-sentence headline, 2) the 5 most important points as bullets, 3) any numbers, dates or names mentioned, 4) what the author wants the reader to believe or do, 5) any claims that are not backed up by evidence in the text. Only use what is in the article; if something is unclear, say so.\n\nArticle:\n[paste text here]"
+   },
+   {
+    "h": "Check anything you'll act on",
+    "b": "If a number or claim matters to you, find it in the original page and confirm it says what the summary says. AI summaries can drop context or get details wrong."
+   }
+  ],
+  "example": "Headline: The council plans to cut town-centre parking by 20% from April. Key points: 300 spaces removed; two new park-and-ride sites; consultation closes 14 March... Unsupported claims: 'footfall will rise' has no figures behind it.",
+  "tips": [
+   "Ask 'what did you leave out?' as a follow-up to catch anything important the summary skipped."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares a web page link"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Fetch the page text"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write headline, key points, figures and unsupported claims"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the summary to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Walk into every call knowing the latest company news",
+  "d": "Before a meeting, get a one-page brief on the company you're speaking to: what they do, recent news, likely priorities and smart questions to ask.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Google Calendar"
+  ],
+  "when": "The day before any external meeting",
+  "steps": [
+   {
+    "h": "Spot tomorrow's external meetings",
+    "b": "Glance at your calendar at the end of the day and note any meetings with people outside your organisation."
+   },
+   {
+    "h": "Ask for a brief with sources",
+    "b": "Use an assistant that can search the web (ChatGPT, Gemini, Claude or Perplexity with search turned on) and paste this prompt.",
+    "p": "I have a meeting with [company name] ([their website]) tomorrow about [topic]. Search the web and give me a one-page brief: 1) what they do in two sentences, 2) news from the last [3] months with the date and a link for each item, 3) their likely priorities or pressures right now, 4) who [person's name and job title] is, using only public professional information, 5) five questions I could ask. Mark anything you are not sure of, and do not include anything without a source."
+   },
+   {
+    "h": "Open the links before you rely on them",
+    "b": "Click through the two or three items you plan to mention and make sure the date and details are right. AI search sometimes mixes up companies with similar names."
+   },
+   {
+    "h": "Save the brief to the meeting",
+    "b": "Paste the final brief into the calendar event's description so it's there when you join."
+   }
+  ],
+  "example": "Northgate Joinery Ltd: makes bespoke kitchens for the trade. News: opened a second workshop in Leeds (12 Sept, link); won a regional apprenticeship award (2 Aug, link). Likely priorities: hiring, lead times. Ask: 'How is the new workshop changing your delivery times?'",
+  "tips": [
+   "Stick to professional, public information about people. Don't dig into anyone's personal life."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "calendar_event",
+    "detail": "A meeting with an external guest is tomorrow"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Search recent news about the guest's company"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Write a one-page brief with sources and questions"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the brief the evening before"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get a researched report on any question, with sources",
+  "d": "Use your assistant's deep research mode to get a sourced report on a big question, then check the sources so you can trust what you share.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Google Docs"
+  ],
+  "when": "When you need to understand a topic properly",
+  "steps": [
+   {
+    "h": "Turn on the research mode",
+    "b": "ChatGPT, Gemini and Claude each have a research option that searches many sites and writes a report; look for 'Deep research' or 'Research' near the message box. If your plan doesn't include it, use normal web search mode and ask the same question."
+   },
+   {
+    "h": "Give it a clear brief",
+    "b": "The more specific you are, the better the report. Paste this and fill in the brackets.",
+    "p": "Research this question: [your question]. Context: I am [who you are] and I need this to [decide / explain / plan something]. Focus on [country or region] and sources from the last [2] years. Structure the report as: 1) a short answer up front, 2) the main findings with a source link for each, 3) where sources disagree, 4) what is still uncertain, 5) a list of all sources with their publisher and date. Prefer official, academic and established news sources over blogs."
+   },
+   {
+    "h": "Check the sources",
+    "b": "Open at least the three sources the report leans on most. Confirm they exist, say what the report claims and are recent enough. AI research tools can misquote or link to the wrong page."
+   },
+   {
+    "h": "Keep the report and your notes",
+    "b": "Copy the report into a Google Doc and add a line at the top saying which sources you checked and when."
+   }
+  ],
+  "example": "Short answer: heat pumps can work in older homes, but most need better insulation first. Findings: a government field trial found... (link, 2024). Disagreement: installer groups and consumer groups give different running-cost figures. Uncertain: long-term costs beyond 10 years.",
+  "tips": [
+   "If a source link is broken or doesn't mention the claim, ask the assistant to find a different source or remove the claim."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User asks a research question"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Search and read relevant sources"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Write a structured report with linked sources"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the report to a document"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get a morning news briefing on topics you choose",
+  "d": "Set up a daily briefing from your AI assistant that rounds up news on your chosen topics, with links so you can read further.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Reminders app"
+  ],
+  "when": "Every weekday at 7am",
+  "steps": [
+   {
+    "h": "Pick three to five topics",
+    "b": "Be specific: 'electric van grants in the UK' works better than 'cars'. Write them in a note so you can tweak them later."
+   },
+   {
+    "h": "Create a scheduled task",
+    "b": "If your plan includes it, ChatGPT's scheduled tasks and Gemini's scheduled actions can run a prompt for you each day and notify you. Paste this prompt and set the time.",
+    "p": "Every weekday, search the news from the last 24 hours on these topics: [topic 1], [topic 2], [topic 3]. For each topic give up to 3 stories as: headline, one-sentence summary, why it matters to [who I am, e.g. a small café owner], publisher, date and link. Skip opinion pieces unless clearly labelled. If there is no real news on a topic, say 'nothing new' rather than filling space."
+   },
+   {
+    "h": "Free fallback",
+    "b": "No scheduled tasks? Set a recurring 7am reminder in your Reminders app and paste the same prompt into an assistant with web search each morning."
+   },
+   {
+    "h": "Click before you quote",
+    "b": "Treat the briefing as a pointer, not the final word. Open the link before you share or act on any story, as dates and details can be wrong."
+   }
+  ],
+  "example": "Café trade: 1) Milk prices expected to rise 4p a litre (Farming Weekly, 9 Nov, link). Why it matters: your latte margin. 2) Council opens applications for outdoor seating permits (Local Gazette, 8 Nov, link). Energy grants: nothing new.",
+  "tips": [
+   "After a week, reply with which stories were useful and which weren't, and ask it to adjust."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Weekdays at 7am"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Search news from the last 24 hours for each topic"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write up to 3 short items per topic with links"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the briefing to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn Google Alerts into one tidy weekly digest",
+  "d": "Collect Google Alerts on your name, business or industry in one Gmail label, then get a weekly AI digest of what actually matters.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 15,
+  "tools": [
+   "Gmail",
+   "AI assistant",
+   "Google Calendar"
+  ],
+  "when": "Every Friday afternoon",
+  "steps": [
+   {
+    "h": "Create your alerts",
+    "b": "Go to Google Alerts, type a search phrase (your business name in quotes, a competitor, an industry term) and choose to receive results once a week by email."
+   },
+   {
+    "h": "Send alerts to a label",
+    "b": "In Gmail's settings, under Filters, create a filter for emails from googlealerts-noreply@google.com, apply the label 'Alerts' and tick 'Skip the inbox'."
+   },
+   {
+    "h": "Book a weekly 15-minute slot",
+    "b": "Add a recurring Friday event in Google Calendar called 'Alerts digest'."
+   },
+   {
+    "h": "Ask for a digest",
+    "b": "Open the Alerts label, copy the week's emails into your AI assistant (or use Gemini in Gmail if your plan includes it) with this prompt.",
+    "p": "Below are this week's Google Alerts emails about [topics]. Make a digest: 1) the 3 items that matter most to [my business / role] and why, 2) any mention of [my business name] and whether it is positive, negative or neutral, 3) everything else as one line each, 4) items that look like duplicates or spam, which I can ignore. Keep the original link for every item.\n\n[paste alerts]"
+   },
+   {
+    "h": "Check before you react",
+    "b": "Open the original article for anything you plan to respond to. Alerts can pick up a different business with the same name."
+   }
+  ],
+  "example": "Top 3: 1) New planning rules for shopfront signs (link) - affects your refit. 2) Rival bakery opening on High St in Jan (link). 3) Food hygiene rating changes (link). Mentions of Crumb & Co: 1 positive review in a local blog. Ignore: 4 duplicates.",
+  "tips": [
+   "Put exact phrases in quotes in Google Alerts to cut down on irrelevant results."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Fridays at 3pm"
+   },
+   "actions": [
+    {
+     "type": "email.label",
+     "detail": "Gather the week's Google Alerts emails"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Rank the top items and flag mentions of the business"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the weekly digest"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Fact-check a viral claim before you share it",
+  "d": "Paste a post, headline or forwarded message and get a clear breakdown of what's true, what's misleading and where to check it yourself.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant",
+   "WhatsApp"
+  ],
+  "when": "Before you forward or repost something surprising",
+  "steps": [
+   {
+    "h": "Copy the claim exactly",
+    "b": "Copy the text of the post or message, or take a screenshot. Note where you saw it and when."
+   },
+   {
+    "h": "Ask for a source-backed check",
+    "b": "Use an AI assistant with web search turned on and paste this prompt.",
+    "p": "Fact-check the claim below. Search for reliable sources. Tell me: 1) the specific claims being made, listed separately, 2) for each one: true, false, misleading, or can't tell, 3) the evidence for your verdict with links to the original sources (official bodies, established fact-checkers, the original study), 4) whether this appears to be old news being reshared, 5) what I could say if I want to reply politely. If you can't find good evidence, say so plainly.\n\nClaim: [paste text or attach screenshot]\nWhere I saw it: [app / site, date]"
+   },
+   {
+    "h": "Open the sources yourself",
+    "b": "Click at least two of the links and check they say what the AI says. AI can be confidently wrong, especially about very recent events."
+   },
+   {
+    "h": "Decide whether to share",
+    "b": "If it's false or you can't tell, don't forward it. If you reply, keep it kind and include a link."
+   }
+  ],
+  "example": "Claim 1: 'Supermarkets will stop accepting cash in January' - False. No announcement found; the trade body says cash remains accepted (link). Claim 2: the photo is from 2019 in another country (link). Suggested reply: 'I checked and couldn't find any source for this - here's what I found.'",
+  "tips": [
+   "For photos, try a reverse image search (Google Lens can do this) to find where the picture first appeared."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "message_received",
+    "detail": "User forwards a claim to check"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Split the message into individual claims"
+    },
+    {
+     "type": "web.fetch",
+     "detail": "Search reliable sources for each claim"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Rate each claim true, false, misleading or unclear"
+    },
+    {
+     "type": "message.send",
+     "detail": "Reply with verdicts and source links"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Compare products side by side before you buy",
+  "d": "Get a clear comparison table of the products you're considering, covering price, features, common complaints and which suits your needs.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "Before any purchase over about £100",
+  "steps": [
+   {
+    "h": "Write down what you need",
+    "b": "List your budget, must-haves and deal-breakers. For example: 'under £400, quiet, fits a 60cm gap'."
+   },
+   {
+    "h": "Ask for a comparison table",
+    "b": "Use an AI assistant with web search on, and paste this prompt with your shortlist (or ask it to suggest one).",
+    "p": "I'm choosing a [product type]. My budget is [amount], I must have [must-haves] and I want to avoid [deal-breakers]. Compare these options: [product 1], [product 2], [product 3] (or suggest 3 if I haven't listed any). Make a table with: price range, key specs, warranty, what owners praise, what owners complain about most, and a link to the manufacturer's page. Then tell me which fits my needs best and why. Say where information was hard to find or might be out of date."
+   },
+   {
+    "h": "Check price and specs at the source",
+    "b": "Prices and model numbers change often. Confirm the details on the manufacturer's or retailer's page before you buy."
+   },
+   {
+    "h": "Read a few real reviews",
+    "b": "Skim three or four recent owner reviews of your top choice to make sure the complaints the AI found are real and still relevant."
+   }
+  ],
+  "example": "| Model | Price | Noise | Warranty | Common complaint |\n| Brook 7 | £380 | 44dB | 2 yrs | Slow eco cycle |\n| Vela S | £349 | 47dB | 5 yrs | Flimsy cutlery tray |\nBest fit: Vela S - under budget, longest warranty, and the tray issue is minor.",
+  "tips": [
+   "Ask it to flag models that have been replaced by newer versions, so you don't pay full price for an old one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User lists products and needs"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Look up specs, prices and reviews"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Build a comparison table and a recommendation"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the comparison to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Build a shortlist of local businesses in a spreadsheet",
+  "d": "Use Google Maps and your AI assistant to build a tidy spreadsheet of local suppliers, venues or tradespeople, with ratings, websites and notes.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 25,
+  "tools": [
+   "Google Maps",
+   "AI assistant",
+   "Google Sheets"
+  ],
+  "when": "When you need to find and compare local options",
+  "steps": [
+   {
+    "h": "Search Google Maps",
+    "b": "Search for what you need near you, for example 'commercial cleaners near Bristol'. Open the 10 to 15 most relevant results."
+   },
+   {
+    "h": "Copy the basics",
+    "b": "For each one, copy the name, rating, number of reviews, website and phone number from the listing into a note. Screenshots of the listings also work."
+   },
+   {
+    "h": "Ask AI to tidy it into a table",
+    "b": "Paste your notes or attach the screenshots with this prompt.",
+    "p": "Turn the notes below into a table with these columns: Business name, Area, Google rating, Number of reviews, Website, Phone, Services mentioned, Notes. Use only the information I've given you and leave a cell blank if it's missing; do not guess phone numbers or websites. Then add a 'Shortlist?' column with Yes for the best [5] for [my need, e.g. weekly office cleaning, 2,000 sq ft], and explain your choices underneath.\n\n[paste notes]"
+   },
+   {
+    "h": "Paste into Google Sheets",
+    "b": "Copy the table into a new Google Sheet. Check each phone number and website against the Maps listing before you call."
+   },
+   {
+    "h": "Add your own notes as you call",
+    "b": "Add columns for 'Quote', 'Availability' and 'Gut feel' and fill them in as you speak to each business."
+   }
+  ],
+  "example": "Shortlist: Sparkle Pro Cleaning (4.8, 212 reviews, offices and retail), BrightDesk Services (4.6, 89 reviews, out-of-hours), Clearwater Facilities (4.7, 140 reviews)... Excluded: Tidy Homes (domestic only).",
+  "tips": [
+   "Only use business contact details listed publicly, and don't add individuals' personal numbers."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User describes what they need and where"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Find matching local businesses"
+    },
+    {
+     "type": "ai.extract",
+     "detail": "Pull out name, rating, website and phone"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add each business as a row"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Mark the best matches for the shortlist"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Notice what's changed on competitors' websites each month",
+  "d": "Once a month, check a few competitor pages and get a clear summary of new prices, products and messages compared with last time.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Google Docs",
+   "Google Calendar"
+  ],
+  "when": "First Monday of each month",
+  "steps": [
+   {
+    "h": "Choose the pages to watch",
+    "b": "Pick three to five competitors and the pages that matter: pricing, services and their news or blog page. List the links in a Google Doc called 'Competitor watch'."
+   },
+   {
+    "h": "Set a monthly reminder",
+    "b": "Add a recurring Google Calendar event for the first Monday of the month with the doc linked in the description."
+   },
+   {
+    "h": "Capture this month's pages",
+    "b": "Copy the text of each page (or ask an assistant with web browsing to read the links) and paste it under a dated heading in your doc."
+   },
+   {
+    "h": "Compare with last month",
+    "b": "Paste last month's notes and this month's text into your AI assistant with this prompt.",
+    "p": "Compare last month's and this month's notes on my competitors below. For each competitor list: 1) price changes (old price to new price), 2) new or removed products or services, 3) changes in headline messages or offers, 4) anything that suggests a new direction. Then give me the top 3 changes that matter for [my business] and one idea for how I could respond to each. Only report changes you can see in the text; do not guess.\n\nLast month:\n[paste]\n\nThis month:\n[paste]"
+   },
+   {
+    "h": "Save the summary",
+    "b": "Paste the summary at the top of that month's section so you build up a history."
+   }
+  ],
+  "example": "Greenleaf Gardens: lawn care plan up from £25 to £29/month; new 'hedge and tidy' bundle added. HedgeHogs Ltd: homepage now leads with 'next-day quotes'. Top change: two rivals now offer bundles - consider a spring bundle.",
+  "tips": [
+   "Keep the raw page text as well as the summary, so you can check the AI's comparison if something looks off."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "First Monday of each month at 9am"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Read each competitor page on the list"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Compare with last month and list changes"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Add a dated summary to the competitor watch doc"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Understand a study or research paper in plain English",
+  "d": "Upload a study and get a plain-language explanation of what was tested, what was found, how strong the evidence is and what it doesn't show.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "When a headline cites a study you want to understand",
+  "steps": [
+   {
+    "h": "Find the original paper",
+    "b": "Follow the link in the news article to the study itself. Many papers are free to read; download the PDF if you can."
+   },
+   {
+    "h": "Upload it and ask for a plain explanation",
+    "b": "Attach the PDF to ChatGPT, Claude or Gemini and paste this prompt.",
+    "p": "Explain this research paper to a non-expert. Cover: 1) the question it asked, 2) who or what was studied and how many, 3) what they did, 4) the main findings in plain numbers, 5) how strong the evidence is (study type, size, limitations the authors mention), 6) what it does NOT show, 7) any funding or conflicts of interest declared. Quote the page or section for each point. If something isn't in the paper, say so."
+   },
+   {
+    "h": "Compare with the headline",
+    "b": "Ask: 'Does this headline fairly describe the study? [paste headline]'. Then check one or two of the quoted sections yourself."
+   }
+  ],
+  "example": "Question: does a daily 20-minute walk improve sleep? Studied: 120 adults for 8 weeks. Finding: walkers fell asleep about 9 minutes faster on average. Strength: small, short study; sleep was self-reported (Limitations, p.11). Doesn't show: that walking cures insomnia.",
+  "tips": [
+   "For health studies, use this to understand the research, not to change treatment. Talk to your GP or pharmacist before acting on it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "User uploads a research paper"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull out question, method, sample and findings"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write a plain-English explanation with section references"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the explanation to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "See a news story from more than one angle",
+  "d": "Get a balanced overview of a news story: the agreed facts, how different outlets frame it and the questions still unanswered.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "When a story is everywhere and you want the full picture",
+  "steps": [
+   {
+    "h": "Name the story",
+    "b": "Note the headline or topic and roughly when it broke."
+   },
+   {
+    "h": "Ask for a balanced overview",
+    "b": "Use an assistant with web search on and paste this prompt.",
+    "p": "Give me a balanced overview of this news story: [story or headline], from around [date]. Search a range of reputable outlets with different viewpoints. Structure it as: 1) the facts most sources agree on, 2) how [3] different outlets frame it, with a short quote and link for each, 3) the strongest argument from each main side, 4) what is still unknown or disputed, 5) primary sources I can read myself (official statements, documents, data). Keep your own opinion out of it."
+   },
+   {
+    "h": "Read at least one primary source",
+    "b": "Open the official statement, report or data the AI points to. It's the best way to check the summary hasn't drifted from the facts."
+   }
+  ],
+  "example": "Agreed facts: the rail strike is planned for 3 days from 12 Dec. Framing: Outlet A leads on passenger disruption; Outlet B on pay offers; Outlet C on safety staffing. Unknown: whether talks resume this week. Primary sources: union statement (link), operator timetable notice (link).",
+  "tips": [
+   "News moves fast. Ask the assistant to give the date of each source so you can see if anything is out of date."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User names a news story"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Gather coverage from several outlets and primary sources"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write agreed facts, framings and open questions"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the overview with links"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn a pile of articles into an AI research notebook",
+  "d": "Load your articles, PDFs and links into NotebookLM and ask questions answered only from your sources, with citations you can click.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "NotebookLM",
+   "Google Drive"
+  ],
+  "when": "When you're researching one topic over several weeks",
+  "steps": [
+   {
+    "h": "Gather your sources",
+    "b": "Collect the articles, reports and PDFs you trust on the topic. Save PDFs to a Google Drive folder so they're in one place."
+   },
+   {
+    "h": "Create a notebook",
+    "b": "Open NotebookLM (free with a Google account), create a new notebook and add your sources: upload files, pick them from Drive or paste website links."
+   },
+   {
+    "h": "Ask questions from your sources",
+    "b": "Type questions in the chat. Answers come with numbered citations that jump to the exact passage. Try this to start.",
+    "p": "Using only these sources, give me: 1) the 5 main themes across them, 2) where the sources agree and disagree, 3) the key figures or statistics with which source each comes from, 4) the questions these sources don't answer about [my specific question]."
+   },
+   {
+    "h": "Click the citations",
+    "b": "Check a few citations to make sure the answer matches the passage. It sticks to your sources, but it can still misread them."
+   },
+   {
+    "h": "Save useful answers",
+    "b": "Save good answers as notes in the notebook so your findings build up as you go."
+   }
+  ],
+  "example": "Themes: 1) four-day week trials report lower sick leave [1][3]; 2) mixed effects on customer response times [2]... Disagreement: [1] reports productivity up; [4] found no change. Not covered: effects on very small teams under 5 people.",
+  "tips": [
+   "Only upload documents you're allowed to share with an online tool; keep confidential work files out unless your workplace approves it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A source is added to the research folder"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Summarise the new source"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Update the list of themes and open questions"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save findings to the research notes"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Find out what real people say about something",
+  "d": "Paste forum threads and comments about a product, place or topic and get a summary of common opinions, recurring problems and useful tips.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "When you want honest opinions, not adverts",
+  "steps": [
+   {
+    "h": "Find two or three busy threads",
+    "b": "Search the web for your topic plus 'forum' or 'reddit' and open a few long, recent discussions."
+   },
+   {
+    "h": "Copy the comments",
+    "b": "Copy the text of each thread into a single document. Note the date of each thread."
+   },
+   {
+    "h": "Ask for a digest",
+    "b": "Paste it all into your AI assistant with this prompt.",
+    "p": "Below are online discussions about [topic]. Summarise what people actually say: 1) the most common opinions, with roughly how many commenters share each, 2) recurring problems or complaints, 3) practical tips people recommend, 4) any disagreements, 5) comments that seem like adverts or from people with something to sell. Use short quotes as evidence. These are personal opinions, not facts, so label them that way.\n\n[paste threads]"
+   },
+   {
+    "h": "Weigh it up",
+    "b": "Treat this as a sense of the crowd, not proof. Forum posts can be old, one-sided or wrong, so check key facts elsewhere."
+   }
+  ],
+  "example": "Common view (about 12 of 20 commenters): the campsite is lovely but the showers are cold after 8am. Tip: book pitches 40-45 for shade. Disagreement: how dog-friendly it is. Possible advert: one user linking to a rental site in every post.",
+  "tips": [
+   "Remove usernames before pasting if you plan to share the summary with others."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User names a topic or shares thread links"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Read the discussion threads"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Group common opinions, problems and tips"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the digest to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Check if your accounts were in a data breach",
+  "d": "Find out whether your email address has turned up in known data breaches and get a simple, ordered plan to secure the accounts that matter.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Notes app"
+  ],
+  "when": "Now, then whenever you get a breach alert",
+  "steps": [
+   {
+    "h": "Check your email address",
+    "b": "Visit the free site Have I Been Pwned and enter your email address. You can also sign up there to be emailed if it appears in a future breach."
+   },
+   {
+    "h": "List the breaches found",
+    "b": "Write down the name of each breached site and what was exposed (for example email, passwords, phone numbers). Don't paste any actual passwords anywhere."
+   },
+   {
+    "h": "Get an action plan",
+    "b": "Paste the list (site names and exposed data only) into your AI assistant with this prompt.",
+    "p": "My email appeared in these data breaches: [site name - data exposed - year]. I don't use a password manager yet [change if you do]. Give me a prioritised action plan: 1) which accounts to secure first and why, 2) step-by-step what to do for each (change password, turn on two-step verification, check recovery details), 3) scams I should watch for given what was exposed, 4) how to set up a password manager in simple steps. Don't ask me for any passwords."
+   },
+   {
+    "h": "Work through the list",
+    "b": "Start with your email, banking and anything that stores payment details. Tick items off in your notes app as you go."
+   }
+  ],
+  "example": "Priority 1: your email account - it's the key to resetting everything else. Change the password and turn on two-step verification. Priority 2: the shopping site (2021 breach exposed passwords) - change it, and anywhere you reused it. Watch for: fake delivery texts using your phone number.",
+  "tips": [
+   "Never type a password into an AI chat. Genuine services will never ask you to share one there."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_email",
+    "detail": "A data breach notification arrives"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull out the breached site and data exposed"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Write a prioritised security checklist"
+    },
+    {
+     "type": "list.add",
+     "detail": "Add each action to the user's to-do list"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Read all your newsletters in one weekly summary",
+  "d": "Route newsletters into one folder automatically, then get a weekly AI digest of the best ideas and links, saved to Notion for later.",
+  "cat": "Research & News",
+  "lvl": "Advanced",
+  "mins": 30,
+  "tools": [
+   "Gmail",
+   "AI assistant",
+   "Notion",
+   "Google Calendar"
+  ],
+  "when": "Every Sunday morning",
+  "steps": [
+   {
+    "h": "Filter newsletters out of your inbox",
+    "b": "In Gmail's settings, under Filters, create a filter for each newsletter sender, apply the label 'Reading' and choose 'Skip the inbox'. In Outlook, use a rule that moves them to a 'Reading' folder."
+   },
+   {
+    "h": "Set a weekly reading slot",
+    "b": "Create a recurring Sunday event in Google Calendar called 'Newsletter digest' and link your Notion page in it."
+   },
+   {
+    "h": "Summarise the week's issues",
+    "b": "If your plan includes Gemini in Gmail, ask it to summarise the 'Reading' label. Otherwise copy the newsletters into your AI assistant with this prompt.",
+    "p": "Here are this week's newsletters about [topics]. Create a digest: 1) the 5 most useful ideas, each with the newsletter it came from and the original link, 2) any trends mentioned by more than one newsletter, 3) any events, deadlines or offers with dates, 4) one line on each remaining issue so I know whether to read it in full. Label anything that looks sponsored. Don't add facts that aren't in the newsletters.\n\n[paste newsletters]"
+   },
+   {
+    "h": "Save to Notion",
+    "b": "Paste the digest into a Notion database called 'Weekly digests' with the date as the title, so you can search past weeks."
+   },
+   {
+    "h": "Clear the folder",
+    "b": "Archive the week's newsletters and unsubscribe from any that never make it into your top five."
+   }
+  ],
+  "example": "Week of 3 Nov. Top ideas: 1) 'Price for the job, not the hour' (Trade Talk, link). 2) Short video case studies outperform blog posts for local services (Marketing Minute, link). Trend: three newsletters mention rising insurance costs. Deadline: small business awards close 30 Nov.",
+  "tips": [
+   "Check any statistic before you repeat it; newsletters often quote figures second-hand."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Sundays at 9am"
+   },
+   "actions": [
+    {
+     "type": "email.label",
+     "detail": "Collect the week's emails labelled Reading"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Pick top ideas, trends and deadlines with links"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the digest to the Notion database"
+    },
+    {
+     "type": "notify",
+     "detail": "Tell the user the digest is ready"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Keep a research log you can actually trust",
+  "d": "Record every useful fact with its source, date and whether you've verified it, so your research is reliable and easy to cite later.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 15,
+  "tools": [
+   "Google Sheets",
+   "AI assistant"
+  ],
+  "when": "Whenever you're researching for a project, essay or decision",
+  "steps": [
+   {
+    "h": "Set up the log",
+    "b": "Create a Google Sheet with columns: Date found, Claim or fact, Exact quote, Source name, Link, Source type, Verified? (Yes/No/Partly), Notes."
+   },
+   {
+    "h": "Extract facts from what you read",
+    "b": "When you read something useful, paste it into your AI assistant with this prompt and copy the result into your sheet.",
+    "p": "From the text below, extract up to [8] specific facts or claims that relate to [my research question]. Output as a table with columns: Claim (one sentence, in your words), Exact quote, Source name, Source type (official, academic, news, blog, company). Only include claims that are actually in the text. Source: [name and link]\n\n[paste text]"
+   },
+   {
+    "h": "Verify the important ones",
+    "b": "For each claim you plan to rely on, find a second independent source or the original data. Mark it Yes, No or Partly in the Verified column."
+   },
+   {
+    "h": "Ask for gaps",
+    "b": "Every so often, paste the sheet back into your AI assistant and ask: 'Which claims rest on only one source, and what is missing to answer my question?'"
+   }
+  ],
+  "example": "Row: 12 Nov | 1 in 4 small firms use AI tools weekly | 'one in four firms...' | Business Survey 2026 | link | Official | Partly - figure is for firms with 10+ staff | Check the micro-business breakdown.",
+  "tips": [
+   "Copy the exact quote, not just a summary. It makes checking and citing much quicker later."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares text and its source"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Extract claims, quotes and source details"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add each claim as a row marked unverified"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind the user to verify key claims"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Share a weekly market watch with your team",
+  "d": "Gather industry news from alerts and newsletters into one place, then post a short weekly market summary to your team's Slack channel.",
+  "cat": "Research & News",
+  "lvl": "Advanced",
+  "mins": 40,
+  "tools": [
+   "Gmail",
+   "AI assistant",
+   "Slack",
+   "Google Calendar"
+  ],
+  "when": "Every Monday morning",
+  "steps": [
+   {
+    "h": "Set up your news sources",
+    "b": "Create Google Alerts for your industry, key customers and competitors, delivered weekly. Subscribe to two or three trusted trade newsletters."
+   },
+   {
+    "h": "Route them to one label",
+    "b": "In Gmail's settings, under Filters, send all of these to a 'Market watch' label and skip the inbox. Outlook users can do the same with a rule and folder."
+   },
+   {
+    "h": "Block 20 minutes on Mondays",
+    "b": "Add a recurring Monday event called 'Market watch' so it becomes a habit, and invite a colleague as backup."
+   },
+   {
+    "h": "Draft the summary",
+    "b": "Copy the week's emails into your AI assistant with this prompt.",
+    "p": "Write a team market-watch post from the news below for a [industry] business. Format for Slack: a bold one-line headline, then 'Need to know' (3 bullets max), 'Worth watching' (3 bullets max) and 'Customers and competitors' (any mentions). Each bullet: one sentence, source name and link. Keep it under 200 words, neutral in tone, and leave out anything without a link.\n\n[paste emails]"
+   },
+   {
+    "h": "Check, then post",
+    "b": "Open each link to confirm it's accurate and current, then post in your team channel (Microsoft Teams works the same way). Start a thread for discussion."
+   }
+  ],
+  "example": "*Market watch, 10 Nov: steel prices ease for a second month*\nNeed to know: steel rebar down 3% (Builders Weekly, link). New site safety guidance published (link).\nWorth watching: two regional rivals advertising for estimators (link).",
+  "tips": [
+   "Ask colleagues to react with a thumbs up to items they found useful, and use that to tune your alerts."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Mondays at 8am"
+   },
+   "actions": [
+    {
+     "type": "email.label",
+     "detail": "Gather the week's market watch emails"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write a short team post with links"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the user to review the draft"
+    },
+    {
+     "type": "message.send",
+     "detail": "Post the approved summary to the team channel"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Ask a long PDF questions and get page numbers",
+  "d": "Upload a long PDF and ask it anything in plain English, getting answers that point to the exact page so you can check them.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 3,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "Whenever you have a long document to get through",
+  "steps": [
+   {
+    "h": "Upload the PDF",
+    "b": "Open ChatGPT, Claude or Gemini and attach the PDF using the paperclip or plus button. Scanned documents work best if the text is clear."
+   },
+   {
+    "h": "Set the ground rules",
+    "b": "Paste this prompt first so every answer comes with evidence.",
+    "p": "You are helping me understand the attached document, [document name]. For every answer: quote the relevant sentence, give the page number, and say 'not in the document' if the answer isn't there rather than guessing. My first questions: 1) What is this document for, in two sentences? 2) What are the key dates or deadlines? 3) [your own question]"
+   },
+   {
+    "h": "Ask follow-ups",
+    "b": "Keep asking in the same chat, for example 'What does it say about cancellations?' or 'What do I have to do, and by when?'"
+   },
+   {
+    "h": "Check the pages",
+    "b": "Open the PDF at the page numbers given for anything important. AI can occasionally mis-number pages or miss a clause."
+   }
+  ],
+  "example": "Q: What's the notice period? A: 'Either party may end this agreement with 60 days' written notice' (page 7, section 12.1). Q: Is there an early exit fee? A: Not in the document.",
+  "tips": [
+   "Remove or black out account numbers and personal details before uploading, and check your workplace AI policy for work documents."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "User uploads a PDF"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Read the document and index it by page"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Answer questions with quotes and page numbers"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Shrink a long report into a one-page brief",
+  "d": "Turn a 40-page report into a one-page brief with the main findings, key numbers, recommendations and what it means for you.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant",
+   "Word"
+  ],
+  "when": "Whenever a long report lands on your desk",
+  "steps": [
+   {
+    "h": "Attach the report",
+    "b": "Upload the PDF or Word file to your AI assistant, or paste the text if it's short."
+   },
+   {
+    "h": "Ask for a one-page brief",
+    "b": "Paste this prompt, telling it who the brief is for.",
+    "p": "Write a one-page brief of the attached report for [audience, e.g. my manager / our board / myself]. Use these headings: Purpose (1 sentence), Key findings (5 bullets with page numbers), Important numbers (a short table), Recommendations (as stated in the report), What this means for [our team / my situation] (3 bullets, clearly marked as your interpretation), Questions to ask. Keep it under 400 words."
+   },
+   {
+    "h": "Check the numbers",
+    "b": "Go to the page numbers given and confirm every figure in the table. Numbers are where summaries most often go wrong."
+   },
+   {
+    "h": "Paste into Word or Docs",
+    "b": "Copy the brief into a document, add the report's title and date at the top, and share it."
+   }
+  ],
+  "example": "Purpose: annual review of the town's bus services. Key findings: passenger numbers up 6% (p.4); route 12 runs at a loss (p.18)... Numbers: Journeys 2.1m, +6%. Recommendation: trial on-demand buses in villages (p.31).",
+  "tips": [
+   "Ask 'what in this report would someone disagree with?' to spot weak points before a meeting."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A report is added to a chosen folder"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Write a one-page brief with page references"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the brief next to the report"
+    },
+    {
+     "type": "notify",
+     "detail": "Tell the user the brief is ready"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Pull a table out of a PDF into a spreadsheet",
+  "d": "Get tables trapped in PDFs or screenshots into Excel or Google Sheets as clean, sortable rows without retyping anything.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "When you need numbers from a PDF in a spreadsheet",
+  "steps": [
+   {
+    "h": "Attach the PDF or a screenshot",
+    "b": "Upload the PDF to your AI assistant, or take a clear screenshot of just the table you need."
+   },
+   {
+    "h": "Ask for clean rows",
+    "b": "Paste this prompt.",
+    "p": "Extract the table on page [page number] (titled '[table title]') from the attached file. Output it as a table I can paste into a spreadsheet: one header row, one row per line, numbers without currency symbols or commas, dates as DD/MM/YYYY, and empty cells left blank. Don't add or calculate anything. After the table, list any cells you couldn't read clearly."
+   },
+   {
+    "h": "Paste into your spreadsheet",
+    "b": "Copy the table and paste it into Excel or Google Sheets. If it all lands in one column, ask the assistant for the same data as CSV and use the import option instead."
+   },
+   {
+    "h": "Spot-check against the original",
+    "b": "Compare the totals and a few random rows with the PDF. If the PDF has a total row, add a SUM formula to make sure it matches."
+   }
+  ],
+  "example": "Month | Visitors | Sales | Refunds\n01/01/2026 | 1840 | 12450 | 320\n01/02/2026 | 1620 | 11010 | 290\nUnclear cells: none.",
+  "tips": [
+   "Excel can also import tables straight from a PDF using its Get Data option, which is worth trying for very long tables."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "User uploads a PDF with a table"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Extract the table as clean rows"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add the rows to a spreadsheet"
+    },
+    {
+     "type": "notify",
+     "detail": "List any cells that couldn't be read"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Ask your spreadsheet questions in plain English",
+  "d": "Get straight answers from your spreadsheet, like your best month or biggest customer, without writing formulas or pivot tables.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Excel"
+  ],
+  "when": "Whenever you have a question about your data",
+  "steps": [
+   {
+    "h": "Tidy the sheet first",
+    "b": "Make sure there's one header row and one row per record. Delete blank rows and unmerge any merged cells."
+   },
+   {
+    "h": "Use the built-in assistant or upload a copy",
+    "b": "If your plan includes Gemini in Google Sheets or Copilot in Excel, open its side panel. Otherwise download the sheet as a CSV or Excel file and upload it to ChatGPT, Claude or Gemini."
+   },
+   {
+    "h": "Ask clear questions",
+    "b": "Paste this prompt and change the questions to your own.",
+    "p": "This spreadsheet contains [what the data is, e.g. our sales for 2026, one row per order]. Columns: [list the main columns]. Answer these questions, showing the figures you used and how you worked each one out: 1) [Which month had the highest total sales?] 2) [Who are our top 5 customers by total spend?] 3) [What is the average order value by product category?] Then point out anything unusual in the data, such as gaps, duplicates or odd values."
+   },
+   {
+    "h": "Double-check one answer",
+    "b": "Pick one answer and check it yourself with a quick filter or SUM. If it doesn't match, ask the assistant to show its working."
+   }
+  ],
+  "example": "1) Highest sales: July, £18,240 (312 orders). 2) Top customers: Harbour Café £2,410, Lane Studio £1,980... 3) Average order: Cakes £21.40, Bread £8.90. Unusual: 14 orders have no date; 3 look duplicated (same customer, amount and time).",
+  "tips": [
+   "Delete columns with names, emails or phone numbers before uploading if you don't need them for the question."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User asks a question about a spreadsheet"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Calculate the answer and show the working"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Flag gaps, duplicates and odd values"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the answers to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Clean up a messy spreadsheet in minutes",
+  "d": "Get a step-by-step clean-up plan for messy data, from duplicates and mixed date formats to inconsistent names, with formulas you can paste in.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "Before you analyse or share a spreadsheet",
+  "steps": [
+   {
+    "h": "Make a backup copy",
+    "b": "Duplicate the sheet tab or file before you change anything, so you can always go back."
+   },
+   {
+    "h": "Show the AI a sample",
+    "b": "Copy the header row and about 20 typical rows (including the messy ones) and paste them with this prompt.",
+    "p": "Here is a sample of my spreadsheet in [Excel / Google Sheets]. It has about [number] rows. Find the data problems: duplicates, inconsistent spellings (e.g. 'Ltd' vs 'Limited'), mixed date formats, numbers stored as text, extra spaces and blank cells. For each problem, give me: what it is, which column, and the exact step or formula to fix it in [Excel / Google Sheets], explained for a beginner. Number the steps in the order I should do them.\n\n[paste sample]"
+   },
+   {
+    "h": "Fix one problem at a time",
+    "b": "Follow the steps in order. Use built-in tools where it suggests them, such as removing duplicates and trimming spaces from the Data menu in Google Sheets or the Data tab in Excel."
+   },
+   {
+    "h": "Check the row count",
+    "b": "Compare the number of rows before and after. If lots disappeared, check the duplicates really were duplicates."
+   }
+  ],
+  "example": "1) Column B has extra spaces: in a new column use =TRIM(B2), fill down, then paste as values. 2) Dates in column D mix 03/04/26 and 2026-04-03: select D and set the format to Date... 3) 46 duplicate rows by email: remove duplicates on column C.",
+  "tips": [
+   "Use made-up or trimmed sample rows if the real data includes customer details; the AI only needs to see the pattern."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "User uploads a spreadsheet to clean"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Find duplicates, format problems and blanks"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Write ordered clean-up steps and formulas"
+    },
+    {
+     "type": "file.save",
+     "detail": "Save a cleaned copy alongside the original"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get the right spreadsheet formula by describing it",
+  "d": "Describe what you want in everyday words and get a working Excel or Google Sheets formula, explained so you understand what it does.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 3,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "Whenever you're stuck on a formula",
+  "steps": [
+   {
+    "h": "Note where your data is",
+    "b": "Write down which columns hold what, and which row your data starts on. For example: 'Names in A, amounts in C, from row 2'."
+   },
+   {
+    "h": "Describe what you want",
+    "b": "Paste this prompt into your AI assistant.",
+    "p": "I'm using [Excel / Google Sheets]. My data: [column letters and what's in each], starting on row [2]. I want a formula in cell [cell] that [describe the result, e.g. adds up column C only where column B says 'Paid' and the date in column D is this month]. Give me: the formula, a plain-English explanation of each part, and what to change if my data grows. Also tell me one common mistake to avoid."
+   },
+   {
+    "h": "Test it on a few rows",
+    "b": "Paste the formula in and check the result against a few rows you can work out in your head. If it errors, copy the error message back to the assistant."
+   }
+  ],
+  "example": "=SUMIFS(C:C, B:B, \"Paid\", D:D, \">=\"&EOMONTH(TODAY(),-1)+1, D:D, \"<=\"&EOMONTH(TODAY(),0))\nIt adds column C where B is 'Paid' and the date in D falls in the current month. Mistake to avoid: dates stored as text won't be counted.",
+  "tips": [
+   "It works the other way round too: paste a formula you inherited and ask what it does."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User describes the result they want"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Write the formula with a plain-English explanation"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the formula and testing tip"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn survey responses into clear themes and actions",
+  "d": "Collect answers with Google Forms or Microsoft Forms, then get the main themes, standout quotes and suggested actions from the comments.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 20,
+  "tools": [
+   "Google Forms",
+   "Google Sheets",
+   "AI assistant"
+  ],
+  "when": "When a survey or feedback form closes",
+  "steps": [
+   {
+    "h": "Send responses to a sheet",
+    "b": "In Google Forms, open the Responses tab and link it to a Google Sheet. Microsoft Forms can open responses in Excel."
+   },
+   {
+    "h": "Remove personal details",
+    "b": "Make a copy of the sheet and delete columns with names, emails or anything that identifies people."
+   },
+   {
+    "h": "Ask for themes",
+    "b": "Copy the response columns into your AI assistant (or upload the file) with this prompt.",
+    "p": "Below are [number] responses to a survey about [topic]. For the open-text answers: 1) group them into 5 to 8 themes, with the number of responses in each, 2) give 2 short representative quotes per theme, 3) note any urgent or serious issues separately. For the rating questions, give the average and the spread. Finish with 5 suggested actions ranked by how many people they would help. Base everything on the responses; don't invent quotes.\n\n[paste responses]"
+   },
+   {
+    "h": "Check the counts",
+    "b": "Scan the sheet for a couple of themes to make sure the numbers are roughly right, then share the summary with your team."
+   }
+  ],
+  "example": "Themes: Parking (31 responses) - 'I circle for 15 minutes every Saturday'. Opening hours (22) - 'Please open before 9'. Friendly staff (40, positive)... Average rating 4.1/5. Action 1: trial an 8:30 opening on weekdays.",
+  "tips": [
+   "Run the same prompt each time you repeat the survey so you can compare themes over time."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "form_submitted",
+    "detail": "Survey closes or reaches a target number of responses"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Group open-text answers into themes"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write themes, quotes, averages and actions"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the summary report"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Fill in long application forms faster",
+  "d": "Get clear draft answers for long application or registration forms, matched to word limits and written from your own facts.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Google Docs"
+  ],
+  "when": "When you face a long form, grant or application",
+  "steps": [
+   {
+    "h": "Copy the questions out",
+    "b": "Paste every question and its word limit into a Google Doc. It's easier to work on outside the form."
+   },
+   {
+    "h": "Gather your facts",
+    "b": "Under the questions, jot down the real facts: dates, numbers, achievements, your reasons. Bullet points are fine."
+   },
+   {
+    "h": "Ask for drafts",
+    "b": "Paste the questions and your facts into your AI assistant with this prompt.",
+    "p": "Help me answer this application for [what it is]. Below are the questions with word limits, and my notes. For each question, write a draft answer that: uses only the facts in my notes, stays under the word limit (show the word count), answers exactly what is asked, and sounds like a real person in plain English. Where my notes don't give enough to answer well, write [NEED: what's missing] instead of making something up.\n\nQuestions:\n[paste]\n\nMy notes:\n[paste]"
+   },
+   {
+    "h": "Fill the gaps and make it yours",
+    "b": "Add anything marked [NEED], change phrases that don't sound like you, and check every fact before copying the answers into the form."
+   }
+  ],
+  "example": "Q3 (max 150 words): Why do you need this funding? Draft (128 words): 'Our community garden has grown from 12 to 40 regular volunteers since 2024, but our only shed was damaged in the March storm...' [NEED: the quote for the replacement shed].",
+  "tips": [
+   "Don't paste passport, National Insurance or bank numbers into an AI chat. Add those directly to the form yourself."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares form questions and their notes"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft answers within each word limit"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the drafts with gaps marked"
+    }
+   ]
+  }
+ },
+ {
+  "t": "See exactly what changed between two document versions",
+  "d": "Compare two versions of a document and get a clear list of every meaningful change, so nothing slips through unnoticed.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "Word",
+   "Google Docs",
+   "AI assistant"
+  ],
+  "when": "When someone sends back an edited document",
+  "steps": [
+   {
+    "h": "Try the built-in compare first",
+    "b": "Word has a Compare feature on its Review tab that marks every change. Google Docs has 'Compare documents' in its Tools menu. Use these for an exact line-by-line view."
+   },
+   {
+    "h": "Get a plain-English summary",
+    "b": "Upload both versions to your AI assistant and paste this prompt to understand what the changes mean.",
+    "p": "Compare these two versions of [document name]: version A (the original) and version B (the new one). List every meaningful change in a table: Section, What it said before, What it says now, Why it might matter. Ignore pure formatting and typo fixes but mention how many there were in one line at the end. Flag any change to dates, amounts, names, obligations or deadlines at the top."
+   },
+   {
+    "h": "Check the flagged changes",
+    "b": "Look at each flagged change in the actual document using the built-in compare view. Ask the other person about anything you didn't agree."
+   }
+  ],
+  "example": "Flagged: payment terms changed from 30 to 45 days (section 4). Deadline moved from 1 March to 15 March (section 2). Other changes: 'should' changed to 'must' in section 6, making the step compulsory. Formatting: 14 minor typo and layout fixes.",
+  "tips": [
+   "For contracts or anything legally binding, have a solicitor review changes you're unsure about."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A new version of a tracked document is saved"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Find the differences between versions"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "List meaningful changes and flag key terms"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the change summary"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Build a team knowledge base people can search",
+  "d": "Gather your team's how-tos and policies into Notion so anyone can find answers fast, written up clearly from your messy notes.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 60,
+  "tools": [
+   "Notion",
+   "AI assistant",
+   "Google Docs"
+  ],
+  "when": "Set up once, then add to it weekly",
+  "steps": [
+   {
+    "h": "List the questions people keep asking",
+    "b": "Spend a week noting every 'how do I...' or 'where is...' question on your team. These become your first pages."
+   },
+   {
+    "h": "Create a simple structure",
+    "b": "In Notion, make a page called 'Team handbook' with sub-pages for each area, such as Customers, Tools, Money and HR."
+   },
+   {
+    "h": "Turn messy notes into clear pages",
+    "b": "Paste existing documents or emails into your AI assistant with this prompt, then copy the result into Notion.",
+    "p": "Turn the notes below into a clear knowledge-base article titled '[title]'. Format: a one-line summary, 'When to use this', numbered steps, 'Who to ask', and 'Last checked: [date]'. Keep it short, use plain language, and keep every specific detail (names of tools, amounts, deadlines) exactly as written. List anything that seems out of date or contradictory at the end.\n\n[paste notes]"
+   },
+   {
+    "h": "Let people ask questions",
+    "b": "If your plan includes Notion AI, people can ask questions and get answers drawn from your pages. If not, Notion's search finds pages by keyword."
+   },
+   {
+    "h": "Keep it fresh",
+    "b": "Give each page an owner and set a recurring reminder to check it every three months."
+   }
+  ],
+  "example": "Article: How to process a refund. Summary: refunds under £50 can be approved by anyone on the team. Steps: 1) Find the order in Shopify. 2) Click Refund... Who to ask: Priya (over £50). Last checked: 9 Nov 2026. Possibly out of date: mentions the old returns address.",
+  "tips": [
+   "Keep passwords and personal staff details out of the knowledge base; say where they're kept instead."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A process note is added to the handbook inbox"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Rewrite the note as a structured article"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Create the page in the knowledge base"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the page owner to review it"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Create an assistant that knows your own handbook",
+  "d": "Set up a custom AI helper loaded with your guides or policies, so you and your team get answers based on your own documents.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Google Drive"
+  ],
+  "when": "When the same questions come up again and again",
+  "steps": [
+   {
+    "h": "Choose your documents",
+    "b": "Pick the up-to-date files you want it to know: a handbook, price list, FAQs or process guides. Remove anything confidential or out of date."
+   },
+   {
+    "h": "Create the custom assistant",
+    "b": "Depending on your assistant and plan: create a custom GPT in ChatGPT, a Project in Claude, or a Gem in Gemini. Each lets you upload files and add standing instructions."
+   },
+   {
+    "h": "Add clear instructions",
+    "b": "Paste this into the instructions box.",
+    "p": "You answer questions about [organisation or topic] using only the uploaded documents. For every answer: give the answer in plain English, then name the document and section it came from. If the documents don't cover the question, say 'I can't find that in our documents. Please ask [contact person or team].' Never guess at prices, dates, policies or legal matters. Keep answers under [150] words unless asked for more."
+   },
+   {
+    "h": "Test it with real questions",
+    "b": "Ask ten questions you already know the answers to. If it gets one wrong, check whether the document is unclear and fix the document."
+   },
+   {
+    "h": "Share and keep it updated",
+    "b": "Share it with your team if your plan allows, and replace the files whenever the documents change."
+   }
+  ],
+  "example": "Q: How much holiday can I carry over? A: You can carry over up to 5 days, and they must be used by 31 March (Staff Handbook, section 4.3). Q: Can I expense a new laptop? A: I can't find that in our documents. Please ask the office manager.",
+  "tips": [
+   "Check your workplace's AI policy before uploading company documents, and never upload staff or customer personal data."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "message_received",
+    "detail": "A team member asks a question"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Answer from the uploaded documents with a source"
+    },
+    {
+     "type": "message.send",
+     "detail": "Reply with the answer or who to ask"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Give your files a tidy, findable naming system",
+  "d": "Get a simple folder structure and naming rules for your Google Drive or OneDrive, plus a list of which files go where.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Google Drive",
+   "OneDrive",
+   "Google Calendar"
+  ],
+  "when": "Once, then a quick tidy every month",
+  "steps": [
+   {
+    "h": "List what you have",
+    "b": "Make a quick list of your main folders and some typical file names. You can type them out or take screenshots of your folders."
+   },
+   {
+    "h": "Ask for a structure",
+    "b": "Paste your list into your AI assistant with this prompt.",
+    "p": "Here is a list of my current folders and file names in [Google Drive / OneDrive]. I use them for [what you do, e.g. running a small bookkeeping business]. Suggest: 1) a folder structure no more than 3 levels deep, 2) a naming rule for files (e.g. YYYY-MM-DD Client Document-type), with 5 examples, 3) a table showing where each of my current files should go and its new name, 4) 3 simple habits to keep it tidy. Keep it simple enough to stick to.\n\n[paste list]"
+   },
+   {
+    "h": "Create the folders and move files",
+    "b": "Create the new folders in Drive or OneDrive, then move and rename files in batches, starting with the ones you use most."
+   },
+   {
+    "h": "Set a monthly tidy reminder",
+    "b": "Add a recurring 15-minute calendar event to file anything left in your Downloads or main folder."
+   }
+  ],
+  "example": "Structure: 01 Clients > [Client name] > Invoices / Contracts / Correspondence. 02 Admin > Insurance / Tax / Banking. 03 Templates. Naming: 2026-11-04 Parker Bakery Invoice 112. Move 'scan0042.pdf' to 02 Admin > Insurance as '2026-03-01 Van Insurance Certificate'.",
+  "tips": [
+   "Starting each file name with the date (YYYY-MM-DD) keeps files in date order automatically."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A file is added to the main folder"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Work out the right folder for the file"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Suggest a name using the naming rule"
+    },
+    {
+     "type": "file.save",
+     "detail": "Move and rename the file after approval"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Make paper documents searchable and never miss dates",
+  "d": "Scan letters with your phone, store them in one Drive folder, and log key dates in a sheet with calendar reminders.",
+  "cat": "Documents & Data",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": [
+   "Phone camera",
+   "Google Drive",
+   "Google Sheets",
+   "Google Calendar"
+  ],
+  "when": "Whenever important post arrives, plus a monthly review",
+  "steps": [
+   {
+    "h": "Scan with your phone",
+    "b": "Use the scan option in the Google Drive app on Android or the Notes app on iPhone to turn letters into clear PDFs. Save them to a Drive folder called 'Paperwork inbox'."
+   },
+   {
+    "h": "Pull out the key details",
+    "b": "Upload each new scan to your AI assistant with this prompt.",
+    "p": "From the attached letter, extract: sender organisation, date of the letter, what it's about (one sentence), any action I need to take, any deadline or renewal date, any amount of money mentioned, and a reference number (show only the last 4 characters). Output as one row: Date | Sender | Subject | Action | Deadline | Amount | Ref (last 4). Write 'none' where something isn't stated."
+   },
+   {
+    "h": "Log it in a sheet",
+    "b": "Paste the row into a Google Sheet called 'Paperwork log', then move the scan into the right folder with a clear name."
+   },
+   {
+    "h": "Add deadlines to your calendar",
+    "b": "For every deadline, create a Google Calendar event a week before, with the scan's Drive link in the description."
+   },
+   {
+    "h": "Review monthly",
+    "b": "Set a recurring monthly event to sort the Paperwork log by deadline and check nothing is overdue."
+   }
+  ],
+  "example": "12/11/2026 | Northshire Council | Council tax bill for 2027 | Set up direct debit | 01/04/2027 | £1,842 | ...7731. Calendar: 'Council tax direct debit - due 1 Apr' on 25 March.",
+  "tips": [
+   "Black out or crop full account numbers and dates of birth before uploading scans to an AI assistant."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A scan is saved to the Paperwork inbox folder"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull out sender, action, deadline and amount"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add a row to the Paperwork log"
+    },
+    {
+     "type": "calendar.create",
+     "detail": "Create a reminder a week before any deadline"
+    },
+    {
+     "type": "file.save",
+     "detail": "Rename and file the scan"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Send a monthly report written from your spreadsheet",
+  "d": "Each month, turn your figures into a short written report with a chart, what changed and why it matters, ready to email to your team.",
+  "cat": "Documents & Data",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": [
+   "Google Sheets",
+   "AI assistant",
+   "Gmail",
+   "Google Calendar"
+  ],
+  "when": "First working day of each month",
+  "steps": [
+   {
+    "h": "Keep one tidy tracking sheet",
+    "b": "Have one Google Sheet or Excel file with a row per month and a column per measure (for example sales, enquiries, costs). Add a chart of the main measure from the Insert menu."
+   },
+   {
+    "h": "Book the monthly slot",
+    "b": "Create a recurring calendar event for the first working day of the month called 'Monthly report' with the sheet linked."
+   },
+   {
+    "h": "Draft the commentary",
+    "b": "Copy the last 13 months of data (so it can compare with last year) into your AI assistant with this prompt.",
+    "p": "Here is our monthly data for [team or business], with the newest month at the bottom. Write a short monthly report for [audience]: 1) a one-line headline, 2) 3 to 5 bullets on what changed compared with last month and the same month last year, with the actual numbers and percentages, 3) anything unusual worth looking into, 4) 2 questions for the team. Plain English, under 250 words. Don't guess at reasons. Show your calculations in a separate list at the end so I can check them.\n\n[paste data]"
+   },
+   {
+    "h": "Check the maths",
+    "b": "Compare two or three of its percentages with a quick calculation in the sheet. Delete the calculation list once you're happy."
+   },
+   {
+    "h": "Email it",
+    "b": "Paste the report and a screenshot of the chart into an email to your team. Gmail's scheduled send lets you prepare it in advance."
+   }
+  ],
+  "example": "October: enquiries up, conversions down. Enquiries 184 (+12% on Sept, +20% on last Oct). Bookings 41 (-5% on Sept). Conversion fell from 27% to 22%. Worth a look: 30% of enquiries came from the new website form. Question: are we replying to form enquiries fast enough?",
+  "tips": [
+   "Run the same prompt every month so reports are consistent and easy to compare."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "First working day of each month at 9am"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Write the monthly report from the latest figures"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft the email to the team with the report"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the user to check the numbers and send"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Combine two spreadsheets that share a column",
+  "d": "Match up two lists, such as customers and orders, by a shared column, with a formula you understand and a check for anything that didn't match.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 20,
+  "tools": [
+   "Excel",
+   "Google Sheets",
+   "AI assistant"
+  ],
+  "when": "When information you need is split across two files",
+  "steps": [
+   {
+    "h": "Put both lists in one file",
+    "b": "Copy each list into its own tab in the same spreadsheet. Make sure both have a column that matches, such as an email or order number."
+   },
+   {
+    "h": "Describe the match",
+    "b": "Paste this prompt into your AI assistant, along with the header rows of each tab.",
+    "p": "I'm using [Excel / Google Sheets]. Tab '[tab 1 name]' has columns: [list]. Tab '[tab 2 name]' has columns: [list]. Both share [matching column]. I want to add [column(s) to bring across] from [tab 2] into [tab 1]. Give me: the formula (use XLOOKUP if available, otherwise VLOOKUP or INDEX/MATCH), which cell to put it in, how to fill it down, how to show 'Not found' instead of an error, and how to count how many rows didn't match. Explain each step simply."
+   },
+   {
+    "h": "Fill it down and check",
+    "b": "Add the formula, fill it down, then filter for 'Not found'. These are usually spelling differences or extra spaces in the matching column."
+   },
+   {
+    "h": "Fix the mismatches",
+    "b": "Tidy the matching column (for example with TRIM or by fixing typos) and the formula will update automatically."
+   }
+  ],
+  "example": "In Customers!E2: =XLOOKUP(B2, Orders!A:A, Orders!D:D, \"Not found\"). Fill down to row 540. Count of unmatched: =COUNTIF(E:E, \"Not found\") gives 17. Most were emails with trailing spaces or typos.",
+  "tips": [
+   "Emails and codes are better matching columns than names, which are often spelled differently."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares two lists to combine"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Write the lookup formula and steps"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Add matched columns to the main list"
+    },
+    {
+     "type": "notify",
+     "detail": "Report how many rows didn't match"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn handwritten notes into a tidy typed document",
+  "d": "Photograph handwritten notes, whiteboards or old letters and get clean, organised typed text you can edit, search and share.",
+  "cat": "Documents & Data",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "Phone camera",
+   "AI assistant",
+   "Google Docs"
+  ],
+  "when": "After a workshop, lecture or brainstorm",
+  "steps": [
+   {
+    "h": "Take clear photos",
+    "b": "Photograph each page straight on in good light, with the whole page in frame. One photo per page works best."
+   },
+   {
+    "h": "Ask for a transcription",
+    "b": "Upload the photos to your AI assistant with this prompt.",
+    "p": "Transcribe the handwriting in these photos exactly, in page order. Then underneath, give me a tidied version: fix obvious spelling slips, organise it under clear headings, turn lists into bullet points, and pull out any action items or dates into a separate list. Mark any words you can't read as [unclear] rather than guessing. Don't add anything that isn't in the notes."
+   },
+   {
+    "h": "Check the [unclear] bits",
+    "b": "Look at the original pages for anything marked [unclear] and fill it in."
+   },
+   {
+    "h": "Save it",
+    "b": "Paste the tidied version into a Google Doc and give it a dated title so it's easy to search for."
+   }
+  ],
+  "example": "Workshop notes, 6 Nov. Ideas for spring fair: plant swap, kids' trail, local band [unclear name]. Budget: approx £600. Actions: Sam to call the school about the field by 20 Nov; book PA system.",
+  "tips": [
+   "If the notes are about other people (for example patients or pupils), remove names before uploading."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "Photos of notes are uploaded"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Transcribe the handwriting"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Organise into headings and actions"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the typed notes as a document"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Gather key details from many documents into one table",
+  "d": "Upload a batch of similar documents, like CVs, quotes or proposals, and get one comparison table with the same details pulled from each.",
+  "cat": "Documents & Data",
+  "lvl": "Intermediate",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Google Drive"
+  ],
+  "when": "When you need to compare a stack of similar documents",
+  "steps": [
+   {
+    "h": "Put the documents in one folder",
+    "b": "Save them in a Google Drive or OneDrive folder and give each a clear file name."
+   },
+   {
+    "h": "Decide what to compare",
+    "b": "List the five to ten details you want from every document, such as price, start date and experience."
+   },
+   {
+    "h": "Extract the details",
+    "b": "Upload the documents to your AI assistant (in batches of about five if there are many) with this prompt.",
+    "p": "For each attached document, extract these details: [detail 1], [detail 2], [detail 3], [add more]. Output one table with a row per document and a column per detail, plus a 'File name' column and a 'Notes' column for anything unusual. Copy values exactly as written. If a detail isn't in a document, write 'not stated'. Don't rank or judge them yet."
+   },
+   {
+    "h": "Paste into a sheet and check",
+    "b": "Copy the table into Google Sheets. Check two or three rows against the original documents before you rely on it."
+   },
+   {
+    "h": "Compare and decide",
+    "b": "Sort and filter the sheet yourself. The decision is yours; the table just saves the retyping."
+   }
+  ],
+  "example": "File | Price | Start date | Warranty | Notes\nQuote_Ashby.pdf | £4,200 | 12 Jan | 10 yrs | Excludes skip hire\nQuote_Rowan.pdf | £3,950 | 2 Feb | not stated | Valid 14 days only",
+  "tips": [
+   "For CVs, remove names and contact details first if you want a fairer, blind first look."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "Documents are added to a comparison folder"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull the chosen details from each document"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add one row per document to the comparison sheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Flag documents with missing details"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn receipt photos into a tidy expenses sheet",
+  "d": "Snap receipts as you go and turn them into a spreadsheet with date, supplier, amount, VAT and category, ready for your bookkeeper.",
+  "cat": "Small Business Admin",
+  "lvl": "Intermediate",
+  "mins": 15,
+  "tools": [
+   "Phone camera",
+   "AI assistant",
+   "Google Sheets"
+  ],
+  "when": "Weekly, or whenever receipts pile up",
+  "steps": [
+   {
+    "h": "Photograph receipts straight away",
+    "b": "Lay each receipt flat in good light and take a photo. Keep them in one phone album or a Drive folder called 'Receipts'."
+   },
+   {
+    "h": "Set up your expenses sheet",
+    "b": "Create a Google Sheet with columns: Date, Supplier, Description, Net, VAT, Total, Category, Payment method."
+   },
+   {
+    "h": "Extract the details",
+    "b": "Once a week, upload the photos to your AI assistant with this prompt.",
+    "p": "Extract the details from each receipt photo into a table with columns: Date (DD/MM/YYYY), Supplier, Description, Net, VAT, Total, Suggested category (choose from: [your categories, e.g. Materials, Fuel, Travel, Office, Software, Meals]), Payment method. Copy amounts exactly as printed. If VAT isn't shown separately, leave it blank rather than calculating it. Add a 'Check' column and write 'yes' for any receipt that's blurry or unclear."
+   },
+   {
+    "h": "Paste and check",
+    "b": "Paste the table into your sheet and check totals against the photos, especially any marked 'Check'."
+   },
+   {
+    "h": "Keep the originals",
+    "b": "Keep the receipt photos (and paper copies if needed) for as long as your tax authority requires. Your accountant can tell you how long."
+   }
+  ],
+  "example": "04/11/2026 | Fixings Direct | Screws and wall plugs | 18.33 | 3.67 | 22.00 | Materials | Card\n06/11/2026 | Station Garage | Diesel | 50.00 | 10.00 | 60.00 | Fuel | Card",
+  "tips": [
+   "Categories are suggestions only. Ask your accountant which categories and VAT treatment apply to your business.",
+   "If you use Xero or QuickBooks, their mobile apps can capture receipts directly, which may suit you better."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A receipt photo is added to the Receipts folder"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Read date, supplier, amounts and VAT"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Suggest an expense category"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add a row to the expenses sheet"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn rough job notes into a professional quote",
+  "d": "Go from scribbled notes or a voice memo to a clear, itemised quote with scope, exclusions, timescales and payment terms.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Voice notes",
+   "Word"
+  ],
+  "when": "After every site visit or enquiry call",
+  "steps": [
+   {
+    "h": "Capture the job details",
+    "b": "Straight after the visit, record a voice note or jot down what the customer wants, measurements, materials and anything tricky."
+   },
+   {
+    "h": "Draft the quote",
+    "b": "Paste your notes (or the voice note transcript) into your AI assistant with this prompt.",
+    "p": "Turn my notes below into a professional quote for [customer first name] from [my business name]. Include: a short summary of the job, an itemised table (item, quantity, unit price, total) using ONLY the prices I give, subtotal, VAT at [rate, or 'not VAT registered'], total, what's included, what's NOT included, estimated start date and duration, how long the quote is valid ([30] days), and payment terms ([e.g. 25% deposit, balance on completion]). Friendly, clear tone. Mark any price I haven't given as [PRICE NEEDED].\n\nMy notes:\n[paste notes]"
+   },
+   {
+    "h": "Check the numbers",
+    "b": "Add up the table yourself or paste it into a spreadsheet. AI can make arithmetic slips."
+   },
+   {
+    "h": "Put it on your letterhead",
+    "b": "Paste the final text into your quote template in Word or Google Docs, save as PDF and send."
+   }
+  ],
+  "example": "Quote Q-1042 for Mrs Ellis. Supply and fit 12 sq m oak-effect laminate in the lounge. Laminate 13 sq m @ £24 = £312; Underlay = £65; Labour 1.5 days = £330. Total £707 (not VAT registered). Not included: moving furniture, skirting replacement. Valid 30 days.",
+  "tips": [
+   "Save your standard 'included / not included' wording and payment terms in a note so every quote is consistent."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares job notes or a voice memo"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft an itemised quote using the given prices"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Create the quote document"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the user to check prices before sending"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Chase overdue invoices politely and get paid",
+  "d": "Get a friendly, firm series of payment reminders for overdue invoices, from a gentle nudge to a final notice, ready to send.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Gmail",
+   "Outlook"
+  ],
+  "when": "When an invoice is a few days overdue",
+  "steps": [
+   {
+    "h": "Gather the invoice facts",
+    "b": "Note the invoice number, amount, date sent, due date and how the customer can pay."
+   },
+   {
+    "h": "Draft a set of reminders",
+    "b": "Paste this prompt into your AI assistant.",
+    "p": "Write 3 payment reminder emails for an overdue invoice. Details: customer [first name / company], invoice [number] for [amount], due on [date], payment by [bank transfer / card link]. Email 1 (a few days late): friendly, assumes it's an oversight. Email 2 (2 weeks late): polite but firmer, asks for a payment date. Email 3 (4 weeks late): clear final reminder that explains the next steps I've chosen: [e.g. pausing further work]. Each email: a clear subject line, under 120 words, invoice details repeated, no threats or legal claims."
+   },
+   {
+    "h": "Save them as templates",
+    "b": "Save each email as a template: Gmail has Templates you can switch on in its settings, and Outlook has My Templates. Then you can reuse them in a couple of clicks."
+   },
+   {
+    "h": "Note when you sent each one",
+    "b": "Add a note to your invoice list each time you send a reminder, so you know which one comes next."
+   }
+  ],
+  "example": "Subject: Quick reminder - invoice 2087 (£640). Hi Tom, I hope all's well. Just a nudge that invoice 2087 for £640 was due on 31 Oct. It may have slipped through - you can pay by bank transfer using the details on the invoice. Thanks, Jo",
+  "tips": [
+   "Before you mention late payment interest or legal steps, check the rules with your accountant or solicitor, as they vary by country."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Daily check for invoices past their due date"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Work out which reminder stage each invoice is at"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft the right reminder for each overdue invoice"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the user to review and send"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Catch every supplier invoice email in one place",
+  "d": "Automatically label incoming invoice emails, then log them weekly in a sheet with supplier, amount and due date so nothing gets paid late.",
+  "cat": "Small Business Admin",
+  "lvl": "Intermediate",
+  "mins": 25,
+  "tools": [
+   "Gmail",
+   "Google Sheets",
+   "AI assistant"
+  ],
+  "when": "Whenever a new invoice email arrives, plus a weekly log-up",
+  "steps": [
+   {
+    "h": "Create an invoice filter",
+    "b": "In Gmail's settings, under Filters, create a filter for emails containing words like 'invoice' or 'statement' that have an attachment, and apply the label 'Invoices to pay'. In Outlook, create a rule that moves them to a folder."
+   },
+   {
+    "h": "Set up a bills sheet",
+    "b": "Make a Google Sheet with columns: Received, Supplier, Invoice no., Amount, Due date, Paid?, Notes."
+   },
+   {
+    "h": "Log them each week",
+    "b": "Once a week, open the label, upload the invoice PDFs to your AI assistant and paste this prompt.",
+    "p": "Extract these details from each attached invoice into a table: Received date, Supplier, Invoice number, Amount (including VAT), Due date (DD/MM/YYYY), Payment details shown (yes/no). Copy everything exactly as printed. If a due date isn't shown, write 'not stated'. Do not include bank account numbers in your answer."
+   },
+   {
+    "h": "Paste and sort",
+    "b": "Paste the rows into your sheet and sort by due date. Pay or schedule anything due in the next 7 days."
+   },
+   {
+    "h": "Watch for fake invoices",
+    "b": "If an invoice comes from a new sender or a supplier's bank details have changed, phone the supplier on a number you already have before paying."
+   }
+  ],
+  "example": "10/11 | Greenway Packaging | INV-5521 | £418.80 | 24/11/2026 | No |\n10/11 | Brightline Electric | 88213 | £96.00 | 01/12/2026 | No | Direct debit - check",
+  "tips": [
+   "Check what your filter catches for the first couple of weeks and add or remove keywords as needed."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_email",
+    "detail": "An email with an invoice attachment arrives"
+   },
+   "actions": [
+    {
+     "type": "email.label",
+     "detail": "Label it Invoices to pay"
+    },
+    {
+     "type": "ai.extract",
+     "detail": "Pull out supplier, number, amount and due date"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add a row to the bills sheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Alert the user to invoices due within 7 days"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Hand your accountant tidy records at year end",
+  "d": "Get a personalised checklist of what to gather for your accountant, plus a summary of your records and the questions to ask them.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Google Drive"
+  ],
+  "when": "A month before your accounts or tax return are due",
+  "steps": [
+   {
+    "h": "Describe your business",
+    "b": "Write down your business type (sole trader, partnership or limited company), what you sell, whether you're VAT registered, and which bookkeeping app or spreadsheet you use."
+   },
+   {
+    "h": "Get a checklist",
+    "b": "Paste this into your AI assistant.",
+    "p": "I run a [business type] in [country] selling [what you do]. I'm [VAT registered / not VAT registered] and keep records in [app or spreadsheet]. My year end is [date]. Create a checklist of the records and documents an accountant would typically ask for at year end, grouped by: income, expenses, bank and loans, assets and equipment, staff (if any), home or vehicle use, and other. For each item, say why it's needed in one line. Finish with 8 questions I should ask my accountant. This is to help me organise, not tax advice."
+   },
+   {
+    "h": "Gather into one folder",
+    "b": "Create a shared Google Drive or OneDrive folder for the year and work through the checklist, ticking items off as you add them."
+   },
+   {
+    "h": "Summarise your figures",
+    "b": "Optionally, paste your income and expense totals by category and ask for a one-page summary showing anything that looks different from last year, so you're ready to explain it."
+   },
+   {
+    "h": "Send it with your questions",
+    "b": "Share the folder and your questions with your accountant. They will tell you what's actually allowable and what you owe."
+   }
+  ],
+  "example": "Income: sales invoices and platform payout reports (to confirm turnover). Expenses: receipts, phone and broadband bills (to split business use)... Questions: 'Can I claim for part of my home as an office?' 'Should I register for VAT next year?'",
+  "tips": [
+   "Your accountant has the final say on what's allowable. Use AI to organise, not to decide tax treatment.",
+   "Share files through a secure folder link rather than as email attachments."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "One month before year end"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Create a year-end records checklist"
+    },
+    {
+     "type": "list.add",
+     "detail": "Add each item to the user's to-do list"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind the user to share the folder with their accountant"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Understand a contract in plain English before signing",
+  "d": "Get a plain-English summary of a contract: what you're committing to, unusual clauses and questions to raise before you sign.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant"
+  ],
+  "when": "Before you sign any supplier, lease or client agreement",
+  "steps": [
+   {
+    "h": "Remove sensitive details",
+    "b": "Make a copy of the contract and remove bank details or personal information that isn't needed to understand the terms."
+   },
+   {
+    "h": "Ask for a plain-English breakdown",
+    "b": "Upload the contract to your AI assistant with this prompt.",
+    "p": "I'm a small business owner about to sign the attached [type of agreement] as the [customer / supplier / tenant]. In plain English, tell me: 1) what I'm agreeing to do and pay, 2) what the other side must do, 3) how long it lasts and how I can end it, including notice periods and fees, 4) automatic renewals, price rises or penalties, 5) who is liable if something goes wrong, 6) any clauses that seem unusual or one-sided, 7) 6 questions to ask before signing. Quote the clause number for each point. Don't tell me whether to sign."
+   },
+   {
+    "h": "Check the key clauses yourself",
+    "b": "Read the clauses it quotes for notice, renewal, fees and liability in the actual contract."
+   },
+   {
+    "h": "Get professional advice for anything important",
+    "b": "For high-value, long or unusual contracts, take the summary and your questions to a solicitor. AI can misread legal wording and doesn't know your full situation."
+   }
+  ],
+  "example": "You agree to: pay £89/month for 36 months (clause 3.1). Ending early: you pay the remaining months in full (clause 9.2). Auto-renewal: renews for 12 months unless you give 90 days' notice (clause 10). Unusual: they can raise prices yearly with no cap (clause 4.4). Ask: 'Can we cap annual increases?'",
+  "tips": [
+   "A solicitor should check anything you're unsure about. This helps you ask better questions; it isn't legal advice."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A contract is uploaded for review"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Find obligations, term, renewal, fees and liability"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write a plain-English summary with clause numbers"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the summary with a reminder to get legal advice"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Compare supplier quotes fairly side by side",
+  "d": "Line up several supplier quotes in one table that compares like with like, including hidden extras, terms and the questions to ask each one.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Excel"
+  ],
+  "when": "When you've got two or more quotes to choose between",
+  "steps": [
+   {
+    "h": "Collect the quotes",
+    "b": "Save each quote as a PDF or take a clear photo. Note anything the supplier told you on the phone."
+   },
+   {
+    "h": "Ask for a fair comparison",
+    "b": "Upload them to your AI assistant with this prompt.",
+    "p": "Compare the attached supplier quotes for [what you're buying]. Make a table with: supplier, total price, what's included, what's excluded or extra (delivery, set-up, call-out fees), lead time, contract length, payment terms, warranty or guarantee, and how long the quote is valid. Then: 1) adjust for any missing items so I can compare like with like, and show how you did it, 2) list questions to ask each supplier where something is unclear. Don't recommend one; I'll decide."
+   },
+   {
+    "h": "Ask the questions",
+    "b": "Email or call each supplier with their questions. Update the table with their answers in Excel or Google Sheets."
+   },
+   {
+    "h": "Decide and keep a record",
+    "b": "Make your choice and save the table with the quotes, so you can compare when it's time to renew."
+   }
+  ],
+  "example": "| Supplier | Price | Delivery | Lead time | Valid |\n| Fernhill Print | £1,150 | Included | 5 days | 30 days |\n| Inkwell Studio | £980 | +£85 | 10 days | 14 days |\nLike-for-like: Inkwell £1,065. Ask Fernhill: is design proofing included?",
+  "tips": [
+   "Cheapest isn't always best: ask each supplier for references from similar customers."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User uploads several quotes"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull price, inclusions, terms and validity from each"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Build a like-for-like comparison and questions"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Save the comparison to a spreadsheet"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Never miss a renewal, licence or filing deadline",
+  "d": "Build a calendar of your business's renewals and key deadlines, with reminders set early enough to act, so nothing lapses by accident.",
+  "cat": "Small Business Admin",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Google Calendar",
+   "Google Sheets"
+  ],
+  "when": "Set up once, review every quarter",
+  "steps": [
+   {
+    "h": "Get a starting list",
+    "b": "Ask your AI assistant which kinds of deadlines a business like yours usually has.",
+    "p": "I run a [business type and size, e.g. one-person café, limited company] in [country]. List the kinds of recurring renewals, licences, registrations and filing deadlines a business like mine typically needs to track, grouped by: tax and accounts, insurance, licences and permits, health and safety, vehicles, data protection, website and software, contracts and leases. For each: what it is, how often it usually comes up, and who usually issues it. Mark which ones I must confirm with my accountant, solicitor or the official body, because rules vary."
+   },
+   {
+    "h": "Fill in your real dates",
+    "b": "Check your documents and official accounts for the actual dates, then list them in a Google Sheet: Item, Due date, Repeats, Who to contact, Document location."
+   },
+   {
+    "h": "Add calendar reminders",
+    "b": "Create a Google Calendar event for each deadline, set to repeat, with notifications one month and one week before. Put the document link in the description."
+   },
+   {
+    "h": "Review each quarter",
+    "b": "Set a recurring quarterly event to check the sheet for anything new or changed."
+   }
+  ],
+  "example": "Public liability insurance - renews 14 Feb each year - reminder 14 Jan. Premises licence - annual fee due 3 June. VAT return - quarterly, dates from your accountant. Van MOT - 22 Aug. Domain name - auto-renews 9 Oct; check card on file.",
+  "tips": [
+   "Treat the AI list as a starting point only. Confirm every deadline with your accountant, solicitor or the official body."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_row",
+    "detail": "A deadline is added to the renewals sheet"
+   },
+   "actions": [
+    {
+     "type": "calendar.create",
+     "detail": "Create a repeating event with early reminders"
+    },
+    {
+     "type": "notify",
+     "detail": "Alert the user a month before each deadline"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Draft clear terms and conditions for your services",
+  "d": "Get a first draft of simple terms covering payment, cancellations and responsibilities, written plainly and ready for a solicitor to check.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Google Docs"
+  ],
+  "when": "When you start out, or when your terms are out of date",
+  "steps": [
+   {
+    "h": "Decide your rules",
+    "b": "Jot down how you work: deposits, payment deadlines, cancellation and rescheduling, what happens if something goes wrong, and how you handle complaints."
+   },
+   {
+    "h": "Ask for a plain draft",
+    "b": "Paste this prompt and your notes.",
+    "p": "Draft simple, plain-English terms and conditions for [business type] providing [services] to [consumers / businesses] in [country]. Use my rules below. Include sections on: quotes and bookings, payment and deposits, cancellations and rescheduling, what's included, customer responsibilities, our responsibilities, complaints, and changes to these terms. Use short sentences and numbered clauses. Add [CHECK WITH SOLICITOR] next to anything that involves legal rights, liability or refunds, because consumer law varies.\n\nMy rules:\n[paste notes]"
+   },
+   {
+    "h": "Read it as a customer",
+    "b": "Read the draft from your customer's point of view. Is it fair and easy to understand? Edit anything that doesn't sound like you."
+   },
+   {
+    "h": "Have a solicitor check it",
+    "b": "Send the draft to a solicitor before you use it. Customers have legal rights you can't sign away, and a professional will make sure your terms are enforceable."
+   }
+  ],
+  "example": "3. Cancellations. 3.1 You can cancel or move your booking free of charge up to 48 hours before. 3.2 If you cancel with less than 48 hours' notice, we keep your deposit [CHECK WITH SOLICITOR]. 4. Payment. 4.1 The balance is due within 7 days of the job being completed.",
+  "tips": [
+   "Many trade associations offer template terms for members, which are worth comparing with your draft."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares their business rules"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft numbered terms with legal checks flagged"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the draft for solicitor review"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Sort bank transactions into categories for bookkeeping",
+  "d": "Get your bank transactions grouped into sensible categories, then set up rules in Xero or QuickBooks so regular payments sort themselves.",
+  "cat": "Small Business Admin",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Xero",
+   "QuickBooks"
+  ],
+  "when": "Monthly, or when setting up bookkeeping",
+  "steps": [
+   {
+    "h": "Export your transactions",
+    "b": "Download last month's business bank statement as a CSV or Excel file from your online banking."
+   },
+   {
+    "h": "Remove private details",
+    "b": "Delete the account number and balance columns. Keep date, description and amount."
+   },
+   {
+    "h": "Ask for categories",
+    "b": "Upload the file or paste the rows into your AI assistant with this prompt.",
+    "p": "Below are my business bank transactions. Suggest a category for each from this list: [your categories, e.g. Sales, Materials, Fuel, Rent, Software, Bank fees, Drawings, Other]. Output a table: Date, Description, Amount, Suggested category, Confidence (high/medium/low). Then list the payees that appear every month, and for each suggest a simple rule (e.g. 'Description contains PHONECO -> Telephone'). Mark anything that could be personal or mixed use as low confidence.\n\n[paste transactions]"
+   },
+   {
+    "h": "Set up bank rules",
+    "b": "Xero and QuickBooks both let you create bank rules that categorise regular payments automatically. Add rules for the high-confidence regular payees."
+   },
+   {
+    "h": "Ask your accountant about the low ones",
+    "b": "Send the low-confidence items to your accountant or bookkeeper. They'll know the right treatment."
+   }
+  ],
+  "example": "03/11 | SPARKY WHOLESALE | -£212.40 | Materials | High\n05/11 | ACME CLOUD SUBS | -£18.00 | Software | High\n07/11 | ONLINE MARKETPLACE | -£34.99 | Other | Low - could be personal\nRule: description contains 'ACME CLOUD' -> Software.",
+  "tips": [
+   "Your accountant should agree your categories and check anything tax-related before you rely on them."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A bank statement export is saved"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Suggest a category and confidence for each transaction"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Save categorised rows to the bookkeeping sheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Send low-confidence items for accountant review"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Make a professional invoice template in ten minutes",
+  "d": "Create a clean, reusable invoice template in Word or Google Docs with everything a customer needs to pay you quickly.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Google Docs",
+   "Canva"
+  ],
+  "when": "Once, when you start invoicing",
+  "steps": [
+   {
+    "h": "Gather your details",
+    "b": "Have your business name, address, contact details, payment details and VAT number (if you have one) to hand."
+   },
+   {
+    "h": "Ask for a template layout",
+    "b": "Paste this prompt into your AI assistant.",
+    "p": "Create an invoice template for [business name], a [business type] in [country]. Include: the word INVOICE, my business details, customer details, invoice number, invoice date, due date, a line-item table (description, quantity, unit price, total), subtotal, VAT [at rate / or 'not VAT registered'], total due, payment terms ([e.g. 14 days]), how to pay, and a short thank-you line. Use [square brackets] for everything I fill in each time. Then list anything that invoices in my country usually must show, so I can check it with my accountant."
+   },
+   {
+    "h": "Build it in Word or Docs",
+    "b": "Paste the layout into a document, add your logo and use a table for the line items. Canva also has free invoice templates if you prefer a designed look."
+   },
+   {
+    "h": "Save as a template",
+    "b": "Save a master copy and make a copy for each new invoice. Name files like 'INV-0001 Customer Name'."
+   }
+  ],
+  "example": "INVOICE | Bloom & Branch Florals | Invoice no: [0001] | Date: [date] | Due: [date + 14 days] | Wedding table arrangements x 8 @ £45 = £360 | Total due: £360 (not VAT registered) | Pay by bank transfer to: [account details]. Thank you for your business!",
+  "tips": [
+   "If you send lots of invoices, accounting apps like Xero or QuickBooks number, send and track invoices for you."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User asks for an invoice template"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Create an invoice layout with placeholders"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the template as a document"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Prepare for a supplier price negotiation with confidence",
+  "d": "Go into a supplier conversation with your facts, a fair target, alternatives and a polite email or call script ready to use.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Gmail"
+  ],
+  "when": "When a supplier raises prices or a contract is due for renewal",
+  "steps": [
+   {
+    "h": "Gather the facts",
+    "b": "Note what you buy, how much you spend per year, how long you've been a customer, the new price and any quotes from other suppliers."
+   },
+   {
+    "h": "Plan your approach",
+    "b": "Paste this prompt into your AI assistant.",
+    "p": "Help me prepare to negotiate with a supplier. Facts: I buy [what] from them, spending about [amount] a year, for [number] years. They want to raise prices by [amount or %] from [date]. Alternatives I've found: [other quotes or 'none yet']. Give me: 1) my strongest points, 2) a realistic target outcome and a fallback, 3) 4 things I could offer instead of paying more (e.g. longer contract, bigger orders, faster payment), 4) a short, polite email asking to discuss it, 5) a 5-line call script with responses if they say no."
+   },
+   {
+    "h": "Adjust to your relationship",
+    "b": "Tone down or firm up the wording so it sounds like you. A good long-term relationship is often worth more than a small saving."
+   },
+   {
+    "h": "Send or call, then confirm in writing",
+    "b": "Send the email or make the call, then email a summary of anything agreed."
+   }
+  ],
+  "example": "Strongest points: 6 years as a customer, always pay within 14 days, two cheaper quotes. Target: hold price until April; fallback: 3% rise instead of 8%. Offer: a 12-month commitment. Email opener: 'Thanks for letting us know about the new prices. Before they take effect, could we talk about options?'",
+  "tips": [
+   "Don't forward other suppliers' quotes in full; mention the price range instead."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_email",
+    "detail": "A supplier price-change notice arrives"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull out the old price, new price and start date"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Prepare negotiation points and a reply"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft the email asking to discuss"
+    }
+   ]
+  }
+ },
+ {
+  "t": "See your monthly money position on one page",
+  "d": "Each month, get a one-page summary of money in, money out, unpaid invoices and upcoming bills, built from your own figures.",
+  "cat": "Small Business Admin",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": [
+   "Google Sheets",
+   "AI assistant",
+   "Google Calendar",
+   "Gmail"
+  ],
+  "when": "First Monday of each month",
+  "steps": [
+   {
+    "h": "Keep a simple money sheet",
+    "b": "In Google Sheets or Excel, keep tabs for Sales (or invoices sent), Expenses, Unpaid invoices and Upcoming bills. If you use Xero or QuickBooks, export their summary reports instead."
+   },
+   {
+    "h": "Book a monthly money hour",
+    "b": "Create a recurring calendar event on the first Monday called 'Money check' with the sheet linked."
+   },
+   {
+    "h": "Ask for a one-page summary",
+    "b": "Copy the month's totals and lists (no bank account numbers) into your AI assistant with this prompt.",
+    "p": "Using the figures below for [month], write a one-page money summary for my small business: 1) money in, money out and the difference, compared with last month, 2) unpaid invoices, oldest first, with how many days overdue, 3) bills due in the next 30 days and their total, 4) the 3 biggest expense categories and any that changed by more than 20%, 5) 3 questions I should look into or ask my accountant. Show your sums so I can check them. Describe the figures only; don't give financial advice.\n\n[paste figures]"
+   },
+   {
+    "h": "Check and act",
+    "b": "Check the sums, chase the oldest unpaid invoices and make sure there's enough set aside for upcoming bills."
+   },
+   {
+    "h": "Email it to yourself or a partner",
+    "b": "Paste the summary into an email to yourself or your business partner so you have a record of each month."
+   }
+  ],
+  "example": "October: in £8,420, out £6,180, difference +£2,240 (Sept +£1,310). Unpaid: Harper & Co £960 (38 days), Mill Lane Gym £420 (12 days). Bills next 30 days: £2,035 incl. van insurance £640. Materials up 34%. Ask accountant: how much to set aside for tax?",
+  "tips": [
+   "For decisions about tax, borrowing or pricing, talk to your accountant. The summary helps you ask the right questions."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "First Monday of each month at 9am"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Write the monthly money summary from the sheet"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Flag overdue invoices and big changes"
+    },
+    {
+     "type": "email.send",
+     "detail": "Email the summary to the user"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn website quote requests into tidy, tracked jobs",
+  "d": "Collect quote requests through a simple form, log them in a sheet automatically, and draft a helpful first reply for each one.",
+  "cat": "Small Business Admin",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "Google Forms",
+   "Google Sheets",
+   "AI assistant",
+   "Gmail"
+  ],
+  "when": "Whenever a quote request comes in",
+  "steps": [
+   {
+    "h": "Build a quote request form",
+    "b": "In Google Forms or Microsoft Forms, ask for: name, email, phone, postcode, what they need, size or quantity, ideal date and budget range. Link it from your website and social profiles."
+   },
+   {
+    "h": "Link responses to a sheet",
+    "b": "In Google Forms, open Responses and link to a Google Sheet. Turn on email notifications for new responses from the Responses tab's menu."
+   },
+   {
+    "h": "Draft a first reply",
+    "b": "When a request arrives, paste the details into your AI assistant with this prompt.",
+    "p": "A customer sent this quote request for my [business type]: [paste form response]. Draft a friendly reply email that: thanks them by first name, confirms what they need in one line, asks for any missing details I need to quote properly (list them), gives my usual next step ([e.g. a free 15-minute call / a site visit]) and when they can expect the quote. Under 120 words. Don't give a price."
+   },
+   {
+    "h": "Track each request",
+    "b": "Add columns to the sheet for Status (New, Replied, Quoted, Won, Lost) and Quote value, and update them as you go."
+   }
+  ],
+  "example": "Hi Amira, thanks for getting in touch about a garden office base. To quote accurately, could you send: rough dimensions of the area, whether there's access for a mini-digger, and a photo from the gate. I can then visit on Tuesday or Thursday. You'll have your quote within 3 working days of the visit. Best, Dan",
+  "tips": [
+   "Say on the form how you'll use people's details, and only collect what you need to quote."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "form_submitted",
+    "detail": "A new quote request form is submitted"
+   },
+   "actions": [
+    {
+     "type": "sheet.append",
+     "detail": "Log the request with status New"
+    },
+    {
+     "type": "ai.extract",
+     "detail": "Spot details missing for a quote"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft a reply asking for missing details"
+    },
+    {
+     "type": "notify",
+     "detail": "Alert the user to the new request"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Clear your weekly admin in one focused hour",
+  "d": "Sort invoices, receipts and supplier emails into folders automatically, then get a Friday list of what to pay, chase, file and reply to.",
+  "cat": "Small Business Admin",
+  "lvl": "Advanced",
+  "mins": 50,
+  "tools": [
+   "Outlook",
+   "Outlook Calendar",
+   "AI assistant",
+   "Excel"
+  ],
+  "when": "Every Friday afternoon",
+  "steps": [
+   {
+    "h": "Create admin folders",
+    "b": "In Outlook, create folders called 'To pay', 'Receipts', 'Suppliers' and 'Customer admin'. Gmail users can do the same with labels."
+   },
+   {
+    "h": "Add rules to sort mail",
+    "b": "Use Outlook's Rules (found in its settings) to move emails into each folder by sender or by words like 'invoice', 'receipt' or 'order confirmation'. Start with your ten most frequent senders."
+   },
+   {
+    "h": "Book a weekly admin hour",
+    "b": "Create a recurring Friday event in Outlook Calendar called 'Admin hour' and treat it like a client meeting."
+   },
+   {
+    "h": "Get a to-do list from the week",
+    "b": "In your admin hour, copy the key details from each folder into your AI assistant (or use Copilot in Outlook if your plan includes it) with this prompt.",
+    "p": "Here are this week's admin emails, grouped by folder. Turn them into a prioritised to-do list under four headings: Pay (with amount and due date), Chase (who owes me and how much), File (receipts or documents to save and where), Reply (who and what about, with a one-line suggested reply). Put anything due in the next 7 days at the top. Leave out anything already handled. Don't include bank details.\n\n[paste emails or summaries]"
+   },
+   {
+    "h": "Work the list and log it",
+    "b": "Work through the list, then update your invoices or expenses spreadsheet in Excel before closing the hour."
+   }
+  ],
+  "example": "PAY: Greenway Packaging £418.80 due 24 Nov; phone bill £42 due 28 Nov. CHASE: Harper & Co £960 (38 days). FILE: 6 receipts to Receipts > November. REPLY: Mill Lane Gym asking for a copy invoice - 'Attached, thanks for letting me know.'",
+  "tips": [
+   "Check your rules' folders for a couple of weeks so nothing important is filed away unnoticed."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Fridays at 2pm"
+   },
+   "actions": [
+    {
+     "type": "email.label",
+     "detail": "Gather the week's emails from each admin folder"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Sort items into pay, chase, file and reply"
+    },
+    {
+     "type": "list.add",
+     "detail": "Create a prioritised admin to-do list"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind the user their admin hour is starting"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Write down how you do a task, just once",
+  "d": "Talk through a recurring admin task and get a clear step-by-step guide, so anyone can cover it when you're away.",
+  "cat": "Small Business Admin",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "Voice notes",
+   "AI assistant",
+   "Google Docs"
+  ],
+  "when": "Next time you do a recurring task",
+  "steps": [
+   {
+    "h": "Talk it through as you work",
+    "b": "Next time you do the task (like paying suppliers or closing up for the month), record a voice note describing each step as you go, including the little checks you do."
+   },
+   {
+    "h": "Turn it into a guide",
+    "b": "Many phones can transcribe voice notes, or you can upload the recording to your AI assistant. Paste the transcript with this prompt.",
+    "p": "Turn this transcript of me doing [task name] into a step-by-step guide someone else could follow. Format: Purpose (1 line), When to do it, What you need (logins, files, tools, but never actual passwords), Numbered steps (one action each), Checks before finishing, What to do if something goes wrong, Who to ask. Keep my exact details (amounts, deadlines, app names). List any steps that seem missing or unclear at the end.\n\n[paste transcript]"
+   },
+   {
+    "h": "Test it",
+    "b": "Ask a colleague or family member to follow the guide without your help. Fix any step where they get stuck."
+   },
+   {
+    "h": "Store it where people look",
+    "b": "Save it in a shared Google Docs or Notion folder called 'How we do things' and add the date you last checked it."
+   }
+  ],
+  "example": "How to pay suppliers (Fridays). You need: banking app access, bills sheet. Steps: 1) Open the bills sheet and filter Paid? = No. 2) Pay anything due before next Friday. 3) Check bank details match the last payment; if they changed, phone the supplier first. Ask: Sam.",
+  "tips": [
+   "Never write passwords into the guide; say where they're kept, such as your password manager."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "User shares a voice note of a task"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Turn the transcript into a step-by-step guide"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the guide in the shared process folder"
+    }
+   ]
+  }
+ }
+]

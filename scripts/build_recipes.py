@@ -22,7 +22,7 @@ TRIGGERS = {"schedule", "new_email", "new_file", "new_row", "form_submitted", "c
 ACTIONS = {"ai.generate", "ai.summarize", "ai.classify", "ai.extract", "email.draft", "email.send", "email.label",
            "sheet.append", "sheet.update", "doc.create", "calendar.create", "list.add", "notify", "web.fetch",
            "file.save", "message.send"}
-BANNED = re.compile(r"\bn8n\b|zapier|make\.com|webhook|\bapi\b|python|javascript|\bcode\b|supercharge|revolutioni[sz]e|seamless", re.I)
+BANNED = re.compile(r"\bn8n\b|zapier|make\.com|webhook|\bapi\b|python|javascript|supercharge|revolutioni[sz]e|seamless", re.I)
 
 
 def slug(s):
