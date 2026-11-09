@@ -1,0 +1,2477 @@
+[
+  {
+    "t": "Plan a week of family dinners on a set budget",
+    "d": "Get seven dinners that fit your weekly food budget, reuse ingredients across meals and come with one shopping list.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Once a week before you shop",
+    "steps": [
+      {
+        "h": "Note your budget and household",
+        "b": "Jot down how much you want to spend on dinners this week, how many people you're feeding and any allergies or dislikes."
+      },
+      {
+        "h": "Ask for a budget meal plan",
+        "b": "Open ChatGPT, Claude or Gemini and paste this prompt with your details filled in.",
+        "p": "Plan 7 dinners for [number] people (including [ages of children, if any]) with a total food budget of about [amount] for the week. We shop at [supermarket type, e.g. a big supermarket or a discount store]. Avoid [allergies and dislikes]. Reuse ingredients across meals so nothing is wasted, include at least 2 meat-free dinners, and keep weeknight meals under [30] minutes. Give me: 1) a table with day, dinner, main ingredients and rough cost; 2) one shopping list grouped by aisle with quantities; 3) which leftovers to save for the next day."
+      },
+      {
+        "h": "Check it against what you have",
+        "b": "Cross off anything already in your cupboards, then ask the assistant to recalculate the list without those items."
+      },
+      {
+        "h": "Save the plan and list",
+        "b": "Copy the plan into your notes app and stick the shopping list somewhere the whole household can see it."
+      }
+    ],
+    "example": "Mon: Lentil & sweet potato curry (about 4.20). Tue: Leftover curry wraps with salad. Wed: Sausage & bean one-pot... Shopping: Veg - 2 onions, 1kg sweet potato, garlic. Tins - 2 chopped tomatoes, 1 coconut milk. Leftovers: save half the rice for Thursday's egg fried rice.",
+    "tips": [
+      "Prices are estimates, so treat the costs as a rough guide and check your supermarket's app for current prices.",
+      "Tell it which meals were a hit so next week's plan repeats the favourites."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Saturday at 10am"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Plan 7 budget dinners and a shopping list from saved household preferences"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add the shopping items to the household list"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the week's dinner plan to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn tonight's leftovers into tomorrow's lunch",
+    "d": "Snap your leftovers and get two or three quick lunch ideas that use them up, with no extra shopping.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "After dinner, when there's food left over",
+    "steps": [
+      {
+        "h": "Photograph the leftovers",
+        "b": "Take a photo of what's left in the pans or containers, plus any odds and ends in the fridge you'd like to use."
+      },
+      {
+        "h": "Ask for lunch ideas",
+        "b": "Attach the photo in your AI assistant and paste this prompt.",
+        "p": "Here's a photo of my leftovers: [describe briefly, e.g. half a roast chicken, some rice, wilting spinach]. Suggest 3 lunches I can make tomorrow in under [10] minutes, ideally ones that travel well in a lunchbox. Only use what's in the photo plus basic store-cupboard items like oil, spices, eggs and bread. For each: name, what to do tonight, what to do tomorrow, and how long it keeps in the fridge."
+      },
+      {
+        "h": "Prep and pack tonight",
+        "b": "Do the 'tonight' steps straight away and put the food in a labelled container so it's ready to grab."
+      }
+    ],
+    "example": "1) Chicken & spinach fried rice: tonight shred the chicken; tomorrow fry with rice, spinach and an egg (8 mins). 2) Chicken wrap with yoghurt dressing... Keeps: cooked rice 1 day only, so eat it first.",
+    "tips": [
+      "Food safety matters: follow official food hygiene guidance on how long cooked rice and meat keep, and when in doubt throw it out."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares a photo of leftovers"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest 3 lunches using only the leftovers shown"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the ideas and prep steps to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Scale any recipe to the number you're feeding",
+    "d": "Resize a recipe for more or fewer people, convert cups to grams and get adjusted cooking times in one go.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When a recipe serves the wrong number of people",
+    "steps": [
+      {
+        "h": "Copy the recipe",
+        "b": "Copy the ingredients and method from the website or book, or take a photo of the page."
+      },
+      {
+        "h": "Ask it to scale and convert",
+        "b": "Paste the recipe into your AI assistant with this prompt.",
+        "p": "Here is a recipe that serves [original servings]: [paste recipe]. Rewrite it to serve [new servings]. Convert all measurements to [metric: grams and ml / UK spoons]. Round to sensible amounts (for example whole eggs). Tell me which tin or dish size to use, whether the cooking time or temperature should change, and flag anything that doesn't scale neatly, like baking powder or spices."
+      },
+      {
+        "h": "Save your version",
+        "b": "Paste the scaled recipe into your notes app with the date, so you can tweak it next time."
+      }
+    ],
+    "example": "Lasagne for 10 (was 4): beef mince 1.25kg, chopped tomatoes 5 x 400g tins, lasagne sheets about 500g... Use 2 large dishes rather than one deep one. Bake 45-50 mins at 180C fan. Note: increase salt gradually and taste as you go.",
+    "tips": [
+      "For baking, scaling isn't always exact, so try a test batch before a big occasion."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes a recipe and the number of servings"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Scale quantities, convert units and adjust times"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the scaled recipe to the user's recipe notes"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep one shared shopping list for the whole family",
+    "d": "Set up a shared list everyone adds to by voice or tap, sorted into aisles so the shop is quicker.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Reminders app",
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "Set up once, use every day",
+    "steps": [
+      {
+        "h": "Create a shared list",
+        "b": "In your phone's reminders or notes app, make a list called 'Shopping' and share it with your household. Apple Reminders has a grocery list type that sorts items into sections, and Google Keep lists can also be shared."
+      },
+      {
+        "h": "Turn on voice adding",
+        "b": "Check your phone's voice assistant settings so saying 'add milk to my shopping list' goes into the shared list. Show everyone how it works."
+      },
+      {
+        "h": "Tidy the list before you shop",
+        "b": "If your list app doesn't sort by aisle, copy the list into your AI assistant with this prompt.",
+        "p": "Here's my shopping list: [paste list]. Remove duplicates, combine similar items (for example 'milk' and 'semi-skimmed'), and group everything by supermarket section in this order: [fruit and veg, bakery, meat and fish, dairy, frozen, tins and dry goods, household]. Flag anything vague, like 'snacks', so I can check what was meant."
+      },
+      {
+        "h": "Agree a simple house rule",
+        "b": "Post a short message in the family WhatsApp group: 'If you finish it, add it.' This one habit does most of the work."
+      }
+    ],
+    "example": "Fruit & veg: bananas, 2 peppers, spinach. Dairy: milk x2 (merged 'milk' and 'semi-skimmed'), cheddar. Frozen: peas. Household: bin bags. Check: 'snacks' - added by Sam, ask what kind.",
+    "tips": [
+      "Give children their own way to add items, like a magnet whiteboard, and add those to the list when you shop."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A household member sends 'add [item]' in the family chat"
+      },
+      "actions": [
+        {
+          "type": "list.add",
+          "detail": "Add the item to the shared shopping list"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Sort the item into a supermarket section"
+        }
+      ]
+    }
+  },
+  {
+    "t": "See where your food money really goes each month",
+    "d": "Photograph supermarket receipts and build a simple spreadsheet showing your monthly spend by category and shop.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Phone camera",
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "After each big shop, reviewed monthly",
+    "steps": [
+      {
+        "h": "Make a food spending sheet",
+        "b": "Create a Google Sheets or Excel file with columns: Date, Shop, Category, Item, Amount."
+      },
+      {
+        "h": "Snap each receipt",
+        "b": "After a shop, take a flat, well-lit photo of the receipt before it fades or gets lost."
+      },
+      {
+        "h": "Turn the receipt into rows",
+        "b": "Attach the photo to your AI assistant with this prompt, then paste the result into your sheet.",
+        "p": "Read this supermarket receipt and turn it into a table I can paste into a spreadsheet, with columns: Date, Shop, Category, Item, Amount. Use these categories only: [fresh produce, meat and fish, dairy, bakery, store cupboard, snacks and drinks, ready meals, household, baby and pets, alcohol]. Apply any discounts to the right items. Leave out card numbers and loyalty numbers. Show the receipt total at the end so I can check it matches."
+      },
+      {
+        "h": "Review once a month",
+        "b": "At the end of the month, paste your rows back into the assistant and ask: 'Summarise my food spend by category, compare it with last month and suggest 3 realistic ways to cut 10%.'"
+      }
+    ],
+    "example": "October: 412 total. Fresh produce 88, Meat & fish 96, Snacks & drinks 71 (up 18 on Sept), Ready meals 44... Ideas: swap two ready meals a week for batch-cooked portions, buy snacks in multipacks, use the loyalty app's weekly offers.",
+    "tips": [
+      "Always check the total matches the receipt, as faded print can be misread.",
+      "Never paste bank statements with full account numbers into an AI tool."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A receipt photo is added to a 'Receipts' folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read items, prices and categories from the receipt"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the rows to the food spending sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "On the last day of the month, summarise spend by category"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Share the housework fairly with a weekly rota",
+    "d": "Get a fair cleaning rota that suits everyone's age and schedule, with each person's jobs added to the family calendar.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Set up once, refresh each school term",
+    "steps": [
+      {
+        "h": "List the jobs and the people",
+        "b": "Write down every regular job (bins, bathroom, hoovering, laundry, dishwasher) and who lives in the house, including children's ages and busy days."
+      },
+      {
+        "h": "Ask for a fair rota",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "Create a weekly household cleaning rota. People: [names, ages and busy days]. Jobs and how often: [list jobs, e.g. bins - weekly Thursday, bathroom - weekly, hoover downstairs - twice a week]. Give age-appropriate jobs to children, balance the total time so it feels fair, rotate the least popular jobs, and keep each person's daily load under [20] minutes. Output a table by day and person, plus a total minutes per person per week."
+      },
+      {
+        "h": "Add jobs to the calendar",
+        "b": "Create a recurring event for each person's jobs in a shared Google Calendar or Outlook Calendar, so reminders pop up on their phone."
+      },
+      {
+        "h": "Review after two weeks",
+        "b": "Ask everyone what's working, then tell the assistant what to swap and ask for an updated rota."
+      }
+    ],
+    "example": "Mon: Alex (14) - empty dishwasher (10m); Priya - hoover downstairs (15m). Thu: Sam (9) - recycling out with a grown-up (5m)... Weekly totals: Priya 95m, Tom 90m, Alex 60m, Sam 30m. Bathroom rotates between Tom and Priya.",
+    "tips": [
+      "Swapping jobs is fine, but agree that swaps get written on the rota so nothing gets missed."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First day of each school term"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Rebuild the rota from current jobs and schedules"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Create recurring job reminders for each person"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Declutter a room in short, doable sessions",
+    "d": "Break a cluttered room into 20-minute sessions with clear keep, donate and bin decisions so you actually finish.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When a room feels overwhelming",
+    "steps": [
+      {
+        "h": "Photograph the room",
+        "b": "Take two or three wide photos showing the problem areas, like the wardrobe, desk or garage shelves."
+      },
+      {
+        "h": "Ask for a session plan",
+        "b": "Attach the photos to your AI assistant and paste this prompt.",
+        "p": "Here are photos of my [room]. I can spend [20] minutes at a time, [number] times a week. Break decluttering this room into short sessions, starting with the quickest visible win. For each session give: the exact area (for example 'top shelf only'), what to sort, simple rules for keep, donate, sell or bin, and what 'done' looks like. Include a final session for taking donations out of the house."
+      },
+      {
+        "h": "Book the sessions in",
+        "b": "Put the sessions in your calendar or reminders app like appointments, and tick each one off."
+      }
+    ],
+    "example": "Session 1 (20m): bedside table only. Bin anything broken, keep 1 book. Session 2: top wardrobe shelf - donate anything not worn in a year... Session 6: drop the donate bags at a charity shop, no second-guessing.",
+    "tips": [
+      "Keep a 'donate' bag by the door and take it out the same week so things don't creep back."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares photos of a room"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a set of 20-minute declutter sessions"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Book each session into the user's calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Never forget the boiler service or smoke alarm test",
+    "d": "Build a year-round home maintenance calendar with reminders for servicing, safety checks and seasonal jobs.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Set up once a year",
+    "steps": [
+      {
+        "h": "Describe your home",
+        "b": "Note your type of home, heating, whether you rent or own, and any garden, gutters, chimney or appliances that need care."
+      },
+      {
+        "h": "Get a maintenance schedule",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I live in a [type of home, e.g. 1930s semi] in [country/region], which I [rent/own]. Heating: [gas boiler/heat pump/other]. Other features: [garden, gutters, chimney, loft, appliances]. Create a 12-month home maintenance calendar with: job, month, how often, rough time it takes, and whether I can do it myself or need a professional. Include safety checks like smoke and carbon monoxide alarms. If I rent, mark which jobs are usually the landlord's responsibility so I can check my tenancy agreement."
+      },
+      {
+        "h": "Add recurring reminders",
+        "b": "Create a recurring event in Google Calendar or Outlook Calendar for each job, set to repeat monthly or yearly, with a reminder a week before for jobs that need booking."
+      },
+      {
+        "h": "Keep a record",
+        "b": "Add a note to each event when the job is done, such as the engineer's name and cost, for warranties or selling later."
+      }
+    ],
+    "example": "Monthly: test smoke and CO alarms (2 mins, DIY). March: clean gutters (DIY or pro). September: boiler service (Gas Safe engineer, book in August). November: bleed radiators, check loft insulation. Renting? Boiler service is usually the landlord's job.",
+    "tips": [
+      "Gas and electrical work must be done by a qualified, registered professional, never by following AI steps."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every January 2nd"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Refresh the year's maintenance schedule"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add recurring reminders for each job"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Catch every bill and renewal before it auto-renews",
+    "d": "Gather bills and renewal emails into one label and a tracker, with a reminder a month before each contract ends.",
+    "cat": "Food & Home",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Gmail",
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, runs whenever a bill email arrives",
+    "steps": [
+      {
+        "h": "Label bill emails automatically",
+        "b": "In Gmail's settings, under Filters, create filters for your energy, broadband, phone, insurance and streaming senders that apply a 'Household bills' label. Outlook users can do the same with rules and a folder."
+      },
+      {
+        "h": "Build a renewals tracker",
+        "b": "Make a Google Sheets or Excel file with columns: Provider, What it's for, Monthly cost, Payment day, Contract end date, Notes."
+      },
+      {
+        "h": "Extract the key details",
+        "b": "Open a recent bill or renewal email, copy the text (remove account numbers first) and paste it into your AI assistant with this prompt. Gemini in Gmail can do this inside the email if your plan includes it.",
+        "p": "From this bill or renewal email, extract: provider, what the service is, monthly or annual cost, payment date, contract end or renewal date, any price rise and its date, and the notice period to cancel or switch. Output as one row with columns: Provider | Service | Monthly cost | Payment day | Contract end | Price change | Notice period. If something isn't stated, write 'not stated'. [paste email text]"
+      },
+      {
+        "h": "Set renewal reminders",
+        "b": "For each contract end date, add a Google Calendar event one month earlier called 'Compare deals: [provider]'."
+      },
+      {
+        "h": "Review the label monthly",
+        "b": "Once a month, open the 'Household bills' label, add any new details to the sheet and check for price rises."
+      }
+    ],
+    "example": "Broadband | Fibre 150 | 32.00 | 14th | 03/2027 | rises to 35.50 in April | 30 days. Car insurance | Annual | 46.25 | 1st | 22/01/2027 | not stated | not stated. Reminder set: 22 Dec - Compare deals: car insurance.",
+    "tips": [
+      "Remove account numbers, addresses and passwords before pasting emails into any AI tool.",
+      "The assistant can misread dates, so double-check contract end dates against your account online."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email lands in the 'Household bills' label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull provider, cost, payment day and contract end date"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Add or update the provider's row in the renewals tracker"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a 'compare deals' reminder one month before the end date"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a clear repair request your landlord can't ignore",
+    "d": "Turn your notes and photos about a problem at home into a calm, dated repair request with a clear deadline.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Gmail"
+    ],
+    "when": "When something needs fixing and it's not your job",
+    "steps": [
+      {
+        "h": "Gather the facts",
+        "b": "Take dated photos of the problem and note when it started, how it affects you and any earlier times you reported it."
+      },
+      {
+        "h": "Draft the request",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Write a polite, firm email to my [landlord/letting agent/managing agent] about [problem, e.g. a leak under the kitchen sink]. Facts: it started on [date], it is causing [effects], and I previously reported it on [dates and how]. I've attached photos. Ask for a repair date by [date], mention access times that suit me [times], and ask them to confirm in writing. Keep it under 200 words, factual and without threats. Add a clear subject line."
+      },
+      {
+        "h": "Send it and keep a copy",
+        "b": "Send it from your email with photos attached, and save it in a folder called 'Home repairs' so you have a dated record."
+      },
+      {
+        "h": "Follow up if needed",
+        "b": "If you hear nothing by the deadline, ask the assistant for a short follow-up email referring to your first one."
+      }
+    ],
+    "example": "Subject: Repair request - kitchen sink leak, Flat 2. Dear Ms Rowe, Since 3 March there has been a leak under the kitchen sink, which is now damaging the cupboard base. I reported this by phone on 5 March. Photos attached. Please could you confirm a repair date by 17 March...",
+    "tips": [
+      "For disputes about your rights as a tenant, check your country's official housing advice service or a qualified adviser."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes a repair problem"
+      },
+      "actions": [
+        {
+          "type": "email.draft",
+          "detail": "Draft a dated repair request with a deadline"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a follow-up reminder on the deadline date"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Move house without forgetting who to tell",
+    "d": "Get a week-by-week moving plan and a change-of-address list on a Trello board you can share with whoever's helping.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Trello"
+    ],
+    "when": "As soon as you have a moving date",
+    "steps": [
+      {
+        "h": "Describe your move",
+        "b": "Note your moving date, who's moving (including pets and children), whether you rent or own, and any services you use like energy, broadband, GP, school and subscriptions."
+      },
+      {
+        "h": "Get a moving plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm moving house on [date] from a [type of home] to a [type of home] in [country]. Household: [people, pets]. I [rent/own] both. Create: 1) a week-by-week checklist from [number] weeks before to 2 weeks after the move, including packing room by room; 2) a change-of-address list grouped by Utilities, Money, Government and council, Health, School, Subscriptions and Deliveries, with a column for 'when to tell them'; 3) a first-night box list. Format each as a checklist."
+      },
+      {
+        "h": "Put it on a Trello board",
+        "b": "Create a free Trello board with lists for each week, and paste each task as a card. Invite your partner or helper so you can split the jobs."
+      },
+      {
+        "h": "Tick off the address changes",
+        "b": "Use a separate Trello list for the change-of-address items and move each card to 'Done' as you update it."
+      }
+    ],
+    "example": "6 weeks before: book removals, start decluttering the loft. 2 weeks: confirm removals, set up post redirection. Move day: meter readings, keys, first-night box. Address list - Utilities: energy, water, broadband (2 weeks before). Health: GP, dentist, opticians.",
+    "tips": [
+      "Check official government sites for things like updating your driving licence, voter registration and council tax, as rules vary by country."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters a moving date"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a week-by-week moving plan and address list"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add each task as a card on the moving board"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a weekly reminder of this week's tasks"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a veg patch that suits your space",
+    "d": "Get a simple growing plan for your garden, balcony or windowsill, with what to sow each month for your climate.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Late winter, before the growing season",
+    "steps": [
+      {
+        "h": "Measure and photograph your space",
+        "b": "Note the size of your bed, pots or windowsill, which way it faces and how many hours of sun it gets."
+      },
+      {
+        "h": "Ask for a growing plan",
+        "b": "Attach a photo to your AI assistant and paste this prompt.",
+        "p": "I want to grow vegetables and herbs in [space and size, e.g. two 60cm balcony planters facing south] in [town or region and country]. I get about [hours] of sun and can spend [time] a week. We like eating [foods]. I'm a [beginner/experienced] grower. Suggest [5-8] easy crops, a simple layout, and a month-by-month calendar of when to sow, plant out and harvest each one. Note anything that needs protecting from frost or slugs."
+      },
+      {
+        "h": "Put sowing dates in your calendar",
+        "b": "Add a reminder for each sowing and planting-out date so you don't miss the window."
+      }
+    ],
+    "example": "Planter 1: cherry tomatoes (sow indoors March, plant out late May) with basil. Planter 2: cut-and-come-again salad (sow every 3 weeks Apr-Aug), radishes. March: sow tomatoes on a sunny windowsill. May: harden off seedlings for a week before planting out.",
+    "tips": [
+      "Local frost dates vary, so check with a local garden centre or your national gardening society's website."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every February 1st"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create the year's growing plan from saved garden details"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add sowing and planting reminders"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Work out what's wrong with a struggling plant",
+    "d": "Photograph a sick-looking houseplant or garden plant and get likely causes and a simple care plan to try.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When leaves go yellow, brown or spotty",
+    "steps": [
+      {
+        "h": "Take close and wide photos",
+        "b": "Photograph the whole plant, a close-up of the damaged leaves (top and underside) and the soil."
+      },
+      {
+        "h": "Ask for likely causes",
+        "b": "Attach the photos to your AI assistant with this prompt.",
+        "p": "Please help me work out what's wrong with this plant. It's a [plant name if known] kept [indoors/outdoors] in [light conditions]. I water it [how often] and it's been like this for [time]. Recent changes: [repotting, moved, cold snap]. Give me the 3 most likely causes ranked by likelihood, what to look for to tell them apart, and a simple 2-week care plan for the most likely one. If you can't identify the plant, say so."
+      },
+      {
+        "h": "Set a check-in reminder",
+        "b": "Add a reminder for two weeks' time to see if it's improving, and take a new photo to compare."
+      }
+    ],
+    "example": "Most likely: overwatering (yellow lower leaves, damp soil). Check: push a finger 3cm into the soil - if wet, wait. Plan: water only when top 3cm is dry, empty the saucer, move away from the radiator. Less likely: spider mites - look for fine webbing under leaves.",
+    "tips": [
+      "AI can misidentify plants, so if it might be toxic to pets or children, check with a garden centre or a reliable plant database."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares plant photos"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest likely causes and a care plan"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a 2-week check-in reminder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep your pet's care on track with shared reminders",
+    "d": "Set up reminders for flea, worming, vaccinations and vet visits that everyone at home can see.",
+    "cat": "Food & Home",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Notes app"
+    ],
+    "when": "Set up once, update after each vet visit",
+    "steps": [
+      {
+        "h": "Gather your pet's records",
+        "b": "Find your pet's vaccination card, last flea and worming dates and the products the vet recommended."
+      },
+      {
+        "h": "Turn it into a care schedule",
+        "b": "Paste the details into your AI assistant with this prompt.",
+        "p": "Help me organise my pet's routine care. Pet: [species, breed, age, weight]. Last vaccination: [date and type]. Flea treatment: [product and date, and how often the vet said]. Worming: [product, date, frequency]. Other: [nail trims, grooming, dental checks, insurance renewal]. Create a 12-month schedule table with date, task and notes, using only the frequencies I've given. Don't recommend products or doses. Add a short list of questions to ask the vet at the next check-up."
+      },
+      {
+        "h": "Add shared reminders",
+        "b": "Create recurring events in a shared Google Calendar or Outlook Calendar so everyone at home sees when the next treatment is due."
+      },
+      {
+        "h": "Keep a care note",
+        "b": "Save a note with the vet's number, insurance policy number, microchip number and any allergies, so it's handy in an emergency."
+      }
+    ],
+    "example": "Bramble (cat, 4): Flea - 1st of each month. Worming - every 3 months: 10 Jan, 10 Apr, 10 Jul, 10 Oct. Booster - 18 May (book 2 weeks before). Insurance renews 1 Sept. Ask vet: is her weight OK? Should we brush her teeth?",
+    "tips": [
+      "Always follow your vet's advice on products and doses. The AI is only for organising dates."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A pet care task is due"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the household the task is due today"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the reminder in the family chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Batch cook a week of meals in one afternoon",
+    "d": "Get a step-by-step cooking order for one session that fills your freezer, with labels and reheating notes.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Before a busy week or a weekend cook-up",
+    "steps": [
+      {
+        "h": "Decide what you want to make",
+        "b": "Pick how many portions you need, how long you can cook for, and how much freezer space you have."
+      },
+      {
+        "h": "Ask for a batch cooking plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan a [3]-hour batch cooking session that makes [number] portions of [4] different freezer-friendly meals for [number] people. Equipment: [oven, hob rings, slow cooker, etc.]. Avoid [allergies/dislikes]. Give me: 1) one shopping list; 2) a timed cooking order that overlaps tasks so the oven and hob are always in use; 3) how to cool and portion each meal; 4) label text with the meal name, date made and reheating instructions."
+      },
+      {
+        "h": "Save the labels and plan",
+        "b": "Keep the plan in your notes app and copy the label text onto freezer tape or a marker on each tub."
+      }
+    ],
+    "example": "0:00 Oven on, chop all onions at once. 0:15 Chilli and bolognese start on the hob. 0:30 Tray of roasted veg in the oven... Label: Veggie chilli - made 9 Nov - defrost overnight, reheat until piping hot throughout.",
+    "tips": [
+      "Cool food quickly and freeze it within a couple of hours; check official food safety guidance for how long frozen meals keep."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User asks for a batch cook plan"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a timed cooking order, shopping list and labels"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add ingredients to the shopping list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Pack school lunches your fussy eater will actually eat",
+    "d": "Get two weeks of varied lunchbox ideas built around your child's safe foods, with a few gentle new things to try.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Every couple of weeks during term",
+    "steps": [
+      {
+        "h": "List what your child will eat",
+        "b": "Write down their 'safe' foods, things they've refused, any allergies and whether the school is nut-free."
+      },
+      {
+        "h": "Ask for a lunchbox rotation",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "My child is [age] and a fussy eater. They reliably eat: [list]. They refuse: [list]. Allergies or school rules: [e.g. nut-free school]. Create a 10-day packed lunch rotation that mostly uses their safe foods, with one small new or slightly different item each day to try. Include a main, a fruit or veg, and a snack, no reheating needed, and keep prep under [10] minutes in the morning. Add a short list of things I can prep on Sunday."
+      },
+      {
+        "h": "Keep the rotation handy",
+        "b": "Save it in your notes app and add the shopping items to your list."
+      }
+    ],
+    "example": "Day 1: ham & cheese pinwheels, cucumber sticks, apple slices; try: 3 cherry tomatoes. Day 2: pasta salad with sweetcorn, grapes (halved), plain popcorn; try: a pepper strip... Sunday prep: cook pasta, wash grapes, bake mini muffins.",
+    "tips": [
+      "Halve grapes and cherry tomatoes for younger children, and always check your school's food policy."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every other Sunday during term"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a 10-day lunchbox rotation from saved preferences"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add lunchbox items to the shopping list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Host a dinner without the last-minute panic",
+    "d": "Get a menu, shopping list and backwards cooking timeline so everything is ready at the same time.",
+    "cat": "Food & Home",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "A few days before you host",
+    "steps": [
+      {
+        "h": "Note your guests and limits",
+        "b": "Write down how many people are coming, their dietary needs, your budget and what kitchen equipment you have."
+      },
+      {
+        "h": "Get a menu and timeline",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm hosting [number] people for [lunch/dinner] on [day] and want to eat at [time]. Dietary needs: [vegetarian, gluten-free, etc.]. Budget: about [amount]. I have [one oven, four hobs]. Suggest a [3]-course menu where most things can be made ahead. Then give me: 1) a shopping list by aisle; 2) a make-ahead list for the day before; 3) a timeline for the day counting backwards from serving time, including when to set the table."
+      },
+      {
+        "h": "Set timeline reminders",
+        "b": "Add the key timeline points as reminders on your phone, like 'Potatoes in oven' at 6:10pm."
+      }
+    ],
+    "example": "Menu: mushroom & lentil pie (everyone, GF pastry), honey-roast carrots, lemon posset. Day before: make possets, fill pie. 5:30pm pie in oven. 6:10pm carrots in. 6:45pm greens on. 7:00pm serve. Shopping: veg - 1kg carrots, 500g chestnut mushrooms...",
+    "tips": [
+      "Ask guests about allergies in advance and keep the packaging so you can check ingredients if asked."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters guest numbers and serving time"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a menu, shopping list and backwards timeline"
+        },
+        {
+          "type": "notify",
+          "detail": "Send timeline reminders on the day"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a day-by-day itinerary that fits your pace",
+    "d": "Turn your dates, interests and energy levels into a realistic daily plan with rest time and a rainy-day backup.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Maps"
+    ],
+    "when": "A few weeks before a trip",
+    "steps": [
+      {
+        "h": "Jot down the basics",
+        "b": "Note where you're staying, your dates, arrival and departure times, who's going and what you enjoy."
+      },
+      {
+        "h": "Ask for a paced itinerary",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan a [number]-day trip to [destination] for [who is going]. We arrive [day and time] and leave [day and time], staying near [area or hotel]. We enjoy [interests] and prefer a [relaxed/moderate/packed] pace with [amount] of walking. For each day give: morning, afternoon and evening, grouped by area to cut travel time, how to get between places, one rainy-day alternative, and a rough daily spend. Mark anything that usually needs booking ahead."
+      },
+      {
+        "h": "Check the details",
+        "b": "Look up each place on its official website for current opening times, prices and booking rules, as these change often."
+      },
+      {
+        "h": "Pin it to a map",
+        "b": "Save each stop to a Google Maps list for the trip so you can see what's nearby while you're there."
+      }
+    ],
+    "example": "Day 2 (Old Town): 9:30 castle (book ahead, allow 2h), lunch near the square, 2pm river walk, 4pm rest at hotel, 7pm dinner in the market district. Rainy day: national museum. Rough spend: 60 for two.",
+    "tips": [
+      "AI can suggest places that have closed or changed hours, so always check official sites before you go."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters destination, dates and interests"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a paced day-by-day itinerary"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the itinerary as a trip document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Pack the right things for this trip's weather",
+    "d": "Get a packing list tailored to your destination, activities, luggage allowance and who's travelling.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "About a week before you leave",
+    "steps": [
+      {
+        "h": "Check the forecast and allowance",
+        "b": "Look up the weather forecast for your destination and your airline's baggage allowance on their official site."
+      },
+      {
+        "h": "Ask for a tailored list",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Make a packing list for [number] nights in [destination] in [month]. Expected weather: [forecast]. Travellers: [adults, children's ages]. Activities: [e.g. beach, hiking, one smart dinner]. Luggage: [e.g. cabin bag only, 10kg]. Laundry available: [yes/no]. Group the list by person and category (clothes, toiletries, documents, tech, health, kids' stuff), give quantities, and suggest outfits that mix and match. Flag liquids rules for hand luggage to check on the airport's site."
+      },
+      {
+        "h": "Save it as a checklist",
+        "b": "Paste the list into your notes app as a checklist and tick items off as you pack. Keep it for next time."
+      }
+    ],
+    "example": "Each adult: 4 tops, 2 shorts, 1 trousers, light rain jacket, swimwear x2. Documents: passports, insurance details, booking printouts. Kids: 2 changes in hand luggage, sun hats, travel games. Tech: adapter (type F), power bank in hand luggage.",
+    "tips": [
+      "Liquid and battery rules differ by airport and airline, so check their official sites before packing hand luggage."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "7 days before a trip's start date"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Get the forecast for the destination"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Create a packing list for the travellers and weather"
+        },
+        {
+          "type": "list.add",
+          "detail": "Save the list as a checklist"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every booking for a trip in one place",
+    "d": "Pull flight, hotel and car hire confirmations from your inbox into one tidy trip document you can open offline.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Gmail",
+      "Google Docs",
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Once your main bookings are made",
+    "steps": [
+      {
+        "h": "Find the confirmation emails",
+        "b": "Search your inbox for words like 'booking confirmation', 'itinerary' or 'reservation', and give each one a label or folder named after the trip."
+      },
+      {
+        "h": "Build a summary",
+        "b": "Copy the key parts of each email (remove payment card details) into your AI assistant with this prompt.",
+        "p": "Here are my booking confirmations for a trip to [destination]: [paste text]. Create a single trip summary in date order with: date and time (local time), what it is, booking reference, address, check-in or check-out times, what's included, cancellation deadline and contact number. Then list anything missing, like a transfer from the airport on [date], and anything with a tight connection."
+      },
+      {
+        "h": "Save it for offline use",
+        "b": "Paste the summary into a Google Docs or Word file and make it available offline, or save it as a PDF on your phone."
+      },
+      {
+        "h": "Check your calendar",
+        "b": "Gmail can add flight and hotel bookings to Google Calendar automatically if it's turned on in settings; otherwise, add the key times yourself."
+      }
+    ],
+    "example": "Fri 14 Jun 06:40 Flight EZ123 to Lisbon, ref K7PQ2X, bag drop closes 05:55. 13:00 Check in Casa Azul, Rua das Flores 12, free cancel until 7 Jun. Missing: transfer from airport to hotel. Tight: car hire collection 09:00 Sun after late Sat checkout.",
+    "tips": [
+      "Never paste full card numbers or passport numbers into an AI tool.",
+      "Double-check the times against the original emails, especially time zones."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A booking confirmation email arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull date, time, reference, address and cancellation terms"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Add the booking to the trip summary document"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the booking time to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Split holiday costs fairly with friends",
+    "d": "Track shared trip spending in a simple sheet that shows who paid what and who owes whom at the end.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "Before and during a group trip",
+    "steps": [
+      {
+        "h": "Create a shared sheet",
+        "b": "Make a Google Sheets file with columns: Date, What, Paid by, Amount, Currency, Split between. Share it with everyone on the trip."
+      },
+      {
+        "h": "Log spending as you go",
+        "b": "Whoever pays adds a row straight away. Post the link in the group WhatsApp chat so it's easy to find."
+      },
+      {
+        "h": "Settle up at the end",
+        "b": "Copy the rows into your AI assistant with this prompt, then double-check the totals in the sheet.",
+        "p": "Here's our shared trip spending: [paste rows]. Convert everything to [home currency] at [exchange rate]. Work out each person's fair share, given that some costs were only split between some people as shown. Then give the smallest number of payments needed to settle up, as 'X pays Y [amount]'. Show your working in a table so we can check it."
+      },
+      {
+        "h": "Share the result",
+        "b": "Paste the settle-up list into the group chat and mark each payment as done."
+      }
+    ],
+    "example": "Total: 1,284. Fair shares: Ava 341, Ben 341, Cara 301 (skipped the boat trip), Dev 301. Payments: Ben pays Ava 96. Dev pays Cara 52. Dev pays Ava 41. Done in 3 payments.",
+    "tips": [
+      "Agree before the trip whether drinks and individual meals are shared, to avoid awkward conversations later."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A new expense is added to the trip sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Recalculate balances and who owes whom"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post a running balance to the group chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a family trip around naps and snack stops",
+    "d": "Get a child-friendly itinerary that fits nap times, meal times and short attention spans, with backups for meltdowns.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When planning a trip with young children",
+    "steps": [
+      {
+        "h": "Write down your children's rhythms",
+        "b": "Note each child's age, nap times, bedtime, meal times and what keeps them happy."
+      },
+      {
+        "h": "Ask for a family-friendly plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan a [number]-day trip to [destination] for [adults] adults and children aged [ages]. Naps: [times]. Bedtime: [time]. They love [interests] and struggle with [e.g. long queues, car journeys over an hour]. For each day: one main activity in the morning, a calm option during naps, playgrounds or open spaces nearby, places with baby changing and family-friendly food, and a backup if it rains or someone's had enough. Include travel day tips for the journey there."
+      },
+      {
+        "h": "Check facilities and prices",
+        "b": "Look up each place's official website for family tickets, buggy access, opening times and whether booking is needed."
+      }
+    ],
+    "example": "Day 1: 9:30 aquarium (buggy friendly, under-3s free - check site), 11:45 lunch at the cafe on site. 12:30-2pm nap in the buggy on a park walk. 3pm playground by the harbour. Backup: soft play near the hotel. Journey: leave after breakfast, stop every 90 mins.",
+    "tips": [
+      "Build in one completely unplanned half-day: children rarely keep to a schedule on holiday."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters destination and children's routines"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a family itinerary around naps and meals"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the plan as a trip document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Learn the 30 phrases you'll actually use abroad",
+    "d": "Get a one-page phrase sheet for your trip with simple pronunciation, polite phrases and the words you'll need most.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "A week or two before you go",
+    "steps": [
+      {
+        "h": "Ask for a phrase sheet",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm travelling to [country/region] where they speak [language]. I'll be [activities, e.g. eating out, using trains, shopping at markets]. Dietary needs: [e.g. vegetarian, nut allergy]. Give me the 30 most useful phrases in a table with: English, [language], simple pronunciation for an English speaker, and when to use it. Include greetings, please and thank you, asking for help, numbers 1-10, ordering food, my dietary needs, and 'I don't understand, please speak slowly'. Note any polite customs I should know."
+      },
+      {
+        "h": "Practise out loud",
+        "b": "Ask the assistant to read the phrases aloud if your app has a voice mode, or quiz you on them for five minutes a day."
+      },
+      {
+        "h": "Save it offline",
+        "b": "Save the sheet in your notes app or take a screenshot so you can use it without signal."
+      }
+    ],
+    "example": "Good morning - Bom dia - bong DEE-ah. A table for two, please - Uma mesa para dois, por favor - OO-ma MAY-za PA-ra doysh, poor fa-VOR. I'm allergic to nuts - Sou alergico a frutos secos... Custom: say 'obrigado' (men) or 'obrigada' (women).",
+    "tips": [
+      "For serious allergies, ask a native speaker or your doctor about a printed allergy card rather than relying on AI translation alone."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "14 days before a trip abroad"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a phrase sheet for the destination's language"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a daily 5-phrase practice reminder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Understand any menu or sign with your phone",
+    "d": "Point your camera at a menu, sign or label abroad and get a clear translation plus what the dishes actually are.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 2,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "While you're travelling",
+    "steps": [
+      {
+        "h": "Take a clear photo",
+        "b": "Snap the menu, sign or label straight on, in good light, so the text is sharp."
+      },
+      {
+        "h": "Ask for a translation with context",
+        "b": "Attach the photo to your AI assistant with this prompt. Google Lens and your phone's camera translate feature can also translate text on the spot.",
+        "p": "Translate this [menu/sign/label] into English. For a menu: list each dish with a short description of what it is, the main ingredients, whether it's likely spicy, and flag anything that may contain [my dietary needs, e.g. pork, shellfish, nuts]. Suggest 3 dishes a first-time visitor might enjoy. For a sign: tell me what it means and whether I need to do anything."
+      },
+      {
+        "h": "Confirm with staff",
+        "b": "If you have an allergy or strict diet, show staff the relevant phrase and ask them to confirm."
+      }
+    ],
+    "example": "Bacalhau a Bras - shredded salt cod with crispy potatoes and egg, not spicy. Polvo a lagareiro - roast octopus with garlic and olive oil (shellfish/seafood). Try: bifana (pork sandwich), caldo verde (kale soup)... Sign: 'Proibido estacionar' - no parking.",
+    "tips": [
+      "Translations can miss hidden ingredients, so always check with staff if you have a food allergy."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User snaps a photo of a menu or sign"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read the text from the photo"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Translate and explain dishes, flagging dietary concerns"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Sort passports, visas and insurance before you travel",
+    "d": "Get a pre-trip admin checklist with dated reminders, so passport expiry and entry rules don't catch you out.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Notes app"
+    ],
+    "when": "As soon as you book a trip abroad",
+    "steps": [
+      {
+        "h": "Gather your details",
+        "b": "Note each traveller's nationality, passport expiry date, destination, travel dates and any medical needs. Don't paste passport numbers."
+      },
+      {
+        "h": "Ask for an admin checklist",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm travelling from [home country] to [destination, including any stopovers] from [date] to [date]. Travellers: [nationalities, ages, passport expiry dates]. Make a pre-trip admin checklist covering: passport validity, visas or travel authorisations, travel insurance, health requirements, driving licence or permits if hiring a car, money and cards, phone roaming, and documents for children travelling with one parent. For each item, say what to check, the official source to check it on (for example my government's travel advice site or the destination's embassy), and how many weeks before travel to do it."
+      },
+      {
+        "h": "Check each item officially",
+        "b": "Go through the checklist using official government and embassy websites only, as entry rules change and AI may be out of date."
+      },
+      {
+        "h": "Add dated reminders",
+        "b": "Put each task in Google Calendar or Outlook Calendar with a reminder, working back from your departure date."
+      }
+    ],
+    "example": "8 weeks before: check passports - Mia's expires Aug 2027, check the destination's validity rule. 6 weeks: check if an electronic travel authorisation is needed (government site). 4 weeks: buy travel insurance, check it covers Sam's asthma. 1 week: tell bank, check roaming.",
+    "tips": [
+      "Only trust official government and embassy websites for entry requirements and visas."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A new trip is added to the calendar"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a pre-trip admin checklist with deadlines"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for each task"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get told when flight prices drop",
+    "d": "Track the flights you're watching and gather price alerts in one email label so you book at a good moment.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Google Flights",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "When you're flexible about when to book",
+    "steps": [
+      {
+        "h": "Turn on price tracking",
+        "b": "Search your route in Google Flights (or Skyscanner or Kayak) while signed in and switch on price tracking for your dates or any dates."
+      },
+      {
+        "h": "Label the alerts",
+        "b": "In Gmail's settings, under Filters, create a filter for emails from the price alert sender that applies a 'Flight alerts' label and skips the inbox."
+      },
+      {
+        "h": "Decide when to book",
+        "b": "When an alert looks good, paste the details into your AI assistant with this prompt.",
+        "p": "I'm watching flights from [origin] to [destination] for [dates or flexibility] for [number] people. Here are the recent price alerts: [paste prices and dates]. My budget is [amount] and I need [baggage needs]. Summarise how the price has moved, work out the true cost including bags and seat fees I've listed, and give me a simple checklist of things to confirm before booking. Don't predict future prices as fact."
+      },
+      {
+        "h": "Book on the official site",
+        "b": "Check the final price, baggage rules and change policy on the airline's or booking site's page before paying."
+      }
+    ],
+    "example": "Price history: 186 (2 Oct) to 162 (18 Oct) to 149 (today) per person. True cost for 2 with one 23kg bag: 149 x 2 + 45 bag = 343. Check: is the bag per flight or per return? Seat fees? Change policy?",
+    "tips": [
+      "No one can reliably predict flight prices, so set a price you're happy with and book when it's reached."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A flight price alert lands in the 'Flight alerts' label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull the route, dates and new price"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the price to a tracking sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the user if the price is below their target"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Choose the right neighbourhood to stay in",
+    "d": "Compare areas of a city side by side for safety feel, transport, noise and price, based on what matters to you.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Google Maps"
+    ],
+    "when": "Before booking accommodation",
+    "steps": [
+      {
+        "h": "Decide what matters",
+        "b": "Note your budget per night, who's travelling and your priorities, like quiet nights, nightlife, walking to sights or good transport."
+      },
+      {
+        "h": "Ask for a comparison",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm visiting [city] for [number] nights with [who]. Budget: about [amount] per night. Priorities: [e.g. quiet at night, walkable, near the station, family-friendly]. Compare the [4] best neighbourhoods to stay in using a table with: general feel, best for, getting to the main sights, noise, typical price level, and one downside. Then recommend one, explain why, and list what to search for in reviews to confirm it."
+      },
+      {
+        "h": "Check on the map",
+        "b": "Drop the areas into Google Maps to see the walking distance to your top sights, and read recent reviews of places you're considering."
+      }
+    ],
+    "example": "Alfama: charming, hilly, can be noisy on weekends. Baixa: central, flat, great transport, busy. Principe Real: quiet, leafy, pricier. Recommended: Baixa for your first visit with a buggy. Search reviews for: 'lift', 'street noise', 'stairs'.",
+    "tips": [
+      "Area reputations change, so check recent reviews and official travel advice rather than relying on AI alone."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters a city and priorities"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Compare neighbourhoods against the user's priorities"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a road trip with sensible stops",
+    "d": "Get a road trip route broken into comfortable driving days, with breaks, overnight stops and things to see on the way.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Maps"
+    ],
+    "when": "A few weeks before a road trip",
+    "steps": [
+      {
+        "h": "Set your limits",
+        "b": "Decide your start and end points, how many days you have and the most driving you want to do in a day."
+      },
+      {
+        "h": "Ask for a route plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan a road trip from [start] to [end] over [number] days for [who, including children or pets]. Maximum driving per day: [hours], with a break at least every [2] hours. We like [interests]. For each day give: route, approximate driving time, a good place for a break, one or two things to see, and an area to stay overnight. Note any toll roads, low-emission zones or ferry crossings I should check, and the best day to rest."
+      },
+      {
+        "h": "Build the route in Google Maps",
+        "b": "Add each day's stops as a route with multiple destinations in Google Maps, and save the places to a list so they're on your phone."
+      },
+      {
+        "h": "Check the rules",
+        "b": "Look up toll, clean-air zone and ferry details on official sites, as charges and rules change."
+      }
+    ],
+    "example": "Day 1: Bristol to Portsmouth (2h10), break at a services near Salisbury, ferry evening crossing (book ahead). Day 2: Caen to Saint-Malo (2h30), walk the ramparts. Check: French toll roads, Crit'Air sticker for some cities.",
+    "tips": [
+      "Driving times from AI are estimates; Google Maps on the day will give you live traffic."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters start, end and number of days"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Split the route into driving days with stops"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the road trip plan"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a strong claim for a delayed or cancelled flight",
+    "d": "Turn your flight details into a clear, polite compensation or refund claim with the facts the airline needs.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "After a delay, cancellation or lost bag",
+    "steps": [
+      {
+        "h": "Collect the facts",
+        "b": "Note the flight number, date, booking reference, scheduled and actual arrival time, what the airline told you and any receipts for food, hotels or taxis."
+      },
+      {
+        "h": "Check whether you may be entitled",
+        "b": "Look at the airline's own claims page and your country's aviation regulator or consumer advice site, as passenger rights depend on the route, airline and cause."
+      },
+      {
+        "h": "Draft the claim",
+        "b": "Paste your facts into your AI assistant with this prompt.",
+        "p": "Write a polite, clear claim to [airline] about flight [number] on [date], booking reference [ref]. What happened: [scheduled arrival time, actual arrival time, reason given, or cancellation details]. Expenses: [list with amounts]. Ask for [compensation under the rules that apply to this flight / refund / reimbursement of expenses], list the attached receipts, and ask for a reply within [14] days. Keep it under 250 words and don't overstate what I'm owed."
+      },
+      {
+        "h": "Submit and keep records",
+        "b": "Use the airline's official claim form if it has one, pasting your text in, and save a copy with the date you sent it."
+      }
+    ],
+    "example": "Subject: Claim - flight AB123, 12 Aug, ref XY7K2P. Our flight was scheduled to arrive at 14:05 but arrived at 18:50 due to a technical problem. We bought meals while waiting (receipts attached, total 38.60). Please review our eligibility for compensation and reimburse these costs...",
+    "tips": [
+      "Be wary of claims companies that take a large cut; you can usually claim directly for free."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters flight disruption details"
+      },
+      "actions": [
+        {
+          "type": "email.draft",
+          "detail": "Draft the compensation or refund claim"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder to chase if no reply in 14 days"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a morning briefing for each day of your trip",
+    "d": "Wake up to a short daily message with today's plan, bookings, weather to check and one local tip.",
+    "cat": "Travel",
+    "lvl": "Advanced",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "Google Calendar"
+    ],
+    "when": "Every morning while you're away",
+    "steps": [
+      {
+        "h": "Finish your trip document",
+        "b": "Make sure your itinerary and booking summary are in one Google Docs or Word file, with times in local time."
+      },
+      {
+        "h": "Put key times in your calendar",
+        "b": "Add bookings like tours, trains and restaurant tables to Google Calendar or Outlook Calendar with reminders, so you get an alert whatever happens."
+      },
+      {
+        "h": "Set up a scheduled daily task",
+        "b": "If your AI assistant offers scheduled tasks (ChatGPT does on some plans), create a daily task for each morning of the trip and paste in your itinerary with this prompt. Otherwise, set a daily phone reminder and paste the prompt yourself.",
+        "p": "Every morning at [time, local] from [start date] to [end date], send me a short briefing for that day of my trip to [destination], using this itinerary: [paste itinerary]. Include: today's plan in order with times, any bookings and their reference, how to get between places, what to pack in my day bag, a reminder to check today's weather, and one local tip or phrase. Keep it under 150 words."
+      },
+      {
+        "h": "Adjust on the go",
+        "b": "If plans change, reply to the task or edit the itinerary in it so tomorrow's briefing is right."
+      }
+    ],
+    "example": "Wed, Day 3: 09:15 train to Sintra (Rossio station, buy tickets at the machine). 10:30 Pena Palace, timed entry, ref PP4471. Lunch in the village. Day bag: water, layers, comfy shoes - lots of hills. Check the weather: mist is common. Phrase: 'A conta, por favor' - the bill, please.",
+    "tips": [
+      "Keep a copy of your bookings offline too, in case you lose signal or the briefing doesn't arrive."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every morning at 7:30 local time during the trip"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise today's itinerary and bookings"
+        },
+        {
+          "type": "web.fetch",
+          "detail": "Get today's weather forecast for the destination"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the daily briefing to the user's phone"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn holiday voice notes into a travel journal",
+    "d": "Record a quick voice note each evening and get a readable journal of your trip to keep or share with family.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "Voice notes",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Each evening of a trip, then once you're home",
+    "steps": [
+      {
+        "h": "Record a nightly voice note",
+        "b": "Spend two minutes each evening talking through the day: where you went, what you ate, what made you laugh. Your phone's voice recorder can often create a transcript."
+      },
+      {
+        "h": "Turn notes into journal entries",
+        "b": "Paste the transcripts into your AI assistant with this prompt, or speak the notes to it directly.",
+        "p": "Here are my voice note transcripts from a trip to [destination], one per day: [paste transcripts]. Turn them into a warm, readable travel journal in my own voice, with a short entry for each day: a title, 150-200 words, and one 'best moment'. Keep names and details exactly as I said them, don't invent anything, and fix filler words and repetition."
+      },
+      {
+        "h": "Add photos and save",
+        "b": "Paste the journal into Google Docs, Word or Canva, add a few photos for each day and save it as a PDF or print it."
+      }
+    ],
+    "example": "Day 4 - The day it rained in Porto. We gave up on the river cruise and ducked into a tiny cafe where the owner taught Leo to say 'obrigado'. Afternoon: port cellar tour, Mum's first taste of white port... Best moment: the bookshop queue that was worth it.",
+    "tips": [
+      "Ask everyone in the family to record a 30-second note too; the different views make the journal much richer."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every evening at 9pm during a trip"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to record a voice note"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Turn the transcript into a journal entry"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Add the entry to the trip journal document"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Ask the right questions for accessible travel",
+    "d": "Get a checklist of questions to send hotels, airlines and attractions so access needs are met before you arrive.",
+    "cat": "Travel",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Before booking a trip with access needs",
+    "steps": [
+      {
+        "h": "Describe the needs",
+        "b": "Note the access needs for your trip in practical terms, such as using a wheelchair, limited walking, sight loss or needing quiet spaces. Share only what's needed."
+      },
+      {
+        "h": "Get tailored questions",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm planning a trip to [destination] for [who]. Access needs: [practical description, e.g. uses a manual wheelchair, can manage 2 steps with help]. Create: 1) questions to ask the hotel (room, bathroom, lifts, entrance, parking); 2) what to arrange with the airline and airport (assistance booking, mobility equipment); 3) questions for attractions; 4) a short, friendly email template I can send to each. Flag anything that should be confirmed in writing."
+      },
+      {
+        "h": "Send and save the replies",
+        "b": "Email the questions to each place and save their written replies in one folder, so you can show them on arrival if needed."
+      }
+    ],
+    "example": "Hotel: Is there step-free access from the street to reception? Door width of the accessible room? Roll-in shower or bath? Height of the bed? Airline: book assistance at least 48 hours before (check airline site), can the wheelchair go in the hold free of charge? Get this in writing.",
+    "tips": [
+      "Ask for photos of the accessible room and bathroom: descriptions like 'accessible' vary a lot."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User describes access needs and destination"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create tailored access questions for each provider"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft an enquiry email for each hotel or venue"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Agree a group trip everyone's happy with",
+    "d": "Collect everyone's budget, dates and wishes with a quick form, then get a fair summary and three trip options to vote on.",
+    "cat": "Travel",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "At the start of planning a group trip",
+    "steps": [
+      {
+        "h": "Make a short form",
+        "b": "Create a Google Forms or Microsoft Forms survey asking for available dates, maximum budget, must-haves, deal-breakers and preferred trip style. Responses go into a sheet automatically."
+      },
+      {
+        "h": "Share it in the group",
+        "b": "Post the form link in the group WhatsApp chat with a deadline for answers."
+      },
+      {
+        "h": "Summarise the answers",
+        "b": "Copy the responses from the sheet into your AI assistant with this prompt.",
+        "p": "Here are survey answers from [number] friends planning a trip together: [paste responses]. Summarise: dates that work for everyone or most people, the budget that works for the person with the lowest budget, shared must-haves, and any deal-breakers. Then suggest 3 trip options that fit, each with destination type, rough cost per person and why it suits the group. Don't name people when listing budgets."
+      },
+      {
+        "h": "Vote on it",
+        "b": "Post the three options in the chat and use WhatsApp's poll feature to decide."
+      }
+    ],
+    "example": "Dates: 12-15 June works for all 6. Budget to plan around: 350 per person. Shared must-haves: somewhere warm, a pool, good food. Deal-breaker: no early flights. Options: 1) Villa in the Algarve (approx 330pp). 2) Lake Garda apartment (approx 340pp). 3) UK coast cottage with hot tub (approx 210pp).",
+    "tips": [
+      "Keeping budgets anonymous makes it easier for people to be honest about what they can afford."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A friend submits the trip survey"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the response to the trip sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Once everyone has answered, summarise and suggest 3 options"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the options to the group chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a home workout plan that fits your week",
+    "d": "Get a simple four-week workout plan for your fitness level, space and kit, with sessions that fit the time you have.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "When you want to start or restart exercising",
+    "steps": [
+      {
+        "h": "Be honest about your starting point",
+        "b": "Note how active you are now, how many days and minutes you can spare, what space and equipment you have, and anything you want to avoid."
+      },
+      {
+        "h": "Ask for a plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Create a 4-week home workout plan for a [beginner/returning] exerciser. I can do [number] sessions a week of [minutes] minutes. Space: [e.g. living room]. Equipment: [none/dumbbells/resistance band]. Goal: [e.g. feel stronger, more energy]. Avoid: [e.g. jumping, floor work]. For each session give a warm-up, the exercises with sets, reps or time, an easier and harder version of each, and a cool-down. Build up gradually each week. Remind me to stop if anything hurts."
+      },
+      {
+        "h": "Keep it where you'll see it",
+        "b": "Save the plan in your notes app and put your session times in your calendar like appointments."
+      }
+    ],
+    "example": "Week 1, Session A (20 mins): 5-min march and arm circles. Sit-to-stand x10 (easier: higher chair), wall press-ups x8, glute bridge x10, 20-sec plank on knees. 2 rounds. Cool down: 3 stretches, 30 sec each. Week 2: add a third round.",
+    "tips": [
+      "If you have a health condition, are pregnant or haven't exercised in a long time, check with your GP or a qualified professional before starting."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User enters fitness level, time and equipment"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a 4-week progressive home workout plan"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add workout sessions to the user's calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Go from walking to running 5k in your calendar",
+    "d": "Get a gentle run-walk plan towards your first 5k, with every session added to your calendar so you just turn up.",
+    "cat": "Health & Fitness",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "When you're ready to start running",
+    "steps": [
+      {
+        "h": "Pick your days",
+        "b": "Choose three days a week with at least one rest day between runs, and a realistic time of day."
+      },
+      {
+        "h": "Ask for a run-walk plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'd like to build up to running 5k without stopping. Right now I can [e.g. walk briskly for 30 minutes / run for 1 minute]. I can run on [days] at [time] for about [minutes]. Create a [9]-week run-walk plan with 3 sessions a week. For each session: warm-up walk, run and walk intervals, cool-down, and one tip. Build up gently, include a repeat week if I need it, and list signs I should rest instead."
+      },
+      {
+        "h": "Add every session to your calendar",
+        "b": "Create calendar events for each session in Google Calendar or Outlook Calendar, with the intervals in the event description so you can read them on your phone."
+      },
+      {
+        "h": "Log how it felt",
+        "b": "After each run, add a word to the event notes, like 'easy' or 'tough'. If a week feels too hard, repeat it."
+      }
+    ],
+    "example": "Week 1, Run 1 (Mon 7am): 5-min brisk walk. Then run 60 sec, walk 90 sec x 8. 5-min cool-down walk. Tip: run slowly enough to talk. Week 4, Run 2: run 5 mins, walk 2 mins x 3... Rest if: sharp pain, dizziness, or you're unwell.",
+    "tips": [
+      "Check with your GP before starting if you have a heart, lung or joint condition."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User chooses running days and start date"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a 9-week run-walk plan"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add each session with its intervals to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make the most of a short GP appointment",
+    "d": "Turn your notes into a clear one-page summary of what's going on and the questions you want to ask your doctor.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "The day before a doctor's appointment",
+    "steps": [
+      {
+        "h": "Jot down what you've noticed",
+        "b": "Write in your own words what's been happening, when it started, what makes it better or worse and what you've tried. Leave out your name and date of birth."
+      },
+      {
+        "h": "Organise it into a summary",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Help me prepare for a [length, e.g. 10-minute] GP appointment. Here are my notes: [notes]. Don't diagnose or suggest treatments. Organise my notes into: 1) a 3-sentence summary I can read out at the start; 2) a timeline of when things started and changed; 3) current medicines and supplements I mentioned; 4) the 3 most important questions to ask, plus 3 optional ones. Keep it to one page in plain English."
+      },
+      {
+        "h": "Take it with you",
+        "b": "Save it in your notes app or print it, and add the doctor's answers to the same note during or after the appointment."
+      }
+    ],
+    "example": "Summary: For 3 weeks I've had headaches most afternoons, worse on screen days. Paracetamol helps a little. Sleep has been poor. Timeline: started 14 Oct... Questions: 1) What could be causing this? 2) Is there anything I should track? 3) When should I come back?",
+    "tips": [
+      "Use AI only to organise your notes. Your GP or another qualified professional is the right person to diagnose and advise.",
+      "Be careful sharing health details with AI tools; leave out names, dates of birth and NHS or insurance numbers."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "The day before a doctor's appointment"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to write down symptoms and questions"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Organise notes into a summary and question list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Never miss a dose with simple medication reminders",
+    "d": "Set up reminders on your phone for each medicine, using exactly what your pharmacist or the label says.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "Reminders app",
+      "AI assistant"
+    ],
+    "when": "When you start a new medicine",
+    "steps": [
+      {
+        "h": "Read the label and leaflet",
+        "b": "Write down each medicine's name, when to take it and any instructions like 'with food', exactly as the label or your pharmacist says."
+      },
+      {
+        "h": "Turn it into a daily timetable",
+        "b": "Paste your list into your AI assistant with this prompt. It's only for organising times, not for changing anything.",
+        "p": "Turn these medicine instructions into a simple daily timetable. Use only what I've written and don't change or add doses: [paste names, times and instructions exactly from the labels]. I wake at [time], eat meals at [times] and go to bed at [time]. Output a table with time, medicine, and instructions (e.g. with food). List anything that's unclear for me to ask my pharmacist about."
+      },
+      {
+        "h": "Set recurring reminders",
+        "b": "Create a daily repeating reminder in your phone's reminders or clock app for each time slot. iPhone users can also use the Medications section of the Health app."
+      },
+      {
+        "h": "Ask your pharmacist",
+        "b": "Take the 'unclear' list to your pharmacist and update the reminders if they suggest changes."
+      }
+    ],
+    "example": "08:00 - Medicine A, 1 tablet, with breakfast. 13:00 - Medicine B, after lunch. 22:00 - Medicine A, 1 tablet. Ask pharmacist: can Medicine B be taken at the same time as my vitamin D?",
+    "tips": [
+      "Never change a dose because of an AI answer; always check with your pharmacist, GP or prescriber.",
+      "Avoid sharing your full medication list in AI tools unless you're comfortable with it; you can use 'Medicine A' and 'Medicine B' instead."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "At each scheduled medicine time"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user which medicine to take and how"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build habits that stick with a weekly check-in",
+    "d": "Track a few daily habits in a simple sheet and get a friendly weekly review with one small thing to try next week.",
+    "cat": "Health & Fitness",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "Daily ticks, weekly review on Sundays",
+    "steps": [
+      {
+        "h": "Pick two or three habits",
+        "b": "Choose small habits you can tick yes or no, like '10-minute walk', 'water with every meal' or 'phone out of bedroom'."
+      },
+      {
+        "h": "Make a tracking sheet",
+        "b": "Create a Google Sheets or Excel file with a column for the date, one for each habit and one for a short note. Add a daily phone reminder to fill it in."
+      },
+      {
+        "h": "Review the week",
+        "b": "Every Sunday, copy the last seven rows into your AI assistant with this prompt.",
+        "p": "Here's my habit tracker for the last week: [paste rows]. My habits are [habits] and my reason for them is [why they matter to me]. Give me: 1) a short, encouraging summary of what went well; 2) any pattern you notice, for example which days were harder; 3) one small, specific change to try next week; 4) whether to keep, shrink or swap any habit. Keep it under 150 words and don't lecture."
+      },
+      {
+        "h": "Adjust and carry on",
+        "b": "Make the one change it suggests and keep going. Small, steady wins matter more than perfect weeks."
+      }
+    ],
+    "example": "Good week: you walked 6 of 7 days, and phone-out-of-bedroom stuck 5 nights. Pattern: Wednesdays slipped both times, probably the late shift. Try: a 10-minute walk at lunch on Wednesdays instead. Keep all three habits.",
+    "tips": [
+      "Start smaller than you think you need to; two tiny habits you keep beat five you drop."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 6pm"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Review the week's habit rows and spot patterns"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the weekly review and one change to try"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Wind down for better sleep with a sleep diary",
+    "d": "Keep a two-week sleep diary and get a calm bedtime routine built around what you find, ready to share with your GP.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "When you've been sleeping badly",
+    "steps": [
+      {
+        "h": "Keep a simple diary",
+        "b": "For two weeks, note in your notes app each morning: bedtime, rough time you fell asleep, wake-ups, wake time, caffeine and screens in the evening, and how rested you feel out of 5."
+      },
+      {
+        "h": "Look for patterns",
+        "b": "Paste the diary into your AI assistant with this prompt.",
+        "p": "Here is my 2-week sleep diary: [paste diary]. Don't diagnose anything. Please: 1) summarise my average bedtime, wake time and how rested I felt; 2) point out patterns, like late caffeine or screens on bad nights; 3) suggest a simple 30-minute wind-down routine and 3 small changes based on general sleep hygiene advice; 4) give me a tidy summary I could show my GP."
+      },
+      {
+        "h": "Try the routine for two weeks",
+        "b": "Set a phone reminder for the start of your wind-down, and keep the diary going to see if things change."
+      }
+    ],
+    "example": "Average: in bed 23:40, asleep around 00:20, up 06:45, rested 2.4/5. Pattern: worst nights followed coffee after 3pm or phone in bed. Wind-down from 22:45: dim lights, phone charging in the kitchen, warm shower, 15 mins reading.",
+    "tips": [
+      "If poor sleep goes on for weeks, or you snore heavily or feel very sleepy in the day, talk to your GP."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every morning at 7:30am for 2 weeks"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Prompt the user to log last night's sleep"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "After 14 days, summarise patterns and suggest a routine"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prep a week of healthy lunches in an hour",
+    "d": "Get a simple meal prep plan with balanced lunches, a shopping list and storage tips for the working week.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Sunday, before the working week",
+    "steps": [
+      {
+        "h": "Note your preferences",
+        "b": "Write down what you like, what you avoid, whether you can reheat at work and how long you want to spend prepping."
+      },
+      {
+        "h": "Ask for a prep plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Plan 5 healthy, filling work lunches I can prep in about [60] minutes on Sunday. I [can/can't] reheat at work. I like [foods] and avoid [foods or allergies]. Aim for plenty of vegetables, some protein and wholegrains in each. Give me: 1) two or three base recipes I can mix and match; 2) one shopping list by aisle; 3) the prep order step by step; 4) how to store each lunch and which to eat first."
+      },
+      {
+        "h": "Save the plan",
+        "b": "Keep the plan and list in your notes app, and note which lunches you enjoyed for next time."
+      }
+    ],
+    "example": "Base 1: chickpea, roasted veg & quinoa bowl. Base 2: chicken, brown rice & greens with a peanut-free satay sauce. Prep: 0:00 oven on, veg in; 0:10 grains on... Eat first: chicken bowls Mon-Tue, chickpea bowls Wed-Fri. Keep dressings separate.",
+    "tips": [
+      "For specific nutrition needs, such as diabetes or a medical diet, ask your GP or a registered dietitian rather than relying on AI."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Saturdays at 11am"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Plan 5 prep-ahead lunches and a prep order"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add the ingredients to the shopping list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Understand a hospital letter in plain English",
+    "d": "Get a plain-English explanation of medical words in a letter or leaflet, plus questions to ask your care team.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When a letter or leaflet is hard to follow",
+    "steps": [
+      {
+        "h": "Remove personal details",
+        "b": "Before sharing anything, cover or delete your name, address, date of birth, hospital and NHS or insurance numbers."
+      },
+      {
+        "h": "Ask for a plain-English version",
+        "b": "Paste the text, or a photo with details covered, into your AI assistant with this prompt.",
+        "p": "Please explain this [hospital letter/leaflet] in plain English for someone without medical training: [paste text]. Explain each medical word or abbreviation simply, list any practical things it asks me to do (appointments, preparation, dates), and give me 5 questions I could ask my doctor or nurse. Don't interpret test results or tell me what they mean for my health, and say clearly if something should be checked with my care team."
+      },
+      {
+        "h": "Check with your care team",
+        "b": "Take your questions to your GP, consultant, nurse or pharmacist. They know your full history and can explain what it means for you."
+      }
+    ],
+    "example": "'Bilateral' means both sides. 'Ultrasound' is a scan using sound waves, it's painless. What to do: drink 1 litre of water an hour before your scan on 4 Dec, don't empty your bladder. Questions: How long will results take? Who will tell me the results?",
+    "tips": [
+      "AI explanations can be wrong or miss context, so always check what matters with your care team.",
+      "Health information is sensitive: share only what you need and check the AI tool's privacy settings."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User pastes a letter with personal details removed"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Explain terms in plain English and list actions and questions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep your family's health details in one safe place",
+    "d": "Create one private record of allergies, vaccinations, medicines and appointments for everyone you care for.",
+    "cat": "Health & Fitness",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Docs",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, update after appointments",
+    "steps": [
+      {
+        "h": "Create a private document",
+        "b": "Make a Google Docs or Word file stored in your own account, not a shared folder, and turn on two-step verification for that account."
+      },
+      {
+        "h": "Get a simple template",
+        "b": "Ask your AI assistant for a structure, then fill in the real details yourself in the document, not in the chat.",
+        "p": "Create a blank template for a family health record I'll fill in myself. For each person include sections for: allergies and reactions, current medicines (name, dose, who prescribed), vaccinations with dates, ongoing conditions, past operations, GP and dentist contact, upcoming appointments, and notes from recent appointments. Add a short 'emergency summary' box at the top of each person's section. Use headings and tables, with placeholder text only."
+      },
+      {
+        "h": "Fill it in from official records",
+        "b": "Copy details from red books, vaccination records, prescription labels and your GP surgery's app or patient portal."
+      },
+      {
+        "h": "Link appointments",
+        "b": "Add appointments to Google Calendar or Outlook Calendar and put the appointment notes in the record afterwards."
+      }
+    ],
+    "example": "Emergency summary - Leo (7): Allergic to penicillin (rash). Inhaler: blue, as needed. GP: Riverside Surgery. Vaccinations: preschool booster 03/2023. Upcoming: asthma review 12 Jan. Last notes: nurse said to bring the inhaler to every review.",
+    "tips": [
+      "Keep real health details in your own private document, not in AI chats, and be careful who you share it with.",
+      "Ask your GP surgery or pharmacist if anything in the record is unclear."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "After a family member's health appointment"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the user to add notes from the appointment"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Open the family health record at that person's section"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Beat desk stiffness with short movement breaks",
+    "d": "Get a set of two-minute stretches you can do at your desk, with gentle reminders through the working day.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Reminders app"
+    ],
+    "when": "During long days at a desk",
+    "steps": [
+      {
+        "h": "Ask for a stretch routine",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I sit at a desk for about [hours] a day and feel stiff in my [neck/shoulders/back/hips]. Create 4 different 2-minute movement breaks I can do at my desk or next to it, in work clothes, without getting sweaty. For each: 3-4 moves with simple instructions, how long to hold or repeat, and an easier option. Tell me to stop any move that causes pain."
+      },
+      {
+        "h": "Set reminders",
+        "b": "Create repeating reminders every 60 to 90 minutes during work hours on your phone or computer, each named after one of the routines."
+      },
+      {
+        "h": "Pair it with a habit",
+        "b": "Link a break to something you already do, like after every video call or each time you refill your water."
+      }
+    ],
+    "example": "Break 1 - Neck & shoulders: shoulder rolls x10 back, x10 forward. Slow chin tucks x8. Ear-to-shoulder hold 15 sec each side. Doorway chest stretch 20 sec. Easier: do it all seated.",
+    "tips": [
+      "If pain persists or you have numbness or tingling, see your GP or a physiotherapist."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every 90 minutes between 9am and 5pm on weekdays"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send the next 2-minute movement break"
+        }
+      ]
+    }
+  },
+  {
+    "t": "See your workout progress with a weekly review",
+    "d": "Log workouts with a quick form, keep them in a sheet and get an automatic weekly progress summary by email.",
+    "cat": "Health & Fitness",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Log after each workout, review weekly",
+    "steps": [
+      {
+        "h": "Make a workout log form",
+        "b": "Create a Google Forms form with questions for date, workout type, duration, main exercises and weights or distance, effort out of 10 and a note. Link it to a Google Sheet."
+      },
+      {
+        "h": "Put the form on your home screen",
+        "b": "Open the form link on your phone and add it to your home screen, so logging takes under a minute after each session."
+      },
+      {
+        "h": "Set up a weekly review",
+        "b": "If your AI assistant offers scheduled tasks or can read your Google Drive (some plans include this), schedule a weekly task with this prompt. Otherwise, set a Sunday reminder and paste the last week's rows yourself.",
+        "p": "Review my workout log for the last 7 days: [paste rows or point to the sheet]. Compare with the previous 4 weeks. Give me: total sessions and minutes, any lifts or distances that improved, how my effort scores are trending, whether I'm doing too much or too little based on my goal of [goal], and one suggestion for next week. Use a short table and 3 bullet points. Don't give medical advice."
+      },
+      {
+        "h": "Email it to yourself",
+        "b": "Have the summary sent to your email, or copy it into an email draft to yourself, so you have a record of each week."
+      }
+    ],
+    "example": "Week 45: 4 sessions, 185 mins (up 20). Squat 5x5 at 52.5kg (+2.5kg). 5k run 31:10 (down from 32:05). Effort average 7.5 - a little high for 4 days. Next week: make Thursday an easy walk or rest day.",
+    "tips": [
+      "Keep the sheet private; even workout data can be personal.",
+      "If you have pain or a health condition, talk to a GP or qualified trainer before increasing load."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "User submits the workout log form"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the workout to the log sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "On Sundays, summarise the week against the last 4 weeks"
+        },
+        {
+          "type": "email.send",
+          "detail": "Email the weekly progress summary to the user"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check in with yourself through a short weekly journal",
+    "d": "Use a few gentle questions each week to notice your mood, what helped and what drained you, with a calm summary.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Once a week, at a quiet moment",
+    "steps": [
+      {
+        "h": "Get your check-in questions",
+        "b": "Paste this prompt into your AI assistant to get a set of questions you'll reuse each week.",
+        "p": "Give me 6 gentle weekly reflection questions for a personal journal. Cover: mood this week from 1 to 10, what gave me energy, what drained me, one thing I'm proud of, how I looked after myself, and one small thing I'd like to do differently next week. Keep the wording warm and simple. After I answer, summarise my answers kindly in 3 sentences and suggest one small, realistic self-care action. Don't give medical or therapy advice."
+      },
+      {
+        "h": "Answer in your notes app",
+        "b": "Copy the questions into a weekly note and write your answers there, adding the date."
+      },
+      {
+        "h": "Notice patterns over time",
+        "b": "Every month or so, read back through your notes, or paste them into the assistant and ask what's changed."
+      }
+    ],
+    "example": "Week of 3 Nov - Mood: 6/10. Energy: Saturday walk with Jo, early night Tuesday. Drained: late emails. Proud: said no to an extra shift. Next week: no emails after 8pm. Summary: a steady week, with rest making a clear difference.",
+    "tips": [
+      "If you're struggling, feel low most days or think about harming yourself, talk to your GP or contact a local crisis line or emergency services straight away.",
+      "Your journal is private: keep it in a note only you can open."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Sundays at 8pm"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Send the weekly check-in questions"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Kindly summarise the answers and suggest one small action"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make sense of your fitness tracker's weekly numbers",
+    "d": "Turn your watch or phone's weekly steps, sleep and activity stats into a short, plain-English summary and one goal.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Once a week",
+    "steps": [
+      {
+        "h": "Grab your weekly summary",
+        "b": "Open your fitness or health app's weekly view and take screenshots of steps, active minutes and sleep, or note the numbers down."
+      },
+      {
+        "h": "Ask for a plain-English summary",
+        "b": "Attach the screenshots to your AI assistant with this prompt.",
+        "p": "Here are my weekly fitness tracker stats: [attach screenshots or paste numbers]. My goal is [e.g. move more, sleep better]. In plain English: 1) summarise the week in 3 sentences; 2) compare with general guidance for adults, such as around 150 minutes of moderate activity a week; 3) point out my best and hardest days; 4) suggest one small, specific goal for next week. Don't make health judgements from the data."
+      },
+      {
+        "h": "Set next week's goal",
+        "b": "Put the goal in your reminders app, for example 'Walk to the shop on Tuesday and Thursday'."
+      }
+    ],
+    "example": "This week: 41,200 steps (about 5,900 a day), 96 active minutes, average 6h 40m sleep. Best day: Saturday (11,800 steps). Hardest: Wednesday. You're about two-thirds of the way to 150 active minutes. Goal: a 20-minute walk on 3 weekdays.",
+    "tips": [
+      "Trackers are estimates; if your numbers worry you, such as heart rate alerts, talk to your GP rather than relying on AI."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 8am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise last week's activity and sleep stats"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add next week's goal to reminders"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Share caring for a parent with your siblings",
+    "d": "Keep one shared calendar and running note of a parent's appointments, medicines and who's doing what each week.",
+    "cat": "Health & Fitness",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Calendar",
+      "Google Docs",
+      "WhatsApp",
+      "AI assistant"
+    ],
+    "when": "Set up once, update weekly",
+    "steps": [
+      {
+        "h": "Agree it with your parent",
+        "b": "Talk to your parent first about what they're happy to share, and with whom. It's their information."
+      },
+      {
+        "h": "Create a shared calendar",
+        "b": "Make a new Google Calendar or Outlook Calendar just for their care, and share it with the family. Add appointments, prescription collection days and visits, with who is going."
+      },
+      {
+        "h": "Keep a running care note",
+        "b": "Create a shared Google Docs or Word file for updates after each appointment and visit, so everyone knows the latest."
+      },
+      {
+        "h": "Send a weekly update",
+        "b": "Each week, paste the latest notes (using first names only) into your AI assistant with this prompt and share the result in the family WhatsApp group.",
+        "p": "Here are this week's care notes for my parent: [paste notes, first names only]. Write a short, kind family update with: how they're doing, appointments and outcomes this week, anything that's changed, next week's calendar, and who's covering what. Then list any gaps where no one is down to help. Don't add any medical advice or interpretation."
+      }
+    ],
+    "example": "Mum's week: in good spirits, walked to the shop twice. Tuesday: GP review, blood pressure tablets unchanged. Next week: Thu 10:30 eye clinic (Raj driving), prescription pick-up Fri (Sarah). Gap: no one free for Sunday lunch visit yet.",
+    "tips": [
+      "Keep the calendar and notes shared only with close family, and check your parent is comfortable with what's written.",
+      "Questions about treatment should go to their GP or care team."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 6pm"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the week's care notes and next week's calendar"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the update to the family group chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Make healthier swaps in your weekly shop",
+    "d": "Share your usual shopping list and get realistic swaps and easy label-reading tips, without giving up favourites.",
+    "cat": "Health & Fitness",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "Before your next big shop",
+    "steps": [
+      {
+        "h": "Grab your usual list",
+        "b": "Copy your regular shopping list, or take photos of a recent receipt or your cupboard."
+      },
+      {
+        "h": "Ask for realistic swaps",
+        "b": "Paste the list into your AI assistant with this prompt.",
+        "p": "Here's my usual weekly shop: [paste list]. Suggest up to [8] healthier swaps that are realistic and similar in price, such as higher-fibre, less sugar or less salt options, but keep [favourites I won't give up]. Put them in a table: current item, swap, why it helps, and roughly what it does to cost. Then give me 3 simple tips for reading front-of-pack food labels."
+      },
+      {
+        "h": "Try a few at a time",
+        "b": "Add two or three swaps to this week's list and see what the household likes before changing more."
+      }
+    ],
+    "example": "White sliced bread - wholemeal sliced: more fibre, similar price. Sugary cereal - plain wheat biscuits with banana: less sugar, cheaper. Flavoured yoghurt - plain yoghurt with berries. Label tip: traffic-light labels with more greens are generally a healthier choice.",
+    "tips": [
+      "If you have a medical condition or special diet, check changes with your GP or a registered dietitian."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User shares their shopping list"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest realistic healthier swaps"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add chosen swaps to the shopping list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Stay on top of repeat prescriptions and check-ups",
+    "d": "Gather health admin emails in one label, track repeat prescriptions in a sheet and get reminders before you run out.",
+    "cat": "Health & Fitness",
+    "lvl": "Advanced",
+    "mins": 40,
+    "tools": [
+      "Gmail",
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Set up once, runs every month",
+    "steps": [
+      {
+        "h": "Label health admin emails",
+        "b": "In Gmail's settings, under Filters, create filters for emails from your GP surgery, pharmacy, dentist and optician that apply a 'Health admin' label. Outlook users can do this with rules."
+      },
+      {
+        "h": "Make a prescription tracker",
+        "b": "Create a Google Sheets or Excel file with columns: Medicine (or a nickname), Quantity supplied, Date collected, Days it lasts, Reorder by, Notes."
+      },
+      {
+        "h": "Work out reorder dates",
+        "b": "Paste the rows into your AI assistant with this prompt and copy the dates back into the sheet. You can also use a simple formula: date collected plus days it lasts, minus 7.",
+        "p": "Here are my repeat prescriptions: [paste rows using nicknames]. For each, work out the date I'll run out and a 'reorder by' date [7] days before, allowing for weekends. Then list my upcoming routine check-ups from these notes: [e.g. dentist every 6 months, last visit 3 May; eye test every 2 years, last March 2025]. Output one table sorted by date. Don't comment on the medicines themselves."
+      },
+      {
+        "h": "Add calendar reminders",
+        "b": "Create a Google Calendar or Outlook Calendar event for each reorder date and check-up, set to repeat where it makes sense."
+      },
+      {
+        "h": "Review monthly",
+        "b": "Once a month, check the 'Health admin' label for anything new and update the sheet."
+      }
+    ],
+    "example": "Inhaler (blue): collected 1 Nov, lasts 30 days, reorder by 24 Nov. Tablets (morning): collected 5 Nov, 56 days, reorder by 23 Dec. Dentist check-up due 3 Nov - overdue, book now. Eye test due March 2027.",
+    "tips": [
+      "Use nicknames for medicines in AI tools if you'd rather not share them, and keep the sheet private.",
+      "Follow your GP or pharmacist's advice on how early to reorder; some surgeries need several working days."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email arrives in the 'Health admin' label"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull any appointment, collection or reminder dates"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update the prescription and check-up tracker"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add reorder and appointment reminders"
+        }
+      ]
+    }
+  }
+]
