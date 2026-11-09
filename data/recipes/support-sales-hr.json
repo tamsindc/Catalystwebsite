@@ -1,0 +1,2852 @@
+[
+  {
+    "t": "Reply calmly to an angry customer in minutes",
+    "d": "Paste in a heated complaint and get a warm, firm reply that acknowledges the problem, explains what happens next and keeps the customer.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Whenever a complaint makes your heart race",
+    "steps": [
+      {
+        "h": "Copy the complaint, minus personal details",
+        "b": "Copy the customer's message and replace their name, order number and address with placeholders like [Customer] before you paste it anywhere."
+      },
+      {
+        "h": "Note the facts on your side",
+        "b": "Jot down in a line or two what actually happened and what you can offer, such as a refund, replacement or call back."
+      },
+      {
+        "h": "Ask your AI assistant for a draft",
+        "b": "Open ChatGPT, Claude or Gemini and paste this prompt with the complaint and your notes.",
+        "p": "You are helping a small business reply to an upset customer. Here is their message: [paste complaint]. Here are the facts from our side: [what happened]. What we can offer: [refund / replacement / discount / call back]. Write a reply under 150 words that: 1) opens by acknowledging how they feel without grovelling, 2) takes responsibility for anything we got wrong, 3) explains clearly what we will do and by when, 4) ends with one easy next step for them. Tone: warm, calm, human, British English. Do not promise anything not listed in our offer. Then give me a shorter 2-sentence version for text or WhatsApp."
+      },
+      {
+        "h": "Read it as the customer would",
+        "b": "Check every promise is something you can keep, add their name back in, and send it from your usual inbox."
+      }
+    ],
+    "example": "Hi [Customer], I'm really sorry your order arrived damaged, just before the weekend. That's not the standard we aim for. I've sent a replacement today by tracked delivery, so it should be with you by Thursday. If you'd prefer a full refund instead, just reply 'refund' and I'll sort it straight away.",
+    "tips": [
+      "If you are still annoyed, wait ten minutes before sending, even with a good draft.",
+      "Ask for two versions, one more formal and one more casual, and pick what fits your brand."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email arrives with words like complaint, refund or disappointed"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Rate how upset the customer is and what they are asking for"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a calm reply using the business's agreed offers"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the reply as a draft for the owner to check"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a ready-to-use FAQ from your old emails",
+    "d": "Turn the questions customers keep asking into a tidy FAQ document with clear answers you can paste into emails, your website or chats.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Google Docs"
+    ],
+    "when": "Once, then refresh every few months",
+    "steps": [
+      {
+        "h": "Gather 20 to 30 typical questions",
+        "b": "Search your inbox for words like 'how do I', 'when will' and 'can I' and copy the questions into one document. Remove names, emails and order numbers as you go."
+      },
+      {
+        "h": "Add your current answers",
+        "b": "Under each question, add a rough note of what you usually say, even if it's messy. Include prices, delivery times and policies as they are today."
+      },
+      {
+        "h": "Ask your AI assistant to organise it",
+        "b": "Paste your notes into ChatGPT, Claude or Gemini with this prompt.",
+        "p": "Here is a list of questions my customers ask and my rough answers: [paste]. My business: [one line about what you sell or do]. Turn this into a customer FAQ. 1) Merge duplicate questions. 2) Group them under 4 to 7 headings (for example Orders, Delivery, Payments, Returns). 3) Write each answer in plain British English, under 60 words, friendly and specific. 4) Keep all facts exactly as I gave them and mark anything unclear with [CHECK]. 5) At the end, list 5 questions customers probably ask that are missing from my list."
+      },
+      {
+        "h": "Check and save it",
+        "b": "Fix every [CHECK] item, then save the FAQ in Google Docs where your whole team can find it. Pin a link in your bookmarks."
+      }
+    ],
+    "example": "Delivery\nHow long does delivery take? Most orders arrive in 2 to 4 working days. You'll get a tracking link by email as soon as it ships.\nReturns\nCan I return a sale item? Yes, within 14 days, as long as it's unused. [CHECK: do personalised items count?]",
+    "tips": [
+      "Date the document and update it whenever a price or policy changes, so nobody gives out old answers.",
+      "The 'missing questions' list is great material for your website's help page."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every three months"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the owner to gather new customer questions"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Merge new questions into the FAQ and flag anything out of date"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the refreshed FAQ as a new dated version"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get an AI helper that drafts replies from your policies",
+    "d": "Set up a private AI workspace that knows your FAQ and policies, so every reply draft uses your real prices, rules and tone.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Every time you answer a customer question",
+    "steps": [
+      {
+        "h": "Prepare your reference documents",
+        "b": "Collect your FAQ, returns policy, delivery info and price list into one or two documents. Make sure none of them contain customer details."
+      },
+      {
+        "h": "Create a workspace in your AI assistant",
+        "b": "Use a Project in ChatGPT or Claude, or a Gem in Gemini, depending on what your plan includes. Upload your documents as its files or knowledge."
+      },
+      {
+        "h": "Give it standing instructions",
+        "b": "Paste this into the workspace's instructions box so it behaves the same way every time.",
+        "p": "You help me reply to customers of [business name], which [what you do]. Always answer using only the uploaded documents. If the answer isn't in them, say 'I don't know from your documents' and suggest what I should check. Write in British English, warm and short (under 120 words), using the customer's first name if I give it. Never invent prices, dates or policies. After each draft, list in one line any facts you used and which document they came from."
+      },
+      {
+        "h": "Use it for each new question",
+        "b": "Paste the customer's question with personal details removed and ask for a reply. Check the facts line before you copy the draft into your email or chat."
+      },
+      {
+        "h": "Keep its knowledge current",
+        "b": "When a policy or price changes, replace the old file in the workspace straight away."
+      }
+    ],
+    "example": "Hi Sam, yes, you can swap the size for free within 30 days. Just pop it back in the original bag with the returns slip, and we'll send the new size as soon as it arrives. Facts used: free exchanges within 30 days (Returns policy, section 2).",
+    "tips": [
+      "Check your workplace AI policy before uploading business documents.",
+      "Keep the AI as your drafting helper, not a bot talking to customers directly, until you've tested it for a few weeks."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A new customer question arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a reply using only the business's uploaded policies"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the draft and the facts used for a person to approve"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Set up friendly WhatsApp Business auto-replies",
+    "d": "Write a welcome message, an out-of-hours away message and a set of quick replies so WhatsApp customers always get a helpful first response.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "WhatsApp"
+    ],
+    "when": "Once, then update when your hours or offers change",
+    "steps": [
+      {
+        "h": "List what people message you about",
+        "b": "Scroll through recent WhatsApp chats and note the 5 to 8 questions that come up most, such as opening hours, prices, booking and delivery."
+      },
+      {
+        "h": "Ask your AI assistant to write the messages",
+        "b": "Paste this prompt into ChatGPT, Claude or Gemini.",
+        "p": "I run [business type] and use WhatsApp Business. My opening hours: [hours]. Common questions: [list]. Write: 1) a greeting message for first-time chatters (under 40 words), 2) an away message for outside hours that says when I'll reply and where to find urgent info (under 40 words), 3) a quick reply for each common question (under 50 words each), with a short shortcut word for each, like /hours or /prices. Tone: friendly, local, British English. Use [brackets] where I need to add details."
+      },
+      {
+        "h": "Add them in WhatsApp Business",
+        "b": "In the WhatsApp Business app, open Business tools and set up the Greeting message, Away message and Quick replies. Paste each message and its shortcut."
+      },
+      {
+        "h": "Test it from another phone",
+        "b": "Ask a friend to message you, then try typing / in a chat to check your quick replies appear."
+      }
+    ],
+    "example": "Away message: Thanks for your message! We're closed right now but will reply by 10am tomorrow. Opening times and prices are on our catalogue. /booking: You can book a slot here [link]. Pick any time that suits and you'll get a confirmation straight away.",
+    "tips": [
+      "These features are in the free WhatsApp Business app, not regular WhatsApp, so switch if you're using your personal account for work.",
+      "Keep the away message honest about reply times; a promise you keep beats a fast one you miss."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Owner updates hours or offers"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Rewrite greeting, away and quick reply messages with the new details"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the owner to paste them into WhatsApp Business"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Sort your support inbox into labels automatically",
+    "d": "Gmail filters that file incoming customer emails into Refunds, Delivery, Bugs and Other, so you can deal with the urgent ones first.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Runs every time an email arrives",
+    "steps": [
+      {
+        "h": "Decide your categories",
+        "b": "Pick 4 to 6 labels that match the work, for example Refunds, Delivery, Technical, Sales and Other. Create them in Gmail from the left sidebar."
+      },
+      {
+        "h": "Get keyword lists from AI",
+        "b": "Paste a handful of real subject lines (no names or addresses) and this prompt into your AI assistant.",
+        "p": "I want Gmail filters that sort customer emails into these labels: [list labels]. Here are example subject lines and first sentences from each type: [paste examples]. For each label, give me a list of 8 to 12 words or short phrases to put in a Gmail filter's 'Has the words' box, joined with OR, in a format I can paste straight in. Avoid words so common they'd catch everything. Then list any emails from my examples that might be caught by two filters, and suggest which should win."
+      },
+      {
+        "h": "Create a filter for each label",
+        "b": "In Gmail, click the search options icon in the search bar, paste one keyword list into 'Has the words', then choose Create filter and tick Apply the label. Repeat for each category."
+      },
+      {
+        "h": "Check it for a week",
+        "b": "Look at what lands in each label daily. Move anything misfiled and add its words to the right filter in Gmail's settings, under Filters."
+      }
+    ],
+    "example": "Refunds: refund OR \"money back\" OR chargeback OR \"return my\" OR cancel OR overcharged\nDelivery: tracking OR courier OR \"not arrived\" OR \"where is my\" OR delayed OR dispatch",
+    "tips": [
+      "Don't tick 'Skip the inbox' at first; keep everything visible until you trust the filters.",
+      "Outlook users can do the same with Rules, found in Outlook's settings under Mail."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "Any new email to the support address"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Decide whether it is a refund, delivery, technical, sales or other request"
+        },
+        {
+          "type": "email.label",
+          "detail": "Apply the matching label"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the owner if it looks urgent"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Solve customer problems from their photos and screenshots",
+    "d": "Upload a customer's photo or screenshot and get a plain-English read of what's wrong plus a step-by-step reply to help them fix it.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When a customer sends a picture instead of an explanation",
+    "steps": [
+      {
+        "h": "Check the image for private details",
+        "b": "Crop out or blur names, addresses, card numbers and faces before uploading. Most phones have a markup or crop tool in the photo editor."
+      },
+      {
+        "h": "Upload it with some context",
+        "b": "Attach the image in ChatGPT, Claude or Gemini and paste this prompt.",
+        "p": "A customer sent this image with the message: [paste their message]. Our product/service: [what it is]. 1) Describe what you can see that's relevant to the problem. 2) Give the 2 or 3 most likely causes, most likely first. 3) Write a friendly reply with numbered steps they can follow to fix it, under 120 words, British English. 4) Tell me what to ask them if the steps don't work. If you can't tell from the image, say so rather than guessing."
+      },
+      {
+        "h": "Sense-check against what you know",
+        "b": "You know your product best, so remove any step that doesn't apply before sending the reply."
+      }
+    ],
+    "example": "What I can see: the error 'Payment declined: address mismatch' on the checkout page. Likely cause: billing postcode differs from the card's. Reply: Hi Jo, thanks for the screenshot! 1) Check the billing postcode matches your card statement. 2) Try again. If it still fails, reply and we'll send a payment link.",
+    "tips": [
+      "Screenshots of error messages work best; ask customers for one when they say 'it won't work'.",
+      "Save good replies into your FAQ so you don't need AI next time."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A customer message arrives with an image attached"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read the error or problem shown in the image"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft step-by-step fix instructions"
+        },
+        {
+          "type": "notify",
+          "detail": "Show the draft for approval before replying"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Save ten perfect replies to your most common questions",
+    "d": "A set of polished Gmail templates you can drop into any email in two clicks, written once with AI and reused for months.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Set up once, use every day",
+    "steps": [
+      {
+        "h": "Turn on templates in Gmail",
+        "b": "In Gmail's settings, look in the Advanced tab for Templates and switch them on, then save changes."
+      },
+      {
+        "h": "List your top ten questions",
+        "b": "Write down the ten things you answer most often, plus the key facts for each."
+      },
+      {
+        "h": "Write them all in one go",
+        "b": "Paste your list into your AI assistant with this prompt.",
+        "p": "Write 10 email reply templates for [business name], a [type of business]. For each, give: a short template name, a subject line, and a body under 100 words. Questions and facts: [paste list]. Style: warm, clear, British English, sign off as [your name]. Start each with 'Hi [Name],' and use [square brackets] for anything I'll fill in each time, such as order numbers or dates. End each with one clear next step."
+      },
+      {
+        "h": "Save each as a template",
+        "b": "Open a new email, paste one reply, then use the three-dot menu at the bottom of the compose window and choose Templates, then Save draft as template. Name it to match."
+      },
+      {
+        "h": "Use and tweak them",
+        "b": "When replying, insert a template from the same menu, fill in the brackets and add one personal line at the top."
+      }
+    ],
+    "example": "Template: Delivery delay\nHi [Name],\nThanks for checking in. Your order [number] is with the courier and running about [X] days behind. Here's your tracking link: [link]. If it hasn't arrived by [date], reply to this email and I'll send a replacement.\nBest, Priya",
+    "tips": [
+      "Always add one line that's specific to the customer so it never feels canned.",
+      "In Outlook, use My Templates or Quick Parts for the same thing."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A customer asks a common question"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Match the question to one of the saved templates"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Create a reply from the template with blanks filled where known"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Spot the problems your customers complain about most",
+    "d": "A simple complaints log in a spreadsheet plus a monthly AI review that shows your top issues, trends and the fixes worth making first.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Log as you go, review on the first Monday of each month",
+    "steps": [
+      {
+        "h": "Create a complaints log",
+        "b": "Make a sheet with columns: Date, Channel, Category, What went wrong, What we did, Resolved (Yes/No). Add a dropdown for Category using Data validation in the Data menu."
+      },
+      {
+        "h": "Log every complaint briefly",
+        "b": "Add one row per complaint in a sentence. Leave out names, emails and order numbers so the sheet stays safe to share."
+      },
+      {
+        "h": "Set a monthly reminder",
+        "b": "Create a recurring Google Calendar event on the first Monday of each month called 'Complaints review'."
+      },
+      {
+        "h": "Ask AI to find the patterns",
+        "b": "Copy the last month's rows and paste them into your AI assistant with this prompt.",
+        "p": "Here is my customer complaints log for [month]: [paste rows]. Columns: Date, Channel, Category, What went wrong, What we did, Resolved. Please: 1) give a table of complaint types with counts, most common first, 2) say what changed compared to last month: [paste last month's top 3 or 'first month'], 3) pick the 3 problems where one fix would prevent the most complaints, and suggest a practical, low-cost fix for each, 4) flag any complaint left unresolved for more than 7 days. Keep it under 300 words."
+      },
+      {
+        "h": "Pick one fix",
+        "b": "Choose one change to make this month and note it at the top of the sheet so you can see if complaints drop."
+      }
+    ],
+    "example": "Top issues in March: Late delivery (11), Wrong size sent (6), Website checkout error (4). Change: late delivery up from 5. Best fix: add a dispatch-date note on product pages during busy weeks. Unresolved over 7 days: 2 (rows 14, 22).",
+    "tips": [
+      "Excel works just as well; use a drop-down list for Category so the counts stay tidy.",
+      "Share the one-paragraph summary with your team; it's often the push needed to fix a long-running issue."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of each month at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Count and rank complaint types from the log"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest the three most valuable fixes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the monthly complaints review"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the summary to the owner"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Reply to every online review in your own voice",
+    "d": "Thoughtful, personal responses to good and bad Google reviews in minutes, so potential customers see you care.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Business Profile"
+    ],
+    "when": "Once a week, or when a new review arrives",
+    "steps": [
+      {
+        "h": "Collect new reviews",
+        "b": "Open your Google Business Profile (search your business name on Google while signed in) and copy any reviews you haven't answered yet."
+      },
+      {
+        "h": "Ask AI for tailored replies",
+        "b": "Paste the reviews into your AI assistant with this prompt.",
+        "p": "I own [business name], a [type of business] in [town]. Write a public reply to each review below. Reviews: [paste, one per line with star rating]. Rules: under 70 words each; mention one specific thing the reviewer said; thank them by first name only if they used one; for 1 to 3 stars, apologise for their experience without arguing, mention one thing we're doing about it ([what you're changing]), and invite them to contact [email or phone] to put it right; never reveal any private details about the customer; British English; vary the wording so replies don't all sound the same."
+      },
+      {
+        "h": "Post after a quick check",
+        "b": "Read each reply aloud, make sure nothing confirms private details like what treatment or service someone had, then post it on the review."
+      }
+    ],
+    "example": "5 stars: Thanks so much, Leah! We're thrilled the cinnamon buns made your Saturday. See you next time. 2 stars: We're sorry the wait was so long on Sunday. We've added a second person on the till at weekends. Please email hello@[cafe].co.uk so we can make it up to you.",
+    "tips": [
+      "Reply to bad reviews within a couple of days; a calm public reply often matters more to readers than the review itself.",
+      "For health, legal or financial services, never confirm someone was a client in a public reply."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Friday at 3pm"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Collect new unanswered reviews"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a personal reply for each review"
+        },
+        {
+          "type": "notify",
+          "detail": "Send drafts to the owner to approve and post"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Tell customers clearly when something goes wrong",
+    "d": "A calm, honest message to all affected customers about a delay, outage or mistake, with versions for email, social media and your website.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Mailchimp"
+    ],
+    "when": "When a problem affects many customers at once",
+    "steps": [
+      {
+        "h": "Write down the facts",
+        "b": "Note what happened, who is affected, what you're doing about it, and when you'll next update people. Stick to what you know for sure."
+      },
+      {
+        "h": "Get all versions at once",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Something has gone wrong at [business name]. Facts: [what happened]. Who is affected: [customers]. What we're doing: [actions]. When customers will hear from us next: [time]. Anything we're offering: [refund / credit / nothing yet]. Write: 1) a customer email (subject line plus under 150 words), 2) a social media post under 280 characters, 3) a two-sentence banner for our website. Be honest and specific, apologise once, do not speculate about causes we haven't confirmed, and avoid jargon. British English."
+      },
+      {
+        "h": "Send it and keep your promise",
+        "b": "Send the email through Mailchimp or your usual email tool, post the update, and set a reminder for the time you said you'd update people next."
+      }
+    ],
+    "example": "Subject: Your order is running a few days late\nHi there, our courier had a warehouse fault on Monday, so orders placed between 3 and 5 May will arrive 2 to 3 days later than planned. We're really sorry. Every affected order now has free delivery refunded, and we'll email you a fresh tracking link by Friday.",
+    "tips": [
+      "Send a short follow-up when it's fixed; customers remember that more than the problem.",
+      "If the issue involves people's personal data, speak to a professional adviser before you send anything, as there may be legal steps to follow."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Owner reports an incident"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write email, social post and website banner versions"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Prepare the customer email for review"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for the promised follow-up update"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn support requests into an organised to-do list",
+    "d": "A simple online help form that drops every request into a spreadsheet with a status column, plus email alerts when a new one arrives.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Runs every time someone submits the form",
+    "steps": [
+      {
+        "h": "Design the form with AI",
+        "b": "Ask your AI assistant to suggest the questions so you get what you need first time.",
+        "p": "I'm making a customer support request form for [business type]. Suggest 5 to 7 questions that would let me solve most problems without emailing back. For each: the exact question wording, the best answer type (short answer, paragraph, dropdown, multiple choice, file upload) and dropdown options where relevant. Include a question on urgency. Keep it quick to fill in on a phone, and only ask for personal details I truly need."
+      },
+      {
+        "h": "Build it in Google Forms",
+        "b": "Create a new form, add the questions, and add one line at the top saying how you'll use their details and how fast you reply."
+      },
+      {
+        "h": "Link it to a sheet and turn on alerts",
+        "b": "In the form's Responses tab, link it to a new Google Sheet. In the same tab's menu, turn on email notifications for new responses."
+      },
+      {
+        "h": "Add tracking columns",
+        "b": "In the sheet, add columns for Status (New, In progress, Done) and Owner, using a dropdown. Use Format, then Conditional formatting, to colour urgent requests red."
+      },
+      {
+        "h": "Share the link",
+        "b": "Put the form link in your email signature, website contact page and WhatsApp away message."
+      }
+    ],
+    "example": "Row 23: 14/05 10:12 | Order issue | Urgency: High | 'Parcel says delivered but not here' | Status: New | Owner: Tom. Row 24: 14/05 11:40 | Product question | Low | 'Is the large bag waterproof?' | Status: Done | Owner: Ana.",
+    "tips": [
+      "Microsoft Forms and Excel can do the same if your business uses Microsoft 365.",
+      "Only share the sheet with people who need it, because it holds customers' contact details."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A customer submits the support form"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the request as a new row with status New"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Set urgency and category"
+        },
+        {
+          "type": "notify",
+          "detail": "Email the team about urgent requests"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run a simple ticket board from your support inbox",
+    "d": "Customer emails turn into cards on a Trello board automatically, get a checklist and due date, and move across columns as you work on them.",
+    "cat": "Customer Support",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Gmail",
+      "Trello",
+      "AI assistant"
+    ],
+    "when": "Runs whenever a support email arrives",
+    "steps": [
+      {
+        "h": "Set up the board",
+        "b": "Create a Trello board with lists: New, Waiting on customer, In progress, Done. In the board's menu, find the Email-to-board settings and copy the board's email address, choosing the New list."
+      },
+      {
+        "h": "Forward support emails to the board",
+        "b": "In Gmail's settings, add the Trello address under Forwarding. The confirmation code will appear as a card on your board. Then create a filter for your support emails and choose Forward to that address."
+      },
+      {
+        "h": "Add automation rules in Trello",
+        "b": "Open the board's Automation menu and add rules, for example: when a card is added to New, set it due in 1 day and add your checklist; when a card moves to Done, mark it complete."
+      },
+      {
+        "h": "Write the checklist with AI",
+        "b": "Ask your AI assistant for a consistent handling checklist to use in your rule.",
+        "p": "Write a 5 to 7 step checklist for handling a customer support request at [business type], from first reading to closing. Each step under 8 words, starting with a verb. Include checking the FAQ, replying within [24 hours], confirming the fix with the customer and logging the issue type. Then write a one-line rule for when a ticket should move to 'Waiting on customer'."
+      },
+      {
+        "h": "Work from the board daily",
+        "b": "Each morning, drag cards along as you deal with them and reply from Gmail as normal. Check the forward filter hasn't missed any emails for the first week."
+      }
+    ],
+    "example": "Card: 'Re: Broken handle on order 4471' | Due tomorrow | Checklist: Read and tag issue / Check FAQ / Reply within 24h / Arrange replacement / Confirm it's fixed / Log issue type. Moved to Waiting on customer: 2 cards. Done this week: 17.",
+    "tips": [
+      "Trello's free plan limits automation runs, so check usage if you get lots of emails.",
+      "Cards hold copies of customer emails, so keep the board private to your team."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A support email matches the forwarding filter"
+      },
+      "actions": [
+        {
+          "type": "list.add",
+          "detail": "Create a card in the New list"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Tag the card by issue type and urgency"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Suggest a first reply to attach to the card"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Answer customers in their own language",
+    "d": "Understand a message in any language and send back a natural, accurate reply in that language, with an English copy for your records.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 3,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When a message arrives in a language you don't speak",
+    "steps": [
+      {
+        "h": "Paste in the message",
+        "b": "Copy the customer's message into ChatGPT, Claude or Gemini, removing any account numbers or addresses."
+      },
+      {
+        "h": "Ask for a translation and reply",
+        "b": "Use this prompt so you understand the message and get a reply in one go.",
+        "p": "Here is a customer message: [paste]. 1) Tell me what language it's in and translate it into English. 2) Point out anything that might be lost in translation, like tone or slang. 3) Here is my reply in English: [your reply]. Translate it into the customer's language so it sounds natural and polite for a small business, not word-for-word. 4) Translate your version back into English so I can check the meaning is unchanged."
+      },
+      {
+        "h": "Check the back-translation",
+        "b": "Read the English back-translation. If the meaning has shifted, ask the AI to fix that sentence before you send."
+      }
+    ],
+    "example": "Language: Polish. Translation: 'Hello, I ordered two jars but received one. Can you send the second one?' Tone: polite, a little disappointed. Your reply in Polish: 'Dzień dobry, bardzo przepraszamy za pomyłkę...' Back-translation: 'Hello, we're very sorry for the mistake. The second jar ships today.'",
+    "tips": [
+      "For refunds, contracts or anything legal, mention that the English version is the official one.",
+      "Add a line saying you used translation, so customers forgive the odd awkward phrase."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A customer message in another language arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Translate the message into English"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Translate the approved reply into the customer's language"
+        },
+        {
+          "type": "notify",
+          "detail": "Show both versions to the person replying"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Start each day with a summary of overnight messages",
+    "d": "A five-minute morning routine that summarises new customer emails, ranks what's urgent and suggests who should handle each one.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Gmail",
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Every working morning",
+    "steps": [
+      {
+        "h": "Group your support emails",
+        "b": "Make sure customer emails get a label such as Support, using a Gmail filter on your support address or common words."
+      },
+      {
+        "h": "Set a daily calendar slot",
+        "b": "Add a recurring 15-minute Google Calendar event each working morning called 'Overnight support check'."
+      },
+      {
+        "h": "Use built-in AI if you have it",
+        "b": "If your plan includes Gemini in Gmail, open the Support label, open the Gemini side panel and ask it to summarise unread emails in this label. Otherwise copy the emails into your AI assistant."
+      },
+      {
+        "h": "Ask for a ranked list",
+        "b": "Use this prompt with whichever AI you're using.",
+        "p": "Here are customer emails received since [time yesterday]: [paste, or refer to the unread emails in my Support label]. Give me a table with: sender first name, one-line summary, category, urgency (High/Medium/Low) and suggested owner from this team: [names and what they handle]. Put High urgency first. Mark High if the customer is waiting on a delivery today, has been charged wrongly, or is threatening to leave. Then list any that could be answered with a standard reply."
+      },
+      {
+        "h": "Hand out the work",
+        "b": "Share the table in your team chat or just work down it yourself, starting at the top."
+      }
+    ],
+    "example": "High: Ellie - charged twice for order - Billing - Owner: Sam. High: Dev - wedding cake order for Saturday, no confirmation - Orders - Owner: Mia. Medium: Kofi - asks about gluten-free options - Product - Owner: Mia. Standard reply possible: 3 delivery-time questions.",
+    "tips": [
+      "Copilot in Outlook can do the same summary if your plan includes it.",
+      "Check your workplace AI policy before pasting customer emails into an AI assistant."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every weekday at 8:30am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise unread Support emails from overnight"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Rank by urgency and suggest an owner"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post the ranked list to the team chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Hand over a customer case without losing anything",
+    "d": "Turn a long, messy email or chat thread into a short handover note so a colleague can pick up the case without rereading everything.",
+    "cat": "Customer Support",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Slack"
+    ],
+    "when": "Before holidays, shift changes or passing a case on",
+    "steps": [
+      {
+        "h": "Copy the whole thread",
+        "b": "Open the email or chat thread and copy it all, oldest message first if possible. Replace bank details and passwords with [removed]."
+      },
+      {
+        "h": "Ask for a handover note",
+        "b": "Paste the thread into your AI assistant with this prompt.",
+        "p": "Turn this customer support thread into a handover note for a colleague. Thread: [paste]. Use these headings: Customer and issue (2 lines), What's been tried, What we've promised and by when, Customer's mood and preferences, Open questions, Next step (one clear action). Keep it under 200 words. Quote any exact promise word-for-word. If dates or amounts conflict in the thread, flag them."
+      },
+      {
+        "h": "Send it with a link",
+        "b": "Post the note in Slack, Teams or email to your colleague, along with a link to the original thread."
+      }
+    ],
+    "example": "Customer and issue: Amira, kitchen tap leaking after install on 2 June. Tried: washer replaced 9 June, still dripping. Promised: 'a plumber visit before Friday 16th'. Mood: patient but tired of chasing; prefers text. Open: is the tap under warranty? Next step: book plumber and text Amira a time today.",
+    "tips": [
+      "The 'promises' heading is the most valuable; broken promises are what turn a case into a complaint.",
+      "Keep handover notes in the same place each time, like a pinned Slack thread or shared doc."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Agent marks a case for handover"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the thread into a structured handover note"
+        },
+        {
+          "type": "message.send",
+          "detail": "Send the note to the colleague taking over"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a recorded walkthrough into a customer help guide",
+    "d": "Record yourself explaining a fix on Zoom, then turn the transcript into a clear step-by-step help article customers can follow alone.",
+    "cat": "Customer Support",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Zoom",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When you keep explaining the same thing over and over",
+    "steps": [
+      {
+        "h": "Record a short walkthrough",
+        "b": "Start a Zoom meeting on your own, share your screen and talk through the task as if a customer were watching. Turn on recording with an audio transcript if your plan includes it."
+      },
+      {
+        "h": "Get the transcript",
+        "b": "Download the transcript from your Zoom recordings once it's ready. On a free plan, use your phone's voice recorder app with transcription, or type rough notes as you go."
+      },
+      {
+        "h": "Turn it into a guide",
+        "b": "Paste the transcript into your AI assistant with this prompt.",
+        "p": "Here is a transcript of me explaining how to [task] for customers of [product/service]: [paste]. Turn it into a help article. Include: a clear title, a one-sentence 'what you'll need', numbered steps (one action each, under 25 words), a note where a screenshot would help written as [Screenshot: what it shows], a 'If it doesn't work' section with 3 common fixes, and a short summary at the top. Remove filler words and anything I said that was a mistake. British English, friendly, no jargon."
+      },
+      {
+        "h": "Add screenshots and publish",
+        "b": "Paste the guide into Google Docs, add the screenshots where marked, and share the link or copy it to your website's help page."
+      }
+    ],
+    "example": "How to reset your booking password\nYou'll need: the email you booked with.\n1. Go to the booking page and tap 'Log in'.\n2. Tap 'Forgotten password'. [Screenshot: login screen]\n3. Check your inbox for an email from us...\nIf it doesn't work: check spam, use the original email, or contact us.",
+    "tips": [
+      "Walk through the guide yourself on a phone before sharing; it shows any missed step fast.",
+      "Make sure no customer details are visible on screen while recording."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new recording transcript appears in the help-guides folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Turn the transcript into a step-by-step help article"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a draft guide document with screenshot markers"
+        },
+        {
+          "type": "notify",
+          "detail": "Let the owner know the draft is ready to check"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find out how customers felt after you helped them",
+    "d": "A two-question satisfaction survey sent after each solved case, low scores highlighted automatically, and a monthly AI summary of what people say.",
+    "cat": "Customer Support",
+    "lvl": "Advanced",
+    "mins": 40,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "After every solved case, with a monthly review",
+    "steps": [
+      {
+        "h": "Make a two-question form",
+        "b": "In Google Forms, ask 'How happy are you with the help you got?' on a 1 to 5 scale and 'What could we do better?' as a paragraph. Make the second question optional."
+      },
+      {
+        "h": "Link it to a sheet and highlight low scores",
+        "b": "Link responses to a Google Sheet. Use Format, then Conditional formatting, to turn rows red when the score is 2 or less, and turn on form email notifications so you hear about them straight away."
+      },
+      {
+        "h": "Add the link to a closing template",
+        "b": "Write a short 'glad we could help' Gmail template with the form link and use it whenever you close a case."
+      },
+      {
+        "h": "Review every month with AI",
+        "b": "Set a monthly calendar reminder, then paste that month's responses (no names) into your AI assistant with this prompt.",
+        "p": "Here are this month's customer satisfaction responses (score 1 to 5, comment): [paste]. 1) Give the average score and how many responses. 2) Group comments into themes with counts. 3) Quote the 3 most useful comments word-for-word. 4) Suggest 2 practical changes based on low scores. 5) Write a one-paragraph summary I can share with my team. Don't infer anything that isn't in the comments."
+      },
+      {
+        "h": "Close the loop on low scores",
+        "b": "Contact anyone who scored 1 or 2 within a couple of days, if they left contact details, to put things right."
+      }
+    ],
+    "example": "October: average 4.4 from 38 responses. Themes: quick replies (14), friendly staff (9), had to repeat information (6), slow refunds (4). Change ideas: add order number to form; confirm refund date in every refund email. Low scores to follow up: 3.",
+    "tips": [
+      "Ask for contact details only if they want a follow-up, and say so on the form.",
+      "Microsoft Forms and Excel can be used the same way, including email alerts for new responses."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A customer submits the satisfaction survey"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the score and comment to the results sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the owner immediately for scores of 2 or less"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Each month, summarise scores and themes into a short report"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Walk into every sales call fully prepared",
+    "d": "A one-page brief on a prospect's business, recent news, likely needs and smart questions to ask, ready in five minutes before the call.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "LinkedIn"
+    ],
+    "when": "Before every sales call",
+    "steps": [
+      {
+        "h": "Grab the basics",
+        "b": "Note the company's website, the person's job title and anything they told you when they booked. A quick look at their LinkedIn company page helps too."
+      },
+      {
+        "h": "Ask your AI assistant for a brief",
+        "b": "Use an assistant that can search the web, such as ChatGPT, Claude or Gemini with search turned on, and paste this prompt.",
+        "p": "I have a sales call with [name, job title] at [company], website [URL]. I sell [what you sell] to [type of customer]. Search the web and give me a one-page brief: 1) what the company does in 2 lines, 2) size and location if public, 3) any news from the last 6 months, 4) 3 problems they likely have that I could help with, and why you think so, 5) 5 open questions to ask on the call, 6) one thing to avoid saying. Include the source link for every fact and say clearly if you couldn't find something."
+      },
+      {
+        "h": "Check the facts",
+        "b": "Click two or three of the source links to confirm the key facts, especially news and numbers."
+      },
+      {
+        "h": "Keep it handy",
+        "b": "Paste the brief into your notes app or the calendar event so it's open when the call starts."
+      }
+    ],
+    "example": "Greenway Joinery: bespoke kitchens, about 25 staff, two showrooms in Leeds. News: opened a second showroom in March (source). Likely needs: more enquiries from new area; quicker quoting. Ask: 'How are leads from the new showroom tracking?' Avoid: assuming they sell online.",
+    "tips": [
+      "AI can mix up companies with similar names, so always check the website matches.",
+      "Only use information that's publicly available, and don't dig into anyone's personal life."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "One hour before a meeting tagged 'sales'"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Look up the prospect's company website and recent news"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a one-page brief with questions to ask"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the brief to the user before the call"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a cold email that people actually answer",
+    "d": "A short, personal first email to a potential client that leads with their problem, not your sales pitch, plus two subject lines to test.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Before contacting a new prospect",
+    "steps": [
+      {
+        "h": "Find one real reason to write",
+        "b": "Look for something specific about the prospect: a new branch, a job advert, a post they wrote, or a review. That's your opening line."
+      },
+      {
+        "h": "Ask for a draft",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write a cold email from me, [your name], [what you do], to [their job title] at [company]. Reason I'm writing: [the specific thing you noticed]. The problem I think they have: [problem]. Proof I can help: [one result for a similar client, no names]. Rules: under 110 words; first line about them, not me; one clear, low-effort ask such as a 15-minute call or 'shall I send an example?'; no buzzwords, no flattery, no fake urgency; British English; plain text. Give me 2 subject lines under 6 words each and one alternative opening line."
+      },
+      {
+        "h": "Make it sound like you",
+        "b": "Read it out loud and change anything you wouldn't say in person. Add a line letting them know how to say no thanks."
+      },
+      {
+        "h": "Send it from your own inbox",
+        "b": "Send it one at a time from Gmail or Outlook, not as a bulk blast, and note the date in your lead list."
+      }
+    ],
+    "example": "Subject: Your new Leeds showroom\nHi Jess, congrats on the Leeds opening. New showrooms often get lots of browsers but slow quote requests. I helped a Sheffield kitchen fitter double their booked consultations in three months with a simple follow-up routine. Would a 15-minute call next week be useful? No worries if not.",
+    "tips": [
+      "Rules on business emails differ by country; in the UK and EU you need a fair reason to contact someone and an easy way to opt out.",
+      "Send fewer, better emails; ten researched ones beat a hundred generic ones."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A new prospect is added to the lead list"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a personalised cold email from the prospect notes"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save it as a draft for the user to check and send"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Mark the prospect as 'Draft ready'"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a list of local businesses to approach",
+    "d": "A tidy spreadsheet of local businesses in your target area, gathered from Google Maps and cleaned up by AI, ready for careful outreach.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "Google Maps",
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "When you want new local clients",
+    "steps": [
+      {
+        "h": "Search Google Maps for your ideal customer",
+        "b": "Search for a business type in an area, such as 'dog groomers in Bristol'. Open each result and note the name, website, phone, rating and anything that shows they need you."
+      },
+      {
+        "h": "Paste your rough notes into a sheet",
+        "b": "Don't worry about tidiness; paste names, links and notes into a Google Sheet as you go. Aim for 20 to 40 businesses."
+      },
+      {
+        "h": "Ask AI to clean and sort it",
+        "b": "Copy the rough rows into your AI assistant with this prompt.",
+        "p": "Here are rough notes on local businesses I might sell to: [paste]. I offer [what you sell]. Turn this into a table with columns: Business name, Website, Phone, Google rating, Number of reviews, Fit score (1 to 5), Reason for score, Opening idea. Score higher if [signs they need you, e.g. no website, low review count, outdated photos]. Remove duplicates, keep my facts exactly as written, and put 'unknown' rather than guessing missing details. Sort by Fit score, highest first."
+      },
+      {
+        "h": "Paste the table back into your sheet",
+        "b": "Paste the AI's table into a new tab, then add columns for Contacted (date) and Outcome."
+      },
+      {
+        "h": "Contact the top ten first",
+        "b": "Start with the best-fit businesses, using their public business contact details and a personal message."
+      }
+    ],
+    "example": "1. Paws & Bubbles | pawsbubbles.co.uk | 0117 xxx | 4.8 (12 reviews) | Fit 5 | Great reviews but no online booking | Opening idea: 'Your reviews are brilliant; shall I show how online booking could fill your quiet Tuesdays?'",
+    "tips": [
+      "Collect it by hand rather than with scraping tools; it's slower but keeps you within Google's terms and gives you better notes.",
+      "Only store business contact details, and delete businesses that ask not to be contacted."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User chooses a business type and area"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Look up public business listings for the area"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Score each business for fit and note why"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the cleaned leads to the lead sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Know which leads to call first",
+    "d": "Score every lead in your spreadsheet against your own simple criteria, with a short reason, so you spend time on the people most likely to buy.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "Google Sheets",
+      "AI assistant"
+    ],
+    "when": "Weekly, or when new leads pile up",
+    "steps": [
+      {
+        "h": "Write down what a great lead looks like",
+        "b": "List 4 to 6 signs of a good fit, like budget size, location, how they found you and how soon they need help. Note one or two deal-breakers too."
+      },
+      {
+        "h": "Copy your unscored leads",
+        "b": "Copy the lead rows from your sheet, including any notes or form answers. Leave out personal phone numbers and emails, as the AI doesn't need them."
+      },
+      {
+        "h": "Ask AI to score them",
+        "b": "Paste the rows and your criteria into your AI assistant.",
+        "p": "Score these sales leads from 1 to 10 using my criteria. Good signs: [list]. Deal-breakers: [list]. Leads: [paste rows with an ID for each]. Return a table: Lead ID, Score, Hot/Warm/Cold, One-line reason, Suggested next step. Only use information in the rows; if something important is missing, lower the confidence and say what to ask. Put Hot leads first."
+      },
+      {
+        "h": "Add the scores to your sheet",
+        "b": "Paste the Score and Reason columns back next to each lead using the IDs. Sort by score and colour Hot leads with conditional formatting."
+      },
+      {
+        "h": "Use your judgement",
+        "b": "Treat scores as a starting point. If you know something the AI doesn't, change the score."
+      }
+    ],
+    "example": "L-104 | 9 | Hot | Needs a new website by March, budget £3k+, referred by a client | Call today. L-107 | 4 | Cold | Student project, no budget mentioned | Send helpful guide. L-110 | 6 | Warm | Good fit but no timeline | Ask when they want to start.",
+    "tips": [
+      "Look back after a month: did Hot leads really buy? Adjust your criteria if not.",
+      "If your plan includes Gemini in Google Sheets, you can ask it in the side panel instead of copying rows out."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A new lead is added to the sheet"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Score the lead against the user's criteria"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Write score, rating and reason into the row"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the user about Hot leads"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Follow up politely when prospects go quiet",
+    "d": "Three short, friendly follow-up emails, each adding something useful, scheduled to send on the right days from your own inbox.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "When someone hasn't replied for a week",
+    "steps": [
+      {
+        "h": "Note where you left things",
+        "b": "Copy your last message to them and note what they were interested in. Remove anything confidential."
+      },
+      {
+        "h": "Ask AI for a gentle sequence",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I sent this to a prospect and got no reply: [paste last email]. They were interested in [topic]. Write 3 follow-up emails for days 5, 12 and 21. Each under 70 words, in British English, warm and not pushy. Email 1: friendly nudge plus one useful tip. Email 2: share a short example or result relevant to them. Email 3: a polite 'shall I close your file?' that makes it easy to say not now. No guilt-tripping, no 'just checking in'. Reply in the same thread so give no new subject lines."
+      },
+      {
+        "h": "Schedule them",
+        "b": "In Gmail, reply in the same thread, paste the first follow-up, and use the arrow next to Send to choose Schedule send. Add calendar reminders for the next two, since you'll stop if they reply."
+      },
+      {
+        "h": "Stop when they reply",
+        "b": "If they reply at any point, cancel the remaining reminders and answer them personally."
+      }
+    ],
+    "example": "Day 5: Hi Ben, a quick thought on the menu reprint: printing seasonal specials on a separate card often saves reprinting the whole menu. Happy to show a sample. Day 21: I don't want to fill your inbox, so shall I close this for now? If timing's better in spring, just say and I'll check back then.",
+    "tips": [
+      "Outlook also has a schedule send option under the Send button's arrow.",
+      "The third email often gets the most replies, because it's easy to answer."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Daily check for prospects with no reply after 5 days"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write the next follow-up in the sequence"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Place it as a reply draft in the same thread"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to review and send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Reply to new enquiries before your competitors do",
+    "d": "Website or social enquiries land in a sheet, you get an instant alert, and a ready-made personal reply is waiting to send.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Every time someone fills in your enquiry form",
+    "steps": [
+      {
+        "h": "Make an enquiry form",
+        "b": "Create a Google Form asking for name, email, what they need, budget range, timing and how they found you. Add a line on how you'll use their details."
+      },
+      {
+        "h": "Send responses to a sheet and turn on alerts",
+        "b": "In the form's Responses tab, link it to a Google Sheet and switch on email notifications for new responses. On your phone, allow Gmail notifications so you see them fast."
+      },
+      {
+        "h": "Write a reply template with AI",
+        "b": "Ask your AI assistant for a first-reply template you can personalise quickly.",
+        "p": "Write a first reply to a new enquiry for [business], which offers [services]. Use [brackets] for their name, what they asked for and timing. It should: thank them, show I've read their request with one specific line, give one helpful piece of information about [price range / process], and offer two ways forward (a 15-minute call via [booking link] or a reply with more details). Under 120 words, British English, warm and professional. Also write a 40-word version for WhatsApp or text."
+      },
+      {
+        "h": "Save it as a Gmail template",
+        "b": "Turn on Templates in Gmail's settings under Advanced, then save the reply as a template so you can insert it in one click."
+      },
+      {
+        "h": "Aim to reply within the hour",
+        "b": "When an alert arrives, open the sheet, insert your template, fill in the brackets and send."
+      }
+    ],
+    "example": "Hi Hannah, thanks for getting in touch about a garden redesign for your back patio this spring. Most patio projects like yours start from £2,500, depending on materials. Easiest next step: book a free 15-minute call here [link], or reply with a couple of photos and I'll suggest some ideas.",
+    "tips": [
+      "Speed matters: people often go with whoever answers first.",
+      "Keep the sheet private, since it contains people's contact details."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A new enquiry form is submitted"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Log the enquiry with date and source"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Personalise the first-reply template"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Create the reply draft for the user"
+        },
+        {
+          "type": "notify",
+          "detail": "Send a push alert about the new enquiry"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn every sales call into clear next steps",
+    "d": "After each call, get a summary of what the prospect needs, their concerns, agreed actions and a ready-to-send follow-up email.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 10,
+    "tools": [
+      "Zoom",
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Straight after every sales call",
+    "steps": [
+      {
+        "h": "Ask before you record",
+        "b": "Tell the prospect at the start that you'd like to take notes with an AI tool and check they're happy. If not, take handwritten notes instead."
+      },
+      {
+        "h": "Get the notes or transcript",
+        "b": "If your plan includes Zoom AI Companion or Google Meet's 'Take notes for me', switch it on for the call. Otherwise, record a voice note of your key points right after the call."
+      },
+      {
+        "h": "Turn them into a summary and email",
+        "b": "Paste the transcript, AI notes or your voice note text into your AI assistant with this prompt.",
+        "p": "Here are notes from a sales call with [prospect role] at [company]: [paste]. Give me: 1) Their situation in 3 lines, 2) Needs and goals, 3) Concerns or objections, word-for-word where possible, 4) Budget and timing if mentioned, 5) Agreed next steps with who and when, 6) My honest read of how likely they are to buy and why. Then write a follow-up email under 150 words that thanks them, recaps what we agreed in bullet points and confirms the next step. British English."
+      },
+      {
+        "h": "Send and log it",
+        "b": "Send the follow-up the same day and paste the summary into your lead sheet or CRM notes."
+      }
+    ],
+    "example": "Needs: shopfront signage before July opening. Concern: 'last sign company was months late'. Budget: around £1,800. Next steps: I send 3 design ideas by Fri; they confirm sizes by Wed. Likelihood: high, firm deadline and budget. Email: 'Thanks for your time today, Raj. As agreed...'",
+    "tips": [
+      "Always check AI meeting notes for names and numbers before sending them to a client.",
+      "Store notes on prospects securely and delete them if the deal doesn't go ahead and you no longer need them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A sales call in the calendar ends"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise needs, concerns and agreed actions from the notes"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a follow-up email to the prospect"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Add the summary to the lead's row"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn call notes into a polished proposal",
+    "d": "A clear, client-focused proposal with scope, timeline, prices and next steps, built from your rough notes in about fifteen minutes.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "After a client asks 'can you send me something?'",
+    "steps": [
+      {
+        "h": "Collect your notes and prices",
+        "b": "Gather your notes about what the client wants, plus your prices, timescales and any terms you always include."
+      },
+      {
+        "h": "Ask AI to draft the proposal",
+        "b": "Paste everything into your AI assistant with this prompt.",
+        "p": "Write a proposal from [my business] to [client company] using these notes: [paste notes]. My prices and packages: [paste]. Structure: 1) Your goals (in the client's own words where possible), 2) What I'll do (bullet points), 3) What's not included, 4) Timeline with milestones, 5) Investment (a table with 2 or 3 options, recommended one marked), 6) Why me (2 short points), 7) Next steps to get started. Plain British English, confident but not salesy, under 600 words. Use only my prices; don't invent any numbers. Mark anything you're unsure of with [CHECK]."
+      },
+      {
+        "h": "Polish it in a document",
+        "b": "Paste it into Google Docs or Word, add your logo, check every figure and [CHECK] note, then export it as a PDF."
+      },
+      {
+        "h": "Send with a short personal note",
+        "b": "Email it with two lines recapping the main benefit and suggesting a time to talk it through."
+      }
+    ],
+    "example": "Investment\nOption A: Essentials - 5-page website, 3 weeks - £1,950\nOption B (recommended): Essentials plus online booking and 2 months of support - £2,600\nNot included: copywriting for blog posts, paid advertising.\nNext steps: sign below and pay a 30% deposit to book a May start.",
+    "tips": [
+      "Offering three options usually works better than a single price.",
+      "Have contract terms and payment conditions checked by a qualified professional once, then reuse them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User marks a lead as 'proposal needed'"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a proposal from call notes and price list"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the proposal document"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user to check prices and send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get confident answers to tricky sales objections",
+    "d": "Practise handling 'it's too expensive' and other common pushback with an AI role-play partner, and leave with a cheat sheet of honest answers.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Before an important pitch, or whenever you feel rusty",
+    "steps": [
+      {
+        "h": "List the objections you hear",
+        "b": "Write down the five things people say when they don't buy, such as price, timing, 'we already have someone' or 'I need to think about it'."
+      },
+      {
+        "h": "Get a cheat sheet",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I sell [product/service] to [type of customer] at around [price]. Common objections I hear: [list]. For each, give me: what the person might really mean, one question to understand it better, and a short, honest reply (under 50 words) in a natural, non-pushy British tone. Never suggest pressure tactics or misleading claims. Then put it all in a one-page table I can keep beside me."
+      },
+      {
+        "h": "Role-play a real conversation",
+        "b": "In the same chat, ask: 'Now play a sceptical [job title] at a [business type]. Push back with my objections one at a time and wait for my reply. After 5 exchanges, tell me what I did well and what to improve.' Type or use voice mode to answer."
+      },
+      {
+        "h": "Save your best lines",
+        "b": "Copy the cheat sheet and your best answers into your notes app for your next call."
+      }
+    ],
+    "example": "'It's too expensive.' Might mean: unsure of the value, or comparing to a cheaper quote. Ask: 'What are you comparing it with?' Reply: 'That's fair. The difference is that ours includes aftercare for a year, so there are no surprise call-out fees. Would it help if I broke down the cost?'",
+    "tips": [
+      "Voice mode in ChatGPT or Gemini makes the role-play feel much closer to a real call.",
+      "If you hear the same objection a lot, it may be telling you something about your offer, not your pitch."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User starts a practice session"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write an objection cheat sheet for the user's offer"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Role-play a sceptical buyer and give feedback"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the cheat sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find out why your sales page isn't converting",
+    "d": "An honest review of your landing page with the top problems, a rewritten headline and clear fixes, ranked by how much difference they'll make.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "When visits are coming in but enquiries aren't",
+    "steps": [
+      {
+        "h": "Capture the page",
+        "b": "Take full screenshots of your page on a computer and on your phone, or copy all of its text. Note who the page is for and what you want visitors to do."
+      },
+      {
+        "h": "Ask AI for a review",
+        "b": "Attach the screenshots or paste the text into your AI assistant with this prompt.",
+        "p": "Review my sales page as if you were a busy [ideal customer]. The goal is for visitors to [book a call / buy / sign up]. Here it is: [attach screenshots or paste text]. Give me: 1) what you understand I offer after 5 seconds, 2) the 5 biggest problems stopping people taking action, ranked by impact, each with a specific fix, 3) 3 alternative headlines that say the benefit clearly, 4) any missing trust signals (reviews, guarantees, prices, photos), 5) one thing that already works well. Be direct and specific. British English."
+      },
+      {
+        "h": "Make the top two changes",
+        "b": "Fix the two highest-impact issues first, then wait a couple of weeks to see if enquiries change before doing more."
+      }
+    ],
+    "example": "5-second read: 'Some kind of wellness service?' Top problem: headline 'Holistic solutions for you' doesn't say what you do. Fix: 'Sports massage in Cardiff for runners and cyclists'. Problem 2: booking button only at the bottom. Fix: add it under the headline. Works well: genuine client photos.",
+    "tips": [
+      "Ask a real customer the same 5-second question; if their answer matches the AI's, you know it's right.",
+      "Change one thing at a time so you can tell what made the difference."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "User submits a page link"
+      },
+      "actions": [
+        {
+          "type": "web.fetch",
+          "detail": "Read the page content"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "List ranked problems, fixes and new headlines"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the review as a checklist"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Start genuine conversations with prospects on LinkedIn",
+    "d": "Personal connection notes and a short message plan for your best prospects, tracked in a simple Notion list so nobody slips through.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "LinkedIn",
+      "AI assistant",
+      "Notion"
+    ],
+    "when": "A few times a week, 15 minutes at a time",
+    "steps": [
+      {
+        "h": "Make a simple tracker",
+        "b": "In Notion, create a database with columns: Name, Company, Profile link, Why them, Status (To connect, Connected, Talking, Not now) and Next step date."
+      },
+      {
+        "h": "Pick five people at a time",
+        "b": "Choose prospects who post or comment regularly. Note one thing from their recent posts or profile in the Why them column."
+      },
+      {
+        "h": "Write personal notes with AI",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "I help [type of customer] with [what you do]. For each person below, write: 1) a LinkedIn connection note under 250 characters that mentions the specific thing I noticed and has no sales pitch, 2) a first message to send a few days after they accept, under 60 words, that offers something useful (an idea, an article, a question about their work), and 3) a natural second message for a week later. People: [name, role, what I noticed]. British English, friendly, no flattery, no 'I'd love to pick your brain'."
+      },
+      {
+        "h": "Send them by hand",
+        "b": "Copy each note into LinkedIn yourself and update the Status in Notion. Don't use tools that automate LinkedIn, as LinkedIn's rules don't allow them."
+      },
+      {
+        "h": "Follow your next-step dates",
+        "b": "Open a Notion view filtered to today's next-step dates each time you sit down to do LinkedIn."
+      }
+    ],
+    "example": "Connection note: 'Hi Amara, your post on running a café with two kids under five really struck a chord. Would be good to connect.' Message 1 (after accepting): 'Thanks for connecting! You mentioned staffing rotas eat your Sundays; here's a free template one of my clients uses...'",
+    "tips": [
+      "Comment thoughtfully on their posts for a week before connecting; it makes the note feel natural.",
+      "Keep notes factual and work-related; your tracker should never hold anything you wouldn't be happy for them to see."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A prospect is added to the LinkedIn tracker"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a connection note and two follow-up messages"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Save the drafts and set the next-step date"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the user when a follow-up is due"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep track of every deal in a simple spreadsheet",
+    "d": "A ready-made sales tracker with stages, values, follow-up dates and red alerts for overdue leads, designed with AI in an afternoon.",
+    "cat": "Sales & Leads",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Google Calendar"
+    ],
+    "when": "Set up once, check every morning",
+    "steps": [
+      {
+        "h": "Ask AI to design your tracker",
+        "b": "Paste this prompt into your AI assistant to plan the sheet.",
+        "p": "Design a simple sales pipeline tracker in Google Sheets for a [type of business] with about [number] active leads. Give me: 1) the columns in order with a one-line purpose each (include Stage, Deal value, Last contact, Next step, Next step date, Source), 2) the dropdown options for Stage, 3) step-by-step instructions to add those dropdowns and to colour rows red when Next step date is before today, written for a beginner, 4) a summary tab layout showing total value per stage, with the exact formulas to use (for example SUMIF). Keep it to what a one-person business needs."
+      },
+      {
+        "h": "Build the sheet",
+        "b": "Follow the instructions in Google Sheets: add the columns, the Stage dropdown via Data validation, and the red overdue rule via Conditional formatting."
+      },
+      {
+        "h": "Add your current leads",
+        "b": "Enter every open conversation, even small ones, with a next step and a date."
+      },
+      {
+        "h": "Make checking it a habit",
+        "b": "Create a recurring 10-minute Google Calendar event each morning with the sheet's link in it, and work through anything red."
+      }
+    ],
+    "example": "Stages: New, Contacted, Call booked, Proposal sent, Won, Lost. Row: Bloom Florist | Proposal sent | £1,200 | Last contact 03/06 | Next: chase proposal | 10/06 (red, overdue). Summary: Proposal sent £6,400 across 5 deals; Won this month £2,100.",
+    "tips": [
+      "Write the next step as an action ('Send revised quote'), not a status ('Waiting').",
+      "Excel works the same way; ask the AI for Excel instructions instead."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every weekday at 8am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "List overdue next steps and deals by stage"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the user today's follow-up list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Create a free guide that brings in new leads",
+    "d": "A short, genuinely useful checklist or guide your ideal clients will swap their email for, written with AI and designed in Canva.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 60,
+    "tools": [
+      "AI assistant",
+      "Canva",
+      "Mailchimp"
+    ],
+    "when": "Once, then share it for months",
+    "steps": [
+      {
+        "h": "Choose a problem worth solving",
+        "b": "Pick one specific question your clients always ask before they buy, such as 'How do I prepare my garden for a landscaper?'"
+      },
+      {
+        "h": "Get topic ideas and an outline",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "I'm a [your job] helping [ideal client]. Suggest 5 ideas for a free one-to-three page guide or checklist they'd happily give their email for. For each: title, the problem it solves, and why it leads naturally to hiring me. Then, for the idea I choose ([pick one or 'the best one']), write the full content: a clear title, a one-line promise, 7 to 10 practical steps or checklist items with a sentence each, one short example, and a friendly closing line inviting them to [book a call / reply]. British English, no fluff."
+      },
+      {
+        "h": "Design it in Canva",
+        "b": "Pick a guide or checklist template in Canva, paste the content in, add your logo and colours, and download it as a PDF."
+      },
+      {
+        "h": "Set up the sign-up",
+        "b": "Create a sign-up form in Mailchimp (or your email tool) and send the guide in the welcome email. Make it clear people are joining your mailing list."
+      }
+    ],
+    "example": "Title: The 10-minute pre-survey checklist for your loft conversion. Promise: Save a second visit and get an accurate quote first time. Items: 1. Measure the highest point of the loft... 6. Photograph the water tank... Closing: Ready for your free survey? Book here.",
+    "tips": [
+      "Fact-check every tip yourself; your guide is your reputation.",
+      "Only send people what they signed up for, and keep the unsubscribe link in every email."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "Someone signs up for the free guide"
+      },
+      "actions": [
+        {
+          "type": "email.send",
+          "detail": "Send the welcome email with the guide attached"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the new subscriber to the lead list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn bookings into warm, well-prepared sales calls",
+    "d": "Prospects book through Calendly, answer a few smart questions, get reminders and a thank-you, while you get a ready brief before each call.",
+    "cat": "Sales & Leads",
+    "lvl": "Advanced",
+    "mins": 50,
+    "tools": [
+      "Calendly",
+      "Google Calendar",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Every time someone books a sales call",
+    "steps": [
+      {
+        "h": "Write booking questions that qualify",
+        "b": "Ask your AI assistant for questions to add to your Calendly event.",
+        "p": "I offer [service] to [ideal client] at around [price]. Write 4 short booking questions for a free 20-minute discovery call that help me prepare and understand fit, without putting people off. Include one about their main goal, one about timing, and one about budget phrased gently with ranges. Then write: a reminder email to send 24 hours before (under 80 words) and a thank-you email to send 1 hour after the call (under 100 words) with [booking link for next step] and [resource]. British English, warm."
+      },
+      {
+        "h": "Set up the Calendly event",
+        "b": "Connect Calendly to your Google Calendar, then add the questions to the event's booking form so answers show in the calendar invite."
+      },
+      {
+        "h": "Turn on reminders and follow-ups",
+        "b": "In Calendly's Workflows, if your plan includes them, add the reminder email before the event and the thank-you email after it. On a free plan, save them as Gmail templates and set yourself calendar reminders."
+      },
+      {
+        "h": "Prepare in two minutes",
+        "b": "Before each call, copy the booking answers from the calendar event into your AI assistant and ask for 3 tailored questions and the likely best package for them."
+      },
+      {
+        "h": "Review once a month",
+        "b": "Look at which booking answers led to sales and adjust the questions to screen better."
+      }
+    ],
+    "example": "Booking answers: Goal - 'more weekday bookings'; Timing - 'next 2 months'; Budget - '£500 to £1,000'. AI prep: Ask what days are quietest now; ask what they tried before; likely fit: Starter package (£750). Reminder sent 24h before; thank-you sent 1h after with proposal link.",
+    "tips": [
+      "Keep booking forms short: four questions is plenty or people drop off.",
+      "Tell people in the form that their answers help you prepare and are kept private."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A new Calendly booking is added to the calendar"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull goal, timing and budget from the booking answers"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Write a call brief with tailored questions"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send the reminder and thank-you emails at the set times"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the booking in the lead tracker"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Win back old leads with a gentle email series",
+    "d": "A short, automated email series that reconnects with past enquiries who never bought, offering something useful rather than pestering.",
+    "cat": "Sales & Leads",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Google Sheets",
+      "Mailchimp",
+      "AI assistant"
+    ],
+    "when": "Set up once, then add old leads every quarter",
+    "steps": [
+      {
+        "h": "Gather leads who said yes to emails",
+        "b": "From your sheet or inbox, list past enquiries from the last year or so who agreed to hear from you. Leave out anyone who asked not to be contacted."
+      },
+      {
+        "h": "Import and tag them in Mailchimp",
+        "b": "Import the list into Mailchimp as a CSV saved from Google Sheets, and give them a tag such as 'Old lead 2026'."
+      },
+      {
+        "h": "Write the series with AI",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write a 3-email re-engagement series for people who enquired about [service] in the last year but didn't buy. My business: [one line]. What's new since then: [new offer, prices, results]. Email 1 (day 0): friendly 'thought you might find this useful' with one genuine tip. Email 2 (day 7): a short client story with a result, no names. Email 3 (day 14): a simple invitation to [book a call / special offer until date], with an easy 'not interested' link. Each under 120 words with 2 subject line options. British English, warm, no pressure."
+      },
+      {
+        "h": "Build the automation",
+        "b": "In Mailchimp, create an automated journey (Customer Journeys, if your plan includes it) that starts when the tag is added, then sends the three emails with waits of 7 days between them. On a free plan, schedule them as three regular campaigns to that tag."
+      },
+      {
+        "h": "Handle replies personally",
+        "b": "Reply to anyone who responds yourself and move them into your sales tracker."
+      }
+    ],
+    "example": "Email 1 subject: A quick tip for your spring garden. 'Hi Laura, you asked about patio cleaning last year, so here's a trick: a stiff brush and warm soapy water clears most algae before you need a pressure washer...' Results after 3 weeks: 64 sent, 31 opened, 5 replies, 2 calls booked.",
+    "tips": [
+      "Only email people who agreed to hear from you; UK and EU rules on marketing emails are strict.",
+      "Remove anyone who doesn't open any of the three emails, to keep your list healthy."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First day of each quarter"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Find enquiries older than 3 months with no sale and marketing consent"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add them to the re-engagement list"
+        },
+        {
+          "type": "email.send",
+          "detail": "Send the 3-email series on days 0, 7 and 14"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the user when someone replies"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Ask happy clients for reviews and referrals",
+    "d": "A warm thank-you message that asks for a review and an introduction at the right moment, with ready versions for email and WhatsApp.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "WhatsApp"
+    ],
+    "when": "When a client says they're pleased with your work",
+    "steps": [
+      {
+        "h": "Pick the right moment",
+        "b": "Ask straight after a win: a finished project, a great result or a kind message from them."
+      },
+      {
+        "h": "Ask AI for the message",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write a thank-you message from me, [your name], to [client first name], whose [project] I just finished. Something specific they liked: [detail]. Ask, in a relaxed way, for: 1) a short Google review via this link [link], with 2 example prompts to make it easy (like 'what was it like working with me?'), and 2) whether they know one other [type of person/business] who might need help with [service]. Make it clear there's no pressure. Give an email version (under 120 words) and a WhatsApp version (under 50 words). British English, genuine, no sales language."
+      },
+      {
+        "h": "Send it personally",
+        "b": "Send from your own email or WhatsApp, and thank them again when they leave a review or make an introduction."
+      }
+    ],
+    "example": "WhatsApp: Hi Sophie, thanks again for being so lovely to work with; I'm so glad the new bathroom feels calmer. If you have a minute, a quick Google review would help me loads: [link]. And if you know anyone else planning a refit, I'd be grateful for an intro. No pressure at all!",
+    "tips": [
+      "Never offer payment or gifts in exchange for reviews; review sites ban it.",
+      "Keep a list of who referred whom and send a handwritten thank-you card."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A project is marked Complete in the tracker"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a personal thank-you with review and referral request"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the email for the user to send"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Set a reminder to thank them after they respond"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Decide quickly whether a tender is worth bidding for",
+    "d": "A short summary of a tender or request for proposal with deadlines, requirements, scoring and a clear bid or no-bid checklist.",
+    "cat": "Sales & Leads",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Drive"
+    ],
+    "when": "When a tender or big client brief lands in your inbox",
+    "steps": [
+      {
+        "h": "Collect the documents",
+        "b": "Save the tender documents, usually PDFs, into one Google Drive folder so nothing gets lost."
+      },
+      {
+        "h": "Upload and ask for a summary",
+        "b": "Upload the files to ChatGPT, Claude or Gemini (or connect your Drive if your plan allows) and use this prompt.",
+        "p": "Summarise this tender for a small business deciding whether to bid. Give: 1) what the buyer wants in 5 bullet points, 2) all deadlines, including clarification questions, as a table, 3) must-have requirements (insurance, certifications, turnover, experience), 4) how bids are scored, with weightings, 5) the budget or contract value if stated, 6) anything unusual or risky. Then score our fit from 1 to 10 against our profile: [your size, experience, certifications, capacity] with reasons. Quote page numbers for each key point. If something isn't in the documents, say 'not stated'."
+      },
+      {
+        "h": "Check the key facts in the original",
+        "b": "Open the pages the AI quoted for deadlines and must-haves and confirm them yourself."
+      },
+      {
+        "h": "Make the call",
+        "b": "If any must-have is missing or the deadline is too tight, pass and note why so you can spot better tenders next time."
+      }
+    ],
+    "example": "Buyer: council seeks a caterer for 12 community events. Deadline: 5pm 14 March (questions by 3 March). Must-haves: £5m public liability, food hygiene rating 4+. Scoring: quality 60%, price 40%. Value: about £18,000. Risk: 30-day payment terms. Fit: 7/10, meets all must-haves but tight staffing in June.",
+    "tips": [
+      "Check the tender's rules on confidentiality before uploading documents to an AI tool.",
+      "Insurance and legal requirements are worth confirming with your broker or adviser before you commit."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Tender documents are added to the Tenders folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out deadlines, requirements, scoring and value"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Score fit and write a bid or no-bid summary"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the tender deadlines to the calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a clear, welcoming job advert",
+    "d": "A job ad that explains the role honestly, uses inclusive language, lists only real must-haves and tells people exactly how to apply.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Whenever you need to hire",
+    "steps": [
+      {
+        "h": "Note the facts about the role",
+        "b": "Write down the job title, hours, pay range, location or remote options, main tasks, and the 3 to 5 skills someone truly needs on day one."
+      },
+      {
+        "h": "Ask AI to draft the advert",
+        "b": "Paste your notes into your AI assistant with this prompt.",
+        "p": "Write a job advert for a [job title] at [business], a [one-line description]. Facts: [paste notes]. Structure: a 2-line intro on why the role matters, What you'll do (5 bullets), What you'll need (only these must-haves: [list]), Nice to have (max 3), Pay and benefits, How to apply and the closing date. Use plain, inclusive British English: avoid gendered words, age-coded phrases like 'young and dynamic' or 'digital native', and unnecessary requirements like degrees unless essential. Add a line welcoming applicants from all backgrounds and offering adjustments for the application or interview. Keep it under 400 words."
+      },
+      {
+        "h": "Check for bias and accuracy",
+        "b": "Ask the AI: 'List any words or requirements in this ad that might put off women, older people, disabled people or people from other backgrounds, and suggest alternatives.' Then read it yourself, as AI can miss things."
+      },
+      {
+        "h": "Publish and save the final version",
+        "b": "Save the final ad in Google Docs so it's ready for next time, then post it on your chosen job boards and social channels."
+      }
+    ],
+    "example": "Café Team Member (part-time, 20 hours, £12.60 to £13.50/hour)\nWhat you'll do: make great coffee, keep the counter spotless, chat with regulars...\nWhat you'll need: friendly with customers, reliable on weekend shifts.\nNo barista experience needed; we'll train you. Tell us if you need any adjustments to apply.",
+    "tips": [
+      "Always include the pay range; it saves everyone time and gets more applications.",
+      "Check local employment law, such as minimum wage and right-to-work rules, before you post."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager starts a new vacancy"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft an inclusive job advert from the role notes"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Flag potentially biased words or unnecessary requirements"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the advert for the manager to review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Decide what good looks like before reading CVs",
+    "d": "A fair scoring sheet with clear criteria and what each score means, agreed before you see any applications, so every candidate is judged the same way.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Sheets"
+    ],
+    "when": "Before the closing date of every vacancy",
+    "steps": [
+      {
+        "h": "Pick 4 to 6 criteria from the job ad",
+        "b": "Use the must-haves from your advert, such as 'experience handling customer complaints'. Avoid vague ones like 'good culture fit'."
+      },
+      {
+        "h": "Ask AI to turn them into a rubric",
+        "b": "Paste your criteria into your AI assistant with this prompt.",
+        "p": "Create a scoring rubric for shortlisting candidates for [job title]. Criteria: [list]. For each criterion, describe what a score of 1 (no evidence), 2 (some evidence), 3 (clear evidence) and 4 (strong, repeated evidence) looks like, with a short example of the kind of evidence that counts. Make sure every criterion relates to the job itself, and point out any that could unfairly disadvantage people because of age, sex, disability, race, religion or other protected characteristics. Format as a table I can paste into a spreadsheet."
+      },
+      {
+        "h": "Build the scoring sheet",
+        "b": "Paste the rubric into a Google Sheet tab, and make a second tab with a row per candidate, a column per criterion, a total, and a notes column for evidence."
+      },
+      {
+        "h": "Agree it with anyone else involved",
+        "b": "If others are shortlisting with you, agree the rubric together and score separately before comparing."
+      }
+    ],
+    "example": "Criterion: Handling unhappy customers. 1 - no mention. 2 - mentions customer-facing work. 3 - describes resolving a complaint. 4 - several examples, including calming a tense situation and a result. Candidate C-03: 3 (evidence: 'resolved delivery complaints in a busy retail store').",
+    "tips": [
+      "Give candidates a code, like C-01, and score before looking at names, photos or ages where you can.",
+      "A person must make every shortlisting decision; the rubric is there to make human judgement more consistent."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager confirms the job's must-have criteria"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a 1 to 4 scoring rubric for each criterion"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Flag criteria that may be unfair or not job-related"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Set up the scoring sheet with rubric and candidate rows"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check applications against your criteria fairly",
+    "d": "AI pulls the relevant evidence from each anonymised CV into a table, so you can score every candidate against the same criteria yourself.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Google Drive",
+      "Google Sheets"
+    ],
+    "when": "After the closing date, before shortlisting",
+    "steps": [
+      {
+        "h": "Check your rules first",
+        "b": "Check your workplace policy and local law on using AI with candidate data. In the UK and EU, you should tell applicants if AI helps in the process, for example in your privacy notice or job ad."
+      },
+      {
+        "h": "Anonymise the applications",
+        "b": "Save CVs in a private Google Drive folder. Before using AI, give each one a code (C-01, C-02) and remove names, contact details, photos, dates of birth and addresses."
+      },
+      {
+        "h": "Ask AI to find evidence, not to rank",
+        "b": "Upload or paste a few anonymised CVs at a time with this prompt.",
+        "p": "I'm shortlisting for [job title]. Criteria: [paste criteria from your rubric]. For each anonymised application below, make a table with one row per criterion: Candidate code, Criterion, Evidence found (quote the exact words from the CV), and 'No evidence found' where relevant. Do not score, rank, or recommend candidates. Do not comment on gaps in employment, age, gender, nationality, schools or anything not in my criteria. Applications: [paste]."
+      },
+      {
+        "h": "Score them yourself",
+        "b": "Use the evidence table alongside the original CV to fill in your scoring sheet. Read each original, because AI can miss or misread things."
+      },
+      {
+        "h": "Check for bias and tidy up",
+        "b": "Before finalising, look at who you've shortlisted and ask whether anyone was marked down for something unrelated to the job. Delete the AI chats and copies once you're done, in line with your data retention policy."
+      }
+    ],
+    "example": "C-04 | Managing a busy rota | 'Created weekly rotas for a team of 12 across two sites' \nC-04 | Food hygiene | 'Level 2 Food Hygiene certificate (2024)'\nC-04 | Supervising staff | No evidence found\nC-05 | Managing a busy rota | 'Covered shift planning when manager was on leave'",
+    "tips": [
+      "Candidate data is personal data: use a business AI account with training on your data turned off, and only share what's needed.",
+      "Never let AI make or rank the decision; it can repeat hidden biases from its training."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "An anonymised application is added to the shortlisting folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Quote evidence from the application for each criterion"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the evidence rows to the scoring sheet"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the hiring manager to score and decide in person"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare fair, structured interview questions",
+    "d": "A set of the same questions for every candidate, linked to the job's criteria, with follow-up prompts and notes on what a strong answer includes.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before the first interview for a role",
+    "steps": [
+      {
+        "h": "Start from your criteria",
+        "b": "Use the same criteria as your job ad and scoring sheet, so interviews test the things that matter for the job."
+      },
+      {
+        "h": "Ask AI for the question set",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write a structured interview plan for a [job title] at a [type of business]. Criteria: [list]. For each criterion: 1 main question asking for a real example ('Tell me about a time...'), 2 follow-up prompts, and 3 bullet points describing what a strong answer includes. Add 1 practical question or short task suited to the role. Avoid any questions about age, family plans, health, religion, nationality or other personal topics that aren't related to the job, and flag any of my criteria that might lead there. Finish with a 2-minute welcome script and a closing script explaining next steps and timescales. Total interview length: [30/45] minutes."
+      },
+      {
+        "h": "Make an interview pack",
+        "b": "Paste it into Google Docs with space under each question for notes and a score, and use a fresh copy for each candidate."
+      },
+      {
+        "h": "Offer adjustments",
+        "b": "When you invite candidates, ask whether they need any adjustments, such as extra time, a quiet room or questions in advance."
+      }
+    ],
+    "example": "Criterion: Working under pressure\nQ: Tell me about a time several things needed doing at once. What did you do?\nFollow-ups: How did you decide what came first? What would you do differently?\nStrong answer: prioritises clearly, keeps others informed, reflects on what they learned.",
+    "tips": [
+      "Ask every candidate the same main questions in the same order; it's fairer and makes comparing much easier.",
+      "Write notes on what they said, not your impressions of them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Interviews are confirmed for a role"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write structured questions and strong-answer guides per criterion"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create an interview pack with scoring space"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Book interviews without endless email back-and-forth",
+    "d": "Candidates pick their own interview slot from your calendar and get a clear invitation with everything they need to know.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "Google Calendar",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Whenever you invite candidates to interview",
+    "steps": [
+      {
+        "h": "Create a booking page",
+        "b": "In Google Calendar, create an appointment schedule for interview slots, if your plan includes it, or use Calendly's free plan. Add a buffer between slots so you can write notes."
+      },
+      {
+        "h": "Write the invitation with AI",
+        "b": "Ask your AI assistant to write a friendly, complete invitation.",
+        "p": "Write an interview invitation email for [job title] at [business]. Include: congratulations on being shortlisted, the interview format ([video on Google Meet / in person at address]), length ([45] minutes), who they'll meet ([names and roles]), what we'll cover, whether there's a task, a link to book a slot [booking link] by [date], a request to tell us about any adjustments they need, and who to contact with questions. Under 180 words, warm and clear, British English."
+      },
+      {
+        "h": "Save it as a template",
+        "b": "Turn on Templates in Gmail's settings under Advanced, then save the email as a template for this role."
+      },
+      {
+        "h": "Send to shortlisted candidates",
+        "b": "Send the invitation individually or with each candidate in BCC, so no one sees anyone else's email address."
+      }
+    ],
+    "example": "Hi [Name], thank you for applying for Bookkeeper at Hartley & Co. We'd love to invite you to a 45-minute video interview with Sarah (Office Manager) and me. We'll talk through your experience and a short spreadsheet exercise. Please book a time here by Friday 12th: [link]. Let us know if you need any adjustments.",
+    "tips": [
+      "Booking pages show your free slots, so check you're only offering times you can really do.",
+      "Send a short reminder the day before; it cuts no-shows."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A candidate is marked Shortlisted in the hiring sheet"
+      },
+      "actions": [
+        {
+          "type": "email.draft",
+          "detail": "Prepare the interview invitation with the booking link"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Hold the interview once the candidate books"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the candidate the day before"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Let unsuccessful candidates down kindly",
+    "d": "Respectful, personal rejection emails for each stage of hiring, with optional feedback that's honest, useful and safe to send.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "When you've made a hiring decision",
+    "steps": [
+      {
+        "h": "Write down why, against your criteria",
+        "b": "For anyone who interviewed, note one or two job-related reasons from your scoring sheet, such as 'less experience of managing budgets than other candidates'."
+      },
+      {
+        "h": "Ask AI for the messages",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Write 3 rejection email templates for [job title] at [business]: 1) applied but not shortlisted (under 80 words), 2) interviewed, no detailed feedback (under 100 words), 3) interviewed, with brief feedback (under 140 words) using these points: [job-related points from scoring sheet]. All should thank them sincerely, be clear the decision is final, avoid any comments on personality or anything not related to the job criteria, and wish them well. Template 3 should frame feedback constructively. British English, warm, human. Use [Name] placeholders."
+      },
+      {
+        "h": "Personalise and send promptly",
+        "b": "Add one specific, genuine line where you can, such as something they did well. Send within a few days of deciding."
+      }
+    ],
+    "example": "Hi [Name], thank you for coming in to meet us on Tuesday and for preparing so thoroughly. We enjoyed hearing about your work at the farm shop. We've decided to offer the role to someone with more experience of running stock systems. We'd be happy to hear from you for future roles. Wishing you all the best.",
+    "tips": [
+      "Keep feedback tied to the job criteria; it's fairer and protects you if a decision is ever questioned.",
+      "Tell candidates how long you'll keep their details, in line with your privacy notice."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "A candidate's status changes to Unsuccessful"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a rejection email for the right stage"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save it as a draft for the manager to personalise and send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write up interviews consistently and fairly",
+    "d": "Turn your interview notes or transcript into a write-up that sets out evidence for each criterion, so the panel can compare candidates on facts.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "Google Meet",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Straight after each interview",
+    "steps": [
+      {
+        "h": "Ask permission before recording",
+        "b": "Only record or use AI note-taking if the candidate agrees, and tell them how long the recording will be kept. If they say no, take written notes; it mustn't affect their chances."
+      },
+      {
+        "h": "Get the notes or transcript",
+        "b": "Use Google Meet's 'Take notes for me', Zoom AI Companion or Teams recap if your plan includes it, or type up your handwritten notes. Remove the candidate's name and use their code."
+      },
+      {
+        "h": "Ask AI to organise the evidence",
+        "b": "Paste the notes into your AI assistant with this prompt.",
+        "p": "Here are notes from an interview for [job title], candidate [code]. Criteria: [list]. Organise the notes into a write-up with one section per criterion: what the candidate said (quote where possible), and gaps or questions to follow up. Do not give a score, recommendation or overall opinion. Do not mention accent, appearance, nervousness, age, family or anything outside the criteria. If notes are unclear, say so. Notes: [paste]."
+      },
+      {
+        "h": "Score it yourself and compare",
+        "b": "Each interviewer scores against the rubric on their own before discussing. Save the write-up in a private Google Doc with restricted sharing."
+      }
+    ],
+    "example": "Candidate C-02, Bookkeeper\nAccuracy with figures: 'I reconcile 3 bank accounts weekly and found a £1,200 duplicate payment last year.'\nUsing Xero: described bank rules and VAT returns. Follow up: no mention of payroll.\nCommunication: explained a tricky issue to a client clearly.",
+    "tips": [
+      "The hiring decision must be made by people, using the scores and their own judgement, never by an AI.",
+      "Interview notes are personal data and candidates can ask to see them, so keep them factual and professional."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "An interview event ends"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Organise notes into evidence per criterion without scoring"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save a private write-up for the hiring panel"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind each interviewer to score separately"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send a warm, clear job offer",
+    "d": "A friendly offer email and a checklist of what the formal offer letter must cover, so your new hire knows exactly what to expect.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Word"
+    ],
+    "when": "When you've chosen someone to hire",
+    "steps": [
+      {
+        "h": "Gather the offer details",
+        "b": "Note the job title, start date, pay, hours, place of work, probation period, holiday, and any conditions such as references or right-to-work checks."
+      },
+      {
+        "h": "Draft the offer email",
+        "b": "Paste the details into your AI assistant with this prompt.",
+        "p": "Write a job offer email to [first name] for the role of [job title] at [business]. Details: [paste]. Tone: warm and excited but clear. Include: the offer and why we chose them (one genuine line: [reason]), key terms in a short bullet list, conditions of the offer, what happens next and by when, and a request to confirm acceptance by [date]. Under 200 words, British English. Then, separately, give me a checklist of what a written statement of employment terms usually needs to include in [country], so I can check my formal letter or contract covers it."
+      },
+      {
+        "h": "Check the formal paperwork",
+        "b": "Use the checklist to review your contract or written statement. Have the contract template checked by an HR or employment law professional at least once."
+      },
+      {
+        "h": "Call first, then send",
+        "b": "Ring the candidate with the good news, then send the email and formal letter straight after."
+      }
+    ],
+    "example": "Hi Tom, I'm delighted to offer you the role of Workshop Technician at Kestrel Bikes. Your mechanical know-how really stood out. Start: Mon 3 March. Pay: £27,500 a year. Hours: 37.5, Tue to Sat. Holiday: 28 days including bank holidays. Subject to two references. Please let me know by Friday 21st.",
+    "tips": [
+      "AI checklists are a starting point, not legal advice; employment rules vary by country.",
+      "Keep offer details consistent between the email and the contract to avoid confusion later."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager marks a candidate as Offer"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft the offer email and terms checklist"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save the offer email for the manager to send after calling"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a reminder for the acceptance deadline"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Give every new starter a great first week",
+    "d": "A day-by-day onboarding plan for a new team member, turned into a Trello board with tasks for you, the starter and their buddy.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Trello"
+    ],
+    "when": "A week before someone starts",
+    "steps": [
+      {
+        "h": "Describe the role and your workplace",
+        "b": "Note what the job involves, who they'll work with, which systems they'll use and anything they must do in week one, such as safety training."
+      },
+      {
+        "h": "Ask AI for the plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Create an onboarding plan for a new [job title] joining [business], a team of [size]. Role details: [paste]. Give: 1) a before-day-one checklist (equipment, logins, paperwork, welcome message), 2) a day-by-day plan for week 1 with a mix of learning, meeting people and one small real task, 3) goals for the end of week 2, month 1 and month 3, 4) who owns each task: manager, buddy, or new starter. Keep it realistic for a small business and not overloaded. Format as lists I can turn into cards."
+      },
+      {
+        "h": "Build the board",
+        "b": "Create a Trello board with lists for Before day one, Week 1, Month 1 and Month 3. Add each task as a card, assign people and set due dates."
+      },
+      {
+        "h": "Copy it next time",
+        "b": "Once it works, use Trello's option to make the board a template or copy it, so each new starter gets the same good experience."
+      }
+    ],
+    "example": "Before day one: laptop set up (Manager), send welcome message with first-day details (Manager), pick a lunch spot (Buddy). Day 1: tour, meet the team, set up email. Day 3: shadow two customer calls. Day 5: handle one simple order alone; end-of-week chat. Month 1 goal: running the morning orders.",
+    "tips": [
+      "Add a 'questions so far' card the starter can add to all week; it shows what to explain better next time.",
+      "Notion or a shared Google Doc works just as well if your team doesn't use Trello."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A new starter's start date is 7 days away"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a tailored onboarding plan for the role"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add onboarding tasks as cards with owners and due dates"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the manager and buddy their tasks"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run onboarding on autopilot from one form",
+    "d": "A new-starter form feeds a tracking sheet, sends you an alert, and kicks off scheduled welcome emails and calendar check-ins for every hire.",
+    "cat": "HR & Hiring",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Gmail",
+      "Google Calendar"
+    ],
+    "when": "Every time someone accepts a job offer",
+    "steps": [
+      {
+        "h": "Create the new-starter form",
+        "b": "Make a Google Form for the manager to fill in: starter's name, role, start date, manager, buddy, equipment needed. Keep personal details like bank info out of it; collect those through your payroll process."
+      },
+      {
+        "h": "Track it in a sheet",
+        "b": "Link the form to a Google Sheet and turn on email notifications for new responses. Add checklist columns (Contract sent, Equipment ready, Logins set up) with tick boxes, and use conditional formatting to turn a row red if the start date is close and anything is unticked."
+      },
+      {
+        "h": "Write the welcome emails with AI",
+        "b": "Ask your AI assistant for a set of emails to schedule.",
+        "p": "Write 3 short emails for new starters at [business]: 1) sent 1 week before starting: warm welcome, first-day time, address, who to ask for, what to bring, dress code, 2) sent the evening before: a friendly 'see you tomorrow' with the plan for day one, 3) sent at the end of week one from the manager: thanks, what's next, and an invitation to share feedback. Each under 120 words, British English, use [brackets] for details. Then list 4 calendar check-ins to book (with timing and a 3-bullet agenda each) for the first 3 months."
+      },
+      {
+        "h": "Schedule emails and check-ins",
+        "b": "When a form arrives, fill in the email templates and use Gmail's Schedule send for each one. Create the calendar check-ins with the starter and manager straight away."
+      },
+      {
+        "h": "Review after each hire",
+        "b": "Ask each new starter what was missing, and update the form, emails and checklist."
+      }
+    ],
+    "example": "New row: Priya S. | Junior Designer | Starts 7 April | Manager: Leon | Buddy: Kat. Contract sent ✓ Equipment ready ✗ (row red: 5 days to go). Scheduled: welcome email 31 March 9am, see-you-tomorrow 6 April 6pm. Check-ins booked: week 1, week 4, week 8, week 12.",
+    "tips": [
+      "Keep the sheet's sharing limited to people who need it, since it holds staff details.",
+      "Microsoft Forms, Excel and Outlook can do the same, including scheduled sending in Outlook."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A manager submits the new-starter form"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the starter to the onboarding tracker"
+        },
+        {
+          "type": "email.send",
+          "detail": "Schedule the welcome emails at set times before and after the start date"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Book the first-week, month-one and month-three check-ins"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the manager about unticked tasks close to the start date"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a clear workplace policy in plain English",
+    "d": "A first draft of a short, readable staff policy, such as remote working or AI use, ready for you to check with an HR professional.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "When your team needs a rule written down",
+    "steps": [
+      {
+        "h": "Decide what the policy must say",
+        "b": "Note what you already do in practice, what problems you want to avoid and any decisions you've made, like core hours or which tools staff may use."
+      },
+      {
+        "h": "Ask AI for a plain-English draft",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Draft a [topic, e.g. remote working / using AI tools at work / expenses] policy for [business], a [size and type] business in [country]. What we already do and want: [paste notes]. Structure: Purpose (2 lines), Who it applies to, The rules (numbered, plain English), What staff can expect from us, What to do if something goes wrong, Who to ask, and Review date. Under 700 words, friendly but clear, British English. After the draft, list any legal points in [country] I should check with an HR or employment law professional, and any common policy topics I've not covered."
+      },
+      {
+        "h": "Get it checked",
+        "b": "Have the draft reviewed by an HR adviser or employment solicitor, especially anything about pay, discipline, data or contracts."
+      },
+      {
+        "h": "Share it and explain it",
+        "b": "Save the final version in Google Docs, share it with the team and talk it through at a team meeting, inviting questions."
+      }
+    ],
+    "example": "Using AI tools at work\n1. You may use approved AI tools (currently ChatGPT Team) for drafting and research.\n2. Never paste customer names, contact details or financial information into AI tools.\n3. Check AI output before using it; you're responsible for the final work.\nReview date: January 2027.",
+    "tips": [
+      "Shorter policies get read; aim for two pages or less.",
+      "AI doesn't know current law in your area for certain, so treat the legal checklist as questions for your adviser."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager requests a new policy"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a plain-English policy and legal-check list"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the draft for professional review"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add a review date reminder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Answer staff questions from your own handbook",
+    "d": "A private AI workspace loaded with your staff handbook and policies, so you or your team get quick, accurate answers with the source section named.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Drive"
+    ],
+    "when": "Whenever someone asks 'what's our policy on...?'",
+    "steps": [
+      {
+        "h": "Collect up-to-date documents",
+        "b": "Gather your handbook, holiday rules, expenses process and other policies from Google Drive. Make sure none contain individual staff details."
+      },
+      {
+        "h": "Create a workspace",
+        "b": "Set up a Project in ChatGPT or Claude, or a Gem in Gemini, and upload the documents. Use a business or team plan if you'll share it with staff, and check your workplace AI policy first."
+      },
+      {
+        "h": "Add clear instructions",
+        "b": "Paste this into the workspace's instructions.",
+        "p": "You answer staff questions about policies at [business] using only the uploaded documents. For each answer: give a short, plain-English answer, then name the document and section it comes from. If the documents don't cover the question, say 'This isn't covered in our policies, please ask [name/role]'. Never guess, never give legal advice, and don't comment on individual cases such as someone's pay, performance or health; refer those to [name/role]. British English, friendly."
+      },
+      {
+        "h": "Test it with real questions",
+        "b": "Ask ten questions you get often and check each answer against the handbook before you rely on it."
+      },
+      {
+        "h": "Update when policies change",
+        "b": "Replace old files in the workspace the same day a policy changes, and note the date in the instructions."
+      }
+    ],
+    "example": "Q: Can I carry over unused holiday? A: Yes, up to 5 days into the next holiday year, which must be used by the end of March. Source: Staff Handbook, section 4.3 'Holiday carry-over'. Q: Can I get a pay rise? A: This isn't covered in our policies, please ask Jo in the office.",
+    "tips": [
+      "Personal issues like sickness, grievances or pay should always go to a person, not an AI.",
+      "Keep the handbook itself as the official version; the AI is just a quicker way to find things in it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A staff member asks a policy question"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Answer from the uploaded handbook and name the section"
+        },
+        {
+          "type": "notify",
+          "detail": "Pass questions not covered to the named person"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare for a difficult conversation with a team member",
+    "d": "A calm plan for a tricky one-to-one, with an opening line, key points, likely reactions and how to agree next steps fairly.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Before a performance or behaviour conversation",
+    "steps": [
+      {
+        "h": "Write down the facts, not the person",
+        "b": "Note specific examples with dates, the impact on the team or customers, and what you want to change. Use a role instead of the person's name."
+      },
+      {
+        "h": "Ask AI to help you plan",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Help me prepare for a one-to-one with a [role] about [issue]. Facts: [dated examples and impact]. What I want to happen: [outcome]. Anything I know about their situation: [context, without health details]. Give me: 1) a calm opening of 2 sentences that explains why we're meeting, 2) the 3 key points in plain language, 3) 3 open questions to understand their side, 4) likely reactions (upset, defensive, quiet) and how to respond to each, 5) how to agree clear next steps and a review date, 6) a short summary note I can send afterwards. Supportive but direct, British English. Remind me where I should get HR or legal advice."
+      },
+      {
+        "h": "Check your process",
+        "b": "If the issue could lead to formal action, follow your written disciplinary or performance process and speak to an HR adviser first."
+      },
+      {
+        "h": "Have the conversation and note it",
+        "b": "Keep your plan in your notes app, have the conversation in private, listen properly, and send the agreed summary afterwards."
+      }
+    ],
+    "example": "Opening: 'Thanks for making time. I want to talk about the late starts over the last few weeks and how we can sort it together.' Question: 'Is anything making mornings harder at the moment?' If upset: pause, acknowledge, offer to continue tomorrow. Next step: agree start time, review in 2 weeks.",
+    "tips": [
+      "If someone mentions health, caring duties or personal problems, stop and get HR advice; you may need to make adjustments.",
+      "Keep notes factual and store them securely; staff can ask to see what's recorded about them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager plans a difficult conversation"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a conversation plan with opening, questions and next steps"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Book the follow-up review date"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Hear what your team really thinks, anonymously",
+    "d": "A short anonymous pulse survey for your team and an AI summary of themes and suggestions, without anyone being identified.",
+    "cat": "HR & Hiring",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Microsoft Forms",
+      "Excel",
+      "AI assistant"
+    ],
+    "when": "Every three months",
+    "steps": [
+      {
+        "h": "Write good questions",
+        "b": "Ask your AI assistant for a short, balanced survey.",
+        "p": "Write an anonymous team pulse survey for a [size] person [type of business]. 6 to 8 questions, taking under 5 minutes. Include: 4 rating questions (1 to 5) on workload, support from managers, communication and feeling valued; 2 open questions ('What's one thing we should keep doing?' and 'What's one thing we should change?'); and an optional open comment box. Avoid questions about role, age, location or anything else that could identify people in a small team. Add a 2-line intro explaining it's anonymous and what we'll do with the results."
+      },
+      {
+        "h": "Build it in Microsoft Forms",
+        "b": "Create the form and set it so names aren't recorded (in Forms, choose that anyone can respond, or turn off recording names). Responses collect in Excel automatically."
+      },
+      {
+        "h": "Share it and give a deadline",
+        "b": "Send the link to the team in Teams or email with a one-week deadline and a reminder halfway through."
+      },
+      {
+        "h": "Summarise with AI",
+        "b": "Copy the responses from Excel into your AI assistant and ask for averages, the main themes from comments with counts, and 3 suggested actions. Remove any comment that names someone before pasting."
+      },
+      {
+        "h": "Share what you'll do",
+        "b": "Tell the team what came up and the one or two changes you'll make. This is what keeps people answering next time."
+      }
+    ],
+    "example": "Results (14 of 16 responded): Workload 2.9, Manager support 4.1, Communication 3.2, Feeling valued 3.8. Themes: Friday rush is stressful (7), weekly team huddle helps (6), unclear who covers holidays (4). Actions: publish holiday cover rota; add a Thursday prep slot.",
+    "tips": [
+      "In very small teams, only report results when at least 5 people have answered, so no one can be identified.",
+      "Google Forms with Google Sheets works the same way if you don't use Microsoft 365."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of each quarter"
+      },
+      "actions": [
+        {
+          "type": "message.send",
+          "detail": "Send the anonymous survey link to the team"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "After the deadline, summarise scores and comment themes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a results summary for the manager to share"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Manage holiday requests without clashes or confusion",
+    "d": "Staff request leave through a form, you see clashes highlighted in a sheet, get an alert, and approved days go straight onto a shared team calendar.",
+    "cat": "HR & Hiring",
+    "lvl": "Advanced",
+    "mins": 50,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Google Calendar",
+      "AI assistant"
+    ],
+    "when": "Every time someone asks for time off",
+    "steps": [
+      {
+        "h": "Create the request form",
+        "b": "Make a Google Form with: name (dropdown of staff), first day off, last day off, type of leave (holiday, unpaid, other) and an optional note. Turn on email notifications for new responses."
+      },
+      {
+        "h": "Set up the sheet with AI help",
+        "b": "Link the form to a Google Sheet, then ask your AI assistant for the formulas you need.",
+        "p": "My Google Sheet of holiday requests has these columns: A Timestamp, B Name, C First day, D Last day, E Leave type, F Note. Give me beginner-friendly, step-by-step instructions to: 1) add column G 'Working days' that counts weekdays between C and D (using NETWORKDAYS), 2) add column H 'Status' with a dropdown of Pending, Approved, Declined, 3) highlight a row orange if its dates overlap with another Approved request, using a custom formula in conditional formatting, 4) make a summary tab showing each person's approved days so far this year against an allowance of [number] days. Give the exact formulas and say where to paste them."
+      },
+      {
+        "h": "Make a shared team calendar",
+        "b": "Create a separate Google Calendar called Team holidays and share it with staff as view-only."
+      },
+      {
+        "h": "Approve and add to the calendar",
+        "b": "When an alert arrives, check for orange clashes, set the Status, reply to the person, and add approved leave as an all-day event on the team calendar."
+      },
+      {
+        "h": "Check balances monthly",
+        "b": "Look at the summary tab once a month and remind anyone who has lots of leave left."
+      }
+    ],
+    "example": "New request: Marta | 12 to 16 Aug | Holiday | 5 working days | Pending (orange: overlaps with Dan, Approved 14 to 21 Aug). Summary: Marta 9 of 28 days used; Dan 17 of 28. Team holidays calendar: 'Dan - holiday' 14 to 21 Aug.",
+    "tips": [
+      "Keep 'other' leave notes brief and private; sickness and family reasons are sensitive personal data.",
+      "Check that formulas work with a few test requests before you share the form with the team."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A staff member submits a leave request"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the request with working days calculated"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Check for clashes with approved leave"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the manager to approve or decline"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add approved leave to the team holiday calendar"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run one-to-ones your team look forward to",
+    "d": "A simple, repeatable agenda for regular one-to-ones, tailored questions for each person and a short record of what you both agreed.",
+    "cat": "HR & Hiring",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Calendar",
+      "Google Docs"
+    ],
+    "when": "Before each regular one-to-one",
+    "steps": [
+      {
+        "h": "Book a regular slot",
+        "b": "Set a recurring Google Calendar event, such as 30 minutes every fortnight, with each team member, and attach a shared Google Doc for notes."
+      },
+      {
+        "h": "Get an agenda and questions",
+        "b": "Paste this prompt into your AI assistant.",
+        "p": "Create a 30-minute one-to-one agenda for me (a manager at a [type of business]) and a [role] who has been with us [time]. What I know: recent wins [wins], current challenges [challenges], their goals [goals]. Include: a 5-minute check-in, their topics first, progress on goals, one development question, any feedback both ways, and agreed actions. Suggest 6 open questions I could rotate over the next few months, such as about workload, learning and what support they need. Supportive tone, British English."
+      },
+      {
+        "h": "Let them add topics first",
+        "b": "Paste the agenda into the shared doc a couple of days before and ask them to add what they'd like to talk about at the top."
+      },
+      {
+        "h": "Record actions together",
+        "b": "At the end, write down two or three agreed actions with names and dates in the doc, so you can check them next time."
+      }
+    ],
+    "example": "Agenda, 14 May: 1. How are things? (5 min) 2. Ellis's topics: training budget, Friday cover 3. Goal: lead the stock count, on track 4. Question: 'What would make next month easier?' 5. Feedback both ways. Actions: Ellis books first-aid course by 31 May; I sort Friday cover rota.",
+    "tips": [
+      "Keep one-to-ones even when you're busy; cancelling them often sends the wrong message.",
+      "Keep notes respectful and factual, as the team member can see them and may ask for them later."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Two days before each recurring one-to-one"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Prepare an agenda with last time's actions and fresh questions"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Add the agenda to the shared one-to-one doc"
+        },
+        {
+          "type": "notify",
+          "detail": "Invite the team member to add their topics"
+        }
+      ]
+    }
+  }
+]
