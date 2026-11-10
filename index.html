@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>fishpond.ai — go fishing for AI that actually works</title>
-<meta name="description" content="Hundreds of step-by-step AI workflows for work and life. Run them right on the page, then grab a ready-made set-up kit.">
+<meta name="description" content="Learn AI by doing real work: free step-by-step AI workflows for work and home, a community to share them, and simulated jobs that build a verified portfolio.">
 <meta property="og:title" content="fishpond.ai: go fishing for AI that actually works">
 <meta property="og:description" content="Hundreds of step-by-step AI workflows for work and life. No coding needed.">
 <meta name="theme-color" content="#14307a">
@@ -304,7 +304,47 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 .burst{position:fixed;width:12px;height:12px;border-radius:3px;pointer-events:none;z-index:999;animation:burst .7s ease-out forwards}
 @keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg) scale(.3);opacity:0}}
 
+/* community, rung, partners */
+.comm{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.fork{background:var(--tone);border-radius:var(--r);padding:30px}
+.fork .ex{display:inline-block;background:#fff;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;margin-bottom:14px}
+.fork .orig{background:#fff;border-radius:18px;padding:18px 20px}
+.fork .orig h3{font-size:23px}
+.fork .orig p{color:var(--soft);font-size:16px}
+.fork .copies{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 0}
+.fork .copies span{background:var(--yellow);border-radius:999px;padding:5px 14px;font-weight:700;font-size:16px}
+.fork .copies span+span{background:var(--cyan)}
+.fork ul{list-style:none;margin-top:14px;display:grid;gap:8px;padding-left:22px;border-left:4px solid var(--cyan)}
+.fork li{background:#fff;border-radius:14px;padding:10px 14px;font-size:16px}
+.fork li b{display:block;font-size:17px}
+.profile{background:var(--tone2);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:14px}
+.profile h3{font-size:28px}
+.profile p{color:var(--soft)}
+.profile .pts{display:grid;gap:10px;margin-top:4px}
+.profile .pts div{display:flex;gap:12px;align-items:flex-start;font-weight:700}
+.profile .pts i{flex:none;width:14px;height:14px;border-radius:3px;background:var(--orange);margin-top:6px}
+.profile .btn{align-self:flex-start;margin-top:auto}
+.rung{background:var(--navy);color:#fff;border-radius:36px;padding:52px}
+.rung .h2{color:#fff;max-width:26ch}.rung .lead{color:#dce4ff}
+.rung .tag2{display:inline-block;background:var(--yellow);color:var(--navy);border-radius:8px;padding:3px 12px;font-weight:700;font-size:16px;margin-bottom:14px}
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:30px 0 28px;list-style:none}
+.weeks li{background:rgba(255,255,255,.1);border-radius:20px;padding:20px}
+.weeks b{display:block;font-family:"Baloo 2";font-size:20px;color:var(--yellow);margin-bottom:4px}
+.weeks li:last-child{background:var(--yellow);color:var(--navy)}.weeks li:last-child b{color:var(--navy)}
+.rung-foot{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.rung-foot p{opacity:.9;max-width:52ch}
+.rung .btn.y{background:var(--yellow)}
+.partners{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.partner{border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:12px}
+.partner h3{font-size:30px}
+.partner p{max-width:46ch}
+.partner .btn{align-self:flex-start;margin-top:auto}
+.p-emp{background:var(--cyan);color:var(--navy)}.p-emp .btn{background:var(--navy);color:#fff}
+.p-col{background:var(--tone)}.p-col p{color:var(--soft)}
+.p-col small{font-size:15px;color:var(--soft)}
+
 @media (max-width:900px){
+  .comm,.partners{grid-template-columns:1fr}.weeks{grid-template-columns:1fr 1fr}.rung{padding:32px 22px}
   .wrap{padding:0 16px}
   .hero-grid,.cta,.doors,.tiles,.steps{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
@@ -366,7 +406,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <a href="#pond" data-go="all">Browse all</a>
         <a href="#pond" data-go="work">Work</a>
         <a href="#pond" data-go="life">Life</a>
-        <a href="#how">How it works</a>
+        <a href="#community">Community</a>
+        <a href="#rung">The Rung</a>
         <button class="net" id="net" type="button" title="See the guides you've saved">Saved <b id="netCount">0</b></button>
       </div>
     </div>
@@ -378,7 +419,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
     <div class="wrap hero-grid">
       <div>
         <h1>Go fishing for AI that works</h1>
-        <p class="lede">Step-by-step guides for using AI at work and at home. Free, and no coding.</p>
+        <p class="lede">Learn AI by doing real work. Free step-by-step guides for work and home, no coding.</p>
         <form class="search" id="heroSearch" role="search">
           <label class="sr" for="heroInput">What do you need help with?</label>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
@@ -514,6 +555,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       </div>
       <div class="d-actions">
         <button class="btn y" id="dSave" type="button"></button>
+        <button class="btn" id="dLink" type="button">Copy link to this guide</button>
       </div>
     </div>
   </dialog>
@@ -526,6 +568,73 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <div class="step reveal"><div class="num">1</div><h3>Search</h3><p>Say what you want help with in plain words, like "clear my inbox" or "plan dinners", or pick a topic.</p></div>
         <div class="step reveal"><div class="num">2</div><h3>Run it</h3><p>Fill in a couple of boxes and fishpond does the task right on the page, from a photo, a file or a few words.</p></div>
         <div class="step reveal"><div class="num">3</div><h3>Keep it</h3><p>Save the guide, add a calendar reminder, get a ready-made spreadsheet or set up your own AI assistant.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 class="h2">Share what works, copy what's good</h2><p class="lead">Coming soon: publish your own workflows, copy other people's and post better versions. Everything you make shows on your profile, so it doubles as a portfolio.</p></div></div>
+      <div class="comm">
+        <div class="fork">
+          <span class="ex">An example of how it will work</span>
+          <div class="orig"><h3>Month-end reconciliation with Claude</h3><p>Published by a bookkeeper</p>
+            <div class="copies"><span>40 people copied it</span><span>3 improved versions</span></div></div>
+          <ul>
+            <li><b>Adds a VAT check</b>Links back to the original</li>
+            <li><b>Works for two currencies</b>Links back to the original</li>
+            <li><b>Turns it into a client email</b>Links back to the original</li>
+          </ul>
+        </div>
+        <div class="profile">
+          <h3>Your profile is your proof</h3>
+          <p>Instead of a list of courses, show the real work you've done with AI.</p>
+          <div class="pts">
+            <div><i></i>Workflows you published, and how many people use them</div>
+            <div><i></i>Versions you improved, credited to you</div>
+            <div><i></i>Work you've defended on a Rung track, marked as verified</div>
+          </div>
+          <a class="btn y" href="#community" data-toast="Thanks! We'll invite you when profiles open.">Get early access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE RUNG -->
+  <section id="rung">
+    <div class="wrap">
+      <div class="rung">
+        <span class="tag2">Coming soon · First track: Junior fund administrator</span>
+        <h2 class="h2">The Rung: learn a job by doing it</h2>
+        <p class="lead">A simulated job that runs for 10 to 12 weeks. Each week is a real piece of work in the format the job uses, and you defend it to an assessor. You finish with a verified portfolio and an introduction to employers who are hiring.</p>
+        <ol class="weeks">
+          <li><b>Week 1</b>Reconcile a NAV pack</li>
+          <li><b>Week 4</b>Draft investor notices</li>
+          <li><b>Week 8</b>Handle a mock audit query</li>
+          <li><b>Week 12</b>Present a full month-end close and defend it</li>
+        </ol>
+        <div class="rung-foot"><a class="btn y" href="#rung" data-toast="You're on the list for the first cohort!">Join the first cohort list</a><p>Built for the junior roles AI is changing, so you can still get the experience that gets you hired.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 class="h2">For employers and colleges</h2></div></div>
+      <div class="partners">
+        <div class="partner p-emp">
+          <h3>Hire people who've done the job</h3>
+          <p>Every Rung graduate comes with a portfolio of real, assessed work, so you can see what they can do before you interview. You pay only when you hire.</p>
+          <a class="btn" href="#partners" data-toast="Thanks! We'll be in touch about hiring.">Talk to us about hiring</a>
+        </div>
+        <div class="partner p-col">
+          <h3>Offer a Rung track to your learners</h3>
+          <p>Colleges and training providers can license a track. From 1 July 2026, eligible US colleges may be able to fund learners through Workforce Pell.</p>
+          <small>The college must be Pell-eligible and the programme approved.</small>
+          <a class="btn n" href="#partners" data-toast="Thanks! We'll be in touch about licensing.">Talk to us about a track</a>
+        </div>
       </div>
     </div>
   </section>
@@ -572,7 +681,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   <div class="wrap">
     <div class="foot">
       <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond<span class="dot-ai">.ai</span></span></a>
-      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="#app">Get the app</a></li></ul>
+      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="#community">Community</a></li><li><a href="#rung">The Rung</a></li><li><a href="#partners">Employers and colleges</a></li></ul>
     </div>
     <p class="small">&copy; 2026 fishpond.ai. Useful AI, one small habit at a time.</p>
   </div>
@@ -612,7 +721,7 @@ $('#sTools').dataset.count = toolCount;
 $('#sTopics').dataset.count = CATS.length;
 const minsSorted = LIB.map(w => w.mins).sort((a, b) => a - b);
 $('#sMins').dataset.count = minsSorted[Math.floor(minsSorted.length / 2)] || 10;
-$('.lede').textContent = `${LIB.length} step-by-step guides for using AI at work and at home. Free, and no coding.`;
+$('.lede').textContent = `Learn AI by doing real work. ${LIB.length} free step-by-step guides for work and home, no coding.`;
 
 /* animated water */
 function wave(y, amp, len, w, closed) {
@@ -1459,6 +1568,7 @@ function openDetail(w) {
   renderRun(w);
   renderKit(w);
   syncDetailSave();
+  try { history.replaceState(null, '', '#guide/' + w.id); } catch {}
   dlg.showModal();
   dlg.scrollTop = 0;
 }
@@ -1466,10 +1576,13 @@ $('#dNotify').addEventListener('click', e => { e.currentTarget.textContent = "Yo
 function syncDetailSave() { $('#dSave').textContent = open && saved.has(open.id) ? 'Saved ✓' : 'Save this guide'; }
 $('#dSave').addEventListener('click', () => { toggleSave(open.id); syncDetailSave(); render(); });
 $('#dClose').addEventListener('click', () => dlg.close());
-dlg.addEventListener('close', () => runCtl?.abort());
+dlg.addEventListener('close', () => { runCtl?.abort(); if (location.hash.startsWith('#guide/')) try { history.replaceState(null, '', location.pathname + location.search); } catch {} });
+$('#dLink').addEventListener('click', e => copyText(location.href.split('#')[0] + '#guide/' + open.id, e.currentTarget, 'Link copied!'));
+function openFromHash() { const m = location.hash.match(/^#guide\/([a-z0-9-]+)$/); const w = m && LIB.find(x => x.id === m[1]); if (w && !dlg.open) openDetail(w); }
+addEventListener('hashchange', openFromHash);
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 
-if (LIB.length) { renderCats(); render(); }
+if (LIB.length) { renderCats(); render(); openFromHash(); }
 else { cards.innerHTML = '<div class="empty">The workflow library did not load. Check that data/workflows.js is next to this page.</div>'; more.hidden = true; }
 
 /* reveal + counters */
