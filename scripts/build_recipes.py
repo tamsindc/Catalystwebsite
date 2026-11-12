@@ -71,7 +71,7 @@ def clean(r):
         "d": text(r["d"], 200),
         "cat": r["cat"],
         "job": text(r.get("job"), 40),
-        "side": TOPICS[r["cat"]],
+        "side": "work" if r.get("job") else TOPICS[r["cat"]],
         "lvl": r["lvl"],
         "mins": max(1, min(120, int(r.get("mins") or 10))),
         "tools": [text(t, 30) for t in (r.get("tools") or [])][:4] or ["AI assistant"],

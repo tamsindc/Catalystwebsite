@@ -1,0 +1,736 @@
+[
+  {
+    "t": "Turn a vague client chat into a clear design brief",
+    "d": "Paste your call notes and get a one-page brief covering goals, audience, sizes, must-haves and deadlines, plus the questions you still need to ask.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs", "Voice notes"],
+    "when": "Straight after a first call with a client",
+    "steps": [
+      {"h": "Capture the conversation", "b": "Jot rough notes during the call, or record a voice note to yourself right after while it is fresh. Include anything the client showed you or said they disliked."},
+      {"h": "Ask your AI assistant to shape the brief", "b": "Open ChatGPT, Claude or Gemini, paste your notes or the voice note transcript, and use this prompt.", "p": "You are helping a graphic designer write a project brief. Here are my rough notes from a client call: [paste notes]. Turn them into a one-page brief with these headings: Project summary (2 sentences), Goal of the design, Who it is for, Where it will be used (with sizes and formats), Must-include content, Brand rules (colours, fonts, logo use), Likes and dislikes mentioned, Deliverables list, Deadline and review rounds, Budget notes. Write 'Not discussed' where my notes say nothing. Finish with a list of up to 6 questions I still need to ask the client, most important first."},
+      {"h": "Fill the gaps before you start", "b": "Copy the brief into Google Docs and send the open questions to the client. Starting with answers saves a round of changes later."},
+      {"h": "Get the client to agree it", "b": "Share the finished brief and ask the client to reply 'approved' or add comments. Keep it in the project folder as your reference point."}
+    ],
+    "example": "Project summary: Poster and Instagram set for a spring open day at a garden centre. Where used: A2 poster, 1080x1350 feed post, 1080x1920 story. Brand rules: Not discussed. Questions: 1. Do you have a brand guide or logo files? 2. Who signs off the final design?",
+    "tips": ["Remove client contact details and anything confidential before pasting notes, and check your agency's AI policy.", "Save the prompt in your notes app so every brief comes out in the same shape."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Designer pastes call notes after a client call"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Turn notes into a structured design brief with open questions"},
+        {"type": "doc.create", "detail": "Save the brief to the project folder"},
+        {"type": "email.draft", "detail": "Draft an email to the client with the open questions"}
+      ]
+    }
+  },
+  {
+    "t": "Choose fonts and type sizes that work together",
+    "d": "Describe the project and get three font pairings with suggested sizes for headings, body and captions, and the reason each one suits the job.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": ["AI assistant", "Canva"],
+    "when": "When starting the layout for a new piece",
+    "steps": [
+      {"h": "Note what the piece needs to do", "b": "Write down the format, the audience, the mood and any brand fonts you must keep. Mention whether it is for print or screen."},
+      {"h": "Ask for pairings and a type scale", "b": "Paste this into your AI assistant and fill in the brackets.", "p": "I'm designing a [format, e.g. A5 leaflet] for [audience] that should feel [mood words]. It will be seen [in print / on screen at size]. Fonts I must use: [brand fonts or 'none']. Suggest 3 font pairings using free fonts available in Google Fonts or Canva. For each give: heading font and weight, body font and weight, why they work together, a size and line spacing for main heading, subheading, body text and captions, and one thing to avoid. Present it as a table, then tell me which you'd pick and why."},
+      {"h": "Try them side by side", "b": "Set up the same short block of real copy three times in Canva or your design app using each pairing. Look at them at actual size, printed if it is going to print."},
+      {"h": "Save the winner as a style", "b": "Once you choose, save the fonts and sizes as text styles or a brand kit so the rest of the piece stays consistent."}
+    ],
+    "example": "Pairing 1: Playfair Display Bold headings with Source Sans 3 Regular body. Why: classic contrast, easy to read small. Sizes for A5: heading 28pt, subheading 14pt, body 10pt with 14pt spacing, captions 8pt. Avoid: setting Playfair in long paragraphs.",
+    "tips": ["Always check the font's licence covers your client's use, especially for logos and paid products.", "Ask the AI for a version with larger body text if the audience includes older readers."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Designer describes a new project"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest three font pairings with a type scale"},
+        {"type": "doc.create", "detail": "Save the chosen pairing as a project style sheet"}
+      ]
+    }
+  },
+  {
+    "t": "Get a fresh pair of eyes on your layout",
+    "d": "Upload a screenshot of your draft and get a structured critique on hierarchy, spacing, readability and typos before the client sees it.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": ["AI assistant"],
+    "when": "Before sending any draft to a client",
+    "steps": [
+      {"h": "Export a clear image of the draft", "b": "Save the layout as a PNG or JPG at a size where the text is readable. For multi-page pieces, export the pages you want checked most."},
+      {"h": "Ask for a structured critique", "b": "Upload the image to your AI assistant with this prompt.", "p": "Act as a senior art director reviewing this draft [format] for [client type and goal]. The main message the viewer must get is: [main message]. Review it under these headings: 1. What the eye sees first, second and third, and whether that order is right. 2. Spacing and alignment issues. 3. Readability of text at real size. 4. Colour and contrast, including accessibility. 5. Any typos or inconsistent wording you can see. 6. The 3 changes that would improve it most, in order. Be specific about where on the page each issue is."},
+      {"h": "Decide what to change", "b": "Treat the critique as a second opinion, not an instruction. Fix what you agree with and note anything you deliberately kept."},
+      {"h": "Proofread the words separately", "b": "Paste the copy as text and ask the AI to list spelling and grammar issues only, since reading text from images is not always perfect."}
+    ],
+    "example": "1. Eye goes to the photo, then the price, then the headline. The headline should come before the price. 2. Left margin on the text box is tighter than the image above. 3. Footer text looks under 7pt. 6. Top fix: enlarge headline and move the price below it.",
+    "tips": ["Do not upload unreleased client work if your contract or client forbids it; blur names or products if needed.", "Ask the same questions about your previous version to check the changes actually helped."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "A draft is saved to the 'For review' folder"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Critique the layout under six headings"},
+        {"type": "notify", "detail": "Send the designer the top three suggested changes"}
+      ]
+    }
+  },
+  {
+    "t": "Explain your design choices so clients say yes",
+    "d": "Turn your design decisions into a short, jargon-free explanation for each concept that you can present or send with the drafts.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Slides"],
+    "when": "When sending concepts or presenting to a client",
+    "steps": [
+      {"h": "List what you chose and why", "b": "For each concept, jot quick notes on the colours, type, imagery and layout and what you were aiming for. Bullet points are fine."},
+      {"h": "Ask the AI to write the rationale", "b": "Paste your notes and the original brief into your AI assistant with this prompt.", "p": "I'm presenting [number] design concepts to a client who is not a designer. Here is the brief: [paste brief]. Here are my notes on each concept: [paste notes]. For each concept write: a name for the concept (2-3 words), one sentence on the idea behind it, 3 short bullets linking specific choices to the client's goals, and one honest note on where it is strongest and weakest. Use plain, warm language with no design jargon. Keep each concept under 120 words."},
+      {"h": "Put it beside the visuals", "b": "Add each rationale to the slide or page next to its concept, or paste it into the email that carries the drafts."},
+      {"h": "Prepare for pushback", "b": "Ask the AI: 'What three objections might this client raise about each concept, and how could I answer them briefly?' Read them before the meeting."}
+    ],
+    "example": "Concept A: Fresh Start. The idea: a bright, open look that feels welcoming to first-time visitors. Why it works: the soft green links to your outdoor setting; large friendly headings make the date easy to spot from across a car park. Strongest for posters, weaker on tiny social thumbnails.",
+    "tips": ["Linking each choice back to a goal in the brief keeps the conversation away from personal taste."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Designer adds concept notes before a presentation"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a plain-English rationale for each concept"},
+        {"type": "ai.generate", "detail": "List likely client objections with short answers"},
+        {"type": "doc.create", "detail": "Save the rationale alongside the concept files"}
+      ]
+    }
+  },
+  {
+    "t": "Turn scattered client feedback into one change list",
+    "d": "Collect comments from emails, calls and marked-up PDFs into a single numbered list of changes, with any conflicting requests flagged.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": ["AI assistant", "Gmail", "Trello"],
+    "when": "After every feedback round",
+    "steps": [
+      {"h": "Give each project a Gmail label", "b": "Create a label for the project and set a Gmail filter so emails from the client's address land under it. Now all feedback is in one place."},
+      {"h": "Gather everything for this round", "b": "Copy the feedback emails, your notes from any calls and comments from marked-up PDFs into one document."},
+      {"h": "Ask the AI to merge and sort it", "b": "Paste it all into your AI assistant with this prompt.", "p": "Here is all the feedback I've received on round [number] of a [type of design] from [number] people at my client: [paste feedback, with who said what]. Combine it into one numbered change list. For each item give: page or section, the change requested, who asked, and whether it is a must-fix, a preference or unclear. Then list separately: any requests that contradict each other, anything outside the original brief [paste brief deliverables], and questions I need to ask before I start. Keep wording neutral."},
+      {"h": "Send it back to confirm", "b": "Email the change list to your main contact and ask them to settle the conflicts and confirm before you begin. This stops endless extra rounds."},
+      {"h": "Track it on a board", "b": "Add each confirmed change as a card on a Trello board using its email-to-board address or by pasting, and tick them off as you go."}
+    ],
+    "example": "1. Cover - make logo larger (Sam, must-fix). 2. Page 3 - swap photo for one with people (Priya, preference). Conflicts: Sam wants navy background, Priya wants white. Outside brief: Priya asked for a matching email banner.",
+    "tips": ["Remove personal phone numbers and email signatures before pasting.", "Out-of-scope requests are a good moment to mention extra cost politely."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "Email arrives under the project's client label"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out each change request and who made it"},
+        {"type": "ai.classify", "detail": "Mark each as must-fix, preference or unclear and flag conflicts"},
+        {"type": "list.add", "detail": "Add confirmed changes to the project board"}
+      ]
+    }
+  },
+  {
+    "t": "Send the printer handover notes they can't misread",
+    "d": "Build a reusable print instructions template, then get a filled-in checklist for each job covering sizes, bleed, stock, finish and quantities.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs", "Gmail"],
+    "when": "Whenever a job is ready to go to print",
+    "steps": [
+      {"h": "Create your template once", "b": "Ask your AI assistant to draft a print handover template, then save it in Google Docs as your master copy.", "p": "Create a print handover checklist template for a freelance graphic designer sending files to a commercial printer. Include sections for: job name and reference, file names and versions, finished size, bleed and safe area, colour mode, paper stock and weight, finish (e.g. matt lamination, spot UV), folding or binding, quantity, proof requirements, delivery address and date, and a contact for questions. Add a short 'before you send' checklist covering fonts outlined or embedded, image resolution, and spelling check. Format it as a fill-in-the-blanks table."},
+      {"h": "Fill it in for each job", "b": "For a new job, paste your job notes and the template into the AI and ask it to fill in what it can and list anything missing."},
+      {"h": "Check against the printer's own specs", "b": "Compare the filled checklist with the printer's file requirements on their website or quote. Their rules always win over the template."},
+      {"h": "Send it with the files", "b": "Attach the checklist to the email with your print files or a Google Drive link, and keep a copy in the project folder."}
+    ],
+    "example": "Job: Spring open day poster v4. Size: A2 (420x594mm) + 3mm bleed. Colour: CMYK. Stock: 170gsm silk. Finish: none. Qty: 150. Proof: PDF proof before print. Missing: delivery date and site contact name.",
+    "tips": ["Ask the printer to confirm receipt and any issues before the run, not after.", "The AI cannot check your actual files, so still preflight them in your design app."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "Final print files saved to the 'To print' folder"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Fill the print handover checklist from job notes"},
+        {"type": "doc.create", "detail": "Save the checklist in the project folder"},
+        {"type": "email.draft", "detail": "Draft the email to the printer with files and checklist"}
+      ]
+    }
+  },
+  {
+    "t": "Find any past design or image in seconds",
+    "d": "Keep a tagged log of your finished work and stock images in a spreadsheet, refreshed monthly, so you can search by client, style or subject.",
+    "cat": "Video, Image & Voice",
+    "job": "Graphic designer",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["AI assistant", "Google Drive", "Google Sheets", "Google Calendar"],
+    "when": "Once a month, plus whenever you finish a project",
+    "steps": [
+      {"h": "Set up a simple folder system", "b": "In Google Drive, create one 'Archive' folder with a subfolder per year, and inside that one folder per client project. Put final exports, not working files, here."},
+      {"h": "Start an archive log", "b": "Make a Google Sheet with columns: date, client, project, file link, format, colours, style, subjects, usage rights, notes."},
+      {"h": "Let the AI tag each batch", "b": "Upload a few finished images to your AI assistant with this prompt and paste the result into your sheet.", "p": "I'm cataloguing my finished design work. For each image I upload, give one row in a table with these columns: file name (I'll tell you: [file names in order]), format type (e.g. poster, logo, social post), main colours (up to 3 plain names), style words (up to 4, e.g. minimal, playful, vintage), subjects shown (up to 5), and a one-line description. Use consistent, simple words so I can search the sheet later. Output as a table I can paste into Google Sheets."},
+      {"h": "Add usage rights yourself", "b": "Fill in the usage rights column by hand, for example licensed stock, client-owned or your own photo. The AI cannot know this."},
+      {"h": "Book a monthly archive slot", "b": "Create a recurring Google Calendar event on the last Friday of each month to move finished work into the archive and tag it. If your ChatGPT plan includes scheduled tasks, set one to remind you with the prompt ready."},
+      {"h": "Search when you need something", "b": "Use the sheet's filter or Ctrl+F for words like 'blue', 'logo' or a client name, then click the link to open the file."}
+    ],
+    "example": "12/03 | Greenleaf Garden Centre | Open day | link | Poster | green, cream, coral | fresh, friendly, bold | flowers, family, signpost | Bright A2 poster with hand-drawn flowers. Rights: client-owned.",
+    "tips": ["Never upload images that are under a strict confidentiality agreement; tag those by hand.", "Keep the same small set of style words each month so searches stay reliable."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Last Friday of each month"},
+      "actions": [
+        {"type": "notify", "detail": "Remind the designer to move finished work into the archive"},
+        {"type": "ai.classify", "detail": "Tag each new image with type, colours, style and subjects"},
+        {"type": "sheet.append", "detail": "Add a row per image to the archive log"}
+      ]
+    }
+  },
+  {
+    "t": "Write a press release journalists will actually read",
+    "d": "Turn your announcement notes into a news-style press release with a strong headline, a quotable quote and a tidy notes-to-editors section.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "Whenever you have news to announce",
+    "steps": [
+      {"h": "Gather the facts", "b": "Write down the what, who, when, where and why of the news, any real figures you can stand behind, and who will be quoted."},
+      {"h": "Ask the AI for a first draft", "b": "Paste your facts into your AI assistant with this prompt.", "p": "Write a press release for [organisation] announcing [news]. Facts: [paste facts]. Audience: [type of media, e.g. local news, trade press]. Use this structure: a factual headline under 12 words, a one-sentence subheading, a first paragraph that answers who, what, when, where and why, two short supporting paragraphs, a natural-sounding quote from [name and role] that adds opinion rather than repeating facts, a short call to action, then 'Notes to editors' with boilerplate [paste boilerplate] and media contact placeholder. Keep it under 450 words. Use only the facts I gave you; mark anything you're unsure of with [CHECK]."},
+      {"h": "Get the quote approved", "b": "Send the draft quote to the person it is attributed to and let them change the wording so it sounds like them."},
+      {"h": "Write three subject lines", "b": "Ask the AI for three short email subject lines for pitching it, then pick the one that states the news most plainly."}
+    ],
+    "example": "Headline: Riverside library opens Saturday study space for exam students. First para: Riverside Library will open its first floor as a free quiet study space every Saturday from 4 May, for students preparing for summer exams... Quote: 'We kept hearing that home just isn't quiet enough,' said...",
+    "tips": ["Check every figure and date yourself; never let the AI fill gaps with numbers.", "Do not paste embargoed or market-sensitive information into an AI tool unless your organisation allows it."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Comms specialist adds announcement facts"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a structured press release with quote and notes to editors"},
+        {"type": "doc.create", "detail": "Save the draft for approval"}
+      ]
+    }
+  },
+  {
+    "t": "Get your spokesperson ready for a tough interview",
+    "d": "Get the three key messages, the hardest likely questions and short practice answers, so your spokesperson walks in calm and on message.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs", "Zoom"],
+    "when": "Before any media interview or panel",
+    "steps": [
+      {"h": "Collect the background", "b": "Note the outlet, the journalist's angle if known, the topic, and the points your organisation wants to land. Add any recent coverage they might bring up."},
+      {"h": "Build a briefing pack", "b": "Paste the background into your AI assistant with this prompt.", "p": "I'm preparing [spokesperson role] for a [length]-minute [radio / TV / print] interview with [outlet] about [topic]. Our position: [paste key points]. Recent coverage or issues they may raise: [paste]. Create a one-page briefing with: 3 key messages in under 20 words each, 8 likely questions from friendly to hostile, a suggested answer under 40 words for each that bridges back to a key message, 2 phrases to avoid and why, and one short memorable example or story they could use. Flag any question where our position looks weak."},
+      {"h": "Rehearse out loud", "b": "Run a short practice on Zoom or in person, with you asking the hard questions. Record it if they're happy to and play back the first two answers."},
+      {"h": "Tighten the answers", "b": "Ask the AI to shorten any answer that ran long, using what the spokesperson actually said in practice."}
+    ],
+    "example": "Key message 1: We are adding 40 new evening bus services from June. Hostile Q: 'Isn't this just making up for last year's cuts?' Suggested answer: 'Last year was hard and we listened. That's why these new services are on the routes people told us they need most.'",
+    "tips": ["Ask the AI to play the journalist live, one question at a time, for a realistic warm-up.", "Weak spots the AI flags are worth raising with leadership before the interview, not during it."],
+    "auto": {
+      "trigger": {"type": "calendar_event", "detail": "A media interview appears in the calendar"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create key messages, likely questions and suggested answers"},
+        {"type": "doc.create", "detail": "Save the briefing pack"},
+        {"type": "email.draft", "detail": "Send the briefing to the spokesperson"}
+      ]
+    }
+  },
+  {
+    "t": "Have a calm public statement ready within the hour",
+    "d": "When something goes wrong, get a short holding statement, a fuller update and an internal Q&A drafted from the facts you have so far.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Docs", "Microsoft Teams"],
+    "when": "When an incident or complaint is drawing public attention",
+    "steps": [
+      {"h": "Write down only confirmed facts", "b": "List what has happened, what you know for sure, what you don't know yet, and what is being done. Keep guesses out."},
+      {"h": "Draft the statement set", "b": "Paste the facts into your AI assistant with this prompt.", "p": "Something has gone wrong at [organisation]. Confirmed facts: [paste]. Not yet known: [paste]. Actions under way: [paste]. People affected: [who]. Draft three things: 1. A holding statement under 80 words that shows we know, we care, and what happens next, without speculating or admitting liability. 2. A fuller update template under 200 words with [placeholders] for facts we'll know later. 3. An internal Q&A of 8 questions staff or the media might ask, with short honest answers. Use plain, human language and avoid defensive or corporate phrases."},
+      {"h": "Get the right sign-off", "b": "Share the drafts with leadership and, where needed, legal or HR in a Teams chat or call. Do not publish until they agree."},
+      {"h": "Keep a version log", "b": "Save each approved version in Google Docs with the time it went out, so everyone works from the latest wording."}
+    ],
+    "example": "Holding statement: This morning our Northgate centre closed after a water leak. Everyone is safe. We're contacting people with appointments today to rebook, and we'll share an update by 3pm. We're sorry for the disruption.",
+    "tips": ["Statements about safety, legal or health matters must be checked by a qualified adviser before release.", "Remove names of affected people before pasting anything into an AI tool."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Comms lead starts an incident response"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a holding statement, update template and internal Q&A"},
+        {"type": "doc.create", "detail": "Create a versioned statement document"},
+        {"type": "message.send", "detail": "Share drafts with the sign-off group"}
+      ]
+    }
+  },
+  {
+    "t": "Write a speech that sounds like the speaker",
+    "d": "Turn bullet points and a few samples of how someone talks into a speech in their voice, timed to the minutes they've been given.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs", "Voice notes"],
+    "when": "When someone in your organisation has a speech to give",
+    "steps": [
+      {"h": "Collect their voice", "b": "Gather a transcript of a past talk, a few of their emails or a short voice note of them explaining the topic. This is what makes the speech sound like them."},
+      {"h": "Draft the speech", "b": "Paste the samples and your outline into your AI assistant with this prompt.", "p": "Write a [number]-minute speech (about [number x 130] words) for [name, role] to deliver at [event] to [audience]. Purpose: [what the audience should think or do afterwards]. Points to cover: [paste bullets]. Here are samples of how they speak and write: [paste samples]. Match their vocabulary, sentence length and humour. Open with a short story or moment, not a thank-you list. Use short sentences that are easy to say aloud, mark natural pauses with '...', and end with one clear line people will remember. Put thank-yous in a short separate block they can add or drop."},
+      {"h": "Read it aloud and time it", "b": "Read it at a normal pace with a timer, or ask the speaker to. Mark any line that trips the tongue."},
+      {"h": "Polish the tricky lines", "b": "Paste the marked lines back and ask the AI for two simpler ways to say each."}
+    ],
+    "example": "Opening: Last October, a nine-year-old walked into our Westfield branch with a jar of coins... and asked if it was enough to help. It was. That's what this year has been about. [pause] Closing line: Small jars, big difference.",
+    "tips": ["Let the speaker make the final edits; a speech only works if they believe the words.", "Ask for a one-page bullet version they can glance at instead of reading every word."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Comms specialist adds outline and voice samples"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a timed speech in the speaker's voice"},
+        {"type": "doc.create", "detail": "Save the speech and a bullet-point version"}
+      ]
+    }
+  },
+  {
+    "t": "Answer every journalist enquiry on time",
+    "d": "Catch media enquiries in one inbox label, log each with its deadline in a sheet and get a draft reply ready for approval.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Gmail", "Google Sheets"],
+    "when": "Whenever a media enquiry arrives",
+    "steps": [
+      {"h": "Label press emails automatically", "b": "Set a Gmail filter so emails to your press address, or containing words like 'deadline', 'comment' or 'journalist', get a 'Media enquiry' label. In Outlook, a rule can move them to a folder."},
+      {"h": "Start an enquiry log", "b": "Create a Google Sheet with columns: date received, outlet, journalist, topic, deadline, spokesperson, status, link to reply."},
+      {"h": "Pull out the details and draft a reply", "b": "For each new enquiry, paste the email into your AI assistant with this prompt.", "p": "Here is a media enquiry: [paste email]. Our agreed position on this topic is: [paste lines to take or 'none yet']. 1. Extract as a single row: outlet, journalist name, topic, specific questions asked, deadline (date and time), format wanted (statement, interview, data). 2. Suggest the best person to respond from this list: [names and areas]. 3. Draft a short reply that acknowledges the request, confirms when they'll hear back, and if lines to take exist, a draft statement under 100 words. Flag anything we should not comment on."},
+      {"h": "Log it and get approval", "b": "Paste the row into your sheet, sort by deadline, and send the draft statement to the right person to approve."},
+      {"h": "Check the sheet twice a day", "b": "Glance at the sheet each morning and afternoon. Anything with a deadline today goes to the top."}
+    ],
+    "example": "Row: 14 Mar | Coast Gazette | Reporter | Car park charges | Qs: when do they start, why | Deadline 15 Mar 12:00 | Statement | Suggested: Head of Estates. Draft reply: Thanks for getting in touch. We'll send a statement by 11am tomorrow.",
+    "tips": ["Only paste emails into an AI tool if your organisation's policy allows it, and remove journalists' personal phone numbers.", "Logging enquiries over time shows you which topics keep coming up."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "Email labelled 'Media enquiry' arrives"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out outlet, topic, questions and deadline"},
+        {"type": "sheet.append", "detail": "Add the enquiry to the log"},
+        {"type": "email.draft", "detail": "Draft an acknowledgement and statement for approval"}
+      ]
+    }
+  },
+  {
+    "t": "Keep a media contact list that stays useful",
+    "d": "Build one tidy sheet of journalists and outlets with beats, past coverage and notes, so you pitch the right person every time.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": ["AI assistant", "Google Sheets", "Gmail"],
+    "when": "Set up once, then update after each pitch",
+    "steps": [
+      {"h": "Gather what you already have", "b": "Export contacts from old spreadsheets, email signatures and past press release lists into one rough document. Use only work contact details journalists have shared publicly or with you."},
+      {"h": "Tidy it into one structure", "b": "Paste the rough list into your AI assistant with this prompt and copy the result into Google Sheets.", "p": "Here is a messy list of media contacts: [paste]. Turn it into a table with columns: name, outlet, role, beat or topics, work email, preferred contact method, region, last contacted, last story they covered for us, notes. Merge duplicates, standardise outlet names, and leave cells blank rather than guessing. After the table, list any rows that look incomplete or out of date so I can check them."},
+      {"h": "Add a log of every pitch", "b": "Add a second tab for pitches with date, contact, story pitched and result. Update it after each send."},
+      {"h": "Shortlist for each new story", "b": "When you have news, paste a summary of it and the sheet's beat column into the AI and ask which ten contacts fit best and why."},
+      {"h": "Prune every quarter", "b": "Remove contacts who've moved on or asked not to be contacted, and update roles you've seen change."}
+    ],
+    "example": "Name: J. Okafor | Outlet: Midlands Business Weekly | Role: Reporter | Beat: small business, local jobs | Last contacted: 02 Feb | Last story: apprenticeship scheme | Notes: prefers short emails, no attachments.",
+    "tips": ["Respect people's wishes: if someone asks to be removed, delete them, and handle the list in line with data protection rules.", "Never buy contact lists or collect details from places people haven't chosen to share them."],
+    "auto": {
+      "trigger": {"type": "new_row", "detail": "A pitch is logged in the pitches tab"},
+      "actions": [
+        {"type": "sheet.update", "detail": "Update the contact's last contacted date"},
+        {"type": "ai.generate", "detail": "Suggest best-fit contacts for the next story"}
+      ]
+    }
+  },
+  {
+    "t": "Gather team news into a monthly staff newsletter",
+    "d": "Collect updates from colleagues through a short form, then get a friendly, well-ordered staff newsletter drafted from their answers each month.",
+    "cat": "Content & Writing",
+    "job": "PR and comms specialist",
+    "lvl": "Intermediate",
+    "mins": 35,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Google Calendar"],
+    "when": "Monthly, a week before the newsletter goes out",
+    "steps": [
+      {"h": "Make a news form", "b": "Create a Google Form asking for: team name, the update, why it matters to colleagues, any photo link, and a contact name. Link it to a Google Sheet."},
+      {"h": "Send a regular call for news", "b": "Set a recurring Google Calendar reminder to share the form link with teams two weeks before each issue, and a nudge a week later."},
+      {"h": "Draft the newsletter", "b": "Copy the month's responses from the sheet into your AI assistant with this prompt.", "p": "Here are this month's staff news submissions: [paste rows]. Write an internal newsletter for [organisation] staff. Include: a warm 2-sentence intro, a 'Top story' chosen from the most significant item, 4-6 shorter items of 40-70 words each with a clear headline, a 'Thank you' section for people mentioned, and a 'Dates for your diary' list. Use plain, friendly language, avoid acronyms unless explained, and do not add any facts that aren't in the submissions. After the draft, list items you left out and why."},
+      {"h": "Check with contributors", "b": "Send each team their paragraph to check facts and names before you publish."},
+      {"h": "Send it out", "b": "Paste the final version into your usual email or intranet tool and add photos."}
+    ],
+    "example": "Top story: Our new Leeds office opens 3 June. Finance team: the expenses deadline moves to the 25th from next month. Thank you: to Amira and the facilities crew for the weekend move. Diary: 12 June - all-staff lunch.",
+    "tips": ["Keep personal news such as births or illness out unless the person has agreed to share it.", "Ask the AI to suggest a short subject line that names the top story."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Monthly, one week before publication"},
+      "actions": [
+        {"type": "web.fetch", "detail": "Collect this month's form responses from the sheet"},
+        {"type": "ai.generate", "detail": "Draft the staff newsletter from submissions"},
+        {"type": "doc.create", "detail": "Save the draft for contributor checks"}
+      ]
+    }
+  },
+  {
+    "t": "Capture exactly what your client wants from their event",
+    "d": "Turn a discovery call into a clear event requirements sheet covering goals, guests, budget, timings and needs, with gaps flagged for follow-up.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs", "Zoom"],
+    "when": "After the first conversation with a new client",
+    "steps": [
+      {"h": "Record or note the call", "b": "Take notes during the call, or use Zoom's AI Companion summary if your plan includes it. Otherwise save the transcript or write up notes straight after."},
+      {"h": "Turn notes into a requirements sheet", "b": "Paste them into your AI assistant with this prompt.", "p": "I'm an event planner. Here are my notes from a discovery call: [paste notes]. Turn them into an event requirements sheet with headings: Event purpose and success measures, Date and backup dates, Guest numbers and who they are, Venue type and location preferences, Budget (total and what it includes), Catering and dietary needs, Accessibility needs, AV and tech, Accommodation and transport, Branding and signage, Key people and decision maker, Must-haves and deal-breakers. Write 'Not covered' where nothing was said. End with the 8 most important questions to ask next."},
+      {"h": "Send it back for confirmation", "b": "Save it in Google Docs and email it to the client asking them to correct anything and answer the open questions."},
+      {"h": "Use it as your north star", "b": "Pin the agreed version at the top of the event folder and check supplier choices against it."}
+    ],
+    "example": "Purpose: thank 120 partner charities and launch next year's grant round. Success: 80% attendance, 30 sign-ups. Budget: £18,000 incl. venue, catering, AV. Accessibility: step-free access, hearing loop. Not covered: accommodation. Q1: Who has final sign-off on the venue?",
+    "tips": ["Remove guests' personal details before pasting notes into an AI tool.", "Ask for 'success measures' every time; they make the post-event review much easier."],
+    "auto": {
+      "trigger": {"type": "calendar_event", "detail": "A discovery call ends"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Turn call notes into an event requirements sheet"},
+        {"type": "doc.create", "detail": "Save the sheet in the event folder"},
+        {"type": "email.draft", "detail": "Draft an email to the client with open questions"}
+      ]
+    }
+  },
+  {
+    "t": "Build a minute-by-minute run sheet for the day",
+    "d": "Turn your agenda, supplier times and room plans into a detailed run sheet showing who does what, where and when, plus a backup plan.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Sheets"],
+    "when": "About two weeks before the event",
+    "steps": [
+      {"h": "Pull your timings together", "b": "List the agenda, supplier arrival and set-up times, speaker slots, catering service times and venue access times in one place."},
+      {"h": "Ask for a run sheet", "b": "Paste it all into your AI assistant with this prompt.", "p": "Create an event run sheet for [event] at [venue] on [date]. Agenda: [paste]. Supplier times: [paste]. Venue access: [times]. Team and roles: [names and roles]. Output a table with columns: time, duration, what happens, location, lead person, supplier involved, notes or cues. Start from venue access and end at final get-out. Add 10-minute buffers where things often run late, such as registration and breaks. After the table, list 5 likely problems on the day with a backup plan for each, and any timing clashes you can see."},
+      {"h": "Put it in a shared sheet", "b": "Paste the table into Google Sheets and share it with your team and key suppliers so everyone sees the same version."},
+      {"h": "Walk through it together", "b": "Talk your team through it a few days before. Fix anything that doesn't work and send a final PDF the day before."}
+    ],
+    "example": "07:30 | 30 min | Caterers arrive, set up coffee | Foyer | Dana | Fresh Fork | Lift booked. 09:00 | 30 min | Registration opens | Foyer | Jo | - | Buffer: doors at 08:55. Risk: keynote delayed - swap with panel at 10:15.",
+    "tips": ["Print a few copies too; phones die and signal drops on event days.", "Add mobile numbers in the sheet only for the team who need them, and remove them afterwards."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Planner adds agenda and supplier times"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Build a timed run sheet with risks and backups"},
+        {"type": "sheet.update", "detail": "Write the run sheet to a shared spreadsheet"}
+      ]
+    }
+  },
+  {
+    "t": "Walk into every venue visit with the right checklist",
+    "d": "Get a site visit checklist tailored to your client's needs, then turn your photos and notes into a clear visit report afterwards.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Phone camera", "Notes app"],
+    "when": "Before and after each venue inspection",
+    "steps": [
+      {"h": "Make a tailored checklist", "b": "Before the visit, paste your event requirements into your AI assistant with this prompt and save the result in your notes app.", "p": "I'm visiting [venue type] for [event] with [number] guests. Client requirements: [paste key needs, including accessibility, AV, catering, timings]. Create a site visit checklist grouped by: arrival and access, accessibility, main room, breakout spaces, AV and power, catering and kitchen, toilets and cloakroom, signage and branding, safety and exits, load-in for suppliers, and questions for the venue manager. Make each item a yes/no or measure-it check. Highlight the 5 items most likely to rule this venue out."},
+      {"h": "Take photos as you go", "b": "Photograph each space, entrance, lift, power points and anything that worries you. Speak quick notes into your phone if typing is awkward."},
+      {"h": "Write up the visit", "b": "Afterwards, paste your ticked checklist and notes into the AI and ask for a one-page visit report with strengths, concerns and questions to follow up."},
+      {"h": "Share with the client", "b": "Send the report with your best photos so the client can decide without needing to visit."}
+    ],
+    "example": "Rule-out checks: step-free route from car park (YES, via side door), room holds 150 cabaret (NO - max 130), hearing loop (YES). Concern: only two power points near stage. Follow-up: can the venue supply an extension board and a second lectern mic?",
+    "tips": ["Upload photos to the AI and ask 'What problems could this space cause for a seated dinner?' to catch things you missed."],
+    "auto": {
+      "trigger": {"type": "calendar_event", "detail": "A venue visit is booked in the calendar"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create a tailored site visit checklist"},
+        {"type": "notify", "detail": "Send the checklist to the planner's phone the morning of the visit"},
+        {"type": "ai.summarize", "detail": "Turn visit notes into a one-page report"}
+      ]
+    }
+  },
+  {
+    "t": "Give volunteers a one-page guide to their shift",
+    "d": "Turn your event plan into a short, friendly briefing for each volunteer role, with times, tasks, who to ask and what to do if something goes wrong.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Docs", "WhatsApp"],
+    "when": "A week before the event",
+    "steps": [
+      {"h": "List the roles", "b": "Write down each volunteer or support role, their shift times, where they'll be and what they need to do. Add your venue's key safety points."},
+      {"h": "Generate the briefings", "b": "Paste the details into your AI assistant with this prompt.", "p": "Create a one-page briefing for each of these volunteer roles at [event] on [date] at [venue]: [paste roles, times, locations, tasks]. Each briefing should have: a warm welcome line, arrival time and where to go, what to wear and bring, your tasks in order (short bullets), the 3 questions guests will most likely ask you with answers, who to contact for help (use [Name, role] placeholders), what to do in an emergency (based on: [paste venue safety points]), and break times. Keep each under 250 words and use plain, encouraging language."},
+      {"h": "Check the safety details", "b": "Make sure the emergency and first aid sections match the venue's actual procedures. Edit anything that doesn't."},
+      {"h": "Send each person their page", "b": "Share each role's page as a PDF by email or WhatsApp, and print copies for the volunteer desk on the day."}
+    ],
+    "example": "Welcome desk volunteer. Arrive 8:15 at the main entrance; look for the green banner. Tasks: greet guests, check names, hand out lanyards. Likely questions: Where are the toilets? (Left past the lift.) Help: [Name, Volunteer lead]. Fire alarm: guide guests to Assembly Point B.",
+    "tips": ["Keep volunteers' phone numbers in a separate sheet only you and the lead can see.", "Ask the AI for a 30-second spoken version to read out at the morning huddle."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Seven days before the event date"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a one-page briefing for each volunteer role"},
+        {"type": "file.save", "detail": "Save each briefing as a PDF"},
+        {"type": "message.send", "detail": "Send each volunteer their role briefing"}
+      ]
+    }
+  },
+  {
+    "t": "Catch overcharges before you pay an event bill",
+    "d": "Keep agreed supplier prices in a sheet and get each invoice checked against them, with any extra or wrong charges listed before you approve.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Gmail", "Google Sheets"],
+    "when": "Whenever a supplier invoice arrives",
+    "steps": [
+      {"h": "Record what you agreed", "b": "Make a Google Sheet for the event with a row per supplier: what was booked, agreed price, quantities, extras allowed, deposit paid and payment terms. Fill it as you sign contracts."},
+      {"h": "Label invoices as they arrive", "b": "Set a Gmail filter so emails with 'invoice' from your suppliers get an event label. In Outlook, use a rule to move them to a folder."},
+      {"h": "Check each invoice", "b": "Open the invoice and paste its lines, plus that supplier's row from your sheet, into your AI assistant with this prompt.", "p": "Compare this supplier invoice with what we agreed. Agreed terms: [paste row from sheet, incl. contract notes]. Final numbers on the day: [e.g. 118 guests, 2 extra hours AV]. Invoice: [paste invoice lines]. Give me a table: line item, invoiced amount, agreed amount, difference, and status (matches / extra / wrong / not agreed). Then list: any charges that need a question, deposits that should have been deducted, and maths errors. End with a short, polite email to the supplier asking about the items that don't match."},
+      {"h": "Query or approve", "b": "Send the query email if needed, or mark the invoice approved in your sheet with the date. Keep notes of any agreed changes."}
+    ],
+    "example": "Line: Dinner 130 covers | Invoiced £5,850 | Agreed £5,310 (118 confirmed) | +£540 | Wrong. Line: Cake cutting fee £75 | Not agreed. Deposit of £1,500 not deducted. Total to query: £2,115.",
+    "tips": ["Remove bank details from invoices before pasting.", "Always check the AI's maths with your spreadsheet before sending a query."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "Supplier invoice arrives under the event label"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out invoice lines and totals"},
+        {"type": "ai.generate", "detail": "Compare with agreed prices and flag differences"},
+        {"type": "email.draft", "detail": "Draft a polite query to the supplier"},
+        {"type": "sheet.update", "detail": "Mark the invoice as checked"}
+      ]
+    }
+  },
+  {
+    "t": "Turn sign-ups into ready dietary and access lists",
+    "d": "Collect registrations through a form, then get clean lists for catering, access needs, name badges and travel, ready to send to each supplier.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Intermediate",
+    "mins": 35,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Gmail"],
+    "when": "When registrations close, and again a few days before",
+    "steps": [
+      {"h": "Build a registration form", "b": "Create a Google Form or Microsoft Form asking for name, organisation, sessions attending, dietary needs, access needs, travel or parking, and badge name. Link it to a spreadsheet."},
+      {"h": "Explain how data is used", "b": "Add a line on the form saying what details are shared with which suppliers and why. Only ask for what you really need."},
+      {"h": "Sort the responses", "b": "When registrations close, copy the responses (without email addresses) into your AI assistant with this prompt.", "p": "Here are registration responses for [event]: [paste rows]. Create these lists: 1. Catering summary: total numbers per meal and a count of each dietary need, plus a separate list of names with allergies and the exact allergy. 2. Access needs list: name, need, and what we must arrange. 3. Name badge list: badge name and organisation, sorted by surname. 4. Session numbers per room. 5. Any responses that are unclear or need a follow-up question. Standardise spelling (e.g. 'veggie' = vegetarian). Don't drop anyone."},
+      {"h": "Send each list to the right place", "b": "Paste each list into its own tab, then email the catering list to the caterer and the access list to the venue."},
+      {"h": "Refresh before the day", "b": "Repeat a few days before to pick up late sign-ups and changes, and tell suppliers what changed."}
+    ],
+    "example": "Catering: Lunch 142 (vegetarian 23, vegan 9, gluten-free 6, halal 11). Allergies: 4 names - nuts (2), sesame, shellfish. Access: wheelchair space x3, BSL interpreter for keynote. Follow-up: 2 people wrote 'see email'.",
+    "tips": ["Allergy and access information is sensitive; share it only with the suppliers who need it and delete lists after the event.", "Always double-check allergy lists by hand; never rely on AI alone for safety information."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "A new registration is submitted"},
+      "actions": [
+        {"type": "sheet.append", "detail": "Add the registration to the event sheet"},
+        {"type": "ai.classify", "detail": "Standardise dietary and access needs"},
+        {"type": "sheet.update", "detail": "Refresh catering, access and badge tabs"}
+      ]
+    }
+  },
+  {
+    "t": "Learn what to fix after every event",
+    "d": "Send a short feedback form automatically after each event, then get a lessons-learned report with what worked, what didn't and changes for next time.",
+    "cat": "Events & Celebrations",
+    "job": "Event planner",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Gmail"],
+    "when": "The day after each event, with a report a week later",
+    "steps": [
+      {"h": "Create a reusable feedback form", "b": "Make a short Google Form: overall rating, best part, what to improve, venue, catering, speakers or sessions, and would you come again. Keep it under two minutes to fill in."},
+      {"h": "Schedule the send", "b": "Write the thank-you email with the form link in advance and use Gmail's 'Schedule send' for the morning after the event. Outlook has the same option under 'Delay delivery'."},
+      {"h": "Add your team's view", "b": "Ask your team and key suppliers to add notes to a shared Google Doc: what went wrong, near misses and what saved the day."},
+      {"h": "Get the lessons-learned report", "b": "A week later, paste the form responses, team notes and final budget against plan into your AI assistant with this prompt.", "p": "Write a post-event review for [event] on [date]. Original goals and success measures: [paste]. Guest feedback: [paste responses]. Team and supplier notes: [paste]. Budget plan vs actual: [paste]. Structure: 1. Summary in 3 sentences. 2. Goals met or missed, with evidence. 3. Top 5 things that worked. 4. Top 5 problems, each with a cause and a fix for next time. 5. Themes in guest comments with short example quotes. 6. Budget notes. 7. A checklist of changes for the next event. Base everything on the material given; don't invent figures."},
+      {"h": "Add the changes to your master template", "b": "Copy the changes checklist into your event planning template so the next event starts better."}
+    ],
+    "example": "Summary: Strong content and venue; registration queue and cold lunch let it down. Goal: 80% attendance - met (84%). Problem: 20-minute queue at 9am. Cause: one check-in point. Fix: two desks and badges sorted A-L / M-Z. Change: test the lunch timing with caterer.",
+    "tips": ["Make the form anonymous or say clearly how answers will be used, and remove names before pasting comments.", "Keep every review in one folder so you can ask the AI to spot patterns across a year of events."],
+    "auto": {
+      "trigger": {"type": "calendar_event", "detail": "Event end date passes"},
+      "actions": [
+        {"type": "email.send", "detail": "Send the thank-you and feedback form to attendees"},
+        {"type": "sheet.append", "detail": "Collect responses in the event sheet"},
+        {"type": "ai.summarize", "detail": "Write a lessons-learned report a week later"},
+        {"type": "doc.create", "detail": "Save the review in the event archive"}
+      ]
+    }
+  },
+  {
+    "t": "Write thank-you letters donors remember",
+    "d": "Get a warm, personal thank-you for each gift that names what it made possible, in your charity's voice, in a couple of minutes each.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "Within a few days of every gift",
+    "steps": [
+      {"h": "Note what makes this gift special", "b": "Write down the type of gift, what it will fund, whether they're a first-time or long-standing supporter, and anything they told you about why they gave. Use first names only."},
+      {"h": "Ask the AI for a letter", "b": "Paste your notes into your AI assistant with this prompt.", "p": "Write a thank-you letter from [your name, role] at [charity] to a supporter called [first name]. Gift: [type, e.g. monthly gift / one-off / event sponsorship]. What it helps fund: [specific project]. Supporter background: [first-time / years supporting / reason they gave]. Include one short real example of our work: [paste a brief story or fact we can stand behind]. Tone: warm, personal, not gushing. Under 200 words. No mention of the amount unless I give it. End with a soft, optional way to stay involved, not another ask. Give me 2 versions: a letter and a shorter email."},
+      {"h": "Add a personal touch", "b": "Read it, change any phrase that doesn't sound like you, and add one handwritten line if you're posting it."},
+      {"h": "Log that it was sent", "b": "Note the date you thanked them in your donor records so nobody gets thanked twice or missed."}
+    ],
+    "example": "Dear Helen, thank you so much for your gift to our winter warmth appeal. This month alone, it helped us deliver hot meals to families at our Eastgate hub, where one dad told us it was the first evening in weeks he hadn't worried about dinner...",
+    "tips": ["Don't paste full donor records, addresses or bank details into an AI tool; first name and gift type are enough.", "Build a small bank of real impact stories so every letter has a fresh, true example."],
+    "auto": {
+      "trigger": {"type": "new_row", "detail": "A new gift is added to the donor sheet"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a personal thank-you letter and email"},
+        {"type": "doc.create", "detail": "Save the letter ready to sign"},
+        {"type": "sheet.update", "detail": "Record the thank-you date"}
+      ]
+    }
+  },
+  {
+    "t": "Draft a grant application that matches what funders want",
+    "d": "Paste a funder's guidance and your project notes to get a section-by-section draft that answers every criterion and shows what's still missing.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Beginner",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "When you're applying to a trust, foundation or grant scheme",
+    "steps": [
+      {"h": "Gather the funder's guidance", "b": "Copy the funder's criteria, questions and word limits from their guidance notes or application form. Also note their stated priorities."},
+      {"h": "Check the fit first", "b": "Ask the AI to compare your project summary with their criteria and say honestly where it fits and where it doesn't, before you spend hours writing."},
+      {"h": "Draft each answer", "b": "Paste the guidance and your notes into your AI assistant with this prompt.", "p": "Help me draft a grant application to [funder]. Their guidance and questions with word limits: [paste]. Our project: [paste summary, need, activities, who benefits, timeline, budget headlines, how we'll measure success]. Evidence we have: [paste real data, quotes, past results]. For each question, write a draft answer within the word limit that uses the funder's own priorities and language where it truly fits. Use only the facts I've given. After each answer, list any evidence that would make it stronger and is missing. Finish with a checklist of every criterion and whether we've covered it."},
+      {"h": "Fill the gaps with real evidence", "b": "Add the missing figures, quotes or letters of support from your own records. Never leave the AI's placeholders in."},
+      {"h": "Get a second reader", "b": "Ask a colleague who doesn't know the project to read it. If they can explain it back in one sentence, it's clear enough."}
+    ],
+    "example": "Q3: How will you measure success? (150 words) Draft: We will track three things: the number of young carers attending weekly sessions, their own rating of stress at start and after 12 weeks, and... Missing: last year's attendance figures to show a baseline.",
+    "tips": ["Many funders have rules about AI use in applications, so check the guidance and be ready to explain how you used it.", "Remove names and personal details from any case studies you paste in."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Fundraiser adds funder guidance and project notes"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Check fit and draft answers within word limits"},
+        {"type": "ai.extract", "detail": "List missing evidence and uncovered criteria"},
+        {"type": "doc.create", "detail": "Save the draft application"}
+      ]
+    }
+  },
+  {
+    "t": "Write an appeal letter that tells one clear story",
+    "d": "Turn a real story from your work into a mailing or email appeal with a clear need, a simple ask and a reply route, in letter and email versions.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs", "Mailchimp"],
+    "when": "When planning an annual, seasonal or emergency appeal",
+    "steps": [
+      {"h": "Choose one story and one need", "b": "Pick a single person's or community's story (with their consent) and the one thing a gift will do. One story works better than five facts."},
+      {"h": "Draft the appeal", "b": "Paste the details into your AI assistant with this prompt.", "p": "Write a fundraising appeal for [charity] for our [appeal name] going to [existing supporters / lapsed supporters / new audience]. The story (shared with consent, names changed): [paste]. The need: [what's needed and why now]. What gifts do: [e.g. £10 provides..., only if true]. Write: 1. A letter under 450 words with a strong opening line, the story, the need, a clear ask, a P.S. that repeats the ask. 2. An email version under 200 words with 3 subject line options. 3. A short social post. Tone: honest, warm, hopeful, no guilt-tripping. Use only the facts I've given."},
+      {"h": "Check the facts and permissions", "b": "Confirm every figure with your finance or programmes team, and check the person in the story is happy with how they're described."},
+      {"h": "Send it the usual way", "b": "Lay out the letter for print, and paste the email into Mailchimp or your usual email tool to send to supporters who've agreed to hear from you."}
+    ],
+    "example": "Opening: When Maya first came to our drop-in, she hadn't spoken to anyone in four days. Ask: Will you give £20 today to keep the drop-in open on Sundays this winter? P.S. Every gift before 15 December keeps the doors open one more Sunday.",
+    "tips": ["Only send appeals to people who've agreed to receive them, in line with fundraising and data protection rules.", "Ask the AI to rewrite the opening line five ways and test two of them by email."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Fundraiser adds the story and the need"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft letter, email and social versions of the appeal"},
+        {"type": "doc.create", "detail": "Save drafts for fact-checking and sign-off"}
+      ]
+    }
+  },
+  {
+    "t": "Make silent auction lots people want to bid on",
+    "d": "Turn a list of donated prizes into tempting lot descriptions, sensible starting bids and printable bid sheets for your auction night.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Canva", "Google Sheets"],
+    "when": "A couple of weeks before a fundraising event",
+    "steps": [
+      {"h": "List the donated lots", "b": "In a Google Sheet, note each prize, who donated it, its stated value, any conditions such as expiry dates, and whether you have a photo."},
+      {"h": "Write descriptions and starting bids", "b": "Paste the list into your AI assistant with this prompt.", "p": "Here are donated lots for our silent auction at [event] raising money for [cause]: [paste list with stated values and conditions]. For each lot write: a catchy lot title under 8 words, a 40-word description that makes it sound appealing and honest, a line thanking the donor, conditions in plain words, and a suggested starting bid and minimum bid increase. Base starting bids on roughly a third to a half of the stated value, rounded to friendly numbers, and explain any you'd set differently. Output as a table I can paste into a spreadsheet."},
+      {"h": "Design the bid sheets", "b": "Use a Canva template for bid sheets and add each lot's title, description, starting bid and rows for name, table number and bid. Avoid asking for more personal details than you need."},
+      {"h": "Make a lot catalogue", "b": "Ask the AI to turn the table into a one-page catalogue to put on tables or share by email before the night."}
+    ],
+    "example": "Lot 7: A Seaside Weekend for Two. Two nights in a cosy harbour-view cottage, perfect for a quiet escape. Thanks to Harbour Lane Cottages. Valid until Oct, excludes school holidays. Start: £120. Raise by: £10.",
+    "tips": ["Check with donors that the description and conditions are right before printing.", "Collect winners' contact details on a separate sheet at payment, not on the public bid sheet."],
+    "auto": {
+      "trigger": {"type": "new_row", "detail": "A donated lot is added to the auction sheet"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write the lot title, description and starting bid"},
+        {"type": "sheet.update", "detail": "Fill in the lot's row in the sheet"},
+        {"type": "doc.create", "detail": "Build the lot catalogue"}
+      ]
+    }
+  },
+  {
+    "t": "Pitch a local business to sponsor your cause",
+    "d": "Turn what a company says publicly about its community work into a tailored sponsorship pitch, a meeting plan and a one-page offer.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Docs", "Canva", "LinkedIn"],
+    "when": "Before approaching a business for sponsorship or support",
+    "steps": [
+      {"h": "Read what the company has published", "b": "Look at the business's own website, community or sustainability pages and company LinkedIn posts. Note the causes they say they support and any staff volunteering or gift-matching schemes they mention."},
+      {"h": "Shape the pitch", "b": "Paste your notes and your sponsorship options into your AI assistant with this prompt.", "p": "I'm a fundraiser at [charity] approaching [business type and name] for support. What they say publicly about their community priorities: [paste notes from their website and posts]. Our work: [summary]. Sponsorship options we can offer: [paste packages and what each includes]. Create: 1. Three reasons this partnership fits them, based only on what they've published. 2. A 150-word first email to [role, e.g. marketing manager] asking for a short meeting. 3. A meeting plan: 5 questions to ask about their goals, how to present 2 options, and how to handle 'we don't have budget'. 4. Text for a one-page offer sheet. Also suggest non-cash options like staff volunteering or gift-matching."},
+      {"h": "Design the one-pager", "b": "Put the offer text into a Canva template with your logo and a strong photo, and save it as a PDF to send after the meeting."},
+      {"h": "Follow up and log it", "b": "Send a thank-you after the meeting and note the outcome and next step in your sponsor tracking sheet."}
+    ],
+    "example": "Fit: Their site says they focus on youth employment in the town; our mentoring scheme matches 40 young people a year. Email opener: I saw your team volunteered at the Spring Clean last month... Option B: £1,500 sponsors a term of mentoring, with logo on materials and a team visit day.",
+    "tips": ["Use only what a company has chosen to publish; never buy data or collect private details about individual staff or donors.", "Check any claims about tax relief or gift-matching with the company and a qualified adviser rather than promising outcomes."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Fundraiser adds notes about a target business"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write the fit summary, outreach email and meeting plan"},
+        {"type": "doc.create", "detail": "Create a one-page sponsorship offer"},
+        {"type": "sheet.append", "detail": "Log the approach in the sponsor tracker"}
+      ]
+    }
+  },
+  {
+    "t": "Spot supporters to thank or welcome back",
+    "d": "Tidy your own supporter spreadsheet and get a list of who's lapsed, who's increased their giving and who hasn't been thanked yet.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": ["AI assistant", "Google Sheets", "Excel"],
+    "when": "Every quarter",
+    "steps": [
+      {"h": "Export a privacy-safe copy", "b": "From your donor records, export a copy with a supporter ID instead of names, plus gift dates, amounts, gift type, campaign and last thank-you date. Leave out addresses, emails and phone numbers."},
+      {"h": "Clean it up", "b": "Ask the AI to give you spreadsheet formulas or steps to remove duplicates, fix date formats and standardise campaign names in Google Sheets or Excel."},
+      {"h": "Find the groups that matter", "b": "Paste a summary of the sheet, or upload it if your AI assistant and workplace policy allow, with this prompt.", "p": "Here is anonymised giving data with columns: supporter ID, gift date, amount, gift type, campaign, last thanked date: [paste or attach]. Today's date is [date]. Group supporters into: 1. Not thanked for their latest gift. 2. Lapsed (gave regularly but nothing in the last [12] months). 3. Increased their giving this year. 4. First-time givers in the last 3 months. 5. Long-standing supporters (5+ years). For each group give the IDs, a count, and one suggested way to get in touch that suits them (e.g. thank-you call, welcome email, update newsletter). Also explain the formulas I could use in Google Sheets to repeat this myself."},
+      {"h": "Act on the lists", "b": "Match the IDs back to names in your own system, then plan thank-yous, welcome-backs and updates. Record what you did."}
+    ],
+    "example": "Not thanked: 14 IDs (e.g. S0412, S0588). Lapsed: 37 IDs - suggest a 'we miss you' update with no ask. Increased giving: 9 IDs - suggest a personal call. Formula tip: =COUNTIFS(B:B,\">=\"&TODAY()-365,A:A,A2) counts gifts in the last year.",
+    "tips": ["Never paste names, contact details or bank information into an AI tool; work with IDs and keep the key in your own records.", "Only use data supporters gave you, and respect their contact preferences."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "First Monday of each quarter"},
+      "actions": [
+        {"type": "notify", "detail": "Remind the fundraiser to export an anonymised giving sheet"},
+        {"type": "ai.classify", "detail": "Group supporters into thank, lapsed, increased and new"},
+        {"type": "sheet.update", "detail": "Write the groups to a 'This quarter' tab"}
+      ]
+    }
+  },
+  {
+    "t": "Send your team a weekly campaign progress update",
+    "d": "Every Monday, turn your campaign spreadsheet into a short update showing money raised against target, what's working and what needs a push.",
+    "cat": "Charities & Community",
+    "job": "Fundraiser",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["AI assistant", "Google Sheets", "Gmail", "Google Calendar"],
+    "when": "Every Monday during a campaign",
+    "steps": [
+      {"h": "Set up a campaign tracker", "b": "Make a Google Sheet with tabs for income by week and by channel (online, events, post, corporate), the target, costs so far, and a notes tab for activity like mailings sent or events held."},
+      {"h": "Book a weekly slot", "b": "Create a recurring Monday morning Google Calendar event to update the sheet. If your ChatGPT plan includes scheduled tasks, set one to remind you with the prompt below."},
+      {"h": "Write the update from the numbers", "b": "Copy the week's totals and notes into your AI assistant with this prompt.", "p": "Write a weekly fundraising update for [campaign] for my team and [trustees / manager]. Target: [amount] by [date]. Raised so far: [amount]. This week by channel: [paste]. Last week by channel: [paste]. Costs to date: [amount]. Activity this week: [paste notes]. Include: a one-line headline, percentage of target reached and weeks remaining, what rose or fell compared with last week and the likely reason based on the notes, the best-performing channel, cost to raise each pound so far, 3 suggested focus areas for this week, and anything that needs a decision. Under 250 words. Use only these figures and show your sums."},
+      {"h": "Check the sums and send", "b": "Check the percentages against your sheet, then email the update from Gmail to the team or post it in your usual team chat."},
+      {"h": "Keep a running record", "b": "Paste each update into a single Google Doc so you can see the whole campaign story and use it in your final report."}
+    ],
+    "example": "Headline: 62% of target with 4 weeks to go. Raised £18,600 of £30,000. Online up £1,200 on last week after Thursday's email; events flat. Cost to raise £1: 18p. Focus: second email to lapsed supporters, confirm two corporate matches. Decision needed: extend quiz night ticket sales?",
+    "tips": ["Keep donor names out of the tracker you share with the AI; weekly totals by channel are enough.", "Financial decisions about the campaign should still be checked with your finance lead."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Mondays at 9am during the campaign"},
+      "actions": [
+        {"type": "web.fetch", "detail": "Read this week's totals from the campaign sheet"},
+        {"type": "ai.generate", "detail": "Write the progress update against target"},
+        {"type": "email.draft", "detail": "Draft the update email to the team"},
+        {"type": "doc.create", "detail": "Add the update to the campaign record"}
+      ]
+    }
+  }
+]

@@ -94,20 +94,6 @@ section{padding:72px 0 0}
 .lead{color:var(--soft);font-size:19px;margin-top:8px;max-width:56ch}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
 
-/* jobs */
-(() => {
-  const counts = {};
-  LIB.forEach(w => { if (w.job) counts[w.job] = (counts[w.job] || 0) + 1; });
-  const jobs = Object.keys(counts).sort((a, b) => a.localeCompare(b));
-  if (!jobs.length) { $('#jobs').hidden = true; return; }
-  jobs.forEach(j => {
-    const b = document.createElement('button'); b.type = 'button'; b.textContent = j;
-    const sm = document.createElement('small'); sm.textContent = counts[j]; b.appendChild(sm);
-    b.addEventListener('click', () => { state.q = ''; pondInput.value = ''; state.cat = 'all'; setSide('all'); state.job = j; renderCats(); render(); goPond(); });
-    $('#jobGrid').appendChild(b);
-  });
-})();
-
 /* doors */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:56px}
 .door{border:0;text-align:left;border-radius:32px;padding:34px 36px;display:flex;flex-direction:column;gap:6px;transition:transform .2s;min-height:270px}
@@ -1020,6 +1006,20 @@ $$('.viewseg button').forEach(b => b.addEventListener('click', () => {
 }));
 try { if (localStorage.getItem('fishpond-view') === 'tiles') $('.viewseg [data-v="tiles"]').click(); } catch {}
 
+/* jobs */
+(() => {
+  const counts = {};
+  LIB.forEach(w => { if (w.job) counts[w.job] = (counts[w.job] || 0) + 1; });
+  const jobs = Object.keys(counts).sort((a, b) => a.localeCompare(b));
+  if (!jobs.length) { $('#jobs').hidden = true; return; }
+  jobs.forEach(j => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = j;
+    const sm = document.createElement('small'); sm.textContent = counts[j]; b.appendChild(sm);
+    b.addEventListener('click', () => { state.q = ''; pondInput.value = ''; state.cat = 'all'; setSide('all'); state.job = j; renderCats(); render(); goPond(); });
+    $('#jobGrid').appendChild(b);
+  });
+})();
+
 /* doors */
 ['work', 'life'].forEach(side => {
   const items = LIB.filter(w => w.side === side);
@@ -1055,7 +1055,7 @@ try { if (localStorage.getItem('fishpond-view') === 'tiles') $('.viewseg [data-v
 })();
 $('#sort').addEventListener('change', e => { state.sort = e.target.value; state.shown = PAGE; render(); });
 let deb;
-pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { state.q = pondInput.value; state.shown = PAGE; render(); }, 150); });
+pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { state.q = pondInput.value; if (state.job) { state.job = ''; renderCats(); } state.shown = PAGE; render(); }, 150); });
 $('#pondSearch').addEventListener('submit', e => { e.preventDefault(); state.q = pondInput.value; state.shown = PAGE; render(); });
 
 function castTo(q, cat) {

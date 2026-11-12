@@ -22,7 +22,8 @@ It reports how many recipes each topic has, and warns about missing fields, dupl
 Each recipe is a fishpond-native guide that works with everyday tools (an AI assistant such as ChatGPT, Claude or Gemini, plus apps like Gmail, Sheets or Calendar):
 
 - `t`, `d`: title and one-line outcome
-- `cat`: one of 19 topics (12 work, 7 life)
+- `cat`: one of the topics listed in `scripts/build_recipes.py`
+- `job` (optional): the job the guide is for, such as "Bookkeeper". Job guides are based on task lists from the O*NET database (U.S. Department of Labor, Employment and Training Administration, CC BY 4.0) and always count as work guides. They appear under "Find guides for your job".
 - `lvl`, `mins`, `tools`, `when`: difficulty, setup time, what you need, when it runs
 - `steps`: 3 to 6 steps, each with a heading, instructions and an optional copy-paste prompt (`[brackets]` are filled in by the user)
 - `example`, `tips`: a sample result and practical tips
