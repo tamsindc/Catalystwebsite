@@ -1,0 +1,728 @@
+[
+ {
+  "job": "Marketing manager",
+  "t": "Write a one-page marketing plan for next quarter",
+  "d": "A single page with your goals, audiences, key messages, channels, budget split and the three things to do first.",
+  "cat": "Marketing & Social",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "A few weeks before each new quarter",
+  "steps": [
+    {"h": "Gather what you already know", "b": "Jot down your business goals for the quarter, last quarter's results, your budget and any launches or seasonal dates. Rough bullet points are fine."},
+    {"h": "Ask your AI assistant to shape the plan", "b": "Open ChatGPT, Claude or Gemini and paste this prompt with your notes underneath.", "p": "You are an experienced marketing manager. Using my notes below, write a one-page marketing plan for [quarter] for [business or product]. Our main goal is [goal, e.g. 20 new trade customers]. Budget: [amount]. Include these sections: 1) Goal and how we'll measure it, 2) Who we're targeting (max 3 audiences), 3) The one key message for each audience, 4) Channels and roughly how to split the budget, with a one-line reason for each, 5) Month-by-month activity, 6) Risks and what we'd do about them, 7) The three things to start this week. Keep it to one page and flag anything in my notes that doesn't add up.\n\nMy notes:\n[paste notes]"},
+    {"h": "Push back on the weak spots", "b": "Ask follow-ups like \"Which channel would you cut if the budget halved, and why?\" to test the thinking before you commit."},
+    {"h": "Share it as a living document", "b": "Paste the final version into Google Docs and share it with your team so everyone works from the same page."}
+  ],
+  "example": "Goal: 20 new trade accounts by end of March (tracked in CRM). Audiences: independent cafes, small bakeries. Key message for cafes: 'Fresh beans in 48 hours, no minimum order.' Budget: 50% LinkedIn and email, 30% trade event, 20% samples. Start this week: book the event stand, brief the designer, clean the email list.",
+  "tips": ["Ask it to list the assumptions it made, then check each one against your real figures.", "Keep confidential financials vague or rounded if your workplace AI policy requires it."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "Three weeks before each quarter starts"},
+    "actions": [
+      {"type": "notify", "detail": "Remind the marketing manager to gather last quarter's results"},
+      {"type": "ai.generate", "detail": "Draft a one-page quarterly marketing plan from the notes"},
+      {"type": "doc.create", "detail": "Save the plan as a shared document"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "Test a price change before you make it",
+  "d": "A clear view of three pricing options, how each might land with customers and what it could mean for your margin.",
+  "cat": "Marketing & Social",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "Before any price rise, discount or new package",
+  "steps": [
+    {"h": "Write down your numbers", "b": "Note your current price, what it costs you to deliver, rough monthly sales and what two or three competitors charge."},
+    {"h": "Ask for options and their trade-offs", "b": "Paste this prompt into your AI assistant with your figures.", "p": "Help me think through pricing for [product or service]. Current price: [price]. Cost to deliver: [cost]. Typical monthly sales: [number]. Competitors charge: [list]. Our customers mainly value [e.g. speed, quality, support]. Suggest 3 pricing options (for example a straight rise, a tiered package and a bundle). For each give: the price, the margin per sale, how many sales we could lose and still earn the same profit, how customers are likely to react, and how to explain it to them in one sentence. Show the maths in a simple table. Finish with which option you'd test first and why."},
+    {"h": "Check the maths in a spreadsheet", "b": "Copy the table into Google Sheets and recalculate the margins yourself so you know the figures are right."},
+    {"h": "Draft the customer message", "b": "Ask the assistant to write a short, honest note announcing your chosen option, focusing on the value customers get."}
+  ],
+  "example": "Option B, tiered: Basic 12, Plus 18, Pro 29. Margin per sale: 4 / 9 / 17. Break-even: you could lose 1 in 5 Basic buyers and still earn the same. Likely reaction: most choose Plus. Message: 'Pick the level of support that suits you.' Test first: B, because it keeps an entry price.",
+  "tips": ["AI can get sums wrong. Always recheck the numbers in a spreadsheet before you decide.", "Treat its view of customer reaction as a starting point and test with a small group first."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a pricing decision comes up"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Compare three pricing options with margins and likely reactions"},
+      {"type": "sheet.append", "detail": "Add the options table to a pricing sheet"},
+      {"type": "email.draft", "detail": "Draft a customer message for the chosen option"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "Write a creative brief your agency can run with",
+  "d": "A tight brief covering the goal, audience, message, must-haves and deadlines, so your agency or designer gets it right first time.",
+  "cat": "Marketing & Social",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "Whenever you hand work to an agency, designer or freelancer",
+  "steps": [
+    {"h": "Talk it through or jot it down", "b": "Record a two-minute voice note or write bullet points on what you need, who it's for and why now."},
+    {"h": "Turn it into a proper brief", "b": "Paste your notes into your AI assistant with this prompt.", "p": "Turn my notes into a clear creative brief for [agency, designer or freelancer]. Use these headings: Background (2 to 3 sentences), Objective (one measurable goal), Audience (who they are and what they care about), Single most important message, Supporting points (max 3), Tone of voice, Deliverables with sizes and formats, Must include / must avoid, Budget, Deadlines and review rounds, How we'll judge success. If anything important is missing from my notes, list it as a question at the end instead of guessing.\n\nMy notes:\n[paste notes]"},
+    {"h": "Answer the gaps", "b": "Fill in the questions it raised, then paste the brief into Google Docs and share it with comment access."}
+  ],
+  "example": "Objective: 300 sign-ups for the spring workshop by 15 April. Audience: first-time homeowners, 28 to 40, short on time. Main message: 'Fix the small stuff yourself in one Saturday.' Deliverables: 3 Instagram posts (1080x1350), 1 email header. Avoid: stock photos of tools on white. Questions: Is the venue confirmed?",
+  "tips": ["Keep a finished brief as a template and ask the assistant to follow its layout next time."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When new creative work is needed"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Turn rough notes into a structured creative brief"},
+      {"type": "doc.create", "detail": "Save the brief as a shared document"},
+      {"type": "email.draft", "detail": "Draft a covering email to the agency"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "Check your eco claims are clear and fair",
+  "d": "Your green and sustainability wording reviewed for vague or risky phrases, with clearer alternatives and a list of evidence to keep on file.",
+  "cat": "Marketing & Social",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": ["AI assistant"],
+  "when": "Before publishing packaging, ads or web copy with environmental claims",
+  "steps": [
+    {"h": "Collect the wording", "b": "Copy every environmental claim from your draft packaging, web page or ad into one place, along with the facts you have to back each one up."},
+    {"h": "Ask for a careful review", "b": "Paste this prompt into your AI assistant.", "p": "Review these environmental claims for [product] as a careful marketing compliance reviewer. For each claim give: 1) whether it is specific or vague, 2) what a sceptical customer might ask, 3) what evidence we would need to support it, 4) a clearer, more precise rewrite. Flag any words like 'eco-friendly', 'green' or 'sustainable' used without detail. Present it as a table. Do not invent facts about the product; where the evidence is missing, say so.\n\nClaims and the evidence we have:\n[paste claims and facts]"},
+    {"h": "Gather the proof", "b": "Use the evidence column as a checklist and save the supporting documents in one shared folder."},
+    {"h": "Get a final sign-off", "b": "Run the final wording past your legal or compliance contact, as rules on green claims differ by country."}
+  ],
+  "example": "Claim: 'Eco-friendly packaging.' Verdict: vague. Customer might ask: 'Friendly how?' Evidence needed: material breakdown, recyclability certificate. Rewrite: 'Box made from 80% recycled card. Recycle with household paper.'",
+  "tips": ["This is a first check, not legal advice. Always confirm claims with a qualified person before launch."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When new packaging or ad copy is added to the review folder"},
+    "actions": [
+      {"type": "ai.classify", "detail": "Flag vague or unsupported environmental claims"},
+      {"type": "ai.generate", "detail": "Suggest clearer rewrites and an evidence checklist"},
+      {"type": "notify", "detail": "Send the review to the marketing manager"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "Plan a trade show stand from booking to follow-up",
+  "d": "A dated checklist on a shared board, plus stand messaging and follow-up emails ready before the doors open.",
+  "cat": "Marketing & Social",
+  "lvl": "Intermediate",
+  "mins": 35,
+  "tools": ["AI assistant", "Trello", "Google Calendar", "Gmail"],
+  "when": "As soon as you book a trade show or event",
+  "steps": [
+    {"h": "Describe the event", "b": "Note the event name, dates, stand size, budget, what you want to show and what a good result looks like."},
+    {"h": "Get a full plan and checklist", "b": "Paste this prompt into your AI assistant.", "p": "I'm running a stand at [event] on [dates]. Stand size: [size]. Budget: [amount]. We're showcasing [products]. Success means [e.g. 60 qualified leads]. Create: 1) a checklist of every task from now to two weeks after the event, grouped by week, each with an owner role and due date, 2) which products to display and why, given our goal, 3) a short headline and three talking points for the stand, 4) three quick questions staff should ask visitors to qualify them, 5) a follow-up email for hot leads and one for general contacts."},
+    {"h": "Put the tasks on a board", "b": "Create a Trello board with a list for each week and add each task as a card with its due date and owner."},
+    {"h": "Block the key dates", "b": "Add the build day, show days and follow-up deadline to Google Calendar and invite the team."},
+    {"h": "Save the follow-up emails", "b": "Save both follow-up emails as Gmail templates so you can send them the day after the show."}
+  ],
+  "example": "Week -6: confirm stand graphics (Designer, 3 May). Week -2: print 200 leaflets (Marketing, 24 May). Stand headline: 'Packaging that ships flat and saves space.' Qualifying question: 'How many orders do you send a week?' Hot lead email: 'Great to meet you at the show. Here's the sample pack we promised...'",
+  "tips": ["Ask the assistant to cut the checklist down if you're a small team, so it only keeps the essentials."],
+  "auto": {
+    "trigger": {"type": "calendar_event", "detail": "When a trade show is added to the calendar"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create a dated checklist, stand messaging and follow-up emails"},
+      {"type": "list.add", "detail": "Add each task to the event board"},
+      {"type": "calendar.create", "detail": "Add build, show and follow-up dates"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "See which campaigns earned back their budget",
+  "d": "A spreadsheet that compares spend and results for every campaign, with a plain-English summary of what to keep, fix or stop.",
+  "cat": "Marketing & Social",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "At the end of every month or campaign",
+  "steps": [
+    {"h": "Set up a simple tracking sheet", "b": "In Google Sheets, add columns for campaign, channel, dates, spend, leads, sales and revenue. Fill in a row for each campaign from your ad and sales reports."},
+    {"h": "Ask for the calculations", "b": "Ask your AI assistant to give you the sheet formulas for cost per lead, cost per sale and return on spend, and add them as new columns."},
+    {"h": "Get the story behind the numbers", "b": "Copy the finished table into your AI assistant with this prompt.", "p": "Here is our campaign data for [period] with spend, leads, sales and revenue. Act as a commercially minded marketing manager. 1) Rank campaigns by return on spend. 2) For each, say Keep, Fix or Stop with a one-line reason. 3) Point out anything odd in the data I should double-check. 4) Suggest how to move next month's budget of [amount] across channels, as a small table. Only use the figures provided and show your working.\n\n[paste table]"},
+    {"h": "Share the summary", "b": "Paste the summary into a new tab of the sheet so your team and finance can see the reasoning next to the figures."}
+  ],
+  "example": "1. Email winback: spend 400, revenue 3,200, return 8x. Keep. 2. Search ads: 1,500 spend, 4,100 revenue, 2.7x. Fix: two keywords took 60% of spend with no sales. 3. Print flyers: 600 spend, 1 traceable sale. Stop or add a tracking code. Check: Facebook leads look doubled in week 2.",
+  "tips": ["Recheck any figure the assistant quotes against your sheet before sharing it.", "Use rounded or anonymised figures if your company limits what can go into AI tools."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "First working day of each month"},
+    "actions": [
+      {"type": "notify", "detail": "Remind the manager to update last month's campaign rows"},
+      {"type": "ai.summarize", "detail": "Rank campaigns and recommend keep, fix or stop"},
+      {"type": "sheet.update", "detail": "Write the summary into the report tab"}
+    ]
+  }
+ },
+ {
+  "job": "Marketing manager",
+  "t": "Hear what customers ask your sales team for each month",
+  "d": "A quick form your sales and buying staff fill in, and a monthly summary of the products and features customers keep asking for.",
+  "cat": "Marketing & Social",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": ["AI assistant", "Google Forms", "Google Sheets", "Google Calendar"],
+  "when": "Staff log requests any time; you review on the first Monday of the month",
+  "steps": [
+    {"h": "Make a short request form", "b": "In Google Forms, create four questions: what the customer asked for, type of customer, how often you hear it, and anything else. Link it to a Google Sheet so answers collect automatically."},
+    {"h": "Share it with the front line", "b": "Send the form link to your sales and buying team and ask them to log any request or complaint about the range in under a minute."},
+    {"h": "Set a monthly review", "b": "Add a recurring Google Calendar event for the first Monday of each month called 'Customer demand review'. If your AI assistant offers scheduled tasks, you can also set one to remind you."},
+    {"h": "Summarise the month's requests", "b": "Copy the month's rows from the sheet into your AI assistant with this prompt.", "p": "Here are this month's customer requests logged by our sales and buying team. Group them into themes. For each theme give: a short name, how many times it came up, which customer types asked, two typical examples, and whether it points to a new product, a change to an existing one, better messaging or nothing. End with the top 3 opportunities to raise with product development, ranked by likely impact. Use only what's in the data.\n\n[paste rows]"},
+    {"h": "Feed it into planning", "b": "Paste the summary into a 'Monthly insights' tab in the sheet and bring the top three to your product or planning meeting."}
+  ],
+  "example": "Theme: Refill packs (14 mentions, mostly cafes). Example: 'Do you do a 5kg refill?' Points to: new product. Theme: Delivery times unclear (9 mentions). Points to: better messaging on the website. Top opportunity: trial a refill pack in two sizes.",
+  "tips": ["Ask staff not to type customers' names or contact details into the form, just the request.", "Keep the form short or people will stop using it."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "First Monday of every month"},
+    "actions": [
+      {"type": "ai.classify", "detail": "Group the month's logged requests into themes"},
+      {"type": "ai.summarize", "detail": "Rank the top product and messaging opportunities"},
+      {"type": "sheet.update", "detail": "Add the summary to the monthly insights tab"},
+      {"type": "notify", "detail": "Send the summary to the marketing manager"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Write survey questions that get honest answers",
+  "d": "A ready-to-build questionnaire with neutral wording, sensible answer options and a note on anything that could bias the results.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": ["AI assistant", "Google Forms"],
+  "when": "Before launching any customer or market survey",
+  "steps": [
+    {"h": "Be clear on the decision", "b": "Write one sentence on what decision the survey will help someone make, who you'll ask and how long it should take them."},
+    {"h": "Draft and check the questions", "b": "Paste this prompt into your AI assistant.", "p": "I need a survey for [audience] to help us decide [decision]. It should take under [5] minutes. Write 8 to 12 questions in a sensible order, starting easy. For each give: the question, the question type (single choice, multiple choice, scale, open), the answer options, and why we're asking it. Then review your own draft: flag any leading, double-barrelled or confusing questions, missing 'don't know' options, or answer scales that aren't balanced, and fix them. Finish with 2 screening questions to make sure we reach the right people."},
+    {"h": "Test it on a colleague", "b": "Ask one or two people outside the project to answer it and tell you where they hesitated."},
+    {"h": "Build it", "b": "Copy the final questions into Google Forms or your usual survey tool."}
+  ],
+  "example": "Q3: How often do you buy ready meals? (Single choice: Never / Less than monthly / Monthly / Weekly / Several times a week). Why: sizes the market. Fixed: 'How much do you love our tasty new range?' became 'How would you rate the taste of the new range?' with a 5-point scale.",
+  "tips": ["Ask the assistant to estimate how long the survey takes to complete, then cut anything that doesn't serve the decision."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a new survey is needed"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Draft survey questions with answer options"},
+      {"type": "ai.classify", "detail": "Flag leading or biased wording"},
+      {"type": "doc.create", "detail": "Save the questionnaire for review"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Turn research findings into a report managers will read",
+  "d": "A short report with a headline summary, the key findings in plain English and clear recommendations, built from your analysis notes.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "When your analysis is done and you need to write it up",
+  "steps": [
+    {"h": "Collect your raw findings", "b": "Gather your key numbers, notable quotes and what you think they mean in one document. Messy is fine."},
+    {"h": "Ask for a reader-friendly draft", "b": "Paste this prompt with your findings.", "p": "Write up these research findings as a report for [audience, e.g. the leadership team] who have 5 minutes. Structure: 1) Headline: the single most important thing we learned, in one sentence, 2) Three to five key findings, each with the supporting number and what it means for the business, 3) What surprised us, 4) Recommendations with a suggested owner, 5) Limits of this research (sample, timing, gaps). Use plain English, no jargon. Do not add any figures that aren't in my notes.\n\nMy findings:\n[paste findings]"},
+    {"h": "Check every number", "b": "Go through the draft line by line and tick off each figure against your source data."},
+    {"h": "Make it look finished", "b": "Paste it into Google Docs, add your charts under each finding and share it."}
+  ],
+  "example": "Headline: Price isn't why people leave; slow delivery is. Finding 2: 41% of lapsed customers mentioned delivery in open comments, compared with 12% who mentioned price. So what: a delivery guarantee may win back more than a discount. Limit: online customers only.",
+  "tips": ["Ask for a second version written for a frontline team, so the same findings reach everyone.", "Remove any respondent names or contact details before pasting."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When findings notes are saved to the project folder"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Draft a short findings report with recommendations"},
+      {"type": "doc.create", "detail": "Save the draft report"},
+      {"type": "notify", "detail": "Tell the analyst the draft is ready to check"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Pick the right chart for every finding",
+  "d": "A chart recommendation for each finding, with a clear title that says the point and a note on what to avoid.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "When building slides or a report from data",
+  "steps": [
+    {"h": "List what you want to show", "b": "Write each finding as one line, along with the data behind it (for example 'share of buyers by age group, 5 groups')."},
+    {"h": "Ask for chart advice", "b": "Paste this prompt into your AI assistant.", "p": "I'm presenting research findings to [audience]. For each finding below, recommend the best chart type and explain why in one line. Also give: a chart title that states the takeaway (not just the topic), what goes on each axis, what to highlight in colour, and one common mistake to avoid with this data. Present as a table.\n\nFindings and data:\n[paste list]"},
+    {"h": "Build the charts", "b": "Create each chart in Google Sheets or Excel using the advice, and use the takeaway as the chart title."}
+  ],
+  "example": "Finding: satisfaction by region (6 regions). Chart: horizontal bar, sorted high to low. Title: 'The North West is the only region below target.' Highlight: North West bar in orange, the rest grey. Avoid: a pie chart, as six close values are hard to compare.",
+  "tips": ["Ask it to suggest where a simple table would be clearer than any chart."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When preparing a report or deck"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Recommend a chart type and takeaway title for each finding"},
+      {"type": "doc.create", "detail": "Save the chart plan alongside the report"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Build customer profiles from your research data",
+  "d": "Three to five clear customer profiles showing who they are, what they need, how they buy and what puts them off.",
+  "cat": "Research & News",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "After a survey or when refreshing your audience understanding",
+  "steps": [
+    {"h": "Prepare an anonymous summary", "b": "Export your survey or sales data and remove names, emails and any other details that identify a person. Summary tables or grouped answers work well."},
+    {"h": "Ask for evidence-based profiles", "b": "Paste the data into your AI assistant with this prompt.", "p": "From this anonymised customer data, identify 3 to 5 distinct customer groups. For each give: a descriptive name, roughly what share of customers they represent, who they are, what they need most, how and where they buy, what would make them buy more, what puts them off, and the evidence from the data behind each point. Don't invent details that aren't supported; mark anything you're inferring as 'assumption'. Finish with which group looks most valuable to target and why.\n\n[paste data]"},
+    {"h": "Check against what you know", "b": "Compare the profiles with your own analysis and with frontline colleagues' experience, and adjust anything that doesn't ring true."},
+    {"h": "Make them easy to share", "b": "Put each profile on one slide or one page so marketing and product teams can keep them handy."}
+  ],
+  "example": "Weekday Rushers (about 35%): 25 to 40, working full time, buy on their phone at lunchtime. Need: speed and no surprises at checkout. Put off by: delivery fees shown late. Evidence: 62% of mobile orders placed 12 to 2pm. Assumption: likely to respond to a subscription.",
+  "tips": ["Never paste raw customer records with personal details; use grouped or anonymised data and follow your company's data rules."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When a new anonymised survey export is saved"},
+    "actions": [
+      {"type": "ai.extract", "detail": "Identify distinct customer groups and supporting evidence"},
+      {"type": "doc.create", "detail": "Create one page per customer profile"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Compare competitor prices in one tidy table",
+  "d": "A spreadsheet of competitors' products, prices, offers and delivery terms, with a summary of where you sit in the market.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 40,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "Once a quarter or before a pricing review",
+  "steps": [
+    {"h": "Choose what to compare", "b": "List 4 to 6 competitors and the matching products to compare. In Google Sheets, set up columns for competitor, product, price, pack size, offers, delivery cost and date checked."},
+    {"h": "Collect the facts", "b": "Visit each competitor's website, or ask an AI assistant with web browsing to gather current prices, then paste the details into your sheet. Note the link for each."},
+    {"h": "Check anything the AI found", "b": "Open the links and confirm each price yourself, because web results can be out of date."},
+    {"h": "Ask for the market picture", "b": "Copy the finished table into your AI assistant with this prompt.", "p": "Here is a price comparison of [our product] against competitors, collected on [date]. 1) Work out the price per unit for each so they're comparable. 2) Place each competitor as budget, mid-market or premium. 3) Say where we sit and how big the gap is to the nearest rival on each side. 4) Note any offers, bundles or delivery terms that change the real price. 5) Give 3 questions this raises for our pricing or positioning. Use only the data provided.\n\n[paste table]"},
+    {"h": "Save the snapshot", "b": "Paste the summary into a new tab named with the date, so you can compare quarter by quarter."}
+  ],
+  "example": "Per 100g: Us 1.20, Brand A 0.95, Brand B 1.35, Brand C 1.80. Position: we're upper mid-market, 26% above A. Note: B offers free delivery over 20, which makes it cheaper than us for most baskets. Question: is our premium clear on the pack?",
+  "tips": ["Always record the date and source of each price, since prices change often."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "First week of each quarter"},
+    "actions": [
+      {"type": "web.fetch", "detail": "Collect current prices from listed competitor pages"},
+      {"type": "sheet.append", "detail": "Add prices with date and source to the comparison sheet"},
+      {"type": "ai.summarize", "detail": "Summarise market position and price gaps"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Judge whether a campaign really changed anything",
+  "d": "A before-and-after comparison of your key measures with a fair, plain-English verdict on what the campaign did and didn't achieve.",
+  "cat": "Research & News",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": ["AI assistant", "Google Sheets"],
+  "when": "Two to four weeks after a campaign ends",
+  "steps": [
+    {"h": "Line up before and after", "b": "In Google Sheets, put the same measures side by side for a period before and during or after the campaign, such as sales, enquiries, website visits and awareness scores."},
+    {"h": "Note anything else going on", "b": "Write down other things that could explain changes, like a holiday, a price change, a competitor's sale or bad weather."},
+    {"h": "Ask for a fair assessment", "b": "Paste the table and your notes into your AI assistant with this prompt.", "p": "Assess the effect of our [campaign name] campaign, which ran [dates] with the goal of [goal]. Below is data for before and after, and a list of other things that happened at the time. 1) Show the change for each measure as a number and a percentage. 2) Say which changes are likely linked to the campaign and which could be explained by other factors. 3) Rate your confidence (high, medium, low) for each and why. 4) Say what data would make the answer clearer next time. 5) Give a two-sentence verdict for managers. Don't overstate the effect.\n\n[paste data and notes]"},
+    {"h": "Plan a better test next time", "b": "Ask the assistant to suggest a simple way to measure the next campaign more clearly, such as a holdout region or a unique offer code."}
+  ],
+  "example": "Website visits: +38% (likely campaign, high confidence; spike matches launch day). Sales: +6% (medium; a competitor ran out of stock that week). Awareness: no change (low confidence; only 120 responses). Verdict: the campaign drove interest, but we can't yet show it drove sales.",
+  "tips": ["Check every percentage in your spreadsheet before sharing; AI can make arithmetic slips."],
+  "auto": {
+    "trigger": {"type": "calendar_event", "detail": "Three weeks after a campaign end date"},
+    "actions": [
+      {"type": "notify", "detail": "Remind the analyst to pull before and after figures"},
+      {"type": "ai.generate", "detail": "Write a before-and-after assessment with confidence levels"},
+      {"type": "doc.create", "detail": "Save the campaign review"}
+    ]
+  }
+ },
+ {
+  "job": "Market research analyst",
+  "t": "Measure customer satisfaction the same way every quarter",
+  "d": "A fixed short survey, a sheet that collects every answer and a quarterly summary showing what's improved, what's slipped and why.",
+  "cat": "Research & News",
+  "lvl": "Advanced",
+  "mins": 50,
+  "tools": ["AI assistant", "Google Forms", "Google Sheets", "Google Calendar"],
+  "when": "Survey runs all quarter; summary at the end of each quarter",
+  "steps": [
+    {"h": "Agree a short, fixed survey", "b": "Use your AI assistant to draft five to seven questions you'll keep identical every quarter, including one overall score and one open question. Build it in Google Forms or Microsoft Forms."},
+    {"h": "Collect answers in one sheet", "b": "Link the form to a Google Sheet and add a column for the quarter, so all results build up in one place."},
+    {"h": "Send it at the same moments", "b": "Add the form link to your order confirmation, follow-up email or receipt so customers are asked at the same point each time."},
+    {"h": "Book the quarterly review", "b": "Set a recurring Google Calendar event at the end of each quarter to run the summary."},
+    {"h": "Compare quarters", "b": "Copy this quarter's and last quarter's results into your AI assistant with this prompt.", "p": "Here are customer satisfaction results for [this quarter] and [last quarter], using the same questions. 1) Show the average score for each question in both quarters and the change. 2) Pull out the main themes from the open comments this quarter, with how often each appears and one example. 3) Link score changes to comment themes where the data supports it. 4) List what improved, what slipped and the top 3 actions. 5) Note the number of responses and any reason to be cautious. Use only the data given.\n\n[paste results]"}
+  ],
+  "example": "Overall score: 7.4 (up from 6.9, 312 responses). Biggest rise: 'easy to contact us', after the new live chat. Biggest drop: delivery updates (-0.6). Top theme: 'didn't know when it would arrive' (48 comments). Action: add tracking texts.",
+  "tips": ["Don't collect names unless you need them; anonymous answers are often more honest and safer to analyse.", "Keep the questions identical, or the quarter-to-quarter comparison stops being fair."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "Last working day of each quarter"},
+    "actions": [
+      {"type": "ai.summarize", "detail": "Compare scores and comment themes with last quarter"},
+      {"type": "doc.create", "detail": "Create the quarterly satisfaction report"},
+      {"type": "email.draft", "detail": "Draft an email sharing the headline results"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Prepare questions that show how work really gets done",
+  "d": "A tailored interview guide for staff, covering their tasks, tools, hand-offs and frustrations, plus what to watch for when you observe.",
+  "cat": "Managing a Team",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "Before interviewing staff or visiting a team for a review",
+  "steps": [
+    {"h": "Describe the review", "b": "Write a few lines on the process or team you're looking at, why the review is happening and who you'll speak to."},
+    {"h": "Ask for an interview guide", "b": "Paste this prompt into your AI assistant.", "p": "I'm reviewing [process or team] because [reason]. I'll interview [roles] for about [30] minutes each. Write an interview guide with: a short, reassuring opening script explaining the purpose, 12 to 15 open questions grouped into Daily tasks, Tools and systems, Hand-offs and approvals, Problems and workarounds, and Ideas for improvement. Add follow-up prompts for each group. Then add a checklist of 8 things to watch for if I observe the work in person (e.g. re-keying data, waiting time). Keep the tone neutral and non-judgemental."},
+    {"h": "Tailor it per role", "b": "Ask the assistant to adjust the guide for a manager versus a frontline worker, then save both versions in Google Docs."}
+  ],
+  "example": "Opening: 'I'm here to understand how things work today, not to judge anyone.' Hand-offs: 'Walk me through what happens after you send an order to finance.' Follow-up: 'How long do you usually wait?' Observe: Are details typed into more than one system?",
+  "tips": ["Tell interviewees how their answers will be used and keep notes anonymous where you can."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a new review starts"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create a role-specific interview guide and observation checklist"},
+      {"type": "doc.create", "detail": "Save the guide to the project folder"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Map how a process works today from your interview notes",
+  "d": "A clear step-by-step map of the current process, who does each step, where it slows down and where people disagree.",
+  "cat": "Managing a Team",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "After a round of staff interviews or observations",
+  "steps": [
+    {"h": "Gather your notes", "b": "Collect your interview and observation notes in one document. Replace names with roles, such as 'Accounts assistant'."},
+    {"h": "Ask for a current-state map", "b": "Paste your notes into your AI assistant with this prompt.", "p": "From these interview and observation notes, map the current [process name] process. Give: 1) a numbered list of steps from start to finish, each with who does it, the tool or system used, and typical time taken if mentioned, 2) every hand-off between people or teams, 3) pain points with which step they happen at and how many people mentioned them, 4) places where people described the process differently, 5) questions I still need to answer. Only use what's in the notes.\n\n[paste notes]"},
+    {"h": "Draw it if it helps", "b": "Ask the assistant to turn the steps into a simple flowchart description, then sketch it in your usual diagram or slide tool."},
+    {"h": "Check it with the team", "b": "Share the map with a couple of interviewees and ask 'Is this right?' before you start fixing anything."}
+  ],
+  "example": "Step 4: Sales coordinator re-types the order into the stock system (about 10 mins per order). Pain point: mentioned by 4 of 5 people. Conflict: two people say approval is needed over 500, one says over 1,000. Question: Who signs off urgent orders at weekends?",
+  "tips": ["Use roles instead of names before pasting notes, and check your organisation's rules on AI tools."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When interview notes are added to the project folder"},
+    "actions": [
+      {"type": "ai.extract", "detail": "Pull out steps, owners, hand-offs and pain points"},
+      {"type": "doc.create", "detail": "Create a current-state process map"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Weigh up solutions side by side before you recommend one",
+  "d": "A fair options comparison with costs, benefits, risks and effort for each, ending in a recommendation you can defend.",
+  "cat": "Managing a Team",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": ["AI assistant", "Excel"],
+  "when": "When you have more than one way to fix a problem",
+  "steps": [
+    {"h": "Describe the problem and options", "b": "Write down the problem, what success looks like, any limits on budget or time, and the options you're considering, including 'do nothing'."},
+    {"h": "Ask for a structured comparison", "b": "Paste this prompt into your AI assistant.", "p": "Act as an experienced management consultant. Problem: [problem]. Success looks like: [goal]. Constraints: [budget, time, people]. Options: [list options, including do nothing]. For each option give: what it involves, rough cost (use my figures where given, otherwise say 'estimate needed'), benefits, risks, effort to put in place, and time to see results. Then score each option 1 to 5 against [criteria, e.g. cost, impact, risk, speed] in a table with weights I can change. Recommend one option, explain why, and say what would change your mind."},
+    {"h": "Check and adjust the scores", "b": "Copy the scoring table into Excel or Google Sheets, adjust the weights with your stakeholders and see if the winner changes."},
+    {"h": "Write the summary", "b": "Ask for a half-page summary of the comparison to put at the front of your report."}
+  ],
+  "example": "Option B, shared inbox with rules: cost low, impact 4/5, risk 2/5, live in 2 weeks. Option C, new ticketing system: cost high, impact 5/5, risk 4/5, 3 months. Weighted scores: A 2.1, B 3.9, C 3.4. Recommend B now and review C next year. Would change: if volume doubles.",
+  "tips": ["Ask it to argue against its own recommendation, so you're ready for challenge in the meeting."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When options need comparing"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Compare options with costs, risks and weighted scores"},
+      {"type": "sheet.append", "detail": "Add the scoring table to a spreadsheet"},
+      {"type": "doc.create", "detail": "Write a half-page summary for the report"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Turn your findings into recommendations managers approve",
+  "d": "A clear recommendations paper with the problem, the evidence, what to change, the cost and a phased plan to make it happen.",
+  "cat": "Managing a Team",
+  "lvl": "Beginner",
+  "mins": 25,
+  "tools": ["AI assistant", "Word"],
+  "when": "At the end of a review or study",
+  "steps": [
+    {"h": "Pull together your evidence", "b": "Gather your key findings, figures and the option you've chosen. Remove names and replace them with roles."},
+    {"h": "Draft the paper", "b": "Paste your material into your AI assistant with this prompt.", "p": "Write a recommendations paper for [audience, e.g. the operations director] based on my findings below. Structure: 1) Summary in 3 sentences: the problem, what we recommend, the expected benefit, 2) What we found, with the evidence for each point, 3) Recommendations, numbered, each with owner, cost, benefit and priority, 4) Implementation plan in phases with rough timings, 5) Risks and how we'll manage them, 6) What we need the reader to decide today. Plain, confident language. Don't add figures I haven't given.\n\n[paste findings]"},
+    {"h": "Check the tone", "b": "Ask 'Which parts might make a team feel blamed?' and soften them, since the people affected may read it."},
+    {"h": "Finish in Word or Docs", "b": "Paste it into your report template, add charts and your process map, and send it with a short covering note."}
+  ],
+  "example": "Summary: Orders take 4 days to process because details are re-typed three times. We recommend a single order form linked to stock. Benefit: about 1.5 days saved per order. Decision needed today: approve a 6-week pilot in the Leeds team.",
+  "tips": ["Lead with the decision you need, not the history of the project."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When findings are ready to write up"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Draft a recommendations paper with a phased plan"},
+      {"type": "doc.create", "detail": "Save the paper in the report template"},
+      {"type": "email.draft", "detail": "Draft a covering note to the decision maker"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Train staff on a new procedure with a simple guide",
+  "d": "A step-by-step staff guide, a 30-minute training session plan and a short knowledge check, all built from the new procedure.",
+  "cat": "Managing a Team",
+  "lvl": "Intermediate",
+  "mins": 35,
+  "tools": ["AI assistant", "Google Docs", "Google Forms"],
+  "when": "Before a new process, form or system goes live",
+  "steps": [
+    {"h": "Write down the new procedure", "b": "List the new steps as you understand them, including who does what, any forms or systems used and common mistakes to avoid."},
+    {"h": "Turn it into training materials", "b": "Paste this prompt into your AI assistant.", "p": "Using the new procedure below, create three things for [team] who are [experience level]: 1) A staff guide: purpose in two sentences, numbered steps in plain English, what's changed from the old way, a 'what to do if' section for 5 common problems, and who to ask for help. 2) A 30-minute training session plan with timings, a live demo, a practice task and discussion questions. 3) Six multiple-choice questions to check understanding, with the correct answers marked.\n\nProcedure:\n[paste procedure]"},
+    {"h": "Publish the guide", "b": "Paste the guide into Google Docs, add screenshots of each step and share a view-only link with the team."},
+    {"h": "Set up the knowledge check", "b": "Turn the questions into a Google Forms or Microsoft Forms quiz so you can see which steps people find confusing."},
+    {"h": "Improve after the first week", "b": "Paste the most-missed questions back into the assistant and ask it to make those steps clearer in the guide."}
+  ],
+  "example": "Step 3: Before saving, tick 'Urgent' only if the customer needs it within 24 hours. What's changed: you no longer email finance; the form does it. What to do if: the customer has no account number, choose 'New customer' and add their postcode. Q4: Who approves orders over 1,000?",
+  "tips": ["Ask two people who'll actually use the process to try the guide before rollout."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When a new approved procedure is saved"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create a staff guide, session plan and quiz"},
+      {"type": "doc.create", "detail": "Publish the staff guide"},
+      {"type": "notify", "detail": "Tell the team the guide and quiz are ready"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Redesign a form people keep filling in wrong",
+  "d": "A clearer version of a confusing form or report, with only the fields that matter, better wording and a note on what changed.",
+  "cat": "Managing a Team",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": ["AI assistant", "Google Forms", "Phone camera"],
+  "when": "When a form or report causes errors, delays or complaints",
+  "steps": [
+    {"h": "Capture the current form", "b": "Take a photo or screenshot of the form or report, or copy its fields into a document. Blank out any real personal details."},
+    {"h": "Collect the complaints", "b": "Note the usual mistakes, what the information is used for and who reads it."},
+    {"h": "Ask for a redesign", "b": "Attach the image and paste this prompt into your AI assistant.", "p": "Here is our current [form or report name]. It's used by [who fills it in] and read by [who uses it] to [purpose]. Common problems: [list]. Review it and: 1) list every field and say whether to keep, merge, reword or remove it, with a reason, 2) suggest the best order, 3) rewrite labels and help text in plain English, 4) suggest which fields should be dropdowns or tick boxes to reduce errors, 5) give the redesigned form as a clean list of fields, 6) summarise what changed in 3 bullet points for staff."},
+    {"h": "Build and trial it", "b": "Rebuild it in Google Forms, Microsoft Forms or your usual template and trial it with a few users for a week."},
+    {"h": "Agree the final version", "b": "Share the trial feedback and the change summary with the form's owner before replacing the old one."}
+  ],
+  "example": "Remove: 'Department code' (system adds it). Merge: 'Date requested' and 'Date needed' into 'Needed by'. Reword: 'Justification' to 'Why do you need this? (one line)'. Dropdown: 'Cost centre', to stop typos. Fields cut from 18 to 11.",
+  "tips": ["Ask who reads each field. If nobody can say, it's a good candidate to remove."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a form is flagged as causing problems"},
+    "actions": [
+      {"type": "ai.extract", "detail": "List the current form's fields"},
+      {"type": "ai.generate", "detail": "Suggest a redesigned form with clearer wording"},
+      {"type": "doc.create", "detail": "Save the redesign and change summary"}
+    ]
+  }
+ },
+ {
+  "job": "Business analyst or consultant",
+  "t": "Track how a new process is bedding in each week",
+  "d": "A one-minute weekly check-in for staff, results in one sheet and a Friday summary of what's working, what's stuck and what to fix.",
+  "cat": "Managing a Team",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": ["AI assistant", "Microsoft Forms", "Excel", "Outlook"],
+  "when": "Every week for the first two months after a change goes live",
+  "steps": [
+    {"h": "Create a tiny check-in form", "b": "In Microsoft Forms or Google Forms, ask four things: how well the new process worked this week (1 to 5), what got in the way, any workaround used, and one suggestion. Keep it anonymous."},
+    {"h": "Collect answers in a spreadsheet", "b": "Open the responses in Excel or link them to Google Sheets so every week's answers sit in one place."},
+    {"h": "Send a weekly reminder", "b": "Set up a recurring Outlook or Google Calendar event every Thursday for the team with the form link in the description."},
+    {"h": "Summarise on Fridays", "b": "Copy the week's responses into your AI assistant with this prompt.", "p": "Here are this week's anonymous check-in responses about the new [process name], plus last week's average score of [score]. 1) Give this week's average and the change. 2) Group the problems into themes with counts and one example each. 3) List any workarounds people are using, as these may signal a design gap. 4) Suggest the top 3 fixes, ranked by how many people they'd help. 5) Write a short, encouraging update I can send to the team. Use only the data provided.\n\n[paste responses]"},
+    {"h": "Close the loop", "b": "Send the team update and log the fixes in a 'Changes made' tab, so people see their feedback leads to action."}
+  ],
+  "example": "Score: 3.8 (up from 3.1). Top issue: approval emails going to junk (7 of 15). Workaround spotted: people printing the form and scanning it back. Fix 1: add the approval sender to the safe list. Team update: 'Thanks for sticking with it; two fixes go in on Monday.'",
+  "tips": ["Stop the weekly check-in once scores level off, so people don't get survey fatigue."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "Every Friday at 2pm"},
+    "actions": [
+      {"type": "ai.summarize", "detail": "Summarise the week's check-in responses and themes"},
+      {"type": "sheet.update", "detail": "Record the weekly score and top fixes"},
+      {"type": "email.draft", "detail": "Draft an encouraging update for the team"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Plan a full lesson with clear goals in minutes",
+  "d": "A complete lesson plan with learning objectives, timed activities, questions to check understanding and a quick exit task.",
+  "cat": "Teaching & Training",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "When planning tomorrow's or next week's lessons",
+  "steps": [
+    {"h": "Note the basics", "b": "Write down the subject, topic, year group, lesson length, what pupils learned last lesson and any curriculum points you need to cover."},
+    {"h": "Ask for a lesson plan", "b": "Paste this prompt into your AI assistant.", "p": "Plan a [length]-minute [subject] lesson on [topic] for [year group / age]. Last lesson they covered [previous topic]. Curriculum point: [paste or describe]. Include: 1) two or three learning objectives written as 'I can...' statements, 2) a starter that links to last lesson, 3) teacher explanation with a worked example, 4) a main activity with a stretch task and extra support, 5) five questions to check understanding, from easy to hard, 6) a two-minute exit task, 7) timings for each part, 8) resources needed. Keep it realistic for a mixed-ability class of [number]."},
+    {"h": "Make it yours", "b": "Change anything that doesn't suit your class, then save it in Google Docs or Word in your planning folder."}
+  ],
+  "example": "Objectives: I can identify the causes of the First World War. I can explain which cause was most important. Starter (5 min): Match 6 key words to definitions. Main (25 min): Rank the causes in pairs, then justify the top one. Exit task: 'One cause, one reason it mattered.'",
+  "tips": ["Check facts and examples yourself before teaching; AI can make mistakes on detail.", "Follow your school's guidance on which AI tools you can use."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When planning a lesson"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create a timed lesson plan with objectives and checks"},
+      {"type": "doc.create", "detail": "Save the plan to the planning folder"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Make one worksheet work for every ability level",
+  "d": "Three versions of the same worksheet, with support, core and stretch levels, so every pupil can work on the same topic.",
+  "cat": "Teaching & Training",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": ["AI assistant", "Word"],
+  "when": "When preparing classwork for a mixed-ability group",
+  "steps": [
+    {"h": "Start with your existing worksheet", "b": "Copy the text of your worksheet or task. Don't include any pupil names or details."},
+    {"h": "Ask for three levels", "b": "Paste the worksheet into your AI assistant with this prompt.", "p": "Here is a worksheet on [topic] for [year group]. Rewrite it in three versions that cover the same learning: 1) Support: simpler wording, sentence starters, a worked example and a word bank, 2) Core: the original level, tidied up, 3) Stretch: fewer hints, one harder question that asks pupils to apply or explain. Keep the questions in the same order so I can teach them together. Add a short answer key for each version. Use clear, accessible language and a dyslexia-friendly layout suggestion.\n\n[paste worksheet]"},
+    {"h": "Format and print", "b": "Paste each version into Word or Google Docs, use a clear font and check the answers before printing."}
+  ],
+  "example": "Support Q2: 'Plants need light to make food. This is called p_________.' Word bank: photosynthesis, chlorophyll, glucose. Core Q2: 'What is photosynthesis?' Stretch Q2: 'Explain why a plant left in a dark cupboard would eventually die.'",
+  "tips": ["Label versions with shapes or colours rather than 'easy' and 'hard' to avoid pupils feeling singled out."],
+  "auto": {
+    "trigger": {"type": "new_file", "detail": "When a worksheet is added to the 'to adapt' folder"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create support, core and stretch versions with answer keys"},
+      {"type": "file.save", "detail": "Save the three versions next to the original"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Mark faster with a clear mark scheme and comment bank",
+  "d": "A mark scheme for any task plus a bank of specific feedback comments, so marking is quicker and more consistent.",
+  "cat": "Teaching & Training",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": ["AI assistant", "Google Docs"],
+  "when": "Before setting a test, essay or homework task",
+  "steps": [
+    {"h": "Share the task", "b": "Copy the task or questions and the learning objectives into your AI assistant. Never paste pupils' names or identifiable work into a public AI tool."},
+    {"h": "Ask for a mark scheme and comments", "b": "Use this prompt.", "p": "Here is a [task type] for [year group] on [topic], worth [marks] marks. Learning objectives: [objectives]. Create: 1) a mark scheme showing what earns each mark or band, with an example answer at each level, 2) the common mistakes pupils are likely to make, 3) a bank of 15 short feedback comments grouped into 'What went well' and 'Next step', each specific to this task and written so a [age]-year-old understands, 4) three quick follow-up tasks pupils can do to act on the feedback.\n\n[paste task]"},
+    {"h": "Keep the comment bank handy", "b": "Save the comments in Google Docs or your marking tool so you can copy them in as you mark."},
+    {"h": "Moderate a few", "b": "Mark three or four pieces yourself with the scheme and adjust anything that doesn't fit real answers."}
+  ],
+  "example": "Band 3 (5-6 marks): explains two causes with evidence and links them. Common mistake: describes events without explaining why. WWW: 'You backed up your point with a clear date and fact.' Next step: 'Add \"this meant that...\" to show the effect.'",
+  "tips": ["If you want help with a specific piece of work, retype a short anonymous extract instead of pasting the whole thing with names.", "You make the final judgement on every mark; use the scheme as a guide."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a new assessment is set"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create a mark scheme, common mistakes and a comment bank"},
+      {"type": "doc.create", "detail": "Save the scheme and comments for marking"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Write a calm, clear message to parents",
+  "d": "A kind, professional email or letter to a parent or carer about progress, behaviour or a concern, ready to personalise and send.",
+  "cat": "Teaching & Training",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": ["AI assistant", "Outlook"],
+  "when": "When you need to contact a parent or carer about something tricky",
+  "steps": [
+    {"h": "Note the situation without names", "b": "Write a short, general description, for example 'pupil has missed three homework deadlines but is doing well in class'. Leave out names and any personal details."},
+    {"h": "Ask for a balanced draft", "b": "Paste this prompt into your AI assistant.", "p": "Write a short email from a [subject] teacher to a parent or carer. Situation: [general description, no names]. Tone: warm, calm and professional, working together rather than blaming. Structure: 1) start with something positive about the pupil, 2) explain the concern with specific, factual examples, 3) say what I'm doing to help in school, 4) suggest one or two things that would help at home, 5) invite them to reply or meet, with [how to contact]. Under 180 words. Use [Pupil name] and [Parent name] as placeholders."},
+    {"h": "Personalise it in your school email", "b": "Copy the draft into your school email system, add the names and any details there, and check it follows your school's communication policy."}
+  ],
+  "example": "Dear [Parent name], [Pupil name] has been contributing brilliantly in our class discussions this term. I wanted to let you know that three recent homework tasks haven't been handed in. In school, I've offered a lunchtime homework club on Tuesdays. At home, a quick check of the planner each Sunday could really help...",
+  "tips": ["Keep names and personal details out of the AI tool and add them only in your school email.", "For safeguarding or serious concerns, follow your school's procedures rather than emailing."],
+  "auto": {
+    "trigger": {"type": "manual", "detail": "When a parent message is needed"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Draft a balanced parent message with name placeholders"},
+      {"type": "email.draft", "detail": "Place the draft in the teacher's email drafts"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Plan a school trip with letters and a checklist",
+  "d": "A dated trip checklist, a parent letter, a pupil kit list and a draft list of risks to discuss with your trip lead.",
+  "cat": "Teaching & Training",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": ["AI assistant", "Google Docs", "Google Calendar", "Google Forms"],
+  "when": "As soon as a trip is approved in principle",
+  "steps": [
+    {"h": "Write down the trip details", "b": "Note the destination, date, year group, number of pupils and staff, travel, cost and the learning purpose."},
+    {"h": "Ask for the planning pack", "b": "Paste this prompt into your AI assistant.", "p": "I'm planning a school trip to [destination] on [date] for [number] pupils in [year group], with [number] staff, travelling by [transport]. Purpose: [learning aims]. Create: 1) a checklist of tasks from now to the day after, with suggested deadlines, 2) a friendly parent letter covering purpose, date, times, cost, what to bring, lunch and how to give consent, 3) a pupil kit list, 4) a draft list of likely risks and sensible precautions for me to check against our school's risk assessment process, 5) a short follow-up activity to help pupils reflect on what they learned."},
+    {"h": "Put deadlines in your calendar", "b": "Add the key dates, like payment and consent deadlines, to Google Calendar or Outlook with reminders."},
+    {"h": "Collect consent the school way", "b": "Use your school's consent system, or a Google or Microsoft Form if that's approved, so replies are kept securely."},
+    {"h": "Get it signed off", "b": "Share the risk list with your trip lead or educational visits coordinator to complete the official risk assessment."}
+  ],
+  "example": "6 weeks before: send parent letter and consent form. 3 weeks: chase payments, confirm coach. 1 week: final numbers to venue. Letter: 'We'll leave school at 8:45 and return by 3:15. Please send a packed lunch in a disposable bag.' Risk: crossing the car park; precaution: staff at front and back.",
+  "tips": ["The AI risk list is a starting point only; your school's official risk assessment process must be followed.", "Don't put pupils' medical or personal details into the AI tool."],
+  "auto": {
+    "trigger": {"type": "calendar_event", "detail": "When a trip date is added to the calendar"},
+    "actions": [
+      {"type": "ai.generate", "detail": "Create the checklist, parent letter, kit list and draft risks"},
+      {"type": "doc.create", "detail": "Save the trip pack"},
+      {"type": "calendar.create", "detail": "Add consent, payment and booking deadlines"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "Map out a whole term from the curriculum",
+  "d": "A week-by-week plan for the term with topics, objectives, key assessments and space for school events, in one shared sheet.",
+  "cat": "Teaching & Training",
+  "lvl": "Intermediate",
+  "mins": 40,
+  "tools": ["AI assistant", "Google Sheets", "Google Calendar"],
+  "when": "Before the start of each term",
+  "steps": [
+    {"h": "Gather the essentials", "b": "Collect the curriculum points for the term, the number of teaching weeks, lessons per week and known dates like holidays, mock exams and trips."},
+    {"h": "Ask for a term overview", "b": "Paste this prompt into your AI assistant with your curriculum points.", "p": "Create a term plan for [subject], [year group]. There are [number] teaching weeks with [number] lessons a week. Known dates: [list holidays, exams, events]. Curriculum to cover: [paste]. Give a table with columns: Week, Dates, Topic, Learning objectives, Key activities, Assessment or check point, Homework idea. Build in a review week before assessments and a catch-up lesson every half term. Make the sequence logical, so each topic builds on the last."},
+    {"h": "Put it in a shared sheet", "b": "Copy the table into Google Sheets or Excel and share it with colleagues teaching the same year group, so you can plan together."},
+    {"h": "Add key dates to your calendar", "b": "Put assessment weeks and deadlines into Google Calendar or Outlook so nothing sneaks up on you."}
+  ],
+  "example": "Week 3 (16 Sep): Fractions of amounts. Objective: I can find a fraction of a quantity. Activity: shopping-discount challenge. Check: 5-question mini quiz. Week 7: Review week. Week 8: End-of-unit assessment.",
+  "tips": ["Ask the assistant to flag where the plan is overloaded, then move content rather than rushing it."],
+  "auto": {
+    "trigger": {"type": "schedule", "detail": "Two weeks before each term starts"},
+    "actions": [
+      {"type": "notify", "detail": "Remind the teacher to gather curriculum points and key dates"},
+      {"type": "ai.generate", "detail": "Draft a week-by-week term plan"},
+      {"type": "sheet.append", "detail": "Add the plan to the shared planning sheet"},
+      {"type": "calendar.create", "detail": "Add assessment weeks to the calendar"}
+    ]
+  }
+ },
+ {
+  "job": "Teacher",
+  "t": "See what your class didn't get with weekly exit tickets",
+  "d": "A short anonymous end-of-lesson check each week, and a summary of the common misconceptions to tackle next lesson.",
+  "cat": "Teaching & Training",
+  "lvl": "Advanced",
+  "mins": 40,
+  "tools": ["AI assistant", "Google Forms", "Google Sheets", "Google Calendar"],
+  "when": "End of a key lesson each week, reviewed the same evening",
+  "steps": [
+    {"h": "Create an anonymous exit ticket form", "b": "In Google Forms or Microsoft Forms, add three questions: one question on today's topic, 'What are you still unsure about?' and a confidence scale from 1 to 5. Turn off name and email collection."},
+    {"h": "Link answers to a sheet", "b": "Connect the form to a Google Sheet and add a column for the topic, so you can compare weeks."},
+    {"h": "Set a weekly reminder", "b": "Add a recurring Google Calendar or Outlook event for your chosen lesson with a note to update the question and share the link or QR code."},
+    {"h": "Summarise the answers", "b": "Copy that day's anonymous answers into your AI assistant with this prompt.", "p": "These are anonymous exit-ticket answers from a [year group] [subject] lesson on [topic]. The check question was: [question]. The correct answer is: [answer]. 1) Estimate how many got it right, partly right and wrong. 2) Group the wrong answers and 'still unsure' comments into misconceptions, with a count and one example each. 3) Give the average confidence score. 4) Suggest a 10-minute starter for next lesson that tackles the top two misconceptions. 5) Suggest one extension for pupils who are secure."},
+    {"h": "Track it over time", "b": "Paste the summary into a 'Weekly notes' tab in the sheet so you can spot topics that need revisiting before assessments."}
+  ],
+  "example": "Right: 18, partly: 6, wrong: 5. Top misconception: thinks a bigger denominator means a bigger fraction (7 answers). Average confidence: 3.2. Starter: compare 1/3 and 1/8 using paper strips, then 'Which pizza slice would you rather have?'",
+  "tips": ["Keep the form anonymous so no pupil data goes into the AI tool, and check your school allows the form tool.", "Answers stay useful only if the question checks the single most important idea of the lesson."],
+  "auto": {
+    "trigger": {"type": "form_submitted", "detail": "When the weekly exit ticket closes"},
+    "actions": [
+      {"type": "ai.classify", "detail": "Group answers into right, partly right and wrong, and find misconceptions"},
+      {"type": "ai.generate", "detail": "Suggest a starter that tackles the top misconceptions"},
+      {"type": "sheet.update", "detail": "Log the weekly summary"},
+      {"type": "notify", "detail": "Send the teacher the summary for next lesson"}
+    ]
+  }
+ }
+]
