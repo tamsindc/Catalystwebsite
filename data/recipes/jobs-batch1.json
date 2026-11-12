@@ -1,0 +1,1737 @@
+[
+ {
+  "t": "Match your bank statement to the ledger in minutes",
+  "d": "Paste your statement and ledger and get a list of matched items, missing entries and amounts that don't agree, ready for you to check.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "At each month end, or weekly for busy accounts",
+  "steps": [
+   {
+    "h": "Export both lists",
+    "b": "Download the bank statement for the period as a spreadsheet or CSV, and export the bank ledger for the same dates from your accounting software."
+   },
+   {
+    "h": "Take out sensitive details",
+    "b": "Delete full account numbers and any client names your organisation doesn't allow in AI tools. Dates, amounts and short descriptions are all the AI needs."
+   },
+   {
+    "h": "Ask for the match",
+    "b": "Open ChatGPT, Claude or Gemini, attach both files or paste them in, and use this prompt.",
+    "p": "I'm reconciling a bank account for [month and year]. Below are two lists: the bank statement and the ledger. Match each bank line to a ledger line using amount, date (within [3] days) and description. Then give me four tables: 1) Matched items. 2) On the bank but not in the ledger. 3) In the ledger but not on the bank. 4) Possible matches where the amount or date differs slightly, showing the difference. Finish with: closing balance per bank, closing balance per ledger, and the difference still unexplained after tables 2 to 4. If you're unsure about a line, put it in table 4 rather than guessing.\n\nBANK STATEMENT:\n[paste]\n\nLEDGER:\n[paste]"
+   },
+   {
+    "h": "Check every flagged item yourself",
+    "b": "Work through tables 2 to 4 against the source documents before you post anything. The AI can misread rows, so the balances must agree with your software, not just the chat."
+   },
+   {
+    "h": "Post and file",
+    "b": "Post the genuine missing entries in your accounting software, then save the summary with your month-end working papers."
+   }
+  ],
+  "example": "Bank only: 14 Mar card fee £4.20; 22 Mar refund from Oakfield Supplies £86.00. Ledger only: cheque 1042 £250.00 (not yet cleared). Possible match: 9 Mar bank £1,240.00 vs ledger £1,204.00, difference £36.00, looks like two digits swapped.",
+  "tips": [
+   "Your accounting software's own bank matching should come first; use this for accounts it can't connect to, or as a second pair of eyes.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A bank statement export is saved to the month-end folder"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Read the statement and ledger lines"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Match items and list differences in four tables"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the reconciliation summary"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the bookkeeper to review the flagged items"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Check supplier invoices against purchase orders before paying",
+  "d": "Get a quick table showing which invoices match their orders and which have wrong prices, quantities or missing order numbers.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Intermediate",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Gmail"
+  ],
+  "when": "Before each supplier payment run",
+  "steps": [
+   {
+    "h": "Gather the week's invoices",
+    "b": "Collect the invoices due for payment, either as PDFs from your inbox or as a list exported from your accounting software. A Gmail label or Outlook folder for supplier invoices keeps them together."
+   },
+   {
+    "h": "Export the matching orders",
+    "b": "Export open purchase orders from your purchasing system or the sheet you keep them in, with order number, supplier, items, quantities and agreed prices."
+   },
+   {
+    "h": "Ask the AI to compare them",
+    "b": "Attach the invoices and the order list to your AI assistant and paste this prompt.",
+    "p": "I'm checking supplier invoices before payment. Attached are [number] invoices and our purchase order list. For each invoice, find the matching order by order number (or by supplier and items if the number is missing). Give me a table with: Invoice number | Supplier | Order number | Invoice total | Order total | Difference | Status (Match / Price differs / Quantity differs / No order found / Possible duplicate) | Note. Then list only the problem invoices with a one-line explanation of what to query. Don't assume anything is approved; just report what you see."
+   },
+   {
+    "h": "Review the exceptions",
+    "b": "Open each problem invoice and check it against the order and delivery note yourself. Only you or your approver decides what gets paid."
+   },
+   {
+    "h": "Record the outcome",
+    "b": "Copy the table into your payment run sheet in Google Sheets with a column for 'Approved by' so there's a clear trail."
+   }
+  ],
+  "example": "INV-5521 | Harbour Packaging | PO-1187 | £1,920.00 | £1,800.00 | +£120.00 | Price differs | Box price £4.80 vs agreed £4.50. INV-0093 | Greenline Office | none | £64.50 | - | - | No order found | Ask who ordered it.",
+  "tips": [
+   "Ask the AI to also flag invoices with the same amount and supplier within a month, which can be duplicates.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Every Thursday morning before the payment run"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull totals, items and order numbers from new invoices"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Mark each invoice as matched or an exception"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add results to the payment run sheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the exceptions list for human review"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Put every bill in the right account, every time",
+  "d": "Build a one-page cheat sheet for which account each common supplier and cost belongs in, so posting is consistent across the team.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Google Docs",
+   "Excel"
+  ],
+  "when": "Once, then update each quarter",
+  "steps": [
+   {
+    "h": "Export a few months of posted bills",
+    "b": "From your accounting software, export three to six months of bills showing supplier, description, amount and the account they were posted to."
+   },
+   {
+    "h": "Add your chart of accounts",
+    "b": "Export your list of accounts with their names and numbers, so the AI only uses accounts you actually have."
+   },
+   {
+    "h": "Ask for a consistent rulebook",
+    "b": "Paste both into your AI assistant with this prompt.",
+    "p": "Here is our chart of accounts and [number] months of posted supplier bills. 1) For each supplier, tell me which account it is usually posted to and flag any supplier posted to more than one account, with examples. 2) Write a one-page posting guide in a table: Supplier or type of cost | Account number and name | Rule of thumb | Watch out for. 3) List bills that look miscategorised, with the account you'd expect and why. Only use accounts from the list I've given. Keep the language plain for a junior team member."
+   },
+   {
+    "h": "Review it with whoever signs off the accounts",
+    "b": "Go through the flagged items and the guide with your accountant or manager. Correct anything the AI got wrong before anyone uses it."
+   },
+   {
+    "h": "Share and keep it current",
+    "b": "Save the guide in Google Docs or Word next to your procedures and add new suppliers as they appear."
+   }
+  ],
+  "example": "Sparkline Telecom | 7502 Telephone & internet | Monthly bill, always this account | Hardware purchases go to equipment. Fresh Bean Coffee | 7800 Staff welfare | Office supplies only | Client meeting costs go to entertaining. Flagged: Northway Couriers posted to both 5100 and 7400.",
+  "tips": [
+   "Ask it for the three most common mistakes in your history; they make good training examples for new starters.",
+   "Remove employee names from expense lines before pasting, unless your organisation allows it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "First working day of each quarter"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind the bookkeeper to export last quarter's bills"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Check bills against the posting guide"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Update the posting guide with new suppliers"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Spot what looks wrong in your trial balance",
+  "d": "Get a second look at your trial balance that points out odd balances, sign errors and big swings from last month before anyone else sees it.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Excel"
+  ],
+  "when": "Before sending month-end figures",
+  "steps": [
+   {
+    "h": "Export two trial balances",
+    "b": "Export this month's and last month's trial balance from your accounting software as a spreadsheet."
+   },
+   {
+    "h": "Ask for a review",
+    "b": "Attach both to your AI assistant and paste this prompt.",
+    "p": "Here are trial balances for [this month] and [last month] for a [type of business]. Please review them and give me: 1) Whether total debits equal total credits in each. 2) Accounts with an unusual sign (for example a credit balance on an asset or expense account). 3) Accounts that moved more than [20]% or [£1,000] from last month, with the change. 4) Suspense, clearing or 'miscellaneous' accounts with a balance. 5) A short list of questions I should answer before sending this on. Present each as a table. Don't make journal entries, just flag things to check."
+   },
+   {
+    "h": "Investigate each flag yourself",
+    "b": "Look up the transactions behind every flagged account in your software. Many swings will have a good reason; note it so you can explain it."
+   },
+   {
+    "h": "Fix and re-run",
+    "b": "Correct genuine errors in your software, export a fresh trial balance and ask the AI to re-check only the items it flagged."
+   }
+  ],
+  "example": "Sign check: Prepayments shows a credit of £450, worth checking. Big moves: Repairs up £2,300 (+180%), Sales down 12%. Suspense account holds £312.40. Questions: Was the boiler repair a one-off? Has the January rent been prepaid?",
+  "tips": [
+   "The AI doesn't know your business, so it will flag normal seasonal swings too. Tell it what's expected, such as 'December sales are always high'.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Third working day of each month"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind the bookkeeper to export both trial balances"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Flag sign errors, large swings and suspense balances"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the review notes with the month-end pack"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Run every payroll with a checklist that catches mistakes",
+  "d": "Get a pay-run checklist plus a side-by-side check of this period against last, so new starters, leavers and odd changes stand out.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Google Calendar"
+  ],
+  "when": "Every pay run",
+  "steps": [
+   {
+    "h": "Write your pay-run checklist once",
+    "b": "Ask your AI assistant to turn how you run payroll into a checklist, then save it in Google Sheets or your notes.",
+    "p": "I run payroll for [number] staff, paid [weekly / monthly], using [payroll software]. Here's roughly how I do it: [describe your steps, deadlines and who approves]. Turn this into a numbered pay-run checklist with columns: Step | When | Who | Done (tick). Include checks for new starters, leavers, pay changes, overtime, sick and holiday pay, pension, and getting approval before payment. Mark which steps need a second person to check. Don't calculate tax or give advice on rules; just organise my process."
+   },
+   {
+    "h": "Prepare a summary without names",
+    "b": "Export this period's and last period's payroll summary, then replace employee names with staff numbers before using it with an AI tool."
+   },
+   {
+    "h": "Compare the two periods",
+    "b": "Paste both summaries with this prompt: 'Compare these two payroll periods by staff number. List anyone new, anyone missing, and anyone whose gross pay, hours or deductions changed by more than [10]%. Show it as a table with old value, new value and difference.'"
+   },
+   {
+    "h": "Check, approve and pay",
+    "b": "Look into every change on the list against your records, then have your approver sign off before you submit. Tax and deduction figures must come from your payroll software, not the AI."
+   },
+   {
+    "h": "Set a reminder",
+    "b": "Add a recurring event in Google Calendar a few days before each pay date that links to your checklist."
+   }
+  ],
+  "example": "Changes vs last month: #014 new starter, gross £2,150. #009 missing, check leaver date. #021 overtime up from 4 to 19 hours, gross +£310. #033 pension deduction £0 this month, last month £62.40, worth checking.",
+  "tips": [
+   "Payroll data is highly sensitive. Remove names, addresses, National Insurance numbers and bank details before pasting, and only use an AI tool your organisation allows for this.",
+   "Ask the AI to add any steps it thinks are missing to your checklist, then decide which ones apply."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "calendar_event",
+    "detail": "Three working days before each pay date"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Send the pay-run checklist to the bookkeeper"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Compare this period's anonymised summary with last period's"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Record checks done and approver"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Answer client account questions clearly and quickly",
+  "d": "Turn a client's question and a few account details into a friendly, accurate reply you can check and send in minutes.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Beginner",
+  "mins": 5,
+  "tools": [
+   "AI assistant",
+   "Gmail",
+   "Outlook"
+  ],
+  "when": "Whenever a client asks about their account",
+  "steps": [
+   {
+    "h": "Look up the facts first",
+    "b": "Find the invoices, payments and balance the client is asking about in your accounting software. The AI writes the reply; the facts come from you."
+   },
+   {
+    "h": "Draft the reply",
+    "b": "Paste the client's message and the key facts into your AI assistant with this prompt.",
+    "p": "Write a reply to this client question about their account. Their message: [paste]. Facts from our records: [list invoices, dates, amounts paid, balance, anything still outstanding]. Tone: friendly, clear and professional, British English. Structure: a one-line direct answer, then a short table of the relevant invoices and payments, then what happens next or what we need from them. Keep it under 150 words. Only use the facts I've given; if something is missing, write [CHECK] instead of guessing."
+   },
+   {
+    "h": "Check every figure",
+    "b": "Compare each number in the draft with your records and fill any [CHECK] gaps yourself."
+   },
+   {
+    "h": "Send and save",
+    "b": "Paste it into Gmail or Outlook, attach a statement if useful, and save the reply as a template if this question comes up often."
+   }
+  ],
+  "example": "Hi Priya, your balance is £540.00. INV-2231 (2 Oct, £720.00) was part-paid with £180.00 on 15 Oct; INV-2267 (20 Oct, £360.00) is paid in full. Could you let us know when the remaining £540.00 will follow? A statement is attached.",
+  "tips": [
+   "Use the client's reference or account number in your records, not in the AI chat; it doesn't need it.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_email",
+    "detail": "A client email arrives asking about a balance, invoice or payment"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Spot account questions in the inbox"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft a reply using the facts the bookkeeper adds"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the bookkeeper to check figures before sending"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get a weekly list of accounts falling behind",
+  "d": "Every Monday, get a short list of customers who've missed or delayed payments, sorted by urgency, with a suggested next step for each.",
+  "cat": "Finance & Accounting",
+  "job": "Bookkeeper",
+  "lvl": "Advanced",
+  "mins": 45,
+  "tools": [
+   "AI assistant",
+   "Google Sheets",
+   "Google Calendar",
+   "Gmail"
+  ],
+  "when": "Every Monday morning",
+  "steps": [
+   {
+    "h": "Set up a payments tracker",
+    "b": "Make a Google Sheet with columns for customer reference, amount due, due date, amount paid, date paid and notes. Update it from your accounting software's aged debtors export each Friday, using references instead of names."
+   },
+   {
+    "h": "Write your follow-up rules",
+    "b": "Decide your own rules, for example 'reminder at 7 days, phone call at 30 days, manager review at 60 days', and keep them in a tab of the sheet."
+   },
+   {
+    "h": "Ask for the weekly list",
+    "b": "Each Monday, paste the sheet into your AI assistant with this prompt. If your plan includes scheduled tasks in ChatGPT or Gemini in Sheets, you can use those; otherwise a recurring calendar reminder works.",
+    "p": "Here is our payments tracker as of [date] and our follow-up rules. Today is [date]. Give me: 1) A table of every account overdue or part-paid: Reference | Amount overdue | Days overdue | Last action | Next step under our rules. Sort by days overdue, then amount. 2) Accounts that have become overdue since last week. 3) Accounts where a payment plan payment was missed. 4) Total overdue in 0-30, 31-60, 61-90 and 90+ day bands. Only apply the rules I've given; don't suggest legal action."
+   },
+   {
+    "h": "Review before acting",
+    "b": "Check the list against your accounting software, because a payment may have arrived since the export. Agree anything over your threshold with your manager."
+   },
+   {
+    "h": "Book the follow-ups",
+    "b": "Add each phone call or reminder to your calendar and note the action in the tracker so next week's list knows what happened."
+   }
+  ],
+  "example": "Overdue total £8,420: 0-30 days £3,100 | 31-60 £2,870 | 61-90 £1,650 | 90+ £800. New this week: C-118 (£640, 9 days). Missed plan payment: C-072 (£150 due 1 Nov). Next steps: C-045, 62 days, £1,650, manager review.",
+  "tips": [
+   "Keep customer names out of the sheet you share with AI; a reference is enough and is safer.",
+   "Pair this with a polite reminder email template so the follow-ups take minutes."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Mondays at 8am"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Build the overdue list from the tracker and rules"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the list to the bookkeeper for review"
+    },
+    {
+     "type": "calendar.create",
+     "detail": "Add follow-up calls and reminders"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Log the actions taken"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Explain why actual costs differ from the budget",
+  "d": "Turn a budget-versus-actual table into clear, short commentary managers understand, with questions to confirm before it goes out.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Word"
+  ],
+  "when": "Each month after the books close",
+  "steps": [
+   {
+    "h": "Export budget versus actual",
+    "b": "Export a report from your accounting or budgeting tool showing budget, actual and variance for each line for the month and year to date."
+   },
+   {
+    "h": "Add what you already know",
+    "b": "Jot down known reasons for big differences, such as a delayed project or a one-off repair. The AI writes better commentary when it has the real story."
+   },
+   {
+    "h": "Draft the commentary",
+    "b": "Attach the report to your AI assistant and use this prompt.",
+    "p": "Here is the budget versus actual report for [department / company] for [month], plus my notes on known reasons. Write variance commentary for managers who aren't accountants. Include: 1) A three-sentence headline on overall performance. 2) A table of the lines that differ by more than [10]% or [£2,000]: Line | Budget | Actual | Variance | Likely reason | Timing or permanent? 3) Lines where I haven't given a reason, marked [ASK]. Use plain English, no jargon, and don't speculate beyond my notes.\n\nMy notes: [paste]"
+   },
+   {
+    "h": "Confirm the reasons",
+    "b": "Check each reason with the budget holder, especially any marked [ASK]. Change anything that isn't right before you send it."
+   },
+   {
+    "h": "Send it with the report",
+    "b": "Paste the final commentary into Word or your report pack next to the figures."
+   }
+  ],
+  "example": "Headline: Spending was £14,200 under budget for October, mostly timing. Marketing £6,000 under (campaign moved to November, timing). Repairs £3,400 over (emergency roof repair, permanent). IT software £1,900 over [ASK].",
+  "tips": [
+   "Ask for a short version for a slide and a longer one for the finance pack from the same chat.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Fifth working day of each month"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind the accountant to export budget versus actual"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Draft variance commentary from the report and notes"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the commentary into the monthly pack"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Draft month-end adjustments with clear explanations",
+  "d": "Describe accruals, prepayments and corrections in plain words and get draft journal entries with narratives, ready for you to review.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Excel"
+  ],
+  "when": "During month-end close",
+  "steps": [
+   {
+    "h": "List what needs adjusting",
+    "b": "Write a short note of each item: what it is, the amount, the period it relates to and the accounts you normally use."
+   },
+   {
+    "h": "Ask for draft journals",
+    "b": "Paste your list into your AI assistant with this prompt.",
+    "p": "I'm closing the books for [month and year]. Below are the adjustments I need. For each one, draft a journal entry in a table: Date | Account (from my list) | Debit | Credit | Narrative. Then add a reversing entry for next month where it applies (accruals and prepayments). Check that debits equal credits for each journal. Use only these accounts: [paste account list]. If an item is unclear, ask me rather than guessing.\n\nAdjustments:\n[paste list]"
+   },
+   {
+    "h": "Review every line",
+    "b": "Check each entry against your policies and supporting documents. You are responsible for the journals, so treat the AI's version as a first draft only."
+   },
+   {
+    "h": "Post and keep the support",
+    "b": "Post the approved journals in your accounting software and save the narratives and calculations with your month-end working papers."
+   }
+  ],
+  "example": "Accrual: electricity Oct, £820. Dr 7200 Light & heat £820 / Cr 2109 Accruals £820. Narrative: Oct electricity, invoice due Nov. Reverse 1 Nov. Prepayment: annual insurance £2,400 paid Oct; Dr 1103 Prepayments £2,200 / Cr 7600 Insurance £2,200.",
+  "tips": [
+   "Ask it to explain each entry in one sentence; it makes reviewing and audit questions easier.",
+   "Check how your accounting software handles reversing journals so you don't reverse them twice."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "When the accountant starts month-end adjustments"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft journals and narratives from the adjustment list"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add drafts to the month-end journal sheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Flag drafts for review and approval"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn monthly figures into a report management will read",
+  "d": "Get a short management report with headline numbers, what changed, risks and decisions needed, built from your monthly accounts.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Word",
+   "Microsoft Teams"
+  ],
+  "when": "Each month before the management meeting",
+  "steps": [
+   {
+    "h": "Collect the month's numbers",
+    "b": "Export the profit and loss, balance sheet and cash position, plus last month and the same month last year if you have them."
+   },
+   {
+    "h": "Set the format once",
+    "b": "Ask management what they want to see, then save a short outline of headings in Word so every month looks the same."
+   },
+   {
+    "h": "Draft the report",
+    "b": "Attach the exports to your AI assistant and paste this prompt.",
+    "p": "Write a two-page monthly management report for [company] for [month], using the attached figures. Audience: directors who want the story, not the detail. Sections: 1) Headlines (four bullets with numbers). 2) Sales and margin compared with last month, budget and last year. 3) Costs: the three biggest changes and why (use my notes: [paste]). 4) Cash: closing balance, main movements and the next 8 weeks' known big payments. 5) Risks to watch. 6) Decisions or approvals needed. Use a table where it helps. Plain English. Mark anything you're unsure of as [CHECK]. Don't make recommendations on tax or investment."
+   },
+   {
+    "h": "Check figures and tone",
+    "b": "Tie every number back to your accounts and replace each [CHECK]. Make sure the risks and decisions reflect your own judgement."
+   },
+   {
+    "h": "Share it",
+    "b": "Save it in Word and post it in your management channel in Teams or by email ahead of the meeting."
+   }
+  ],
+  "example": "Headlines: Sales £182k, up 6% on September. Gross margin 41% (budget 43%), driven by higher freight costs. Cash £96k, down £18k after the annual insurance payment. Decision needed: approve the £12k van replacement in Q1.",
+  "tips": [
+   "If your plan includes Copilot in Excel or Word, try it here; otherwise this chat method works with any assistant.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Seventh working day of each month"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Summarise the month's figures into the agreed sections"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Create the management report in the standard outline"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the accountant to check figures before sharing"
+    },
+    {
+     "type": "message.send",
+     "detail": "Post the approved report to the management channel"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Set up a clear chart of accounts for clients",
+  "d": "Get a tidy, sensible list of accounts tailored to a client's business, with a short note on what goes where, ready to load into their software.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Xero",
+   "QuickBooks"
+  ],
+  "when": "When onboarding a new client or cleaning up an old set-up",
+  "steps": [
+   {
+    "h": "Describe the business",
+    "b": "Note what the client does, how they earn money, their main costs, whether they're VAT registered, and what reports they or their lender want."
+   },
+   {
+    "h": "Draft the list",
+    "b": "Paste your notes into your AI assistant with this prompt, adding their current account list if they have one.",
+    "p": "Draft a chart of accounts for a [type of business] in [country], using [Xero / QuickBooks / other software]. Business details: [paste notes]. Their current accounts (if any): [paste]. Give me a table: Account number | Account name | Type (asset, liability, equity, income, expense) | What goes here | Keep, merge or new. Keep it lean, around [40 to 60] accounts. Group income and costs so they match the reports they need. List any current accounts you'd suggest merging and why."
+   },
+   {
+    "h": "Review against your standards",
+    "b": "Check the list against your firm's standard set-up and local reporting and tax requirements. Adjust names and numbers to suit your judgement."
+   },
+   {
+    "h": "Load and explain it",
+    "b": "Import the approved list into the client's software and send them the 'what goes here' column as a one-page guide."
+   }
+  ],
+  "example": "4000 | Sales - Café | Income | Food and drink sold in the café | New. 4010 | Sales - Catering | Income | Event and office catering | New. 5000 | Food stock purchases | Expense | Ingredients and drinks | Keep. Merge: 'Sundries' and 'General' into 7990 Other admin.",
+  "tips": [
+   "Ask the AI which accounts tend to get misused in this kind of business, and add a warning line to the client guide.",
+   "This is a draft to save time; the final set-up is your professional call."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "form_submitted",
+    "detail": "A new client completes the onboarding form"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft a chart of accounts from the client's answers"
+    },
+    {
+     "type": "file.save",
+     "detail": "Save the draft in the client's onboarding folder"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the accountant to review before importing"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Build a simple 12-month forecast with clear assumptions",
+  "d": "Get a month-by-month income, costs and cash forecast laid out in a spreadsheet, with every assumption written down so it can be challenged.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Intermediate",
+  "mins": 45,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "When planning the year or a big decision",
+  "steps": [
+   {
+    "h": "Gather the starting point",
+    "b": "Export the last 12 months of monthly profit and loss and the current cash balance. Write down what you know is changing, such as a price rise, new hire or lost customer."
+   },
+   {
+    "h": "Agree the assumptions first",
+    "b": "Ask the AI to list assumptions before any numbers, so you can correct them early.",
+    "p": "I'm building a 12-month forecast for [business] starting [month]. Attached are the last 12 months of monthly results and our current cash of [£]. Known changes: [list]. Step 1: list the assumptions you'd use for each line (growth, seasonality, timing of payments and receipts), in a table: Line | Assumption | Based on. Don't build the forecast yet; wait for me to confirm the assumptions."
+   },
+   {
+    "h": "Build the forecast layout",
+    "b": "Once you've corrected the assumptions, ask: 'Now lay out the forecast as a table with months across the top: income lines, cost lines, profit, then cash in, cash out and closing cash. Show the spreadsheet formulas I should use for each row so the figures update when I change an assumption.'"
+   },
+   {
+    "h": "Put it in your spreadsheet",
+    "b": "Copy the layout into Excel or Google Sheets with the assumptions on their own tab, and check that the formulas add up correctly."
+   },
+   {
+    "h": "Sense-check and share",
+    "b": "Review the forecast with the business owner or manager, test a cautious and a hopeful version, and label it clearly as a forecast, not a promise."
+   }
+  ],
+  "example": "Assumptions: sales grow 3% a month from March; July and August 20% lower (seasonal); new hire from April £2,800 a month; customers pay in 45 days. Closing cash: Jan £42k, Apr £31k (lowest), Dec £58k.",
+  "tips": [
+   "Keep the assumptions tab front and centre; it's what people should argue about, not the formulas.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "When a new forecast or reforecast is needed"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "List assumptions from past results and known changes"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Lay out a monthly forecast with formulas"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Fill the forecast spreadsheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the accountant to review before sharing"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Collect everything you need for a client's tax return",
+  "d": "Send each client a tailored checklist and simple upload form, then see what's arrived and what's missing in one sheet.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Intermediate",
+  "mins": 40,
+  "tools": [
+   "AI assistant",
+   "Google Forms",
+   "Google Drive",
+   "Google Sheets"
+  ],
+  "when": "A few months before each tax deadline",
+  "steps": [
+   {
+    "h": "Draft a checklist for each client type",
+    "b": "Ask your AI assistant to write a document checklist for each kind of client you have.",
+    "p": "I'm an accountant preparing [personal / business] tax returns in [country] for the [tax year]. Write a client-friendly document checklist for a [describe client: e.g. sole trader with a rental property]. Group items under headings (income, expenses, property, pensions and savings, other). For each item, add a one-line plain-English note on what it is and where they might find it. Finish with five short questions to ask them about changes this year. Don't give tax advice; this is just to collect information."
+   },
+   {
+    "h": "Check the checklist",
+    "b": "Review each checklist against current rules and your firm's own list. Remove anything that doesn't apply and add anything the AI missed."
+   },
+   {
+    "h": "Build a simple form",
+    "b": "Make a Google Form with the questions and file upload fields, saving uploads to a Drive folder. Responses land in a Google Sheet automatically."
+   },
+   {
+    "h": "Send it and track progress",
+    "b": "Email the form link with a friendly cover note, then add a 'Missing' column to the response sheet and follow up on the gaps each week."
+   }
+  ],
+  "example": "Checklist: Sole trader with rental flat. Income: sales invoices or summary for the year; rental statements from the letting agent. Expenses: mortgage interest statement, letting agent fees, repair receipts over £100. Questions: Did you start or stop any work this year?",
+  "tips": [
+   "File uploads in Google Forms need respondents to sign in to a Google account; offer a secure upload link from your practice software as an alternative.",
+   "Store client documents only where your firm's data policy allows, and don't paste their personal details into a public AI tool."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Three months before the tax filing deadline"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft a checklist for each client type"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Prepare the cover email with the form link"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Mark documents received and missing"
+    },
+    {
+     "type": "notify",
+     "detail": "Weekly reminder to chase missing items"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Keep audit requests organised from first list to sign-off",
+  "d": "Turn the auditor's request list into a shared tracker with owners and due dates, plus a weekly status summary that shows what's still open.",
+  "cat": "Finance & Accounting",
+  "job": "Accountant",
+  "lvl": "Advanced",
+  "mins": 50,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Microsoft Teams",
+   "Outlook Calendar"
+  ],
+  "when": "From audit planning until sign-off",
+  "steps": [
+   {
+    "h": "Turn the request list into a tracker",
+    "b": "Paste the auditor's request list into your AI assistant with this prompt, then copy the result into a shared Excel workbook.",
+    "p": "Here is our auditor's document request list for the [year-end] audit. Turn it into a tracker table with columns: Ref | Request (short) | Area (e.g. bank, payroll, fixed assets) | Likely owner in a team of [roles] | Due date (spread sensibly before [fieldwork date]) | Status (Not started) | Where to save it | Notes. Group by area. Flag any request that is vague and suggest a clarifying question to send the auditor."
+   },
+   {
+    "h": "Agree owners and dates",
+    "b": "Check the owners and dates with your team, send the clarifying questions to the auditor, and save the workbook in a shared Teams channel or OneDrive."
+   },
+   {
+    "h": "Set the rhythm",
+    "b": "Create a recurring Outlook Calendar meeting each week of the audit, and ask owners to update the status column before it."
+   },
+   {
+    "h": "Get a weekly status summary",
+    "b": "Before each meeting, paste the tracker into your AI assistant and ask: 'Summarise progress: count by status, overdue items with owner, items due this week, and anything blocking. Keep it to ten lines.' If your plan includes Copilot in Excel, you can ask it there."
+   },
+   {
+    "h": "Review before sending anything",
+    "b": "Check every document yourself before it goes to the auditor, and keep the tracker as your record of what was sent and when."
+   }
+  ],
+  "example": "Week 2 status: 64 requests. Done 31, In progress 18, Not started 15. Overdue: P-07 payroll reconciliations (Sam), FA-03 asset additions invoices (Leah). Due this week: 12. Blocking: bank confirmation still awaited from the bank.",
+  "tips": [
+   "Ask the AI to turn last year's audit findings into extra rows, so the same points don't come up again.",
+   "Never upload client or staff personal data to a public AI tool; summarise the tracker, not the documents themselves."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Every Monday during the audit"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Summarise the tracker into a status update"
+    },
+    {
+     "type": "message.send",
+     "detail": "Post the summary in the audit Teams channel"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind owners of overdue items"
+    },
+    {
+     "type": "calendar.create",
+     "detail": "Schedule the weekly audit catch-up"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Turn a new regulation into a plain-English briefing",
+  "d": "Get a short briefing on a new rule or guidance change: what it says, who it affects, what must change and by when, for you to verify.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Microsoft Teams"
+  ],
+  "when": "Whenever a new rule or guidance update is published",
+  "steps": [
+   {
+    "h": "Get the official text",
+    "b": "Download the regulation, guidance or consultation outcome from the regulator's own website, so you're working from the source."
+   },
+   {
+    "h": "Ask for a structured briefing",
+    "b": "Attach the document to your AI assistant and use this prompt.",
+    "p": "Attached is [name of regulation or guidance], published by [regulator] on [date]. Write a briefing for [audience, e.g. product and operations managers] at a [type of organisation]. Sections: 1) What has changed, in five bullets. 2) Who and what it applies to, and any exemptions. 3) Key dates and deadlines. 4) What we will probably need to change (policies, processes, labels, training, records), as a table: Area | Likely change | Owner to confirm. 5) Open questions to check with legal or the regulator. Quote the section number for every point. Don't give legal advice; flag anything that needs interpretation."
+   },
+   {
+    "h": "Verify against the source",
+    "b": "Check each point and section number against the original text. AI can misread or miss conditions, so you or your legal team must confirm the interpretation."
+   },
+   {
+    "h": "Share it",
+    "b": "Save the checked briefing in Word and post it in Teams with a link to the original document."
+   }
+  ],
+  "example": "What changed: labels must show the allergen statement in bold (s.4.2). Applies from 1 June to all packs made after that date (s.7.1). Likely changes: Packaging - update artwork (Design to confirm); Training - brief line supervisors (Ops). Open question: are reprinted old stock labels covered?",
+  "tips": [
+   "Ask the AI 'what does this NOT change?' too; it helps stop teams over-reacting.",
+   "This is a starting point for your review, not legal advice. Keep the source document linked to every briefing."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A new regulation or guidance document is saved to the regulatory updates folder"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Draft a structured briefing with section references"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the briefing for review"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask the compliance officer to verify before sharing"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Check marketing and labels against the rules before release",
+  "d": "Get a line-by-line review of an ad, leaflet or label against your rules and approved claims, with risky wording flagged and safer options.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Beginner",
+  "mins": 10,
+  "tools": [
+   "AI assistant",
+   "Google Docs",
+   "Word"
+  ],
+  "when": "Before any promotional material or label is approved",
+  "steps": [
+   {
+    "h": "Prepare your rulebook",
+    "b": "Put your approved claims list, banned words and the key regulatory requirements for your sector into one document you can reuse."
+   },
+   {
+    "h": "Ask for a review",
+    "b": "Attach the draft material and your rulebook to your AI assistant and paste this prompt.",
+    "p": "Review the attached [ad / leaflet / label / web page] against our attached rulebook of approved claims and requirements. Give me a table: Wording in the draft | Issue (unapproved claim, missing information, misleading, exaggerated, other) | Rule it relates to | Suggested safer wording. Then list any required information that's missing (such as warnings, contact details or small print). Don't approve or reject the material; just flag issues for my review."
+   },
+   {
+    "h": "Make the call yourself",
+    "b": "Go through each flag and decide what stands. Anything borderline goes to your legal or regulatory sign-off process as usual."
+   },
+   {
+    "h": "Keep a record",
+    "b": "Save the review table with the version you checked, so you can show what was reviewed and when."
+   }
+  ],
+  "example": "'Clinically proven to boost immunity' | Unapproved claim | Approved claims list, item 3 | 'Contains vitamin C, which contributes to the normal function of the immune system'. Missing: recommended daily dose statement and manufacturer address.",
+  "tips": [
+   "Ask the AI to check images too, by describing them or attaching a screenshot; pictures can imply claims.",
+   "Don't paste confidential submissions, customer details or personal data into a public AI tool unless your organisation allows it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A draft marketing piece or label is added to the review folder"
+   },
+   "actions": [
+    {
+     "type": "ai.classify",
+     "detail": "Compare wording with the approved claims and rules"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Create the review table"
+    },
+    {
+     "type": "notify",
+     "detail": "Send the review to the compliance officer for decision"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Update your procedures when the rules change",
+  "d": "Get a marked-up version of an existing procedure showing exactly what to change to meet a new requirement, with a short change log.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Google Docs"
+  ],
+  "when": "After a rule change or audit finding",
+  "steps": [
+   {
+    "h": "Gather the procedure and the change",
+    "b": "Open the current procedure and the new rule, guidance or audit finding that it needs to reflect."
+   },
+   {
+    "h": "Ask for a gap check and redraft",
+    "b": "Paste both into your AI assistant with this prompt.",
+    "p": "Here is our current procedure, [title and number], and the new requirement it must meet. 1) List the gaps: Section of procedure | What the requirement says | What our procedure says now | Change needed. 2) Rewrite only the sections that need changing, keeping our existing style, numbering and headings. Mark new text in [square brackets]. 3) Write a short change log entry (what changed and why). Don't change anything that isn't affected.\n\nPROCEDURE:\n[paste]\n\nNEW REQUIREMENT:\n[paste]"
+   },
+   {
+    "h": "Review with the process owner",
+    "b": "Walk through the changes with the people who do the work, to check the new steps are practical, and get legal or quality sign-off as your system requires."
+   },
+   {
+    "h": "Publish through your normal control process",
+    "b": "Update the version number, add the change log and release it through your document control system so old copies are withdrawn."
+   }
+  ],
+  "example": "Gap: s.5.3 Complaint logging. Requirement: log within 1 working day. Ours: 'as soon as practical'. Change: set a 1-day limit. New text: [All complaints must be logged in the complaints system within one working day of receipt.] Change log: v4.1, s.5.3 updated.",
+  "tips": [
+   "Ask it to suggest two or three quiz questions on the change; they're useful for read-and-understand records.",
+   "Always compare the redraft with the original yourself; AI can quietly drop a line it thought wasn't needed."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "manual",
+    "detail": "When a procedure needs updating for a new requirement"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Compare the procedure with the requirement and redraft affected sections"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Create a draft revision with change log"
+    },
+    {
+     "type": "notify",
+     "detail": "Send to the process owner for review"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Reply to a regulator's questions clearly and on time",
+  "d": "Turn a regulator's request for more information into a tracked list of questions, owners and a well-organised draft reply for review.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Beginner",
+  "mins": 25,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Outlook"
+  ],
+  "when": "When a regulator asks for more information",
+  "steps": [
+   {
+    "h": "Break the request down",
+    "b": "Paste the regulator's letter or email into your AI assistant with this prompt.",
+    "p": "Here is a request for further information from [regulator] about [submission or matter], with a reply deadline of [date]. 1) List every question or request separately, numbered, quoting their wording. 2) For each, note the type of answer needed (data, document, explanation, commitment) and which team is likely to hold it. 3) Suggest internal deadlines working back from [date], allowing [5] days for review and sign-off. Present it as a table."
+   },
+   {
+    "h": "Gather the answers",
+    "b": "Send each question to its owner with the internal deadline, and collect their facts, data and documents."
+   },
+   {
+    "h": "Draft the response",
+    "b": "Give the AI the owners' answers and ask: 'Draft a formal response that answers each numbered question in order, using only the facts provided. Refer to attachments by name. Mark anything incomplete as [OPEN]. Keep a factual, cooperative tone.'"
+   },
+   {
+    "h": "Review and sign off",
+    "b": "Check every statement against the evidence and have the response approved by the right people before it's sent. The AI draft is never the final word."
+   },
+   {
+    "h": "Track it",
+    "b": "Log the request, the response date and any follow-up commitments in your regulatory tracker."
+   }
+  ],
+  "example": "Q1 'Provide stability data at 12 months' | Data | QC lab | Due 8 Mar. Q2 'Explain the change to supplier of component B' | Explanation | Purchasing | Due 6 Mar. Q3 'Confirm label version in use' | Document | Regulatory | Due 5 Mar. Sign-off 11 Mar, send by 15 Mar.",
+  "tips": [
+   "Ask the AI to check that every numbered question has an answer before you send; missing one can restart the clock.",
+   "Don't paste confidential submissions, customer details or personal data into a public AI tool unless your organisation allows it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_email",
+    "detail": "An email arrives from a regulator's domain with a request"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "List each question, answer type and likely owner"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add questions and deadlines to the regulatory tracker"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft the response once answers are in"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask for review and sign-off"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Create short compliance training with a quiz",
+  "d": "Turn a policy or rule change into a ten-minute training sheet and a scored quiz, with results collected automatically for your records.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Intermediate",
+  "mins": 40,
+  "tools": [
+   "AI assistant",
+   "Google Forms",
+   "Microsoft Forms",
+   "Google Sheets"
+  ],
+  "when": "When a policy changes or for yearly refreshers",
+  "steps": [
+   {
+    "h": "Draft the training",
+    "b": "Paste the policy or procedure into your AI assistant with this prompt.",
+    "p": "Create short compliance training on [topic] for [audience, e.g. warehouse staff], based only on the attached policy. Include: 1) A one-page explainer in plain English: why it matters, the five things everyone must do, and who to ask. 2) Three realistic workplace scenarios with the right action. 3) A 10-question multiple-choice quiz with four options each, the correct answer and a one-line explanation. Aim for a reading age of about 12. Don't add rules that aren't in the policy."
+   },
+   {
+    "h": "Check it carefully",
+    "b": "Make sure every answer and explanation matches the policy exactly, and change any scenario that doesn't fit how your workplace really runs."
+   },
+   {
+    "h": "Build the quiz",
+    "b": "Create a Google Form or Microsoft Form, turn on quiz mode, add the questions and set the pass mark. Ask for the person's name and team at the start."
+   },
+   {
+    "h": "Send and track",
+    "b": "Share the explainer and quiz link. Responses go into a spreadsheet, so you can see who has passed and who needs a reminder."
+   },
+   {
+    "h": "Spot weak areas",
+    "b": "After a week, paste the anonymised results into your AI assistant and ask which questions people got wrong most, so you can clear up the confusion."
+   }
+  ],
+  "example": "Q4: A customer asks you to send their order details to a new email address. What should you do? A) Send it straight away B) Check their identity using our verification steps first (correct) C) Ignore it D) Ask a colleague to send it. Why: Section 3 says to verify before changing contact details.",
+  "tips": [
+   "Keep a copy of each training version and the quiz results together; auditors often ask for both.",
+   "Remove names before pasting results into an AI tool, unless your organisation allows it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "form_submitted",
+    "detail": "A staff member completes the compliance quiz"
+   },
+   "actions": [
+    {
+     "type": "sheet.append",
+     "detail": "Record the score and date"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind people who haven't passed after 7 days"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Summarise the most-missed questions each month"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get inspection-ready with a clear evidence checklist",
+  "d": "Build a checklist of what an inspector is likely to ask for, mapped to your documents and owners, so gaps are fixed before anyone arrives.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Intermediate",
+  "mins": 45,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "OneDrive",
+   "Outlook Calendar"
+  ],
+  "when": "When an inspection or external audit is announced",
+  "steps": [
+   {
+    "h": "Collect what you know",
+    "b": "Gather the inspection notice, the standard or rules being inspected against, and last time's findings."
+   },
+   {
+    "h": "Draft the evidence checklist",
+    "b": "Attach these to your AI assistant with this prompt.",
+    "p": "We have a [type of inspection] by [regulator or body] on [date], against [standard or rules]. Last inspection findings: [paste]. Create an evidence checklist as a table: Requirement or area | Evidence the inspector is likely to ask for | Our document or record (leave blank for me) | Owner | Ready? (Yes / No / Partial) | Action and due date. Group by area. Add a separate list of likely interview questions for staff, and highlight anything linked to last time's findings. Don't assume we comply; this is a checklist to fill in."
+   },
+   {
+    "h": "Fill in your side",
+    "b": "Copy the table into Excel on OneDrive, add your own document references and owners, and check the requirements against the actual standard."
+   },
+   {
+    "h": "Close the gaps",
+    "b": "Book short check-ins in Outlook Calendar with owners each week until the inspection, and update the Ready column as items are fixed."
+   },
+   {
+    "h": "Brief the team",
+    "b": "Ask the AI to turn the staff questions into a one-page briefing note, then review it so it's accurate and honest about how you work."
+   }
+  ],
+  "example": "Training records | Signed training logs for all line staff in last 12 months | TR-2024 log | J. Patel | Partial | Chase 3 night-shift staff by 14 Feb. Repeat finding: calibration records for scales | Certificates for all 6 scales | CAL folder | M. Osei | No | Book calibration by 10 Feb.",
+  "tips": [
+   "Never coach staff to give scripted answers; the briefing is to help them find and explain the real evidence.",
+   "Don't paste confidential submissions, customer details or personal data into a public AI tool unless your organisation allows it."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "calendar_event",
+    "detail": "An inspection date is added to the compliance calendar"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft the evidence checklist and likely questions"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Create the readiness tracker"
+    },
+    {
+     "type": "calendar.create",
+     "detail": "Book weekly check-ins with owners"
+    },
+    {
+     "type": "notify",
+     "detail": "Remind owners of open actions"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get a weekly round-up of rule changes in your area",
+  "d": "Every Monday, get a short digest of new regulations, guidance and consultations from the sources you choose, sorted by how much they matter to you.",
+  "cat": "Legal & Compliance",
+  "job": "Compliance officer",
+  "lvl": "Advanced",
+  "mins": 40,
+  "tools": [
+   "AI assistant",
+   "Gmail",
+   "Outlook",
+   "Excel"
+  ],
+  "when": "Every Monday morning",
+  "steps": [
+   {
+    "h": "Choose your sources",
+    "b": "List the regulators, standards bodies and trade associations you follow. Sign up to their email updates and send them to one Gmail label or Outlook folder using a filter or rule."
+   },
+   {
+    "h": "Describe what matters to you",
+    "b": "Write a short profile of your organisation: products, markets, the rules that apply and current projects. You'll reuse it every week."
+   },
+   {
+    "h": "Run the weekly round-up",
+    "b": "If your plan includes scheduled tasks in ChatGPT, set this to run every Monday. Otherwise set a recurring calendar reminder and paste the week's update emails in yourself.",
+    "p": "Using [the update emails I've pasted / the sources listed: (list websites)], find regulatory updates from the past 7 days relevant to this organisation: [paste profile]. For each item give: Title | Source and link | Date | What it's about (one sentence) | Relevance (High / Medium / Low) and why | Deadline if any. Sort by relevance. Then list consultations closing in the next 60 days. Only include items with a source link; if you can't confirm an item, leave it out."
+   },
+   {
+    "h": "Check the high-priority items",
+    "b": "Open the source link for every High item and confirm what it says before you act or tell anyone."
+   },
+   {
+    "h": "Log and assign",
+    "b": "Add confirmed items to a regulatory watch log in Excel with an owner and next step, so nothing drops off the radar."
+   }
+  ],
+  "example": "High: Updated guidance on product recall notices | Regulator website | 4 Nov | Shortens notice time to 2 working days | Affects our recall SOP | Effective 1 Feb. Medium: Consultation on packaging waste reporting, closes 15 Jan. Low: Revised fee schedule for renewals.",
+  "tips": [
+   "AI assistants can miss or misdate items when browsing; your sign-up emails from the regulator are the most reliable source.",
+   "Keep confidential project names out of your profile if you use a public AI tool."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Mondays at 7am"
+   },
+   "actions": [
+    {
+     "type": "web.fetch",
+     "detail": "Check the chosen regulator and standards pages for updates"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Rate each update High, Medium or Low against the profile"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Write the weekly digest with links"
+    },
+    {
+     "type": "sheet.append",
+     "detail": "Add confirmed items to the regulatory watch log"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Write a monthly risk and operations report fast",
+  "d": "Turn your team's numbers, incidents and open issues into a concise report for senior management with clear ratings and actions.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Intermediate",
+  "mins": 30,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Word",
+   "Microsoft Teams"
+  ],
+  "when": "Each month before the risk or management committee",
+  "steps": [
+   {
+    "h": "Collect the inputs",
+    "b": "Gather the month's key figures, incident log, overdue actions and any audit or complaint points, using an Excel template your team fills in."
+   },
+   {
+    "h": "Draft the report",
+    "b": "Attach the inputs to your AI assistant and paste this prompt.",
+    "p": "Write a monthly operations and risk report for [department / branch] for [month], for the [committee name]. Use only the attached data. Sections: 1) Summary in five bullets. 2) Key indicators table: Measure | This month | Last month | Target | Status (Green / Amber / Red). 3) Incidents and losses: what happened, impact, action taken. 4) Top five risks with likelihood and impact ratings as I've given them, and change since last month. 5) Overdue actions with owner and new date. 6) Decisions or support needed. Mark any gap in the data as [MISSING]. Plain English, no more than two pages."
+   },
+   {
+    "h": "Apply your judgement",
+    "b": "Check every rating and figure, fill the [MISSING] gaps and adjust the summary to say what you actually think matters most."
+   },
+   {
+    "h": "Share and file",
+    "b": "Save the final version in Word, post it to the committee's Teams channel and keep a copy with the month's evidence."
+   }
+  ],
+  "example": "Summary: Processing times back within target (2.1 days vs 3 target). One payment error, £4,800, recovered in full. Risk 'Key person dependency in treasury' moved to Red after resignation. Decision needed: approve temporary cover for 3 months.",
+  "tips": [
+   "Ask the AI to compare this month's report with last month's and list what's new, so committee members see changes quickly.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Fifth working day of each month"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind team leads to fill in the inputs template"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Draft the risk and operations report"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the draft for the finance manager's review"
+    },
+    {
+     "type": "message.send",
+     "detail": "Post the approved report to the committee channel"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Build next year's department budget from last year's costs",
+  "d": "Get a first-draft budget based on last year's spending, known changes and inflation assumptions, with every line explained.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Intermediate",
+  "mins": 45,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Google Sheets"
+  ],
+  "when": "During annual budget planning",
+  "steps": [
+   {
+    "h": "Export last year's actuals",
+    "b": "Export 12 months of costs by line for your department, plus this year's budget if you have it."
+   },
+   {
+    "h": "List the known changes",
+    "b": "Note planned hires, leavers, contracts ending or starting, projects and any price rises you've been told about."
+   },
+   {
+    "h": "Draft the budget",
+    "b": "Attach the export and paste this prompt.",
+    "p": "Here are last year's monthly costs for [department] and our known changes for next year: [list]. Build a draft budget for [year] as a table: Cost line | Last year actual | Next year budget | Change | Reason. Assume [x]% general price increase unless I've said otherwise. Spread each line across 12 months, noting any lines that are seasonal or one-off. Then list: lines that look unusually high or low last year, and three questions I should ask before finalising. Show your workings for any line over [£10,000]."
+   },
+   {
+    "h": "Challenge and adjust",
+    "b": "Go through each line with budget holders, change anything that doesn't reflect reality, and check the totals in your own spreadsheet."
+   },
+   {
+    "h": "Get it approved",
+    "b": "Submit the final version through your usual sign-off process, keeping the reasons column so anyone can see how each number was reached."
+   }
+  ],
+  "example": "Software licences | £38,400 | £44,100 | +£5,700 | 5% price rise plus 4 new users from March. Temporary staff | £22,000 | £8,000 | -£14,000 | Last year covered a long vacancy, now filled. Question: will the office move in Q3 change the rates bill?",
+  "tips": [
+   "Ask for a lean and a stretch version so you can show leadership the trade-offs.",
+   "Salary details are sensitive; use grades or totals rather than named individuals."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Start of the annual budget cycle"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft budget lines with reasons from last year's costs"
+    },
+    {
+     "type": "sheet.update",
+     "detail": "Fill the draft budget spreadsheet"
+    },
+    {
+     "type": "notify",
+     "detail": "Send to budget holders for review"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Summarise a loan application before the credit decision",
+  "d": "Get a structured one-page summary of a loan application, with key ratios, missing documents and questions, so your review starts in the right place.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Word"
+  ],
+  "when": "When a new loan or credit application arrives",
+  "steps": [
+   {
+    "h": "Remove personal details",
+    "b": "Before using any AI tool, remove names, addresses, dates of birth, account numbers and ID details from the application, unless your organisation has approved a tool for this data."
+   },
+   {
+    "h": "Ask for a structured summary",
+    "b": "Paste the anonymised application and supporting figures into your work-approved AI assistant with this prompt.",
+    "p": "Summarise this [business / personal] loan application for a credit reviewer, using only the information provided. Sections: 1) Request: amount, purpose, term, security offered. 2) Financial snapshot table: income or revenue, profit, existing debts, monthly repayments, and any ratios you can calculate from the figures, showing the working. 3) Documents provided and documents missing, measured against this checklist: [paste your checklist]. 4) Points that need clarifying. 5) Inconsistencies between documents. Do not recommend approval or rejection."
+   },
+   {
+    "h": "Verify the numbers",
+    "b": "Check every figure and ratio against the original documents. The AI can misread scanned statements."
+   },
+   {
+    "h": "Make the decision under your policy",
+    "b": "Assess the application against your credit policy and lending authority as usual. The decision, and the reasons for it, are yours."
+   }
+  ],
+  "example": "Request: £60,000 over 5 years for a second delivery van, secured on the vehicle. Revenue £410k, net profit £38k, existing loan repayments £1,150 a month. Missing: last 3 months of bank statements. Inconsistency: accounts show 6 staff, application says 9.",
+  "tips": [
+   "Keep the summary format the same every time so applications are easier to compare and fairer to review.",
+   "Never let an AI score or decide on credit; it can't see the full picture and lending rules require human judgement."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "new_file",
+    "detail": "A new loan application is saved to the applications folder"
+   },
+   "actions": [
+    {
+     "type": "ai.extract",
+     "detail": "Pull request details and figures from the anonymised application"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Create the one-page summary with missing documents"
+    },
+    {
+     "type": "notify",
+     "detail": "Send to the credit reviewer for checking"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Review your aged debt report and agree next steps",
+  "d": "Get a clear view of who owes what, which balances are getting worse and a suggested action for each, ready for your weekly credit meeting.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Beginner",
+  "mins": 15,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Microsoft Teams"
+  ],
+  "when": "Before each weekly or monthly credit meeting",
+  "steps": [
+   {
+    "h": "Export two aged debt reports",
+    "b": "Export this period's and last period's aged debtor or collections report, using customer references rather than names if you can."
+   },
+   {
+    "h": "Ask for the review",
+    "b": "Attach both reports to your AI assistant and use this prompt.",
+    "p": "Here are our aged debt reports for [this period] and [last period]. Our collection policy: [paste key rules, e.g. stop supply at 60 days, refer to collections at 90 days]. Give me: 1) Totals by age band for both periods and the change. 2) The ten largest overdue balances with days overdue and the next step under our policy. 3) Accounts that moved into a worse band since last period. 4) Accounts at or near referral under our policy. 5) Three points for the credit meeting. Tables where possible. Follow our policy only; don't recommend legal action."
+   },
+   {
+    "h": "Check before you act",
+    "b": "Confirm balances in your accounting system, since payments or disputes may not show in the export. Agree referrals with whoever has the authority."
+   },
+   {
+    "h": "Share the agreed actions",
+    "b": "Post the agreed actions and owners in your Teams channel so the team can get going."
+   }
+  ],
+  "example": "Total overdue £126k (last month £118k). 90+ days up £9k. Worse band: C-2210 (£14.2k, now 64 days), C-1877 (£6.1k, now 92 days). Near referral: C-1877, policy says refer at 90 days, owner to confirm no dispute. Meeting point: one customer is 31% of all overdue debt.",
+  "tips": [
+   "Ask it to spot customers who always pay at about the same delay; changing their terms may help more than chasing.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Every Tuesday before the credit meeting"
+   },
+   "actions": [
+    {
+     "type": "ai.summarize",
+     "detail": "Compare aged debt periods and list movements"
+    },
+    {
+     "type": "ai.classify",
+     "detail": "Match each account to the next step under the policy"
+    },
+    {
+     "type": "message.send",
+     "detail": "Share agreed actions with the team"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Write a clear quarterly update for investors",
+  "d": "Turn your quarter's results and plans into a balanced, readable update for shareholders or investors, ready for checking and approval.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Beginner",
+  "mins": 25,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Google Docs"
+  ],
+  "when": "At the end of each quarter",
+  "steps": [
+   {
+    "h": "Pull together the facts",
+    "b": "Collect the quarter's headline results, progress against last quarter's promises, key wins, setbacks and what's next."
+   },
+   {
+    "h": "Draft the update",
+    "b": "Paste your notes into your AI assistant with this prompt.",
+    "p": "Write a quarterly update for [shareholders / investors] in [company], a [type of business]. Use only these facts: [paste]. Structure: 1) Three-line summary. 2) Results table: Measure | This quarter | Last quarter | Same quarter last year. 3) What went well. 4) What didn't, and what we're doing about it. 5) Progress against the goals we set last quarter. 6) Priorities for next quarter. Tone: honest, confident, no hype words, British English. Under 600 words. Don't include forecasts or promises I haven't given you."
+   },
+   {
+    "h": "Check facts and balance",
+    "b": "Make sure every number ties to approved accounts and the setbacks are described as fairly as the wins."
+   },
+   {
+    "h": "Approve and send",
+    "b": "Get the update approved by your directors and, if needed, your legal or company secretary, before it's sent."
+   }
+  ],
+  "example": "Summary: Q3 revenue £1.24m, up 9% on Q2, with margin steady at 38%. We opened the Leeds branch on time but the new booking system slipped to January. Priorities for Q4: cut debtor days from 52 to 45 and complete the system launch.",
+  "tips": [
+   "Keep last quarter's update open when you write the next one; investors notice if goals quietly vanish.",
+   "Updates to investors can carry legal and regulatory duties; have them approved by the right people, and don't paste unpublished price-sensitive information into a public AI tool."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "Tenth working day after each quarter end"
+   },
+   "actions": [
+    {
+     "type": "ai.generate",
+     "detail": "Draft the investor update from the quarter's facts"
+    },
+    {
+     "type": "doc.create",
+     "detail": "Save the draft for approval"
+    },
+    {
+     "type": "notify",
+     "detail": "Ask directors to review and approve"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Get ready for your insurance renewal conversations",
+  "d": "Get a renewal pack with a summary of current cover, claims, changes in the business and sharp questions to put to your broker.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Beginner",
+  "mins": 20,
+  "tools": [
+   "AI assistant",
+   "Word",
+   "Outlook"
+  ],
+  "when": "About three months before each policy renews",
+  "steps": [
+   {
+    "h": "Collect your current policies",
+    "b": "Gather the policy schedules, last year's claims history and a list of what's changed in the business, such as new sites, vehicles, staff numbers or contracts."
+   },
+   {
+    "h": "Build the renewal pack",
+    "b": "Attach the documents to your AI assistant and use this prompt.",
+    "p": "Here are our current insurance schedules, claims history and business changes. Create a renewal pack: 1) Cover summary table: Policy | Insurer | Renewal date | Limit | Excess | Premium | Key exclusions. 2) Changes in our business since last renewal that the insurer may need to know. 3) Possible gaps or overlaps between policies to ask about. 4) Fifteen questions to ask our broker, grouped by policy. 5) A short brief to send the broker before the meeting. Don't recommend specific cover levels; flag points for discussion."
+   },
+   {
+    "h": "Check it with the documents",
+    "b": "Compare every limit, excess and date with the actual schedules, and confirm the business changes with the relevant managers."
+   },
+   {
+    "h": "Brief your broker",
+    "b": "Send the brief through Outlook ahead of the meeting and use the questions to compare the options they come back with. Decisions on cover rest with you and your qualified broker."
+   }
+  ],
+  "example": "Public liability | Insurer A | renews 1 Apr | £5m | £500 | £3,120 | Excludes work at height over 10m. Changes: second warehouse opened in June; 14 new staff. Gap to ask about: no cover listed for goods in transit. Question: does the cyber policy cover payment fraud?",
+  "tips": [
+   "Note what changed since last year in one place each month; renewal time is much easier when it's already written down.",
+   "Remove staff names and personal claim details before pasting claims history into a public AI tool."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "90 days before each policy renewal date"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind the finance manager to gather schedules and claims"
+    },
+    {
+     "type": "ai.generate",
+     "detail": "Build the renewal pack and broker questions"
+    },
+    {
+     "type": "email.draft",
+     "detail": "Draft the brief for the broker"
+    }
+   ]
+  }
+ },
+ {
+  "t": "Keep a simple risk register your team actually uses",
+  "d": "Build a shared risk register with clear ratings, owners and controls, and get a short monthly summary of what's changed.",
+  "cat": "Finance & Accounting",
+  "job": "Finance manager",
+  "lvl": "Intermediate",
+  "mins": 40,
+  "tools": [
+   "AI assistant",
+   "Excel",
+   "Microsoft Teams",
+   "Outlook Calendar"
+  ],
+  "when": "Set up once, review monthly",
+  "steps": [
+   {
+    "h": "Brainstorm the risks",
+    "b": "Describe your department to your AI assistant and use this prompt to get a starting list.",
+    "p": "I manage the [finance department / branch] of a [type and size of organisation]. Our main activities: [list]. Draft a starting risk register as a table: Ref | Risk (cause, event, effect) | Category (financial, operational, people, fraud, compliance, systems) | Likelihood 1-5 | Impact 1-5 | Score | Existing controls | Further action | Owner (role). Include about 15 risks. Use a consistent 1-5 scale and explain the scale in a short key. These are suggestions for me to review, not a final assessment."
+   },
+   {
+    "h": "Make it yours",
+    "b": "Go through the list with your team, delete what doesn't apply, add what's missing and set the ratings yourselves. The AI's ratings are just a starting point."
+   },
+   {
+    "h": "Share it",
+    "b": "Save the register in Excel in your team's Teams channel so owners can update their own rows."
+   },
+   {
+    "h": "Review monthly",
+    "b": "Book a recurring monthly review in Outlook Calendar. Before it, paste the register into your AI assistant and ask: 'Compare with last month's version: list new risks, changed scores, overdue actions and the top five by score.'"
+   }
+  ],
+  "example": "R07 | Payments made to a fraudulent supplier bank account after a fake change-of-details email | Fraud | 3 | 5 | 15 | Call-back check on known number | Add second approver for any bank detail change | Finance manager. Top movers this month: R03 key person dependency up from 9 to 16.",
+  "tips": [
+   "Write each risk as 'cause, event, effect'; it makes the controls much easier to choose.",
+   "Don't paste client personal data, full account numbers or payroll details into a public AI tool unless your organisation allows it. Use your work-approved assistant if you have one."
+  ],
+  "auto": {
+   "trigger": {
+    "type": "schedule",
+    "detail": "First Monday of each month"
+   },
+   "actions": [
+    {
+     "type": "notify",
+     "detail": "Remind risk owners to update their rows"
+    },
+    {
+     "type": "ai.summarize",
+     "detail": "Compare this month's register with last month's"
+    },
+    {
+     "type": "message.send",
+     "detail": "Post the summary of changes to the team channel"
+    },
+    {
+     "type": "calendar.create",
+     "detail": "Hold the monthly risk review"
+    }
+   ]
+  }
+ }
+]
