@@ -1,0 +1,1520 @@
+[
+  {
+    "t": "Learn why people leave from every exit interview",
+    "d": "Get a consistent set of exit interview questions, a tidy write-up of each one and a running view of the reasons people give for leaving.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Forms",
+      "Google Sheets"
+    ],
+    "when": "Whenever someone hands in their notice",
+    "steps": [
+      {
+        "h": "Draft a short, fair question set",
+        "b": "Ask your AI assistant for a question set you can reuse for every leaver, so answers can be compared over time.",
+        "p": "I'm an HR specialist at a [type of organisation] with about [number] staff. Write a 12-question exit interview I can use for every leaver. Mix rating questions (1 to 5) with open questions. Cover: reasons for leaving, manager relationship, workload, pay and benefits, development, culture and what would have made them stay. Keep the wording neutral and non-leading. Finish with 2 optional questions about whether they'd recommend us as an employer and whether they'd consider returning."
+      },
+      {
+        "h": "Put the questions into a form",
+        "b": "Build a Google Form from the questions and link it to a Google Sheet, so every response lands in one row. Leavers can fill it in before or during the conversation."
+      },
+      {
+        "h": "Write up each interview the same way",
+        "b": "After each exit conversation, paste your notes and the form answers into your AI assistant with names and identifying details removed.",
+        "p": "Here are my notes from an exit interview, with names removed: [paste notes and answers]. Write a neutral summary with these headings: Main reasons for leaving, What worked well, What could be better, Anything that may need follow-up (for example a concern about conduct or safety), and Suggested actions for the organisation. Use the leaver's own words where helpful and don't add anything they didn't say."
+      },
+      {
+        "h": "Look for patterns each quarter",
+        "b": "Every few months, paste the sheet's open-text columns into your AI assistant and ask for the top themes by team, with a count of how often each one came up. Check the themes against the raw answers before you share them."
+      }
+    ],
+    "example": "Main reasons: no clear route to promotion; long commute after office move. Worked well: supportive team, good training. Follow-up: none. Suggested action: publish a simple career path for analyst roles.",
+    "tips": [
+      "Anything that sounds like a complaint about harassment or discrimination needs your proper process, not just a summary. Flag it to the right person straight away.",
+      "Check your workplace AI policy before pasting staff comments, and strip out names and team details where you can."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A leaver completes the exit interview form"
+      },
+      "actions": [
+        {
+          "type": "sheet.append",
+          "detail": "Add the answers to the exit interview sheet"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write a neutral summary of the leaver's answers"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the HR specialist a new summary is ready to review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every candidate updated without the guesswork",
+    "d": "A set of warm, clear update messages for each hiring stage, saved as templates so no applicant is left wondering where they stand.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Once to set up, then at every hiring stage",
+    "steps": [
+      {
+        "h": "List your hiring stages",
+        "b": "Jot down each stage a candidate goes through, from application received to final decision, and how long each usually takes."
+      },
+      {
+        "h": "Ask for a message for each stage",
+        "b": "Paste your stages into your AI assistant with this prompt.",
+        "p": "I'm an HR specialist. Our hiring stages are: [list stages with typical timings]. Write a short, friendly email for each of these moments: application received, shortlisted for interview, still under review (delay), moved to the next round, and on hold while the role is reviewed. Each email should say where they are, what happens next and when they'll hear from us. Use [Candidate name], [Role] and [Date] as placeholders. Keep each under 120 words, warm but not over-familiar."
+      },
+      {
+        "h": "Save them as templates",
+        "b": "Save each message as a template in Gmail or Outlook (both have a templates feature in settings), named by stage so you can find them in seconds."
+      },
+      {
+        "h": "Send updates on a set day",
+        "b": "Pick one day a week to check your candidate list and send any updates that are due, even if the only news is that you're still deciding."
+      }
+    ],
+    "example": "Subject: Your application for Operations Coordinator. Hi [Candidate name], thanks for your patience. We're still reviewing applications and expect to confirm interview invitations by [Date]. We'll be in touch either way.",
+    "tips": [
+      "Never promise a date you can't keep. A realistic date with a small buffer is kinder than a missed one."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every Tuesday morning"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the HR specialist to check which candidates are due an update"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft stage updates from the saved templates"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn complaint notes into a clear, neutral timeline",
+    "d": "Get your notes from an employee concern organised into a dated, factual timeline with open questions, ready for your formal process.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Google Docs"
+    ],
+    "when": "When you're handling a workplace complaint",
+    "steps": [
+      {
+        "h": "Remove names and identifying details",
+        "b": "Replace people's names with roles or letters (Employee A, Manager B) before you paste anything. Only use an AI tool your organisation has approved for this kind of information."
+      },
+      {
+        "h": "Ask for a factual timeline",
+        "b": "Paste your anonymised notes, emails or meeting notes into your AI assistant.",
+        "p": "I'm an HR specialist organising notes about a workplace concern. Names have been replaced with letters. Here are my notes: [paste notes]. Create: 1) a dated timeline of events in a table (Date, What happened, Who was involved, Source of this information), 2) a list of points where accounts differ, 3) a list of gaps or questions still to ask, and 4) any documents I should gather. Stay strictly neutral. Don't draw conclusions, judge credibility or suggest an outcome."
+      },
+      {
+        "h": "Check every line against your sources",
+        "b": "Read the timeline against your original notes and correct anything the AI got wrong or filled in. You are responsible for its accuracy."
+      },
+      {
+        "h": "File it in your case record",
+        "b": "Paste the checked timeline into your case document and keep it with your organisation's formal records, following your usual policy and any legal advice."
+      }
+    ],
+    "example": "| 3 Mar | Employee A says Manager B criticised their work in a team meeting | A, B, team | A's email of 4 Mar |. Accounts differ: whether others were present. Still to ask: Employee C, who A says was in the room.",
+    "tips": [
+      "This helps you organise, not decide. Outcomes in complaints, especially harassment or discrimination, need your formal process and, where needed, advice from an employment law professional.",
+      "Keep the AI's output factual. If it starts using words like 'clearly' or 'obviously', ask it to remove them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "HR specialist starts a new case timeline"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull dates, events and sources from anonymised notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a case timeline document for human review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Run quick, consistent reference checks",
+    "d": "A ready-made reference request, a short call script and a tidy summary for every candidate, so checks are fair and nothing gets missed.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Google Docs"
+    ],
+    "when": "When you reach the offer stage",
+    "steps": [
+      {
+        "h": "Build your request and call script",
+        "b": "Ask your AI assistant for the wording you'll reuse with every referee.",
+        "p": "I'm an HR specialist checking references for a [role] role. Write: 1) a short, polite email asking a referee to confirm dates of employment, job title and answer a few questions, with a line about how we'll handle their reply, 2) a 10-minute phone script with 6 questions linked to these job requirements: [list 3 to 5 requirements], asking for specific examples, and 3) a one-page summary template with headings for each question. Keep the questions job-related and avoid anything about health, family, age or other personal characteristics."
+      },
+      {
+        "h": "Save the wording",
+        "b": "Save the email as a Gmail template and the script and summary template in a Google Doc you can copy for each candidate."
+      },
+      {
+        "h": "Write up each reference the same way",
+        "b": "After each call, fill in the template from your notes. You can paste rough notes into your AI assistant and ask it to sort them under the headings, leaving out the referee's personal details."
+      },
+      {
+        "h": "Compare against the role, not each other",
+        "b": "Read the summaries alongside the job requirements and decide what they mean yourself, with the hiring manager."
+      }
+    ],
+    "example": "Referee: former line manager (2021 to 2024). Dates and title confirmed. Organisation: 'kept the project tracker spotless'. Teamwork: covered a colleague's caseload during leave. Would re-hire: yes.",
+    "tips": [
+      "Get the candidate's consent before contacting referees, and keep notes in line with your data protection rules.",
+      "Ask the same core questions for every candidate for the same role, so the checks stay fair."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Candidate reaches the offer stage"
+      },
+      "actions": [
+        {
+          "type": "email.draft",
+          "detail": "Draft the reference request to each referee"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a reference summary from the template"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Brief staffing agencies so they send the right people",
+    "d": "A clear one-page brief for temporary staff requests, so agencies understand the role, the shifts and the must-haves first time.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Forms",
+      "Gmail"
+    ],
+    "when": "Whenever a manager needs temporary cover",
+    "steps": [
+      {
+        "h": "Collect requests from managers in one way",
+        "b": "Make a short Google Form for managers asking for the role, dates, hours, location, key tasks, must-have skills and any site rules. This saves chasing them for details."
+      },
+      {
+        "h": "Turn each request into an agency brief",
+        "b": "Paste the manager's answers into your AI assistant.",
+        "p": "Turn this temporary staffing request into a clear brief for a recruitment agency: [paste form answers]. Use these headings: Role and team, Dates and hours, Location and how to get there, What the day looks like, Must-have skills and checks, Nice-to-have, What to bring and wear, Who they report to on day one. Keep it under one page, in plain language. Then list any information that's missing so I can ask the manager."
+      },
+      {
+        "h": "Fill the gaps and send",
+        "b": "Check the missing-information list with the manager, then send the brief to your agencies by email in one go."
+      },
+      {
+        "h": "Note what worked",
+        "b": "When a placement goes well or badly, add a line to the form's linked sheet. Over time you'll see which agencies suit which roles."
+      }
+    ],
+    "example": "Role: Warehouse picker, Goods-in team. Dates: 4 to 15 Nov, 7am to 3pm. Must-have: safety boots, comfortable with handheld scanners. Report to: Shift lead at Gate 2. Missing: parking arrangements, break times.",
+    "tips": [
+      "Ask agencies to confirm in writing which checks they've done, rather than assuming."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A manager submits a temporary staff request"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write an agency brief and list missing details"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the brief to the agencies for HR to check and send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send managers a monthly hiring report they'll read",
+    "d": "Each month, your hiring tracker becomes a short written report on open roles, time to hire and what needs attention.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Calendar",
+      "Gmail"
+    ],
+    "when": "First working day of each month",
+    "steps": [
+      {
+        "h": "Set up a simple hiring tracker",
+        "b": "In Google Sheets, keep one row per vacancy with columns for role, team, date opened, stage, number of applicants, date filled and source of hire. Ask your AI assistant to suggest formulas for days open and average time to hire."
+      },
+      {
+        "h": "Book a monthly reporting slot",
+        "b": "Add a recurring Google Calendar event on the first working day of each month, with a link to the sheet and the prompt below pasted in the event notes."
+      },
+      {
+        "h": "Turn the numbers into a short report",
+        "b": "Copy the month's rows (with no candidate names) into your AI assistant.",
+        "p": "I'm an HR specialist. Here is this month's hiring data: [paste rows]. Last month's figures were: [paste or summarise]. Write a short report for managers with: 1) three headline points, 2) a table of open roles with days open and current stage, 3) roles at risk of running late and why, 4) which sources gave us the most hires, and 5) two practical suggestions. Only use the numbers I've given you. If something can't be worked out from the data, say so."
+      },
+      {
+        "h": "Check the figures and send",
+        "b": "Check every number in the report against your sheet, then send it by email or post it where your managers already look."
+      }
+    ],
+    "example": "Headlines: 9 roles open (down from 12). Two roles past 60 days: Payroll Officer, Site Electrician. Most hires this month came from employee referrals. Suggestion: refresh the electrician advert and widen the travel radius.",
+    "tips": [
+      "Don't include candidate names or personal details in the data you paste. Role-level numbers are enough.",
+      "If your sheet uses filters, check you copied all the rows before asking for totals."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First working day of each month at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the month's hiring data into headlines and risks"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the monthly report document"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the email to managers for HR to check"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Help managers write fair, specific performance notes",
+    "d": "Give managers a quick way to turn vague comments into specific, balanced performance notes before reviews and one-to-ones.",
+    "cat": "HR & Hiring",
+    "job": "HR specialist",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Google Docs",
+      "Word"
+    ],
+    "when": "Before appraisal season or a performance conversation",
+    "steps": [
+      {
+        "h": "Share a short guide with managers",
+        "b": "Write or ask for a one-page guide on what good performance notes look like: specific examples, the impact, and what good looks like next time."
+      },
+      {
+        "h": "Give managers a prompt to rewrite their notes",
+        "b": "Share this prompt with managers so they can improve their own draft notes, with names removed.",
+        "p": "I'm a manager preparing performance notes. Here is my rough draft, with names removed: [paste draft]. Rewrite it so that each point: describes a specific example (what happened and when), explains the impact on the team or customers, and says clearly what good looks like going forward. Remove labels about personality, vague words like 'attitude', and anything about health, family or personal life. Keep a balance of strengths and areas to develop. Then list any claims that need an example I haven't given."
+      },
+      {
+        "h": "Review a sample before reviews go out",
+        "b": "Look at a few rewritten notes yourself to check they match your policy and rating scale, and give managers feedback early."
+      }
+    ],
+    "example": "Before: 'Needs a better attitude in meetings.' After: 'In the March and April planning meetings, Sam interrupted colleagues several times, which meant two people didn't share their updates. Going forward, let each person finish before responding.'",
+    "tips": [
+      "The manager still owns the judgement. AI can sharpen the wording, but it doesn't know what happened.",
+      "Remind managers to use only AI tools your organisation allows for staff information."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "A manager pastes draft performance notes"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Rewrite notes as specific, balanced feedback"
+        },
+        {
+          "type": "notify",
+          "detail": "List any points that still need a concrete example"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write formal board minutes from your rough notes",
+    "d": "Turn scribbled notes or a transcript into properly formatted minutes with decisions, actions and owners, ready for the chair to approve.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Google Docs"
+    ],
+    "when": "After every board or committee meeting",
+    "steps": [
+      {
+        "h": "Gather your notes and the agenda",
+        "b": "Put the agenda, your notes and any transcript together. If your video app produces a transcript or recap on your plan, you can use that too."
+      },
+      {
+        "h": "Ask for minutes in your house style",
+        "b": "Paste everything into your AI assistant with this prompt.",
+        "p": "I'm an executive assistant writing formal minutes for a [board / committee] meeting held on [date]. Here is the agenda: [paste agenda]. Here are my notes: [paste notes]. Write minutes with: attendees, apologies, declarations of interest, then one section per agenda item with a short summary of discussion, any decision in bold starting 'RESOLVED:', and actions in a table (Action, Owner, Due date). Use formal, neutral language in the past tense. Don't attribute opinions to individuals unless my notes do. Mark anything unclear as [CHECK]."
+      },
+      {
+        "h": "Check every [CHECK] and decision",
+        "b": "Go through each flagged point and every decision with your notes, and confirm wording with the chair or secretary where needed."
+      },
+      {
+        "h": "Send for approval",
+        "b": "Paste into your minutes template and send the draft to the chair to approve before wider circulation."
+      }
+    ],
+    "example": "Item 4: Office lease renewal. The Board discussed the two options presented by the Finance Director. RESOLVED: to renew the lease for five years. Action: Instruct solicitors (Finance Director, 30 Nov).",
+    "tips": [
+      "Board papers can be confidential. Use the AI tool your organisation has approved for board material.",
+      "Keep a saved prompt with your organisation's minute style so each set looks the same."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A board or committee meeting ends"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft formal minutes from the agenda and notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the draft minutes document"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the assistant to check flagged points and send to the chair"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get the board pack out on time, every time",
+    "d": "A countdown plan for board papers with reminders, chasers and a cover summary, so the pack goes out complete and on schedule.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Outlook Calendar",
+      "Outlook",
+      "OneDrive"
+    ],
+    "when": "Three weeks before each board meeting",
+    "steps": [
+      {
+        "h": "Work back from the meeting date",
+        "b": "Ask your AI assistant for a timeline you can reuse for every meeting.",
+        "p": "I'm an executive assistant preparing a board pack. The meeting is on [date]. Papers needed: [list papers and their authors]. The pack must go out [number] days before the meeting. Create a countdown plan with dates for: request papers, first reminder, deadline for drafts, chaser, review by [executive], final deadline, and pack circulation. Then write a short, polite paper request email and a firmer chaser email using [Author name] and [Paper title] placeholders."
+      },
+      {
+        "h": "Put the dates in your calendar",
+        "b": "Add each date as a calendar reminder for yourself, and send the request email to authors with the deadline clearly in the subject line."
+      },
+      {
+        "h": "Collect papers in one folder",
+        "b": "Create a shared OneDrive or Google Drive folder for the meeting and ask authors to save their papers there, named in an agreed format."
+      },
+      {
+        "h": "Write a cover summary",
+        "b": "Once papers are in, paste each one's summary section into your AI assistant and ask for a one-page cover note listing each item, what the board is asked to do (note, discuss or decide) and the page number. Check it against the papers before it goes out."
+      }
+    ],
+    "example": "Countdown for 12 Dec board: 21 Nov request papers; 28 Nov reminder; 2 Dec drafts due; 3 Dec chaser; 4 Dec CEO review; 6 Dec final papers; 8 Dec pack circulated.",
+    "tips": [
+      "Copy the plan into a saved note so next time you only change the dates.",
+      "Board papers are often confidential, so check your organisation's AI policy before pasting them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Three weeks before a board meeting"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Build the countdown plan and request emails"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add each deadline as a reminder"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft paper requests to each author"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a one-page travel brief for your executive",
+    "d": "Every flight, hotel, meeting and contact for a business trip on one clear page, ready to print or save to their phone.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Google Calendar",
+      "Google Docs"
+    ],
+    "when": "A few days before each business trip",
+    "steps": [
+      {
+        "h": "Gather the confirmations",
+        "b": "Search your inbox for the trip's booking confirmations and copy the key details from each, or forward them into one email thread. Remove card details and booking passwords."
+      },
+      {
+        "h": "Turn them into a brief",
+        "b": "Paste the details and the trip's calendar entries into your AI assistant.",
+        "p": "I'm an executive assistant. Turn these travel bookings and meetings into a one-page travel brief for my executive: [paste details]. Lay it out day by day with times in local time (and home time in brackets). For each day include: travel, where they're staying, meetings with address and contact, and gaps for rest or calls. Add a short section with booking references, local emergency number and anything they need to bring. Flag any tight connections, clashes or missing details at the top."
+      },
+      {
+        "h": "Fix the flagged gaps",
+        "b": "Check the flagged items, such as a tight transfer or a meeting with no address, and sort them before the trip."
+      },
+      {
+        "h": "Share it",
+        "b": "Save the brief as a Google Doc or PDF, add it to the first calendar event of the trip and send it to your executive."
+      }
+    ],
+    "example": "Tue 14 Oct (Lisbon, GMT+0). 07:10 flight from Manchester, arrives 10:05. Hotel: check-in from 15:00. 13:00 Lunch with distributor, harbour-side restaurant, contact: Ops Director. Flag: only 50 minutes between Wednesday meetings across town.",
+    "tips": [
+      "Check every time and booking reference against the original confirmation. AI can mix up time zones.",
+      "Keep passport numbers and payment details out of the chat."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Three days before a trip starts"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull trip details from booking emails"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the day-by-day travel brief"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the brief to the executive for checking"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Answer routine letters in your executive's voice",
+    "d": "Quick, polished replies to routine invitations, requests and enquiries that sound like your executive and only need a quick check.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Outlook",
+      "Gmail"
+    ],
+    "when": "Whenever routine correspondence comes in",
+    "steps": [
+      {
+        "h": "Capture how your executive writes",
+        "b": "Pick three or four replies your executive has sent and liked. Paste them into your AI assistant and ask it to describe their tone, sign-off and typical phrases in a short style note."
+      },
+      {
+        "h": "Save a reply prompt",
+        "b": "Save this prompt with the style note in a Claude Project, a custom GPT, a Gemini Gem or simply your notes app.",
+        "p": "You draft routine replies for [executive's role] at [organisation]. Style: [paste style note]. Here is the incoming message: [paste message]. My executive's answer is: [accept / decline / pass to colleague / need more information], and the key points are: [notes]. Write a reply under 150 words in their style. If declining, be warm and brief. If passing on, name [colleague role] and say why. Give me a subject line and the body only."
+      },
+      {
+        "h": "Check, tweak and send",
+        "b": "Read each draft, check names, dates and any commitments, and send it from the right account. Keep anything sensitive or unusual for your executive to see first."
+      }
+    ],
+    "example": "Dear Priya, thank you for the kind invitation to speak at the regional business breakfast. Unfortunately I'm travelling that week, so I'll have to decline this time. I'd be glad to hear about next year's event. With best wishes, Alex",
+    "tips": [
+      "Agree with your executive which kinds of letters you can send without them seeing first, and stick to it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A routine invitation or enquiry arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Sort the message as routine or needs executive attention"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a reply in the executive's style for checking"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Route incoming reports to the right people fast",
+    "d": "Incoming reports and memos are sorted automatically, summarised in a few lines and passed to the right people with a short note.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Outlook",
+      "Microsoft Teams"
+    ],
+    "when": "Every time reports and memos arrive",
+    "steps": [
+      {
+        "h": "Sort reports as they arrive",
+        "b": "Set up Outlook rules (or Gmail filters) that move emails from regular senders or with words like 'report' or 'memo' into a 'To route' folder, so they don't get lost in the main inbox."
+      },
+      {
+        "h": "Write down who needs what",
+        "b": "Make a short list of topics and who should see them, for example 'finance figures: CFO and executive', 'health and safety: operations lead'. Keep it in a note you can paste."
+      },
+      {
+        "h": "Summarise and route each batch",
+        "b": "Twice a day, open the folder and paste each report (or its summary page) into your AI assistant with your routing list.",
+        "p": "I'm an executive assistant. Here is my routing list: [paste list]. Here is an incoming report: [paste report or key pages]. Give me: 1) a 3-line summary, 2) how urgent it is (today, this week, for information) and why, 3) who should receive it from my routing list, and 4) a 2-sentence note to send with it. If it doesn't fit my list, say so rather than guessing."
+      },
+      {
+        "h": "Forward with the note and file it",
+        "b": "Forward the report with the note, post the summary in your executive's Teams chat if it's urgent, then move the email to a 'Routed' folder."
+      }
+    ],
+    "example": "Summary: Q3 site safety audit found two overdue fire door checks; all other areas compliant. Urgency: this week, as checks are past due. Route to: operations lead, copy executive. Note: 'Two actions need owners by Friday; full audit attached.'",
+    "tips": [
+      "Block two short slots in your calendar for routing so it becomes a habit, not a pile.",
+      "Don't paste confidential reports into an AI tool your organisation hasn't approved."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "A report or memo lands in the 'To route' folder"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Write a 3-line summary and urgency rating"
+        },
+        {
+          "type": "ai.classify",
+          "detail": "Match the report to people on the routing list"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the forwarding note for the assistant to send"
+        },
+        {
+          "type": "message.send",
+          "detail": "Post urgent summaries to the executive's chat"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Spot clashes and prep gaps in next week's diary",
+    "d": "A Friday check of your executive's coming week that flags clashes, back-to-back days, missing papers and meetings with no clear purpose.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Outlook Calendar",
+      "Google Calendar"
+    ],
+    "when": "Every Friday afternoon",
+    "steps": [
+      {
+        "h": "Copy next week's diary",
+        "b": "Open your executive's calendar in week or agenda view and copy the list of meetings with times, attendees and locations, or take a screenshot."
+      },
+      {
+        "h": "Ask for a diary health check",
+        "b": "Paste the list or attach the screenshot in your AI assistant.",
+        "p": "I'm an executive assistant. Here is my executive's diary for next week: [paste or attach]. Their preferences: [for example no meetings before 9am, 30 minutes between external meetings, lunch break, travel time between sites]. Check the week and give me a table of issues: Day, Issue (clash, no buffer, no travel time, too many meetings, no agenda or papers, unclear purpose), Suggested fix. Then suggest the best two slots for focused work and a 3-line summary of the week I can send my executive."
+      },
+      {
+        "h": "Fix the issues before Monday",
+        "b": "Move or shorten meetings where you can, request agendas or papers, and add travel or focus blocks."
+      },
+      {
+        "h": "Send the summary",
+        "b": "Send your executive the 3-line overview so they start Monday knowing what's coming."
+      }
+    ],
+    "example": "Wed | Two external meetings 30 minutes apart at different sites, no travel time | Move the 2pm supplier call to Teams. Thu | Strategy review has no papers yet | Ask Finance for the pack by Tuesday.",
+    "tips": [
+      "Remove private appointment details before pasting. 'Personal' is enough for the AI to plan around."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 2pm"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Flag clashes, missing buffers and meetings without papers"
+        },
+        {
+          "type": "ai.summarize",
+          "detail": "Write a 3-line overview of the week"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the assistant the list of issues to fix"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find where office admin wastes time and money",
+    "d": "Map a routine office process, see where the delays and duplicated steps are, and get practical changes you can suggest to your manager.",
+    "cat": "Planning & Productivity",
+    "job": "Executive assistant",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Excel"
+    ],
+    "when": "When a process feels slower than it should be",
+    "steps": [
+      {
+        "h": "Describe the process as it really happens",
+        "b": "Pick one process, such as ordering supplies, booking rooms or approving expenses, and write down each step, who does it and how long it takes. A rough voice note works too."
+      },
+      {
+        "h": "Ask for a review",
+        "b": "Paste your description into your AI assistant.",
+        "p": "I'm an executive assistant reviewing how our office handles [process]. Here's how it works today: [paste steps, people, timings and costs]. Please: 1) lay it out as a numbered step list, 2) mark steps that are duplicated, wait for someone, or add little value, 3) suggest up to five practical changes using tools we already have ([list tools, for example Outlook, Excel, Teams]), 4) for each change, say what it would save in plain terms and what could go wrong. Don't invent figures; use only the timings I've given."
+      },
+      {
+        "h": "Pick one change to try",
+        "b": "Choose the easiest change with the clearest benefit and try it for a month before suggesting bigger changes."
+      },
+      {
+        "h": "Write a short proposal",
+        "b": "Ask your AI assistant to turn the change into a half-page proposal for your manager: what happens now, what you suggest, and how you'll know it worked."
+      }
+    ],
+    "example": "Step 3 (wait for manager sign-off on every stationery order) adds two days. Suggestion: pre-approve orders under an agreed limit and send a monthly summary instead. Risk: spending creep, so review the summary monthly.",
+    "tips": [
+      "Time a process once for real before you describe it. Guesses tend to make things look better than they are."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Assistant describes a process to review"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Map the process and suggest improvements"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a short proposal for the manager"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn rough call notes into a tidy case record",
+    "d": "Quick notes from each customer call become a clear, consistent case record with the issue, what you did and what happens next.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Notes app"
+    ],
+    "when": "Straight after each customer call",
+    "steps": [
+      {
+        "h": "Jot notes during the call",
+        "b": "Type quick notes as you talk, in any order. Don't worry about grammar. Leave out card numbers, passwords and full addresses."
+      },
+      {
+        "h": "Save a tidy-up prompt",
+        "b": "Keep this prompt in your notes app so you can paste it in seconds.",
+        "p": "I'm a customer service rep. Turn these rough call notes into a case record: [paste notes]. Use these fields: Reason for contact, Product or service, What the customer told us, What I checked, What I did, What the customer agreed to, Next step and owner, Follow-up date, Customer mood (calm, frustrated, upset). Keep each field to one or two lines. Write 'Not recorded' if something isn't in my notes. Don't add details that aren't there."
+      },
+      {
+        "h": "Paste the record where it belongs",
+        "b": "Copy the result into your case system, or add it as a row in a shared Google Sheet if your team tracks cases that way."
+      },
+      {
+        "h": "Check the next step is clear",
+        "b": "Before you move on, make sure the next step has a person and a date. If it doesn't, add one."
+      }
+    ],
+    "example": "Reason: Delivery marked complete but not received. What I checked: courier tracking shows left at side door. What I did: raised a trace with the courier. Next step: courier reply (me), follow-up 15 Nov. Mood: frustrated.",
+    "tips": [
+      "Use an AI tool your company approves for customer information, and use an order number rather than the customer's name where you can."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Rep pastes notes after a call"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Sort notes into case record fields"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the case record to the team sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Explain a bill adjustment so the customer gets it",
+    "d": "A clear, friendly message that explains a refund, credit or bill change in plain words, with the numbers laid out so customers can follow them.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "When you've adjusted a customer's bill or issued a refund",
+    "steps": [
+      {
+        "h": "Note the facts with no personal details",
+        "b": "Write down the original charge, what changed, the new amount and when it will show. Use an account reference, never card or bank details."
+      },
+      {
+        "h": "Ask for a plain-English explanation",
+        "b": "Paste the facts into your AI assistant.",
+        "p": "I'm a customer service rep. Write a short, friendly message explaining a bill adjustment to a customer. Facts: original charge [amount and what for], reason for the change [reason], adjustment [refund / credit / new amount], when they'll see it [timing and where], anything they need to do [action or 'nothing']. Lay out the numbers in a small before-and-after list. Keep it under 150 words, apologise once if we made a mistake, and don't promise anything beyond these facts."
+      },
+      {
+        "h": "Check every number before sending",
+        "b": "Compare each amount and date in the draft with your billing system. If anything doesn't match, fix it yourself rather than asking the AI to guess."
+      }
+    ],
+    "example": "Original charge: £64.20 (two months of the premium plan). Corrected charge: £32.10 (one month). Refund: £32.10 back to your original payment method within 5 working days. You don't need to do anything.",
+    "tips": [
+      "The AI only knows what you tell it. Your company's billing rules and systems decide the actual amounts, so always check them.",
+      "Never paste full card numbers or bank details into a public AI tool."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Rep logs a bill adjustment"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a plain-English explanation of the change"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft the email for the rep to check and send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Work out what's really behind a complaint",
+    "d": "Lay out the facts of a complaint, the likely causes and the questions to ask, so you can respond fairly instead of guessing.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "When a complaint isn't straightforward",
+    "steps": [
+      {
+        "h": "Gather what you know",
+        "b": "Collect the customer's message, the order or account history, and any photos or screenshots they've sent. Remove names, addresses and payment details."
+      },
+      {
+        "h": "Ask for a structured look",
+        "b": "Paste or attach everything into your AI assistant.",
+        "p": "I'm a customer service rep looking into a complaint. Here is the customer's message and the account history, with personal details removed: [paste]. Please give me: 1) the customer's main points in their own terms, 2) the facts we can confirm from the history, 3) three to five possible causes, from most to least likely, including things outside our control (such as weather, courier delays or seasonal usage), 4) the questions I should ask or checks I should run to confirm the cause, and 5) what a fair outcome might look like if each cause turned out to be true."
+      },
+      {
+        "h": "Run the checks",
+        "b": "Work through the questions and checks. Your company's records and policy decide what's true, not the AI's list."
+      },
+      {
+        "h": "Reply with what you found",
+        "b": "Explain to the customer what you checked, what you found and what you're doing about it."
+      }
+    ],
+    "example": "Customer's point: winter bill is double last month's. Confirmed: usage up 85% since October; meter read was actual, not estimated. Likely causes: colder weather and heating use; new appliance. Check: ask about changes at home since October.",
+    "tips": [
+      "Ask the AI to list causes outside the customer's control too. It stops you jumping to blame either side."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "message_received",
+        "detail": "A complaint is marked for investigation"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out the customer's points and confirmable facts"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "List likely causes and checks to run"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Find the policy clauses that matter for a claim",
+    "d": "Pull the sections of a long policy wording that relate to a customer's claim, with page references, so you can check cover properly.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Before you call a customer back about a claim",
+    "steps": [
+      {
+        "h": "Get the right policy wording",
+        "b": "Download the policy document that applies to this customer's product and version. Use the standard wording, not the customer's personal schedule with their details on it."
+      },
+      {
+        "h": "Ask where the relevant sections are",
+        "b": "Attach the PDF to your AI assistant and describe the claim in general terms.",
+        "p": "I'm a customer service rep. Attached is a policy wording. A customer is claiming for: [describe the loss in general terms, no personal details]. Find every section that could affect this claim: what's covered, exclusions, conditions, limits and excess. For each, quote the exact wording and give the page and section number. Then list any facts I'd need from the customer to know which sections apply. Don't decide whether the claim is covered."
+      },
+      {
+        "h": "Read the clauses yourself",
+        "b": "Open the policy at each page reference and read the wording in full. Check anything unclear with your claims team or underwriter, who make the cover decision."
+      },
+      {
+        "h": "Prepare your call",
+        "b": "Use the list of facts you still need to plan your questions for the customer."
+      }
+    ],
+    "example": "Section 4.2 (p. 11): 'We will pay for accidental damage to portable items...' Exclusion 6.1 (p. 15): items left unattended in a vehicle. Limit (p. 12): £1,500 per item. Facts needed: where the item was when damaged.",
+    "tips": [
+      "The AI can miss or misread clauses. Treat its list as a map to the right pages, never as the answer.",
+      "Don't upload documents containing a customer's personal details unless your company has approved the tool for that."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Rep starts a claim review"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Find and quote relevant policy sections with page numbers"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the rep to confirm the cover decision with the claims team"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check back with customers after a fix",
+    "d": "Every resolved case gets a friendly follow-up a few days later, so you catch problems that didn't stay fixed before the customer has to chase.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Advanced",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Gmail",
+      "Google Calendar"
+    ],
+    "when": "A few days after each case is resolved",
+    "steps": [
+      {
+        "h": "Track resolved cases in a sheet",
+        "b": "In Google Sheets, add columns for case reference, what was fixed, date resolved, follow-up date and outcome. Use a simple formula to set the follow-up date a few days after the resolved date."
+      },
+      {
+        "h": "Get a daily nudge",
+        "b": "Set a daily recurring Google Calendar event with a link to the sheet, and use Google Sheets' notification settings to email you when rows change, if that helps."
+      },
+      {
+        "h": "Write follow-ups in one batch",
+        "b": "Each morning, copy the rows due today (case reference and what was fixed, no personal details) into your AI assistant.",
+        "p": "I'm a customer service rep. For each case below, write a short follow-up email checking the fix worked. Cases: [paste rows: reference, what was fixed]. Each email should: mention what we fixed in plain words, ask one simple question ('Is everything working as it should?'), say exactly how to reply if not, and be under 80 words. Label each email with its case reference. Don't use the same opening line for every email."
+      },
+      {
+        "h": "Schedule and send",
+        "b": "Paste each draft into Gmail, add the customer's name, and use schedule send to time it for a sensible hour. Record the reply in the outcome column."
+      }
+    ],
+    "example": "Case 48213: Hi Jordan, last week we replaced the faulty charger on your order. Is everything working as it should now? If not, just reply to this email and I'll pick it up personally. Thanks, Sam",
+    "tips": [
+      "If someone replies that the fix didn't work, reopen the case straight away rather than starting a new one, so the history stays together."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every weekday at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Find resolved cases due a follow-up today"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a short check-in email for each case"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Mark each case as followed up"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Offer a relevant extra without sounding salesy",
+    "d": "Short, natural ways to mention an upgrade or add-on that genuinely fits the customer's situation, and how to back off gracefully.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Notes app"
+    ],
+    "when": "Before a shift, or when a new offer launches",
+    "steps": [
+      {
+        "h": "List the offers and who they suit",
+        "b": "Write down the add-ons or upgrades you can offer, what each one does and the kind of customer it helps most."
+      },
+      {
+        "h": "Ask for natural phrasing",
+        "b": "Paste your list into your AI assistant.",
+        "p": "I'm a customer service rep. Here are the extras I can offer and who they suit: [paste list]. For each one, write: 1) the customer situations where it genuinely helps (for example 'mentions running out of data'), 2) one natural sentence to bring it up after their issue is solved, 3) a one-line answer to 'how much is it?', and 4) a friendly way to drop it if they're not interested. Keep the tone helpful, not pushy, and never suggest an extra before their problem is fixed."
+      },
+      {
+        "h": "Keep a cheat sheet",
+        "b": "Save the best lines in your notes app or pin them near your screen so you can use them on calls."
+      }
+    ],
+    "example": "Situation: customer mentions sharing the account with family. Line: 'Now that's sorted, as there are a few of you using it, the family plan might save you some hassle. Want me to tell you about it?' Back off: 'No problem at all.'",
+    "tips": [
+      "Only offer something if you can explain in one sentence how it helps this particular customer. If you can't, leave it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "A new offer is added to the list"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write natural lines and situations for each offer"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Update the rep's cheat sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check a returned item against the original order",
+    "d": "Compare what came back with what was ordered and invoiced, spot mismatches and get a clear note for the returns invoice.",
+    "cat": "Customer Support",
+    "job": "Customer service rep",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Google Sheets"
+    ],
+    "when": "When a disputed return arrives",
+    "steps": [
+      {
+        "h": "Photograph the returned item",
+        "b": "Take clear photos of the item, its labels, serial numbers and packaging, plus any damage."
+      },
+      {
+        "h": "Pull up the original order",
+        "b": "Copy the order line details: product name, product number, colour or size, quantity and price. Leave out the customer's name and address."
+      },
+      {
+        "h": "Ask for a comparison",
+        "b": "Attach the photos and paste the order details into your AI assistant.",
+        "p": "I'm checking a disputed return. Here are photos of the returned item and the original order details: [paste order lines]. Compare them and give me a table: Detail (product, product number, size or colour, quantity, serial number, condition, accessories), What was ordered, What I can see in the photos, Match (yes, no, can't tell). Then list any mismatches and a short neutral note I can add to the returns record. Don't decide the outcome."
+      },
+      {
+        "h": "Confirm and record",
+        "b": "Check each 'can't tell' item yourself, then log the result in your returns sheet and follow your returns policy to decide the refund or credit."
+      }
+    ],
+    "example": "Product number: ordered KX-220 black, photo shows KX-220 black (match). Accessories: ordered charger and case, photo shows case only (no). Note: 'Returned without charger; customer to be asked whether it was retained.'",
+    "tips": [
+      "Photos can hide details such as small serial numbers. Read anything important with your own eyes before deciding."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Return photos are added to the returns folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Read product numbers, labels and condition from the photos"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Compare against the order and write a neutral note"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Log the result in the returns sheet"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Match each customer to the right products",
+    "d": "Turn what a customer tells you about their business into a short, reasoned list of products to recommend, with the questions still to ask.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "After a discovery call or before a visit",
+    "steps": [
+      {
+        "h": "Note what the customer needs",
+        "b": "Write down what you learned: their type of business, volumes, problems, budget hints and what they buy from others today."
+      },
+      {
+        "h": "Share your range",
+        "b": "Copy the relevant part of your product list or catalogue, with prices or price bands if you can share them internally."
+      },
+      {
+        "h": "Ask for recommendations",
+        "b": "Paste both into your AI assistant.",
+        "p": "I'm a sales rep for a [type of supplier]. Here is what I know about a customer: [paste notes]. Here are our products: [paste product list with key features and prices]. Recommend up to three products or bundles that fit their needs. For each: why it fits (linked to something they said), what it replaces or improves, one likely objection and how to answer it. Then list the questions I still need to ask before making a firm recommendation. Only recommend items from my list."
+      },
+      {
+        "h": "Sense-check and prepare",
+        "b": "Check the suggestions against stock, current pricing and what you know of the customer, then turn the best one into your talking points."
+      }
+    ],
+    "example": "1) Mid-size starter bundle: fits their 40 orders a day and the need for next-day restock. Replaces two suppliers. Objection: 'We're locked in until March.' Answer: offer a trial on one line now. Still to ask: who signs off orders over £5k?",
+    "tips": [
+      "Keep your product list in a saved document you can paste each time, and update it when prices change."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Rep adds notes from a discovery call"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Recommend products with reasons and objections"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save talking points for the next conversation"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get instant answers from your own product catalogue",
+    "d": "Set up an AI assistant that has read your catalogue and price list, so you can answer customer questions on the spot with the source to hand.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": [
+      "AI assistant",
+      "Google Drive",
+      "OneDrive"
+    ],
+    "when": "Set up once, use on every call",
+    "steps": [
+      {
+        "h": "Gather your up-to-date documents",
+        "b": "Collect the current catalogue, spec sheets, price list, delivery terms and warranty information as PDFs or documents. Check with your manager that they're fine to use with your company's AI tool."
+      },
+      {
+        "h": "Create a dedicated assistant",
+        "b": "Upload them to a Claude Project, a custom GPT or a Gemini Gem (whichever your plan includes), and paste these instructions. If you don't have those features, attach the files to a single chat and pin it.",
+        "p": "You help a sales rep at [company] answer customer questions about our products. Only answer from the attached documents. For every answer, give the document name and page or section. If the answer isn't in the documents, say 'Not in the documents' and suggest who might know. For prices and delivery dates, add: 'Confirm before quoting.' Keep answers short enough to read out on a call."
+      },
+      {
+        "h": "Test it with real questions",
+        "b": "Ask it ten questions you get often and check each answer against the document. Note any it gets wrong and add a line to its instructions to correct it."
+      },
+      {
+        "h": "Keep it current",
+        "b": "Whenever the price list or catalogue changes, remove the old file and upload the new one, so you're never quoting last season's figures."
+      }
+    ],
+    "example": "Q: Does the 600 series come in stainless? A: Yes, model 640-SS, Catalogue 2026 p. 18. Lead time 10 working days (Delivery terms, section 2). Confirm before quoting.",
+    "tips": [
+      "Always confirm prices, credit terms and delivery dates with your system before quoting them to a customer."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new catalogue or price list is saved to the sales folder"
+      },
+      "actions": [
+        {
+          "type": "file.save",
+          "detail": "Replace the old document in the assistant's files"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the rep the assistant now uses the new version"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get more from every trade show you attend",
+    "d": "A plan for who to see before the show, quick notes on every conversation during it, and personal follow-ups sent within days.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Voice notes",
+      "Gmail"
+    ],
+    "when": "Before, during and after each trade show",
+    "steps": [
+      {
+        "h": "Plan who to see",
+        "b": "Paste the exhibitor list or agenda into your AI assistant with a description of your ideal customer, and ask for a shortlist of stands and talks worth your time, with one opening question for each."
+      },
+      {
+        "h": "Capture each conversation fast",
+        "b": "After each chat, record a 30-second voice note: who, what they need, how interested they are and what you promised. Snap a photo of their business card."
+      },
+      {
+        "h": "Turn notes into a lead list",
+        "b": "Each evening, paste your voice note transcripts into your AI assistant.",
+        "p": "I'm a sales rep at a trade show. Here are my notes from today's conversations: [paste transcripts]. Make a table with: Company, Contact role, What they need, Interest level (hot, warm, cold), What I promised, Next step, Follow-up date. Then write a short, personal follow-up email for each hot and warm lead that mentions something specific we talked about and includes the next step. Keep each email under 120 words."
+      },
+      {
+        "h": "Follow up while it's fresh",
+        "b": "Paste the table into your Google Sheet, check each email, and send them within two working days of the show."
+      }
+    ],
+    "example": "Harbour Fresh Foods | Purchasing lead | Needs a cheaper chilled packaging option | Hot | Promised samples of the 2L tray | Send samples and book a call | 18 Nov.",
+    "tips": [
+      "Say the company name clearly at the start of each voice note. It makes the transcript much easier to sort later."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Each evening of the trade show"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Turn voice notes into lead rows"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add leads to the trade show sheet"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft personal follow-ups for hot and warm leads"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Win better shelf space with a store-first pitch",
+    "d": "A short, store-specific pitch showing why better placement or a promotion for your products is good for the retailer, not just for you.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "Before a meeting with a store or buyer",
+    "steps": [
+      {
+        "h": "Gather your facts",
+        "b": "Note what you know: your sales in that store or similar stores, what's selling well, upcoming promotions or launches, and where your products sit now."
+      },
+      {
+        "h": "Ask for a retailer-first pitch",
+        "b": "Paste the facts into your AI assistant.",
+        "p": "I'm a sales rep for [brand or product range] meeting the buyer at [type of store]. Facts: [paste sales figures, current placement, upcoming promotions, customer trends you've seen]. Write a one-page pitch asking for [better shelf position / an end display / a joint promotion]. Lead with what's in it for the store: footfall, basket size, margin or fewer gaps. Include: the ask, three reasons with my facts, what we'll provide (for example display materials or staff training), a simple way to measure success, and two likely buyer objections with answers. Only use the figures I've given."
+      },
+      {
+        "h": "Rehearse the objections",
+        "b": "Ask your AI assistant to play a sceptical buyer and push back on your pitch, so you've practised your answers before the meeting."
+      }
+    ],
+    "example": "Ask: move our granola range from the bottom shelf to eye level for 8 weeks. Why: it's already your third-best seller in the aisle; launch ad campaign starts in March. We provide: shelf strips and a tasting day. Measure: weekly units versus the last 8 weeks.",
+    "tips": [
+      "Bring one or two numbers the buyer can check in their own system. They'll trust those more than anything else."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Two days before a buyer meeting"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a retailer-first placement pitch"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the pitch and objection answers"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Suggest a better in-store display from a shelf photo",
+    "d": "Photograph a store shelf and get practical ideas to make your products easier to find and more tempting, ready to suggest to the store.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant",
+      "Phone camera"
+    ],
+    "when": "During a store visit",
+    "steps": [
+      {
+        "h": "Take clear shelf photos",
+        "b": "Ask the store before taking photos. Capture your products and the area around them from the front, plus one wider shot of the aisle."
+      },
+      {
+        "h": "Ask for display ideas",
+        "b": "Attach the photos in your AI assistant on your phone.",
+        "p": "I'm a sales rep for [brand]. These photos show where our products sit in a [type of store]. Our products are [describe packaging so they can be spotted]. Look at the display and give me: 1) what a shopper would notice first, 2) problems with our products' visibility (gaps, hidden facings, poor labels, wrong neighbours), 3) five practical improvements the store could make in under an hour, ranked by likely impact, and 4) one short sentence I can use to suggest the best one to the store manager."
+      },
+      {
+        "h": "Agree a change and record it",
+        "b": "Suggest the top idea to the store, then take an after photo so you can compare sales or stock movement on your next visit."
+      }
+    ],
+    "example": "First noticed: competitor's bright red boxes at eye level. Problems: two of our facings hidden behind a price sign; gap where the large size should be. Quick fix: move the sign and refill the large size. Line: 'Shall we move this sign so shoppers can see the full range?'",
+    "tips": [
+      "Keep before-and-after photos in a dated album for each store. They make a strong case in your next buyer meeting."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A shelf photo is added to the store visits album"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Suggest display improvements from the photo"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the rep the top suggestion to discuss with the store"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Look after new accounts in their first 90 days",
+    "d": "A planned run of check-ins for each new customer, with reminders and ready drafts, so small problems get fixed before they cost you the account.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Calendar",
+      "Gmail"
+    ],
+    "when": "Every time a new account places its first order",
+    "steps": [
+      {
+        "h": "Plan the 90 days once",
+        "b": "Ask your AI assistant for a standard check-in plan you can reuse.",
+        "p": "I'm a sales rep for a [type of supplier]. Create a 90-day aftercare plan for new trade customers. Include 5 or 6 touchpoints (for example after first delivery, after two weeks, after the first invoice, at day 60 and day 90). For each: the purpose, the questions to ask, what problems usually show up at that point, and a short email template using [Customer name], [Product] and [Contact] placeholders. Keep the tone helpful, not salesy."
+      },
+      {
+        "h": "Track new accounts in a sheet",
+        "b": "In Google Sheets, add a row for each new account with the start date. Add a column for each touchpoint with a formula that works out its due date, and a column to record how it went."
+      },
+      {
+        "h": "Put the touchpoints in your calendar",
+        "b": "When you add a new account, create Google Calendar events for each touchpoint date, with the relevant template pasted into the event notes."
+      },
+      {
+        "h": "Personalise and send",
+        "b": "When each reminder comes up, ask your AI assistant to adapt the template using your notes on that account, check it, then send or call. Log the outcome in the sheet."
+      }
+    ],
+    "example": "Day 14 check-in: 'Hi Morgan, two weeks in with the new packaging line. How are your team finding the tray sizes? A few customers have asked about a lid that fits the 1L tray, so I can send a sample if it would help.'",
+    "tips": [
+      "Note every problem the customer mentions, even small ones. Fixing a small one quickly builds more trust than a discount."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_row",
+        "detail": "A new account is added to the aftercare sheet"
+      },
+      "actions": [
+        {
+          "type": "calendar.create",
+          "detail": "Create a reminder for each touchpoint"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft each check-in email when it's due"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Record each touchpoint as done"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Give customers' staff a simple guide to new kit",
+    "d": "A one-page, plain-English guide for using and caring for equipment you've sold, so the customer's staff get it right from day one.",
+    "cat": "Sales & Leads",
+    "job": "Sales rep",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Canva",
+      "Word"
+    ],
+    "when": "Before you deliver or train on new equipment",
+    "steps": [
+      {
+        "h": "Start from the manufacturer's manual",
+        "b": "Get the official manual or quick-start guide as a PDF. This keeps the safety and care steps accurate."
+      },
+      {
+        "h": "Ask for a one-page guide",
+        "b": "Attach the manual to your AI assistant.",
+        "p": "I'm a sales rep training a customer's staff on [equipment]. Attached is the manufacturer's manual. The people using it are [describe, for example kitchen staff with no technical background]. Write a one-page guide with: what it's for, five steps to use it each day, a daily and weekly cleaning or care checklist, the three most common mistakes and how to avoid them, and when to stop and call for help. Use short sentences and include every safety warning from the manual word for word. Give the manual page for each section."
+      },
+      {
+        "h": "Check it against the manual",
+        "b": "Read every step and safety warning against the manual page it cites. Change anything that doesn't match exactly."
+      },
+      {
+        "h": "Make it easy to pin up",
+        "b": "Lay it out in Canva or Word with large text, print it and leave copies after your training session."
+      }
+    ],
+    "example": "Daily use: 1) Check the water tray is full. 2) Press and hold Power for 3 seconds... Weekly: descale (manual p. 14). Common mistake: overfilling the hopper. Stop and call if: the red light flashes twice.",
+    "tips": [
+      "Never shorten or reword safety warnings. Copy them exactly from the manufacturer's manual."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Rep schedules equipment training"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a one-page guide from the manual"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a printable how-to sheet for checking"
+        }
+      ]
+    }
+  }
+]
