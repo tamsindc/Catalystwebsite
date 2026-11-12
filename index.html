@@ -94,6 +94,20 @@ section{padding:72px 0 0}
 .lead{color:var(--soft);font-size:19px;margin-top:8px;max-width:56ch}
 .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
 
+/* jobs */
+(() => {
+  const counts = {};
+  LIB.forEach(w => { if (w.job) counts[w.job] = (counts[w.job] || 0) + 1; });
+  const jobs = Object.keys(counts).sort((a, b) => a.localeCompare(b));
+  if (!jobs.length) { $('#jobs').hidden = true; return; }
+  jobs.forEach(j => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = j;
+    const sm = document.createElement('small'); sm.textContent = counts[j]; b.appendChild(sm);
+    b.addEventListener('click', () => { state.q = ''; pondInput.value = ''; state.cat = 'all'; setSide('all'); state.job = j; renderCats(); render(); goPond(); });
+    $('#jobGrid').appendChild(b);
+  });
+})();
+
 /* doors */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:56px}
 .door{border:0;text-align:left;border-radius:32px;padding:34px 36px;display:flex;flex-direction:column;gap:6px;transition:transform .2s;min-height:270px}
@@ -304,6 +318,12 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 .burst{position:fixed;width:12px;height:12px;border-radius:3px;pointer-events:none;z-index:999;animation:burst .7s ease-out forwards}
 @keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg) scale(.3);opacity:0}}
 
+/* jobs */
+.jobgrid{display:flex;flex-wrap:wrap;gap:10px}
+.jobgrid button{border:0;background:var(--tone);border-radius:14px;padding:12px 18px;font-weight:700;font-size:17px;color:var(--ink);transition:background .15s,transform .15s}
+.jobgrid button:hover{background:var(--cyan);transform:translateY(-2px)}
+.jobgrid button small{font-weight:400;color:var(--soft);margin-left:6px;font-size:15px}
+.jobnote{margin-top:16px;font-size:15px;color:var(--soft)}
 /* community, rung, partners */
 .creators{background:var(--yellow);color:var(--navy);border-radius:36px;padding:52px}
 .creators .h2{color:var(--navy);max-width:24ch}.creators .lead{color:var(--navy)}
@@ -418,8 +438,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <a href="#pond" data-go="all">Browse all</a>
         <a href="#pond" data-go="work">Work</a>
         <a href="#pond" data-go="life">Life</a>
+        <a href="#jobs">Your job</a>
         <a href="#creators">Earn</a>
-        <a href="#community">Community</a>
         <a href="#rung">The Rung</a>
         <button class="net" id="net" type="button" title="See the guides you've saved">Saved <b id="netCount">0</b></button>
       </div>
@@ -494,6 +514,15 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <div class="dchips" id="dlC"></div>
     </div>
   </div>
+
+  <!-- JOBS -->
+  <section id="jobs">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 class="h2">Find guides for your job</h2><p class="lead">Pick your job to see AI workflows built around the tasks people in that role really do.</p></div></div>
+      <div class="jobgrid" id="jobGrid"></div>
+      <p class="jobnote">Job tasks are based on the O*NET database from the U.S. Department of Labor, Employment and Training Administration, used under the CC BY 4.0 licence. The guides are written by fishpond.</p>
+    </div>
+  </section>
 
   <!-- QUICK WINS -->
   <section>
@@ -874,9 +903,9 @@ const SYN = {fridge:['recipe','meal','food','grocer'], dinner:['recipe','meal','
   meeting:['meeting','transcri','zoom','call'], call:['call','meeting','transcri','voice'], social:['social','linkedin','instagram','twitter','tiktok'],
   gym:['fitness','workout','gym','health'], study:['learn','study','quiz','flashcard','tutor'], customer:['customer','support','ticket'],
   write:['writ','blog','content','article'], video:['video','youtube'], summarise:['summar'], summarize:['summar']};
-LIB.forEach((w, i) => { w._i = i; w._hay = [w.t, w.d, w.cat, w.when, w.tools.join(' '), ...w.steps.map(x => x.h + ' ' + x.b)].join(' ').toLowerCase(); w._title = w.t.toLowerCase(); });
+LIB.forEach((w, i) => { w._i = i; w._hay = [w.t, w.d, w.cat, w.when, w.tools.join(' '), ...w.steps.map(x => x.h + ' ' + x.b)].join(' ').toLowerCase(); w._title = w.t.toLowerCase(); if (w.job) w._hay += ' ' + w.job.toLowerCase(); });
 const PAGE = 12;
-const state = {side: 'all', cat: 'all', q: '', sort: 'featured', shown: PAGE, net: false};
+const state = {side: 'all', cat: 'all', job: '', q: '', sort: 'featured', shown: PAGE, net: false};
 const cards = $('#cards'), pondInput = $('#pondInput'), count = $('#count'), more = $('#more'), catsEl = $('#cats');
 
 function terms(q) {
@@ -889,7 +918,8 @@ function results() {
   let list = LIB.filter(w =>
     (!state.net || saved.has(w.id)) &&
     (state.side === 'all' || w.side === state.side) &&
-    (state.cat === 'all' || w.cat === state.cat));
+    (state.cat === 'all' || w.cat === state.cat) &&
+    (!state.job || w.job === state.job));
   if (ts.length) {
     const need = Math.max(1, Math.ceil(ts.length / 2));
     const wt = ts.map(alts => { const df = LIB.filter(x => alts.some(t => x._hay.includes(t))).length; return Math.log((LIB.length + 1) / (df + 1)) + 0.2; });
@@ -927,7 +957,7 @@ function renderCats() {
     b.setAttribute('aria-pressed', state.cat === val);
     b.textContent = label;
     const sm = document.createElement('small'); sm.textContent = n; b.appendChild(sm);
-    b.addEventListener('click', () => { state.cat = val; state.net = false; state.shown = PAGE; renderCats(); render(); });
+    b.addEventListener('click', () => { state.cat = val; state.job = ''; state.net = false; state.shown = PAGE; renderCats(); render(); });
     catsEl.appendChild(b);
   };
   mk('all', 'All topics', base.length);
@@ -940,7 +970,7 @@ function card(w, i) {
   el.style.animationDelay = (i % PAGE) * 20 + 'ms';
   el.innerHTML = `<i class="dot" aria-hidden="true"></i><div><div class="cat"></div><h3><button type="button"></button></h3><p class="desc"></p></div><span class="mins"></span><button class="reel" type="button"></button><button class="how-btn" type="button">Open guide</button>`;
   $('.dot', el).style.background = catColor(w.cat);
-  $('.cat', el).textContent = w.cat;
+  $('.cat', el).textContent = w.job ? `${w.job} · ${w.cat}` : w.cat;
   $('h3 button', el).textContent = w.t;
   $('.desc', el).textContent = w.d;
   $('.mins', el).textContent = w.mins + ' min';
@@ -967,16 +997,16 @@ function render(append = false) {
     cards.appendChild(e);
   }
   slice.forEach((w, i) => cards.appendChild(card(w, i)));
-  const what = state.net ? 'that you saved' : state.cat === 'all' ? '' : `in ${state.cat}`;
+  const what = state.net ? 'that you saved' : state.job ? `for ${state.job}` : state.cat === 'all' ? '' : `in ${state.cat}`;
   count.textContent = current.length ? `Showing ${Math.min(state.shown, current.length)} of ${current.length} guides ${what}`.trim() : '';
-  $('#pondTitle').textContent = state.net ? 'Your saved guides' : state.cat !== 'all' ? state.cat : state.side === 'work' ? 'Guides for work' : state.side === 'life' ? 'Guides for home' : 'Browse all guides';
+  $('#pondTitle').textContent = state.net ? 'Your saved guides' : state.job ? `Guides for: ${state.job}` : state.cat !== 'all' ? state.cat : state.side === 'work' ? 'Guides for work' : state.side === 'life' ? 'Guides for home' : 'Browse all guides';
   more.hidden = state.shown >= current.length;
 }
 more.addEventListener('click', () => { state.shown += PAGE; render(true); });
 
 function setSide(f) {
   $$('.toggle button').forEach(x => { const on = x.dataset.f === f; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
-  state.side = f; state.net = false; state.shown = PAGE;
+  state.side = f; state.job = ''; state.net = false; state.shown = PAGE;
   if (state.cat !== 'all' && !LIB.some(w => w.cat === state.cat && (state.side === 'all' || w.side === state.side))) state.cat = 'all';
   renderCats(); render();
 }
@@ -1029,7 +1059,7 @@ pondInput.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(
 $('#pondSearch').addEventListener('submit', e => { e.preventDefault(); state.q = pondInput.value; state.shown = PAGE; render(); });
 
 function castTo(q, cat) {
-  state.q = q; pondInput.value = q; state.cat = cat || 'all'; state.side = 'all'; state.net = false; state.shown = PAGE;
+  state.q = q; pondInput.value = q; state.cat = cat || 'all'; state.job = ''; state.side = 'all'; state.net = false; state.shown = PAGE;
   $$('.toggle button').forEach(x => { const on = x.dataset.f === 'all'; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
   renderCats(); render();
   $('#pond').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});

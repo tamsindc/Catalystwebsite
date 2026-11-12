@@ -20,6 +20,8 @@ TOPICS = {
     "Property & Lettings": "work", "Charities & Community": "work",
     "Family & Parenting": "life", "Events & Celebrations": "life", "Hobbies & Creativity": "life",
     "Shopping & Deals": "life", "Cars & Getting Around": "life",
+    "Finance & Accounting": "work", "Legal & Compliance": "work", "Health & Care Work": "work",
+    "Trades & Field Services": "work",
 }
 STOP = {"a", "an", "the", "and", "or", "of", "for", "to", "in", "on", "with", "your", "you", "every", "each", "into", "from", "it", "get", "make", "turn", "one", "all"}
 
@@ -68,6 +70,7 @@ def clean(r):
         "t": text(r["t"], 90),
         "d": text(r["d"], 200),
         "cat": r["cat"],
+        "job": text(r.get("job"), 40),
         "side": TOPICS[r["cat"]],
         "lvl": r["lvl"],
         "mins": max(1, min(120, int(r.get("mins") or 10))),
