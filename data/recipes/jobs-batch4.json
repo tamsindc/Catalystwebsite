@@ -1,0 +1,1634 @@
+[
+  {
+    "t": "Turn a pile of case papers into a clear timeline",
+    "d": "Get a dated, sourced chronology of events from letters, emails and statements, ready for the supervising lawyer to check.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Google Docs"
+    ],
+    "when": "When a new matter lands or a file gets messy",
+    "steps": [
+      {
+        "h": "Check what you are allowed to share",
+        "b": "Only use an AI tool your firm has approved for client material. If you must use a public one, remove names, addresses and reference numbers first and replace them with labels like [Client] and [Landlord]."
+      },
+      {
+        "h": "Gather the documents in date order",
+        "b": "Collect the key letters, emails and statements for the matter. Copy the text into one document, or attach the files if your approved tool allows it."
+      },
+      {
+        "h": "Ask for a sourced chronology",
+        "b": "Paste this prompt with the material.",
+        "p": "You are helping a paralegal organise a case file. From the documents below, build a chronology as a table with columns: Date, Event (one plain sentence), Who was involved, Source document and page or paragraph. Use only what the documents say. If a date is unclear, write 'Unclear' and quote the wording. After the table, list: 1) gaps where nothing is recorded, 2) any facts that conflict between documents, 3) questions to ask the client. Do not give legal opinions. Documents: [paste or attach]"
+      },
+      {
+        "h": "Check every line against the source",
+        "b": "Open each source the table points to and confirm the date and wording. AI can misread or invent details, so treat the table as a draft until you have checked it."
+      },
+      {
+        "h": "Hand it to your supervising lawyer",
+        "b": "Save the checked chronology in the matter folder and send it to the lawyer for review before anyone relies on it."
+      }
+    ],
+    "example": "| 03/02 | Tenant reports leak in writing | [Client], [Landlord] | Email, p1 |\n| 17/02 | Landlord replies, no date for repair | [Landlord] | Letter, para 2 |\nGaps: nothing recorded 17/02 to 30/03. Conflict: statement says leak began January, email says February.",
+    "tips": [
+      "Ask for the source column every time. A timeline without sources is hard to check and easy to get wrong.",
+      "This is an organising aid, not legal analysis. A qualified lawyer decides what the facts mean."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Paralegal starts a chronology for a matter"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull dated events and their sources from the documents"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a chronology draft in the matter folder"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the supervising lawyer to review it"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a numbered exhibit list for trial in an hour",
+    "d": "A tidy, numbered exhibit schedule in a spreadsheet with short descriptions, dates and page counts, ready for checking and the trial bundle.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Excel",
+      "Google Sheets",
+      "OneDrive"
+    ],
+    "when": "When preparing a hearing or trial bundle",
+    "steps": [
+      {
+        "h": "List the files you have",
+        "b": "In your document folder, copy the list of file names for the exhibits into a spreadsheet column. Add any notes you already have, such as who produced each one."
+      },
+      {
+        "h": "Ask for a draft exhibit schedule",
+        "b": "Paste the file list into your firm-approved AI assistant with this prompt. Keep client names out if the tool is not approved for confidential work.",
+        "p": "Here is a list of exhibit file names and notes for a [type of case] hearing. Create a table I can paste into a spreadsheet with columns: Exhibit number (format [A1, A2...]), Short neutral description (max 12 words), Date of document, Author or source, Number of pages (leave blank if unknown), Party relying on it, Notes. Group by [chronological order / topic / party]. Flag any files that look like duplicates or drafts. Files: [paste list]"
+      },
+      {
+        "h": "Paste it into your spreadsheet",
+        "b": "Paste the table into Excel or Google Sheets, then fill in the page counts and anything marked blank by checking each file yourself."
+      },
+      {
+        "h": "Rename files to match",
+        "b": "Rename each file to start with its exhibit number so the folder and the list always match, for example 'A3 Inspection report 2024-05-12'."
+      },
+      {
+        "h": "Get it signed off",
+        "b": "Send the schedule to the supervising lawyer to approve the order, descriptions and anything left out before the bundle is finalised. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "A1 | Tenancy agreement | 01/09/2022 | [Agent] | 14 pp | Claimant\nA2 | Email reporting damp | 12/01/2024 | [Client] | 1 p | Claimant\nA3 | Inspection report | 12/05/2024 | [Surveyor] | 9 pp | Claimant\nFlag: 'A2 copy final' looks like a duplicate of A2.",
+    "tips": [
+      "Keep descriptions neutral. Ask the AI to avoid words that argue the case, such as 'proves' or 'admits'.",
+      "Check your court's or firm's bundle rules for numbering and indexing, as they vary."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A document is added to the trial exhibits folder"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Suggest a description, date and author for the new file"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add a draft row to the exhibit schedule"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the paralegal to check and number it"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Draft a first-pass affidavit from witness notes",
+    "d": "Turn interview notes into a clearly numbered draft statement in the witness's own words, ready for lawyer review and the witness to correct.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Word"
+    ],
+    "when": "After a witness or client interview",
+    "steps": [
+      {
+        "h": "Tidy your interview notes",
+        "b": "Type up or paste your notes from the interview. Replace names and identifying details with labels unless your firm has approved the AI tool for client data."
+      },
+      {
+        "h": "Ask for a numbered draft",
+        "b": "Paste the notes with this prompt.",
+        "p": "Turn these interview notes into a first-draft witness statement. Rules: first person, in plain everyday words close to how the witness spoke; short numbered paragraphs; one point per paragraph; in date order; only facts the notes contain, nothing added; mark anything the witness was unsure about with [CHECK]; note where the witness refers to a document with [EXHIBIT?]. Do not include legal conclusions or argument. Leave out any formal heading and declaration, I will add our firm's template. Notes: [paste notes]"
+      },
+      {
+        "h": "Drop it into your firm's template",
+        "b": "Paste the paragraphs into your firm's Word template for affidavits or statements, which has the correct heading, wording and declaration for your court."
+      },
+      {
+        "h": "Review with the lawyer and witness",
+        "b": "The supervising lawyer must review the draft, and the witness must read and correct every paragraph. It must be their evidence, not the AI's wording. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "1. I have lived at [Address] since March 2021.\n2. On or around 12 January 2024 I noticed black mould on the bedroom wall. [CHECK date]\n3. I sent an email to the letting agent that evening. [EXHIBIT?]\n4. Nobody replied to that email.",
+    "tips": [
+      "Never let a statement go out with the AI's phrasing the witness would not use. Courts expect the witness's own account.",
+      "Do not paste confidential client details into a public AI tool unless your firm allows it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Paralegal pastes interview notes"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft numbered statement paragraphs with checks flagged"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the draft in the firm's statement template"
+        },
+        {
+          "type": "notify",
+          "detail": "Send to the supervising lawyer for review"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send clients clear updates on where their case stands",
+    "d": "Short, friendly progress emails that explain the latest step and what happens next in plain words, checked by the lawyer before sending.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Outlook",
+      "Gmail"
+    ],
+    "when": "After each step in a matter, or every fortnight",
+    "steps": [
+      {
+        "h": "Note what has happened",
+        "b": "Jot down three or four bullet points: what happened, what it means for timing, what you need from the client and the next date. Use labels instead of names if your AI tool is not firm-approved."
+      },
+      {
+        "h": "Ask for a plain-English update",
+        "b": "Paste your bullets with this prompt.",
+        "p": "Write a short client update email from a law firm. Audience: [client type, e.g. a private individual with no legal background]. Tone: warm, calm, clear. Structure: 1) one-line summary of where things are, 2) what happened since the last update, 3) what happens next and roughly when, 4) anything we need from them, with a date, 5) who to contact with questions. Under 200 words. Explain any legal terms in brackets. Do not give legal advice or predict the outcome. Notes: [paste bullets]"
+      },
+      {
+        "h": "Save it as a reusable template",
+        "b": "Once you like the shape, save it as an Outlook template or a Gmail template so each update starts from the same clear structure."
+      },
+      {
+        "h": "Have the lawyer approve it",
+        "b": "Send the draft to the responsible lawyer to check before it goes to the client, especially anything about timing, costs or prospects. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "Subject: Your case: update and next steps\nIn short: the other side has replied and we are reviewing it.\nWhat's next: we'll send you our thoughts by 14 March.\nWhat we need: a copy of your rent statements by 10 March.\nQuestions? Call [Name] on [number].",
+    "tips": [
+      "Keep a short 'last update sent' note on the matter so updates stay regular.",
+      "Never let AI wording about prospects or outcomes reach a client without a qualified lawyer's check."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Every other Monday for open matters"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the paralegal which clients are due an update"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft a plain-English update from the matter notes"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Save as a draft for lawyer approval"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn your legal research notes into a tidy memo",
+    "d": "A structured research note listing each source, what it says and its status, with every citation flagged for checking against the original.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Google Docs"
+    ],
+    "when": "After a research session, before reporting back",
+    "steps": [
+      {
+        "h": "Collect your own research first",
+        "b": "Do the research in your usual legal databases and official sources. Copy your notes, the citations you found and the key passages into one document."
+      },
+      {
+        "h": "Ask the AI to organise, not to research",
+        "b": "Paste your notes with this prompt. You are asking it to structure what you found, not to find new law.",
+        "p": "Organise my legal research notes into a memo for my supervising lawyer. Use only the sources in my notes and do not add any cases, statutes or quotes of your own. Structure: 1) The question researched, 2) Short answer from the sources (2 to 3 sentences, marked 'for lawyer review'), 3) A table: Source citation exactly as in my notes, What it says (one or two sentences), Pinpoint paragraph or section, Status to check (e.g. still in force, appealed, overruled), 4) Points that conflict or need more research. Notes: [paste notes]"
+      },
+      {
+        "h": "Check every citation against the source",
+        "b": "AI can invent or alter case names, citations and quotes. Open each source in your database and confirm the citation, quote and that it is still good law before the memo goes anywhere."
+      },
+      {
+        "h": "Send it for review",
+        "b": "Give the checked memo to the supervising lawyer. They decide what the research means for the case."
+      }
+    ],
+    "example": "Question: Can a landlord withhold the deposit for normal wear and tear?\nSources table: [Statute s.X] | Sets out deposit rules | s.X(3) | Check: amended 2023?\nConflicts: Note 4 and Note 7 suggest different notice periods. Needs a second look.",
+    "tips": [
+      "If the AI adds a source you did not give it, delete it. Only cite what you have read yourself.",
+      "Do not paste client confidential facts into a public AI tool unless your firm allows it. Describe the issue generally instead."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Paralegal finishes a research session"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Structure the notes into a research memo"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the memo with a citation-check column"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the paralegal to verify every citation"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Send clients a pre-meeting questionnaire that saves time",
+    "d": "A short online form tailored to the type of matter, so clients arrive with the right facts and papers and the first meeting goes further.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Microsoft Forms",
+      "Google Forms",
+      "Outlook"
+    ],
+    "when": "When booking a first client meeting",
+    "steps": [
+      {
+        "h": "Ask for a draft question set",
+        "b": "Tell your AI assistant the type of matter and paste this prompt. No client details are needed at this stage.",
+        "p": "I am a paralegal preparing a pre-meeting questionnaire for new clients in [type of matter, e.g. residential lease dispute / will preparation / employment dispute]. Write 10 to 15 clear questions in plain English, grouped under headings (About you, What happened, Key dates, Documents to bring, What you want to achieve). Say for each whether it should be a short answer, long answer, date or yes/no. Add a short friendly intro explaining why we ask and that answers are confidential, and a list of documents to bring. Avoid legal jargon."
+      },
+      {
+        "h": "Build the form",
+        "b": "Create a new form in Microsoft Forms or Google Forms and add the questions with the suggested answer types. Check with your firm that the form tool is approved for client information."
+      },
+      {
+        "h": "Have the lawyer check it",
+        "b": "Ask the lawyer who handles these matters to review the questions so nothing important is missed and nothing reads as advice."
+      },
+      {
+        "h": "Send it with every booking",
+        "b": "Add the form link to your meeting confirmation email template so every new client gets it. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "Key dates: When did you first raise the problem with your landlord? (date)\nDocuments to bring: tenancy agreement, any emails or letters about the issue, photos, rent statements.\nWhat would a good result look like for you? (long answer)",
+    "tips": [
+      "Keep it under 15 questions. Long forms get abandoned.",
+      "Make one version per common matter type and reuse them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "Client submits the pre-meeting questionnaire"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the answers and list missing information"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save a meeting prep note in the matter folder"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the lawyer the prep note is ready"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every matter's document index up to date each week",
+    "d": "Incoming correspondence is filed by matter automatically, and a weekly session turns it into an up-to-date index the whole team can trust.",
+    "cat": "Legal & Compliance",
+    "job": "Paralegal",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Outlook",
+      "Excel",
+      "AI assistant",
+      "Outlook Calendar"
+    ],
+    "when": "Set up once, then every Friday afternoon",
+    "steps": [
+      {
+        "h": "File emails by matter with rules",
+        "b": "In Outlook's rules settings, create a rule per busy matter that moves emails containing its reference number into a matter folder. Gmail filters with labels work the same way."
+      },
+      {
+        "h": "Make one index spreadsheet per matter",
+        "b": "In Excel, create columns: Date, Document type, From, To, Short description, Where saved, Action needed. Save it in the matter folder."
+      },
+      {
+        "h": "Block a weekly indexing slot",
+        "b": "Add a recurring 30-minute Friday event in your calendar called 'Update matter indexes'."
+      },
+      {
+        "h": "Let the AI draft the new rows",
+        "b": "In the slot, copy the subject lines, dates and senders from the week's matter folder into your firm-approved AI assistant with this prompt.",
+        "p": "Here is a list of this week's correspondence for matter [reference]. For each item create one row for a document index with columns: Date | Document type (letter, email, court notice, invoice, other) | From | To | Short neutral description (max 12 words) | Action needed (yes/no, and what). Put anything that mentions a deadline or hearing date at the top and mark it DEADLINE. Items: [paste list]"
+      },
+      {
+        "h": "Check, paste and diarise",
+        "b": "Check each row, paste them into the index, and put any deadline into the firm's diary system. Ask the lawyer to confirm any deadline you are unsure about. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "08/03 | Court notice | [Court] | Firm | Hearing listed for 22 April | DEADLINE: yes, diarise\n07/03 | Email | [Other side] | Firm | Asks for disclosure list | Yes: draft by 15/03\n06/03 | Invoice | [Expert] | Firm | Report fee | Yes: send to accounts",
+    "tips": [
+      "Never rely on AI to calculate court deadlines. Work them out from the rules and have a lawyer confirm them.",
+      "Use your firm-approved AI tool only. Subject lines often contain confidential client details."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Fridays at 3pm"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Turn the week's matter emails into index rows and flag deadlines"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the rows to the matter index"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the paralegal to confirm any flagged deadlines"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Get a first-pass list of risky clauses in any contract",
+    "d": "A table of clauses worth a closer look, why they may matter for your client and questions to raise, to speed up your own review.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Word"
+    ],
+    "when": "Before reviewing a draft contract or lease",
+    "steps": [
+      {
+        "h": "Use an approved tool or anonymise",
+        "b": "Use an AI tool your firm has approved for client documents. Otherwise remove party names, prices and identifying details before pasting."
+      },
+      {
+        "h": "Ask for a clause risk table",
+        "b": "Paste or attach the contract with this prompt.",
+        "p": "Act as a careful assistant to a lawyer acting for the [buyer / tenant / supplier / customer]. Review the contract below and produce a table with columns: Clause number | What it says in one plain sentence | Why it may matter for my client | Risk level (high, medium, low) | Question or amendment to consider. Focus on: liability and indemnities, termination, payment, renewal, IP, confidentiality, dispute resolution, and anything unusual for a [type of contract]. Quote clause numbers exactly. Then list any standard protections that seem to be missing. This is a first pass for my own review, not advice. Contract: [paste or attach]"
+      },
+      {
+        "h": "Check every point in the document",
+        "b": "Go to each clause it lists and read it yourself. AI can misread wording, miss cross-references or invent clauses, so the table only tells you where to look."
+      },
+      {
+        "h": "Do your full review",
+        "b": "Use the table as a checklist alongside your own review and your firm's precedents. Your professional judgment decides what goes to the client. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "12.3 | Supplier's liability capped at one month's fees | Low cap for a critical service | High | Seek cap of 12 months' fees\n18.1 | Auto-renews for 3 years unless 6 months' notice | Easy to miss | Medium | Diarise notice date\nMissing: no data protection clause.",
+    "tips": [
+      "Tell it which side you act for. The same clause can be fine for one party and risky for the other.",
+      "Never send the AI's table to a client as advice. It is a starting point for your own review."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A draft contract is saved to the review folder"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "List clauses by risk level for the acting party"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save a first-pass review table next to the contract"
+        },
+        {
+          "type": "notify",
+          "detail": "Tell the lawyer the first pass is ready to check"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn your legal advice into a plain-English client letter",
+    "d": "Rewrite your technical advice note into a clear, warm letter a non-lawyer understands, without changing what you actually advised.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Outlook"
+    ],
+    "when": "After writing an advice note",
+    "steps": [
+      {
+        "h": "Start from your own advice",
+        "b": "Write your advice as you normally would. The AI only changes the wording for the reader; the advice itself must be yours."
+      },
+      {
+        "h": "Ask for a plain-English version",
+        "b": "Paste your note, with client names replaced by labels if your AI tool is not firm-approved.",
+        "p": "Rewrite this lawyer's advice note as a letter to a client with no legal background. Keep every point of advice, recommendation and caveat exactly as given; do not add new advice, options or legal sources. Structure: 1) The short answer in two sentences, 2) Why, in plain words, 3) Your options, as a short list with the pros and cons I gave, 4) What I recommend, 5) What happens next and what I need from you. Explain any legal term in brackets the first time. Reading age around 12. Note: [paste advice]"
+      },
+      {
+        "h": "Compare it line by line",
+        "b": "Check the letter against your note to make sure nothing was dropped, softened or overstated, especially caveats and time limits."
+      },
+      {
+        "h": "Send on letterhead",
+        "b": "Paste the final text into your firm's letter template and send it as you normally would. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "The short answer: you can end the lease early, but only from 1 June and only if your rent is up to date.\nWhy: your lease has a 'break clause' (a set date when either side can end it)...\nWhat I need from you: confirmation by 20 March that you want to go ahead.",
+    "tips": [
+      "Ask it to keep your caveats word for word if they matter.",
+      "Do not paste client confidential details into a public AI tool unless your firm allows it."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Lawyer pastes a finished advice note"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Rewrite the note as a plain-English client letter"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Place the draft in the firm letter template"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the lawyer to compare it with the original note"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Draft a witness question outline from the case file",
+    "d": "A structured outline of topics and questions for examining a witness, linked to the documents, for you to shape into your own plan.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Word"
+    ],
+    "when": "When preparing for a hearing or trial",
+    "steps": [
+      {
+        "h": "Pull together the witness material",
+        "b": "Gather the witness's statement, your chronology and the key documents they deal with. Anonymise, or use a firm-approved AI tool."
+      },
+      {
+        "h": "Ask for a topic-by-topic outline",
+        "b": "Paste the material with this prompt.",
+        "p": "Help me prepare to [examine in chief / cross-examine] a witness in a [type of case]. My client is the [claimant / defendant]. Using only the material below, produce an outline: for each topic, give 1) the point I want to establish, 2) 4 to 6 short, single-fact questions in a logical order ([use leading questions for cross-examination / open questions for examination in chief]), 3) the document and page that supports each point, 4) the likely answer and a risk if the witness disagrees. Flag inconsistencies between the statement and the documents. Material: [paste or attach]"
+      },
+      {
+        "h": "Check it against the evidence",
+        "b": "Confirm every reference and quote in the original documents. Remove anything the evidence does not support."
+      },
+      {
+        "h": "Make it yours",
+        "b": "Reorder, cut and rewrite the questions to fit your strategy, the court's rules and your own style. The AI outline is a starting point, not a script."
+      }
+    ],
+    "example": "Topic 2: Knowledge of the leak\nPoint: The witness knew by January.\nQ1 You manage the building? Q2 Tenants email you about repairs? Q3 Please look at page 41. That's an email to you dated 12 January? Q4 It mentions water coming through the ceiling?\nRisk: may say the email went to spam.",
+    "tips": [
+      "Ask for one fact per question. It keeps the outline tight and easy to adapt.",
+      "Any case law or rules the AI mentions must be checked against the source. AI can invent cases."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Lawyer starts witness preparation"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Create a topic and question outline with document links"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the outline to the trial preparation folder"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Stress-test your argument before a hearing",
+    "d": "Hear the strongest points the other side is likely to make, the weak spots in your own case and questions a judge may ask, so nothing surprises you.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": [
+      "AI assistant",
+      "Word"
+    ],
+    "when": "A few days before a hearing or meeting",
+    "steps": [
+      {
+        "h": "Summarise your case briefly",
+        "b": "Write a one-page summary of the facts, the issues and your main arguments. Leave out names and anything confidential unless your AI tool is firm-approved."
+      },
+      {
+        "h": "Ask it to argue the other side",
+        "b": "Paste the summary with this prompt.",
+        "p": "Here is a summary of my argument in a [type of case] where I act for the [party]. Play the role of experienced opposing counsel. 1) Give the 5 strongest counter-arguments, most dangerous first. 2) For each, say which fact or gap in my case it exploits. 3) List 5 questions a judge might ask me. 4) Suggest what further evidence or points would answer each weakness. Base this on the facts given. If you mention any case or statute, label it 'unverified' so I can check it. Summary: [paste]"
+      },
+      {
+        "h": "Verify anything legal it mentions",
+        "b": "AI can invent case names and citations that look real. Treat every authority it mentions as unverified until you have read it in a proper legal source."
+      },
+      {
+        "h": "Update your plan",
+        "b": "Add answers to the strongest points to your notes, and discuss any serious weaknesses with colleagues or the client as you normally would."
+      }
+    ],
+    "example": "1. Notice was never given in writing, so the clause wasn't triggered. (Exploits: no letter on file.)\n2. Your client kept paying rent, which suggests they accepted the state of the property.\nJudge may ask: 'Why did your client wait four months to complain?'",
+    "tips": [
+      "Ask for a second round: 'Now reply to each counter-argument as if you were me' to test your answers.",
+      "Use it for preparation only. Your professional judgment decides the strategy."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "Three days before a hearing in the calendar"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the lawyer to run a stress-test"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "List counter-arguments and likely judge questions"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Plan a settlement negotiation with clear fall-back positions",
+    "d": "A one-page negotiation plan with your aims, walk-away point, likely offers from the other side and well-worded responses, agreed with the client.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Notes app"
+    ],
+    "when": "Before a settlement meeting or mediation",
+    "steps": [
+      {
+        "h": "Write down what you know",
+        "b": "Note the issues in dispute, the client's instructions, what they must have and what they can trade. Keep identifying details out unless your tool is firm-approved."
+      },
+      {
+        "h": "Ask for a negotiation plan",
+        "b": "Paste your notes with this prompt.",
+        "p": "Help me plan a settlement negotiation in a [type of dispute]. I act for the [party]. Using my notes, produce a one-page plan: 1) Our goals ranked, 2) Our opening position and the reasoning to give, 3) Concessions we could trade, in the order we would offer them, 4) Walk-away point as instructed, 5) The other side's likely interests and three offers they may make, 6) A calm, professional response to each offer, 7) Non-money terms to consider (timing, confidentiality, apology, references). Do not set numbers I have not given you. Notes: [paste]"
+      },
+      {
+        "h": "Check it with your client",
+        "b": "Go through the plan with the client and get clear instructions on the walk-away point and any concessions. The decisions are theirs and yours, not the AI's."
+      },
+      {
+        "h": "Keep it handy on the day",
+        "b": "Save a short version in your notes app to glance at during breaks. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "Goals: 1) Deposit returned in full 2) Costs contribution 3) Neutral reference.\nTrade first: drop the claim for interest.\nLikely offer: half the deposit. Reply: 'We hear that, but the inventory shows no damage beyond normal wear. We'd need the full deposit to settle today.'",
+    "tips": [
+      "Ask it to suggest the other side's interests, not just their positions. It helps find deals.",
+      "Settlement figures and terms must come from the client's instructions and your professional judgment."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A settlement meeting is booked"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft a one-page negotiation plan from the notes"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the plan in the matter folder"
+        },
+        {
+          "type": "notify",
+          "detail": "Remind the lawyer to confirm instructions with the client"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn a new regulation into a briefing for business clients",
+    "d": "A short, plain-English client alert on what a new rule changes, who it affects and what to do next, checked by you before it goes out.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Mailchimp",
+      "LinkedIn"
+    ],
+    "when": "When a new law, rule or guidance is published",
+    "steps": [
+      {
+        "h": "Get the official text",
+        "b": "Download the regulation or guidance from the official government or regulator website. Work from that, not from news reports."
+      },
+      {
+        "h": "Ask for a draft briefing",
+        "b": "Attach or paste the official text with this prompt.",
+        "p": "Using only the official text below, draft a client briefing for [type of business, e.g. small landlords / online retailers]. Sections: 1) What has changed, in three sentences, 2) Who it applies to and who it doesn't, 3) Key dates, 4) What businesses should do now, as a checklist, 5) Common questions with short answers. Quote the section or paragraph number for every point. Plain English, under 600 words. Do not mention any case law. Add a line saying this is general information, not legal advice. Text: [paste or attach]"
+      },
+      {
+        "h": "Check every point against the text",
+        "b": "Read the source alongside the draft and confirm each section reference, date and obligation. Fix anything that overstates or simplifies too far."
+      },
+      {
+        "h": "Format and send",
+        "b": "Put the checked briefing into your firm's template, send it to clients through Mailchimp or your usual mailing tool, and share a short summary on LinkedIn if your firm does that. If the AI mentions any case or law, check it against the original source, as AI can invent case law. Don't paste client confidential details into a public AI tool unless your firm allows it."
+      }
+    ],
+    "example": "What has changed: from 1 October, landlords must give tenants an energy rating before any viewing (s.4).\nWho it applies to: all residential lettings; holiday lets are excluded (s.2(3)).\nDo now: check your adverts, update your viewing pack...\nThis is general information, not legal advice.",
+    "tips": [
+      "Ask it for a list of questions it couldn't answer from the text. Those are often where clients need you.",
+      "Keep the 'not legal advice' line and your firm's usual disclaimer on every briefing."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Lawyer adds a new official text to the briefings folder"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Draft a sectioned client briefing with references"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the briefing in the firm template"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the lawyer to check it before sending"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a file note after every client call, automatically",
+    "d": "Each client call becomes a draft attendance note with advice given, instructions received and tasks, waiting for you to check and file.",
+    "cat": "Legal & Compliance",
+    "job": "Lawyer",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": [
+      "Microsoft Teams",
+      "Zoom",
+      "AI assistant",
+      "Word"
+    ],
+    "when": "After every recorded client call",
+    "steps": [
+      {
+        "h": "Check your firm's rules first",
+        "b": "Confirm your firm allows recording and AI notes for client calls, and always tell the client and get their agreement before recording."
+      },
+      {
+        "h": "Turn on meeting notes",
+        "b": "If your plan includes it, switch on Teams Copilot recap or Zoom AI Companion for client calls. If not, turn on the transcript and save it after the call."
+      },
+      {
+        "h": "Turn the transcript into a file note",
+        "b": "Paste the recap or transcript into your firm-approved AI assistant with this prompt.",
+        "p": "Turn this call transcript into a law firm attendance note. Format: Matter: [reference] | Date and time | Attendees | Duration. Then sections: 1) Purpose of call, 2) Facts the client told us, 3) Advice given, quoting exactly what was said where it matters, 4) Instructions received, 5) Tasks with owner and due date, 6) Anything the client was unsure about. Use only what is in the transcript. Mark unclear parts [UNCLEAR]. Transcript: [paste]"
+      },
+      {
+        "h": "Check and correct it",
+        "b": "Read the note against your memory and the transcript. Pay closest attention to the advice and instructions sections, which you are professionally responsible for."
+      },
+      {
+        "h": "File it and add the tasks",
+        "b": "Save the note to the matter in your case management system or folder, and add the tasks to your to-do list or the team's board. If the AI mentions any case or law, check it against the original source, as AI can invent case law."
+      }
+    ],
+    "example": "Purpose: discuss landlord's offer.\nAdvice given: 'I think the offer is low given the inspection report, but it is your decision.'\nInstructions: reject the offer; counter at full deposit.\nTasks: [Lawyer] to write to other side by 14/03. [Client] to send photos by 12/03.",
+    "tips": [
+      "Never file a note you haven't checked. An attendance note is a professional record.",
+      "Delete recordings and transcripts in line with your firm's retention policy once the note is filed."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A client call ends"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Draft an attendance note from the transcript"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the draft note to the matter folder"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add the agreed tasks to the to-do list"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the lawyer to check and approve the note"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a property listing that gets more viewings",
+    "d": "A clear, appealing property description, key features list and short social post from your photos and notes, written in minutes.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Notes app"
+    ],
+    "when": "After every valuation or new instruction",
+    "steps": [
+      {
+        "h": "Note the facts on the visit",
+        "b": "In your notes app, record room sizes, the best features, local selling points and anything the seller loves about the home. Snap the main rooms on your phone."
+      },
+      {
+        "h": "Ask for a draft listing",
+        "b": "Open your AI assistant, attach a few photos and paste this prompt with your notes.",
+        "p": "Write a property listing for a [property type] for [sale / rent] at [asking price]. Ideal buyer: [e.g. first-time buyers, growing families, downsizers]. Using my notes and photos, give me: 1) A headline of max 10 words, 2) A 120-word description that leads with the best feature, 3) 8 bullet key features, 4) A room-by-room section using my measurements, 5) A 40-word social post. Warm, honest, no clichés like 'deceptively spacious' or 'must be seen'. Only state facts from my notes; if something is unclear, leave a [CHECK]. Notes: [paste notes]"
+      },
+      {
+        "h": "Check the facts",
+        "b": "Check every measurement, feature and claim against your notes and the seller. Listings must be accurate, so remove anything you can't back up."
+      },
+      {
+        "h": "Publish",
+        "b": "Paste the text into your property portal and website listings, and use the social post for your agency's pages."
+      }
+    ],
+    "example": "Headline: Sunny three-bed with a south-facing garden\nDescription: Morning light fills the kitchen-diner of this three-bedroom semi, set on a quiet street a short walk from the station...\nKey features: south-facing garden, new boiler 2023, driveway for two cars...",
+    "tips": [
+      "Don't describe who 'should' live there in ways that exclude people, such as 'perfect for young professionals only'. Describe the home, not the buyer.",
+      "Keep the seller's details and address number out of the prompt if you don't need them."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Agent adds valuation notes and photos"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a headline, description, features and social post"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the listing draft for checking"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Shortlist homes that fit each buyer's brief",
+    "d": "Buyers fill in a short form, and you get a ranked shortlist from your current stock with a friendly email explaining why each home fits.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "AI assistant",
+      "Gmail"
+    ],
+    "when": "Whenever a new buyer registers",
+    "steps": [
+      {
+        "h": "Create a buyer brief form",
+        "b": "In Google Forms, ask for budget, mortgage position, must-haves, nice-to-haves, areas, timing and anything they can't live with. Responses land in a Google Sheet."
+      },
+      {
+        "h": "Keep a simple stock sheet",
+        "b": "In another tab, list your available properties with price, area, bedrooms, outside space, parking, chain status and listing link."
+      },
+      {
+        "h": "Ask for a ranked shortlist",
+        "b": "Copy the buyer's answers and your stock list into your AI assistant with this prompt.",
+        "p": "Here is a buyer's brief and my current list of available properties. Rank the 5 best matches. For each: property, price, how well it matches (strong / partial), which must-haves it meets, which it misses, and one line on why it's worth a look. Exclude anything over [budget + 5%] or missing a must-have, unless nothing else fits. Then write a short, friendly email to the buyer introducing the top 3 with links and inviting them to book viewings. Brief: [paste] Stock: [paste]"
+      },
+      {
+        "h": "Check and send",
+        "b": "Check the matches make sense, edit the email so it sounds like you, and send it from Gmail."
+      }
+    ],
+    "example": "1. 14 Elm Row, 3 bed, asking within budget: strong match (garden, parking, near schools). Misses: second bathroom.\n2. Flat 2, Mill House: partial (no garden, but balcony and station 5 min).\nEmail: 'Hi Sam, I've picked three homes I think you'll like...'",
+    "tips": [
+      "Ask buyers about features, not about who they are. Matching on things like family status or background can be discriminatory.",
+      "Only paste the details you need. Leave out buyers' financial documents."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A buyer submits the brief form"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Rank current stock against the buyer's brief"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft an introduction email with the top 3 homes"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Record the shortlist against the buyer"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Back up your asking price with recent local sales",
+    "d": "A clear, one-page pricing case comparing the home with recent nearby sales, so sellers understand why you're recommending the price.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Docs"
+    ],
+    "when": "Before a valuation appointment",
+    "steps": [
+      {
+        "h": "Gather the comparables",
+        "b": "From the sold prices data you normally use, list 4 to 6 similar nearby homes sold recently with price, date, size, bedrooms, condition and anything notable."
+      },
+      {
+        "h": "Ask for a pricing case",
+        "b": "Paste the comparables and the subject property's details with this prompt.",
+        "p": "I'm an estate agent preparing for a valuation. Subject property: [details]. Recent comparable sales: [paste table]. Produce: 1) A table comparing each sale with the subject property, noting what's better, worse or similar (size, condition, garden, parking, location), 2) A short explanation of a sensible price range based only on these sales, showing your reasoning, 3) Three points to explain to the seller in plain words, 4) Questions the seller is likely to ask and short answers. Do not invent sales or prices. Flag where the data is thin."
+      },
+      {
+        "h": "Apply your own judgment",
+        "b": "Check the reasoning against your local knowledge and the current market. The final valuation is your professional view, not the AI's."
+      },
+      {
+        "h": "Make a seller handout",
+        "b": "Paste the comparison table and key points into a short Google Doc to share at the appointment."
+      }
+    ],
+    "example": "22 Oak Rd sold 4 months ago: same size, but needs a new kitchen (subject is better).\n9 Ash Cl sold 2 months ago: larger garden, same condition (subject slightly weaker).\nSuggested range: between the two, nearer 22 Oak Rd plus kitchen premium. Data thin: only 2 sales in the last 3 months.",
+    "tips": [
+      "Always give the AI the real sold data. Never ask it to guess local prices; it will make them up.",
+      "Leave the seller's name out. The property details are enough."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "A valuation appointment is booked"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the agent to gather comparables"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Build a comparison table and pricing explanation"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create a one-page seller handout"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Explain an offer to your seller clearly and fairly",
+    "d": "A clear summary of each offer with the buyer's position, conditions and timing, so your seller can compare them and decide.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Gmail",
+      "Outlook"
+    ],
+    "when": "Whenever an offer comes in",
+    "steps": [
+      {
+        "h": "Note the offer details",
+        "b": "Write down the amount, the buyer's position (chain, mortgage agreed in principle, cash), conditions, preferred timing and anything they said about the home."
+      },
+      {
+        "h": "Ask for a clear summary",
+        "b": "Paste the details with this prompt. Use first names or 'Buyer A' rather than full details.",
+        "p": "I'm an estate agent presenting offers to a seller. Asking price: [price]. Offers: [paste details for each]. Write a short email to the seller that: 1) Lists each offer in a simple table (amount, difference from asking, buyer position, conditions, timing), 2) Explains in neutral plain words the strengths and risks of each, 3) Sets out the seller's options (accept, counter, wait), 4) Asks for their decision by [time]. Be balanced and factual; do not pressure the seller or recommend a choice."
+      },
+      {
+        "h": "Add your view in your own words",
+        "b": "If you give a recommendation, write it yourself after checking it fits your duties to the seller. Then send the email and follow up with a call."
+      }
+    ],
+    "example": "Offer A: 5% under asking, first-time buyer, mortgage agreed in principle, no chain, wants to complete in 8 weeks.\nOffer B: 2% under asking, has a home to sell, not yet on the market.\nOptions: accept A, counter A, or wait for B to sell.",
+    "tips": [
+      "Pass on every offer as your rules require, even ones you think are low.",
+      "Keep buyers' financial details out of the AI tool; a short description of their position is enough."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email containing a new offer arrives"
+      },
+      "actions": [
+        {
+          "type": "ai.extract",
+          "detail": "Pull out amount, position, conditions and timing"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a neutral offer summary for the seller"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Give sellers a room-by-room checklist before photos and viewings",
+    "d": "A friendly, prioritised to-do list for each room, from quick tidies to small fixes, so the home looks its best for photos and viewings.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "WhatsApp"
+    ],
+    "when": "After the valuation, before the photographer visits",
+    "steps": [
+      {
+        "h": "Photograph each room",
+        "b": "Take one wide photo of each main room and the outside, as the room looks today."
+      },
+      {
+        "h": "Ask for a prioritised checklist",
+        "b": "Attach the photos to your AI assistant with this prompt.",
+        "p": "These photos are of a home about to go on the market. For each room, give a short, friendly checklist for the seller, sorted into: 1) Free and under 15 minutes (declutter, tidy, open curtains), 2) Small costs (bulbs, a plant, touch-up paint), 3) Bigger jobs only worth doing if [budget/time allows]. Max 5 items per room. Explain in one line why the top item matters for buyers. Be kind; the seller lives here. Rooms in photos: [list]"
+      },
+      {
+        "h": "Check it and make it personal",
+        "b": "Remove anything that doesn't suit the home or the seller's budget, and add your own local knowledge of what buyers look for."
+      },
+      {
+        "h": "Send it to the seller",
+        "b": "Send the checklist by email or WhatsApp with the photography date, and offer to answer questions."
+      }
+    ],
+    "example": "Kitchen: 1) Clear worktops except the kettle (free, 10 min). 2) Replace the two dead spotlights (small cost). Why: buyers judge kitchens first.\nGarden: 1) Mow and sweep the patio. 2) Two potted plants by the door.",
+    "tips": [
+      "Ask the seller's permission before you send photos of their home to an AI tool, and avoid photos showing family pictures or post.",
+      "Keep a copy as a template for similar homes."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Agent uploads room photos after a valuation"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a room-by-room prep checklist"
+        },
+        {
+          "type": "message.send",
+          "detail": "Send the checklist to the seller"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep every sale moving from offer to completion",
+    "d": "A simple sales progression tracker plus weekly, polite chasing emails to solicitors, lenders and surveyors so no sale stalls quietly.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Gmail",
+      "Google Calendar"
+    ],
+    "when": "Set up once, then every Monday morning",
+    "steps": [
+      {
+        "h": "Build a progression sheet",
+        "b": "In Google Sheets, make one row per agreed sale with columns for each milestone: memorandum sent, searches ordered, survey done, mortgage offer, enquiries raised, enquiries answered, exchange, completion, plus 'last update' and 'who we're waiting on'."
+      },
+      {
+        "h": "Add a weekly calendar slot",
+        "b": "Create a recurring Monday 30-minute event called 'Sales progression' so the chase never slips."
+      },
+      {
+        "h": "Let the AI spot stuck sales and draft chasers",
+        "b": "Copy the sheet into your AI assistant with this prompt.",
+        "p": "Here is my sales progression tracker. Today is [date]. 1) List sales where nothing has changed for over [10] days, oldest first, and say what is holding each one up. 2) For each stuck step, draft a short, polite chasing email to the right person (buyer's solicitor, seller's solicitor, lender, surveyor), naming the property and the exact item needed. 3) Write a two-line update for each seller and buyer. Tracker: [paste]"
+      },
+      {
+        "h": "Check and send",
+        "b": "Check the drafts, add names and send from Gmail. Update the 'last update' column as replies arrive."
+      }
+    ],
+    "example": "Stuck: 14 Elm Row, 16 days since enquiries were raised. Waiting on seller's solicitor.\nChaser: 'Hi [Name], I'm checking in on 14 Elm Row. Could you let me know when replies to the buyer's enquiries are likely? The buyer is keen to exchange this month.'",
+    "tips": [
+      "Keep personal and financial details out of the sheet you paste. Property name and milestone dates are enough.",
+      "Colour rows red in the sheet when 'days since update' passes 10 so stuck sales stand out."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Mondays at 9am"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Find sales with no progress for over 10 days"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft polite chasers to the right people"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the agent a list of stuck sales"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Keep in touch with past buyers and sellers all year",
+    "d": "A light, personal touch with past clients each quarter and on their home anniversary, so they think of you when they or friends move.",
+    "cat": "Property & Lettings",
+    "job": "Estate agent",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Google Sheets",
+      "AI assistant",
+      "Mailchimp",
+      "Google Calendar"
+    ],
+    "when": "Set up once, then quarterly and on anniversaries",
+    "steps": [
+      {
+        "h": "List past clients who agreed to hear from you",
+        "b": "In Google Sheets, list past clients who gave permission to be contacted, with first name, area, move date and anything useful they shared (such as a renovation plan)."
+      },
+      {
+        "h": "Set anniversary reminders",
+        "b": "Add a yearly Google Calendar event on each move-in date, so you get a nudge to send a personal note."
+      },
+      {
+        "h": "Draft a quarterly local update",
+        "b": "Each quarter, paste your notes about the local market into your AI assistant with this prompt.",
+        "p": "Write a short, friendly quarterly email to past clients of a local estate agent in [area]. Include: 1) A two-sentence local market update from my notes (no figures I haven't given you), 2) One practical home tip for the season, 3) One local event or new opening, 4) A gentle line saying I'm happy to give a free valuation or recommend a tradesperson. Under 200 words, warm, no hard sell. Notes: [paste notes]"
+      },
+      {
+        "h": "Send it through Mailchimp",
+        "b": "Paste the email into a Mailchimp campaign for your past-client audience and schedule it. Mailchimp handles unsubscribes for you."
+      },
+      {
+        "h": "Write anniversary notes personally",
+        "b": "When an anniversary reminder pops up, ask the AI for a three-line note using the client's first name and one detail, then edit it and send it yourself."
+      }
+    ],
+    "example": "Subject: Spring on Riverside: a quick update\nHomes near the park are still selling quickly, and we've seen more first-time buyers this spring.\nSeasonal tip: clear gutters before the April showers.\nNew: the Saturday market is back on the green.",
+    "tips": [
+      "Only email people who agreed to it, and make it easy to unsubscribe. Marketing email rules apply.",
+      "Personal notes beat newsletters. Keep the anniversary note short and genuine."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "First Monday of each quarter, plus each client's move-in date"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Draft the quarterly update or anniversary note"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Prepare the Mailchimp campaign or personal email"
+        },
+        {
+          "type": "notify",
+          "detail": "Ask the agent to review before sending"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Handle a tenant complaint fairly using your house rules",
+    "d": "A calm, fair reply to a tenant or resident complaint that follows your own rules and process, with a clear log entry and next steps.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": [
+      "AI assistant",
+      "Outlook",
+      "Gmail"
+    ],
+    "when": "Whenever a complaint or neighbour dispute comes in",
+    "steps": [
+      {
+        "h": "Collect the complaint and your rules",
+        "b": "Copy the complaint and the relevant part of your tenancy terms, house rules or complaints policy. Remove names and flat numbers if your AI tool is not approved for this."
+      },
+      {
+        "h": "Ask for a fair reply",
+        "b": "Paste both with this prompt.",
+        "p": "I'm a property manager. Here is a complaint from a [tenant / resident] and the relevant rules. 1) Summarise the complaint in two sentences. 2) Say which rules apply and how, quoting them. 3) List facts I need to check before deciding. 4) Draft a calm, respectful reply that acknowledges the issue, explains what we will do and by when, and how they can escalate under our complaints process. Do not admit fault or promise anything the rules don't support. Under 200 words. Complaint: [paste] Rules: [paste]"
+      },
+      {
+        "h": "Check the facts first",
+        "b": "Check the facts the AI listed before you send anything. If the complaint involves discrimination, harassment, safety or a legal dispute, speak to your manager or legal adviser first."
+      },
+      {
+        "h": "Send and log it",
+        "b": "Send the reply, then record the complaint, your response and the follow-up date in your complaints log."
+      }
+    ],
+    "example": "Summary: Flat [3] reports noise from Flat [5] after 11pm on several weekdays.\nRule: House rule 7, 'no noise likely to disturb neighbours between 11pm and 7am'.\nCheck: any earlier reports? Reply: 'Thank you for letting us know. We'll write to the resident this week...'",
+    "tips": [
+      "Treat both sides the same. Ask the AI to check your draft for tone if you're dealing with a repeat complainer.",
+      "Keep residents' personal details out of public AI tools."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_email",
+        "detail": "An email arrives in the complaints inbox"
+      },
+      "actions": [
+        {
+          "type": "ai.summarize",
+          "detail": "Summarise the complaint and match it to the rules"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft a fair reply for the manager to check"
+        },
+        {
+          "type": "sheet.append",
+          "detail": "Add the complaint to the complaints log"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Write a clear scope of works contractors can price",
+    "d": "A tidy job specification from your notes and photos, so every contractor quotes for the same work and quotes are easy to compare.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": [
+      "AI assistant",
+      "Phone camera",
+      "Word"
+    ],
+    "when": "Before asking for quotes on repairs or improvements",
+    "steps": [
+      {
+        "h": "Photograph and note the job",
+        "b": "Take clear photos of the area and jot down what's wrong, rough measurements, access arrangements and any constraints such as working hours."
+      },
+      {
+        "h": "Ask for a scope of works",
+        "b": "Attach the photos and paste your notes with this prompt.",
+        "p": "Write a scope of works for contractors to quote against. Property type: [e.g. block of 12 flats]. Job: [short description]. Use my notes and photos. Sections: 1) Background, 2) Work required, as numbered items, 3) Materials or standards required [if known], 4) Access, working hours and resident considerations, 5) Health and safety and waste removal, 6) What the quote must include (itemised costs, timescale, insurance details, guarantee), 7) Questions contractors should answer. Mark anything I need to confirm with [CHECK]. Notes: [paste]"
+      },
+      {
+        "h": "Check it with someone qualified",
+        "b": "Fill in the [CHECK] items. For structural, gas, electrical or fire safety work, have a qualified surveyor or engineer review the scope."
+      },
+      {
+        "h": "Send the same pack to every contractor",
+        "b": "Save it as a Word document and send it with the photos to each contractor, with a return date for quotes."
+      }
+    ],
+    "example": "Work required: 1) Remove and dispose of damaged guttering on the rear elevation (approx. 14 m). 2) Supply and fit new uPVC guttering and two downpipes. 3) Clear the gully at the base of the rear downpipe.\nAccess: scaffold tower needed; residents' car park must stay open.",
+    "tips": [
+      "The more precise the scope, the easier it is to compare quotes fairly afterwards.",
+      "Ask for proof of insurance and any required certificates in every quote."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "manual",
+        "detail": "Manager adds notes and photos for a new job"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a numbered scope of works"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the scope as a document ready to send"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Check your rental adverts are fair to everyone",
+    "d": "Get your rental adverts checked for wording that could put people off or exclude them unfairly, with fairer alternatives ready to use.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": [
+      "AI assistant"
+    ],
+    "when": "Before any rental advert goes live",
+    "steps": [
+      {
+        "h": "Paste your draft advert",
+        "b": "Copy the advert text, including any 'requirements' section."
+      },
+      {
+        "h": "Ask for a fairness check",
+        "b": "Paste it into your AI assistant with this prompt.",
+        "p": "Review this rental advert for wording that could discriminate against, or put off, people because of characteristics protected by law where I am ([country or state]), such as race, religion, sex, disability, age, family status or receiving benefits. For each issue: quote the wording, explain in one line why it could be a problem, and suggest a fairer alternative that describes the property or the objective requirement instead. Then check the advert is clear on rent, deposit, fees and accessibility features. Advert: [paste]"
+      },
+      {
+        "h": "Check with your compliance adviser",
+        "b": "The AI can miss local rules or flag things that are fine. If you're unsure, check with your compliance team or a legal adviser before publishing."
+      },
+      {
+        "h": "Save a fair template",
+        "b": "Keep the corrected advert as a template so future adverts start fair."
+      }
+    ],
+    "example": "Issue: 'Ideal for young professionals' could put off older applicants. Try: 'Close to the station and city centre.'\nIssue: 'No children' may be unlawful where you are. Try describing the property, e.g. 'One-bedroom flat, suits one or two people.'",
+    "tips": [
+      "Describe the home and the objective requirements, such as rent and references, not the kind of person you want.",
+      "This is a checking aid, not legal advice. Rules differ by country and state."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "A new advert draft is saved to the adverts folder"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Flag wording that may be unfair or exclusionary"
+        },
+        {
+          "type": "notify",
+          "detail": "Send the flags to the manager before publishing"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Turn inspection photos into a tidy condition report",
+    "d": "Walk round with your phone, then get a room-by-room condition report with issues ranked by urgency and a maintenance to-do list.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": [
+      "Phone camera",
+      "Voice notes",
+      "AI assistant",
+      "Google Docs"
+    ],
+    "when": "After every routine inspection",
+    "steps": [
+      {
+        "h": "Photograph and talk as you go",
+        "b": "In each room or area, take photos and record a short voice note of what you see. Avoid photographing tenants, their post or personal papers."
+      },
+      {
+        "h": "Turn notes into text",
+        "b": "Use your phone's voice note transcription, or describe each area in a few typed lines in your notes app."
+      },
+      {
+        "h": "Ask for a condition report",
+        "b": "Attach the photos and paste your notes into your AI assistant with this prompt.",
+        "p": "Create a property inspection report from my notes and photos. Property: [address label or reference], date: [date]. For each area: condition (good / fair / poor), what I observed, and any issue. Then a table of issues: Issue | Location | Urgency (urgent within 24 hours / within 2 weeks / next planned maintenance) | Suggested action | Who should do it (tenant, contractor, owner). Only report what is in my notes or clearly visible; mark anything uncertain [CHECK]. Notes: [paste]"
+      },
+      {
+        "h": "Check and file it",
+        "b": "Check the report against your photos, then save it in Google Docs in the property's folder with the photos."
+      },
+      {
+        "h": "Act on urgent items",
+        "b": "Raise jobs for urgent items straight away, and send the owner a short summary."
+      }
+    ],
+    "example": "Bathroom: fair. Sealant around bath discoloured and lifting.\nIssue table: Damp patch on bedroom ceiling | Bedroom 2 | Within 2 weeks | Investigate roof or flat above | Contractor\nSmoke alarm not tested | Hall | Urgent | Test and replace battery | Manager",
+    "tips": [
+      "Safety issues like gas smells, exposed wiring or failed alarms need action at once, not a report.",
+      "Use the same format every time so you can compare inspections over the years."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "new_file",
+        "detail": "Inspection photos and notes are added to the property folder"
+      },
+      "actions": [
+        {
+          "type": "ai.generate",
+          "detail": "Write a room-by-room condition report"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Save the report with the photos"
+        },
+        {
+          "type": "list.add",
+          "detail": "Add urgent issues to the maintenance list"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Prepare a residents' board meeting pack in an hour",
+    "d": "A clear agenda, short summary papers and decisions needed for a residents' association or board meeting, from your notes and reports.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Beginner",
+    "mins": 30,
+    "tools": [
+      "AI assistant",
+      "Word",
+      "Google Docs"
+    ],
+    "when": "A week before each board or residents' meeting",
+    "steps": [
+      {
+        "h": "Gather the inputs",
+        "b": "Collect the last minutes, open actions, budget figures, repair updates and any disputes or issues to raise. Leave out residents' names where they're not needed."
+      },
+      {
+        "h": "Ask for a draft pack",
+        "b": "Paste the material with this prompt.",
+        "p": "I manage a [building / estate] and need a board meeting pack. From my notes, create: 1) A timed agenda (max 90 minutes), 2) For each item a half-page paper: background, current position, options, and the decision needed from the board, 3) An updated action log from the last minutes, showing done, in progress or overdue, 4) A one-paragraph cover note for board members. Use only my figures. Be neutral on disputes between residents. Notes: [paste]"
+      },
+      {
+        "h": "Check figures and sensitive items",
+        "b": "Check every number against your accounts. For legal disputes or environmental issues, ask your legal or specialist adviser to review the paper before it's circulated."
+      },
+      {
+        "h": "Send it out",
+        "b": "Format the pack in your template and send it to board members with enough time to read it."
+      }
+    ],
+    "example": "Item 3: Roof repairs (15 min)\nBackground: survey found worn flashing on the north side.\nOptions: patch repair now, or full replacement in the next financial year.\nDecision needed: approve patch repair quote within the reserve fund limit.",
+    "tips": [
+      "Put 'decision needed' in bold on every paper. Meetings go faster when everyone knows what they're deciding.",
+      "Minutes and action logs from this pack make next month's pack quicker."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "calendar_event",
+        "detail": "One week before a board meeting"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the manager to gather meeting inputs"
+        },
+        {
+          "type": "ai.generate",
+          "detail": "Draft the agenda, papers and action log"
+        },
+        {
+          "type": "doc.create",
+          "detail": "Create the meeting pack"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Build a planned maintenance calendar for every building",
+    "d": "A year-round maintenance plan for each property in a spreadsheet, with reminders in your calendar so checks and services never slip.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Intermediate",
+    "mins": 45,
+    "tools": [
+      "AI assistant",
+      "Google Sheets",
+      "Google Calendar"
+    ],
+    "when": "Once a year, then follow the reminders",
+    "steps": [
+      {
+        "h": "List what each building has",
+        "b": "Note the main systems and features for each property: boilers, lifts, fire alarms, emergency lighting, gutters, roofs, gardens, communal areas."
+      },
+      {
+        "h": "Ask for a draft plan",
+        "b": "Paste the list with this prompt.",
+        "p": "I manage [number] properties. For each, here are the main systems and features: [paste]. Create a planned maintenance schedule as a table: Property | Item | Task | How often | Suggested month | Who usually does it (contractor type) | Notes. Spread the work across the year so no month is overloaded. Mark tasks that are often legal or insurance requirements with [CHECK REQUIREMENT] so I confirm the rules that apply where I am ([country or state])."
+      },
+      {
+        "h": "Confirm the legal checks",
+        "b": "Check the [CHECK REQUIREMENT] items against official guidance, your insurer and any compliance adviser, and adjust how often they happen."
+      },
+      {
+        "h": "Put it in a sheet and calendar",
+        "b": "Paste the table into Google Sheets with a 'last done' column. Then add each task to Google Calendar as a recurring event with a two-week reminder."
+      }
+    ],
+    "example": "Block A | Fire alarm | Weekly test | Weekly | All year | Caretaker | Log in fire book [CHECK REQUIREMENT]\nBlock A | Gutters | Clear and inspect | Twice yearly | Apr, Nov | Roofing contractor\nBlock B | Lift | Service | Every 6 months | Mar, Sep | Lift engineer",
+    "tips": [
+      "Add a 'last done' date and a link to each certificate so you can show evidence quickly if asked.",
+      "Review the plan each year and after any major repair."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "schedule",
+        "detail": "Two weeks before each planned task"
+      },
+      "actions": [
+        {
+          "type": "notify",
+          "detail": "Remind the manager to book the contractor"
+        },
+        {
+          "type": "calendar.create",
+          "detail": "Add the confirmed visit to the calendar"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Update 'last done' once complete"
+        }
+      ]
+    }
+  },
+  {
+    "t": "Log and prioritise every repair request from one form",
+    "d": "Tenants report repairs through one form; each request is logged, sorted by urgency and answered with a clear acknowledgement.",
+    "cat": "Property & Lettings",
+    "job": "Property manager",
+    "lvl": "Advanced",
+    "mins": 60,
+    "tools": [
+      "Google Forms",
+      "Google Sheets",
+      "Gmail",
+      "AI assistant"
+    ],
+    "when": "Set up once, then every time a repair is reported",
+    "steps": [
+      {
+        "h": "Create a repair request form",
+        "b": "In Google Forms, ask for property and flat reference, contact details, what's wrong, where, since when, whether it's getting worse, photos, and access times. Add a clear line telling people to phone your emergency number for gas leaks, floods or no heating."
+      },
+      {
+        "h": "Log responses in a sheet",
+        "b": "Link the form to a Google Sheet and add columns for urgency, contractor, status and date fixed."
+      },
+      {
+        "h": "Triage new requests with AI",
+        "b": "Once or twice a day, copy new rows into your AI assistant with this prompt. Leave out contact details.",
+        "p": "Here are new repair requests from tenants. For each: 1) Urgency: Emergency (same day), Urgent (within 3 working days), Routine (within [x] weeks), using our policy: [paste your response times], 2) Likely trade needed, 3) A friendly two-sentence acknowledgement email to the tenant saying what happens next and when. If anything sounds like a safety risk, put it first and mark SAFETY. Requests: [paste]"
+      },
+      {
+        "h": "Send acknowledgements with templates",
+        "b": "Paste the urgency and trade into the sheet, and send the acknowledgements from Gmail using saved templates for each urgency level."
+      },
+      {
+        "h": "Check urgent ones yourself",
+        "b": "Always read safety and emergency items yourself and act on them straight away. Don't rely on the AI's triage alone."
+      }
+    ],
+    "example": "SAFETY | Flat [4] | Water coming through ceiling light | Emergency, electrician and plumber\nFlat [9] | Kitchen tap dripping | Routine, plumber\nAck: 'Thanks for reporting the dripping tap. We've logged it and a plumber will contact you within 10 working days to arrange a visit.'",
+    "tips": [
+      "Set the form to show your emergency phone number at the top. A form is not the right channel for emergencies.",
+      "Store tenant contact details only in the sheet, not in the AI chat."
+    ],
+    "auto": {
+      "trigger": {
+        "type": "form_submitted",
+        "detail": "A tenant submits a repair request"
+      },
+      "actions": [
+        {
+          "type": "ai.classify",
+          "detail": "Set urgency and likely trade using the repairs policy"
+        },
+        {
+          "type": "sheet.update",
+          "detail": "Record urgency and status in the repairs log"
+        },
+        {
+          "type": "email.draft",
+          "detail": "Draft an acknowledgement to the tenant"
+        },
+        {
+          "type": "notify",
+          "detail": "Alert the manager immediately for safety items"
+        }
+      ]
+    }
+  }
+]
