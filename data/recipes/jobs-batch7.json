@@ -1,0 +1,721 @@
+[
+  {
+    "t": "Find the real skills gaps before you plan training",
+    "d": "Get a short needs survey, a manager interview guide and a simple way to rank what your people most need to learn.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets"],
+    "when": "Before you plan a new programme or yearly training calendar",
+    "steps": [
+      {"h": "Note what you already know", "b": "Jot down the team or role, the business goals for the year and any complaints or mistakes you keep hearing about. A few bullet points is enough."},
+      {"h": "Ask for a survey and interview guide", "b": "Open ChatGPT, Claude or Gemini and paste this prompt with your notes.", "p": "I'm a workplace trainer planning training for [team or role, number of people]. Business goals this year: [goals]. Problems I keep hearing about: [problems]. Please create: 1) a staff survey of no more than 12 questions mixing rating scales and two open questions, covering confidence in key tasks, what slows them down and how they prefer to learn; 2) a 6-question interview guide for their managers; 3) a 5-question guide for a short focus group. Keep the wording neutral so people answer honestly. Finish with a simple scoring method I can use to rank skills gaps by how important and how widespread they are."},
+      {"h": "Build the survey in Google Forms", "b": "Copy the questions into a new Google Form and link it to a Google Sheet so the answers land in one place. Tell people it's anonymous if it is."},
+      {"h": "Rank the gaps", "b": "When responses are in, paste the anonymised answers and your manager notes back into the same chat and ask it to apply the scoring method and list the top five gaps with the evidence for each."}
+    ],
+    "example": "Top gaps: 1) Handling difficult customer calls - 68% low confidence, raised by 4 of 5 managers. 2) Using the new booking system - frequent errors noted. 3) Giving feedback to peers. Preferred format: short, hands-on sessions under 90 minutes.",
+    "tips": ["Remove names and anything that identifies a person before pasting answers into an AI assistant, and check your workplace AI policy.", "Ask managers for one recent real example of each problem; it makes the training far more relevant."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Trainer starts a new needs check"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft survey, manager interview guide and focus group questions"},
+        {"type": "doc.create", "detail": "Save the questions as a form-ready document"},
+        {"type": "ai.summarize", "detail": "Rank skills gaps from the collected answers"}
+      ]
+    }
+  },
+  {
+    "t": "Plan a half-day workshop with timings and activities",
+    "d": "Turn a topic and a goal into a minute-by-minute session plan with activities, materials and a quick check that people learned it.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "Whenever you need a new session",
+    "steps": [
+      {"h": "Decide what people should be able to do", "b": "Write two or three things learners should be able to do by the end, in plain words, plus who they are and how many will attend."},
+      {"h": "Ask for a full session plan", "b": "Paste this prompt into your AI assistant.", "p": "Plan a [3.5-hour] in-person workshop on [topic] for [number] [role, experience level]. By the end they should be able to: [outcome 1], [outcome 2], [outcome 3]. Mix formats: short input, pair work, a group exercise, a discussion and one hands-on practice. Give a table with: start time, length, activity, what the trainer does, what learners do, materials needed. Include a 10-minute opener, two breaks, and a 10-minute close where learners show they can do each outcome. Keep any single talk section under 15 minutes."},
+      {"h": "Make it yours", "b": "Paste the table into Google Docs and swap in your own stories and examples from the workplace. Ask the AI to shorten or stretch the plan if your time slot changes."},
+      {"h": "Get a materials list", "b": "Ask the same chat for a checklist of everything to print, set up or bring, so nothing is missed on the day."}
+    ],
+    "example": "09:30 (10 min) Opener: pairs share one call that went badly. 09:40 (15 min) Input: the 4-step calm reply. 09:55 (25 min) Practice in threes with scenario cards... Materials: scenario cards x12, flipchart, timer.",
+    "tips": ["Ask for an online version of the same plan too, with breakout rooms and polls, so you are ready if the session moves to video."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Trainer enters topic, audience and outcomes"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create a timed session plan with activities"},
+        {"type": "doc.create", "detail": "Save the plan and materials checklist to Docs"}
+      ]
+    }
+  },
+  {
+    "t": "Create realistic role-plays for your next session",
+    "d": "Get a set of role-play scenarios with briefs for each person, a twist to raise the challenge and observer notes for feedback.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Word"],
+    "when": "When preparing practice for any people-skills course",
+    "steps": [
+      {"h": "Gather a few real situations", "b": "Note three or four situations your learners actually face, such as a customer asking for a refund or a colleague missing deadlines. Leave out real names."},
+      {"h": "Ask for the scenarios", "b": "Paste this prompt into your AI assistant.", "p": "Create [4] role-play scenarios for training [role] on [skill, e.g. handling complaints]. Base them on these real situations: [situations]. For each scenario give: a title; a one-paragraph brief for Person A (the learner); a separate brief for Person B with their mood, what they want and one hidden concern; a twist the trainer can add halfway; and an observer checklist of 5 things to look for. Make them range from easy to hard, and keep the language everyday, not corporate."},
+      {"h": "Print the briefs separately", "b": "Copy each brief into Word and print Person A and Person B briefs on separate cards, so neither sees the other's information."},
+      {"h": "Use the observer checklist for feedback", "b": "Hand the checklist to a third person in each group so feedback stays specific and kind."}
+    ],
+    "example": "Scenario 2: The late delivery. Person A: you are on the help desk. Person B: you have been waiting 9 days; hidden concern - it is a birthday present. Twist: B mentions posting a review. Observer: Did A acknowledge the feeling before the fix?",
+    "tips": ["Ask the AI to play Person B in a text chat so learners can practise on their own before the session."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Trainer lists real situations and the skill"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write role-play briefs, twists and observer checklists"},
+        {"type": "doc.create", "detail": "Save printable cards"}
+      ]
+    }
+  },
+  {
+    "t": "Turn a dry procedure into a friendly learner handout",
+    "d": "Rewrite a long, technical procedure as a clear one or two-page handout with steps, common mistakes and a quick self-check.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs", "Canva"],
+    "when": "When course materials are too long or hard to follow",
+    "steps": [
+      {"h": "Copy the original text", "b": "Copy the procedure, policy or manual section you need to teach. Remove anything confidential first."},
+      {"h": "Ask for a learner-friendly version", "b": "Paste it into your AI assistant with this prompt.", "p": "Rewrite the procedure below as a learner handout for [role, e.g. new warehouse staff] with a reading age of about 12. Keep every required step and safety point; do not add new rules. Structure: a one-line purpose, numbered steps (one action each, starting with a verb), a 'Watch out for' box with the 3 most common mistakes, a short glossary of any jargon, and 4 quick self-check questions with answers at the bottom. Flag anything in the original that is unclear or seems contradictory. Procedure: [paste text]"},
+      {"h": "Check it with the process owner", "b": "Send the draft to whoever owns the procedure to confirm nothing important was lost or changed."},
+      {"h": "Lay it out", "b": "Paste the final text into Google Docs or a Canva document template and add a photo or screenshot for any step people struggle with."}
+    ],
+    "example": "Purpose: Get returns back on the shelf the same day. 1. Scan the returns label. 2. Check the item for damage... Watch out for: putting items back without re-tagging. Self-check: What do you do if the label won't scan?",
+    "tips": ["Ask the AI which steps would be clearer as a picture, then take those photos yourself."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "A procedure document is added to a 'To simplify' folder"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Rewrite as a learner handout with self-check questions"},
+        {"type": "doc.create", "detail": "Save the draft handout for review"},
+        {"type": "notify", "detail": "Ask the process owner to check it"}
+      ]
+    }
+  },
+  {
+    "t": "Schedule courses without double-booking rooms or trainers",
+    "d": "Keep one sheet of rooms, trainers and equipment, get a clash-free timetable suggested and put the sessions straight into the calendar.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Sheets", "Google Calendar"],
+    "when": "When planning the next month or term of sessions",
+    "steps": [
+      {"h": "Set up an availability sheet", "b": "In Google Sheets make three tabs: Rooms (name, capacity, kit, free days), Trainers (name, courses they can run, days available) and Courses (name, length, group size, kit needed)."},
+      {"h": "Ask for a timetable", "b": "Copy all three tabs into your AI assistant with this prompt.", "p": "Using the rooms, trainers and courses below, suggest a timetable for [month] that runs each course [number] times. Rules: never double-book a room or trainer, match room capacity and kit to each course, leave at least [30] minutes between sessions in the same room, and spread each trainer's load evenly. Output a table: date, start, end, course, trainer, room. Then list any course you could not fit and why. Data: [paste tabs]"},
+      {"h": "Check and adjust", "b": "Paste the timetable into a new tab and check it against anything the sheet doesn't show, such as holidays or room closures."},
+      {"h": "Add sessions to the calendar", "b": "Create each session in a shared Google Calendar, inviting the trainer and adding the room as the location, so everyone sees the same plan."}
+    ],
+    "example": "Tue 4 Mar, 09:30-12:30, Customer Care Basics, Priya, Room 2 (cap 14, screen). Tue 4 Mar, 13:30-16:30, Excel Essentials, Tom, IT Suite... Not scheduled: First Aid refresher - no trainer free in week 3.",
+    "tips": ["Keep the sheet up to date as the single source of truth; regenerate the timetable whenever something changes rather than editing by hand in several places."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "First Monday of each month"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest a clash-free timetable from the availability sheet"},
+        {"type": "sheet.update", "detail": "Write the timetable to a new tab"},
+        {"type": "calendar.create", "detail": "Create sessions with trainer and room"}
+      ]
+    }
+  },
+  {
+    "t": "Justify your training budget with a clear cost report",
+    "d": "Turn your spending sheet into a short report showing cost per learner, what each course achieved and where money could go further.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": ["AI assistant", "Excel", "Word"],
+    "when": "Each quarter or before budget meetings",
+    "steps": [
+      {"h": "Keep one cost sheet", "b": "In Excel or Google Sheets, list each course with: date, number of learners, trainer cost, venue, materials, travel and any feedback or results score."},
+      {"h": "Ask for the analysis", "b": "Copy the table into your AI assistant with this prompt.", "p": "Here is my training spend for [period]. Please: 1) work out total cost and cost per learner for each course and overall; 2) compare in-person and online delivery where both exist; 3) rank courses by cost per learner alongside their feedback or results scores; 4) suggest 3 practical ways to reduce cost without hurting results; 5) write a half-page summary for [audience, e.g. the finance director] in plain language. Show your workings in a table so I can check them. Data: [paste table]"},
+      {"h": "Check the numbers", "b": "Recalculate two or three of the totals in your spreadsheet to make sure the figures match before you share anything."},
+      {"h": "Write it up", "b": "Paste the summary and table into Word, add your own context on business results, and send it ahead of the meeting."}
+    ],
+    "example": "Q2 spend: 14,200 across 9 courses, 121 learners (117 per learner). Online sessions cost 41% less per learner with similar feedback (4.3 vs 4.4). Suggestion: move the refresher courses online and keep new-starter training in person.",
+    "tips": ["Only report the improvements you can actually show; leave out guesses about impact.", "Remove individual salaries or personal details before pasting."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Last working day of each quarter"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Calculate cost per learner and compare delivery modes"},
+        {"type": "doc.create", "detail": "Draft the budget report"},
+        {"type": "notify", "detail": "Remind the trainer to check figures before sending"}
+      ]
+    }
+  },
+  {
+    "t": "Measure what changed 30 days after every course",
+    "d": "Send learners and their managers a short follow-up a month after training and get a plain summary of what stuck and what didn't.",
+    "cat": "Teaching & Training",
+    "job": "Trainer",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["Google Forms", "Google Sheets", "Gmail", "AI assistant"],
+    "when": "After every course, with a monthly round-up",
+    "steps": [
+      {"h": "Make two short forms", "b": "Ask your AI assistant to draft a 5-question follow-up for learners and a 4-question one for managers, then build both in Google Forms linked to one Google Sheet.", "p": "Write two short follow-up surveys to send 30 days after a course on [topic]. Learner survey (5 questions): how often they've used each of these skills [skills], one example of using it, what got in the way, and confidence now on a 1-5 scale. Manager survey (4 questions): changes they've noticed, one example, what support would help, and a 1-5 rating. Keep each question short and neutral."},
+      {"h": "Schedule the follow-ups", "b": "When a course ends, write the follow-up email in Gmail with the form link and use Schedule send to deliver it 30 days later. Set a recurring Google Calendar reminder for the monthly review."},
+      {"h": "Review once a month", "b": "On your reminder, copy the new rows from the sheet into your AI assistant with the prompt below.", "p": "Here are 30-day follow-up responses from learners and managers for [course names]. For each course: summarise what skills are being used, what isn't sticking and why, and the average confidence and manager ratings. Then suggest one change to the course and one support action after it (for example a refresher, a job aid or manager coaching). Quote short examples where useful. Responses: [paste rows]"},
+      {"h": "Act on it", "b": "Add the suggested changes to your course notes and share a short summary with managers so they see the follow-up was worth filling in."}
+    ],
+    "example": "Difficult Conversations (Feb): 9 of 12 learners used the opening script; managers rated change 3.8/5. Not sticking: follow-up notes after the conversation. Suggested fix: add a 10-minute template exercise and a one-page job aid.",
+    "tips": ["Tell people up front that a 30-day check is coming; response rates are better when it is expected.", "Remove names before pasting responses into an AI assistant."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "A 30-day follow-up form is submitted"},
+      "actions": [
+        {"type": "sheet.append", "detail": "Add the response to the follow-up sheet"},
+        {"type": "ai.summarize", "detail": "Monthly: summarise what stuck per course"},
+        {"type": "email.draft", "detail": "Draft a short summary email for managers"}
+      ]
+    }
+  },
+  {
+    "t": "Spot cheaper routes and fewer half-empty loads",
+    "d": "Paste a month of shipment data and get a short list of loads to combine, routes to rethink and savings to test.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Excel"],
+    "when": "Monthly, or when transport costs creep up",
+    "steps": [
+      {"h": "Export your shipments", "b": "From your transport system or spreadsheet, export a month of shipments with date, origin, destination, weight or pallets, vehicle type, carrier and cost. Remove customer names."},
+      {"h": "Ask for an efficiency review", "b": "Paste the table into your AI assistant with this prompt.", "p": "You are helping a logistics coordinator review a month of shipments. Using the data below: 1) find shipments on the same lane within [2] days that could have been combined, and estimate the saving using the costs shown; 2) list the 5 lanes with the highest cost per pallet; 3) flag loads under [60]% vehicle fill; 4) suggest 3 practical changes to test, such as fixed delivery days or a different vehicle size. Show your calculations in a table so I can check them, and say clearly where you are estimating. Data: [paste table]"},
+      {"h": "Check before you act", "b": "Spot-check the suggested combinations against real delivery windows and customer promises, which the data may not show."},
+      {"h": "Test one change", "b": "Pick one idea, try it for a month and compare the next export to see if costs actually moved."}
+    ],
+    "example": "Combine: Leeds to Bristol on 3rd and 4th (6 + 5 pallets) could share one 26-pallet trailer, est. saving 310. High cost lane: Hull to Exeter at 58 per pallet. Test: fixed Tuesday and Thursday runs to the South West.",
+    "tips": ["Ask the AI to explain its working step by step if a saving looks too good to be true."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "First working day of each month"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Find combinable loads and low-fill vehicles"},
+        {"type": "ai.generate", "detail": "Suggest three changes to test"},
+        {"type": "doc.create", "detail": "Save the monthly route review"}
+      ]
+    }
+  },
+  {
+    "t": "Set clear expectations for a new haulage partner",
+    "d": "Get a plain-English service brief for a new carrier or subcontractor covering what good looks like, how you'll measure it and who to call.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Word"],
+    "when": "When onboarding a new carrier, warehouse or subcontractor",
+    "steps": [
+      {"h": "List what matters", "b": "Note the lanes or work involved, delivery windows, how you want updates, paperwork needed, damage and delay rules and your main contacts."},
+      {"h": "Ask for a service brief", "b": "Paste your notes into your AI assistant with this prompt.", "p": "Draft a service expectations brief for a new [carrier or subcontractor] handling [work, e.g. next-day pallet deliveries across the North West]. Use these details: [notes]. Sections: scope of work; service standards (for example on-time delivery, proof of delivery, damage reporting) with how each is measured; communication rules (when and how to update us, what counts as urgent); paperwork required; what happens when a standard is missed; contacts and escalation path; review schedule. Write in plain, friendly but firm language, no more than two pages. Mark anything I should confirm with our contract team with [CHECK]."},
+      {"h": "Line it up with the contract", "b": "Check the brief against your signed agreement so the standards match. The contract always wins if they differ."},
+      {"h": "Walk them through it", "b": "Share the brief before the first job and go through it on a short call, so questions come up early rather than on a bad day."}
+    ],
+    "example": "Service standard: 97% of deliveries within the booked 2-hour window, measured weekly from POD times. Damage: photo and report within 2 hours of delivery. Escalation: Ops desk first, then Duty Manager on 0000 000000 after 30 minutes.",
+    "tips": ["This brief explains expectations; it isn't a contract. Have anything legally binding checked by whoever handles contracts."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "A new partner is being onboarded"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft the service expectations brief"},
+        {"type": "doc.create", "detail": "Save the brief for contract checks"}
+      ]
+    }
+  },
+  {
+    "t": "Write a shortage plan before customers feel it",
+    "d": "When stock or capacity runs short, get a clear plan of who gets what, what to tell each team and a calm customer message.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Outlook", "Microsoft Teams"],
+    "when": "As soon as a shortage or disruption is confirmed",
+    "steps": [
+      {"h": "Gather the facts", "b": "Note what is short, how much you have, when more arrives, the orders affected and any priority customers or contract terms."},
+      {"h": "Ask for an allocation plan", "b": "Paste the facts into your AI assistant with this prompt.", "p": "We have a shortage. Item or capacity: [what]. Available: [quantity]. Next supply: [date]. Open orders affected: [list orders with quantity, due date, customer tier, no names needed]. Our priorities: [e.g. contracted service levels first, then oldest orders]. Please: 1) propose an allocation table showing who gets what and when; 2) list options to soften the impact (part shipments, substitutes, other sites); 3) write a short update for sales, customer service and the warehouse saying what each must do; 4) draft a calm, honest customer message with the new date and what we're doing about it."},
+      {"h": "Agree it with the teams", "b": "Share the plan in Teams with sales and customer service, adjust the allocation together and get a quick yes from your manager."},
+      {"h": "Send the updates", "b": "Send the customer messages from Outlook, adding each customer's name and order details yourself."}
+    ],
+    "example": "Allocation: Tier 1 contracts get 100% (420 units) on Thu. Others get 60% now, balance on 18th. Options: switch 80 orders to the 12-pack. Customer note: 'Part of your order will arrive on Thursday and the rest by the 18th...'",
+    "tips": ["Keep customer names out of the AI chat; use order numbers or tiers and add names afterwards."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Coordinator logs a confirmed shortage"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft allocation plan and team updates"},
+        {"type": "email.draft", "detail": "Draft customer update emails"},
+        {"type": "message.send", "detail": "Post the plan to the team channel"}
+      ]
+    }
+  },
+  {
+    "t": "Win approval for a logistics change with a clear case",
+    "d": "Turn your idea and numbers into a one-page proposal and five slides that explain the problem, the fix, the cost and the risks.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Word", "PowerPoint"],
+    "when": "When you need sign-off for a new process, supplier or system",
+    "steps": [
+      {"h": "Write down the idea roughly", "b": "Note the current problem, what you want to change, rough costs and savings, who is affected and what could go wrong. Messy is fine."},
+      {"h": "Ask for the proposal", "b": "Paste your notes into your AI assistant with this prompt.", "p": "Turn my notes into a one-page proposal for [audience, e.g. operations director] about [change]. Structure: the problem today (with the numbers I gave); the proposed change; costs and expected savings, showing how they were worked out; who is affected and how; risks and how we'd manage them; a simple timeline; the decision I need. Use plain language and short paragraphs. Do not invent figures; where I haven't given a number, write [NEED FIGURE]. Then give an outline for 5 slides with a headline and 3 bullet points each. Notes: [paste notes]"},
+      {"h": "Fill the gaps", "b": "Replace every [NEED FIGURE] with a real number from your systems or a colleague. Never present an estimate as fact."},
+      {"h": "Build the slides", "b": "Copy the slide outline into PowerPoint or Google Slides and add one chart or photo that shows the problem clearly."}
+    ],
+    "example": "Problem: 14% of outbound orders miss the 3pm cut-off because picking starts at 10am. Change: start a second pick wave at 7am. Cost: 2 extra staff hours a day. Risk: early shift cover; mitigated by a 6-week trial. Decision needed: approve the trial.",
+    "tips": ["Ask the AI to play a sceptical finance director and list the five toughest questions you'll be asked."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Coordinator pastes proposal notes"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft one-page proposal and slide outline"},
+        {"type": "doc.create", "detail": "Save the proposal draft"}
+      ]
+    }
+  },
+  {
+    "t": "Show customers how you performed against the agreement",
+    "d": "Turn delivery data into a monthly scorecard for each customer with results against targets, reasons for misses and next steps.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Sheets", "Google Docs", "Gmail"],
+    "when": "Before each monthly or quarterly customer review",
+    "steps": [
+      {"h": "Set up a results sheet", "b": "In Google Sheets keep one tab per customer with their agreed targets (on-time, damage, order accuracy, response time) and a row each month with your actual results and notes on any misses."},
+      {"h": "Ask for the scorecard", "b": "Copy the customer's tab into your AI assistant with this prompt.", "p": "Create a monthly service scorecard for a logistics customer. Targets and results are below. Please produce: 1) a table of each measure with target, actual, and status (met, close, missed); 2) a three-month trend comment for each measure; 3) a short honest explanation of each miss, using only the notes I've given; 4) 2 or 3 concrete actions for next month with an owner; 5) a 4-sentence summary suitable for the opening of the review meeting. Keep the tone professional and open, not defensive. Data: [paste tab]"},
+      {"h": "Put it in a template", "b": "Paste the result into a Google Docs scorecard template with your logo and check every number against the sheet."},
+      {"h": "Send ahead of the meeting", "b": "Email the scorecard from Gmail a couple of days before the review, so the meeting can focus on actions rather than reading figures."}
+    ],
+    "example": "On-time delivery: target 98%, actual 96.4% (missed) - two days lost to the M6 closure. Damage: target under 0.5%, actual 0.2% (met). Actions: add a backup route for Lancashire drops (owner: Sam, by 15th).",
+    "tips": ["Gemini in Google Sheets can help summarise the tab directly if your plan includes it; otherwise copy and paste works fine."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Third working day of each month"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Compare results against agreed targets per customer"},
+        {"type": "doc.create", "detail": "Create each customer's scorecard"},
+        {"type": "email.draft", "detail": "Draft the cover email for review"}
+      ]
+    }
+  },
+  {
+    "t": "Make it clear who owns each step of a project",
+    "d": "Build a simple who-does-what chart and timeline for a logistics project, shared with the team and checked off as you go.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Sheets", "Slack"],
+    "when": "At the start of a new site, customer launch or system change",
+    "steps": [
+      {"h": "Describe the project", "b": "Write a few lines on the goal, the go-live date, the teams involved and anything you know must happen, such as testing or training."},
+      {"h": "Ask for a plan and ownership chart", "b": "Paste your description into your AI assistant with this prompt.", "p": "Help me plan this logistics project: [description]. Go-live: [date]. Teams: [list]. Please create: 1) a task list grouped into phases, with start date, end date and dependencies; 2) a responsibility chart with each task down the side and each team across the top, marking who is Responsible, who Approves, who is Consulted and who is just Informed (one approver per task); 3) the 5 biggest risks to the go-live date with an early warning sign for each. Format the task list and chart as tables I can paste into a spreadsheet."},
+      {"h": "Put it in a shared sheet", "b": "Paste both tables into Google Sheets, add a Status column with a drop-down (Not started, In progress, Done, Blocked) and share it with the team."},
+      {"h": "Keep it moving", "b": "Post the sheet link in your project Slack channel and ask owners to update their status before each weekly check-in."}
+    ],
+    "example": "Task: Label printer set-up at new site. Responsible: IT. Approves: Site Manager. Consulted: Warehouse lead. Informed: Customer service. Dates: 3-7 Mar, after network install. Risk: printer delivery slips - warning sign: no tracking number by 24 Feb.",
+    "tips": ["Ask the AI to compare the updated sheet with last week's version and list what slipped."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Every Monday at 9am during the project"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Summarise blocked and overdue tasks from the sheet"},
+        {"type": "message.send", "detail": "Post the weekly status to the project channel"}
+      ]
+    }
+  },
+  {
+    "t": "Get a Monday warning about stock running low",
+    "d": "Each week, get a short email listing items likely to run out, how many days are left and a suggested reorder to check.",
+    "cat": "Trades & Field Services",
+    "job": "Logistics coordinator",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["Google Sheets", "AI assistant", "Gmail"],
+    "when": "Every Monday morning",
+    "steps": [
+      {"h": "Keep a weekly stock sheet", "b": "In Google Sheets list each item with stock on hand, average weekly use over the last 8 weeks, supplier lead time in days and minimum order quantity. Update stock on hand each Friday."},
+      {"h": "Add a days-left column", "b": "Add a column that divides stock on hand by daily use, and use conditional formatting to turn it red when it's below the lead time plus a safety buffer."},
+      {"h": "Set up a weekly summary", "b": "Create a scheduled task in ChatGPT (or a recurring Monday calendar reminder if your plan doesn't include it) and use this prompt with the sheet's latest data.", "p": "Here is this week's stock sheet: [paste or attach]. For every item where days of stock left is less than lead time plus [7] days: list item, days left, lead time, and a suggested order quantity that covers [4] weeks of use, rounded up to the minimum order quantity. Sort by most urgent first. Then list any item whose weekly use jumped by more than [30]% compared with its 8-week average. Keep it to a short table and 3 bullet points."},
+      {"h": "Send it to yourself and the buyer", "b": "Paste the summary into a Gmail draft to the buyer, check the suggested quantities against open orders, then send."}
+    ],
+    "example": "Urgent: Pallet wrap 500mm - 6 days left, lead time 10 days, order 48 rolls. Cable ties - 9 days left, lead time 7, order 20 boxes. Use jumped: Bubble mailers A4 (+45%) - check for a large one-off order.",
+    "tips": ["Treat the suggested quantities as a starting point; seasonal peaks and promotions aren't in the average."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Mondays at 7am"},
+      "actions": [
+        {"type": "web.fetch", "detail": "Read the latest stock sheet"},
+        {"type": "ai.classify", "detail": "Flag items below lead time plus buffer"},
+        {"type": "email.draft", "detail": "Draft the reorder summary to the buyer"}
+      ]
+    }
+  },
+  {
+    "t": "Send the client a clear weekly site progress report",
+    "d": "Turn your site diary, photos and notes into a tidy weekly report for the client with progress, issues, decisions needed and next week's work.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Phone camera", "Word", "Outlook"],
+    "when": "Every Friday afternoon",
+    "steps": [
+      {"h": "Collect the week's notes", "b": "Gather your site diary entries, a few progress photos and any notes from subcontractor meetings. Voice notes you've transcribed are fine too."},
+      {"h": "Ask for the report", "b": "Paste the notes into your AI assistant with this prompt.", "p": "Write a weekly construction progress report for the client of [project]. Week ending [date]. Use only the information in my notes; don't guess. Sections: summary in 3 sentences; work completed this week by area or trade; programme status (on track, ahead or behind and by how much); issues and how we're dealing with them; decisions or information we need from the client, with a date needed by; health and safety notes; plan for next week. Plain, professional language with no jargon. Notes: [paste notes]"},
+      {"h": "Add photos and check facts", "b": "Paste the text into your Word report template, add three or four captioned photos and check every date and percentage against your programme."},
+      {"h": "Send it", "b": "Email the report from Outlook at the same time each week so the client knows when to expect it."}
+    ],
+    "example": "Summary: First-floor slab poured Tuesday; programme 2 days behind due to rain. Decisions needed: confirm kitchen layout option B by 14 March to keep cabinet order on time. Next week: blockwork to ground floor, first-fix electrics in Units 1-2.",
+    "tips": ["Remove workers' names and any personal details from notes before pasting, and check your company's AI policy."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Fridays at 2pm"},
+      "actions": [
+        {"type": "notify", "detail": "Remind the manager to gather diary notes and photos"},
+        {"type": "ai.generate", "detail": "Draft the weekly progress report"},
+        {"type": "email.draft", "detail": "Draft the email to the client"}
+      ]
+    }
+  },
+  {
+    "t": "Explain drawings and changes to clients without jargon",
+    "d": "Get a plain-language explanation of a drawing, specification or design change that a client or office team can follow.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Gmail"],
+    "when": "Before client meetings or when a change needs explaining",
+    "steps": [
+      {"h": "Gather what needs explaining", "b": "Copy the relevant specification text, the change notice or your own description of what the drawing shows. You can also attach a clear photo or PDF of the drawing."},
+      {"h": "Ask for a plain-English version", "b": "Paste it into your AI assistant with this prompt.", "p": "I'm a construction manager explaining this to [audience, e.g. a homeowner client with no building background]: [paste spec, change or description]. Please: 1) explain what it means in plain everyday words, under 200 words; 2) say what it changes on site and for them (cost, time, how it will look or work), using only the facts I've given and marking anything I need to confirm with [CONFIRM]; 3) list 3 questions they're likely to ask, with simple answers; 4) suggest a simple sketch or comparison I could use to help them picture it."},
+      {"h": "Check the technical detail", "b": "Read it against the drawings yourself and correct anything the AI got wrong. Have the designer confirm anything about structure or regulations."},
+      {"h": "Share it", "b": "Use the explanation in your meeting or email it with the drawing attached, so the client has it in writing."}
+    ],
+    "example": "What it means: the steel beam over the new kitchen opening is being made deeper, about 5cm. Why: the engineer recalculated the load from the new bathroom above. For you: no change to the look once plastered; adds 2 days and [CONFIRM] cost.",
+    "tips": ["AI can misread drawings; use it to word the explanation, not to interpret technical details you haven't checked."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager pastes a spec or change notice"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a plain-language explanation and likely questions"},
+        {"type": "email.draft", "detail": "Draft an email to the client"}
+      ]
+    }
+  },
+  {
+    "t": "Rework the site schedule fast after bad weather",
+    "d": "Get a revised work sequence after a delay, with what can move, what must wait, who to tell and the knock-on to the finish date.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Excel", "WhatsApp"],
+    "when": "Whenever weather, deliveries or an emergency throws out the plan",
+    "steps": [
+      {"h": "List the next few weeks", "b": "Copy the next 3 to 6 weeks of your programme into a simple list or table: task, trade, planned dates and what each task depends on."},
+      {"h": "Ask for a revised sequence", "b": "Paste it into your AI assistant with this prompt.", "p": "We've lost [number] days on [project] because of [reason, e.g. heavy rain stopping groundworks]. Here are the next [4] weeks of the programme with dependencies: [paste]. Constraints: [e.g. crane only booked until 20th, roofers can't move]. Please: 1) suggest a revised sequence that limits the overall delay, bringing forward indoor or unaffected work where the dependencies allow; 2) show a before-and-after table of dates; 3) list which trades and suppliers need to be told and what's changing for each; 4) give the likely effect on the completion date and what it would take to recover it. Flag any step that depends on assumptions."},
+      {"h": "Check it with the people doing the work", "b": "Run the new sequence past your site supervisor and key subcontractors, since they'll know about crew and access limits the AI doesn't."},
+      {"h": "Tell everyone", "b": "Update your programme, then message the trade leads on WhatsApp or by email with their new dates."}
+    ],
+    "example": "Bring forward: first-fix plumbing in Block A (indoor, no dependency on drainage). Hold: external drainage until ground dries, now 12-16th. Tell: groundworker, plumber, skip supplier. Completion: likely +3 days; recover by adding a Saturday shift in week 5.",
+    "tips": ["Keep the AI's version as a draft; your main programme software or planner is still the master copy."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager reports a delay and pastes the programme"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest a revised sequence and knock-on dates"},
+        {"type": "message.send", "detail": "Draft updates for each trade lead"}
+      ]
+    }
+  },
+  {
+    "t": "Write up a site accident or near miss properly",
+    "d": "Turn your notes and witness accounts into a clear, factual incident report with a timeline, likely causes and actions to stop it happening again.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Phone camera", "Word"],
+    "when": "After any accident, near miss or damage on site",
+    "steps": [
+      {"h": "Record facts while they're fresh", "b": "Take photos of the area, note the time, weather and who was involved, and write down what each witness says in their own words."},
+      {"h": "Ask for a structured draft", "b": "Paste your notes into your AI assistant with this prompt. Use roles, not names.", "p": "Help me write a factual incident report for a construction site. Use only these facts: [paste notes and witness accounts, with names replaced by roles such as Labourer 1]. Structure: what happened in one paragraph; timeline with times; conditions (weather, lighting, equipment, supervision); immediate actions taken; possible causes, split into immediate causes and underlying causes, marked as 'to be confirmed by investigation'; suggested actions to prevent it happening again, each with a suggested owner; questions still to answer. Keep the tone neutral and avoid blame or guesswork."},
+      {"h": "Have it checked and reported properly", "b": "Give the draft to your safety adviser or competent person, and follow your company procedure and your country's legal reporting rules (such as RIDDOR in the UK) for anything reportable. This draft is not a substitute for that."},
+      {"h": "Follow up the actions", "b": "Add the agreed actions to your site action list with owners and dates, and brief the team at the next toolbox talk."}
+    ],
+    "example": "Timeline: 10:42 Labourer 1 stepped onto unsecured board at scaffold lift 2; board tipped, no fall. 10:45 area closed. Possible causes (to be confirmed): board not tied after alteration; no handover check. Actions: scaffold inspection after any change (owner: Scaffold supervisor).",
+    "tips": ["Never paste names, injury details or medical information into an AI assistant; keep those in your official records only.", "Write down what people said, not what you think they meant."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "An incident note is submitted from site"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a neutral incident report from the notes"},
+        {"type": "doc.create", "detail": "Save the draft for the safety adviser"},
+        {"type": "notify", "detail": "Alert the safety adviser that a draft is ready"}
+      ]
+    }
+  },
+  {
+    "t": "Run a weekly safety walk with a phone checklist",
+    "d": "Build a site inspection checklist on your phone, log findings with photos and get a tidy list of actions after every walk.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Phone camera"],
+    "when": "Weekly site walks, or at each new stage of the build",
+    "steps": [
+      {"h": "Draft a checklist for this stage", "b": "Ask your AI assistant for a starting checklist to adapt.", "p": "Draft a weekly site safety walk checklist for a [project type, e.g. three-storey timber frame build] currently at the [stage, e.g. roofing and first fix] stage in [country]. Group items by area: access and edges, scaffolding and ladders, plant and vehicles, electrics and tools, housekeeping, welfare, fire, PPE, and environmental (dust, noise, spills, waste). For each item write a yes/no/not applicable question. Add a note listing the main official regulations and guidance for this stage that I should check the list against."},
+      {"h": "Check it against the rules", "b": "Compare the draft with your country's official regulations and guidance and your company's safety plan, and have your safety adviser review it. Add or remove items as they advise."},
+      {"h": "Put it on your phone", "b": "Build the checklist in Google Forms with a photo upload question for problems, linked to a Google Sheet. Save the form link to your phone's home screen."},
+      {"h": "Turn findings into actions", "b": "After each walk, copy the 'No' answers from the sheet into your AI assistant and ask for an action list with priority, owner and target date to share at the next toolbox talk."}
+    ],
+    "example": "Walk 12 Mar - 3 issues: 1) Missing toe board, scaffold lift 3 (High, Scaffolder, today). 2) Extension lead across walkway (Medium, Electrician, today). 3) Skip overfull, dust (Low, Site manager, by Fri).",
+    "tips": ["The checklist helps you look; it is not a compliance sign-off. Statutory inspections must still be done and recorded by a competent person.", "Photo uploads in Google Forms need people to sign in with a Google account."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "A safety walk form is submitted"},
+      "actions": [
+        {"type": "sheet.append", "detail": "Log the findings and photos"},
+        {"type": "ai.generate", "detail": "Turn failed items into a prioritised action list"},
+        {"type": "message.send", "detail": "Send the actions to the site team"}
+      ]
+    }
+  },
+  {
+    "t": "Catch budget overruns on a job before they grow",
+    "d": "Compare budget with actual and committed costs each week and get a plain summary of which packages are drifting and why.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Excel", "Outlook"],
+    "when": "Every week, and before monthly cost reports",
+    "steps": [
+      {"h": "Keep a simple cost tracker", "b": "In Excel or Google Sheets list each work package with budget, costs to date, orders placed but not yet invoiced, and your estimate to finish. Update it from invoices and orders each week."},
+      {"h": "Ask for a cost review", "b": "Copy the tracker into your AI assistant with this prompt.", "p": "Here is the cost tracker for [project], [percentage]% through the programme. Columns: package, budget, cost to date, committed, estimate to complete. Please: 1) calculate forecast final cost and variance for each package and in total; 2) flag packages forecast to go over budget by more than [5]%, worst first; 3) for each flagged package, list likely reasons based on my notes [notes] and questions I should ask; 4) write a 5-line cost summary for the client or director. Show calculations in a table so I can check them."},
+      {"h": "Check and investigate", "b": "Check the flagged lines against the actual invoices and orders, then speak to the subcontractors or suppliers involved."},
+      {"h": "Report early", "b": "Email the short summary to your director or client from Outlook, with the actions you're taking, rather than waiting for the month-end figures."}
+    ],
+    "example": "Forecast final cost: 1.284m against 1.250m budget (+2.7%). Flagged: Groundworks +11% (extra muck-away after poor ground), M&E +6% (copper price rise). Questions: Is the extra muck-away a claimable variation? Can we fix remaining copper prices now?",
+    "tips": ["Keep commercially sensitive figures in line with your company's AI policy; you can scale figures or remove the project name before pasting."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Thursdays at 4pm"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Calculate forecast final cost and flag overruns"},
+        {"type": "email.draft", "detail": "Draft the weekly cost summary"}
+      ]
+    }
+  },
+  {
+    "t": "Keep a clear record of every client change request",
+    "d": "Collect client change requests from email into one log with what changed, cost and time impact, and who approved it.",
+    "cat": "Trades & Field Services",
+    "job": "Construction manager",
+    "lvl": "Intermediate",
+    "mins": 35,
+    "tools": ["Gmail", "AI assistant", "Google Sheets"],
+    "when": "Whenever a client, architect or engineer asks for a change",
+    "steps": [
+      {"h": "Label change requests in your inbox", "b": "In Gmail, create a 'Variations' label and set up a filter for emails from the client and design team that mention words like change, instruction or variation. Label others by hand as they arrive."},
+      {"h": "Set up the log", "b": "Make a Google Sheet with columns: reference, date requested, requested by, description, reason, cost impact, time impact, status (pending, approved, rejected), approved by and date approved."},
+      {"h": "Pull the details out with AI", "b": "Once a week, paste the new labelled emails into your AI assistant with this prompt and paste the result into the log.", "p": "Extract every change request from the emails below. For each give: date, who asked, a one-line description, the reason given, any cost or time figures mentioned (write 'not stated' if none), and whether written approval has been given yet. Output a table with columns: date, requested by, description, reason, cost impact, time impact, approval status. Don't guess values that aren't in the emails. Emails: [paste]"},
+      {"h": "Confirm in writing", "b": "For anything still pending, send the client a short email confirming the change, its cost and time effect and asking for written approval before work starts."}
+    ],
+    "example": "V-014 | 6 Mar | Architect | Move kitchen window 600mm left | Client layout change | Cost not stated | Time not stated | Pending - confirm in writing. V-015 | 8 Mar | Client | Upgrade to oak flooring | Choice | +4,200 | 0 days | Approved 9 Mar.",
+    "tips": ["The log supports your contract process but doesn't replace it; follow the variation procedure in your contract and get legal or commercial advice on disputes."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "An email gets the Variations label"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out change details, cost and time impact"},
+        {"type": "sheet.append", "detail": "Add a row to the variations log"},
+        {"type": "email.draft", "detail": "Draft a confirmation email for pending changes"}
+      ]
+    }
+  },
+  {
+    "t": "Price your menu dishes from real ingredient costs",
+    "d": "Work out what each plate costs to make and get a suggested selling price that hits your target food cost percentage.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Sheets"],
+    "when": "When writing a new menu or after supplier price changes",
+    "steps": [
+      {"h": "Gather recipes and prices", "b": "For each dish, list ingredients with the quantity per portion. Then note the latest price and pack size for each ingredient from your supplier invoices."},
+      {"h": "Ask for a costing table", "b": "Paste both into your AI assistant with this prompt.", "p": "Cost these dishes for a restaurant. Recipes with quantities per portion: [paste]. Ingredient prices and pack sizes: [paste]. Allow [5]% for waste and trim unless I say otherwise. For each dish give a table: ingredient, quantity, cost per portion; then total plate cost. Then suggest a menu price including [20]% VAT that gives a food cost of [28-30]%, rounded to a sensible menu price. Finish with a summary table of all dishes: plate cost, suggested price, food cost %. Show calculations so I can check them."},
+      {"h": "Check and put it in a sheet", "b": "Paste the tables into Google Sheets, spot-check a few lines against your invoices and adjust prices with your knowledge of what your customers will pay."},
+      {"h": "Update when prices move", "b": "When a supplier price changes, update the ingredient line and ask the AI which dishes have drifted above your target."}
+    ],
+    "example": "Pan-roast chicken, mash, greens: plate cost 4.12 (chicken supreme 2.35, butter 0.38...). At 30% food cost the price is 16.50 incl. VAT; suggested menu price 16.50. Hake special: plate cost 5.60, food cost 33% at 17.00 - consider 18.50.",
+    "tips": ["Labour and overheads matter too; ask your accountant what overall margin you need before setting final prices."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "A supplier price list or invoice arrives"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out updated ingredient prices"},
+        {"type": "sheet.update", "detail": "Update ingredient prices and plate costs"},
+        {"type": "notify", "detail": "Flag dishes now above target food cost"}
+      ]
+    }
+  },
+  {
+    "t": "Turn a client's event wishes into a set menu proposal",
+    "d": "Go from a wedding or party enquiry to a tidy proposal with three menu options, dietary choices, per-head prices and questions to confirm.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Docs", "Gmail"],
+    "when": "After any event or function enquiry",
+    "steps": [
+      {"h": "Capture what the client wants", "b": "Note guest numbers, date, budget per head, style (sit-down, buffet, canapés), dietary needs and any dishes they love or hate."},
+      {"h": "Ask for menu options", "b": "Paste your notes and your usual dishes into your AI assistant with this prompt.", "p": "I'm a head chef preparing a menu proposal for [event type] on [date] for [number] guests, budget around [amount] per head. Style: [style]. Client notes: [notes]. Dishes we already make well: [list]. Season: [month]. Please suggest 3 set menu options (good, better, best) of [3] courses, mostly using our existing dishes, each with a vegetarian or vegan alternative per course. For each option give a short appealing description of each dish, a rough per-head food cost range I should check, and service notes. Then list 8 questions I should confirm with the client, including allergies, timings and kitchen access."},
+      {"h": "Cost and adjust", "b": "Check the rough costs against your own dish costings and swap anything your kitchen can't produce at scale."},
+      {"h": "Send a polished proposal", "b": "Paste the final menus into a Google Docs template with your terms and send it with the questions from Gmail."}
+    ],
+    "example": "Option 2 (42 per head): Beetroot-cured salmon, pickled cucumber / Slow-roast lamb shoulder, crushed new potatoes, salsa verde (V: roast squash and lentil Wellington) / Lemon posset, shortbread. Questions: any nut or sesame allergies?",
+    "tips": ["Always collect allergen information in writing from the client and check every dish against your own allergen records; never rely on the AI for allergen details."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "An event enquiry arrives"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull out guest numbers, date, budget and dietary needs"},
+        {"type": "ai.generate", "detail": "Suggest three set menu options"},
+        {"type": "email.draft", "detail": "Draft the proposal reply with questions"}
+      ]
+    }
+  },
+  {
+    "t": "Build a seasonal menu around what suppliers have now",
+    "d": "Get fresh dish ideas that use what's in season and on your suppliers' lists, balanced across the menu and your kitchen's skills.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "At each change of season or menu",
+    "steps": [
+      {"h": "Collect supplier availability", "b": "Copy this month's availability lists or emails from your veg, meat and fish suppliers, and note your best sellers and kitchen limits (stations, staff, equipment)."},
+      {"h": "Ask for menu ideas", "b": "Paste everything into your AI assistant with this prompt.", "p": "I run the kitchen at a [style, e.g. 60-cover modern British bistro]. Supplier availability this month: [paste]. Best sellers to keep: [list]. Kitchen limits: [e.g. 3 chefs, no deep fryer, small pastry section]. Target food cost: [30]%. Suggest a menu of [5] starters, [6] mains and [4] desserts that uses seasonal produce, shares components across dishes to reduce waste, and balances meat, fish and vegetarian or vegan options. For each dish: name, short menu description, key components, which station makes it, and the prep that can be done ahead. Flag any dish likely to run above the target food cost."},
+      {"h": "Talk it through with your team", "b": "Share the ideas with your sous chef and front-of-house lead, pick the ones that fit and test them in a tasting session."},
+      {"h": "Write the final menu", "b": "Ask the AI to tighten the menu descriptions for the dishes you chose, then paste them into your menu document."}
+    ],
+    "example": "Starter: Charred hispi cabbage, miso butter, crispy shallots (shares shallots with the steak main). Main: Hake, mussels, leeks and cider sauce (fish station, sauce made ahead). Dessert: Forced rhubarb, ginger custard, oat crumble.",
+    "tips": ["Ask for ideas that share prep components; it's one of the easiest ways to cut waste and keep the pass running smoothly."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Start of each season"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest a seasonal menu from supplier availability"},
+        {"type": "doc.create", "detail": "Save the draft menu for the tasting session"}
+      ]
+    }
+  },
+  {
+    "t": "Give your cooks a clear prep card per dish",
+    "d": "Turn your notes for a dish into a one-page card with batch quantities, method, plating, holding times and what good looks like.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Phone camera", "Google Docs"],
+    "when": "Whenever a new dish goes on the menu",
+    "steps": [
+      {"h": "Note how you make it", "b": "Write rough notes or record a voice note as you cook the dish: ingredients, quantities, method and how it should be plated. Take a photo of the finished plate."},
+      {"h": "Ask for a prep card", "b": "Paste your notes into your AI assistant with this prompt.", "p": "Turn my notes into a kitchen prep card for [dish name]. Notes: [paste]. Sections: yield and portion size; ingredients scaled for [10] portions in grams or millilitres; mise en place to do before service; step-by-step method, one action per line; plating steps with where each element goes; holding and storage times as I've stated them; 'What good looks like' (colour, texture, temperature cues); 3 common mistakes to avoid; and a line for allergens to be filled in from our allergen records. Keep it short enough to fit on one page."},
+      {"h": "Check, then add the photo", "b": "Check quantities and method against how you actually cook it, fill in allergens from your own records, and add the plating photo in Google Docs."},
+      {"h": "Put it where it's used", "b": "Print it, laminate it for the section and keep a copy in a shared Drive folder so every cook has the same version."}
+    ],
+    "example": "Braised beef cheek - yields 10. Mise: dice mirepoix, reduce red wine by half. Plating: mash at 7 o'clock, cheek on top, glaze, 3 baby carrots at 2 o'clock. What good looks like: holds shape but gives to a spoon; glossy sauce. Allergens: [from records].",
+    "tips": ["Ask the AI for the same card in another language if any of your team would find that easier."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Chef shares notes for a new dish"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a one-page prep card"},
+        {"type": "file.save", "detail": "Save the card to the shared recipes folder"}
+      ]
+    }
+  },
+  {
+    "t": "Keep daily cleaning and fridge checks on your phone",
+    "d": "Set up quick phone checklists for opening, closing and fridge temperatures, with a weekly summary of anything missed or out of range.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets"],
+    "when": "Every shift, with a weekly review",
+    "steps": [
+      {"h": "Draft the checklists", "b": "Ask your AI assistant for a starting point, then adapt it to your own kitchen.", "p": "Draft three short checklists for a [type of kitchen] in [country]: 1) opening checks; 2) closing cleaning checks; 3) temperature log for these fridges and freezers [list units]. Make each item a yes/no or number question with the safe range shown next to it where relevant. Add a 'what I did about it' question for anything failed. List the official food safety guidance in [country] I should check these against."},
+      {"h": "Check against official rules", "b": "Compare the draft with your food safety management system, the official guidance from your food safety regulator and your local environmental health team. Adjust as needed; the AI's draft is only a starting point."},
+      {"h": "Build the forms", "b": "Create each checklist as a Google Form linked to one Google Sheet. Print a QR code for each form and stick it inside the kitchen where the checks happen."},
+      {"h": "Review weekly", "b": "Each week, paste the sheet's rows into your AI assistant and ask it to list missed checks, readings out of range and any pattern, such as one fridge creeping warm in the afternoon."}
+    ],
+    "example": "Week 10: 2 closing checks missed (Tue, Sat). Walk-in fridge read 7C at 3pm on Wed and Thu; action recorded: door left open during delivery. Suggest: delivery procedure reminder and engineer check if it happens again.",
+    "tips": ["These logs support your food safety system but are not a compliance sign-off; keep records in the format your regulator or inspector expects."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "A kitchen check form is submitted"},
+      "actions": [
+        {"type": "sheet.append", "detail": "Log the check with time and staff initials"},
+        {"type": "notify", "detail": "Alert the head chef if a reading is out of range"},
+        {"type": "ai.summarize", "detail": "Weekly summary of missed checks and patterns"}
+      ]
+    }
+  },
+  {
+    "t": "Order the right amounts from next week's bookings",
+    "d": "Use next week's covers and your usual sales mix to get a suggested order list by supplier, ready to check and send.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Sheets", "Gmail"],
+    "when": "Before placing weekly orders",
+    "steps": [
+      {"h": "Set up a par sheet", "b": "In Google Sheets list your dishes, how many portions of each usually sell per 100 covers, and the key ingredients per portion with supplier and pack size."},
+      {"h": "Add bookings and stock", "b": "Each week, add the expected covers for each day from your booking system and a quick count of what you have in stock."},
+      {"h": "Ask for an order list", "b": "Copy the sheet into your AI assistant with this prompt.", "p": "Plan next week's food order for my kitchen. Expected covers by day: [paste]. Typical portions sold per 100 covers: [paste]. Ingredients per portion with supplier and pack size: [paste]. Current stock: [paste]. Add [10]% buffer for walk-ins. Please: 1) calculate how much of each ingredient I need for the week; 2) subtract current stock; 3) round up to whole packs; 4) group the order by supplier and by delivery day, keeping perishables close to when they're used. Show workings in a table so I can check them."},
+      {"h": "Check and send", "b": "Adjust for events, weather and specials you know about, then send each supplier their list by email or their ordering app."}
+    ],
+    "example": "Covers: 410 (Fri 120, Sat 140). Fresh & Co (Tue delivery): chicken supremes 9kg, leeks 4kg. Fresh & Co (Fri delivery): hake fillets 7kg, mussels 5kg. Dairy Direct: double cream 6 x 2L, butter 5kg.",
+    "tips": ["Compare the suggestion with what you actually used each week for a month; adjust the per-100-covers figures until it matches your real sales."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Thursdays at 10am"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Calculate order quantities from covers and stock"},
+        {"type": "sheet.update", "detail": "Write the order list by supplier"},
+        {"type": "email.draft", "detail": "Draft an order email to each supplier"}
+      ]
+    }
+  },
+  {
+    "t": "Log every delivery and flag short or poor stock",
+    "d": "Check deliveries in on your phone with photos, keep one record and get a weekly summary of supplier problems with emails ready to send.",
+    "cat": "Small Business Admin",
+    "job": "Head chef",
+    "lvl": "Advanced",
+    "mins": 50,
+    "tools": ["Google Forms", "Google Sheets", "Phone camera", "AI assistant"],
+    "when": "At every delivery, with a weekly supplier round-up",
+    "steps": [
+      {"h": "Build a delivery check form", "b": "In Google Forms ask for: supplier, delivery time, items short or missing, quality problems, temperature on arrival for chilled and frozen goods, a photo of the delivery note and any problem items. Link it to a Google Sheet."},
+      {"h": "Make it easy to use", "b": "Print a QR code for the form and stick it by the back door, and show every chef who receives deliveries how to fill it in."},
+      {"h": "Get a weekly round-up", "b": "Set a scheduled task in ChatGPT if your plan includes it (or a recurring Monday calendar reminder) and use this prompt with the week's rows.", "p": "Here are this week's delivery checks: [paste rows]. For each supplier: number of deliveries, items short or missing, quality or temperature problems, and late deliveries. Rank suppliers from most to least reliable this week. For each supplier with a problem, draft a short, polite but firm email listing the issues with dates and asking for a credit or explanation. Don't add problems that aren't in the data."},
+      {"h": "Send credit requests", "b": "Check the drafts against the delivery note photos, then send them from your email and note any credits agreed in the sheet."}
+    ],
+    "example": "Fresh & Co: 4 deliveries, 2 short (leeks 2kg, Tue; parsley, Thu), 1 late. Email draft: 'Hi team, this week we had two short deliveries... please could you credit 2kg leeks and 1 bunch flat parsley against invoice 4471?' Dairy Direct: no issues.",
+    "tips": ["Rejecting goods that arrive outside safe temperatures should follow your food safety procedures; the form records what happened but doesn't replace those checks or a qualified person's judgement."],
+    "auto": {
+      "trigger": {"type": "form_submitted", "detail": "A delivery check form is submitted"},
+      "actions": [
+        {"type": "sheet.append", "detail": "Log the delivery and any problems"},
+        {"type": "notify", "detail": "Alert the head chef to short or out-of-temperature deliveries"},
+        {"type": "ai.summarize", "detail": "Weekly supplier reliability summary"},
+        {"type": "email.draft", "detail": "Draft credit request emails to suppliers"}
+      ]
+    }
+  }
+]
