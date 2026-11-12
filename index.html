@@ -305,6 +305,18 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 @keyframes burst{to{transform:translate(var(--dx),var(--dy)) rotate(200deg) scale(.3);opacity:0}}
 
 /* community, rung, partners */
+.creators{background:var(--yellow);color:var(--navy);border-radius:36px;padding:52px}
+.creators .h2{color:var(--navy);max-width:24ch}.creators .lead{color:var(--navy)}
+.csteps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0}
+.csteps>div{background:#fff;border-radius:24px;padding:28px}
+.csteps b{display:block;font-family:"Baloo 2";font-size:18px;color:var(--deep)}
+.csteps h3{font-size:28px;margin:4px 0 6px}
+.csteps p{color:var(--soft)}
+.earn{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.earn div{background:rgba(255,255,255,.55);border-radius:18px;padding:18px 20px;font-size:17px}
+.earn strong{display:block;font-size:19px}
+.creators .btn{background:var(--navy);color:#fff}
+
 .comm{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 .fork{background:var(--tone);border-radius:var(--r);padding:30px}
 .fork .ex{display:inline-block;background:#fff;border-radius:8px;padding:3px 10px;font-weight:700;font-size:15px;margin-bottom:14px}
@@ -344,7 +356,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 .p-col small{font-size:15px;color:var(--soft)}
 
 @media (max-width:900px){
-  .comm,.partners{grid-template-columns:1fr}.weeks{grid-template-columns:1fr 1fr}.rung{padding:32px 22px}
+  .comm,.partners,.csteps,.earn{grid-template-columns:1fr}.creators{padding:32px 22px}.weeks{grid-template-columns:1fr 1fr}.rung{padding:32px 22px}
   .wrap{padding:0 16px}
   .hero-grid,.cta,.doors,.tiles,.steps{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
@@ -406,6 +418,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
         <a href="#pond" data-go="all">Browse all</a>
         <a href="#pond" data-go="work">Work</a>
         <a href="#pond" data-go="life">Life</a>
+        <a href="#creators">Earn</a>
         <a href="#community">Community</a>
         <a href="#rung">The Rung</a>
         <button class="net" id="net" type="button" title="See the guides you've saved">Saved <b id="netCount">0</b></button>
@@ -601,6 +614,27 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
     </div>
   </section>
 
+  <!-- CREATORS -->
+  <section id="creators">
+    <div class="wrap">
+      <div class="creators">
+        <h2 class="h2">Earn from the workflows you already use</h2>
+        <p class="lead">Coming soon for founding creators. Record a task you do with AI, and get paid every time a member uses it.</p>
+        <div class="csteps">
+          <div><b>Step 1</b><h3>Record it</h3><p>Screen-record yourself doing the task and talk it through. No writing needed.</p></div>
+          <div><b>Step 2</b><h3>We shape it</h3><p>fishpond turns it into a guide with steps, prompts and a set-up kit. You check it before it goes live.</p></div>
+          <div><b>Step 3</b><h3>You earn</h3><p>Every time someone uses your workflow, you earn. It keeps paying for as long as people use it.</p></div>
+        </div>
+        <div class="earn">
+          <div><strong>Cash from members</strong>A share of every paying member's fee goes to the creators whose workflows they used.</div>
+          <div><strong>Credits from free users</strong>Free runs earn you credits for Pro or a Rung track.</div>
+          <div><strong>A cut of remixes</strong>When someone improves your workflow, you earn from their version too.</div>
+        </div>
+        <a class="btn" href="#creators" data-toast="Thanks! We'll invite founding creators first.">Become a founding creator</a>
+      </div>
+    </div>
+  </section>
+
   <!-- THE RUNG -->
   <section id="rung">
     <div class="wrap">
@@ -681,7 +715,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   <div class="wrap">
     <div class="foot">
       <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond<span class="dot-ai">.ai</span></span></a>
-      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="#community">Community</a></li><li><a href="#rung">The Rung</a></li><li><a href="#partners">Employers and colleges</a></li></ul>
+      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="#creators">Earn from workflows</a></li><li><a href="#community">Community</a></li><li><a href="#rung">The Rung</a></li><li><a href="#partners">Employers and colleges</a></li></ul>
     </div>
     <p class="small">&copy; 2026 fishpond.ai. Useful AI, one small habit at a time.</p>
   </div>
