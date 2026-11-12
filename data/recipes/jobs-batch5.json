@@ -1,0 +1,723 @@
+[
+  {
+    "t": "Answer the front-desk phone with a calm, clear script",
+    "d": "A short phone script for your most common calls, with who to put each one through to, so every caller gets a quick, friendly answer.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Word"],
+    "when": "When you start a new role or the practice changes how calls are handled",
+    "steps": [
+      {"h": "List your most common calls", "b": "Jot down the ten or so reasons people ring most often, and who in the practice deals with each. Use roles, not patient names."},
+      {"h": "Ask your AI assistant for a script", "b": "Open ChatGPT, Claude or Gemini (or the AI tool your employer has approved) and paste this prompt with your list.", "p": "I'm a receptionist at a [type of practice, e.g. GP surgery]. Here are the most common reasons people phone us and who handles each: [list of call types and the role that deals with them]. Write a short, warm phone script for each call type with: 1) a greeting line, 2) two or three questions to find out what they need (no clinical questions), 3) exactly what to say when putting them through or taking a message, 4) what to say if that person isn't available. Add a separate section: 'If the caller sounds unwell or distressed' that only tells me to follow our practice's urgent call procedure and who to alert. Keep each script under 80 words and use plain, kind language."},
+      {"h": "Check it with your practice manager", "b": "Ask your manager or a clinician to read the urgent call section and correct anything that doesn't match your practice's procedures."},
+      {"h": "Keep it by the phone", "b": "Print it or save it as a one-page Word document on the desk computer so cover staff can use it too."}
+    ],
+    "example": "Repeat prescription call: 'Good morning, Riverside Surgery, Sam speaking. Are you calling about a repeat prescription? ...' Put through to: prescriptions clerk. If unavailable: 'I'll pass this on now and they'll ring you back by 4pm.'",
+    "tips": ["Never let the script suggest any medical advice; urgent or clinical calls always follow your practice's own procedure.", "Add new call types as they come up and ask your assistant to tidy the whole script again."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Receptionist lists common call types"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a short script and routing line for each call type"},
+        {"type": "doc.create", "detail": "Save the script as a one-page reference document"}
+      ]
+    }
+  },
+  {
+    "t": "Send appointment reminders that cut no-shows",
+    "d": "A set of short, friendly reminder and confirmation messages for each appointment type, ready to load into your practice's messaging system.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": ["AI assistant", "Word", "Outlook"],
+    "when": "When you set up or refresh your reminder messages",
+    "steps": [
+      {"h": "Gather what each appointment needs", "b": "For each appointment type (blood test, scan, consultation, procedure), note how far ahead to remind, what patients must bring and how to cancel. Leave out any patient details."},
+      {"h": "Draft the message set", "b": "Paste this into your AI assistant with your notes.", "p": "Write appointment reminder messages for a [type of practice]. For each appointment type below, write: 1) a booking confirmation, 2) a reminder to send [number] days before, 3) a same-day reminder. Each must be under 300 characters so it fits a text message, include placeholders like [patient first name], [date], [time] and [location], say what to bring, and explain how to cancel or rebook by [phone number or link]. Use a warm, plain tone and no medical advice. Appointment types and details: [list]."},
+      {"h": "Get them approved", "b": "Ask your practice manager to check the wording, especially any preparation instructions, before anything is sent to patients."},
+      {"h": "Load them into your systems", "b": "Add the approved wording as templates in your practice's booking or texting system, and save the email versions as Outlook templates (Quick Parts or My Templates) for patients who prefer email."}
+    ],
+    "example": "Reminder (2 days before): Hi [first name], this is a reminder of your blood test on [date] at [time] at Elm Street Clinic. Please bring your appointment letter. Can't make it? Call 01234 567890 so we can offer the slot to someone else.",
+    "tips": ["The AI only writes the templates; patient names and dates are filled in by your own booking system, never pasted into a public AI tool.", "Mentioning that a cancelled slot helps someone else tends to make people more likely to let you know."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Receptionist lists appointment types and what each needs"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write confirmation and reminder templates for each appointment type"},
+        {"type": "doc.create", "detail": "Save the template set for manager approval"},
+        {"type": "notify", "detail": "Remind the receptionist to load approved templates into the booking system"}
+      ]
+    }
+  },
+  {
+    "t": "Explain test preparation so patients arrive ready",
+    "d": "Plain-English preparation sheets for common tests and procedures, built from your clinicians' own instructions and checked before use.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Word"],
+    "when": "When patients keep turning up unprepared for a test",
+    "steps": [
+      {"h": "Start from approved instructions", "b": "Get the official preparation instructions your clinicians already use for the test, such as a fasting blood test or an ultrasound. The AI should only reword these, never add to them."},
+      {"h": "Ask for a plain-English version", "b": "Paste the instructions into your AI assistant with this prompt.", "p": "Below are our clinic's official preparation instructions for a [name of test]. Rewrite them as a one-page patient sheet in plain English that a 12-year-old could follow. Use these headings: What this appointment is for (one sentence), The day before, On the day, What to bring, How long it takes, Who to call with questions [phone number]. Do not add, remove or change any medical instruction. If anything in the original is unclear, list it at the end under 'Questions for the clinician' instead of guessing. Instructions: [paste approved instructions]."},
+      {"h": "Have a clinician sign it off", "b": "Send the draft and the 'Questions for the clinician' list to the nurse or doctor responsible. Only use the sheet once they've approved it."},
+      {"h": "Save and share it", "b": "Save the approved sheet in Word with the date and approver's name, and send it with appointment letters or confirmation emails."}
+    ],
+    "example": "Fasting blood test. The day before: eat as normal until 10pm. On the day: water only, no tea, coffee or breakfast. Bring: your appointment letter and a snack for afterwards. Takes about 10 minutes. Questions: call 01234 567890.",
+    "tips": ["Ask the assistant for a large-print version and a translated version, then have those checked too.", "Review each sheet once a year or whenever the clinical team changes the instructions."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Receptionist pastes approved test instructions"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Rewrite instructions as a plain-English patient sheet"},
+        {"type": "email.draft", "detail": "Draft an email asking a clinician to approve the sheet"}
+      ]
+    }
+  },
+  {
+    "t": "Never run out of clinic supplies again",
+    "d": "A shared stock sheet that highlights low items, a quick form for staff to flag what's running out, and a monthly order list drafted for you.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["AI assistant", "Google Sheets", "Google Forms", "Google Calendar"],
+    "when": "Every month before the supplies order",
+    "steps": [
+      {"h": "Build the stock sheet", "b": "Ask your AI assistant for a layout, then create it in Google Sheets.", "p": "Design a simple stock tracking sheet for a small medical practice's admin and consumable supplies. Give me the column headings (item, category, supplier, unit, current stock, reorder level, usual order quantity, last ordered, notes), 15 example rows for typical items like [examples: printer paper, specimen bags, gloves], and plain-English instructions for adding conditional formatting in Google Sheets that turns a row red when current stock is at or below the reorder level."},
+      {"h": "Let staff flag low stock", "b": "Make a short Google Form with an item dropdown and a 'how many left' box, linked to a new tab in the same sheet. Pin the form link in your team chat."},
+      {"h": "Set a monthly reminder", "b": "Add a recurring Google Calendar event a few days before your order deadline called 'Check stock and draft order'."},
+      {"h": "Draft the order list", "b": "When the reminder pops up, copy the red rows and the latest form responses into your AI assistant and ask: 'Turn these into an order list grouped by supplier, using the usual order quantity, and flag anything requested twice this month.'"},
+      {"h": "Check and place the order", "b": "Review the list against your budget and your practice's ordering process before sending it to suppliers."}
+    ],
+    "example": "Order for MedSupply Ltd: Specimen bags x 500, Nitrile gloves (M) x 10 boxes. Order for OfficeWorld: A4 paper x 5 reams, toner x 1. Flagged twice: gloves (M) - consider raising reorder level.",
+    "tips": ["Keep this sheet for supplies only; patient information never goes in it.", "If items keep running out, ask the assistant to suggest new reorder levels from three months of form responses."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Monthly, three days before the order deadline"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull items at or below reorder level and new staff requests"},
+        {"type": "ai.generate", "detail": "Draft an order list grouped by supplier"},
+        {"type": "notify", "detail": "Ask the receptionist to review and place the order"}
+      ]
+    }
+  },
+  {
+    "t": "Get every message to the right colleague first time",
+    "d": "A clear routing guide for messages and documents, plus inbox rules that sort incoming email into the right folders for each team.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Outlook", "Word"],
+    "when": "When messages and results keep landing in the wrong place",
+    "steps": [
+      {"h": "Note what arrives and who needs it", "b": "For a week, keep a quick tally of the kinds of messages and documents that come in (lab results, hospital letters, supplier emails, complaints) and who should get each. No patient details."},
+      {"h": "Turn it into a routing guide", "b": "Paste your tally into your AI assistant with this prompt.", "p": "I'm a medical receptionist. Here's a list of the types of messages and documents our practice receives and who should handle each: [list]. Create a one-page routing guide as a table with columns: what it is, how to recognise it (sender, subject words), who it goes to, how fast (same hour, same day, this week) and a backup person. Then suggest Outlook rules I could set up to move each type of email into a named folder, describing each rule in plain words (for example 'From contains labs@... move to Results - Duty Doctor')."},
+      {"h": "Agree it with the team", "b": "Check the guide with your practice manager, especially how fast results and urgent letters must be passed on."},
+      {"h": "Set up the inbox rules", "b": "In Outlook, open Rules in the settings and create each rule the guide suggests. Test each with one real email."},
+      {"h": "Pin the guide", "b": "Save the agreed guide in Word next to the desk so cover staff route things the same way."}
+    ],
+    "example": "Lab results | From: pathology@hospital.example | Duty doctor | Same day | Backup: practice nurse. Supplier invoice | Subject contains 'Invoice' | Practice manager | This week | Backup: admin lead.",
+    "tips": ["Rules only move emails; someone still needs to check the results folder through the day.", "Use your practice's approved email system for anything containing patient information."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "Any email arrives in the shared practice inbox"},
+      "actions": [
+        {"type": "email.label", "detail": "Move it to the right team folder using the agreed rules"},
+        {"type": "notify", "detail": "Alert the duty person when something lands in an urgent folder"}
+      ]
+    }
+  },
+  {
+    "t": "Make patient forms easier to fill in",
+    "d": "Clearer wording for your registration, intake and insurance forms, plus a short 'what to bring' checklist patients get in advance.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Word"],
+    "when": "When patients often get stuck or leave forms half done",
+    "steps": [
+      {"h": "Copy out a blank form", "b": "Take a blank copy of the form that causes the most trouble. Only ever use a blank one, never a completed form."},
+      {"h": "Ask for a clearer version", "b": "Paste the questions into your AI assistant with this prompt.", "p": "Here are the questions and instructions from a blank [registration / intake / insurance] form used at our [type of practice]: [paste form text]. 1) List any questions that are confusing, repeated or use jargon, and suggest a plainer wording for each. Keep the meaning exactly the same. 2) Suggest a clearer order for the sections. 3) Write a short 'Before your appointment' checklist telling patients what documents and information to bring so they can complete the form. 4) Write a two-line note receptionists can say to help someone who is stuck. Don't remove any question; flag ones you think could be removed for us to decide."},
+      {"h": "Check before changing anything", "b": "Share the suggestions with your practice manager. Some wording may be required by insurers or regulations, so only change what they approve."},
+      {"h": "Send the checklist ahead", "b": "Add the approved 'what to bring' checklist to booking confirmations and your website's new patient page."}
+    ],
+    "example": "Confusing: 'Name of policyholder if different from patient'. Clearer: 'Whose name is the insurance in? (Leave blank if it's yours.)' Bring: photo ID, insurance card, list of current medicines, your previous practice's name.",
+    "tips": ["Ask for a version in the languages your patients speak most, then have a fluent speaker check it."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Receptionist pastes a blank form"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest clearer wording and a what-to-bring checklist"},
+        {"type": "doc.create", "detail": "Save the suggestions for manager review"}
+      ]
+    }
+  },
+  {
+    "t": "Turn a clinician's dictation into a tidy letter draft",
+    "d": "A neatly formatted letter or report drafted from a doctor's dictation in your approved system, ready for them to check and sign.",
+    "cat": "Health & Care Work",
+    "job": "Medical receptionist",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Word"],
+    "when": "Whenever a dictated letter needs typing up",
+    "steps": [
+      {"h": "Use only your employer's approved tool", "b": "Dictations contain patient information, so only use the transcription or AI tool your practice has approved for this. Never paste them into a public chatbot."},
+      {"h": "Get the transcript", "b": "Run the recording through your approved transcription tool, or type the rough words yourself."},
+      {"h": "Ask for a tidy draft", "b": "In your approved AI tool, paste the transcript with this prompt.", "p": "Format this dictated text into a [referral letter / clinic letter / report] using our usual layout: [describe layout, e.g. date, recipient, Re: line, body, sign-off]. Fix punctuation, spelling and obvious dictation slips such as 'full stop' or 'new paragraph'. Do NOT change, add or interpret any clinical content, names, numbers, medicines or doses. Where a word is unclear, keep it and mark it [CHECK]. Transcript: [paste transcript]."},
+      {"h": "Send it back for checking", "b": "Pass the draft, with every [CHECK] highlighted, to the clinician. They review and sign it before it goes anywhere."}
+    ],
+    "example": "Re: [Patient name], DOB [date]. Thank you for seeing this patient, who has had [CHECK: 'intermittent' or 'persistent'] knee pain since March... Kind regards, Dr A. Example. Marked for checking: 1 word.",
+    "tips": ["Ask the clinician to dictate the letter type and recipient first so the draft starts in the right layout.", "Never let the tool guess an unclear medicine name or number; always mark it for checking."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "A dictation transcript is saved in the approved folder"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Format the transcript into the practice's letter layout, marking unclear words"},
+        {"type": "doc.create", "detail": "Save the draft letter"},
+        {"type": "notify", "detail": "Tell the clinician a draft is ready to check and sign"}
+      ]
+    }
+  },
+  {
+    "t": "Build a handover template your whole team uses",
+    "d": "A clear, consistent shift handover template for your unit, drafted with AI and agreed with your team, with no patient data involved.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Word"],
+    "when": "When handovers feel rushed or details get missed",
+    "steps": [
+      {"h": "Note what your handovers need", "b": "List what your unit always needs to pass on, such as observations due, safety risks, pending results and family updates. Think in headings, not patients."},
+      {"h": "Ask for a template", "b": "Paste this into your AI assistant. You're only designing a blank template, so no patient details go in.", "p": "I'm a registered nurse on a [type of ward or unit]. Design a blank shift handover template based on the SBAR format (Situation, Background, Assessment, Recommendation) that fits on one side of A4 per patient. Include sections for: [list your unit's must-haves]. Add tick boxes where possible to save writing, a short 'outstanding tasks' box with times, and a 'safety concerns' box near the top. Then give me a 60-second spoken handover order that follows the same headings."},
+      {"h": "Test it on a few shifts", "b": "Print some copies and ask colleagues to try them, then note what's missing or never used."},
+      {"h": "Get it agreed", "b": "Share the improved version with your ward manager so it fits your trust's documentation policy before it becomes the standard."}
+    ],
+    "example": "S: Bed [ ] Name [ ] Reason for admission [ ]. Safety: falls risk [ ] allergies [ ]. B: relevant history [ ]. A: obs due at [ ], pain score [ ]. R: outstanding tasks [ ] by [time], family to call [ ].",
+    "tips": ["Fill the template in your approved electronic record or on paper, never in a public AI tool.", "Keep it to one page; long templates get skipped on busy shifts."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse lists the unit's handover must-haves"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Design a one-page SBAR handover template"},
+        {"type": "doc.create", "detail": "Save the template for team testing"}
+      ]
+    }
+  },
+  {
+    "t": "Explain a condition to patients in words they understand",
+    "d": "A friendly, plain-English explanation sheet built from trusted guidance, at the right reading level, and checked by you before use.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Word"],
+    "when": "When you keep explaining the same thing to patients and families",
+    "steps": [
+      {"h": "Start from trusted guidance", "b": "Pick the official source you'd normally use, such as your trust's leaflet or a national health service page, and copy the key text."},
+      {"h": "Ask for a plain-English version", "b": "Paste the guidance into your AI assistant with this prompt. Don't include anything about a particular patient.", "p": "I'm a nurse. Rewrite the guidance below as a one-page explanation for patients and families about [condition or topic]. Use short sentences and everyday words at about a reading age of 9 to 11. Structure it as: What it is, Why it happens, What you can do at home, When to get help (copy this section's advice exactly from the source), Questions to ask your nurse or doctor. Don't add any medical advice that isn't in the source. Source text: [paste guidance]."},
+      {"h": "Check it carefully", "b": "Read it against the source line by line. You are responsible for its accuracy, so fix or remove anything that's off, and follow your trust's process for patient information."},
+      {"h": "Offer it in other formats", "b": "Ask for a large-print or translated version if your patients need it, and get translations checked by a qualified interpreter."}
+    ],
+    "example": "What is heart failure? Your heart is still working, but it's not pumping as strongly as it should. What you can do at home: weigh yourself every morning... When to get help: [copied from trust leaflet].",
+    "tips": ["Ask the assistant to read the draft back as if it were a worried relative and list what still sounds confusing."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse pastes trusted guidance on a topic"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Rewrite as a plain-English patient explanation"},
+        {"type": "doc.create", "detail": "Save the draft for the nurse to check"}
+      ]
+    }
+  },
+  {
+    "t": "Plan an engaging health talk for a group",
+    "d": "A ready-to-run session plan for a health education talk, with timings, simple activities, key messages and a take-home handout.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs", "Canva"],
+    "when": "Before a parent group, school visit or community session",
+    "steps": [
+      {"h": "Describe your audience and topic", "b": "Note who's coming, how long you have, the topic and the three things you most want people to remember."},
+      {"h": "Ask for a session plan", "b": "Paste this into your AI assistant.", "p": "I'm a nurse running a [length]-minute health education session on [topic] for [audience, e.g. new parents, secondary school pupils, older adults]. The three key messages are: [messages]. Create a session plan with: timings for each part, an icebreaker, two short interactive activities (no special equipment), simple visuals I could make, common questions people ask and plain answers based only on my key messages, and a 5-question quiz to check understanding. Finish with text for a one-page take-home handout with local help details left as [placeholders]."},
+      {"h": "Check the content", "b": "Make sure every health message matches current guidance from your employer or national health bodies, and change anything that doesn't."},
+      {"h": "Make the handout", "b": "Paste the handout text into a Canva template, add your local contact details and print enough copies."}
+    ],
+    "example": "0-5 min: Icebreaker - 'myth or fact' cards. 5-15 min: Safe sleep basics. 15-25 min: Activity - set up a safe cot with a doll. 25-30 min: Questions and quiz. Handout: 5 safe sleep tips and who to call.",
+    "tips": ["Ask the assistant to suggest how to adapt the session for people with low literacy or who don't speak English as a first language."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse describes the audience, topic and key messages"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create a timed session plan, quiz and handout text"},
+        {"type": "doc.create", "detail": "Save the plan to Google Docs"}
+      ]
+    }
+  },
+  {
+    "t": "Write a reflective account for revalidation",
+    "d": "A well-structured reflective account from your own notes, using a recognised model and linked to your professional standards, ready to edit.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Voice notes", "Word"],
+    "when": "After a learning moment, or when your revalidation is coming up",
+    "steps": [
+      {"h": "Capture what happened", "b": "Record a quick voice note or jot down what happened, what you learned and what you'll do differently. Leave out names and anything that could identify a patient or colleague."},
+      {"h": "Ask for a structured draft", "b": "Paste your notes into your AI assistant with this prompt.", "p": "I'm a registered nurse preparing a reflective account for revalidation. Using my notes below, write a reflective account of about 300 words using [Gibbs' reflective cycle / What? So what? Now what?]. Cover: what the experience or learning was, what I learned from it, how it changed or will change my practice, and which themes of my professional standards it links to: [e.g. prioritise people, practise effectively, preserve safety, promote professionalism and trust]. Keep it in the first person and in my own plain style. Do not invent details I haven't given. My notes: [paste anonymised notes]."},
+      {"h": "Make it yours", "b": "Read it through and rewrite anything that doesn't sound like you or isn't quite what happened. Your reflection must be your own honest account."},
+      {"h": "File it", "b": "Save it in Word with the date in your revalidation folder, and discuss it with your reflective discussion partner."}
+    ],
+    "example": "What happened: I attended a session on recognising sepsis early. What I learned: ... How it changed my practice: I now check the full set of observations before escalating... Standards themes: preserve safety; practise effectively.",
+    "tips": ["Check the current requirements from your regulator, as forms and themes can change.", "Doing one short account after each course is much easier than writing five the month before."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse records anonymised notes after a learning moment"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a structured reflective account linked to professional standards"},
+        {"type": "file.save", "detail": "Save it to the revalidation folder"}
+      ]
+    }
+  },
+  {
+    "t": "Give students and new staff a clear learning plan",
+    "d": "A week-by-week learning plan for student nurses or new healthcare assistants on your unit, with check-ins booked in the calendar.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Docs", "Outlook Calendar"],
+    "when": "Before a student placement or new starter begins",
+    "steps": [
+      {"h": "List what they need to learn", "b": "Write down the skills, routines and competencies the person must cover, the length of the placement and who supports them."},
+      {"h": "Ask for a learning plan", "b": "Paste this into your AI assistant.", "p": "I'm a nurse on a [type of unit] supervising a [student nurse in year X / new healthcare assistant] for [number] weeks. They need to cover: [list skills and competencies]. Create a week-by-week learning plan with: goals for each week, which skills to observe, practise with supervision and then do with indirect supervision, a short reading or e-learning suggestion for each week (described generally, I'll find the right resource), and three reflective questions for each weekly check-in. Add a first-day welcome checklist and a final-week sign-off checklist."},
+      {"h": "Fit it to your unit", "b": "Check it against the official competency documents and your trust's policies, and remove anything the person isn't allowed to do in their role."},
+      {"h": "Book the check-ins", "b": "Put a recurring weekly 20-minute check-in in your calendar for the length of the placement, with the plan linked in the invite."}
+    ],
+    "example": "Week 1: Orientation, fire exits, emergency trolley, meet the team. Observe: admissions. Check-in: 'What surprised you this week?' Week 2: Practise with supervision: recording observations... Final week: sign-off checklist.",
+    "tips": ["Share the plan with the learner on day one so they know what's coming and can ask for opportunities."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse lists competencies and placement length"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create a week-by-week learning plan and checklists"},
+        {"type": "doc.create", "detail": "Save the plan to Google Docs"},
+        {"type": "calendar.create", "detail": "Book weekly check-ins for the placement"}
+      ]
+    }
+  },
+  {
+    "t": "Keep a trusted list of local support services",
+    "d": "A shared, up-to-date directory of local services you can point patients and families to, with contact details checked by your team.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Intermediate",
+    "mins": 40,
+    "tools": ["AI assistant", "Google Sheets", "Google Calendar"],
+    "when": "When you set it up, then a quick check every three months",
+    "steps": [
+      {"h": "Decide what you need", "b": "List the kinds of help your patients often need, such as carers' support, food banks, mental health groups, transport or housing advice, and your area."},
+      {"h": "Ask for a starting list", "b": "Use an AI assistant that can search the web and paste this prompt.", "p": "I'm a nurse in [town or area]. Find local and national services that help with: [list of needs]. For each, give: name, what they help with, who can use them, how to get in touch (phone, website), whether people can refer themselves, and the web address where you found it. Present it as a table I can paste into a spreadsheet. Only include organisations you found a source for, and mark anything you're unsure about as 'check'."},
+      {"h": "Check every entry", "b": "Visit each website or phone to confirm the details are right before anyone uses the list. AI search can be out of date."},
+      {"h": "Share it with your team", "b": "Paste the checked list into a Google Sheet with a 'last checked' column and share it with colleagues."},
+      {"h": "Set a review reminder", "b": "Add a recurring calendar event every three months to check links and phone numbers, and ask colleagues to add services they discover."}
+    ],
+    "example": "Carers Hub North | Support and respite for unpaid carers | Self-referral: yes | 0300 000 0000 | carershub.example | Last checked: 3 Oct.",
+    "tips": ["Check whether your employer has an official referral directory first, and follow your local referral processes for formal referrals."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Every three months"},
+      "actions": [
+        {"type": "web.fetch", "detail": "Check each service's website is still live"},
+        {"type": "ai.summarize", "detail": "List entries that look out of date"},
+        {"type": "notify", "detail": "Ask the team to confirm flagged entries"}
+      ]
+    }
+  },
+  {
+    "t": "Run a quick infection control refresher for your ward",
+    "d": "A short team briefing and an eye-catching poster on one infection control topic, built from your trust's policy and shared in your team chat.",
+    "cat": "Health & Care Work",
+    "job": "Nurse",
+    "lvl": "Intermediate",
+    "mins": 25,
+    "tools": ["AI assistant", "Canva", "Microsoft Teams"],
+    "when": "When an audit or incident shows a practice needs a refresh",
+    "steps": [
+      {"h": "Pick one topic and the policy", "b": "Choose one focus, such as hand hygiene moments or putting on and taking off protective equipment, and copy the relevant part of your trust's infection control policy."},
+      {"h": "Draft the briefing and poster text", "b": "Paste the policy text into your AI assistant with this prompt.", "p": "I'm a nurse running a 5-minute ward safety huddle on [topic]. Using only the policy text below, write: 1) a spoken briefing under 300 words with the three most important points, 2) two quick questions to ask the team to check understanding, 3) poster text with a short headline and no more than five numbered steps, written for a busy reader. Don't add anything that isn't in the policy. Policy text: [paste policy section]."},
+      {"h": "Check with your infection control lead", "b": "Ask your infection prevention team or ward manager to check the wording before you put anything on the wall."},
+      {"h": "Make the poster and share", "b": "Paste the poster text into a Canva poster template, print it for the ward, and post the briefing and a picture of the poster in your Teams channel for staff who missed the huddle."}
+    ],
+    "example": "Huddle: 'Today's focus is taking off gloves and aprons safely. 1) Gloves first, peeled inside out...' Poster: 'Off in the right order' 1. Gloves 2. Hand hygiene 3. Apron...",
+    "tips": ["Run one topic a week rather than everything at once; short, repeated messages stick better."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Nurse chooses a topic and pastes the policy section"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a huddle briefing, check questions and poster text"},
+        {"type": "message.send", "detail": "Post the briefing in the ward's team channel after approval"}
+      ]
+    }
+  },
+  {
+    "t": "Spot where costs crept up last month",
+    "d": "A plain-English read of your monthly figures that shows which costs rose, by how much, and the questions worth asking your team.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Excel"],
+    "when": "Every month when the figures come in",
+    "steps": [
+      {"h": "Export the figures", "b": "Export this month's and last month's cost or activity report to Excel, or copy the summary table. Remove supplier bank details and anything personal."},
+      {"h": "Ask for a plain-English review", "b": "Attach the file or paste the table into your AI assistant with this prompt.", "p": "I'm an operations manager. Here are our [department / site] figures for [this month] and [last month]: [paste table or attach file]. 1) List the five biggest increases in cost, in money and as a percentage, worked out from the figures. 2) Flag anything that rose while output or sales fell. 3) For each, suggest two likely explanations to check and one question to ask the team. 4) Summarise in three sentences I could share with my manager. Show your working for every number so I can check it."},
+      {"h": "Check the maths", "b": "Spot-check two or three of the numbers against your spreadsheet before you rely on them."},
+      {"h": "Take the questions to your team", "b": "Use the questions in your next team meeting rather than guessing at causes."}
+    ],
+    "example": "1) Overtime: up £3,200 (+28%) while orders fell 5%. Possible causes: absence cover, late deliveries. Ask: 'Which shifts needed the most overtime and why?' 2) Packaging: up £900 (+15%)...",
+    "tips": ["Ask the assistant to compare the same month last year too, if you have it, so seasonal changes don't look like problems."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "Monthly cost report saved to the finance folder"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull the biggest cost increases with workings"},
+        {"type": "ai.summarize", "detail": "Write a three-sentence summary and team questions"},
+        {"type": "email.draft", "detail": "Draft a note to the manager"}
+      ]
+    }
+  },
+  {
+    "t": "Build a fair weekly staff schedule in less time",
+    "d": "A draft weekly schedule that covers every shift, respects people's availability and spreads unpopular shifts fairly, ready for you to adjust.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Google Sheets", "Google Forms"],
+    "when": "Every week or fortnight before the schedule goes out",
+    "steps": [
+      {"h": "Collect availability", "b": "Make a short Google Form asking each person which days they can't work and any preferences, linked to a Google Sheet."},
+      {"h": "Note your cover needs", "b": "Write down how many people you need on each shift, which roles or skills each shift needs, and any rules such as maximum hours or rest between shifts."},
+      {"h": "Ask for a draft schedule", "b": "Paste the availability and your rules into your AI assistant.", "p": "Create a staff schedule for [week dates]. Shifts and cover needed: [e.g. Mon-Fri 6am-2pm: 4 people incl. 1 forklift trained]. Staff, contracted hours, skills and availability: [paste from the sheet]. Rules: [e.g. max 5 shifts a week, 11 hours' rest between shifts, weekends shared fairly]. Give me a table with days as columns and people as rows. Then list: any shift that's under-covered, anyone over or under their contracted hours, and how weekend and late shifts are shared out. Don't break any rule; if you can't fill a shift, say so instead."},
+      {"h": "Check and adjust", "b": "Paste the table into your schedule sheet, check every rule yourself and fix any gaps before publishing it."},
+      {"h": "Share it", "b": "Share the finished schedule as a view-only Google Sheet link so everyone sees the latest version."}
+    ],
+    "example": "Under-covered: Thu late shift (needs 1 more forklift-trained). Over hours: none. Weekend shifts: Priya 1, Tom 1, Ana 1, Lee 1. Unavailable respected: 12 of 12 requests.",
+    "tips": ["Check the schedule against working time rules and your company's policies; the AI can miss things.", "Keep last month's schedules in the sheet so you can ask the assistant whether late shifts are being shared fairly over time."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Every Wednesday for the following week"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Read staff availability from the form responses"},
+        {"type": "ai.generate", "detail": "Draft a schedule that meets cover needs and rules"},
+        {"type": "sheet.update", "detail": "Write the draft into the schedule sheet"},
+        {"type": "notify", "detail": "Ask the manager to review gaps before publishing"}
+      ]
+    }
+  },
+  {
+    "t": "Keep suppliers on track with a monthly scorecard",
+    "d": "A simple delivery log, a monthly scorecard for each supplier and a polite, specific email drafted for anyone falling behind.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Advanced",
+    "mins": 50,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Gmail"],
+    "when": "Log every delivery; review on the first Monday of each month",
+    "steps": [
+      {"h": "Log every delivery", "b": "Create a Google Form for whoever receives goods: supplier, date, on time (yes/no), complete (yes/no), damaged items, invoice matched to price agreed. Link it to a Google Sheet."},
+      {"h": "Set a monthly review", "b": "Add a recurring calendar event on the first Monday of each month called 'Supplier scorecard'."},
+      {"h": "Score each supplier", "b": "At the review, export last month's rows and paste them into your AI assistant.", "p": "Here is last month's delivery log: [paste rows]. For each supplier, calculate: number of deliveries, % on time, % complete, number with damage, number of invoice price mismatches. Give each a rating of Good, Watch or Act using these thresholds: [e.g. Act if under 85% on time]. Show a table, then list the top three issues overall. For every supplier rated Act, draft a short, polite email stating the facts from the log, asking for the reason and a plan to fix it within [timeframe]."},
+      {"h": "Check and send", "b": "Check the numbers against the sheet, then copy each email into Gmail, adjust the tone for your relationship, and send it."},
+      {"h": "Track the trend", "b": "Paste each month's scorecard into a 'History' tab so you can see who is improving before contracts come up for renewal."}
+    ],
+    "example": "FreshPack Ltd: 12 deliveries, 75% on time, 92% complete, 1 damaged, 2 price mismatches - Act. Email: 'Hi Jo, our records show 3 of 12 deliveries arrived late in October...'",
+    "tips": ["Agree your thresholds with suppliers up front so the scorecard feels fair, not a surprise.", "Gemini in Google Sheets can help with the calculations if your plan includes it."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "First Monday of each month"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull last month's delivery rows from the log"},
+        {"type": "ai.generate", "detail": "Score each supplier and draft emails for those rated Act"},
+        {"type": "sheet.append", "detail": "Add the scorecard to the history tab"},
+        {"type": "email.draft", "detail": "Create draft emails for the manager to review"}
+      ]
+    }
+  },
+  {
+    "t": "Turn a big goal into team objectives people understand",
+    "d": "Clear, measurable objectives for each team, linked to one company goal, with what success looks like and how you'll check progress.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "At the start of a quarter or year",
+    "steps": [
+      {"h": "Write down the goal and the teams", "b": "Note the goal from leadership, the teams who contribute to it, and any limits on budget or people."},
+      {"h": "Ask for draft objectives", "b": "Paste this into your AI assistant.", "p": "I'm an operations manager. Our goal for [period] is: [goal]. The teams involved are: [list teams and what each does]. Constraints: [budget, headcount, deadlines]. For each team, suggest two or three objectives that clearly link to the goal. For each objective give: a plain one-sentence statement, a measure and target, how we'll track it, who owns it, and one risk that could knock it off course. Finish with a one-paragraph explanation of the goal I could read out to all staff, avoiding jargon."},
+      {"h": "Agree them with team leads", "b": "Use the draft to start the conversation, not end it. Ask each team lead what's realistic and change the targets together."},
+      {"h": "Share and track", "b": "Put the agreed objectives in a shared Google Doc and review progress at each monthly meeting."}
+    ],
+    "example": "Goal: cut late deliveries to customers. Warehouse: pick 98% of orders by 2pm (tracked daily in the dispatch sheet, owner: Warehouse lead). Risk: peak season absence. Customer service: tell customers about delays within 1 hour...",
+    "tips": ["Fewer objectives work better; if a team has more than three, ask the assistant which ones matter most for the goal."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager enters the goal, teams and constraints"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft linked objectives with measures, owners and risks"},
+        {"type": "doc.create", "detail": "Save the draft in a shared document"}
+      ]
+    }
+  },
+  {
+    "t": "Write fair, specific performance reviews from your notes",
+    "d": "A balanced first draft of each review based on your own notes and examples, with clear goals for the next period and no vague labels.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Beginner",
+    "mins": 15,
+    "tools": ["AI assistant", "Word"],
+    "when": "At review time, for each team member",
+    "steps": [
+      {"h": "Gather your evidence", "b": "Pull together your notes from one-to-ones, results and specific examples for the period. Use a first name or initials only, and check your company's AI policy before sharing staff information."},
+      {"h": "Ask for a balanced draft", "b": "Paste this into your AI assistant with your notes.", "p": "Help me write a performance review for a [job title] covering [period]. Our review headings are: [headings, e.g. delivery, teamwork, development]. My notes and examples: [paste notes]. For each heading write two or three sentences based only on my examples, using specific behaviours and results rather than personality words. Include at least one strength and one area to develop, phrased constructively. Suggest three goals for the next period that are specific and measurable. Then list any statements in my notes that could come across as biased or vague, and suggest fairer wording."},
+      {"h": "Rewrite it in your voice", "b": "Edit the draft so it sounds like you and matches what you'll actually say. The judgement and the rating are yours."},
+      {"h": "Use it to prepare the conversation", "b": "Ask the assistant for three open questions to start the review discussion, and save the final review in your HR system."}
+    ],
+    "example": "Delivery: Ana cut picking errors on her shift from 12 to 4 a week by introducing a double-check at packing. Develop: delegating, as she covered three absences herself rather than asking the team. Goal: train two colleagues on the packing check by March.",
+    "tips": ["Never let the AI make up examples; if a heading has no evidence, that's a sign to gather more before the review."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager pastes notes for one team member"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Draft a balanced review with goals and flag vague wording"},
+        {"type": "doc.create", "detail": "Save the draft review"}
+      ]
+    }
+  },
+  {
+    "t": "Plan a sales promotion every department is ready for",
+    "d": "One shared promotion plan with dates, owners and a checklist for each department, so stock, staff and marketing are all ready on launch day.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Intermediate",
+    "mins": 30,
+    "tools": ["AI assistant", "Trello", "Google Calendar"],
+    "when": "Six to eight weeks before a promotion",
+    "steps": [
+      {"h": "Describe the promotion", "b": "Write down what's on offer, the dates, the products or services involved, the departments that need to act and your budget."},
+      {"h": "Ask for a plan", "b": "Paste this into your AI assistant.", "p": "I'm an operations manager planning a promotion: [describe offer, dates, products]. Departments involved: [e.g. buying, warehouse, store teams, marketing, customer service, finance]. Budget: [amount]. Create a plan working back from launch day with: tasks for each department, a deadline and suggested owner role for each task, dependencies (what must happen before what), and a launch-day checklist. Add a list of the top five things that commonly go wrong with promotions like this and how to prevent each. Format the tasks as a list I can copy into a project board, one task per line."},
+      {"h": "Put it on a board", "b": "Create a Trello board with a list per department and paste in the tasks as cards, adding owners and due dates."},
+      {"h": "Book the check-ins", "b": "Add a weekly 15-minute promotion stand-up to Google Calendar with each department lead until launch, and a review a week after it ends."}
+    ],
+    "example": "Week -6 Buying: confirm extra stock with supplier (owner: buyer). Week -4 Marketing: signage artwork signed off. Week -2 Warehouse: stock received and checked. Common issue: tills not updated with new prices - test on day -2.",
+    "tips": ["After the promotion, paste the board and results into your assistant and ask what to do differently next time."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager describes the promotion and departments"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Create a back-planned task list by department"},
+        {"type": "list.add", "detail": "Add tasks to the promotion board"},
+        {"type": "calendar.create", "detail": "Book weekly stand-ups until launch"}
+      ]
+    }
+  },
+  {
+    "t": "Sketch a better shop floor or warehouse layout",
+    "d": "Two or three layout options for your space with the pros and cons of each, based on how people and goods actually move around.",
+    "cat": "Managing a Team",
+    "job": "Operations manager",
+    "lvl": "Beginner",
+    "mins": 20,
+    "tools": ["AI assistant", "Phone camera"],
+    "when": "Before a refit, a seasonal change or when the space feels cramped",
+    "steps": [
+      {"h": "Capture the current space", "b": "Take photos from each corner and draw a rough floor plan with measurements, doors, tills, fire exits and anything that can't move."},
+      {"h": "Note what isn't working", "b": "List the problems you see, such as queues blocking aisles, long walks to pick popular items or bottlenecks at the door."},
+      {"h": "Ask for layout options", "b": "Attach the photos and plan to your AI assistant with this prompt.", "p": "I manage a [shop / warehouse / workspace] of about [size]. Attached are photos and a rough floor plan. Fixed items: [doors, fire exits, tills, pillars]. Problems now: [list]. Goals: [e.g. faster picking, better flow for customers, more space for best-sellers]. Suggest three layout options. For each: describe where everything goes in plain words, the main benefit, the main drawback, rough effort to change, and anything to check for safety or accessibility (wide enough aisles, clear exits). Then recommend one and say why."},
+      {"h": "Check safety and test it", "b": "Run the preferred option past your health and safety lead, then mark it out with tape or move one area first to see if it works."}
+    ],
+    "example": "Option B: Move best-sellers to the two bays nearest dispatch and slow movers to the back. Benefit: shorter picking walks. Drawback: one weekend to move stock. Check: keep the fire exit aisle clear and at least the required width.",
+    "tips": ["Ask staff who work the floor every day for their problems first; they'll spot things the photos won't show."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Manager uploads photos, a floor plan and problems"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Suggest three layout options with pros, cons and safety checks"},
+        {"type": "doc.create", "detail": "Save the options for the team to discuss"}
+      ]
+    }
+  },
+  {
+    "t": "Turn a vague feature request into clear requirements",
+    "d": "A short requirements note from a messy request, with user stories, acceptance criteria, edge cases and the questions to ask before you build.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "Google Docs"],
+    "when": "Whenever a new request lands in a message or ticket",
+    "steps": [
+      {"h": "Collect the request", "b": "Copy the original message, ticket or meeting notes, plus a one-paragraph description of the system it touches. Remove customer names and anything confidential."},
+      {"h": "Ask for structured requirements", "b": "Paste this into your AI assistant.", "p": "I'm a software developer. Here's a feature request and some context about our system. Request: [paste]. System context: [stack, relevant parts, constraints]. Turn this into: 1) a one-sentence problem statement, 2) user stories in the form 'As a..., I want..., so that...', 3) acceptance criteria for each story in Given/When/Then form, 4) edge cases and failure modes to handle, 5) what's out of scope, 6) a list of open questions for the requester, ordered by how much they change the design. Don't assume answers to open questions; list them."},
+      {"h": "Send the questions back", "b": "Send the open questions to the requester before you estimate or start work."},
+      {"h": "Save the agreed version", "b": "Update the note with their answers and attach it to the ticket so testers and reviewers use the same definition of done."}
+    ],
+    "example": "Story: As a store manager, I want to export last month's orders to CSV, so that I can reconcile with accounts. Given I'm on the Orders page, when I click Export... Open question 1: Should refunded orders be included?",
+    "tips": ["Ask the assistant to play the role of a sceptical tester and list ways the criteria could be misread."],
+    "auto": {
+      "trigger": {"type": "new_email", "detail": "A feature request arrives from a stakeholder"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull the request and any constraints"},
+        {"type": "ai.generate", "detail": "Write stories, acceptance criteria, edge cases and questions"},
+        {"type": "email.draft", "detail": "Draft a reply with the open questions"}
+      ]
+    }
+  },
+  {
+    "t": "Catch problems in your code before review",
+    "d": "A private first pass over your change that flags likely bugs, unclear names, missing tests and security risks before a colleague sees it.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": ["AI assistant", "GitHub"],
+    "when": "Before you open a pull request",
+    "steps": [
+      {"h": "Copy your diff", "b": "Copy the diff of your change from your editor or GitHub. Remove secrets, keys and customer data, and check your company allows code to be shared with your AI tool."},
+      {"h": "Ask for a focused review", "b": "Paste the diff with this prompt.", "p": "Act as a careful senior reviewer for [language/framework]. Here's my change and what it's meant to do: [one-line purpose]. Diff: [paste diff]. Review it and list findings grouped as: Bugs or logic errors, Security concerns, Error handling and edge cases, Missing or weak tests, Readability (naming, structure). For each finding give the file and line, why it matters, and a suggested fix. Rank by severity. Don't comment on style that a linter would catch. If something looks fine, don't invent problems."},
+      {"h": "Fix what's real", "b": "Work through the findings, fix the genuine ones and ignore the rest. You know the codebase better than the assistant does."},
+      {"h": "Write the PR description", "b": "Ask: 'Write a short pull request description: what changed, why, how to test it and anything reviewers should look at closely.'"}
+    ],
+    "example": "High - Bug: orders.js line 42, discount applied before tax is calculated, so totals are off for VAT-registered customers. Fix: move applyDiscount() after calcTax(). Medium - Missing test: no case for an empty basket.",
+    "tips": ["Give it the surrounding function or interface as well as the diff, or it will flag things that are handled elsewhere.", "Treat it as a second pair of eyes, not a replacement for your team's review."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Developer pastes a diff before opening a pull request"},
+      "actions": [
+        {"type": "ai.classify", "detail": "Group findings by type and severity"},
+        {"type": "ai.generate", "detail": "Draft a pull request description"}
+      ]
+    }
+  },
+  {
+    "t": "Write a test plan straight from the requirements",
+    "d": "A test case table covering happy paths, edge cases and failures, generated from your requirements and ready to track in a spreadsheet.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Intermediate",
+    "mins": 20,
+    "tools": ["AI assistant", "Google Sheets", "Google Docs"],
+    "when": "Once requirements are agreed and before testing starts",
+    "steps": [
+      {"h": "Gather the requirements", "b": "Open the agreed requirements or acceptance criteria in Google Docs and copy them."},
+      {"h": "Ask for test cases", "b": "Paste this into your AI assistant.", "p": "Here are the acceptance criteria for a feature: [paste]. System notes: [platforms, user roles, integrations]. Write a test plan as a table with columns: ID, requirement it covers, test type (unit / integration / end-to-end / manual), preconditions, steps, expected result, priority (High/Medium/Low). Include happy paths, boundary values, invalid input, permission checks for each user role and what happens when a dependency fails. Finish with a coverage check listing any requirement with no test, and suggest which tests are worth automating first."},
+      {"h": "Put it in a sheet", "b": "Paste the table into Google Sheets and add Status and Notes columns so the team can track results."},
+      {"h": "Turn the top tests into code", "b": "For the high-priority automated cases, ask the assistant to draft test functions in your test framework, then review and adapt them to your codebase."}
+    ],
+    "example": "TC-07 | Export orders | Integration | User has 0 orders | Click Export | Empty CSV with headers only | Medium. TC-08 | Export orders | Manual | Viewer role | Open Orders | Export button hidden | High.",
+    "tips": ["Ask for a second pass focused only on what a malicious or confused user might do; it often finds cases the first pass missed."],
+    "auto": {
+      "trigger": {"type": "new_file", "detail": "Approved requirements doc saved to the project folder"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write a prioritised test case table with a coverage check"},
+        {"type": "sheet.append", "detail": "Add test cases to the project's test tracker"}
+      ]
+    }
+  },
+  {
+    "t": "Write release notes your users actually read",
+    "d": "Friendly release notes and a short how-to for users, turned from your commit messages and ticket titles, plus a separate technical changelog.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Beginner",
+    "mins": 10,
+    "tools": ["AI assistant", "GitHub"],
+    "when": "Every release",
+    "steps": [
+      {"h": "Collect what changed", "b": "Copy the commit messages, merged pull request titles or ticket list for this release. Remove internal names and anything customers shouldn't see."},
+      {"h": "Ask for two versions", "b": "Paste this into your AI assistant.", "p": "Here are the changes in release [version] of [product], which is used by [type of users]: [paste commits / PR titles / tickets]. Write two things. 1) User release notes: a short intro, then sections New, Improved and Fixed, each item one plain sentence about what the user can now do, with no internal jargon. Leave out purely internal changes. Add a 3-step 'How to try it' for the biggest new feature. 2) A technical changelog for developers in Keep a Changelog format, including breaking changes and migration steps. Flag any item where the user impact is unclear so I can check."},
+      {"h": "Check and edit", "b": "Make sure nothing promises more than the feature does, and remove anything not yet released."},
+      {"h": "Publish", "b": "Post the user notes in your app, help centre or GitHub release, and the changelog in your repository."}
+    ],
+    "example": "New: Export your monthly orders to a spreadsheet in one click. Improved: Search now finds customers by phone number. Fixed: Discounts now show correctly on VAT invoices. How to try it: 1) Open Orders...",
+    "tips": ["Clear commit messages make this much better; ask the assistant to suggest a commit message style for your team."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Developer pastes the release's changes"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Write user release notes and a technical changelog"},
+        {"type": "doc.create", "detail": "Save both versions for review"}
+      ]
+    }
+  },
+  {
+    "t": "Record design decisions so nobody asks why later",
+    "d": "A short decision record from a design meeting or chat thread, with the options considered, the choice made and its trade-offs, stored with the project.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Intermediate",
+    "mins": 15,
+    "tools": ["AI assistant", "Microsoft Teams", "Notion"],
+    "when": "After any meeting or thread where a design choice is made",
+    "steps": [
+      {"h": "Get the discussion text", "b": "Use the meeting transcript or recap from Teams Copilot, Zoom AI Companion or Google Meet if your plan includes it, or copy the chat thread or your own notes."},
+      {"h": "Ask for a decision record", "b": "Paste it into your AI assistant with this prompt.", "p": "Below is a discussion between engineers about [topic]. Write an architecture decision record with these sections: Title, Status (Proposed/Accepted), Context (the problem and constraints in 3-5 sentences), Options considered (each with pros and cons as raised in the discussion), Decision, Consequences (trade-offs, risks, follow-up work), Open questions. Use only what was said; if the final decision isn't clear, set Status to Proposed and say what still needs agreeing. Discussion: [paste transcript or thread]."},
+      {"h": "Confirm with the team", "b": "Share the draft in the team channel and ask people to correct anything misremembered before marking it Accepted."},
+      {"h": "Store it with the project", "b": "Save it in your team's Notion decisions database (or in the repository's docs folder) with a number and date so it's easy to find."}
+    ],
+    "example": "ADR-014: Use a message queue for order emails. Context: sending emails during checkout slows the page. Options: send inline; background job; message queue. Decision: message queue. Consequences: one more service to monitor.",
+    "tips": ["Link the record from the related ticket and pull request so the 'why' is one click away."],
+    "auto": {
+      "trigger": {"type": "calendar_event", "detail": "A meeting tagged 'design' ends"},
+      "actions": [
+        {"type": "ai.summarize", "detail": "Turn the transcript into a decision record"},
+        {"type": "doc.create", "detail": "Save the draft in the decisions database"},
+        {"type": "message.send", "detail": "Post the draft to the team channel for corrections"}
+      ]
+    }
+  },
+  {
+    "t": "Track down the cause of a bug faster",
+    "d": "A ranked list of likely causes for an error, with what to check first and how to confirm each, from your error message, logs and relevant code.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Beginner",
+    "mins": 5,
+    "tools": ["AI assistant"],
+    "when": "When you're stuck on a bug",
+    "steps": [
+      {"h": "Gather the evidence", "b": "Copy the exact error message, stack trace, a few log lines from around the failure and the relevant function. Remove secrets, tokens and customer data first."},
+      {"h": "Ask for a diagnosis, not a guess", "b": "Paste it all with this prompt.", "p": "I'm debugging a problem in [language/framework, version]. Expected behaviour: [what should happen]. Actual behaviour: [what happens]. It started [when / after what change]. Error and stack trace: [paste]. Logs: [paste]. Relevant code: [paste]. List the most likely causes ranked by probability. For each: why the evidence points to it, one quick check to confirm or rule it out (a log line to add, a value to inspect, a test to write), and the fix if confirmed. Ask me for any extra information that would narrow it down. Don't rewrite unrelated code."},
+      {"h": "Run the checks", "b": "Work through the checks in order and tell the assistant what you found; it will narrow the list down."},
+      {"h": "Lock in the fix", "b": "Once fixed, ask it to draft a regression test that would have caught this bug, and add a short note to the ticket explaining the cause."}
+    ],
+    "example": "1) Most likely: the date is parsed in UTC but compared in local time, so orders after 11pm fall on the next day. Check: log order.created_at and the comparison value for an order placed at 23:30. Fix: compare both in UTC.",
+    "tips": ["Say what you've already tried so it doesn't send you back down the same path."],
+    "auto": {
+      "trigger": {"type": "manual", "detail": "Developer pastes an error, logs and code"},
+      "actions": [
+        {"type": "ai.generate", "detail": "Rank likely causes with a quick check for each"},
+        {"type": "ai.generate", "detail": "Draft a regression test once the cause is confirmed"}
+      ]
+    }
+  },
+  {
+    "t": "Get a weekly digest of bug reports grouped by theme",
+    "d": "One tidy log of every bug report from users, and a weekly summary that groups duplicates, ranks themes by impact and suggests priorities.",
+    "cat": "Documents & Data",
+    "job": "Software developer",
+    "lvl": "Advanced",
+    "mins": 45,
+    "tools": ["AI assistant", "Google Forms", "Google Sheets", "Google Calendar"],
+    "when": "Reports collected all week; digest every Monday morning",
+    "steps": [
+      {"h": "Collect reports in one place", "b": "Create a Google Form for users and support staff to report bugs: what they were doing, what went wrong, device or browser, how often and how badly it affects them. Link it to a Google Sheet."},
+      {"h": "Share the form", "b": "Add the form link to your app's help menu, support replies and internal team chat so every report lands in the sheet."},
+      {"h": "Set a weekly slot", "b": "Add a recurring Monday-morning calendar event called 'Bug digest' for you or your team lead."},
+      {"h": "Build the digest", "b": "Copy the week's new rows (with names and emails removed) into your AI assistant.", "p": "Here are this week's bug reports from users: [paste rows]. 1) Group reports that describe the same problem and give each group a short name. 2) For each group give: number of reports, affected platforms, how severe it sounds (blocks work / annoying / cosmetic), a one-sentence likely area of the product, and one example quote. 3) Rank groups by impact (severity x number of reports). 4) List reports that are unclear and what to ask the reporter. 5) Suggest the top three to fix this sprint. Present as a short digest I can paste into our team channel."},
+      {"h": "Share and act", "b": "Post the digest in your team channel, create tickets for the top themes and mark those rows as triaged in the sheet."}
+    ],
+    "example": "1) Checkout freezes on iOS Safari - 9 reports, blocks work. Likely area: payment form. 'I tapped Pay and nothing happened.' 2) CSV export missing last day - 4 reports, annoying. Unclear: 2 reports need device details.",
+    "tips": ["Add a 'Triaged' column with a dropdown so you only paste new rows each week.", "Strip names and emails before pasting unless your company's AI tool is approved for customer data."],
+    "auto": {
+      "trigger": {"type": "schedule", "detail": "Every Monday at 9am"},
+      "actions": [
+        {"type": "ai.extract", "detail": "Pull last week's untriaged bug reports from the sheet"},
+        {"type": "ai.classify", "detail": "Group duplicates and rank themes by impact"},
+        {"type": "message.send", "detail": "Post the digest to the team channel"},
+        {"type": "sheet.update", "detail": "Mark included rows as triaged"}
+      ]
+    }
+  }
+]
