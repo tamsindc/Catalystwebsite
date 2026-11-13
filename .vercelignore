@@ -4,4 +4,6 @@
 *.jpg
 scripts
 data/recipes
+docs
+supabase
 README.md

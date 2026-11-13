@@ -39,3 +39,10 @@ The **set-up kit** gives ready-made pieces:
 - **Ready-made spreadsheet**: AI-designed columns and example rows, saved as CSV (guides that use Sheets or Excel)
 - **Email filter**: a Gmail search and filter steps plus Outlook rule steps (email-sorting guides). A Gmail filter file is also offered outside the Claude app.
 - **Save this guide**: a printable page
+
+## Guide pages, sign-ups and deploying
+
+- `python3 scripts/build_pages.py` writes one page per guide to `guides/`, plus `guides/index.html`, `sitemap.xml` and `robots.txt`. Run it after `build_recipes.py`. Set `FISHPOND_URL` to the live address (default `https://fishpond.ai`).
+- Sign-up buttons save to a Supabase table. Run `supabase/schema.sql` once, then put the project URL and its publishable (anon) key in `config.js`. Until then, the forms say nothing was saved.
+- `vercel.json` turns on clean URLs (`/creators`, `/guides/<id>`). `.vercelignore` keeps the brand files, scripts and drafts off the live site.
+- `docs/creator-invite-email.md` holds the founding-creator invite and follow-up.
