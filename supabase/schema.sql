@@ -1,16 +1,19 @@
--- fishpond sign-ups. Run once in the Supabase SQL editor (or via the Supabase connector).
+-- fishpond sign-ups and guide requests. Run once in the Supabase SQL editor (or via the Supabase connector).
 create table if not exists public.signups (
   id         bigint generated always as identity primary key,
   created_at timestamptz not null default now(),
-  email      text not null check (char_length(email) between 5 and 254 and email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$'),
-  list       text not null check (list in ('waitlist','early_access','creator','cohort','hiring','track')),
+  email      text check (char_length(email) between 5 and 254 and email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$'),
+  list       text not null check (list in ('waitlist','early_access','creator','cohort','hiring','track','request')),
   name       text check (char_length(name) <= 120),
   org        text check (char_length(org) <= 160),
   role       text check (char_length(role) <= 160),
   link       text check (char_length(link) <= 500),
   note       text check (char_length(note) <= 1000),
   page       text check (char_length(page) <= 200),
-  unique (email, list)
+  unique (email, list),
+  -- everyone but guide requests must leave an email; a request must say what it is for
+  check (list = 'request' or email is not null),
+  check (list <> 'request' or note is not null)
 );
 
 -- Visitors may add themselves, and nothing else: no reading, editing or deleting.

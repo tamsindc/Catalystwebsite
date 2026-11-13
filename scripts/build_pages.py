@@ -85,7 +85,7 @@ def page(title, desc, path, body, extra_head=""):
 {extra_head}
 </head><body>
 <header class="top"><div class="wrap"><a class="logo" href="/">fishpond</a>
-<nav><a href="/guides/">All guides</a><a href="/#jobs">Your job</a><a href="/creators">Earn</a></nav></div></header>
+<nav><a href="/guides/">All guides</a><a href="/#jobs">Your job</a><a href="/creators">Earn</a><a href="/rung">The Rung</a></nav></div></header>
 <main class="wrap">{body}</main>
 <footer><div class="wrap"><span>&copy; 2026 fishpond.ai · Free, step-by-step AI guides for work and home.</span>
 <span>Job guides are built with help from the O*NET database, US Department of Labor (CC BY 4.0). <a href="/privacy">Privacy</a></span></div></footer>
@@ -138,7 +138,7 @@ for cat in sorted(by_cat):
 idx_body = f'<div><h1>All {len(items)} fishpond guides</h1><p class="lede">Free, step-by-step ways to use AI for real tasks at work and at home. No coding needed.</p></div>' + "".join(sections)
 (OUT / "index.html").write_text(page(f"All {len(items)} AI guides for work and home | fishpond", "Browse every free fishpond guide: step-by-step AI workflows for email, meetings, money, jobs and everyday life.", "/guides/", idx_body))
 
-urls = [("/", "1.0"), ("/guides/", "0.9"), ("/creators", "0.8")] + [(f'/guides/{w["id"]}', "0.7") for w in items]
+urls = [("/", "1.0"), ("/guides/", "0.9"), ("/creators", "0.8"), ("/rung", "0.6")] + [(f'/guides/{w["id"]}', "0.7") for w in items]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 sm += [f"<url><loc>{SITE}{u}</loc><lastmod>{built}</lastmod><priority>{p}</priority></url>" for u, p in urls]
 sm.append("</urlset>")

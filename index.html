@@ -134,7 +134,8 @@ section{padding:72px 0 0}
 .viewseg{margin-left:auto}
 .pond-search{max-width:none;background:var(--tone);margin:18px 0 6px}
 .pond-search input::placeholder{color:#56667d}
-.cats{display:flex;gap:8px;overflow-x:auto;padding:12px 2px 10px;scrollbar-width:thin}
+.cats{display:flex;gap:8px;flex-wrap:wrap;padding:12px 2px 10px}
+.cats button.more-cats{background:none;color:var(--deep);text-decoration:underline}
 .cats button{flex:none;border:0;background:var(--tone);border-radius:12px;padding:10px 15px;font-weight:700;font-size:16px;color:var(--ink)}
 .cats button:hover{background:#d2f1fb}
 .cats button small{font-size:14px;color:var(--soft);margin-left:6px;font-weight:400}
@@ -394,6 +395,34 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   .reveal{opacity:1;transform:none}
 }
 
+.morefp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mf{display:flex;flex-direction:column;gap:8px;border-radius:var(--r);padding:28px;text-decoration:none;color:var(--ink);transition:transform .15s}
+.mf:hover{transform:translateY(-3px)}
+.mf b{font-size:15px;color:var(--deep)}
+.mf h3{font-family:var(--display);font-size:26px;line-height:1.15;margin:0;color:var(--navy)}
+.mf p{margin:0;color:var(--soft)}
+.mf span{margin-top:auto;padding-top:8px;font-weight:700;color:var(--navy)}
+.mf-y{background:var(--yellow)}.mf-y b,.mf-y p{color:var(--navy)}
+.mf-n{background:var(--navy)}.mf-n h3,.mf-n p,.mf-n span{color:#fff}.mf-n b{color:var(--yellow)}
+.mf-t{background:var(--tone)}
+@media (max-width:860px){.morefp{grid-template-columns:1fr}}
+.ask-line{text-align:center;margin:18px 0 0;color:var(--soft)}
+.ask-line button{background:none;border:0;font:inherit;font-weight:700;color:var(--deep);text-decoration:underline;cursor:pointer;padding:0}
+.empty p{margin:0 0 6px}.empty .empty-sub{font-weight:400;color:var(--soft);margin-bottom:16px}
+.appsbtn{border:0;background:var(--tone);border-radius:999px;padding:12px 20px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+.appsbtn.on{background:var(--cyan);color:var(--navy)}
+.appspanel{background:var(--tone2);border-radius:var(--r);padding:20px 22px;margin:12px 0 4px;display:flex;flex-direction:column;gap:12px}
+.appspanel p{margin:0}
+.appchips{display:flex;flex-wrap:wrap;gap:8px}
+.appchips button{border:0;background:#fff;border-radius:12px;padding:9px 14px;font:inherit;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer}
+.appchips button.on{background:var(--navy);color:#fff}
+.linkbtn{align-self:flex-start;background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--deep);text-decoration:underline;cursor:pointer}
+.jobfind{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.jobfind input{flex:1 1 260px;min-width:0;font:inherit;font-size:18px;border:0;border-radius:999px;padding:14px 22px;background:var(--tone);color:var(--ink)}
+.jobfind input:focus{outline:3px solid var(--cyan)}
+.jobgrid button.jobmore{background:none;color:var(--deep);text-decoration:underline}
+.jobnone{margin:0;color:var(--soft)}
+.jobnone button{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--deep);text-decoration:underline;cursor:pointer}
 /* sign-up dialog */
 #signup{max-width:520px}
 .su{padding:32px;display:flex;flex-direction:column;gap:16px}
@@ -438,12 +467,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       </a>
       <button class="burger" aria-label="Menu" aria-expanded="false">Menu</button>
       <div class="links">
-        <a href="#pond" data-go="all">Browse all</a>
-        <a href="#pond" data-go="work">Work</a>
-        <a href="#pond" data-go="life">Life</a>
+        <a href="#pond" data-go="all">Guides</a>
         <a href="#jobs">Your job</a>
-        <a href="#creators">Earn</a>
-        <a href="#rung">The Rung</a>
+        <a href="creators.html">Earn</a>
+        <a href="rung.html">The Rung</a>
         <button class="net" id="net" type="button" title="See the guides you've saved">Saved <b id="netCount">0</b></button>
       </div>
     </div>
@@ -521,8 +548,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   <!-- JOBS -->
   <section id="jobs">
     <div class="wrap">
-      <div class="sec-head"><div><h2 class="h2">Find guides for your job</h2><p class="lead">Pick your job to see AI workflows built around the tasks people in that role really do.</p></div></div>
+      <div class="sec-head"><div><h2 class="h2">Find guides for your job</h2><p class="lead">Type your job to see AI workflows built around the tasks people in that role really do.</p></div></div>
+      <div class="jobfind"><label class="sr" for="jobFind">Your job</label><input id="jobFind" type="search" autocomplete="off" placeholder="Type your job, e.g. nurse, bookkeeper, teacher"></div>
       <div class="jobgrid" id="jobGrid"></div>
+      <p class="jobnone" id="jobNone" hidden></p>
       <p class="jobnote">Job tasks are based on the O*NET database from the U.S. Department of Labor, Employment and Training Administration, used under the CC BY 4.0 licence. The guides are written by fishpond.</p>
     </div>
   </section>
@@ -553,10 +582,23 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
             <option value="az">A to Z</option>
           </select>
         </label>
+        <label class="sort"><span class="sr">How long</span>
+          <select id="timeF">
+            <option value="0">Any length</option>
+            <option value="5">5 minutes or less</option>
+            <option value="15">15 minutes or less</option>
+          </select>
+        </label>
+        <button class="appsbtn" id="appsBtn" type="button" aria-expanded="false" aria-controls="appsPanel">My apps</button>
         <div class="seg viewseg" role="group" aria-label="Layout">
           <button type="button" data-v="list" class="on" aria-pressed="true">List</button>
           <button type="button" data-v="tiles" aria-pressed="false">Tiles</button>
         </div>
+      </div>
+      <div class="appspanel" id="appsPanel" hidden>
+        <p><b>Which apps do you use?</b> We'll only show guides that work with them. Every guide also uses an AI assistant such as ChatGPT, Claude, Gemini or Copilot.</p>
+        <div class="appchips" id="appChips"></div>
+        <button type="button" class="linkbtn" id="appsClear">Show guides for all apps</button>
       </div>
       <form class="search pond-search" id="pondSearch" role="search">
         <label class="sr" for="pondInput">Search guides</label>
@@ -568,6 +610,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <p class="pond-bar" id="count" aria-live="polite"></p>
       <div class="cards" id="cards"></div>
       <div class="more-wrap"><button class="btn y" id="more" type="button">Show more guides</button></div>
+      <p class="ask-line">Can't find what you need? <button type="button" id="askLine">Ask for a guide</button></p>
       <p class="credit">Every guide is written by fishpond for apps you already use. No coding, no extra software.</p>
     </div>
   </section>
@@ -610,7 +653,8 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <button class="su-close" type="button" id="suClose">&larr; Close</button>
       <h3 id="suTitle">Join the list</h3>
       <p id="suLead"></p>
-      <label class="fld">Your email<input type="email" id="suEmail" name="email" autocomplete="email" required></label>
+      <label class="fld" id="suNoteWrap" hidden>What do you want to do?<textarea id="suNote" rows="3" maxlength="1000" placeholder="For example: turn my supplier invoices into a weekly cash-flow sheet"></textarea></label>
+      <label class="fld">Your email <span id="suEmailOpt" style="font-weight:400" hidden>(optional, so we can tell you when it's ready)</span><input type="email" id="suEmail" name="email" autocomplete="email" required></label>
       <label class="fld">Your name <span style="font-weight:400">(optional)</span><input type="text" id="suName" name="name" autocomplete="name" maxlength="120"></label>
       <label class="fld" id="suOrgWrap" hidden>Your organisation<input type="text" id="suOrg" name="org" autocomplete="organization" maxlength="160"></label>
       <label class="hp" aria-hidden="true">Leave this empty<input type="text" id="suHp" tabindex="-1" autocomplete="off"></label>
@@ -626,108 +670,20 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       <div class="sec-head"><div><h2 class="h2 reveal">How fishpond works</h2></div></div>
       <div class="steps">
         <div class="step reveal"><div class="num">1</div><h3>Search</h3><p>Say what you want help with in plain words, like "clear my inbox" or "plan dinners", or pick a topic.</p></div>
-        <div class="step reveal"><div class="num">2</div><h3>Run it</h3><p>Fill in a couple of boxes and fishpond does the task right on the page, from a photo, a file or a few words.</p></div>
+        <div class="step reveal"><div class="num">2</div><h3>Do it</h3><p>Fill in a couple of boxes and fishpond gets the task done with the AI you already use, from a few words, a photo or a file.</p></div>
         <div class="step reveal"><div class="num">3</div><h3>Keep it</h3><p>Save the guide, add a calendar reminder, get a ready-made spreadsheet or set up your own AI assistant.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- COMMUNITY -->
-  <section id="community">
+  <!-- MORE FROM FISHPOND -->
+  <section id="morefp">
     <div class="wrap">
-      <div class="sec-head"><div><h2 class="h2">Share what works, copy what's good</h2><p class="lead">Coming soon: publish your own workflows, copy other people's and post better versions. Everything you make shows on your profile, so it doubles as a portfolio.</p></div></div>
-      <div class="comm">
-        <div class="fork">
-          <span class="ex">An example of how it will work</span>
-          <div class="orig"><h3>Month-end reconciliation with Claude</h3><p>Published by a bookkeeper</p>
-            <div class="copies"><span>40 people copied it</span><span>3 improved versions</span></div></div>
-          <ul>
-            <li><b>Adds a VAT check</b>Links back to the original</li>
-            <li><b>Works for two currencies</b>Links back to the original</li>
-            <li><b>Turns it into a client email</b>Links back to the original</li>
-          </ul>
-        </div>
-        <div class="profile">
-          <h3>Your profile is your proof</h3>
-          <p>Instead of a list of courses, show the real work you've done with AI.</p>
-          <div class="pts">
-            <div><i></i>Workflows you published, and how many people use them</div>
-            <div><i></i>Versions you improved, credited to you</div>
-            <div><i></i>Work you've defended on a Rung track, marked as verified</div>
-          </div>
-          <a class="btn y" href="#community" data-signup="early_access">Get early access</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREATORS -->
-  <section id="creators">
-    <div class="wrap">
-      <div class="creators">
-        <h2 class="h2">Earn from the workflows you already use</h2>
-        <p class="lead">Coming soon for founding creators. Record a task you do with AI, and get paid every time a member uses it.</p>
-        <div class="csteps">
-          <div><b>Step 1</b><h3>Record it</h3><p>Screen-record yourself doing the task and talk it through. No writing needed.</p></div>
-          <div><b>Step 2</b><h3>We shape it</h3><p>fishpond turns it into a guide with steps, prompts and a set-up kit. You check it before it goes live.</p></div>
-          <div><b>Step 3</b><h3>You earn</h3><p>Every time someone uses your workflow, you earn. It keeps paying for as long as people use it.</p></div>
-        </div>
-        <div class="earn">
-          <div><strong>Cash from members</strong>A share of every paying member's fee goes to the creators whose workflows they used.</div>
-          <div><strong>Credits from free users</strong>Free runs earn you credits for Pro or a Rung track.</div>
-          <div><strong>A cut of remixes</strong>When someone improves your workflow, you earn from their version too.</div>
-        </div>
-        <a class="btn" href="#creators" data-signup="creator">Become a founding creator</a> <a class="btn" style="background:#fff;color:var(--navy)" href="creators.html">How it works for creators</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE RUNG -->
-  <section id="rung">
-    <div class="wrap">
-      <div class="rung">
-        <span class="tag2">Coming soon · First track: Junior fund administrator</span>
-        <h2 class="h2">The Rung: learn a job by doing it</h2>
-        <p class="lead">A simulated job that runs for 10 to 12 weeks. Each week is a real piece of work in the format the job uses, and you defend it to an assessor. You finish with a verified portfolio and an introduction to employers who are hiring.</p>
-        <ol class="weeks">
-          <li><b>Week 1</b>Reconcile a NAV pack</li>
-          <li><b>Week 4</b>Draft investor notices</li>
-          <li><b>Week 8</b>Handle a mock audit query</li>
-          <li><b>Week 12</b>Present a full month-end close and defend it</li>
-        </ol>
-        <div class="rung-foot"><a class="btn y" href="#rung" data-signup="cohort">Join the first cohort list</a><p>Built for the junior roles AI is changing, so you can still get the experience that gets you hired.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PARTNERS -->
-  <section id="partners">
-    <div class="wrap">
-      <div class="sec-head"><div><h2 class="h2">For employers and colleges</h2></div></div>
-      <div class="partners">
-        <div class="partner p-emp">
-          <h3>Hire people who've done the job</h3>
-          <p>Every Rung graduate comes with a portfolio of real, assessed work, so you can see what they can do before you interview. You pay only when you hire.</p>
-          <a class="btn" href="#partners" data-signup="hiring">Talk to us about hiring</a>
-        </div>
-        <div class="partner p-col">
-          <h3>Offer a Rung track to your learners</h3>
-          <p>Colleges and training providers can license a track. From 1 July 2026, eligible US colleges may be able to fund learners through Workforce Pell.</p>
-          <small>The college must be Pell-eligible and the programme approved.</small>
-          <a class="btn n" href="#partners" data-signup="track">Talk to us about a track</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section>
-    <div class="wrap">
-      <div class="stats">
-        <div class="stat reveal"><b data-count="0" id="sWorkflows">0</b><span>step-by-step guides</span></div>
-        <div class="stat reveal"><b data-count="0" id="sTools">0</b><span>everyday apps used</span></div>
-        <div class="stat reveal"><b data-count="0" id="sTopics">0</b><span>topics, work and home</span></div>
-        <div class="stat reveal"><b data-count="0" id="sMins">0</b><span>minutes, typical set-up</span></div>
+      <div class="sec-head"><div><h2 class="h2">More from fishpond</h2></div></div>
+      <div class="morefp">
+        <a class="mf mf-y" href="creators.html"><b>For creators</b><h3>Earn from the workflows you already use</h3><p>Record a task you do with AI. We turn it into a guide with your name on it.</p><span>Become a founding creator &rarr;</span></a>
+        <a class="mf mf-n" href="rung.html"><b>Coming soon</b><h3>The Rung: learn a job by doing it</h3><p>A 12-week simulated job with real work, an assessor and a verified portfolio.</p><span>See how it works &rarr;</span></a>
+        <a class="mf mf-t" href="rung.html#partners"><b>For organisations</b><h3>Employers and colleges</h3><p>Hire people who've done the job, or offer a Rung track to your learners.</p><span>Talk to us &rarr;</span></a>
       </div>
     </div>
   </section>
@@ -762,7 +718,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
   <div class="wrap">
     <div class="foot">
       <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond<span class="dot-ai">.ai</span></span></a>
-      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="#creators">Earn from workflows</a></li><li><a href="#community">Community</a></li><li><a href="#rung">The Rung</a></li><li><a href="#partners">Employers and colleges</a></li><li><a href="guides/index.html">All guides</a></li><li><a href="creators.html">Founding creators</a></li><li><a href="privacy.html">Privacy</a></li></ul>
+      <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="guides/index.html">All guides</a></li><li><a href="creators.html">Founding creators</a></li><li><a href="rung.html">The Rung</a></li><li><a href="rung.html#partners">Employers and colleges</a></li><li><a href="privacy.html">Privacy</a></li></ul>
     </div>
     <p class="small">&copy; 2026 fishpond.ai. Useful AI, one small habit at a time.</p>
   </div>
@@ -798,11 +754,7 @@ if (!reduce) for (let i = 0; i < 10; i++) {
 const toolCount = new Set(LIB.flatMap(w => w.tools)).size;
 const phonePicks = ['Email & Inbox', 'Food & Home', 'Meetings & Calendar', 'Travel', 'Money'].map(c => LIB.find(w => w.cat === c)).filter(Boolean);
 $$('.phone .mini').forEach((m, i) => { if (phonePicks[i]) m.lastChild.textContent = phonePicks[i].t; });
-$('#sWorkflows').dataset.count = LIB.length;
-$('#sTools').dataset.count = toolCount;
-$('#sTopics').dataset.count = CATS.length;
 const minsSorted = LIB.map(w => w.mins).sort((a, b) => a - b);
-$('#sMins').dataset.count = minsSorted[Math.floor(minsSorted.length / 2)] || 10;
 $('.lede').textContent = `Learn AI by doing real work. ${LIB.length} free step-by-step guides for work and home, no coding.`;
 
 /* animated water */
@@ -893,32 +845,36 @@ const LISTS = {
   cohort:       ['Join the first cohort list', "We'll tell you when the first Rung track opens and how to apply.", false],
   hiring:       ['Talk to us about hiring', "Leave your details and we'll get in touch about hiring from fishpond.", true],
   track:        ['Talk to us about a track', "Leave your details and we'll get in touch about licensing a track.", true],
+  request:      ['Ask for a guide', "Tell us what you want to do. Creators pick up requests, and the most-asked ones get made first.", false],
 };
 const suDlg = $('#signup'), suForm = $('#suForm'), suStatus = $('#suStatus');
 let suList = 'waitlist';
-function openSignup(list) {
+function openSignup(list, note = '') {
   suList = LISTS[list] ? list : 'waitlist';
-  const [title, lead, org] = LISTS[suList];
+  const [title, lead, org] = LISTS[suList], req = suList === 'request';
   $('#suTitle').textContent = title; $('#suLead').textContent = lead;
-  $('#suOrgWrap').hidden = !org; suStatus.textContent = ''; $('#suGo').disabled = false;
-  suDlg.showModal(); $('#suEmail').focus();
+  $('#suOrgWrap').hidden = !org; $('#suNoteWrap').hidden = !req; $('#suEmailOpt').hidden = !req;
+  $('#suNote').value = note; $('#suGo').textContent = req ? 'Send my request' : 'Sign me up';
+  suStatus.textContent = ''; $('#suGo').disabled = false;
+  suDlg.showModal(); (req ? $('#suNote') : $('#suEmail')).focus();
 }
 $('#suClose').addEventListener('click', () => suDlg.close());
 suDlg.addEventListener('click', e => { if (e.target === suDlg) suDlg.close(); });
 suForm.addEventListener('submit', async e => {
   e.preventDefault();
-  const email = $('#suEmail').value.trim().toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { suStatus.textContent = 'Please check your email address.'; $('#suEmail').focus(); return; }
+  const email = $('#suEmail').value.trim().toLowerCase(), note = $('#suNote').value.trim(), req = suList === 'request';
+  if (req && !note) { suStatus.textContent = 'Tell us what you want to do.'; $('#suNote').focus(); return; }
+  if ((!req || email) && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { suStatus.textContent = 'Please check your email address.'; $('#suEmail').focus(); return; }
   if ($('#suHp').value) { suStatus.textContent = "Thanks, you're on the list."; return; }
-  if (!FP_CONFIG.supabaseUrl || !FP_CONFIG.supabaseKey) { suStatus.textContent = "Thanks! Sign-ups aren't switched on in this preview yet, so nothing was saved."; return; }
+  if (!FP_CONFIG.supabaseUrl || !FP_CONFIG.supabaseKey) { suStatus.textContent = "Thanks! Saving isn't switched on in this preview yet, so nothing was sent."; return; }
   $('#suGo').disabled = true; suStatus.textContent = 'Saving…';
   try {
     const r = await fetch(FP_CONFIG.supabaseUrl.replace(/\/$/, '') + '/rest/v1/signups', {
       method: 'POST',
       headers: {apikey: FP_CONFIG.supabaseKey, Authorization: 'Bearer ' + FP_CONFIG.supabaseKey, 'Content-Type': 'application/json', Prefer: 'return=minimal'},
-      body: JSON.stringify({email, list: suList, name: $('#suName').value.trim() || null, org: $('#suOrg').value.trim() || null, page: location.pathname.slice(0, 200)}),
+      body: JSON.stringify({email: email || null, list: suList, name: $('#suName').value.trim() || null, org: $('#suOrg').value.trim() || null, note: note || null, page: location.pathname.slice(0, 200)}),
     });
-    if (r.ok || r.status === 409) { suStatus.textContent = "Thanks, you're on the list. We'll be in touch."; suForm.reset(); }
+    if (r.ok || r.status === 409) { suStatus.textContent = req ? "Thanks, we've got your request." : "Thanks, you're on the list. We'll be in touch."; suForm.reset(); }
     else throw new Error(r.status);
   } catch { suStatus.textContent = "Sorry, that didn't save. Please try again in a moment."; $('#suGo').disabled = false; }
 });
@@ -963,15 +919,67 @@ const SYN = {fridge:['recipe','meal','food','grocer'], dinner:['recipe','meal','
   meeting:['meeting','transcri','zoom','call'], call:['call','meeting','transcri','voice'], social:['social','linkedin','instagram','twitter','tiktok'],
   gym:['fitness','workout','gym','health'], study:['learn','study','quiz','flashcard','tutor'], customer:['customer','support','ticket'],
   write:['writ','blog','content','article'], video:['video','youtube'], summarise:['summar'], summarize:['summar']};
+/* words that mean the same thing: searching any one also finds the others */
+[['cv','resume','résumé','covering letter','cover letter'], ['email','e-mail','mail','inbox'], ['spreadsheet','excel','sheet'],
+ ['boss','manager','line manager'], ['kid','child','children','son','daughter','teen'], ['invoice','bill','receipt'],
+ ['meal','dinner','lunch','recipe','cook','food'], ['holiday','trip','travel','vacation','itinerary'], ['job','career','interview','hiring'],
+ ['budget','money','finance','spend','saving'], ['meeting','call','zoom','teams'], ['presentation','slide','powerpoint','deck'],
+ ['doctor','gp','appointment'], ['schedule','calendar','diary','rota'], ['note','minute','transcri'], ['client','customer'],
+ ['complaint','unhappy','angry'], ['post','social','linkedin','instagram'], ['report','summar'],
+ ['homework','school','revision','exam'], ['house','home','flat','rent','landlord'], ['shop','shopping','grocer'],
+ ['contract','agreement','terms'], ['tax','vat','hmrc'], ['photo','picture','image','screenshot']].forEach(g => g.forEach(t => {
+  SYN[t] = [...new Set([...(SYN[t] || [t]), ...g])];
+}));
 LIB.forEach((w, i) => { w._i = i; w._hay = [w.t, w.d, w.cat, w.when, w.tools.join(' '), ...w.steps.map(x => x.h + ' ' + x.b)].join(' ').toLowerCase(); w._title = w.t.toLowerCase(); if (w.job) w._hay += ' ' + w.job.toLowerCase(); });
+/* spelling help: every word in the library, so "emial" can become "email" */
+const VOCAB = new Map();
+LIB.forEach(w => (w.t + ' ' + w.d + ' ' + w.cat + ' ' + w.tools.join(' ') + ' ' + (w.job || '')).toLowerCase().split(/[^a-z]+/).forEach(t => { if (t.length > 3) VOCAB.set(t, (VOCAB.get(t) || 0) + 1); }));
+function editDist(a, b, max) {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  let prev = Array.from({length: b.length + 1}, (_, j) => j), pp = null;
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i]; let best = i;
+    for (let j = 1; j <= b.length; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (pp && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) cur[j] = Math.min(cur[j], pp[j - 2] + 1);
+      best = Math.min(best, cur[j]);
+    }
+    if (best > max) return max + 1;
+    pp = prev; prev = cur;
+  }
+  return prev[b.length];
+}
+function fixWord(t) {
+  if (t.length < 4 || /\d/.test(t)) return null;
+  const max = t.length >= 7 ? 2 : 1;
+  let best = null, bd = max + 1, bn = 0;
+  for (const [v, n] of VOCAB) {
+    const d = editDist(t, v, max);
+    if (d < bd || (d === bd && n > bn)) { best = v; bd = d; bn = n; }
+  }
+  return bd <= max ? best : null;
+}
+let fixed = [];
 const PAGE = 12;
-const state = {side: 'all', cat: 'all', job: '', q: '', sort: 'featured', shown: PAGE, net: false};
+const state = {side: 'all', cat: 'all', job: '', q: '', sort: 'featured', shown: PAGE, net: false, allCats: false, maxMins: 0, apps: new Set()};
+try { state.apps = new Set(JSON.parse(localStorage.getItem('fishpond-apps') || '[]')); } catch {}
+/* apps that need no set-up count as "everyone has these" */
+const GENERIC = new Set(['AI assistant', 'Phone camera', 'Notes app', 'Voice notes', 'Reminders app']);
+const appsOk = w => { if (!state.apps.size) return true; const need = w.tools.filter(t => !GENERIC.has(t)); return !need.length || need.some(t => state.apps.has(t)); };
 const cards = $('#cards'), pondInput = $('#pondInput'), count = $('#count'), more = $('#more'), catsEl = $('#cats');
 
 function terms(q) {
-  return q.toLowerCase().split(/[^a-z0-9+#.]+/).filter(t => t.length > 1 && !STOP.has(t))
+  fixed = [];
+  return q.toLowerCase().split(/[^a-zé0-9+#.]+/).filter(t => t.length > 1 && !STOP.has(t))
     .map(t => t.replace(/ies$/, 'y').replace(/(?<=[^s])s$/, ''))
-    .map(t => REPL[t] || [...new Set([t, ...(SYN[t] || [])])]);
+    .map(t => {
+      const alts = REPL[t] || [...new Set([t, ...(SYN[t] || [])])];
+      if (LIB.some(w => alts.some(a => w._hay.includes(a)))) return alts;
+      const f = fixWord(t);
+      if (!f) return alts;
+      fixed.push(f);
+      return [...new Set([f, ...(SYN[f] || [])])];
+    });
 }
 function results() {
   const ts = terms(state.q);
@@ -979,9 +987,10 @@ function results() {
     (!state.net || saved.has(w.id)) &&
     (state.side === 'all' || w.side === state.side) &&
     (state.cat === 'all' || w.cat === state.cat) &&
-    (!state.job || w.job === state.job));
+    (!state.job || w.job === state.job) &&
+    (!state.maxMins || w.mins <= state.maxMins) && appsOk(w));
   if (ts.length) {
-    const need = Math.max(1, Math.ceil(ts.length / 2));
+    const need = ts.length <= 2 ? ts.length : Math.ceil(ts.length * 0.6);
     const wt = ts.map(alts => { const df = LIB.filter(x => alts.some(t => x._hay.includes(t))).length; return Math.log((LIB.length + 1) / (df + 1)) + 0.2; });
     list = list.map(w => {
       let score = 0, hits = 0;
@@ -1021,8 +1030,38 @@ function renderCats() {
     catsEl.appendChild(b);
   };
   mk('all', 'All topics', base.length);
-  CATS.filter(c => counts[c]).forEach(c => mk(c, c, counts[c]));
+  const list = CATS.filter(c => counts[c]).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+  const TOP = 7, showAll = state.allCats || list.indexOf(state.cat) >= TOP;
+  (showAll ? list : list.slice(0, TOP)).forEach(c => mk(c, c, counts[c]));
+  if (list.length > TOP) {
+    const t = document.createElement('button'); t.type = 'button'; t.className = 'more-cats';
+    t.textContent = showAll ? 'Fewer topics' : `More topics (${list.length - TOP})`;
+    t.setAttribute('aria-expanded', showAll);
+    t.addEventListener('click', () => { state.allCats = !showAll; if (showAll && list.indexOf(state.cat) >= TOP) state.cat = 'all'; renderCats(); render(); });
+    catsEl.appendChild(t);
+  }
 }
+
+/* time + my apps */
+$('#timeF').addEventListener('change', e => { state.maxMins = +e.target.value; state.shown = PAGE; render(); });
+(() => {
+  const freq = {};
+  LIB.forEach(w => w.tools.forEach(t => { if (!GENERIC.has(t)) freq[t] = (freq[t] || 0) + 1; }));
+  const apps = Object.keys(freq).sort((a, b) => freq[b] - freq[a]).slice(0, 18);
+  const btn = $('#appsBtn'), panel = $('#appsPanel'), chips = $('#appChips');
+  const label = () => { btn.textContent = state.apps.size ? `My apps (${state.apps.size})` : 'My apps'; btn.classList.toggle('on', state.apps.size > 0); };
+  const store = () => { try { localStorage.setItem('fishpond-apps', JSON.stringify([...state.apps])); } catch {} };
+  apps.forEach(a => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = a;
+    const sync = () => { const on = state.apps.has(a); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); };
+    sync();
+    b.addEventListener('click', () => { state.apps.has(a) ? state.apps.delete(a) : state.apps.add(a); sync(); store(); label(); state.shown = PAGE; render(); });
+    chips.appendChild(b);
+  });
+  btn.addEventListener('click', () => { panel.hidden = !panel.hidden; btn.setAttribute('aria-expanded', !panel.hidden); });
+  $('#appsClear').addEventListener('click', () => { state.apps.clear(); $$('#appChips button').forEach(b => { b.classList.remove('on'); b.setAttribute('aria-pressed', false); }); store(); label(); state.shown = PAGE; render(); });
+  label();
+})();
 
 function card(w, i) {
   const el = document.createElement('article');
@@ -1053,16 +1092,24 @@ function render(append = false) {
   if (!current.length) {
     const e = document.createElement('div');
     e.className = 'empty';
-    e.textContent = state.net ? 'Nothing saved yet. Tap "Save" on any guide to keep it here.' : `No guides found for "${state.q}". Try another word, or pick "All topics".`;
+    if (state.net) e.textContent = 'Nothing saved yet. Tap "Save" on any guide to keep it here.';
+    else {
+      const mkE = (tag, cls, text) => { const x = document.createElement(tag); if (cls) x.className = cls; x.textContent = text; return x; };
+      e.append(mkE('p', null, state.q ? `We don't have a guide for "${state.q}" yet.` : 'No guides match these filters.'), mkE('p', 'empty-sub', 'Try a shorter search, another word or fewer filters, or ask for it and a creator can make it.'));
+      const ask = mkE('button', 'btn o', 'Ask for this guide'); ask.type = 'button';
+      ask.addEventListener('click', () => openSignup('request', state.q));
+      e.appendChild(ask);
+    }
     cards.appendChild(e);
   }
   slice.forEach((w, i) => cards.appendChild(card(w, i)));
   const what = state.net ? 'that you saved' : state.job ? `for ${state.job}` : state.cat === 'all' ? '' : `in ${state.cat}`;
-  count.textContent = current.length ? `Showing ${Math.min(state.shown, current.length)} of ${current.length} guides ${what}`.trim() : '';
+  count.textContent = current.length ? `Showing ${Math.min(state.shown, current.length)} of ${current.length} guides ${what}`.trim() + (fixed.length && state.q ? `. Showing results for "${fixed.join(' ')}".` : '') : '';
   $('#pondTitle').textContent = state.net ? 'Your saved guides' : state.job ? `Guides for: ${state.job}` : state.cat !== 'all' ? state.cat : state.side === 'work' ? 'Guides for work' : state.side === 'life' ? 'Guides for home' : 'Browse all guides';
   more.hidden = state.shown >= current.length;
 }
 more.addEventListener('click', () => { state.shown += PAGE; render(true); });
+$('#askLine').addEventListener('click', () => openSignup('request', state.q));
 
 function setSide(f) {
   $$('.toggle button').forEach(x => { const on = x.dataset.f === f; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
@@ -1080,18 +1127,46 @@ $$('.viewseg button').forEach(b => b.addEventListener('click', () => {
 }));
 try { if (localStorage.getItem('fishpond-view') === 'tiles') $('.viewseg [data-v="tiles"]').click(); } catch {}
 
-/* jobs */
+/* jobs: type to find yours; shows the most-covered jobs until you type */
 (() => {
   const counts = {};
   LIB.forEach(w => { if (w.job) counts[w.job] = (counts[w.job] || 0) + 1; });
-  const jobs = Object.keys(counts).sort((a, b) => a.localeCompare(b));
+  const jobs = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
   if (!jobs.length) { $('#jobs').hidden = true; return; }
-  jobs.forEach(j => {
-    const b = document.createElement('button'); b.type = 'button'; b.textContent = j;
-    const sm = document.createElement('small'); sm.textContent = counts[j]; b.appendChild(sm);
-    b.addEventListener('click', () => { state.q = ''; pondInput.value = ''; state.cat = 'all'; setSide('all'); state.job = j; renderCats(); render(); goPond(); });
-    $('#jobGrid').appendChild(b);
-  });
+  const grid = $('#jobGrid'), find = $('#jobFind'), none = $('#jobNone'), FIRST = 12;
+  let open = false;
+  const pick = j => { state.q = ''; pondInput.value = ''; state.cat = 'all'; setSide('all'); state.job = j; renderCats(); render(); goPond(); };
+  const ALIAS = {tutor: 'teacher', lecturer: 'teacher', receptionist: 'medical receptionist', cook: 'head chef', pa: 'executive assistant', 'personal assistant': 'executive assistant', admin: 'executive assistant', 'office manager': 'operations manager', solicitor: 'lawyer', attorney: 'lawyer', realtor: 'estate agent', 'letting agent': 'property manager', landlord: 'property manager', programmer: 'software developer', coder: 'software developer', engineer: 'software developer', recruiter: 'hr specialist', 'human resources': 'hr specialist', salesperson: 'sales rep', 'account manager': 'sales rep', planner: 'event planner', comms: 'pr and comms', charity: 'fundraiser', consultant: 'business analyst', 'project manager': 'operations manager'};
+  function draw() {
+    const q = find.value.trim().toLowerCase();
+    const alias = Object.entries(ALIAS).filter(([k]) => q.length > 1 && k.startsWith(q)).map(([, v]) => v);
+    let list = q ? jobs.filter(j => { const l = j.toLowerCase(); return l.includes(q) || alias.some(a => l.includes(a)); }) : jobs;
+    const more = !q && !open && list.length > FIRST;
+    if (more) list = list.slice(0, FIRST);
+    grid.textContent = '';
+    list.forEach(j => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = j;
+      const sm = document.createElement('small'); sm.textContent = counts[j]; b.appendChild(sm);
+      b.addEventListener('click', () => pick(j));
+      grid.appendChild(b);
+    });
+    if (more || (!q && open)) {
+      const t = document.createElement('button'); t.type = 'button'; t.className = 'jobmore';
+      t.textContent = open ? 'Show fewer jobs' : `Show all ${jobs.length} jobs`;
+      t.addEventListener('click', () => { open = !open; draw(); });
+      grid.appendChild(t);
+    }
+    none.hidden = !(q && !list.length);
+    if (q && !list.length) {
+      none.textContent = `We don't have guides for "${find.value.trim()}" yet. `;
+      const ask = document.createElement('button'); ask.type = 'button'; ask.textContent = 'Ask for them';
+      ask.addEventListener('click', () => openSignup('request', `Guides for my job: ${find.value.trim()}`));
+      none.appendChild(ask);
+    }
+  }
+  find.addEventListener('input', draw);
+  find.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); const first = grid.querySelector('button:not(.jobmore)'); if (first && find.value.trim()) first.click(); } });
+  draw();
 })();
 
 /* doors */
