@@ -7,13 +7,13 @@ Reads data/workflows.js (made by build_recipes.py) and writes:
   sitemap.xml, robots.txt
 
 Run after build_recipes.py:  python3 scripts/build_pages.py
-Set the live address with FISHPOND_URL (default https://fishpond.ai).
+Set the live address with FISHPOND_URL (default https://thefishpond.online).
 """
 import html, json, os, pathlib, re
 from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = os.environ.get("FISHPOND_URL", "https://fishpond.ai").rstrip("/")
+SITE = os.environ.get("FISHPOND_URL", "https://thefishpond.online").rstrip("/")
 OUT = ROOT / "guides"
 
 raw = (ROOT / "data" / "workflows.js").read_text()
@@ -87,7 +87,7 @@ def page(title, desc, path, body, extra_head=""):
 <header class="top"><div class="wrap"><a class="logo" href="/">fishpond</a>
 <nav><a href="/guides/">All guides</a><a href="/#jobs">Your job</a><a href="/creators">Earn</a><a href="/rung">The Rung</a></nav></div></header>
 <main class="wrap">{body}</main>
-<footer><div class="wrap"><span>&copy; 2026 fishpond.ai · Free, step-by-step AI guides for work and home.</span>
+<footer><div class="wrap"><span>&copy; 2026 fishpond · Free, step-by-step AI guides for work and home.</span>
 <span>Job guides are built with help from the O*NET database, US Department of Labor (CC BY 4.0). <a href="/privacy">Privacy</a></span></div></footer>
 </body></html>
 """

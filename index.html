@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fishpond.ai — go fishing for AI that actually works</title>
+<title>fishpond — go fishing for AI that actually works</title>
 <meta name="description" content="Learn AI by doing real work: free step-by-step AI workflows for work and home, a community to share them, and simulated jobs that build a verified portfolio.">
-<meta property="og:title" content="fishpond.ai: go fishing for AI that actually works">
+<meta property="og:title" content="fishpond: go fishing for AI that actually works">
 <meta property="og:description" content="Hundreds of step-by-step AI workflows for work and life. No coding needed.">
 <meta name="theme-color" content="#14307a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect x='95' y='14' width='22' height='22' rx='4' fill='%23ffb800'/%3E%3Cpath d='M28 90 L62 118 L28 146' stroke='%23f05a3c' stroke-width='16' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='60' y='60' width='120' height='110' rx='18' fill='%23fff' stroke='%23f05a3c' stroke-width='16'/%3E%3Cpath d='M68 118 q12 -9 24 0 t24 0 t24 0 t24 0 V162 H68Z' fill='%2313c4f2'/%3E%3Ccircle cx='155' cy='92' r='10' fill='%23f05a3c'/%3E%3C/svg%3E">
@@ -461,9 +461,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 
 <nav id="top">
     <div class="wrap nav-in">
-      <a href="#top" class="brand" aria-label="fishpond.ai home">
+      <a href="#top" class="brand" aria-label="fishpond home">
         <svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg>
-        <span>fishpond<span class="dot-ai">.ai</span></span>
+        <span>fishpond</span>
       </a>
       <button class="burger" aria-label="Menu" aria-expanded="false">Menu</button>
       <div class="links">
@@ -501,7 +501,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
       </div>
 
       <div class="stage" id="stage">
-        <svg id="fish" viewBox="0 0 200 200" role="img" aria-label="fishpond.ai logo. Tap it to blow bubbles.">
+        <svg id="fish" viewBox="0 0 200 200" role="img" aria-label="fishpond logo. Tap it to blow bubbles.">
           <g class="body">
             <g class="pixels">
               <rect class="pix" x="95" y="22" width="16" height="16" rx="3" fill="#ffb800"/>
@@ -717,10 +717,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--yellow)}
 <footer>
   <div class="wrap">
     <div class="foot">
-      <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond<span class="dot-ai">.ai</span></span></a>
+      <a href="#top" class="brand"><svg viewBox="0 0 200 200" aria-hidden="true"><use href="#logo-mark"/></svg><span>fishpond</span></a>
       <ul><li><a href="#pond">Browse guides</a></li><li><a href="#how">How it works</a></li><li><a href="guides/index.html">All guides</a></li><li><a href="creators.html">Founding creators</a></li><li><a href="rung.html">The Rung</a></li><li><a href="rung.html#partners">Employers and colleges</a></li><li><a href="privacy.html">Privacy</a></li></ul>
     </div>
-    <p class="small">&copy; 2026 fishpond.ai. Useful AI, one small habit at a time.</p>
+    <p class="small">&copy; 2026 fishpond. Useful AI, one small habit at a time.</p>
   </div>
 </footer>
 
@@ -1360,7 +1360,7 @@ async function saveFile(filename, data, btn) {
 }
 function htmlDoc(title, bodyNode) {
   const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
-  return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.55;color:#0b1d4f}h1{font-size:1.6rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid #c9d2ea;padding:6px 8px;text-align:left;vertical-align:top}th{background:#fff7e8}pre{white-space:pre-wrap;background:#f3f5fb;padding:12px;border-radius:8px}.foot{margin-top:40px;font-size:.85rem;color:#5a6a9a}</style></head><body><h1>${esc(title)}</h1>${bodyNode.innerHTML}<p class="foot">Made with fishpond.ai</p></body></html>`;
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:40px auto;padding:0 20px;line-height:1.55;color:#0b1d4f}h1{font-size:1.6rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid #c9d2ea;padding:6px 8px;text-align:left;vertical-align:top}th{background:#fff7e8}pre{white-space:pre-wrap;background:#f3f5fb;padding:12px;border-radius:8px}.foot{margin-top:40px;font-size:.85rem;color:#5a6a9a}</style></head><body><h1>${esc(title)}</h1>${bodyNode.innerHTML}<p class="foot">Made with fishpond · thefishpond.online</p></body></html>`;
 }
 
 /* --- Run it here --- */
@@ -1583,7 +1583,7 @@ function calendarKit(w, body) {
   const acts = el('div', 'kit-acts'); body.appendChild(acts);
   const note = el('p', 'kit-note'); body.appendChild(note);
   const prompt = (w.steps.find(s => s.p) || {}).p || '';
-  const details = `${w.d}\n\nWhat to do:\n${w.steps.map((s, i) => `${i + 1}. ${s.h}`).join('\n')}${prompt ? `\n\nPrompt to use:\n${prompt}` : ''}\n\nFrom fishpond.ai`;
+  const details = `${w.d}\n\nWhat to do:\n${w.steps.map((s, i) => `${i + 1}. ${s.h}`).join('\n')}${prompt ? `\n\nPrompt to use:\n${prompt}` : ''}\n\nFrom fishpond: thefishpond.online`;
   const title = 'fishpond: ' + w.t;
   const dur = Math.min(60, Math.max(15, Math.round(w.mins / 15) * 15 || 15));
   function draw() {
@@ -1607,7 +1607,7 @@ function calendarKit(w, body) {
       const ics = mkBtn('Download calendar file (.ics)');
       ics.addEventListener('click', () => {
         const esc = s => s.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/[,;]/g, m => '\\' + m);
-        saveFile(slugify(w.t) + '.ics', ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//fishpond.ai//EN', 'BEGIN:VEVENT', `UID:${Date.now()}-${slugify(w.t)}@fishpond.ai`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`, `DTSTART:${g(start)}`, `DTEND:${g(end)}`, rrule ? `RRULE:${rrule}` : '', `SUMMARY:${esc(title)}`, `DESCRIPTION:${esc(details)}`, 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n'), ics);
+        saveFile(slugify(w.t) + '.ics', ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//thefishpond.online//EN', 'BEGIN:VEVENT', `UID:${Date.now()}-${slugify(w.t)}@thefishpond.online`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`, `DTSTART:${g(start)}`, `DTEND:${g(end)}`, rrule ? `RRULE:${rrule}` : '', `SUMMARY:${esc(title)}`, `DESCRIPTION:${esc(details)}`, 'END:VEVENT', 'END:VCALENDAR'].filter(Boolean).join('\r\n'), ics);
       });
       acts.appendChild(ics);
     }

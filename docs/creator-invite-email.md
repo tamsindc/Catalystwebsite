@@ -18,7 +18,7 @@ It's simple:
 
 Founding creators get their name on the first guides, credits when people use them, and a share of members' fees once paid membership launches.
 
-Here's how it works and where to sign up: [your domain]/creators
+Here's how it works and where to sign up: thefishpond.online/creators
 
 Would you be up for recording one? Happy to jump on a 10-minute call if that's easier.
 
@@ -31,7 +31,7 @@ Tamsin
 
 **Subject:** Re: Would you show other people how you use AI?
 
-Hi [first name], just bringing this back to the top of your inbox. One ten-minute recording is all it takes, and I'll do the writing. Here's the page again: [your domain]/creators
+Hi [first name], just bringing this back to the top of your inbox. One ten-minute recording is all it takes, and I'll do the writing. Here's the page again: thefishpond.online/creators
 
 Tamsin
 
@@ -39,4 +39,4 @@ Tamsin
 
 ## Short version for LinkedIn or WhatsApp
 
-I'm looking for 50 founding creators for fishpond, a free library of step-by-step AI guides. If you use AI for a task at work or at home, record yourself doing it once and we'll turn it into a guide with your name on it. Founding creators get credits now and a share of members' fees later. Details: [your domain]/creators
+I'm looking for 50 founding creators for fishpond, a free library of step-by-step AI guides. If you use AI for a task at work or at home, record yourself doing it once and we'll turn it into a guide with your name on it. Founding creators get credits now and a share of members' fees later. Details: thefishpond.online/creators

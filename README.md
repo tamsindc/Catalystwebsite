@@ -1,6 +1,6 @@
-# fishpond.ai homepage
+# fishpond homepage
 
-A single-page, interactive homepage for fishpond.ai: search step-by-step AI workflows, follow them with apps you already use, and save the ones you like.
+A single-page, interactive homepage for fishpond: search step-by-step AI workflows, follow them with apps you already use, and save the ones you like.
 
 ## Files
 
@@ -42,7 +42,7 @@ The **set-up kit** gives ready-made pieces:
 
 ## Guide pages, sign-ups and deploying
 
-- `python3 scripts/build_pages.py` writes one page per guide to `guides/`, plus `guides/index.html`, `sitemap.xml` and `robots.txt`. Run it after `build_recipes.py`. Set `FISHPOND_URL` to the live address (default `https://fishpond.ai`).
+- `python3 scripts/build_pages.py` writes one page per guide to `guides/`, plus `guides/index.html`, `sitemap.xml` and `robots.txt`. Run it after `build_recipes.py`. Set `FISHPOND_URL` to the live address (default `https://thefishpond.online`).
 - Sign-up buttons save to a Supabase table. Run `supabase/schema.sql` once, then put the project URL and its publishable (anon) key in `config.js`. Until then, the forms say nothing was saved.
 - `vercel.json` turns on clean URLs (`/creators`, `/guides/<id>`). `.vercelignore` keeps the brand files, scripts and drafts off the live site.
 - `docs/creator-invite-email.md` holds the founding-creator invite and follow-up.
